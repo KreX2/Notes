@@ -1,0 +1,805 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Real vs. Personal Property</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-80fa-a24c-e8a28f6b9292" class="page sans"><header><h1 class="page-title" dir="auto"><strong>Chapter 3 - Real vs. Personal Property</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="219fd429-a36a-4146-b047-e3829ac52596" class="column-list" data-notion-column-list="" dir="auto"><div id="dda2f493-0488-4160-b927-37850346ab8b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="eb26cde6-35a0-46b3-b4a7-81d7a378463b" class="" dir="auto"><strong>Personal Property vs. Real Property</strong></p><ul id="84b0e042-13f3-4ae7-bea4-ee36cf0a8837" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In the last chapter, we learned that real property is land plus permanent improvements and the bundle of legal rights of ownership.<ul id="6d4d800e-0cd8-495d-ad26-1e0f1e684081" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real property is conveyed (transferred) by deed.</li></ul><ul id="a947b0ad-a06f-4b9c-97ff-249a3cc255e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a property is sold, <strong>all </strong>of the real <strong>property</strong> generally conveys to the buyer.</li></ul></li></ul><ul id="857d5e7e-c6c0-409d-945e-8ea11bc80f74" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Examples of real property include:<ul id="65773702-f8e9-4157-b946-d683b0eb5c06" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A home</li></ul><ul id="3722bdfc-bdc0-4b89-bf03-865c47121d75" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An industrial warehouse</li></ul><ul id="acfd7c24-381a-41a1-a6a7-6afe528af99e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A 10-acre soybean field</li></ul></li></ul><ul id="c415bfca-883d-4114-a27f-4bc0091b52bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Personal property</strong> usually goes with the seller in a sale unless otherwise specified in the sales contract. Personal property is conveyed by a bill of sale or bequest.<ul id="89247d92-cce6-4c55-a8fc-e07e831a66d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples </strong>of personal property include:<ul id="c1704e24-ca22-4424-8dbe-55c48225095d" class="bulleted-list" dir="auto"><li style="list-style-type:square">A hairbrush</li></ul><ul id="dfad324b-c8c3-45af-b2d8-2851a5f108c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Dining room furniture</li></ul><ul id="e95c0124-608b-49af-99e3-9343225905f5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Your super-rare collection of bird-themed coffee mugs</li></ul></li></ul><ul id="68f2cf4d-42c0-4492-a746-fbbaf918d6fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The primary distinction is found in the <strong>permanency </strong>of the property being considered.</li></ul></li></ul><ul id="f31010d8-aa57-4988-ae99-5b60775c7c1a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conveyance</strong><ul id="a997e1ba-949d-46cd-b275-07764c2bad0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A key distinction between personal property and real property is how ownership is conveyed.</li></ul><ul id="7a082a86-494a-4d33-91f1-599ac3b1eb3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Personal property</strong> is conveyed by a <strong>bill of sale</strong> or by bequest in a <strong>will</strong>.</li></ul><ul id="29152b30-f174-4ac1-a52e-ff0c4301d85a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real property</strong> is conveyed by <strong>deed</strong>.</li></ul></li></ul><ul id="e889531a-08c1-49e7-b3d7-6b7e8e004281" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Chattel</strong><ul id="3fe8ac6a-aab1-8032-a8ae-cba3ad58f674" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An unattached, movable asset not considered real estate. It is a commonly used term for personal property in the world of real estate.</li></ul><ul id="49ec8a68-7ee1-4c89-af72-84852a5701f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because chattel is a word you may not have come across before, here&#x27;s a popular memory tool: &quot;Since personal property is moveable and chattel is personal property, cattle can be chattel.&quot;</li></ul></li></ul><ul id="5f4422b7-8a4a-423c-bca0-7f7d9cae6f50" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>In writing</strong> means that something is included in an official, printed, signed, bona fide contract. We&#x27;ll go over when and how these contracts should be used later on.<br/></li></ul><p id="3fe8ac6a-aab1-80d2-9ca9-fdaf53c2d9fe" class="" dir="auto"><strong>Plants as Property</strong></p><ul id="3fe8ac6a-aab1-804b-8f80-db22ce80455d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>Even the plants on a piece of land have to be sorted into personal or real buckets. To decide whether plants should be considered personal property or real property, you have to consider what they&#x27;re used for and how long they last.</li></ul><ul id="3fe8ac6a-aab1-804b-b9b6-f1df9ae9526d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fructus Naturales </strong>Trees, long-term decorative plantings (like perennial landscape plants), and uncultivated plants are referred to as fructus naturales and are usually considered to be <strong>real property</strong> because of their<strong> permanence</strong>.<ul id="3fe8ac6a-aab1-8002-b84b-c59488d829e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Trees and perennial plants (<strong>fructus</strong> <strong>naturales</strong>) are legally classified as <strong>real property </strong>because they are permanently rooted in the land.</li></ul></li></ul><ul id="3fe8ac6a-aab1-80c1-b7fc-e97caf2a8fa1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fructus Industriales </strong>Annually cultivated crops are called <strong>fructus industriales</strong>, or <strong>emblements</strong>, and are generally considered to be personal property, even prior to harvesting.<ul id="3fe8ac6a-aab1-8064-942f-d3a355caa4ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Commercial crops grown for profit (<strong>fructus</strong> <strong>industriales</strong>) are legally classified as <strong>personal property </strong>rather than real property</li></ul><ul id="3fe8ac6a-aab1-80d7-8500-efdecc7007a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Annually cultivated crops mainly called <strong>fructus industriales</strong>, and are generally considered to be personal property, even prior to harvesting. </li></ul></li></ul><p id="3fe8ac6a-aab1-80a4-92c7-dd18b864f5be" class="" dir="auto"><strong>Converting Real and Personal Property</strong></p><ul id="3fe8ac6a-aab1-8080-89d3-c133820da25d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>Personal property becomes real property when it is permanently attached to the land. <strong>Attachments </strong>can be human-made or natural. If human-made, they&#x27;re usually referred to as improvements. Once affixed to the land, the improvement is considered part of the real property.</li></ul><ul id="3fe8ac6a-aab1-8072-9d2a-df22787be2b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Examples of <strong>improvements</strong>:<ul id="3fe8ac6a-aab1-8064-822d-df8d7bf6015e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Housing 🏡</strong></li></ul><ul id="3fe8ac6a-aab1-80fa-86fa-ec65ce701a9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Landscaping 🌷</strong></li></ul><ul id="3fe8ac6a-aab1-8076-894e-f4bebf7599e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permanent BBQ pit 🍔</strong></li></ul><ul id="3fe8ac6a-aab1-8008-86e2-c6c093ed8acc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Horse stables 🏇<br/></strong></li></ul></li></ul><p id="3fe8ac6a-aab1-808c-af9c-c38da08597b2" class="" dir="auto"><strong>Fixtures</strong></p><ul id="3fe8ac6a-aab1-8009-83d5-c71955ac79e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>an object that was once personal property but is now firmly attached to the land in such a way that it is considered to be real property</li></ul><ul id="3fe8ac6a-aab1-80d4-97e9-c7492959ae1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A ceiling fan is a prime example of a <strong>fixture</strong>:<ul id="3fe8ac6a-aab1-800f-ac1d-f66de0f4cc02" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While still in the box, the ceiling fan is personal (and movable) property.</li></ul><ul id="3fe8ac6a-aab1-8057-aeb3-dff44b3ab8d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once (permanently) attached to the ceiling, the fan is real property and part of the home (which itself is an improvement attached to the land).</li></ul></li></ul><ul id="3fe8ac6a-aab1-80f5-8ede-ea34e3a654ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">More Examples<ul id="3fe8ac6a-aab1-8089-9d6a-daba452652a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Chandeliers</li></ul><ul id="3fe8ac6a-aab1-80b9-bbd3-c4cbddd7e1c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Garage door openers</li></ul><ul id="3fe8ac6a-aab1-8057-8663-db82b304508d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Shelves</li></ul><ul id="3fe8ac6a-aab1-8089-86e5-d19869353f63" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Light fixtures</li></ul></li></ul><ul id="3fe8ac6a-aab1-8098-b021-c9333bd9963b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>In writing</strong> Because fixtures can be detached from land and can switch from personal property to real property, the best practice is to list all fixtures in writing in the sales contract. This way, there is no confusion and there are no miscommunications between the buyer and seller.</li></ul><ul id="3fe8ac6a-aab1-8004-b5ab-cf10b5531fab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Annexation </strong>The process of creating a fixture. During annexation, personal property is turned into real property.<br/></li></ul><p id="3fe8ac6a-aab1-80e2-866e-ee41c7b33d2f" class="" dir="auto"><strong>Methods of Annexation</strong></p><ul id="3fe8ac6a-aab1-80c6-9374-e7d8097612cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Annexation, or physical attachment, is the most common way fixtures change from personal property to real property. But there are other ways this can happen, including<ul id="3fe8ac6a-aab1-806b-956a-cd670c78fd24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Close association</strong><ul id="3fe8ac6a-aab1-80b7-b352-ec229542287a" class="bulleted-list" dir="auto"><li style="list-style-type:square">a conceptual linkage to real property. A good example of close association is a garage door opener. The opener itself is not attached to the property, but it&#x27;s conceptually linked to the garage door, which is attached to the property. Away from the garage, the opener won&#x27;t work. It&#x27;s considered part of the real property that is the garage.</li></ul></li></ul><ul id="3fe8ac6a-aab1-8053-9809-d58619210eac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adoption</strong><ul id="3fe8ac6a-aab1-80da-804a-c2df6fddf580" class="bulleted-list" dir="auto"><li style="list-style-type:square">the customization of personal property for use with real property, such as drapes cut for a window in a room with a high ceiling.</li></ul></li></ul><ul id="3fe8ac6a-aab1-8032-a1ce-daa6059d7f34" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agreement</strong><ul id="3fe8ac6a-aab1-80b7-b443-c545f1e068ac" class="bulleted-list" dir="auto"><li style="list-style-type:square">when the parties to a contract agree that personal property will remain with the real property (make sure to get this <strong>in writing</strong>!).</li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-8095-b002-e1e54bc3ed67" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Custom-made items tailored specifically to fit a home, like custom-made 100-foot drapes, are legally classified as real property (fixtures) because of their adaptation to the unique space.<ul id="3fe8ac6a-aab1-8047-92ca-c853573f135c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even though custom adaptation turns personal property into a fixture, the safest approach is always to explicitly state in the purchase contract whether the drapes are included or excluded from the sale to avoid buyer-seller disputes.</li></ul></li></ul><ul id="3fe8ac6a-aab1-8031-9961-c5e350d9d283" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An uninstalled ceiling fan in its box is <strong>personal property</strong>. Once wired and screwed into the ceiling, it undergoes annexation and becomes <strong>real property (a fixture)</strong> that automatically conveys with the home. If a seller wants to keep an attached fixture, the agent must explicitly document in writing that the item does not convey with the sale and will remain the seller&#x27;s personal property.</li></ul><p id="3fe8ac6a-aab1-80db-8f4f-c680e07d53a2" class="" dir="auto"><strong>Fixtures and Rental Property</strong></p><ul id="3fe8ac6a-aab1-80ae-8aa1-f6678ddcfcbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Just like buyers and sellers, tenants and landlords need to sort out which items in a rental property are personal property and which are real property.</li></ul><ul id="3fe8ac6a-aab1-80ef-a340-c74d2b7eb19e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tenants Can Create Fixtures</strong><ul id="3fe8ac6a-aab1-80e6-80d1-cfa903435f67" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Generally, the same rules apply as for property being sold. If something is permanently attached to the property, it is a fixture. Fixtures usually stay with the property and are owned by the landlord.</li></ul><ul id="3fe8ac6a-aab1-80eb-a13d-fa6d43b51845" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Any fixture permanently attached to a rental property by a tenant becomes part of the real property and typically remains with the landlord upon move-out. If a tenant adds upgrades such as new cabinets or a backsplash, they must either leave those improvements behind or restore the rental to its original pre-move-in condition. Consequently, tenants should always obtain written landlord approval before making physical alterations to a property.</li></ul></li></ul><p id="3fe8ac6a-aab1-801c-bad0-eef75a71458e" class="" dir="auto"><strong>Trade Fixtures </strong></p><ul id="3fe8ac6a-aab1-80ae-b37b-ff1657c72d7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>Trade fixtures are different from other fixtures in that tenants can usually take their trade fixtures with them when they leave.</li></ul><ul id="3fe8ac6a-aab1-806b-a93f-f4a0ae92954f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A trade fixture is a fixture, like a shelf or display case, that is owned by and needed for a tenant’s business. For example, shelves that a store owner attaches to the wall when leasing a storefront in a strip mall are trade fixtures. The shelves belong to the tenant. They are fixtures, but they are used for the tenant’s business or trade. The tenant is allowed to take the trade fixtures with them when their lease is over.</li></ul><p id="3fe8ac6a-aab1-809e-b044-c9cc270273d4" class="" dir="auto"><strong>Severance</strong></p><ul id="3fe8ac6a-aab1-8035-a5f6-fe9ea777f9af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>The act of converting real property into personal property. You could say, then, that severance is the opposite of affixation. </li></ul><ul id="3fe8ac6a-aab1-8090-be39-c4802ffdbf5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If an owner decides to remove the family heirloom chandelier from the dining room, they would be severing the fixture from the home and converting it into personal property. (They would need to clear this ahead of time with all parties to the sales transaction!)<ul id="3fe8ac6a-aab1-8034-b4d2-d643c505f6db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Picking wild berries directly from a bush is an act of severance, the process of detaching an item from the land. Plucking the berries converts them from real property into personal property.</li></ul></li></ul><p id="3fe8ac6a-aab1-80a9-b383-c3c3f09eb678" class="" dir="auto"><strong>Meet MARIA</strong></p><ul id="3fe8ac6a-aab1-8028-bbc2-c018bc269071" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>MARIA is a mnemonic device that helps you remember the tests for determining whether something is a fixture.<ul id="3fe8ac6a-aab1-801b-b7ca-d540f146a58c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>M-</strong>ethod of attachment (Will it damage the home if I remove this item?)<ul id="3fe8ac6a-aab1-801f-b3a2-d5e8c3e718e4" class="bulleted-list" dir="auto"><li style="list-style-type:square">refers to how the potential fixture is installed.<ul id="3fe8ac6a-aab1-8091-b78a-d3718a14bcfc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Items that are hardwired into a house or cause damage upon removal like overhead lighting are legally classified as real property (fixtures). Because these items are intended to be permanent, a seller cannot simply rip out a chandelier and leave behind exposed wires and ceiling damage; the buyer rightfully expects those fixtures to convey with the home intact.</li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-80d8-a66e-de2f6ed1aafa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A-</strong>daptability (Is this item specifically adapted for this home?)<ul id="3fe8ac6a-aab1-8096-ab10-c5c872e49c37" class="bulleted-list" dir="auto"><li style="list-style-type:square">anything specifically adapted to the home (like window shades) or anything that is integral to the operation of the home (like a box air conditioning unit or a specially sized door) could be a fixture.<ul id="3fe8ac6a-aab1-80ab-b1f5-de0b12886027" class="bulleted-list" dir="auto"><li style="list-style-type:disc">when an item is uniquely customized or tailored to fit a specific property, it becomes a permanent part of the real estate, even if it could technically be removed without causing damage.</li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-80fe-820a-d9c1ccf8e73c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>R-</strong>elationship of the parties (Who installed this item?)<ul id="3fe8ac6a-aab1-8073-8655-cd3f199de7a0" class="bulleted-list" dir="auto"><li style="list-style-type:square">refers to landlord-tenant relationships. When commercial tenants install things in a business, they are allowed to take them when they leave, like a trade fixture.<ul id="3fe8ac6a-aab1-804b-a396-fe192ce13fdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lenny rents a commercial property to house his bakery. He installs shelves in the unit to hold his 47 types of flour. When Lenny&#x27;s lease is up, he can take his shelves with him.</li></ul><ul id="3fe8ac6a-aab1-8045-9e33-f32f338f7681" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Shelves installed by a commercial tenant specifically to run their business are legally classified as <strong>trade fixtures.</strong></li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-8060-bd56-ddbc32a1590a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>I-</strong>ntent (Who bought this item? Were they intending to keep it?)<ul id="3fe8ac6a-aab1-80fb-9556-c0c4804be3e5" class="bulleted-list" dir="auto"><li style="list-style-type:square">refers to the intent the homeowner had when they installed the item in question.<ul id="3fe8ac6a-aab1-809b-b89d-e4f957351368" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Something that was intended to be permanent, like a built-in bookcase, is probably a fixture. If someone installed something intending to take it with them when they left, even if it had to be attached permanently, it might still be personal property.</li></ul><ul id="3fe8ac6a-aab1-8013-ad97-c635044dee09" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An item attached to a property, like a lucky basketball net, can still be legally classified as personal property based on the legal test of intent. </li></ul><ul id="3fe8ac6a-aab1-808e-b12b-d5343a1ea5a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">However, because it is physically attached to the wall, the safest practice would still be to either remove it before showing the home or explicitly exclude it in the written purchase contract to prevent any buyer confusion.</li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-8007-9aa8-f844b4424906" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A-</strong>greement (What does the contract have to say about this?)<ul id="3fe8ac6a-aab1-80dc-a434-f9be5a4977b3" class="bulleted-list" dir="auto"><li style="list-style-type:square">The contract trumps all, so whatever has been agreed upon by the parties to the transaction (IN WRITING) is what happens.</li></ul><ul id="3fe8ac6a-aab1-80d9-b2b6-c4e0bde6443c" class="bulleted-list" dir="auto"><li style="list-style-type:square">The ultimate test for determining if an item is a fixture or personal property is a written agreement.</li></ul></li></ul></li></ul><ul id="3fe8ac6a-aab1-8068-b5b3-fa8b9049c864" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Although a homeowner intends to keep their custom-built bookshelves, the shelves meet the criteria for fixtures (real property) under the MARIA test because they are permanently attached (method) and customized for the space (adaptability). Because a buyer cannot read the homeowner’s mind to know their intent, their unspoken desire to keep the shelves will not hold up in a dispute. To legally protect the shelves and convert them back to personal property, the owner must rely on the strongest legal safeguard: a written agreement. They must explicitly exclude the bookshelves in the purchase contract or simply remove them from the wall before showing the home to a buyer.</li></ul><ul id="3fe8ac6a-aab1-8037-a282-c59381dbb6ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Freestanding appliances are personal property: Items like refrigerators, washers, and dryers simply plug into the wall and are not permanently attached. They do not automatically convey with real estate; they only stay if the buyer and seller explicitly agree to it in writing. </li></ul><ul id="3fe8ac6a-aab1-80bd-a486-c40c2df5803e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Never assume; always communicate: The agent assumed the seller knew the rules, while the seller assumed the appliances had to stay. As an agent, you must proactively walk your clients through exactly what items stay and what items go. </li></ul><ul id="3fe8ac6a-aab1-80d7-a411-e0d98776686f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Your job is stress management: A real estate agent&#x27;s duty goes beyond just finding a buyer or a property. It includes managing the minor details and communicating clearly to ensure a smooth, stress-free transaction for your client.<p id="3fe8ac6a-aab1-80df-8b04-d004800d8f06" class="" dir="auto">
+</p><p id="3fe8ac6a-aab1-80fc-8f76-e3d28bee0aa6" class="" dir="auto">
+</p><p id="3fe8ac6a-aab1-8065-a8a3-d83b96d8ad08" class="" dir="auto">
+</p><p id="3fe8ac6a-aab1-8002-ad4c-c06d8671e489" class="" dir="auto">
+</p><p id="3fe8ac6a-aab1-8056-b061-e25593f54898" class="" dir="auto">
+</p><p id="3fe8ac6a-aab1-804a-bbc3-c55229a08ff4" class="" dir="auto"><div class="indented"><p id="3fe8ac6a-aab1-80ba-ac70-ee7a81f0ea9a" class="" dir="auto">
+</p></div></p></li></ul></div><div id="dc0c7fbb-d17c-4db7-90ef-a1ebf13f28ba" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="5f7ff444-0323-4c6c-86d9-de5b34933e54" class="" dir="auto"><strong>Key Terms</strong></p><ul id="ab89d3c4-e67f-473d-a52b-9e8a56240cc7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Attachments</strong> - human-made or natural property that is permanently attached to the land.</li></ul><ul id="43d90c29-3bdd-4dbb-b252-8556bee97fdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Chattel</strong> - a commonly used term for personal property in the world of real estate.</li></ul><ul id="b33a90a9-6c1c-4392-b488-fc008f2a7d2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Emblements - </strong>Crops (or the profit from crops) grown by a farmer that are considered personal property</li></ul><ul id="6b78d233-ccd2-4f82-9ee8-14db51f0310c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fixture - </strong>an object that was once personal property but is now firmly attached to the land in such a way that it is considered to be real property.</li></ul><ul id="9071eb85-7e9c-4038-a0c5-679fc8326bf1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trade Fixture - </strong>personal property that is owned by and needed for a tenant’s business </li></ul><ul id="3fe8ac6a-aab1-8055-bf2e-f62ce07288b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Severance - </strong>the act of converting real property into personal property</li></ul><ul id="8d62a4b9-960d-4f30-a731-24e3cc8aa4de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Personal Property -</strong> any unattached, movable asset on the property not considered real estate (land plus improvements); aka <em>chattel</em> or <em>personalty</em></li></ul><ul id="3fe8ac6a-aab1-80d6-8ad5-ff61d99d89b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real property</strong><em> </em>is permanently attached to the land and conveyed by deed or will. It is considered real estate, and generally goes with a property being sold.</li></ul><ul id="3fe8ac6a-aab1-809c-9d19-cb7857228807" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fructus naturales</strong> are things like trees, long-term decorative plantings (like perennial landscape plants), and uncultivated plants. They are usually considered to be <em>real property</em> because of their permanence.</li></ul><ul id="3fe8ac6a-aab1-8058-8450-feb4949929a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fructus industriales</strong><em> </em>(also called <em>emblements</em>) are annually cultivated crops. They are generally considered to be <em>personal property</em>, even prior to harvesting.</li></ul><ul id="3fe8ac6a-aab1-8083-8ce3-d7a99fe893f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affixation</strong>/<strong>Annexation </strong>- The process of creating a fixture is called<br/><br/><br/><br/></li></ul><p id="3fe8ac6a-aab1-80fb-9627-ce9e02d2a25b" class="" dir="auto">
+</p></div></div><p id="3fe8ac6a-aab1-80f0-887d-e45873a7412c" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

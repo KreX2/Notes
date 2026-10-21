@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Legal Description Methods</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-80d9-9ecf-e5375f725bb9" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Legal Description Methods</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4008ac6a-aab1-8061-a16a-ca6d64a51426" class="column-list" data-notion-column-list="" dir="auto"><div id="4008ac6a-aab1-806f-9ba6-e0ba13ab810d" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4008ac6a-aab1-8067-bf49-df946b8d06f5" class="" dir="auto"><strong>Legal Descriptions of Land</strong></p><ul id="4008ac6a-aab1-80b0-b0c7-e82ad2176ef8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Importance: A legal description is critical to buying and selling real estate. A deed or sales contract is only valid if it includes a legal description of the property.</li></ul><ul id="4008ac6a-aab1-80a0-b1a9-dfb97abd2feb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Definition: A description of a property that is distinct and precise enough to uniquely identify it and distinguish it from all other properties.</li></ul><ul id="4008ac6a-aab1-8080-bf26-eec80161dc80" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Why Street Addresses Aren&#x27;t Enough: A regular street address (e.g., 3704 Herbert Dr.) is an informal means of identification. Street names and numbers can change over time, whereas a legal description is designed to be permanent and stand the test of time.</li></ul><ul id="4008ac6a-aab1-8032-8f7b-ecb44661a07c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Dispute Resolution: Because of their precision, courts use legal descriptions to clarify and settle any potential disputes regarding the property.</li></ul><p id="4008ac6a-aab1-80a2-b585-d08c4f6a2182" class="" dir="auto"><strong>Surveys and Surveying</strong></p><ul id="4008ac6a-aab1-80c9-81cb-f895a2d294c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Purpose: Used as a way to create precise legal descriptions for properties.</li></ul><ul id="4008ac6a-aab1-80f7-8fe4-e2760d0c9350" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Definition: The process and physical product of finding and measuring the boundaries of a piece of real estate. This includes locating:<ul id="4008ac6a-aab1-804e-8a09-dc8d6727369c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Improvements (permanent, human-made additions to the property)</li></ul><ul id="4008ac6a-aab1-80b4-b206-f1eb22ef5b5e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Encroachments</li></ul><ul id="4008ac6a-aab1-8053-905f-dbddfff935d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Easements</li></ul></li></ul><ul id="4008ac6a-aab1-8023-87e2-e0f6a68557bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Professional Requirement: Creating legal descriptions via surveys requires the skills of a professional licensed surveyor. Real estate agents do not perform surveys, but they are expected to understand and explain survey information to their clients.</li></ul><ul id="4008ac6a-aab1-80c6-859d-c777aa40ae03" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Methods for Determining Property Boundaries: There are a few different accurate methods of surveying that yield valid legal descriptions. A single property may be described using one or multiple of these methods:<ul id="4008ac6a-aab1-80f2-971a-eb006619ef2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Metes and bounds</strong><ul id="4008ac6a-aab1-8075-b869-ec8450878cbf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Definition: One of the oldest methods of land surveying (prominently used in the American Northeast) where a licensed surveyor defines property boundaries in terms of distances and compass directions.</li></ul><ul id="4008ac6a-aab1-8074-acf0-ccc71da50167" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Terms:</strong><ul id="4008ac6a-aab1-8067-8e66-f7dc2cb2a067" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Metes</strong>: Distance measurements (typically expressed in feet).</li></ul><ul id="4008ac6a-aab1-8043-87ba-d85bd8a28b81" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bounds</strong>: Compass directions (North, East, South, West) and degrees, minutes, and seconds.</li></ul></li></ul><ul id="4008ac6a-aab1-8075-a74b-c5d0f684f2af" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Survey Process:</strong><ul id="4008ac6a-aab1-80f4-9e35-e8402538ec7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Point of Beginning (POB): The survey always starts at an established, readily identifiable starting point, often located on a road or using road frontage.</li></ul><ul id="4008ac6a-aab1-80f5-920c-e187558f6a33" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tracing the Perimeter: From the POB, the surveyor describes the path to the next point using a specific distance (number of feet) and direction.</li></ul><ul id="4008ac6a-aab1-8010-912c-cc34f752c0e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clockwise Direction: The surveyor continues identifying subsequent points, typically moving in a clockwise direction around the parcel of land.</li></ul><ul id="4008ac6a-aab1-8069-baa5-d80602104fb9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Closing the Loop: The survey identifies all boundary points until it finally returns to the exact Point of Beginning, fully enclosing the property.</li></ul><ul id="4008ac6a-aab1-8026-979c-d4fb07bcfac4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Points of Beginning</li></ul></li></ul><ul id="4008ac6a-aab1-805e-96d8-c4b94ee1a002" class="bulleted-list" dir="auto"><li style="list-style-type:square">In the metes and bounds system, specific markers are used to establish the Point of Beginning (POB) and trace the boundaries.</li></ul><ul id="4008ac6a-aab1-805a-8118-f16402654394" class="bulleted-list" dir="auto"><li style="list-style-type:square">Monuments and Markers: Fixed landmarks used as POBs or boundary markers.<ul id="4008ac6a-aab1-8091-be03-d74f7209777a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Natural Monuments: Things like streams, large boulders, or trees (historically very common in early surveying).</li></ul><ul id="4008ac6a-aab1-80b1-a2e3-f16ee84d034f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Human-Made Markers: Objects like stakes placed in the ground (preferred by modern surveyors for better precision).</li></ul></li></ul><ul id="4008ac6a-aab1-8064-aaf7-dc34daae3530" class="bulleted-list" dir="auto"><li style="list-style-type:square">Benchmarks: Permanent markers of known location and elevation established by government survey teams (such as the USGS or USCGS).<ul id="4008ac6a-aab1-80a5-85c1-dcfe00567465" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Appearance: Usually mounted into a sidewalk or street (e.g., a metal pole or an engraved brass disc placed in cement).</li></ul><ul id="4008ac6a-aab1-804a-bfc8-ec2a609ae4d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Importance for Elevation: Extremely important for surveys that need to record how much a property slopes, particularly for properties with water frontage.</li></ul><ul id="4008ac6a-aab1-8039-9c07-c824a8ebc18b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Accuracy and Reliability: Their locations are extremely accurate (usually to less than an inch) and recorded relative to one another. If a benchmark is destroyed, it can easily be replaced. Because of their permanence and precision, benchmarks are considered the most reliable reference points used by surveyors.</li></ul><ul id="4008ac6a-aab1-80ef-9d1c-db55b8a08c37" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Metes &amp; Bounds Outweigh Natural Markers:</strong> Natural features like tree lines can change or be misinterpreted over time. An official metes and bounds survey relies on precise, fixed monuments (like the giant boulder) to legally define property lines.</li></ul><ul id="4008ac6a-aab1-8091-bd6c-f9d4f6da49b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Surveys Resolve Neighbor Boundary Disputes:</strong> Informal oral claims or assumptions by previous owners or neighbors carry no legal weight. An official land survey provides definitive legal proof of exact property boundaries.</li></ul><ul id="4008ac6a-aab1-80c4-b1ef-ec78e3274c1d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prevents Legal Recourse:</strong> When property lines are verified by an official survey, adjacent landowners have no legal standing to halt construction or claim ownership over land that falls within the surveyed boundaries.<figure id="4008ac6a-aab1-80ac-ab6f-fb54488519b1" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image.png"><img style="width:432px" src="Chapter%201%20-%20Legal%20Description%20Methods/image.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80bb-88de-ee1157dfc124" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Block and lot</strong><ul id="4008ac6a-aab1-8038-8a75-f98299af468e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Also known as the recorded plat method. It is a type of legal description that identifies a piece of platted property by referring to the section, block, and lot numbers in a subdivision.</li></ul><ul id="4008ac6a-aab1-8016-973c-dea91ba2461d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Characteristics: This is the most modern type of legal description and is especially well-suited for cities and suburban communities.</li></ul><ul id="4008ac6a-aab1-8088-b333-cb160b40ff20" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Terms:</strong><ul id="4008ac6a-aab1-80ae-8a88-e37f0a7de4ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Plat</strong>: A drawing of a development used in the block and lot method (Note: it is a &quot;plat,&quot; not a plot).</li></ul><ul id="4008ac6a-aab1-809a-a470-e74ca2613afe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parcel</strong>: A part or portion of land; often used to identify a specific lot within a larger tract of property.</li></ul><ul id="4008ac6a-aab1-801f-8f4b-c786b6e8219a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lot</strong>: An individual piece of land measured and defined by the metes and bounds system.</li></ul><ul id="4008ac6a-aab1-80ad-8004-c8c8f410b4ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Block</strong>: A collection of lots.</li></ul><ul id="4008ac6a-aab1-8031-ac84-d5ba55917229" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tract</strong>: The totality of the property represented on a plat.</li></ul></li></ul><ul id="4008ac6a-aab1-807f-8591-ece5168c77f0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Block and Lot Survey Process<ul id="4008ac6a-aab1-8038-b0ab-c82a3e807381" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Initial Step: The process begins by using the metes and bounds system to locate the borders and establish the perimeter of each parcel (a specific portion of land within a larger tract).</li></ul><ul id="4008ac6a-aab1-8096-bac6-e34e5d58df35" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Recording Dimensions: Once the perimeter is established, the surveyor records the dimensions on a plat (also known as a plat map or subdivision plat map). This detailed map notes the property lines dividing the individual lots.</li></ul><ul id="4008ac6a-aab1-80be-84b9-e5346fb87a4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Numbering System: The developer then divides the plat into blocks and lots, assigning them specific numbers or letters.</li></ul></li></ul><ul id="4008ac6a-aab1-8081-a61f-f0714f0e5510" class="bulleted-list" dir="auto"><li style="list-style-type:square">Subdivision Plat Maps<ul id="4008ac6a-aab1-805a-9458-f007d054df63" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Creation: After planning a new subdivision, the developer draws up the subdivision plat map.</li></ul><ul id="4008ac6a-aab1-8086-8c77-e8c56923ed88" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Identification: The map includes a lot number for each parcel, a block number for each block (a collection of parcels), and a name or number for the tract (a collection of blocks).<ul id="4008ac6a-aab1-80d9-a184-eeff69fbf483" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Example:</em> Lot A, Block 2 of Sunny Brook, Happy County, Tennessee.</li></ul></li></ul><ul id="4008ac6a-aab1-8080-bbc5-e41ac37727f7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Reference to a Plat: A description on a deed that includes the property&#x27;s specific location on a plat map.</li></ul><ul id="4008ac6a-aab1-8029-bcee-eb018e64a444" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Official Records: Plat maps are recorded in official government office records, making them highly reliable (which is why this system is also called the &quot;recorded plat method&quot;).<figure id="4008ac6a-aab1-80a2-bbfa-f646e4c8b5bd" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%201.png"/></a></figure></li></ul><ul id="4008ac6a-aab1-80f1-bfc0-cefd90c82a10" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Recorded Plats<ul id="4008ac6a-aab1-80a8-9e83-f8cd5f88ed9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Detail Level: Real recorded plats are highly detailed. In addition to illustrating blocks and lots, they include mark sections, streets, monuments, and any relevant public amenities or structures.<figure id="4008ac6a-aab1-8021-ab64-eb38a045c2d1" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%202.png"><img style="width:480px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%202.png"/></a></figure></li></ul></li></ul><ul id="4008ac6a-aab1-80a6-8346-f4e325d5af7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Plat Patterns<ul id="4008ac6a-aab1-809f-9891-f873944f0248" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sub-dividers typically use one of two main layout patterns for their plats:<ul id="4008ac6a-aab1-80e9-a1b3-ed38a8b0bdb8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Gridiron Pattern: Evolved from the government survey system. Features large lots, wide streets, limited-use service alleys, and sidewalks running parallel to the street.<ul id="4008ac6a-aab1-80ba-b3eb-da1fa3d2b50e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pros: Makes the subdivision very easy to navigate.</li></ul><ul id="4008ac6a-aab1-8076-a7bd-d6444287338a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cons: Can lack open space, and most homes end up located on or near busy streets.</li></ul></li></ul><ul id="4008ac6a-aab1-8002-8ee8-d39c07c5e7bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Curvilinear Pattern: Integrates major feeder roads with smaller streets and cul-de-sacs.<ul id="4008ac6a-aab1-80f8-84b1-c44743b11588" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Pros: Prevents visual monotony, increases open space, and generally provides for quieter, safer neighborhoods.</li></ul><ul id="4008ac6a-aab1-80f4-88c4-da882c151bbc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cons: Usually minimizes service alleys, and the complex road patterns can be confusing to navigate.</li></ul><div id="4008ac6a-aab1-8037-a331-c339d6a49621" class="column-list" data-notion-column-list="" dir="auto"><div id="4008ac6a-aab1-80c3-a6ff-e6b35f6ae25a" style="width:79.16666666666666%" class="column" data-notion-column-ratio="0.7916666666666666" dir="auto"><figure id="4008ac6a-aab1-8007-aa59-efec77bc800c" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%203.png"><img style="width:240px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%203.png"/></a></figure></div><div id="4008ac6a-aab1-809d-9711-c742c14361bf" style="width:79.16666666666667%" class="column" data-notion-column-ratio="0.7916666666666667" dir="auto"><figure id="4008ac6a-aab1-8004-83c5-d6c1de98e654" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%204.png"><img style="width:240px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%204.png"/></a></figure></div><div id="4008ac6a-aab1-8099-a52b-d1dad21984f7" style="width:8.333333333333332%" class="column" data-notion-column-ratio="0.08333333333333331" dir="auto"><p id="4008ac6a-aab1-80ef-ba0d-ffea96247aaa" class="" dir="auto">
+</p></div></div></li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-8066-ad4e-c963e5aa14d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Plat Approval<ul id="4008ac6a-aab1-804a-a084-df3e62553f90" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Process: After completing the plat, the developer must submit it to the proper authorities for approval.</li></ul><ul id="4008ac6a-aab1-801d-ae47-d5dcebe85409" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Recording: Once approved, the plat is filed in the recorder&#x27;s office of the county where the property is located.</li></ul><ul id="4008ac6a-aab1-8012-be92-c6159808897f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Public Access: After filing, the public can access the plats in officially recorded map books.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-803d-9ae5-ce3fd07ff1b1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Key Takeaways: Block and Lot Surveys in the Real World<ul id="4008ac6a-aab1-8081-beac-d04ddfe3bf51" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Public Accessibility:</strong> Recorded plat maps are public records maintained in the county recorder&#x27;s or land registry office (e.g., referenced in specific map books and page numbers).</li></ul><ul id="4008ac6a-aab1-805a-b30d-ddd8cb7d513c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definitive Property Dimensions:</strong> The recorded plat map provides exact, legally binding boundary dimensions and lot outlines, eliminating guesswork before starting major construction or improvements.</li></ul><ul id="4008ac6a-aab1-802d-bca7-f739cd114cbf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Encroachment Prevention:</strong> Verifying lot lines through official recorded plats prevents accidental encroachments onto neighboring lands, avoiding costly legal disputes and construction tear-downs.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80e4-9a68-c84583c2ac73" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Vertical Land Description<ul id="4008ac6a-aab1-80f3-beee-ea22bb15ef19" class="bulleted-list" dir="auto"><li style="list-style-type:square">Purpose: Most commonly used when air rights, subsurface rights, and water rights need specific explication. It is also the method used for expressing condominium ownership boundaries.</li></ul><ul id="4008ac6a-aab1-800f-a66d-f469870bb1b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Condominiums and Elevation: A valid legal description on a condo deed must specifically state the vertical elevation of both the floor and the ceiling. This defines the exact &quot;air space&quot; owned by the condo owner.</li></ul><ul id="4008ac6a-aab1-80fe-99ce-e9b6aad9cf93" class="bulleted-list" dir="auto"><li style="list-style-type:square">Air Lots: Areas above parcels of land that are defined by elevation boundaries (the actual space for which owners hold air rights).<ul id="4008ac6a-aab1-8096-8777-f90aea2d6c5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Condominiums: The air lot is neatly enclosed and easy to measure, bound by the floor, ceiling, and walls.</li></ul><ul id="4008ac6a-aab1-8000-b990-eba0a6e4e521" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Single-Family Homes: The air lot operates as an undefined open prism extending upwards from the property.</li></ul></li></ul><ul id="4008ac6a-aab1-8052-96c9-ee53dcb9f46a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Caissons: The small parcels of land or column lots that structurally support air lots.</li></ul><ul id="4008ac6a-aab1-8091-b24f-d294d4ff4189" class="bulleted-list" dir="auto"><li style="list-style-type:square">Describing an Air Lot: To accurately describe an air lot above a parcel of land, two key pieces of information are required:<ol type="1" id="4008ac6a-aab1-800c-9ddc-d8a137425542" class="numbered-list" start="1" dir="auto"><li>The location of the parcel of land where the air lot is located.</li></ol><ol type="1" id="4008ac6a-aab1-80a1-8fae-f6fa745761a2" class="numbered-list" start="2" dir="auto"><li>The elevation (measured from the point of a &quot;datum&quot;) to which the air lot is thought to extend.</li></ol></li></ul><ul id="4008ac6a-aab1-80ba-966e-e3b5c3b27d8b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Datum and Elevation<ul id="4008ac6a-aab1-80a7-b44e-f1e163d04152" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Datum: The designated base reference point from which elevation is measured.<ul id="4008ac6a-aab1-802c-b906-c6b622502cef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Basis: A datum base point is established by sea level.</li></ul><ul id="4008ac6a-aab1-808e-b850-ecb83187590e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Function: From the datum, measurements move upward or downward on a horizontal plane to create standard heights or depths (acting like a large vertical ruler to denote locations in space).</li></ul></li></ul><ul id="4008ac6a-aab1-80c7-9b82-c53688053782" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Benchmarks (in relation to elevation):<ul id="4008ac6a-aab1-8084-b79e-de4ed911d330" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Placement: Benchmarks are placed at regular intervals from the datum. They serve as official markers (placed by the USGS) to designate a location&#x27;s elevation relative to sea level.</li></ul><ul id="4008ac6a-aab1-8047-ac7c-d80d2f7ea5a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Surveying Process: To determine a property&#x27;s elevation, a surveyor will &quot;shoot a line&quot; connecting the benchmark to the subject property, allowing them to measure the property&#x27;s elevation relative to that known benchmark.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80a5-9b19-d5786f96e554" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contour Maps (Topographic Maps)<ul id="4008ac6a-aab1-803f-97c3-c90dd0c346cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maps in which curved lines connect contiguous parts of equal elevation to clearly define the contours of the land.</li></ul><ul id="4008ac6a-aab1-8063-9dec-d3169183e821" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Features Shown: They display terrain details like hills, valleys, and plateaus, which are critical for understanding water drainage, runoff, and other development issues.</li></ul><ul id="4008ac6a-aab1-80cf-9df9-d27c6c567228" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Purpose for Developers: Developers use these maps to get a clear picture of a parcel&#x27;s terrain and elevation. This helps them determine the need for leveling, grading, and engineering solutions for potential site problems.</li></ul><ul id="4008ac6a-aab1-807a-89ca-e2cc1fdabe83" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Usage in Real Estate: While you will not likely see a contour map used as part of a formal legal description for a specific property, it is important to understand them in case a property you are working with references one.</li></ul></li></ul><ul id="4008ac6a-aab1-8052-b024-d24d8e46d1db" class="bulleted-list" dir="auto"><li style="list-style-type:square">Checking Legal Descriptions<ul id="4008ac6a-aab1-80ff-8a0c-c50dd45e5bba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Importance: Regardless of the measurement or survey method used (metes and bounds, block and lot, rectangular survey, or vertical description), it is crucial to double-check the legal description of any property you handle.</li></ul><ul id="4008ac6a-aab1-80fb-b185-fa5aeb88a9ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Two Key Requirements: Every legal description must be:<ul id="4008ac6a-aab1-80df-a31b-e812a3a286ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Present on the deed.</li></ul><ul id="4008ac6a-aab1-80a3-8bcd-f8ecbfdea9d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Accurate.</li></ul></li></ul><ul id="4008ac6a-aab1-80a1-95fc-decb0bf98c92" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Golden Rule: Without a proper, accurate legal description of the property, there can be no valid deed.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-803c-9a53-e44d4dca3e44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Government survey system (More on next chapter)</strong></li></ul><p id="4008ac6a-aab1-80c8-9ae4-d9d4f40e4c86" class="" dir="auto">
+</p></li></ul></div><div id="4008ac6a-aab1-803a-86e2-d1f9fb0ed7b2" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4008ac6a-aab1-80c8-be1f-dd0085c37dbc" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4008ac6a-aab1-8092-a5e9-ee11f9e7888d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>benchmark</strong> - permanent marker of known location and elevation above sea level as established by a government survey team (such as the USGS)</li></ul><ul id="4008ac6a-aab1-8007-981b-fe5e984a56e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>block and lot system</strong> - a system of legal land description that identifies a piece of platted property by referring to the section, lot, and block numbers in a subdivision; aka <em>recorded plat method</em></li></ul><ul id="4008ac6a-aab1-802a-87ca-cea8cc217fa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>datum </strong>- a designated base reference point to elevation used by surveyors to determine the elevations of land or property in an area</li></ul><ul id="4008ac6a-aab1-80b2-a95b-dff54f109614" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>legal description</strong> - a description of a property that is distinct and precise enough to distinguish it from all other properties</li></ul><ul id="4008ac6a-aab1-80b3-9461-ddca32aae4a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>metes and bounds </strong>- a land survey process in which a licensed land surveyor starts at a readily identifiable point of beginning and defines the boundaries of a property in terms of distances and compass directions, finally returning to the point of beginning</li></ul><ul id="4008ac6a-aab1-8061-b0f4-ed7c24d5d343" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>monument </strong>- a fixed landmark, whether natural or human-made, used as a reference point in a metes and bounds legal description</li></ul><ul id="4008ac6a-aab1-80fc-8f2a-fbebdfe15643" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>plat </strong>- a map indicating the locations and dimensions of lots in a block and lot system</li></ul><ul id="4008ac6a-aab1-8007-a608-c4186049078b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>point of beginning (POB) </strong>- the starting point for a metes and bounds legal description</li></ul><ul id="4008ac6a-aab1-80b8-b9dd-e3a2600c8b0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>survey</strong> - the process and physical product of finding and measuring the boundaries of a piece of real estate, including the location of improvements, encroachments, and easements</li></ul><p id="4008ac6a-aab1-80ad-985b-f101de4bc497" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4008ac6a-aab1-8013-b504-deacf61f1cc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Metes and Bounds</strong><figure id="4008ac6a-aab1-80d1-ba91-e2ff220c0198" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%205.png"><img style="width:366.609375px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%205.png"/></a></figure></li></ul><ul id="4008ac6a-aab1-8070-b935-c6380a7b31b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Block and Lot System</strong><figure id="4008ac6a-aab1-80cb-87db-c9c8cd68520c" class="image" data-notion-image="Chapter%201%20-%20Legal%20Description%20Methods/image%206.png" dir="ltr"><a href="Chapter%201%20-%20Legal%20Description%20Methods/image%206.png"><img style="width:4167px" src="Chapter%201%20-%20Legal%20Description%20Methods/image%206.png"/></a></figure><p id="4008ac6a-aab1-80a5-8dda-fa4416fc4ff2" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

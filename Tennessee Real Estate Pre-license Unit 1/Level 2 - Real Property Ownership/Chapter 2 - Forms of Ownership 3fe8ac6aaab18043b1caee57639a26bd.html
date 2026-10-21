@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Forms of Ownership</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-8043-b1ca-ee57639a26bd" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Forms of Ownership</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="99651c23-c5c9-4ae2-bc41-87e4cce10e45" class="column-list" data-notion-column-list="" dir="auto"><div id="88b09d37-ecf1-46f2-94ea-c327233c363b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="3ff8ac6a-aab1-80b0-b275-ebddd7101282" class="" dir="auto"><strong>Three Forms of Ownership</strong></p><ul id="3ff8ac6a-aab1-80c7-bb17-c4c126bc358a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ownership in severalty (Sole Ownership)</strong><ul id="3ff8ac6a-aab1-808e-9f1a-d73cc825bf82" class="bulleted-list" dir="auto"><li style="list-style-type:circle">individual or sole ownership (also known as <em><strong>tenancy in severalty</strong></em>)</li></ul><ul id="3ff8ac6a-aab1-8025-8012-d07122b33664" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Severalty is the undivided ownership of an estate, with an interest that is exclusive from other owners. Estates in severalty are owned by only one entity. When an estate is held in severalty, it means that the property has only one owner, whether that is a person, corporation, or other legal entity. </li></ul><ul id="3ff8ac6a-aab1-8038-9d1a-e05769a05a75" class="bulleted-list" dir="auto"><li style="list-style-type:circle">That person/entity can sell the property, hold it, rent it, will it to someone else upon their death, or do what they please with it, without the permission of anyone else.</li></ul><ul id="3ff8ac6a-aab1-806c-be27-ce56c5ef697b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A Misleading Name </strong><ul id="3ff8ac6a-aab1-801e-901c-faecd42b9ae6" class="bulleted-list" dir="auto"><li style="list-style-type:square">I know what you&#x27;re thinking. The word severalty looks like several and that&#x27;s a pretty confusing term to use for exclusive homeownership. However, here&#x27;s a way to help remember the term: Severalty comes from the word &quot;severed.&quot; A property owned in severalty is severed from all owners except the one.</li></ul></li></ul><ul id="3ff8ac6a-aab1-805e-90b0-fb4ccd8dda9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ownership in severalty occurs when legal title is held by a single individual alone, regardless of whether they are single or married with an unlisted spouse.</li></ul><ul id="3ff8ac6a-aab1-8022-8c9e-fd01542b5a94" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Corporations Are People Too Holding </strong><ul id="3ff8ac6a-aab1-80d4-a746-ee40087ec966" class="bulleted-list" dir="auto"><li style="list-style-type:square">an estate in severalty isn&#x27;t just for people — it&#x27;s for corporations too! Even though a corporation may have several different owners (or shareholders), the law views corporations as single, legal entities. Property held by a corporation is ownership in severalty, however weird that may seem.<ul id="3ff8ac6a-aab1-8091-8777-d41218035e70" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because a corporation is recognized by law as a single artificial person, title to the property is held in severalty by the corporation itself (&quot;Only Good Foods, Inc.&quot;) rather than by its individual shareholders. An authorized corporate officer signs all transaction documents on behalf of the entity, which legally isolates property ownership from the owners&#x27; personal estates.</li></ul></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-8007-b918-c5e382392fad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Co-ownership</strong><ul id="3ff8ac6a-aab1-80c9-88f7-fc0c97b9fb2f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ownership shared with another person (sometimes called <em>concurrent ownership</em>)</li></ul><ul id="3ff8ac6a-aab1-80be-88d5-c7f72b16a8b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">the actual process of buying property as a co-owner is more complicated than buying alone. Who gets what? Who owns what part? What happens if you want to sell?</li></ul><ul id="3ff8ac6a-aab1-80a3-bda2-d9a98f452430" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Undivided interest:</strong> a type of interest that gives each co-owner the right of possession of the <em>whole</em> property, not simply a portion of it.</li></ul><ul id="3ff8ac6a-aab1-805a-add0-fc0865fa8cb3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right of survivorship:</strong> the statutory principle of survivorship tenancy, which means that when one co-owner dies, their ownership interest reverts to the surviving co-owner(s).<ul id="3ff8ac6a-aab1-80a5-bece-f45ae3cb0742" class="bulleted-list" dir="auto"><li style="list-style-type:square">Without the right of survivorship, a co-owner&#x27;s interest goes to their heirs if they die, instead of the remaining co-owner(s).</li></ul></li></ul><ul id="3ff8ac6a-aab1-8002-983c-d4b3644a87c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If buyers ask you how they should take title, encourage them to speak to their lawyer to get both legal and tax advice and discuss the advantages and disadvantages of each type of co-ownership.</li></ul><ul id="3ff8ac6a-aab1-803d-885e-caf8964ed3ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Unities of Co-Ownership</strong><ul id="3ff8ac6a-aab1-8079-a0f0-c1d15d7c16e1" class="bulleted-list" dir="auto"><li style="list-style-type:square">These forms of co-ownership differ in both the way they are created and the way they are transferred. To understand how, exactly, those differences manifest, you first need to understand a group of conditions called the unities of co-ownership.</li></ul><ul id="3ff8ac6a-aab1-8025-b8ba-ccd1a0082946" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Four Unities</strong><ul id="3ff8ac6a-aab1-8012-bf31-cb02f1f15054" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unity of <strong>possession</strong><ul id="3ff8ac6a-aab1-801f-813a-e5a478bbe473" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every co-owner holds an equal, undivided right to occupy and enjoy the entire property rather than a specific physical section. (<strong>Undivided Interest</strong>)</li></ul></li></ul><ul id="3ff8ac6a-aab1-80df-abd4-e859085e5d26" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unity of <strong>interest</strong><ul id="3ff8ac6a-aab1-8029-b50d-f0eff9b66064" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Each co-owner holds an identical and equal percentage of ownership share in the property.</li></ul><ul id="3ff8ac6a-aab1-80a7-afd2-e6c884f31cfb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">It&#x27;s important to realize that the unity of interest (which gives each co-owner <em>an equal share</em> or ownership of the property) and the unity of possession (which gives each co-owner the right of <em>the enjoyment</em> of the whole of the property) <strong>can co-exist.</strong></li></ul></li></ul><ul id="3ff8ac6a-aab1-804e-aa91-dbb0d7829c89" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unity of <strong>time</strong><ul id="3ff8ac6a-aab1-8097-a8c7-c4612e848c92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All co-owners must acquire their respective ownership interests at the <strong>exact same time.</strong></li></ul></li></ul><ul id="3ff8ac6a-aab1-80c4-823d-fcb77a9302a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unity of <strong>title</strong><ul id="3ff8ac6a-aab1-806c-8485-d69feb8f43b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All co-owners must acquire their legal title through the<strong> same transaction </strong>and under the same legal instrument, such as a deed or will.</li></ul><ul id="3ff8ac6a-aab1-80be-9e16-d653e8e0f3f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Adherence to this unity will naturally cause adherence to <em>unity of time,</em> so these unities co-exist.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80d1-8d68-ce7931018007" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You can remember these by thinking of the acronym PITT. PITTsburgh is a city located in the UNITed States, and the four unities spell out PITT.</li></ul><ul id="3ff8ac6a-aab1-8062-a82e-cdf526f96c12" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Mysterious <strong>Fifth </strong>Unity<ul id="3ff8ac6a-aab1-804a-a908-f5bc6d6cf3b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unity of person</strong><ul id="3ff8ac6a-aab1-8050-b9c1-fb86e426dc49" class="bulleted-list" dir="auto"><li style="list-style-type:square"> co-owners that are, for legal purposes relative to ownership of the property, a single indivisible unit</li></ul></li></ul><ul id="3ff8ac6a-aab1-8013-a939-d1f43c2485a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tenancy by the Entirety<ul id="3ff8ac6a-aab1-80e8-9fd8-cdcd7189c671" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tenancy by the entirety is a specialized form of joint property ownership reserved strictly for married couples—who are legally recognized as a single unit in states like Tennessee—while tenancy in common serves as a foundational form of general co-ownership.</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-802e-a1a9-f6d6db20f9f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Types of Co-Ownership</strong><ul id="3ff8ac6a-aab1-806c-be72-ee353c42b2b4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tenancy in common<ul id="d98426cf-e836-49e4-aa8b-f992fab41f8b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Tennessee, unmarried co-owners who do not choose another form generally take title as tenants in common.</li></ul><ul id="e775a621-319c-4e33-bcd4-e035a3d93751" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Each owner has an undivided interest (unity of possession) and may use the whole property, regardless of their ownership percentage.</li></ul><ul id="4b8c7541-d2b0-416d-a63a-9660114a8034" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Owners may hold unequal shares, such as James 20%, Sy 20%, and Lilly 60%; the shares are stated in the deed.</li></ul><ul id="ea3a7954-ab6f-47c8-b8a0-a99df4708362" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An owner may sell, mortgage, lease, or transfer their share without the others’ approval, provided their rights are not impaired.</li></ul><ul id="36f22267-f77d-4eda-b226-b0896154745d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">There is no right of survivorship: a deceased owner’s share passes to their heirs, not the other co-owners.</li></ul></li></ul><ul id="3ff8ac6a-aab1-8053-889a-cdd078bee623" class="bulleted-list" dir="auto"><li style="list-style-type:square">Joint tenancy<ul id="013644b7-dc67-468c-88b1-401cf898e5ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Joint tenancy requires all four unities: possession, interest, time, and title.</li></ul><ul id="d2903cc8-f666-4160-8d76-94c400b7f1b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Co-owners have equal shares and an undivided right to use the whole property; they acquire title at the same time through the same title document.</li></ul><ul id="9f7c8214-b6b8-4574-82f9-fe96a0940eaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">It generally includes the right of survivorship (JTROS): when an owner dies, their share passes to the surviving joint tenants, not their heirs. Some states require survivorship to be stated in the deed.</li></ul><ul id="243f769b-3bf3-4862-9f27-1d20c19706f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Only people can hold title as joint tenants; corporations cannot, because they cannot die.</li></ul><ul id="8024e849-706e-4b43-ad24-ee93a63b1b86" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Compared with tenancy in common, joint tenancy requires equal ownership shares and generally includes survivorship.</li></ul><ul id="eec9620b-a445-4f67-8a80-726df063e82c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transferring Ownership With Joint Tenancy</strong><ul id="9b03476b-7e4c-41ca-b873-c8051c37218e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A co-owner dies:</strong> The original deed gives the surviving joint tenants equal shares of the deceased owner’s interest through survivorship.</li></ul><ul id="a457d5bf-797e-4008-b0f1-225d946f3457" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A co-owner transfers while alive:</strong> The new owner receives the transferred share as a tenant in common; the remaining original owners continue as joint tenants.</li></ul><ul id="46c30b8d-4560-4d13-9e8b-bde56927f8c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why the ownership differs:</strong> The new owner joined later and through a separate deed, so they do not meet the original joint tenancy’s unities of time and title.</li></ul><ul id="4d7ebe56-1e2a-4925-97b4-dabfb2410309" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inheritance:</strong> The new owner has no survivorship rights in the original joint tenancy. If an original joint tenant dies, the new owner receives none of that share; if the new owner dies, their share passes to their heirs.</li></ul></li></ul><ul id="14e9e14f-2fc3-48a2-a3f4-a15ab2498357" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Joint Tenancy and Inheritance</strong><ul id="97188588-9a02-48e5-9fbf-e20aebac4e20" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Classic joint tenancy assumes survivorship; some states require the deed to state the right of survivorship explicitly.</li></ul><ul id="dff1c7f1-d981-4d4a-9f2d-b697a95efab3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Joint Tenancy Defeats Marriage Rights:</strong> Survivorship may affect a spouse’s dower or curtesy, elective-share, or community-property rights. The deed should clearly specify tenancy in common or joint tenancy with right of survivorship (JTROS).</li></ul><ul id="5654aefa-fd20-4b5f-a1f3-2102ba223936" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Right of Survivorship:</strong> A deceased owner’s share passes directly to surviving joint tenants without probate. This applies only to the jointly owned property, so a will is still useful for the rest of the estate.</li></ul><ul id="9ea5571b-aa1e-436e-97cb-3a15e9ed4e21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tenancy Is Permanent(ish):</strong> Changing the co-owners generally requires dissolving and reforming the joint tenancy. Partition, foreclosure, or bankruptcy may also end it.</li></ul><ul id="5c6d110b-6076-4e53-b9c5-03fbd0a372fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>You Still Gotta Pay Taxes:</strong> Avoiding probate does not eliminate estate taxes.</li></ul></li></ul><ul id="f8b76161-35dc-42ab-946d-64985a267ded" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Joint Tenancy Scenario: The Joint Joint</strong><ul id="2edf5a9d-04a4-41f4-b4e8-82410db75f93" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Four family members purchase property as equal joint tenants. When Tamara sells her interest to Ricky, the unities of time and title are broken for that portion, making Ricky a tenant in common while the remaining original owners stay joint tenants among themselves. When original joint tenant Walter passes away, his share automatically splits between the surviving joint tenants (Leti and Sy) via the right of survivorship—bypassing his son&#x27;s inheritance—while Ricky receives none of it. Conversely, if Ricky dies, his share passes to his chosen heirs because tenants in common do not have survivorship rights.<ul id="3ff8ac6a-aab1-80da-a8fe-db3ad7cd9837" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Transferring an Interest Breaks Joint Tenancy:</strong> A joint tenant can sell their share, but the incoming buyer becomes a <strong>tenant in common</strong> because they acquired title at a different time and through a different deed.</li></ul><ul id="3ff8ac6a-aab1-8075-92d1-cfbeea8a575f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Right of Survivorship Takes Precedence:</strong> When a joint tenant dies, their share automatically and equally absorbs into the surviving joint tenants&#x27; shares, completely overriding any provisions in a will or claims by heirs.</li></ul><ul id="3ff8ac6a-aab1-801e-b735-d5d7cb0e871e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tenants in Common Have Inheritable Shares:</strong> Unlike joint tenancy, tenancy in common includes no right of survivorship. A tenant in common&#x27;s share passes directly to their heirs or estate upon death.</li></ul></li></ul><figure id="3ff8ac6a-aab1-8002-aec6-e14e55c2193d" class="image" data-notion-image="Chapter%202%20-%20Forms%20of%20Ownership/image.png" dir="ltr"><a href="Chapter%202%20-%20Forms%20of%20Ownership/image.png"><img style="width:336px" src="Chapter%202%20-%20Forms%20of%20Ownership/image.png"/></a></figure></li></ul><ul id="3ff8ac6a-aab1-8093-894e-d15335d5ebaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Partition: Dividing Co-Owned Properties</strong><ul id="3ff8ac6a-aab1-8083-b3fb-d42c0106b029" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Partition lets a co-owner divide co-owned property into separate interests or convey their partial interest without the others’ consent.</li></ul><ul id="3ff8ac6a-aab1-8088-9ad6-e32904581d21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Partition: Voluntary or Not</strong><ul id="3ff8ac6a-aab1-80c0-b83a-ca04ed155b73" class="bulleted-list" dir="auto"><li style="list-style-type:square">If everyone agrees, they can divide the property so each person owns a portion in severalty.</li></ul><ul id="3ff8ac6a-aab1-8039-a316-ec0721882bf3" class="bulleted-list" dir="auto"><li style="list-style-type:square">If they cannot agree, a co-owner may file a partition suit asking the court to divide the property or sell it and distribute the proceeds.</li></ul></li></ul></li></ul></li></ul><ul id="b75d516d-ff09-432e-92ee-2a4f5aa15fd4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Married Couples Only (Couple Co-Ownership)</strong><ul id="b8427af7-ff92-4801-876b-954a1f54a4c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tenancy by the entirety is reserved for legal spouses.</li></ul><ul id="de394a2f-f268-499b-9a49-8e956c42f266" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Your Options Are Based on State Law:</strong> Depending on the state, married couples may hold title as tenants by the entirety, as community property, or as joint tenants or tenants in common as stated in the deed. Out-of-state buyers may be familiar with different arrangements.</li></ul><ul id="41076616-ae79-4574-b780-07c00df60ec5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Uses Tenancy by the Entirety:</strong> Married couples in Tennessee take title this way.</li></ul><ul id="67afeb73-4afe-40da-a464-72db2feffa60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Couple Co-Ownership Type 1: Tenancy by the Entirety</strong><ul id="e92d6ab9-6b16-4511-8c4f-907d4dae79d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Spouses have equal, undivided interests and cannot convey or encumber the property without the other spouse’s consent.</li></ul><ul id="39420d40-f467-443b-bbd4-7aa535a1426b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Survivorship transfers the property automatically to the surviving spouse at the first spouse’s death, avoiding probate; the survivor then owns it in severalty.</li></ul><ul id="7b6cb12a-0e8b-47b3-970a-85b9c41c9d24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tenancy by the Entirety: Taking the Fifth</strong><ul id="658814c6-86bb-43b1-9433-2e6e7e355879" class="bulleted-list" dir="auto"><li style="list-style-type:square">It requires the four joint-tenancy unities—possession, interest, time, and title—plus unity of person. The spouses are treated as one indivisible legal unit, rather than holding separate halves.</li></ul></li></ul><ul id="0ee594f8-da82-4879-a6d1-b0e63f4f46bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How to Terminate a Tenancy by the Entirety</strong><ul id="c23521ab-d466-4a97-a3cf-5968c19f3027" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Death:</strong> The surviving spouse becomes the sole owner.</li></ul><ul id="7858ee9a-4116-4476-84e8-76e61365fda1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agreement:</strong> Both spouses may terminate it by signing a new deed.</li></ul><ul id="e32317fc-7ec2-4c0b-8c0d-33dea32e2ea4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Divorce:</strong> It generally becomes a tenancy in common unless a judge rules otherwise.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80e5-80b0-e6d939f0da1a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">By holding title as tenants by the entirety, married couple Leti and James own their home as a single, indivisible legal unit. This exclusive form of spousal co-ownership automatically includes the right of survivorship and protects the property from being conveyed or encumbered without both spouses&#x27; consent.</li></ul></li></ul><ul id="d178cb3f-9faf-4694-872d-c227dfe3ea4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Couple Co-Ownership Type 2: Community Property</strong><ul id="ac4e276e-96bf-49cd-ac93-66b1fb90c755" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Community property is recognized in nine states; Tennessee is not one of them.</li></ul><ul id="ddbeab10-91f6-453e-987c-d485516d86e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property acquired during marriage is generally treated as equally owned by both spouses. Either spouse may buy property alone, but both must sign to sell it (“one to buy, two to sell”).</li></ul><ul id="cc2b9d22-7f57-44bf-be13-a63c9e8e11f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">On separation, each spouse generally receives half of the community property, including real and personal property. Consult a divorce attorney about how specific items are divided.</li></ul><ul id="03539a4a-eada-4a88-950d-2a4fdfd46b08" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Not All Property Is Communal</strong><ul id="e649f4bf-f2db-455a-b3e2-9a0ecdac8d2d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Separate property belongs to one spouse and is not community property. It includes property owned before marriage, gifts or inheritances received during marriage, and purchases made during marriage with separate funds.</li></ul><ul id="b99b3660-50c0-4a08-bf32-9fee6c7bc6d9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Keep separate funds apart from shared funds; mixing an inheritance into a joint account may turn it into community property.</li></ul></li></ul><ul id="5ba12dc5-25ea-4d1b-9114-6d3e50e3adbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inheritance With Community Property</strong><ul id="68cd2d80-5e5d-45cd-aa52-ecf84ceff42e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Each spouse may leave their half to anyone in a will. If a spouse dies without a will, intestacy laws determine who inherits, often including the surviving spouse and children.</li></ul></li></ul><ul id="73c6f1ad-3cd7-4008-876c-6c054e1c3557" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Community Property With Right of Survivorship (CPWROS)</strong><ul id="9abeef7a-a02e-4c03-9c73-34b7bed573f1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Where available, the deed must specify survivorship. At one spouse’s death, the other automatically receives the property without probate.</li></ul><ul id="1be70183-2fa4-4e8b-b0ee-b25dafe8efa7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Survivorship may be ended by filing an affidavit and generally ends automatically upon divorce or annulment.</li></ul><ul id="83d5093b-5fa6-4db1-9ad0-2a488bd493cc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Without survivorship, a spouse may still leave their share to their partner by will, but it passes through probate.</li></ul></li></ul></li></ul><ul id="5de7eae3-4282-41f3-936c-11d860f3096a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Couple Co-Ownership Type 3: Dealer&#x27;s Choice</strong><ul id="de64636c-a389-418f-bab3-9a2dc2855710" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In states without a special ownership form for married couples, spouses choose how to hold title like other co-buyers.</li></ul><ul id="4e331eee-d5e8-49da-9f6a-5a7e19358a96" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The deed should specify tenancy in common or joint tenancy with the right of survivorship.</li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-8043-bead-e0e507b9faaa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tennessee is not a community property state.<figure id="3ff8ac6a-aab1-804a-9ed3-fbc3d2b4a9a1" class="image" data-notion-image="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png"><img style="width:288px" src="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png"/></a></figure><figure id="3ff8ac6a-aab1-80d8-823f-f51f56d47918" class="image" data-notion-image="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png"><img style="width:288px" src="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png"/></a></figure></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-80f2-be50-f32138e332c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ownership in trust</strong><ul id="3ff8ac6a-aab1-80e4-9472-f6730a2472f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">where a trust holds property for a person until they are ready to pass it on to their heir or beneficiary</li></ul></li></ul><p id="3ff8ac6a-aab1-80d5-9123-ceb036a41e97" class="" dir="auto">
+</p><p id="3ff8ac6a-aab1-8037-8405-c304ca90a682" class="" dir="auto">
+</p></div><div id="a40c2664-4702-43b9-98a5-bdff5df5e3a4" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="c46d1fb9-af2b-4028-9fb8-34ae9e71922d" class="" dir="auto"><strong>Key Terms</strong></p><ul id="1ceb18fe-fc01-483f-adfa-cec49a48d12e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>community property</strong> — a system that distinguishes property jointly owned by spouses from each spouse’s separate property.</li></ul><ul id="8be1a8a1-1144-446c-96f2-13f15e2c36e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>joint tenancy</strong> — co-ownership with equal, undivided interests and a right of survivorship rather than inheritance.</li></ul><ul id="8745fe92-9d95-45f6-ae51-7d402caca125" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>right of survivorship</strong> — the principle that when a co-owner dies, their interest passes to the surviving co-owners.</li></ul><ul id="b3033052-6594-45bc-ac06-b38d12a3c8aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>severalty</strong> — sole, undivided ownership of an estate, exclusive of other owners.</li></ul><ul id="e55d2625-9016-4735-90f7-dc3169b7b737" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>tenancy in common</strong> — co-ownership with individual, undivided interests and inheritance rights rather than survivorship.</li></ul><p id="c072f385-996b-49c5-9e6c-90c26818fa9f" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="1c1ff030-2f24-45d8-a6be-506e39dcb9a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Forms of Ownership</strong><ul id="cecceb33-74f8-42fc-96a9-8b5ab074de90" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ownership in severalty: individual or sole ownership (tenancy in severalty).</li></ul><ul id="22ae038b-a31a-49d2-832c-d30310172716" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Co-ownership: ownership shared with another person (concurrent ownership).</li></ul><ul id="ed1ff38e-0bf0-483b-8af2-5ff54f9950d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ownership in trust: a trust holds property for a person until it passes to an heir or beneficiary.</li></ul></li></ul><ul id="b50c2ada-dafe-40fa-aee7-ae81f6949fbc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Co-ownership Concepts</strong><ul id="c2400fd7-3054-472c-92a1-ebf7c0966ac3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Undivided interest:</strong> Each co-owner may possess and use the whole property, not just a physical portion.</li></ul><ul id="6e161c01-f255-406a-b04a-7d45be76cbf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right of survivorship:</strong> A deceased co-owner’s interest passes to the surviving co-owner(s).</li></ul></li></ul><ul id="3ab64877-f205-4d66-b76d-af3a6eda2733" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Unities</strong><ul id="6d008b52-a147-43b7-9db1-fd5103f9e6bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Possession:</strong> Each co-owner may use the entire property.</li></ul><ul id="fee98adb-a7d9-4692-a66d-240eaa2d3c2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interest:</strong> Each co-owner holds an equal share.</li></ul><ul id="bcc86a81-651b-47e7-9969-392efa3ec09c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Time:</strong> Co-owners acquire their interests at the same time.</li></ul><ul id="56bb56a6-015c-4d78-a4e6-be8c2c5823ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title:</strong> Co-owners acquire title through the same instrument, such as a deed or will.</li></ul></li></ul><figure id="3ff8ac6a-aab1-8046-9097-e276736c4127" class="image" data-notion-image="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png"><img style="width:288px" src="Chapter%202%20-%20Forms%20of%20Ownership/image%201.png"/></a></figure><figure id="3ff8ac6a-aab1-8096-ac34-d295a89828f3" class="image" data-notion-image="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png"><img style="width:288px" src="Chapter%202%20-%20Forms%20of%20Ownership/image%202.png"/></a></figure><p id="3ff8ac6a-aab1-80bd-926c-eae7098a9463" class="" dir="auto">
+</p></div></div><p id="3ff8ac6a-aab1-806c-9b54-d8c3fc41002d" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

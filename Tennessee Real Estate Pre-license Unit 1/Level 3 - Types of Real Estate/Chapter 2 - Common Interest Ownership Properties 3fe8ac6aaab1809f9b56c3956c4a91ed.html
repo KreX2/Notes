@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Common Interest Ownership Properties</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-809f-9b56-c3956c4a91ed" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - Common Interest Ownership Properties</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="2488db4c-9ece-450d-91d6-6b00e20d5c69" class="column-list" data-notion-column-list="" dir="auto"><div id="206d9476-14ef-4493-893e-220e8f1fbf38" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="f9f0132a-c1a0-41fe-bfea-3932fd0d06c5" class="" dir="auto"><strong>Common Interest Ownership Properties</strong></p><ul id="42942426-109f-49a5-b676-576c19fe6eda" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unlike a single-family home, these properties involve shared ownership among neighbors, investors, or shareholders.</li></ul><ul id="bc35837c-14bc-40d5-b1b7-ac5f07469103" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Common-interest ownership properties are subdivisions regulated by state law.</li></ul><ul id="11902e7c-bafd-4f27-81fc-eb4193cf72c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Types include:<ul id="b5705d68-74a6-46ac-b8b2-f47a12e19f27" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condominiums</strong><ul id="41b23906-1647-4f39-a037-40b1d431ac95" class="bulleted-list" dir="auto"><li style="list-style-type:square">Each owner owns the interior of their unit (its “airspace”) and shares an undivided interest in common elements. They do not individually own the land, other units, or space above their unit; condos may be attached or freestanding.</li></ul><ul id="e0abcec1-c4a4-49ba-81f0-81dc8ef72a41" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pros</strong>: Often more affordable, require less maintenance, and have no private yard to maintain. Owners may be able to sublet, subject to applicable rules.</li></ul><ul id="af64f565-6abd-4600-975a-c7a05b7922b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example</strong>: Syngin owns the interior of Unit 147, but shares the hallway with other owners.</li></ul><ul id="4e9b8a0c-0464-4521-9bd8-b71c0036d131" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Elements</strong>: Shared property outside individual units, such as the land, hallways, parking, laundry rooms, pools, and building systems like pipes.</li></ul><ul id="7c03faae-50f8-4d05-a0ec-eb2cc83e06ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>What Tennessee Condo Owners Should Know</strong><ul id="1e6f300a-7b48-422c-b2d6-01320c4ffa7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A condo unit is a defined three-dimensional space. In Tennessee, the Horizontal Property Act generally applies to developments built before 2009; the Condominium Act applies to developments built after January 1, 2009.</li></ul><ul id="93211c20-542c-40fa-b7ec-2842a5192dd8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Master Deed or Declaration</strong>: This recorded document defines unit boundaries, common areas, and ownership rights and restrictions. Review it carefully; legal review may help clarify what is being purchased.</li></ul><ul id="8f123f14-87ec-4717-b870-f70f184e8376" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bylaws</strong>: These give more detailed association rules and may change over time. The declaration generally carries more legal weight, and changes to it are recorded with the appropriate government office.</li></ul><ul id="d083d57a-16af-447e-b716-2593ac87c17d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unit boundaries may include interior space between specified walls, ceiling, and floor, while features such as the roof, building systems, and yards may be common areas. The recorded documents define the actual boundaries.</li></ul><ul id="2c71a5cb-4d0e-4836-bc04-624b68b55ddd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Condo fees may cover shared maintenance and building insurance, and owners must follow association rules.</li></ul></li></ul><ul id="f59fabb7-5c05-4727-96df-e87dfb157b95" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Condo Ownership and Responsibility</strong><ul id="e8020b5d-540b-44ba-a54c-fccf92dacaca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Limited Common Elements</strong>: Shared property reserved for one or a few owners, such as an assigned parking space or a terrace accessible only from one unit. They remain jointly owned, so repairs may be shared by all owners.</li></ul><ul id="1640c738-f2ad-409f-959e-53a0af12a3b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Interior Ownership</strong>: Each owner has fee simple absolute ownership of their unit’s interior and is responsible for repairs inside it.</li></ul><ul id="ecb2893b-480b-4d33-92e9-6700bed3e17a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Elements</strong>: Owners hold undivided interests as tenants in common. Shares may differ, but each owner can use the shared areas; repairs outside individual units are a shared responsibility.</li></ul><ul id="2588bc4b-1d2a-409d-a52d-6644c30b5161" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maintenance Fees</strong>: Condo or co-op owners pay monthly association assessments for common expenses. Fees may be equal or allocated differently, such as higher dues for units with terraces or roof access; amounts vary and are generally disclosed during the sale process.<figure id="4008ac6a-aab1-807b-8e05-fd21400701c9" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image.png"><img style="width:528px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image.png"/></a></figure></li></ul></li></ul><ul id="9a1a9234-1a65-487e-ab9b-b25b9b13a41f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Condo Restrictions</strong><ul id="b83a8ee6-c29e-492c-b980-c0b5b5b157c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rules</strong>: A condo or HOA board typically sets and enforces rules for common areas and schedules maintenance. Governance varies: owners may serve on the board, elect it, or vote in proportion to their ownership interest.</li></ul><ul id="9b0b8864-ef4d-4fff-a7db-16d274998967" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Covenants, Conditions, and Restrictions (CC&amp;Rs)</strong>: Also called deed restrictions or restrictive covenants, these developer-imposed rules are attached to the property to maintain the development and protect its value.</li></ul><ul id="026ea7bb-1f04-45c3-bda0-a829427f6827" class="bulleted-list" dir="auto"><li style="list-style-type:disc">CC&amp;Rs may regulate property use, building height, setbacks, renovations, and other owner activities.</li></ul></li></ul><ul id="35f24ebb-c1ef-440e-844c-a494d838df8e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Maintenance Options</strong><ul id="d7f53d4d-295a-407e-8ff1-b82811d01c9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Self-Managed Condos</strong>: Owners or the board handle maintenance and oversee vendors.<ul id="d199f901-e4b9-4a49-aae6-e697c9e00cce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pros</strong>: Fees may be lower because owners contribute their time; shared HOA funds cover major repairs.</li></ul><ul id="2355bb4b-807e-400b-9697-2c463178d8b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cons</strong>: Owners need to contribute more work and problem-solving. Review the building’s finances: low dues may mean inadequate reserves, deferred repairs, reduced property value, or special assessments.</li></ul></li></ul><ul id="10de5032-6476-4f25-af1c-482b5a999701" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Manager-Managed Condos</strong>: A manager or company coordinates repair requests, preventive maintenance, taxes, common-area utilities, and sometimes unit marketing.<ul id="abecc73b-098a-447b-840b-4a5d5519f8ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pros</strong>: Less work for owners and professional oversight, especially useful in larger buildings.</li></ul><ul id="912874c7-0019-4883-8b98-c5b413ac7192" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cons</strong>: Management fees increase costs and are generally funded through HOA dues.</li></ul></li></ul></li></ul><ul id="991ca2e3-b0a4-48ea-8f14-e54972238813" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Creating a Condo Development</strong><ul id="9130a5fb-2205-49be-b1b2-1bf2d8a011c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Tennessee, a new condominium development is established through a declaration (master deed), which divides the property&#x27;s single deed into individual condo units and common areas. It is recorded in the county where the development is located.</li></ul><ul id="3fda823a-6ebc-4856-a137-f053a4eb167c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The declaration also describes HOA organization and procedures, including maintenance, repairs, insurance, and fees.</li></ul><ul id="1b81bd03-d75a-4275-acb5-9f9293263883" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure to Buyers</strong>: Buyers must receive the development&#x27;s bylaws and CC&amp;Rs before purchase.<ul id="f4c78755-6fc1-47a5-a507-b66e7e35b0b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For developments with fewer than 50 units, the owner provides these documents.</li></ul><ul id="957a0c52-fd5f-4eaa-a01b-5077495d251b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For developments with 50 or more units, the owners association provides them.</li></ul></li></ul></li></ul><ul id="f2dfbb36-4d24-48a4-9985-1819861de443" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Condo Investment Scenario: Zoe and Orion</strong><ul id="09cdd2cd-b9f3-49c4-a427-6d53ac2e95d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Zoe and Orion consider Unit 6 at the Loft at the Granary as a rental investment. They should compare expected rent with the purchase price and ongoing costs.</li></ul><ul id="b9733fcf-8f63-436b-91e0-db77ac6c0325" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What They Would Own</strong>: The unit interior, a shared interest in common areas such as the pool and gym, and limited use of the terrace, even though only their tenant can access it.</li></ul><ul id="b1818bd2-47e6-4c3e-8c83-6eed2f87d491" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Costs and Management</strong>: They would pay monthly maintenance fees; the property manager would handle common-area and exterior repairs, while owners remain responsible for their unit interiors.</li></ul><ul id="ddfdb80f-5409-4626-b5ef-2250f1550af0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Renting</strong>: They could rent the unit without individual neighbors’ permission, subject to the development’s rules.</li></ul></li></ul></li></ul><ul id="7d856d62-2826-4ee1-b821-0d71b4b64091" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Co-ops</strong><ul id="ce61757e-5ab6-4d4a-b8b6-37c497a57cfd" class="bulleted-list" dir="auto"><li style="list-style-type:square">A cooperative building is owned by a corporation. Residents own shares rather than their individual units and receive a proprietary lease for exclusive use of an apartment and rights to common areas.</li></ul><ul id="b574acb1-babe-4b77-88c6-09a9ee7555ae" class="bulleted-list" dir="auto"><li style="list-style-type:square">In Tennessee, the Uniform Residential Landlord and Tenant Act applies to co-op tenants.</li></ul><ul id="428865cc-ab6a-4fe0-94d9-06d4a351a641" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Maintenance Fees</strong>: Each resident pays a pro rata share of building expenses, such as maintenance, staff, taxes, insurance, and approved improvements. Some co-ops employ a building superintendent.</li></ul><ul id="b1712e55-db7c-410e-a09a-e59821c7849a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Board</strong>: The co-op board may approve renovations and enforce rules on occupancy, pets, quiet hours, renovations, and subleasing.</li></ul><ul id="24dd9a9b-9ae8-4de4-b8da-f2ff951943d9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Building Ownership</strong>: The co-op corporation may own the building fee simple or lease the building or underlying land through a leasehold, ground lease, or land lease. These leases may last 50–100 years; if they expire without renewal, residents may have to leave. Individual residents remain shareholders, not real estate owners.</li></ul><ul id="9fe5514a-38ee-4e47-87e0-78a9503a42fb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Co-ops: Pros and Cons</strong><ul id="7d568e7f-6398-41d5-bbdd-d0ab93107614" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros</strong>: Members pool resources to lower per-person ownership costs, and co-ops often have lower purchase prices than comparable condos.</li></ul><ul id="67f4b4c7-741f-42dc-946a-6b1a6e48dc69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Example</strong>: Members can combine funds to add a shared pool.</li></ul><ul id="48a7573e-1f65-4a62-a47c-1bcc31aa55dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Financial Requirements</strong>: Co-op boards may require substantial cash reserves after closing, while monthly maintenance fees can be higher than condo fees.</li></ul><ul id="9e647fd1-7526-46f8-995c-a7b22291abee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cons</strong>: One owner’s default can put the whole property at risk of foreclosure, potentially harming all members. Reserve funds help cover major projects and emergencies.</li></ul><ul id="8151b28d-90fb-40f5-aef3-1bb0eafd808d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">One resident’s actions can affect the whole community. Boards may enforce strict rules and screen prospective buyers, subject to fair-housing protections.<figure id="4008ac6a-aab1-8032-b5f4-eefe06d0ef31" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%201.png"><img style="width:556.484375px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%201.png"/></a></figure></li></ul></li></ul><ul id="25b26091-08c1-40f3-a7da-06dc52f17842" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Do Due Diligence</strong>: Before buying into a co-op, review its financial health with the buyer’s lawyer; a corporate mortgage default could put the buyer’s investment at risk.</li></ul><ul id="6d49cbfd-92b3-4221-ad0d-bebcb5d61531" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financial Statements</strong>: Check for unpaid or late bills and the reserve fund balance. Weak finances may be a warning sign.</li></ul><ul id="42a8a2b7-63a6-4bea-bacb-d65d4952e5c9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Board Minutes</strong>: Review monthly minutes for disputes, litigation, mortgage terms, reserves, noise or pet issues, maintenance history, and planned renovations.</li></ul><ul id="842760f1-1243-40e7-a890-5915c3463330" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Board Interview</strong>: The elected co-op board must approve a buyer’s share purchase. The agent typically helps prepare a board package with financial and personal information; an accepted package is followed by an interview. Rejections are often based on finances.</li></ul></li></ul><figure id="4008ac6a-aab1-80f9-91c4-c7860fbbb24c" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%202.png"><img style="width:384px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%202.png"/></a></figure><figure id="4008ac6a-aab1-806e-b96c-db9b3278c69e" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%203.png"><img style="width:480px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%203.png"/></a></figure><p id="4008ac6a-aab1-8047-a1fd-da7ff025e158" class="" dir="auto"><div class="indented"><ul id="2e349af3-caf7-4d00-94c9-078439882d24" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condops</strong><ul id="7e40b665-76f1-4a5b-af64-e3b2046454a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A condop combines condominiums and cooperatives in one building. It often operates financially like a co-op but may have more relaxed condo-style rules.<ul id="c4d94101-d871-4f33-bad2-52aa80134f89" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Characteristics</strong>: The building includes commercial and residential property, with some units owned as condos and others organized as a co-op—for example, a retail condo with co-op apartments above.</li></ul><ul id="7d362be4-56aa-4cc8-bf40-40fecf6108b7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Scenario: Alejandra and the Condop</strong>: Alejandra divides a new building into a commercial condo and four residential units. She sells the residential portion to Beau in exchange for shares; Beau then sells shares for three units and keeps one, creating a mixed condo/co-op arrangement.</li></ul></li></ul></li></ul></div></p><ul id="2968b232-a4a2-416a-adf8-e420b9d76dc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Planned unit developments (PUDs)</strong><ul id="4008ac6a-aab1-8091-b0e2-dc3c9256a32c" class="bulleted-list" dir="auto"><li style="list-style-type:square">A subdivision that includes both residential dwellings and nonresidential real estate, departing from normal zoning and subdivision regulations.</li></ul><figure id="4008ac6a-aab1-80ba-a56d-ef892e3dc088" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%204.png"><img style="width:480px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%204.png"/></a></figure><ul id="4008ac6a-aab1-8060-b8e6-e21dfbc4b417" class="bulleted-list" dir="auto"><li style="list-style-type:square">Characteristics: Buyers purchase both the structure itself AND the land it sits on (owners have vertical rights that include the roof and the land beneath the home). Dwellings can be attached townhouses or unattached houses.</li></ul><ul id="4008ac6a-aab1-801d-b241-ed4d022809d5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Forms of Ownership:<ul id="4008ac6a-aab1-8058-b334-f1d3d71a4332" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fee simple interest: Ownership of the individual unit and the land beneath it.</li></ul><ul id="4008ac6a-aab1-80e8-8a20-f0e84d1de72b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tenancy in common: Shared ownership of all common elements.</li></ul></li></ul><ul id="4008ac6a-aab1-80aa-a9a9-dd95a96bcac8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Private vs. Shared Spaces: Owners may exclusively own their roofs, garages, and private yards/patios (as outlined by the developer&#x27;s offering documents).</li></ul><ul id="4008ac6a-aab1-8002-a16b-e92701ba79eb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Common Elements: Shared facilities co-owned by PUD lot owners, such as <ul id="4008ac6a-aab1-80a7-844b-f96edd4c143b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">parks,</li></ul><ul id="4008ac6a-aab1-80a2-bc74-fb41fa29f396" class="bulleted-list" dir="auto"><li style="list-style-type:disc">playgrounds, </li></ul><ul id="4008ac6a-aab1-800a-b08c-c20cbe9991bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">athletic centers/gyms, </li></ul><ul id="4008ac6a-aab1-801e-a411-cf7aeb3f536a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">pools, </li></ul><ul id="4008ac6a-aab1-804d-9150-c869c1ee830b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">parking lots, </li></ul><ul id="4008ac6a-aab1-8053-9351-fe9d412d8042" class="bulleted-list" dir="auto"><li style="list-style-type:disc">connecting roads/sidewalks,</li></ul><ul id="4008ac6a-aab1-8068-815f-c8652a8cfc3b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"> and decorative ponds or fountains.</li></ul></li></ul><ul id="4008ac6a-aab1-80dd-9cc4-c1d24f7bb920" class="bulleted-list" dir="auto"><li style="list-style-type:square">HOA and Rules: A homeowner’s association (HOA) maintains the common elements, requiring owners to pay HOA dues. The HOA also enforces CC&amp;Rs (deed restrictions) that are attached to each home&#x27;s deed.</li></ul><ul id="4008ac6a-aab1-8035-92da-ec4bef57da95" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Townhomes/Townhouses</strong>: <ul id="4008ac6a-aab1-808e-9cae-db03d28ad5ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A type of structure (usually multi-story and attached, sometimes called row houses or brownstones) that can be legally organized as either a condo or a PUD.</li></ul><ul id="4008ac6a-aab1-806f-9b59-ed5aa8bd2316" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Condo-Style Townhouse: The owner owns only the interior space (&quot;walls in&quot;); the building exterior, land, and common elements are co-owned.</li></ul><ul id="4008ac6a-aab1-80b2-bb20-f8bed1ffc84a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">PUD-Style Townhouse (more common): The owner owns the entire structure AND the ground beneath it, plus a shared interest in common elements (like a shared park).</li></ul><ul id="4008ac6a-aab1-80c9-89b1-fe4aecbf8815" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Terminology Note: People sometimes use &quot;townhouse&quot; as shorthand for &quot;PUD.&quot; Agents must clarify the actual ownership structure (condo vs. PUD) to ensure clients understand what they are buying.</li></ul></li></ul><ul id="4008ac6a-aab1-80e9-bedb-d62a104eb14f" class="bulleted-list" dir="auto"><li style="list-style-type:square">T<strong>ennessee PUD Requirements</strong>: <ul id="4008ac6a-aab1-8018-8506-c7ee757b253c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Buyers of PUD units are legally entitled to receive specific information, including:</li></ul><ul id="4008ac6a-aab1-80aa-9c94-d6515d84fc19" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The bylaws and rules of the association</li></ul><ul id="4008ac6a-aab1-8005-9601-d62b77845b6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The declaration of CC&amp;Rs (Covenants, Conditions, and Restrictions)</li></ul><ul id="4008ac6a-aab1-805f-a3c1-f51337f2edda" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The master deed (provided upon request)</li></ul></li></ul><ul id="4008ac6a-aab1-8078-a063-cd0b121f0eea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>PUDs: Pros and Cons</strong><ul id="4008ac6a-aab1-80f2-8218-f1e3c1168d7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros:</strong><ul id="4008ac6a-aab1-8039-bf56-c5a27431e242" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Land Ownership: Owners own both the physical building and the tangible land it sits on.</li></ul><ul id="4008ac6a-aab1-80be-970d-ea13952c071c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Access to Amenities: Owners can use shared facilities (like pools and fitness centers) without having to maintain them, making luxury amenities affordable through pooled resources.</li></ul><ul id="4008ac6a-aab1-8053-b91d-ed64a1604955" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Private Space: They generally offer more private space, such as personal yards, compared to condos or co-ops.</li></ul><ul id="4008ac6a-aab1-809b-b566-ccd86f0f5c4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Eco-Friendly &amp; Walkable: Denser configurations create walkable, bikeable communities, appealing to buyers wanting a smaller carbon footprint without living in an apartment.</li></ul></li></ul><ul id="4008ac6a-aab1-80c3-b4ae-f361cbc78bf6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cons:</strong><ul id="4008ac6a-aab1-80f2-8d6e-f4aa70890dc6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mandatory Fees: HOA dues must be paid regardless of whether the owner actually uses the common elements.</li></ul><ul id="4008ac6a-aab1-80a2-b5ae-e1d93333d071" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Less Privacy: Homes are often attached or built very close together, offering less privacy than a traditional single-family home.</li></ul><ul id="4008ac6a-aab1-80e4-a192-da40e8cb0c13" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Structural Maintenance: Unlike condo owners, PUD owners are fully responsible for major repairs to the roof, foundation, and HVAC systems.</li></ul><ul id="4008ac6a-aab1-8033-b6c8-e3d0633dddf1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Yard Work: Owners must maintain their own private yards and landscaping</li></ul></li></ul><ul id="4008ac6a-aab1-80b1-b6d2-e613a8f58f0d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Takeaways</strong><ul id="4008ac6a-aab1-8074-af69-cebaa035da9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ownership Structure:</strong> PUD ownership combines individual fee simple ownership of the dwelling, land, and private yard with a shared, undivided interest (tenancy in common) in the common elements.</li></ul><ul id="4008ac6a-aab1-803a-849f-e59116c88da4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Maintenance Responsibilities:</strong> Unlike condo owners, PUD townhouse owners are personally responsible for maintaining their unit&#x27;s entire physical structure (including the exterior, roof, and foundation) as well as their private yard.</li></ul><ul id="4008ac6a-aab1-80c9-8efc-ecad9f4c35c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOA Fees &amp; Amenities:</strong> Owners pay regular HOA fees to cover the maintenance, insurance, and upkeep of shared communal amenities like the pool, park, and playground.</li></ul><ul id="4008ac6a-aab1-80d7-adbe-e2ab58e050a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Leasing Flexibility:</strong> PUD properties generally offer fewer leasing restrictions than co-ops, making them stronger options for buy-and-hold real estate investors (provided local CC&amp;Rs permit rentals).</li></ul></li></ul></li></ul></li></ul><ul id="127b0cd7-9aaa-4b09-a53f-d8980d7f3211" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshares</strong><ul id="4008ac6a-aab1-80ca-8a70-f8f68321935f" class="bulleted-list" dir="auto"><li style="list-style-type:square"> A form of co-ownership where multiple owners have the right to use a property (typically located in desirable vacation spots) for a specific, prescribed period of time each year.</li></ul><ul id="4008ac6a-aab1-8044-9366-deac82bd3016" class="bulleted-list" dir="auto"><li style="list-style-type:square">Also Known As: <strong>Interval ownership</strong>.<figure id="4008ac6a-aab1-80c1-8065-d90b7cda0e5d" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%205.png"><img style="width:336px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%205.png"/></a></figure></li></ul><ul id="4008ac6a-aab1-80f1-a9b8-ebdb80e13f81" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exclusive Right to Use: Owners typically get exclusive use of the unit for the same time period each year.</li></ul><ul id="4008ac6a-aab1-80b0-b5e4-f7d0cf323474" class="bulleted-list" dir="auto"><li style="list-style-type:square">Legal Status: Each timeshare unit is considered a separate and distinct estate or interest in real property. Because of this, timeshare estates can be separately conveyed (sold) and encumbered (mortgaged).</li></ul><ul id="4008ac6a-aab1-80ac-ac85-c8d1bee9569f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regulations: Timeshare agreements are governed by various federal and state statutes.</li></ul><ul id="4008ac6a-aab1-80a6-86db-d3eb9257a7da" class="bulleted-list" dir="auto"><li style="list-style-type:square">Maintenance Fees: Owners must pay an annual fee to cover the shared costs of maintenance, utilities, management, and other property expenses.</li></ul><ul id="4008ac6a-aab1-80ba-b1af-d897b81d0bb7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Timeshares </strong>in <strong>Tennessee</strong>:<ul id="4008ac6a-aab1-8078-86fb-ceaa0b101fb8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tennessee Timeshare Definitions:<ul id="4008ac6a-aab1-805f-9457-c9f8f6448782" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshare estate</strong>: An ownership or leasehold estate in property devoted to a timeshare fee, tenants in common, time span ownership, interval ownership, or a timeshare lease.</li></ul><ul id="4008ac6a-aab1-8004-8600-c91408d10ea2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshare interval</strong>: A timeshare estate or a timeshare use.</li></ul><ul id="4008ac6a-aab1-8011-8bea-e6f682d5944b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshare project</strong>: Any real property that is subject to a timeshare program.</li></ul><ul id="4008ac6a-aab1-800c-a82f-fdefae2cc3c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Timeshare use: A contractual right of exclusive occupancy that does <em>not</em> convey ownership (e.g., vacation licenses, prepaid hotel reservations, club memberships, or vacation bonds).</li></ul></li></ul><ul id="4008ac6a-aab1-80df-aa18-d89cc30a99b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Three Types of Timeshare Ownership Options in Tennessee:<ul id="4008ac6a-aab1-8010-8bdc-e475e9539811" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Timeshare Estate: Real estate co-owned by multiple unrelated individuals who occupy the dwelling unit in set intervals (usually 1- to 2-week periods) during the year, as dictated by an occupancy agreement.</li></ul><ul id="4008ac6a-aab1-8034-bb8c-fa6c385c52d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Timeshare Use: Grants the purchaser the right to possess the property at given times for a given duration, but does <em>not</em> convey actual real estate ownership.</li></ul><ul id="4008ac6a-aab1-809c-87c2-e0f9ddb9cf3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Vacation Ownership: The buyer holds a contract granting a license to use the property for a specified time period, while fee ownership is actually held by the developer. Buyers pay a one-time purchase price and annual maintenance fees.<figure id="4008ac6a-aab1-80f8-a878-e1916200eca2" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%206.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%206.png"><img style="width:624px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%206.png"/></a></figure></li></ul></li></ul><ul id="4008ac6a-aab1-8086-a0e1-e65e4bbe79ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tennessee Timeshare Act of 1981: Aims to protect owners and prospective buyers by regulating advertising and discouraging scams and fraud.<ul id="4008ac6a-aab1-8050-807a-e6d9bf6bc660" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensing and Marketing:</strong><ul id="4008ac6a-aab1-804f-8eec-f352fb891bd4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Selling timeshares requires either a Timeshare Salesperson license (which requires 30 hours of classroom training and an exam) or an affiliate broker&#x27;s license.</li></ul><ul id="4008ac6a-aab1-806c-bb14-e85307255583" class="bulleted-list" dir="auto"><li style="list-style-type:square">Telemarketers who merely gather leads and set appointments do not need a license.</li></ul><ul id="4008ac6a-aab1-80fc-80f5-e13ba33014a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Misleading advertising is illegal. Tennessee strictly regulates promotional gifts and prizes; sellers cannot falsely claim a buyer has won a prize or been &quot;specially selected&quot; just to get them to attend a sales presentation.</li></ul></li></ul><ul id="4008ac6a-aab1-804d-9a39-c70d1eb4ea01" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consumer Protections:</strong><ul id="4008ac6a-aab1-8086-bd00-d55db3830ca5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Developers must provide buyers with copies of their purchase agreements.</li></ul><ul id="4008ac6a-aab1-80c7-9c3b-e6d9852efc04" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts must disclose the duration and extent of the buyer&#x27;s financial commitment.</li></ul><ul id="4008ac6a-aab1-8083-9252-fa31ad9c855a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts must explicitly include the buyer&#x27;s right of rescission.</li></ul></li></ul><ul id="4008ac6a-aab1-807b-8fd6-e6da89a2216e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right of Rescission:</strong> <ul id="4008ac6a-aab1-804a-b9e9-fc1ee0da4e77" class="bulleted-list" dir="auto"><li style="list-style-type:square">The buyer&#x27;s right to cancel the agreement for any reason without penalty.</li></ul><ul id="4008ac6a-aab1-80ac-9c5a-c08efaf4e0fc" class="bulleted-list" dir="auto"><li style="list-style-type:square">10 Days: The cancellation period if the buyer made an on-site inspection of the property before signing.</li></ul><ul id="4008ac6a-aab1-80f8-b31c-ce9d6393a45b" class="bulleted-list" dir="auto"><li style="list-style-type:square">15 Days: The cancellation period if the buyer did <em>not</em> make an on-site inspection before signing.</li></ul><ul id="4008ac6a-aab1-80eb-9ef9-ef1d77d77a75" class="bulleted-list" dir="auto"><li style="list-style-type:square">Process: The buyer must send written notice to the developer by midnight of the 10th or 15th calendar day.</li></ul><ul id="4008ac6a-aab1-8011-82c3-d1dbab3cbeeb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Refunds: If canceled within the allowable timeframe, the developer must refund all payments to the buyer within 30 days of receiving the cancellation notice.</li></ul></li></ul><ul id="4008ac6a-aab1-80b5-97fc-ec5932e40519" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lawsuits and Statute of Limitations: If a developer breaks the law (e.g., misleading ads, failing to provide the agreement), the buyer can file a lawsuit. The statute of limitations for timeshare lawsuits is 4 years from the date of purchase.</li></ul></li></ul></li></ul></li></ul></li></ul><p id="2b1d8e59-1739-4d3e-bbe3-aaa98f3e283b" class="" dir="auto">
+</p></div><div id="0a36b56c-46c3-40a6-9c76-725ece9db6e1" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="fd1c8ce1-87c4-48aa-ba22-2d5e1b30eec6" class="" dir="auto"><strong>Key Terms</strong></p><ul id="3ff2d709-0541-4629-ad11-d2e8767cadb2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>common elements</strong> - portions of a shared ownership property not controlled by any one owner or tenant; examples include parking lots, lobbies, fitness centers, and elevators</li></ul><ul id="2412c9e4-026d-43bb-8c15-de00a9730407" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>condominium </strong>- property where each owner has a separate interest in their own unit and undivided interest in the common areas</li></ul><ul id="db26f0f3-48bf-43b2-a2a4-8fd65383dee5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>planned unit development (PUD) </strong>- a subdivision that includes residential dwellings along with nonresidential real estate, departing from normal zoning and subdivision regulations; recreational facilities may be co-owned by PUD lot owners as tenants in common</li></ul><ul id="24384f05-b798-468f-8ecd-3fc7e4546eb0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>timeshare</strong> - a form of co-ownership where each owner has use of the property at a different prescribed period of time; aka <em><strong>interval ownership</strong></em></li></ul><ul id="cac01443-486f-4b5c-8ea3-2bab23035db0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>timeshare estate </strong>- a right of occupancy in a timeshare project, which is coupled with an estate in a real property</li></ul><ul id="6b8f29f0-b0d6-4960-9fd9-d542144a4971" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>timeshare use </strong>- a license or contractual or membership right of occupancy in a timeshare project that is not coupled with an estate in the real property</li></ul><p id="4008ac6a-aab1-8044-b250-e17b83fc476d" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><figure id="4008ac6a-aab1-80f7-bab7-f357793e3e89" class="image" data-notion-image="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%207.png" dir="ltr"><a href="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%207.png"><img style="width:432px" src="Chapter%202%20-%20Common%20Interest%20Ownership%20Properties/image%207.png"/></a></figure><p id="4008ac6a-aab1-80a5-b852-e26d0d4f1cd6" class="" dir="auto">
+</p></div></div><p id="4008ac6a-aab1-8048-917e-cef42fc0be88" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

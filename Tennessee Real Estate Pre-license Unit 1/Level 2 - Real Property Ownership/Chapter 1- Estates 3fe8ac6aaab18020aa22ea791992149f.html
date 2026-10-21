@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1- Estates</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-8020-aa22-ea791992149f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1- Estates</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="a3366bc7-0f38-471d-bd60-f1b7b55bafcf" class="column-list" data-notion-column-list="" dir="auto"><div id="a7b202c0-d5d3-431c-91c7-5ddd9b849013" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="9abd5bf5-1716-484c-b2ed-65ffd8dd6f4d" class="" dir="auto"><strong>Taking Root</strong></p><ul id="3ff8ac6a-aab1-8050-840b-c6dc0a99d694" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A seller chose between two completely identical offers simply because they overheard one buyer admiring their garden, proving that owners often have deep emotional attachments to their homes.</li></ul><ul id="3ff8ac6a-aab1-804b-b31d-e664f76f5fd8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because sellers want their homes to be loved as much as they loved them, expressing genuine appreciation for a property&#x27;s unique features can easily be the tie-breaker that wins the deal!</li></ul><p id="3ff8ac6a-aab1-80bc-8294-cd7c054e9924" class="" dir="auto"><strong>Interests in Real Property</strong></p><ul id="3ff8ac6a-aab1-80a8-81b4-c08191aff094" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When someone holds <strong>a possessory interest in real property,</strong> they have an <strong>estate </strong>in that property.<ul id="3ff8ac6a-aab1-801a-86a4-d0bae3da66c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Possessory </strong>- A possessory interest gives a person the right to occupy a property. To possess it. It could be an ownership interest that comes with the full bundle of rights, or it could be the possessory interest a renter has in their rental property. They don&#x27;t own it, but they do have the right to possess it for the duration of their lease. </li></ul><ul id="3ff8ac6a-aab1-804f-a29a-c544b55bfef4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non</strong>-<strong>possessory </strong>- A non-possessory interest in a property gives someone the right to exercise some amount of control over the property without actually possessing it. Non-possessory interests come in the form of easements, liens (including mortgages), and the government&#x27;s public interest in land. The government influences what happens on the property, but they don&#x27;t have possession of it.</li></ul><ul id="3ff8ac6a-aab1-8004-ad18-de475fbcc948" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ex</strong>: Farmer Frank has a possessory interest in his squash farm, but the county has a non-possessory interest – in the form of an agricultural conservation easement – that prevents him from building condos on the land.<br/></li></ul></li></ul><p id="3ff8ac6a-aab1-806b-9027-c53b079f8687" class="" dir="auto"><strong>Freehold Estates vs. Leasehold Estates</strong></p><ul id="3ff8ac6a-aab1-80fe-91eb-f8c67065dc57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Freehold estates</strong><ul id="3ff8ac6a-aab1-809b-bebf-f453e98f8236" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a land or real estate interest is described as a freehold estate, it means that the individual with the interest has some degree of ownership for an undetermined or unspecified (and therefore unlimited) period of time.</li></ul><ul id="3ff8ac6a-aab1-80f8-95b4-d83ea2ffe9d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When deciding whether or not an estate is a freehold estate, ask yourself a few questions:<ul id="3ff8ac6a-aab1-80da-a70f-d28f778ea61a" class="bulleted-list" dir="auto"><li style="list-style-type:square">How long can the estate-holder actually own the estate? Are there limits of duration?</li></ul><ul id="3ff8ac6a-aab1-8079-964b-dcdc3020fced" class="bulleted-list" dir="auto"><li style="list-style-type:square">Who owns the estate? If there are multiple parties, what is their relationship to each other?</li></ul><ul id="3ff8ac6a-aab1-8052-af1a-d872c1a7de75" class="bulleted-list" dir="auto"><li style="list-style-type:square">Are there specific interests granted (or NOT granted) in the estate? What are they?</li></ul></li></ul><ul id="3ff8ac6a-aab1-80d6-8cc5-f68c0cd01ecf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Freehold Tenant</strong><ul id="3ff8ac6a-aab1-8074-9aae-f0c2a6dff623" class="bulleted-list" dir="auto"><li style="list-style-type:square">The owner of a freehold estate is called a <strong>freehold tenant.</strong> Depending on the type of freehold estate, the freehold tenant may also have a right of disposition, or right to convey, the interest they own.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80cb-a599-d5a74f8ce5fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Two <strong>basic types </strong>of <strong>freehold estates</strong><ul id="3ff8ac6a-aab1-809d-a708-f0f8a32925ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fee simple estate</strong><ul id="3ff8ac6a-aab1-80cc-b836-fd356402efb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">grants the most unlimited, most absolute interest in real property. This means that there are NO conditions on the title. (It is also known as a fee interest or simply fee estate.) </li></ul><ul id="3ff8ac6a-aab1-80c0-a647-e3d300795dfa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A fee simple estate is the highest or fullest type of interest in real estate recognized by law, granting the owner the complete bundle of rights without any limits or conditions. This provides the owner with absolute freedom to use, sell, or pass the property down to their chosen heirs for an indefinite period of time.</li></ul><ul id="3ff8ac6a-aab1-806f-b5d7-e25827998338" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A fee simple estate is:<ul id="3ff8ac6a-aab1-8008-955b-e2d11be7b53d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Of indefinite duration</li></ul><ul id="3ff8ac6a-aab1-803b-bbd3-f6e38ff9ae0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Freely transferable</li></ul><ul id="3ff8ac6a-aab1-80d7-ae6d-ffe8ab230400" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Freely inheritable</li></ul></li></ul><ul id="3ff8ac6a-aab1-809c-8fa5-eb2ea367e2d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Forms</strong><ul id="3ff8ac6a-aab1-806e-adb8-ca6f27b3db0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Absolute </strong>-<strong> </strong>An absolute estate is an estate without restrictions that is freely given to heirs (this is the most common type of residential real estate). This is also called a fee title estate.</li></ul><ul id="3ff8ac6a-aab1-80fb-8e1a-d98a0a615e33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Defeasible </strong>- are any estates conveyed by a grantor with conditions that – if violated – could make them null or void.<ul id="3ff8ac6a-aab1-80db-a7d3-f7683cbe11da" class="bulleted-list" dir="auto"><li style="list-style-type:square">defeasible estate (or fee simple defeasible estate) is an estate characterized by perpetual ownership on the condition that the property is used for a certain purpose or under specific conditions. Ownership reverts back to the original owner if these stipulations are violated, but the condition runs with the land. This is also called a <strong>qualified fee estate</strong>.</li></ul><ul id="3ff8ac6a-aab1-80bf-aff6-d0371babd4f1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Ex: Land was willed to you with the condition that you have to also plant and sell a specific crop. If you fail to do so the land could be reclaimed by the previous owner’s estate or heirs.</li></ul><ul id="3ff8ac6a-aab1-803c-ae98-fc49bd830a97" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Estates </strong>and <strong>Encumbrances</strong><ul id="3ff8ac6a-aab1-80b4-8e42-d19430c541c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The condition placed on the estate creates an encumbrance that &quot;runs with the land.&quot; Let&#x27;s define some terms:</li></ul><ul id="3ff8ac6a-aab1-807d-8be9-e56e2062892e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An <strong>encumbrance </strong><ul id="3ff8ac6a-aab1-80dd-a4fa-de565218fd40" class="bulleted-list" dir="auto"><li style="list-style-type:circle">is a non-possessory interest in a property that burdens the title. </li></ul><ul id="3ff8ac6a-aab1-800c-9bb0-f4248d75600d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">a restriction or limitation on a property that might be annoying or limiting to an owner.</li></ul></li></ul><ul id="3ff8ac6a-aab1-8012-8d51-f262e3b0ba2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>To run with the land</strong> - means that the condition is attached to the property, not the owner. If the property is sold, the condition will apply to the next owner, too.</li></ul></li></ul><ul id="3ff8ac6a-aab1-805c-908c-cd406e8ef237" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Two Types of Defeasible Estates</strong><ul id="3ff8ac6a-aab1-80ff-ac5b-e63049fae64a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special limitation with possible reverter</strong> - a type of fee simple defeasible estate which causes the title to automatically revert to the original owner if the deed requirements are violated.<ul id="3ff8ac6a-aab1-80db-b263-f971e279841e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The estate will come to an end automatically and immediately upon the occurrence of a designated event. </li></ul><ul id="3ff8ac6a-aab1-8051-98fc-c4120c4a96c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The time of that occurrence is uncertain (because the occurrence depends on an action, not a date). </li></ul><ul id="3ff8ac6a-aab1-80fb-a4e1-da3373b07886" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong><span style="border-bottom:0.05em solid">No legal action is required</span></strong> of the grantor in order to assume recovery of this kind of estate.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80c4-80d8-e158ac6dd3b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condition subsequent with right of re-entry </strong>- the other type of defeasible fee estate. This type of estate also comes with specific requirements (or conditions).<ul id="3ff8ac6a-aab1-8002-986b-fe6438004619" class="bulleted-list" dir="auto"><li style="list-style-type:circle">for ownership to change, the grantor of the estate must prove (in court) that the defeasible fee estate condition has been violated. <strong>This MUST happen within a certain time frame.</strong></li></ul><ul id="3ff8ac6a-aab1-802b-8995-df1467a488a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This change of ownership is <strong>NOT automatic</strong>, as is the case with a fee simple special limitation with possible reverter estate.</li></ul><ul id="3ff8ac6a-aab1-8021-8679-fafd8a8e1d96" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once the court is satisfied with an established condition violation, the grantor can exercise their right of reentry, which is the right to retake possession of the property.</li></ul><ul id="3ff8ac6a-aab1-8091-ad21-e1d0593496aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Benjamin grants his property to Restaurant Owner Randy on the condition that NO alcohol is sold on the premises. But Randy loves brandy and starts selling brandy-based cocktails on the property. Benjamin has the right to reacquire full ownership of the property. However, it will be necessary for Benjamin (or his heirs or successors) to <strong>go to court </strong>to assert that right.</li></ul></li></ul><ul id="3ff8ac6a-aab1-805a-b2f0-f77030a12a36" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Their qualification as one or the other is determined by the language around the <strong>condition</strong> attached to the property.</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-807e-b337-c52b170830ff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Life estate</strong><ul id="3ff8ac6a-aab1-80cd-9875-c4bde740317a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>⤷ </strong>is so named because it is limited to the duration of a measuring life (this may be the life of the tenant or the recipient of the life estate).</li></ul><ul id="3ff8ac6a-aab1-8015-838c-e535e5361f68" class="bulleted-list" dir="auto"><li style="list-style-type:disc">What makes a Life Estate:<ul id="3ff8ac6a-aab1-80bd-b981-e085cee85b49" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The life tenant enjoys the full bundle of rights of ownership, but they do so ONLY for the duration of the measuring life.</li></ul><ul id="3ff8ac6a-aab1-80fb-be45-d06fab7e7103" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Life estates can be created by private parties or by law (under specific circumstances).</li></ul><ul id="3ff8ac6a-aab1-8057-a99a-f1cdf4647f89" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Life estates create a <em>future interest</em> for the person next in line to receive title to the property.</li></ul><ul id="3ff8ac6a-aab1-802b-8a9c-e028d560a7f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">These future interests can be <strong>reversionary interests </strong>or <strong>remainder interests</strong>.</li></ul><ul id="3ff8ac6a-aab1-808d-bf9f-d091a84c597e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reversionary Interest</strong><ul id="3ff8ac6a-aab1-8041-ae98-c67bdffb0bab" class="bulleted-list" dir="auto"><li style="list-style-type:square">the property reverts back to the person who granted it in the first place once the life estate&#x27;s measuring life ends. This may also be referred to as a <strong>right of reverter</strong>.<ul id="3ff8ac6a-aab1-8042-9c4b-f3293b95462b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Benjamin is a young man who owns a fee simple estate. He grants a life estate to his grandmother, Diana. When Diana dies, the estate goes back to Benjamin.</li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-8089-b205-c2bca63ba315" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remainder Interest </strong><ul id="3ff8ac6a-aab1-8038-8190-db052984ac67" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a life estate is designated to pass on to someone other than the person who created it (the grantor) after the measuring life ends, the person who will someday inherit the estate has a remainder interest in it. The recipient of the future remainder interest is referred to as the <strong>remainderman </strong><ul id="3ff8ac6a-aab1-80ce-bb05-dbe421101072" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Consider Benjamin, the young man you met in the last example. Benjamin owns a fee simple estate. He grants a life estate to his grandmother, Diana. When Diana dies, Benjamin designates that the estate goes to Fred (Diana&#x27;s husband). Fred is the remainderman.</li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-801b-8a07-db3d1e44a107" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reversionary Interest vs. Remainder Interest</strong><ul id="3ff8ac6a-aab1-8049-87d3-fdfec3019536" class="bulleted-list" dir="auto"><li style="list-style-type:square">In a life estate, a reversionary interest means the property ownership reverts back to the original grantor when the life tenant dies. </li></ul><ul id="3ff8ac6a-aab1-8061-8ca6-d800472b2e99" class="bulleted-list" dir="auto"><li style="list-style-type:square">Conversely, a remainder interest means the property ownership passes to a <strong>specifically designated</strong> third party (the remainderman) instead of returning to the original owner.</li></ul><ul id="3ff8ac6a-aab1-8045-a687-f27a40672c6f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The key distinction</strong>: A<strong> remainder interest</strong> must be explicitly designated in writing within the deed; otherwise, the estate automatically defaults to a reversionary interest.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80a3-948b-c1d4c1e41e81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Act of Waste</strong><ul id="3ff8ac6a-aab1-8069-9a31-e3ab2617af29" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the life tenant were to do anything to diminish the value of the property, they would be committing an act of waste, for which they could be held liable.</li></ul><ul id="3ff8ac6a-aab1-8070-adfe-e305e95444eb" class="bulleted-list" dir="auto"><li style="list-style-type:square">When a life tenant maliciously destroys or severely damages the property they occupy—like Brad burning down the cabin his mother granted him—it is legally classified as an &quot;act of waste.&quot; Even though life tenants have the right to possess and use the property, they are legally prohibited from destroying it or diminishing its value for the future owner.<ul id="3ff8ac6a-aab1-8010-87b0-f9bd89a74609" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Acts of waste are illegal: An act of waste is any action (or neglect) by a life tenant that significantly damages the property&#x27;s physical condition or lowers its market value. </li></ul><ul id="3ff8ac6a-aab1-808c-900d-c2f3390f9b0f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duty to preserv</strong>e: A life tenant holds the bundle of rights for their lifetime, but they do not have the right to destroy the asset. They have a legal obligation to maintain the property to protect the reversionary or remainder interest of the future owner.</li></ul></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-8010-8a15-fc3f34892ac1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Two Types<ul id="3ff8ac6a-aab1-8058-b458-db142c4918a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional life estate -</strong> Any life estate created by property owners through a grant (a life estate created through a grant from a property owner to another party.)<ul id="3ff8ac6a-aab1-80c2-b162-f3f590fc5f0b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Two Types of Conventional Life Estate:<ul id="3ff8ac6a-aab1-8049-9e32-d2a467b28b4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ordinary</strong><ul id="3ff8ac6a-aab1-80fe-bd3a-ee1245427aaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">a life estate in which the measuring life is that of the life tenant. It is an estate created by a deed that lasts for the duration of the tenant&#x27;s life. </li></ul><ul id="3ff8ac6a-aab1-8075-9d4b-e5be828a040f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This is often referred to simply as a conventional life estate and is not always called an ordinary conventional life estate</li></ul><ul id="3ff8ac6a-aab1-80f8-b91f-e5d759c29411" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Timmy granted Mary a life estate for her lifetime, after which full ownership automatically passes to his brother Breck as the designated remainderman</li></ul></li></ul><ul id="3ff8ac6a-aab1-8013-b535-fa8da7246ff1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pur autre vie</strong><ul id="3ff8ac6a-aab1-8036-9a21-c98268f0db9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">a life estate in which the measuring life is someone other than the tenant.</li></ul><ul id="3ff8ac6a-aab1-802e-b163-de0154f1e6eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Jenny granted Paula a pur autre vie life estate measured by Burt&#x27;s life, with ownership reverting to Jenny upon Burt&#x27;s death. If Paula dies while Burt is still alive, her heirs inherit the home for the remainder of Burt&#x27;s life, but their ownership still terminates immediately the moment Burt passes away.</li></ul></li></ul></li></ul></li></ul><figure id="3ff8ac6a-aab1-807b-a91e-ec271d0b9b1e" class="image" data-notion-image="Chapter%201-%20Estates/image.png" dir="ltr"><a href="Chapter%201-%20Estates/image.png"><img style="width:240px" src="Chapter%201-%20Estates/image.png"/></a></figure><ul id="3ff8ac6a-aab1-803d-9545-e72301bd6df0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal life estate -</strong> Any life estate created by a function of law<ul id="3ff8ac6a-aab1-80f9-b876-eb84d073a16b" class="bulleted-list" dir="auto"><li style="list-style-type:square">The main difference between a legal life estate and a conventional life estate is that <strong>state law creates legal life estates.</strong> Their main objective is to look out for a deceased person&#x27;s survivors (concerning real estate, at least).</li></ul><ul id="3ff8ac6a-aab1-8075-bf81-e8ad49cd576f" class="bulleted-list" dir="auto"><li style="list-style-type:square">To remember the difference between legal life estates and conventional life estates, remember the word <em>legal</em>: Legal life estates are mandated by legal action (state law).</li></ul><ul id="3ff8ac6a-aab1-803c-b62e-d8d774f60cd5" class="bulleted-list" dir="auto"><li style="list-style-type:square">There are three types of legal life estates:<ul id="3ff8ac6a-aab1-8002-812b-e2b809812423" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Homestead </strong>- state laws that prevent a person&#x27;s primary residence from being forcibly sold to pay certain kinds of debts.<ul id="3ff8ac6a-aab1-8038-b412-e72698c907b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee’s homestead exemption automatically protects primary residence equity—up to $5,000 for individual owners or $7,500 for joint owners—without requiring any paperwork. This protection applies to any principal residence, including single-family homes, condos, and manufactured housing (along with the land if owned).</li></ul><ul id="3ff8ac6a-aab1-805a-af34-c4937413211f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Note:</strong> Not all debts are exempt under homestead laws. A primary residence can still be forcibly sold to satisfy tax, seller financing, home improvement, and mortgage debts.</li></ul><ul id="3ff8ac6a-aab1-807f-bd97-f060f9fc1fef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>homestead is ended </strong>when the property is sold, the homeowner (or immediate family) moves out of Tennessee, or the property is abandoned.</li></ul></li></ul><ul id="3ff8ac6a-aab1-80ec-aa76-c6077aba100c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dower and curtesy</strong> - both refer to the right of a spouse to inherit a portion of the property held in their spouse&#x27;s name after that spouse dies. <ul id="3ff8ac6a-aab1-800f-ad02-dcf3064bac7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Dower is the word used for women, curtesy for men.</li></ul><ul id="3ff8ac6a-aab1-80c4-9959-ed8562aae7d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Dower rights historically guaranteed a surviving spouse a legal claim to a portion; typically one-third—of their deceased partner&#x27;s estate. This protection prevented individuals from completely disinheriting their spouses, ensuring surviving partners retained property and support regardless of the provisions in a will.</li></ul><ul id="3ff8ac6a-aab1-80d5-b7b1-fec41bb0eb91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dower and curtesy aren&#x27;t used anymore in most places, including Tennessee.</strong></li></ul></li></ul><ul id="3ff8ac6a-aab1-80d4-8792-c1849fd2364d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Elective share </strong>- In many places, dower and curtesy have been replaced by<strong> elective share</strong><ul id="3ff8ac6a-aab1-80f0-9247-dd6ae7d9b589" class="bulleted-list" dir="auto"><li style="list-style-type:circle">are state laws that let a spouse make a claim to their deceased spouse&#x27;s property, despite what is in the will. The surviving spouse has to make a claim to the property and often gets a percentage of the value. If no claim is made, the estate passes per the will or other applicable law.\</li></ul><ul id="3ff8ac6a-aab1-803f-890b-d5f75df17c60" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In Tennessee, a surviving spouse can claim an elective share of up to 40% of their deceased partner&#x27;s net estate based on the length of their marriage. However, this protection is not automatic; the spouse must proactively file a petition with the court and serve the estate’s personal representative within nine months of death.</li></ul></li></ul></li></ul><figure id="3ff8ac6a-aab1-80e4-b36f-f3689a807cbe" class="image" data-notion-image="Chapter%201-%20Estates/image%201.png" dir="ltr"><a href="Chapter%201-%20Estates/image%201.png"><img style="width:288px" src="Chapter%201-%20Estates/image%201.png"/></a></figure></li></ul></li></ul></li></ul></li></ul><ul id="3ff8ac6a-aab1-80f8-b614-d899086d689a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Freehold Estates Family Tree</strong><figure id="3ff8ac6a-aab1-8002-8578-daec058163b0" class="image" data-notion-image="Chapter%201-%20Estates/image%202.png" dir="ltr"><a href="Chapter%201-%20Estates/image%202.png"><img style="width:480px" src="Chapter%201-%20Estates/image%202.png"/></a></figure></li></ul></li></ul><ul id="3ff8ac6a-aab1-8029-9245-e8547d72fb6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leasehold estates</strong><ul id="3ff8ac6a-aab1-8032-9e9d-e5b18c1d0161" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>⤷ </strong> generally occurs when the estate-holder has a lease; Like renting a home.</li></ul><ul id="3ff8ac6a-aab1-8021-a71e-fdf6f29e32c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>⤷  a</strong>re considered more temporary, as they usually last for a specific duration of time.</li></ul><p id="3ff8ac6a-aab1-80be-8cc3-c9b2b58f0aef" class="" dir="auto">
+</p></li></ul></div><div id="650f2e74-a273-41fd-b42e-3e3f79792385" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4ee3f675-26be-4ccc-96c5-debdab0ac61e" class="" dir="auto"><strong>Key Terms</strong></p><ul id="e244c0ed-df83-4156-87b7-b5e84a2f77e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fee Simple Defeasible</strong> - a property interest characterized by perpetual ownership on the condition that the property is used for a certain purpose or under specific conditions; ownership reverts back to the original owner if these stipulations are violated</li></ul><ul id="982df209-027f-4b3f-9b9e-b02c1ce1f9fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fee Simple Estate - </strong>maximum ownership of real property; is of indefinite duration, freely transferable, and freely inheritable; aka fee or fee simple absolute</li></ul><ul id="142d178b-deeb-4cf6-be9c-ad1c6ca53771" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Freehold Estate</strong> - a form of ownership with an indeterminate length</li></ul><ul id="b40f44d7-1355-4f96-b21a-b151bb378eb2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Homestead Laws </strong>- laws that protect a homeowner from loss of their principal residence from the claims of most creditors</li></ul><ul id="5ad153fb-e6a8-4f70-a9af-e09fdb0d0462" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leasehold Estate</strong> - an interest in the occupation of a property, established through a lease, aka <em>non-freehold</em> or <em>less-than-freehold</em></li></ul><ul id="009358dd-592a-4f0d-83c2-b3dc68978d07" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Life Estate</strong> - any life estate created by a function of law as opposed to the actions or desires of a property owner</li></ul><ul id="6bd3ae45-da07-4030-9574-beb359996cae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Life Estate</strong> - a type of estate limited to the duration of a measuring life </li></ul><ul id="919b3c6c-cce0-4cdd-a8a6-1ef8cb4db899" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pur Autre Vie </strong>- a life estate characterized by ownership lasting only for the duration of a designated party&#x27;s lifetime<ul id="3ff8ac6a-aab1-800d-b6fc-fcbdd84ce66a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">an old-timey French phrase meaning <em>life of another.</em></li></ul></li></ul><ul id="2e80fc52-544f-4f28-bdfa-916e71332754" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Remainder Interest </strong>- the interest in an estate that will pass to another party (other than the grantor) at the death of the person upon whom the life estate is based</li></ul><ul id="8081ddad-2da4-4e13-80ec-758448076edf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reversionary Interest </strong>- the interest in an estate wherein, upon the death of the life estate owner, full ownership reverts back to the original fee simple owner (grantor)</li></ul><ul id="3ff8ac6a-aab1-8017-8476-d3bb76dd6b04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Defeasible </strong>- term used to indicate that something is capable of being annulled or made void.</li></ul><p id="3ff8ac6a-aab1-80cb-abc1-e1004fe498ca" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="3ff8ac6a-aab1-8098-9a24-c370a291b3e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When someone holds a possessory interest in real property, they have an estate in that property.</li></ul><figure id="3ff8ac6a-aab1-8047-b6c4-c280088661a2" class="image" data-notion-image="Chapter%201-%20Estates/image%203.png" dir="ltr"><a href="Chapter%201-%20Estates/image%203.png"><img style="width:432px" src="Chapter%201-%20Estates/image%203.png"/></a></figure><figure id="3ff8ac6a-aab1-8047-a1d5-ca86f38be205" class="image" data-notion-image="Chapter%201-%20Estates/image%204.png" dir="ltr"><a href="Chapter%201-%20Estates/image%204.png"><img style="width:336px" src="Chapter%201-%20Estates/image%204.png"/></a></figure><p id="3ff8ac6a-aab1-80f4-9755-efe9fa4c3208" class="" dir="auto">
+</p></div></div><p id="3ff8ac6a-aab1-80e2-afbc-e1cc8574d1f2" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

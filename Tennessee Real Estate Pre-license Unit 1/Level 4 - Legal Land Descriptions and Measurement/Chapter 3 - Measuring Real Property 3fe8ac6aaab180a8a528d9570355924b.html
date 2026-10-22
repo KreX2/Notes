@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Measuring Real Property</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-80a8-a528-d9570355924b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Measuring Real Property</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4018ac6a-aab1-8023-917e-cfd55cfdc8ad" class="column-list" data-notion-column-list="" dir="auto"><div id="4018ac6a-aab1-80c1-866c-eac12c9aadc7" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4018ac6a-aab1-8006-a220-f7e652afc22e" class="" dir="auto"><strong>Common Measurement Conversions</strong></p><ul id="4018ac6a-aab1-8032-a769-ecab8cdf7504" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 yard = 3 feet</li></ul><ul id="4018ac6a-aab1-80ae-a6f6-d3c992186322" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 mile = 5,280 feet</li></ul><ul id="4018ac6a-aab1-80d9-bfcb-cf39f7692bb6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 sq. yard = 9 sq. feet</li></ul><ul id="4018ac6a-aab1-808a-9707-daae1d736ff4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 acre = 43,560 sq. feet</li></ul><ul id="4018ac6a-aab1-8040-a8b6-cc30b371fd2f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 sq. mile = 640 acres</li></ul><figure id="4018ac6a-aab1-80eb-a430-d4930db34cbd" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image.png"/></a></figure><ul id="4018ac6a-aab1-80d9-bbb0-ca3478f61522" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Square Footage<ul id="4018ac6a-aab1-8071-a427-db7846848532" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Definition: A unit of area measurement equal to a square measuring 1 foot by 1 foot (1 sq. ft.).</li></ul><ul id="4018ac6a-aab1-8059-976b-dcb6a6ed33bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Importance: The most common measurement buyers consider when searching for and evaluating a home.</li></ul><ul id="4018ac6a-aab1-80b0-9f54-d58258302089" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Usage: Used by buyers and sellers as a standard metric to compare the relative sizes of different buildings.</li></ul></li></ul><ul id="4018ac6a-aab1-80e9-8a8d-e15e19c1f2fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Square Footage Comparison (Practical Application)<ul id="4018ac6a-aab1-802e-a808-efef4c65521e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Comparing Property Value: Homes listed at the same price with identical bedroom and bathroom counts (e.g., $275,000 for 3 bd / 2 ba) can offer significantly different amounts of square footage, affecting value per square foot.</li></ul><ul id="4018ac6a-aab1-80ef-a770-e4807ec184be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Factors Beyond Square Footage: While square footage provides a useful size benchmark, it is not the only factor determining a home&#x27;s overall value and appeal. Other critical considerations include:<ul id="4018ac6a-aab1-8034-bad0-d79f2b60f49a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Condition: A smaller property may be fully updated or better maintained than a larger home in poorer condition.</li></ul><ul id="4018ac6a-aab1-80e7-8a16-c0b40fa8217f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Layout and Functionality: An efficient, well-designed layout can make a smaller home feel larger and function better than a larger home with poor flow or wasted space.</li></ul></li></ul><ul id="4018ac6a-aab1-808d-86d5-dda0796b0d12" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Calculating Square Footage<ul id="4018ac6a-aab1-803f-81b1-c0b976cb7948" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Length times Width = Area (Square Footage)</li></ul><ul id="4018ac6a-aab1-8048-8873-f2f5f2cedeb7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example Problem: Calculate the square footage of a room measuring 15 ft. long by 11 ft. wide.</li></ul><ul id="4018ac6a-aab1-8096-9037-dc97301f1975" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-8074-8d0d-d787d05d927e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Identify known variables.<ul id="4018ac6a-aab1-80b6-9768-f2422a55844b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Length = 15 ft.</li></ul><ul id="4018ac6a-aab1-8002-bb4c-fca93ed044ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Width = 11 ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8092-9592-d5aff46d6538" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Multiply length by width.<ul id="4018ac6a-aab1-8041-9245-d39a1c162f4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">15 ft. x 11 ft. = 165 sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-808e-b74b-cc8a66f76349" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: The room is 165 sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8078-842e-c1f033358b43" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Livable Area</strong><ul id="4018ac6a-aab1-80ec-a4f7-e1bbf295f187" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Finished Area</strong> (<strong>Livable Area</strong>): Space that is enclosed, heated and cooled, and safe and comfortable for year-round human habitation.<ul id="4018ac6a-aab1-80af-a729-e1078e4ed589" class="bulleted-list" dir="auto"><li style="list-style-type:square">Examples: Finished basements, climate-controlled sunrooms, or converted attic bedrooms.</li></ul></li></ul><ul id="4018ac6a-aab1-8046-b220-e0799a5b3e0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unfinished Area </strong>(<strong>Non</strong>-<strong>Livable</strong>): External or non-climate-controlled spaces that cannot be counted toward a home&#x27;s total livable area.<ul id="4018ac6a-aab1-805b-b2a0-d9621fb0caed" class="bulleted-list" dir="auto"><li style="list-style-type:square">Examples: Garages, patios, decks, porches, screened-in porches, and unfinished basements or storage attics.</li></ul></li></ul><ul id="4018ac6a-aab1-8027-a1f3-dabec17dd76b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Calculating Livable Area<ul id="4018ac6a-aab1-804c-b322-d5a810e3cf7c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Total Area  - Unfinished Area= Livable Area</li></ul><ul id="4018ac6a-aab1-8003-a6c8-c75f923764b1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example Problem: A home has total dimensions equal to 1,000 sq. ft., which includes an attached garage measuring 10 ft. by 10 ft. Calculate the livable area.</li></ul><ul id="4018ac6a-aab1-803a-b7c7-f7b63404f1fb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-8072-a7fe-e4e81fd417e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Find the unfinished garage area 10 ft. times 10ft. = 100sq. ft.</li></ul><ul id="4018ac6a-aab1-8018-9ae4-fa2829051286" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Subtract the unfinished area from the total house area 1,000sq. ft. - 100sq. ft. = 900 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80aa-8d30-f4b66bc1ad0f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: The true livable area is 900 sq. ft.<figure id="4018ac6a-aab1-8052-be5c-d86372ae08bd" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%201.png"><img style="width:624px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8069-a7e4-e0e32c378663" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Usable Square Footage (USF)<ul id="4018ac6a-aab1-8088-8dba-e3efe702cea0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The total measurement of space that a tenant exclusively occupies (also known as net square footage). It is space that is not shared with any other tenants.</li></ul><ul id="4018ac6a-aab1-80dc-9f7f-efe23c88ee62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Examples:<ul id="4018ac6a-aab1-80f0-b55c-ec74d9439f99" class="bulleted-list" dir="auto"><li style="list-style-type:square">An office suite where a firm&#x27;s employees work</li></ul><ul id="4018ac6a-aab1-801f-9171-c2d994e0a83d" class="bulleted-list" dir="auto"><li style="list-style-type:square">A specific warehouse section used for manufacturing or storage</li></ul><ul id="4018ac6a-aab1-80f8-9bf8-c1e7ae04e6c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">A retail shop located in a shopping mall</li></ul></li></ul><ul id="4018ac6a-aab1-8048-9cd6-c543089040fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">BOMA Method for Measuring USF:<ul id="4018ac6a-aab1-80ae-9b9a-ccd65cc097cd" class="bulleted-list" dir="auto"><li style="list-style-type:square">The standard measurement method developed by the Building Owners and Managers Association, used across most of the U.S.</li></ul><ul id="4018ac6a-aab1-80fa-ab80-f69b6ecce38d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculated by measuring from the finished surface of the office side of permanent walls to the center of any partitions that separate the tenant&#x27;s office from adjoining tenant or usable areas.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-80f5-b95c-d8050467eb46" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rentable Square Footage (RSF)</strong><ul id="4018ac6a-aab1-80b5-8374-d67c88c52173" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The total measurement of space a tenant can access (also known as gross square footage). It includes the tenant&#x27;s usable square footage (USF) plus their proportion of shared building common areas.</li></ul><ul id="4018ac6a-aab1-8041-acb7-d80ec1ccece2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Common Areas Included:<ul id="4018ac6a-aab1-80ef-b76d-ec85a36d7b7b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Ground floor lobbies</li></ul><ul id="4018ac6a-aab1-8001-946c-eb587e3f4f60" class="bulleted-list" dir="auto"><li style="list-style-type:square">Shared restrooms and hallways</li></ul><ul id="4018ac6a-aab1-8063-9a26-e51ce20a9de8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Elevators and elevator shafts</li></ul><ul id="4018ac6a-aab1-8035-8b4c-ceaed76e55d0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Shared parking lots</li></ul></li></ul><ul id="4018ac6a-aab1-8029-9eaa-fd3945e58242" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Formula:</strong> Usable Square Footage (USF) + Common Areas = Rentable Square Footage (RSF)<figure id="4018ac6a-aab1-80a8-8525-f38645ffa9f3" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%202.png"><img style="width:528px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%202.png"/></a></figure></li></ul></li></ul><ul id="4018ac6a-aab1-80f4-9c63-cb10afb1111f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Don&#x27;t Personally Calculate Square Footage for Listings<ul id="4018ac6a-aab1-80e3-b649-f22e553abc4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Why Agents Shouldn&#x27;t Hand-Calculate:<ul id="4018ac6a-aab1-807c-be90-dd62b71d3727" class="bulleted-list" dir="auto"><li style="list-style-type:square">Different jurisdictions and local markets have varying rules for measuring square footage (e.g., measuring from exterior walls vs. interior walls) and defining what counts as livable space.</li></ul><ul id="4018ac6a-aab1-80ca-860d-e80fcb184ead" class="bulleted-list" dir="auto"><li style="list-style-type:square">Official square footage calculations must always be performed by a qualified professional, such as a licensed surveyor or a floor plan specialist.</li></ul></li></ul><ul id="4018ac6a-aab1-809e-a6df-e754eb209902" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Citing Official Sources:<ul id="4018ac6a-aab1-8045-8e6c-fe2100a78d76" class="bulleted-list" dir="auto"><li style="list-style-type:square">When providing square footage in a property listing or official documentation, agents must use and cite an official source (e.g., &quot;according to [Source], the square footage is [Y]&quot;).</li></ul></li></ul><ul id="4018ac6a-aab1-80ff-a410-ef97961e9e97" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Including hand-calculated or unverified square footage numbers can lead to lawsuits and legal liability for misrepresentation.</li></ul></li></ul><ul id="4018ac6a-aab1-808d-ac08-f08686f202c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Triangular Lots<ul id="4018ac6a-aab1-807c-b0b3-c0688316bb10" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Value Consideration: Triangular-shaped lots are usually more valuable if the longer leg (base) abuts the street it is located on.</li></ul><ul id="4018ac6a-aab1-8090-a92b-f544fefa81f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: 1/2 x Base x Height = Area (or [Base x Height] / 2 = Area)</li></ul><ul id="4018ac6a-aab1-80b3-aeb0-fcc12df57ebf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Calculating the Area of a Triangle<ul id="4018ac6a-aab1-8064-a0bd-d4886a40568d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example Problem: Calculate the area of a triangular lot with a base of 54 ft. and a height of 80 ft.<figure id="4018ac6a-aab1-80da-9f50-d8bdf4b7342d" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%203.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%203.png"/></a></figure></li></ul><ul id="4018ac6a-aab1-808b-b1ef-d9cd08b49eb8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-8038-a4cb-e51a134acc99" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Plug the base and height into the formula.</li></ul><ul id="4018ac6a-aab1-8034-8518-eca3fa2c9dd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Multiply 1/2 x 54 ft. x 80 ft. = 2,160 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8008-b7a1-fe57432eea70" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: The area of the lot is 2,160 sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8053-af74-c47cf4ae8769" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Irregular Lots<ul id="4018ac6a-aab1-8027-9211-d9e69e5a0e4c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Homes and lots are rarely a single simple shape; they are usually a combination of different geometric shapes (such as rectangles, squares, and triangles).</li></ul><ul id="4018ac6a-aab1-80e3-ba8f-e0b62b9a7510" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Method for Calculating Area: Divide the irregularly shaped space or floor plan into smaller, standard geometric shapes.</li></ul><ul id="4018ac6a-aab1-8018-9228-d8e2aa948f95" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Total Area Formula: Total Area = Sum of the areas of all individual smaller shapes/rooms.<figure id="4018ac6a-aab1-80b6-8ec9-dd1269d59c04" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%204.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%204.png"><img style="width:480px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%204.png"/></a></figure></li></ul><ul id="4018ac6a-aab1-80e2-85a7-ff54c64289b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Calculating Area of Irregular Lots<figure id="4018ac6a-aab1-80a1-a453-fd0d704be9b2" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%205.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%205.png"><img style="width:384px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%205.png"/></a></figure><ul id="4018ac6a-aab1-8029-bdf8-c0233ba6b0d5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Strategy: Break the irregular shape into smaller, standard shapes (e.g., two rectangles), determine any missing side dimensions, calculate each area individually, and add the areas together.</li></ul><ul id="4018ac6a-aab1-8088-94a4-c539c3fbb8ee" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-80ca-82fe-eaeb59904c12" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Find missing dimensions and calculate the area of the first shape (top rectangle).<ul id="4018ac6a-aab1-804c-b34c-e32acb9fd1a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Find missing side length: 50 ft. - 30 ft. = 20 ft.</li></ul><ul id="4018ac6a-aab1-80d5-bcb9-e2498104932d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculate top rectangle area: 20 ft. x 25 ft. = 500 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-807a-8fb7-ca0f6cac298d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Calculate the area of the second shape (bottom rectangle).<ul id="4018ac6a-aab1-800c-a358-e817af12e59e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculate bottom rectangle area: 40 ft. x 30 ft. = 1,200 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8024-a90b-f19ebd8260e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 3: Add the individual areas together to find the total lot size.<ul id="4018ac6a-aab1-80c4-a195-c17bd7e3c7c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Total area: 500 sq. ft. + 1,200 sq. ft. = 1,700 sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8052-ae04-f5312e1c44d1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: The total area of the irregular lot is 1,700 sq. ft.<figure id="4018ac6a-aab1-804f-a640-ef9b9c736e57" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%206.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%206.png"><img style="width:384px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%206.png"/></a></figure></li></ul><ul id="4018ac6a-aab1-8020-8e77-de89ba2301b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">To find the total area of this irregular lot, calculate the area of the rectangle and the right triangle separately, then add them together:<ol type="1" id="4018ac6a-aab1-80d5-9ef3-db2e4c13e1d9" class="numbered-list" start="1" dir="auto"><li>Area of the Rectangle (Yellow):<br/>Area = 15 ft. x 36 ft. = 540 sq. ft.</li></ol><ol type="1" id="4018ac6a-aab1-80f9-a5b9-f268fb7cf27c" class="numbered-list" start="2" dir="auto"><li>Area of the Right Triangle (Pink):<br/>Area = 1/2 x 23 ft. x 24 ft. = 276 sq. ft.</li></ol><ol type="1" id="4018ac6a-aab1-8080-a709-cd773424f0d4" class="numbered-list" start="3" dir="auto"><li>Total Area:<br/>Total Area = 540 sq. ft. + 276 sq. ft. = 816 sq. ft.</li></ol></li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8070-9f04-d4ee84a20bef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Don&#x27;t Calculate a House&#x27;s Square Footage<ul id="4018ac6a-aab1-8025-ab76-ed5495c180d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Layout Complexity: Calculating a house&#x27;s square footage is much more complicated than basic area formulas because homes feature multiple corners, halls, and irregular layouts.</li></ul><ul id="4018ac6a-aab1-80c7-888f-f6c3581cd5ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Risk of Liability: License holders who incorrectly calculate a home&#x27;s square footage can be held legally liable for misrepresentation.</li></ul><ul id="4018ac6a-aab1-804f-a1a0-ed8f7d544388" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Best Practice: License holders should always search for, verify, and cite an official source for square footage rather than attempting to calculate it themselves.</li></ul></li></ul><ul id="4018ac6a-aab1-80c9-9503-c5e67b3eddc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Price Per Square Foot (PPSF)<ul id="4018ac6a-aab1-8060-8ae0-fdf6264cf7cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Definition &amp; Utility:<ul id="4018ac6a-aab1-80fd-8266-fcebf041a77f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Allows home shoppers to make direct &quot;apples-to-apples&quot; price comparisons between properties of different sizes.</li></ul><ul id="4018ac6a-aab1-809f-bc40-d33b2d1884ef" class="bulleted-list" dir="auto"><li style="list-style-type:square">Helps determine if a property is priced appropriately for its specific neighborhood.</li></ul><ul id="4018ac6a-aab1-8079-8b5b-fdc42cf3418f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seasoned agents often know the ballpark price per square foot for specific local neighborhoods.</li></ul></li></ul><ul id="4018ac6a-aab1-80ba-9351-c2e1ceef5337" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Asking Price / Total Square Feet = Price per Square Foot<ul id="4018ac6a-aab1-80d7-9517-ff39e115cd63" class="bulleted-list" dir="auto"><li style="list-style-type:square">Note: This same formula structure applies to finding price per square yard, price per acre, or price per unit (Asking Price / Total Units = Price per Unit).</li></ul></li></ul><ul id="4018ac6a-aab1-80dc-ae88-f8cfe01bfecd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice / Example:<ul id="4018ac6a-aab1-803b-a8b8-d36a268d59d5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scenario: Enrique paid $250,000 for a 1,500 sq. ft. home. Calculate the price per square foot.</li></ul><ul id="4018ac6a-aab1-809b-b459-cc6075190f31" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculation: $250,000 / 1,500 sq. ft. = $166.67 per sq. ft.</li></ul><ul id="4018ac6a-aab1-8037-a7dd-d8e4605aea97" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: Enrique paid $166.67 per sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8040-bb68-fc528c5e8017" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Kevin&#x27;s House<ul id="4018ac6a-aab1-80e6-b018-d7d410e8ff12" class="bulleted-list" dir="auto"><li style="list-style-type:square">Kevin wants a house near his office priced at less than $200 per square foot. He views a property listed at $252,000 with 1,105 sq. ft.</li></ul><ul id="4018ac6a-aab1-8099-a130-f060d05e2e6a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculation:<ul id="4018ac6a-aab1-8085-8336-d93ce2a9fd7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Formula: Asking Price / Total Square Feet = Price per Square Foot</li></ul><ul id="4018ac6a-aab1-805d-a44b-e649ca81936f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Equation: $252,000 / 1,105 sq. ft. = $228.05 per sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80fd-b79a-f66f288049a5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Outcome: At $228.05 per sq. ft., this house does NOT meet Kevin&#x27;s requirement of being under $200 per sq. ft.</li></ul><ul id="4018ac6a-aab1-806a-a890-da14d2a8d121" class="bulleted-list" dir="auto"><li style="list-style-type:square">Factors Influencing Price Per Square Foot: PPSF varies based on multiple property characteristics. For instance, a brand-new home generally commands a higher price per square foot because it is in superior condition and less likely to need immediate repairs.</li></ul></li></ul><ul id="4018ac6a-aab1-80a7-b688-ce72cd503511" class="bulleted-list" dir="auto"><li style="list-style-type:circle"> Math Practice: Solving for Total Asking Price / Rent<ul id="4018ac6a-aab1-80ae-bf37-f8c5ef0773ec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Total Square Feet x Price per Square Foot = Total Asking Price (or Total Rent)</li></ul><ul id="4018ac6a-aab1-8056-a7ac-d2db8bcac8f5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Math Practice / Example:<ul id="4018ac6a-aab1-8056-ac2d-d4bcc7d5aeeb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: A tenant wants to lease 1,500 sq. ft. of warehouse space at $3 per square foot per year. Calculate the total annual rent.</li></ul><ul id="4018ac6a-aab1-8078-b47a-cd88cd549193" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step-by-Step Solution:<ul id="4018ac6a-aab1-80e1-8407-c04c156c9841" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Step 1: Identify known variables (1,500 sq. ft. and $3 per sq. ft.).</li></ul><ul id="4018ac6a-aab1-809e-8210-ee9c5d517467" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Step 2: Multiply the total square footage by the price per square foot:<br/>1,500 sq. ft. x $3 = $4,500</li></ul></li></ul><ul id="4018ac6a-aab1-80ac-89e8-c8e93ea8d766" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Final Answer: The tenant would spend $4,500 per year to rent all of the warehouse space.</li></ul></li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8084-a778-fda2380d78fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Measuring the Volume of Structures<ul id="4018ac6a-aab1-80fa-a41c-d8cce337841e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Concept: While square footage measures 2D surface area (length x width), volume measures the total 3D space enclosed within a structure or container. Volume is measured in cubic feet.</li></ul><ul id="4018ac6a-aab1-8054-b5b7-df712c6ffbcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Length x Width x Height = Volume (in cubic feet)</li></ul><ul id="4018ac6a-aab1-807f-af92-fbbca82aab44" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice / Example:<ul id="4018ac6a-aab1-80fa-9849-e3b4a5a2c916" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scenario: Calculate the volume of a structure measuring 50 ft. long, 20 ft. wide, and 30 ft. high.</li></ul><ul id="4018ac6a-aab1-809f-a7ca-cb653b080760" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculation: 50 ft. x 20 ft. x 30 ft. = 30,000 cubic ft.<figure id="4018ac6a-aab1-80e1-8315-dc13ddc620f0" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%207.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%207.png"><img style="width:384px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%207.png"/></a></figure></li></ul></li></ul><ul id="4018ac6a-aab1-80c1-99d5-eae46f2f6fae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Square Feet vs. Cubic Feet Comparison:<ul id="4018ac6a-aab1-8085-8774-e019122dc39f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Surface Area (Square Footage): 50 ft. x 20 ft. = 1,000 sq. ft.</li></ul><ul id="4018ac6a-aab1-809c-960f-ed2d2c4c893d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total Volume (Cubic Feet): 50 ft. x 20 ft. x 30 ft. = 30,000 cubic ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8053-bd33-c6a1bc28eb9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real-World Application: While residential buyers primarily focus on square footage, measuring volume is vital in commercial real estate to calculate the storage capacity of warehouses, industrial spaces, or storage units.</li></ul></li></ul><ul id="4018ac6a-aab1-8094-8639-f2c49d76144c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Frontage (Front Feet) and Depth<ul id="4018ac6a-aab1-80d8-b0b1-ce1f08eb485a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The portion of a property&#x27;s boundary that directly borders a street or road.</li></ul><ul id="4018ac6a-aab1-80e8-8124-fd01d756570c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Front Foot: A unit of measurement for street frontage equal to one linear foot along the street.</li></ul><ul id="4018ac6a-aab1-80b5-94bc-e65a7f55f6f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Dimension Convention: Frontage is ALWAYS stated first in property dimensions.<ul id="4018ac6a-aab1-80d7-a098-eb229671df6b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example: In a property dimension written as 150 ft. x 313 ft., the frontage is 150 front feet (150 ft.), and the depth is 313 ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80ee-b84e-c4253a83de3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depth: The measurement of how far back a lot extends from the front street boundary to the rear boundary.<figure id="4018ac6a-aab1-8058-af70-ed4666765780" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%208.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%208.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%208.png"/></a></figure></li></ul><ul id="4018ac6a-aab1-80fd-acfb-c88878eeef65" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Calculating Front Feet<ul id="4018ac6a-aab1-8036-9e7a-ce57f1d70ff5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Concept: When you know the total square footage (area) and the depth of a rectangular lot, you can solve for the frontage by dividing the total area by the depth.</li></ul><ul id="4018ac6a-aab1-801e-ae63-d4029b4b1996" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Area / Depth = Frontage (Front Feet)</li></ul><ul id="4018ac6a-aab1-8050-964d-fbaf54a230d7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Math Practice / Example:<ul id="4018ac6a-aab1-80dd-af86-fb9a030330bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: A lot has a total area of 46,905 sq. ft. and a depth of 313 ft. Calculate its frontage.</li></ul><ul id="4018ac6a-aab1-80f5-807f-f09d221f71b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 46,905 sq. ft. / 313 ft. = 150 front feet</li></ul></li></ul><ul id="4018ac6a-aab1-80bf-b107-ecf91a37eb24" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: The lot has a frontage of 150 front feet.</li></ul></li></ul><ul id="4018ac6a-aab1-8047-a0c6-c59013077e6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Frontage of Multiple Lots<ul id="4018ac6a-aab1-80c7-a843-fb9c0e34a253" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Area / Depth = Frontage (Front Feet)</li></ul><ul id="4018ac6a-aab1-80fb-945f-dc127f9c0db5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example Problem: Three adjacent lots on Sleepy Street each have a depth of 130 ft. Calculate the frontage for each lot and the total combined frontage for the entire street.<ul id="4018ac6a-aab1-809a-9a07-d1dc02b4e9aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lot 1 Area: 19,500 sq. ft.</li></ul><ul id="4018ac6a-aab1-8095-b282-e6c35090838b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lot 2 Area: 18,070 sq. ft.</li></ul><ul id="4018ac6a-aab1-8008-8a8e-cc3ed99f4f73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lot 3 Area: 11,960 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80c3-9cbf-c01f4d977690" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-804c-850c-f48714dc6903" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Divide each lot&#x27;s square footage by the shared depth (130 ft.) to find individual frontages.<ul id="4018ac6a-aab1-80d3-b68e-e689095b7e45" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lot 1 Frontage: 19,500 sq. ft. / 130 ft. = 150 front feet</li></ul><ul id="4018ac6a-aab1-80f1-b384-eb8bde0174f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lot 2 Frontage: 18,070 sq. ft. / 130 ft. = 139 front feet</li></ul><ul id="4018ac6a-aab1-8091-b8cb-fdc8edc0da53" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lot 3 Frontage: 11,960 sq. ft. / 130 ft. = 92 front feet</li></ul></li></ul><ul id="4018ac6a-aab1-808a-bea3-c91fcbe7c6ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Add the individual frontages together to find the total street frontage.<ul id="4018ac6a-aab1-800a-a6a1-d6e1ad8a4f9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Total Frontage: 150 front feet + 139 front feet + 92 front feet = 381 front feet</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-802e-a325-f4df2e37a2cb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer:<ul id="4018ac6a-aab1-80f9-8559-e3ce179e9390" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Individual Frontages: Lot 1 = 150 front feet, Lot 2 = 139 front feet, Lot 3 = 92 front feet</li></ul><ul id="4018ac6a-aab1-8032-98dc-ff721284e849" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total Street Frontage: 381 front feet</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-80a7-a904-d6e98b58247e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Price Per Square Foot Scenario: Indecisive Iggy<ul id="4018ac6a-aab1-800c-a7e3-cfc8eb100311" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scenario Overview: Comparing three different properties for a client using Price Per Square Foot (PPSF) to make an &quot;apples-to-apples&quot; comparison.</li></ul><ul id="4018ac6a-aab1-80dc-b172-dc56fcb935cd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formula: Asking Price / Total Square Feet = Price per Square Foot</li></ul><ul id="4018ac6a-aab1-8010-a550-d4c86d8a7fe3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Comparison &amp; Calculations:<ul id="4018ac6a-aab1-80f2-b694-e47f2693064d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Roommate House:<ul id="4018ac6a-aab1-80de-8021-cec34ffdb2c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Features: 4 beds, 2.5 baths, 2,400 sq. ft.</li></ul><ul id="4018ac6a-aab1-80cd-bdf2-c7a8cde9a2c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Asking Price: $360,000</li></ul><ul id="4018ac6a-aab1-8051-98d3-de80aeb6b1c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: $360,000 / 2,400 sq. ft. = $150.00 per sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-805c-abb7-ce4c3e6b49fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Studio:<ul id="4018ac6a-aab1-808d-bbd2-d209326e6da1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Features: 1 bed, 1 bath, 700 sq. ft.</li></ul><ul id="4018ac6a-aab1-8008-94be-cd7a0228c6c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Asking Price: $110,000</li></ul><ul id="4018ac6a-aab1-8019-a392-d520dfcbfb07" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: $110,000 / 700 sq. ft. = $157.14 per sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8027-a2ab-e04597c18f7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Duplex:<ul id="4018ac6a-aab1-8006-bea2-f713964e3129" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Features: 2 beds, 2 baths, 1,300 sq. ft.</li></ul><ul id="4018ac6a-aab1-806e-95c9-caf251f7dc02" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Asking Price: $224,000</li></ul><ul id="4018ac6a-aab1-80ee-90ff-e84df6484306" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: $224,000 / 1,300 sq. ft. = $172.31 per sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-802e-8a32-f4cd8f971139" class="bulleted-list" dir="auto"><li style="list-style-type:square">Value Takeaway:<ul id="4018ac6a-aab1-805e-8f2d-f54d348870af" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lowest PPSF (Best value per square foot): The Roommate House at $150.00/sq. ft.</li></ul><ul id="4018ac6a-aab1-806a-b4ef-c1647d9c3ae7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mid-range PPSF: The Studio at $157.14/sq. ft.</li></ul><ul id="4018ac6a-aab1-807b-b64e-f719c58c3e78" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Highest PPSF: The Duplex at $172.31/sq. ft.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-80be-aaf2-cc00a47c497b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Applied Math Practice: Indecisive Iggy&#x27;s Property Requirements<ul id="4018ac6a-aab1-80e3-a4b5-c1aef1c6290a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculating Lot Frontage (Front Feet)<ul id="4018ac6a-aab1-8015-a920-df3b65bc02fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: Iggy needs to confirm if his 8,520 sq. ft. lot with a depth of 95 ft. has enough street frontage for a 20 ft. holiday display.</li></ul><ul id="4018ac6a-aab1-80e6-8ce9-f0b9e32810ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Formula: Total Square Footage / Depth = Frontage (Front Feet)</li></ul><ul id="4018ac6a-aab1-8086-a930-e02b7072244e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 8,520 sq. ft. / 95 ft. = 89.68 front feet</li></ul><ul id="4018ac6a-aab1-80db-a962-f5b263066736" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Outcome: The lot provides approximately 89.68 ft. of frontage, which is plenty of space.</li></ul></li></ul><ul id="4018ac6a-aab1-807e-b005-d09fa9fafd98" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculating Individual Room Square Footage (From Official Floor Plans)<ul id="4018ac6a-aab1-8052-942e-fbb87cce0b58" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Agent Rule: When evaluating individual room dimensions with clients, agents should rely on official floor plans created by professionals rather than taking or hand-calculating their own measurements.</li></ul><ul id="4018ac6a-aab1-80a2-907c-dbe9361abd82" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Requirement: Iggy wants bedrooms to be at least 170 sq. ft. to fit a king-sized bed.</li></ul><ul id="4018ac6a-aab1-80c3-93f7-dee0fb8fa5a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Room Calculations (Length x Width = Area):<ul id="4018ac6a-aab1-8009-ba95-e888536ff0c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Room 1: 14 ft. x 12.5 ft. = 175 sq. ft. (Exceeds 170 sq. ft.)</li></ul><ul id="4018ac6a-aab1-8012-a929-c859de51f575" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Room 2: 13 ft. x 13 ft. = 169 sq. ft. (1 sq. ft. under requirement, accepted by client)</li></ul><ul id="4018ac6a-aab1-8020-b194-da02cd20cc59" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Room 3: 15 ft. x 12 ft. = 180 sq. ft. (Exceeds 170 sq. ft.)</li></ul><ul id="4018ac6a-aab1-80f1-94fb-f1689a342511" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Room 4: 14 ft. x 13.5 ft. = 189 sq. ft. (Exceeds 170 sq. ft.)</li></ul></li></ul><ul id="4018ac6a-aab1-80e9-a0a5-e4e63c9a40d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Outcome: Three of the four bedrooms exceed 170 sq. ft., and the fourth is 169 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8050-9ffa-db6104afd791" class="bulleted-list" dir="auto"><li style="list-style-type:square">Comparing Storage Volume (Storage Unit vs. Storage Shed)<ul id="4018ac6a-aab1-80a5-b5b4-db17b4af43ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: Compare a 10 ft. x 10 ft. x 8 ft. storage unit against a 12 ft. x 8 ft. x 9 ft. outdoor shed to determine which has more capacity.</li></ul><ul id="4018ac6a-aab1-808d-82e0-ddce002b12aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Formula: Length x Width x Height = Volume (Cubic Feet)</li></ul><ul id="4018ac6a-aab1-8036-b9cd-c776f52ce1c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1 (Storage Unit Volume): 10 ft. x 10 ft. x 8 ft. = 800 cubic ft.</li></ul><ul id="4018ac6a-aab1-8055-9a91-f8e77fd2af1a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2 (Storage Shed Volume): 12 ft. x 8 ft. x 9 ft. = 864 cubic ft.</li></ul><ul id="4018ac6a-aab1-801b-ae66-c1f245954a3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 3 (Compare): 864 cubic ft. &gt; 800 cubic ft.</li></ul><ul id="4018ac6a-aab1-8058-813b-fcf74f946d86" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Outcome: The backyard storage shed has 64 cubic ft. more capacity than the storage unit.</li></ul></li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8046-ab47-ec41810f6705" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Acreage (Land Size)<ul id="4018ac6a-aab1-807f-a9a0-e9f22efdec87" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Definition: A unit of area measurement used to quantify the size of land.</li></ul><ul id="4018ac6a-aab1-808b-8d77-dad0c12150bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Key Conversion Factor: 1 acre = 43,560 sq. ft.</li></ul><ul id="4018ac6a-aab1-80fb-8117-e27e21307504" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Workshop : Jenny&#x27;s Farm<figure id="4018ac6a-aab1-8086-9482-d0e2dd2c1e9e" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%209.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%209.png"><img style="width:528px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%209.png"/></a></figure><ul id="4018ac6a-aab1-8076-9db1-defc8942c2ef" class="bulleted-list" dir="auto"><li style="list-style-type:square">Square Footage Calculation:<ul id="4018ac6a-aab1-8076-99fc-e371ba0c0026" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Formula: Length x Width = Total Square Feet</li></ul><ul id="4018ac6a-aab1-8034-92d9-c99161123296" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 1,386 ft. x 451 ft. = 625,086 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-804a-a553-f98d913d8bd2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Acreage Conversion:<ul id="4018ac6a-aab1-807f-8533-d62242442f95" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Formula: Total Square Feet / 43,560 sq. ft. = Acreage</li></ul><ul id="4018ac6a-aab1-805b-8924-fe48d580d0c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 625,086 sq. ft. / 43,560 sq. ft. = 14.35 acres</li></ul></li></ul><ul id="4018ac6a-aab1-802f-ac32-c90749d587fa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Summary: Jenny&#x27;s farm measures 625,086 sq. ft., which converts to 14.35 acres.</li></ul></li></ul><ul id="4018ac6a-aab1-8003-baf1-e3592a171bcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Price per Square Yard (Blake&#x27;s Lot)<ul id="4018ac6a-aab1-8056-ac12-e0cc06b2d994" class="bulleted-list" dir="auto"><li style="list-style-type:square">Given Information:<ul id="4018ac6a-aab1-80c0-b84c-c9462d762270" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lot Size: 2.5 acres</li></ul><ul id="4018ac6a-aab1-802f-8de2-c165f93e0dc2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total Purchase Price: $500,000</li></ul></li></ul><ul id="4018ac6a-aab1-8032-a39b-f3f6cf980643" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-8057-9b1f-fc2fe67b9f2c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Convert acres to square feet.<ul id="4018ac6a-aab1-802b-bca0-e6fefcf4bb85" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Acres x 43,560 = Total Square Feet</li></ul><ul id="4018ac6a-aab1-803c-bfbc-d37e39b952b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: 2.5 acres x 43,560 sq. ft. = 108,900 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-8025-9a12-c65ddd2a436b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Convert square feet to square yards.<ul id="4018ac6a-aab1-8099-a1ad-fbfd72ed0dd0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Total Square Feet / 9 = Total Square Yards</li></ul><ul id="4018ac6a-aab1-8061-8726-c0a03559b239" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: 108,900 sq. ft. / 9 = 12,100 sq. yds.</li></ul></li></ul><ul id="4018ac6a-aab1-8093-ac67-c96e20622d05" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 3: Calculate price per square yard.<ul id="4018ac6a-aab1-809d-8056-d43ea80cd6a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Total Price / Total Square Yards = Price per Square Yard</li></ul><ul id="4018ac6a-aab1-8068-99a6-fe686fa2785d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: $500,000 / 12,100 sq. yds. = $41.32 per sq. yd.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8010-adaf-e6c30a5c97c7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: Blake paid $41.32 per square yard.</li></ul></li></ul><ul id="4018ac6a-aab1-8009-b842-ea6abfab717c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice: Price per Acre (Sophie&#x27;s Lot)<ul id="4018ac6a-aab1-80ec-b617-f5e488da174a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Given Information:<ul id="4018ac6a-aab1-80e5-8033-c88c84cd331c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lot Dimensions: 300 ft. wide x 500 ft. long</li></ul><ul id="4018ac6a-aab1-8078-9fc5-ce54cb8b750f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total Purchase Price: $275,000</li></ul></li></ul><ul id="4018ac6a-aab1-80d4-b7ef-f600f7ef812a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Step-by-Step Solution:<ul id="4018ac6a-aab1-8068-8b3c-e0bf3863b801" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 1: Calculate the total square footage of the lot.<ul id="4018ac6a-aab1-804b-881e-f1a1d2d85b19" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Length x Width = Total Square Feet</li></ul><ul id="4018ac6a-aab1-80f4-a7b2-cb6476f22083" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: 300 ft. x 500 ft. = 150,000 sq. ft.</li></ul></li></ul><ul id="4018ac6a-aab1-808d-8571-fcaec9c3f8ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 2: Convert square footage to acreage.<ul id="4018ac6a-aab1-80b7-a2d1-f58a75763a98" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Total Square Feet / 43,560 = Total Acres</li></ul><ul id="4018ac6a-aab1-8056-b5e5-ee886d754598" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: 150,000 sq. ft. / 43,560 sq. ft. = 3.44 acres</li></ul></li></ul><ul id="4018ac6a-aab1-8084-828c-c750ddd39429" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step 3: Calculate the price per acre.<ul id="4018ac6a-aab1-80b2-bf40-c66d363883bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formula: Total Price / Total Acres = Price per Acre</li></ul><ul id="4018ac6a-aab1-80d0-a53e-df2d17531846" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Calculation: $275,000 / 3.44 acres = $79,941.86 per acre</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-806f-87e9-e0a9d09aa784" class="bulleted-list" dir="auto"><li style="list-style-type:square">Final Answer: Sophie paid $79,941.86 per acre.</li></ul></li></ul></li></ul><ul id="4018ac6a-aab1-8033-a572-fc967bfa840d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Math Practice: Finding Perimeter<ul id="4018ac6a-aab1-80eb-a550-c4589d7aa028" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Concept &amp; Definition:<ul id="4018ac6a-aab1-80d4-b1cf-c0f06afae59a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Perimeter is the total distance around the outside boundary of a shape, calculated by adding together the lengths of all its sides.</li></ul><ul id="4018ac6a-aab1-800c-84ec-c3bcc6950f47" class="bulleted-list" dir="auto"><li style="list-style-type:square">In real estate, perimeter defines the complete outer boundary of a property.</li></ul></li></ul><ul id="4018ac6a-aab1-80d1-a97b-d592429151be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formulas:<ul id="4018ac6a-aab1-80e6-81b6-fdebde8f2981" class="bulleted-list" dir="auto"><li style="list-style-type:square">General Formula: Side 1 + Side 2 + Side 3 + Side 4 = Perimeter</li></ul><ul id="4018ac6a-aab1-80f0-8f1f-e23c02edbdfe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Square Formula: 4 x Side Length = Perimeter</li></ul><ul id="4018ac6a-aab1-8005-9eae-d9054ac0a402" class="bulleted-list" dir="auto"><li style="list-style-type:square">Rectangle Formula: (2 x Length) + (2 x Width) = Perimeter</li></ul></li></ul><ul id="4018ac6a-aab1-8083-b94c-f2ad03989910" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Math Practice / Examples:<ul id="4018ac6a-aab1-80e7-af6b-ecd08f121780" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example 1: A Square Lot<figure id="4018ac6a-aab1-80d2-9fef-efc0f29172fe" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%2010.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%2010.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%2010.png"/></a></figure><ul id="4018ac6a-aab1-8008-9ac8-f74137e82747" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: Calculate the perimeter of a square lot measuring 100 ft. on each of its four sides.</li></ul><ul id="4018ac6a-aab1-80ee-b92f-c5ee9949d2f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 100 ft. + 100 ft. + 100 ft. + 100 ft. = 400 ft.</li></ul><ul id="4018ac6a-aab1-80f3-b423-d3b1057d5c2f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Final Answer: The perimeter of the square lot is 400 ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80a0-8b37-fd780c003b02" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example 2: A Rectangular Lot<figure id="4018ac6a-aab1-8004-b8e7-d0a5b4b71a06" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%2011.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%2011.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%2011.png"/></a></figure><ul id="4018ac6a-aab1-8061-9f01-caf75584992d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario: Calculate the perimeter of a rectangular lot with a length of 200 ft. and a width of 50 ft.</li></ul><ul id="4018ac6a-aab1-80fe-8941-e361ee7dc421" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calculation: 200 ft. + 200 ft. + 50 ft. + 50 ft. = 500 ft.</li></ul><ul id="4018ac6a-aab1-80e9-86a6-e423590e4664" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Final Answer: The perimeter of the rectangular lot is 500 ft.</li></ul></li></ul><ul id="4018ac6a-aab1-80e5-a378-f705257e4b40" class="bulleted-list" dir="auto"><li style="list-style-type:square">Example 3: Perry&#x27;s Lot<figure id="4018ac6a-aab1-8031-a4cf-cfa808880583" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%2012.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%2012.png"><img style="width:336px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%2012.png"/></a></figure><ul id="4018ac6a-aab1-80b3-8dae-ca45be1607ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Concept: To find the perimeter of an irregular lot, sum the lengths of all individual boundary sides around the outer perimeter.</li></ul><ul id="4018ac6a-aab1-80ce-9255-eae2e987fb6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Given Dimensions: 50 ft., 30 ft., 30 ft., 20 ft., 20 ft., and 50 ft.</li></ul><ul id="4018ac6a-aab1-8035-84cb-c19ae3c484b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Step-by-Step Solution:<ul id="4018ac6a-aab1-80be-be31-c85460ee0730" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Step 1: Identify all side lengths surrounding the property.</li></ul><ul id="4018ac6a-aab1-8056-a6d9-df79f56efb0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Step 2: Add all side lengths together:<br/>50 ft. + 30 ft. + 30 ft. + 20 ft. + 20 ft. + 50 ft. = 200 ft.</li></ul></li></ul><ul id="4018ac6a-aab1-803f-aff3-ed93c808c7b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Final Answer: The total perimeter of Perry&#x27;s irregular lot is 200 ft.</li></ul></li></ul></li></ul></li></ul><p id="4018ac6a-aab1-80be-960f-efce810d3dfe" class="" dir="auto">
+</p></div><div id="4018ac6a-aab1-808a-83c6-db137aed1a88" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4018ac6a-aab1-8060-8010-fb20d406efcd" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4018ac6a-aab1-80e3-b298-edd64f888d16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Area - </strong>Area is the most common measurement you will see in real estate.<ul id="4018ac6a-aab1-80a6-b350-e25917f3d398" class="bulleted-list" dir="auto"><li style="list-style-type:circle"> <em>Length x Width = Area</em></li></ul></li></ul><ul id="4018ac6a-aab1-80f0-a1ae-ee87076cfb16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Measurement Conversions</strong><figure id="4018ac6a-aab1-80f8-917e-c12a8785c287" class="image" data-notion-image="Chapter%203%20-%20Measuring%20Real%20Property/image%2013.png" dir="ltr"><a href="Chapter%203%20-%20Measuring%20Real%20Property/image%2013.png"><img style="width:384px" src="Chapter%203%20-%20Measuring%20Real%20Property/image%2013.png"/></a></figure></li></ul><ul id="4018ac6a-aab1-804a-8b1c-eaaf31c2d88c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Important Formulas<ul id="4018ac6a-aab1-80dc-914c-d8637a648429" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Price per square foot: </strong><em>Asking price ÷ Total sq. ft. = Price per sq. ft.</em></li></ul><ul id="4018ac6a-aab1-808a-b5d5-f921b539bdca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Area of a triangle:</strong> <em>1⁄2 x Base x Height = Area</em></li></ul><ul id="4018ac6a-aab1-802d-b656-fc8639a82eb8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Volume:</strong> <em>Length x Width x Height = Volume</em></li></ul><ul id="4018ac6a-aab1-80a1-99a7-f031e4506301" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Perimeter</strong>: Add together the length of each side of the shape.</li></ul></li></ul><p id="4018ac6a-aab1-806f-b860-c7e31aa7f081" class="" dir="auto">
+</p></div></div><p id="4018ac6a-aab1-802c-a34a-f49cb4460c44" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

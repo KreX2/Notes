@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Taxes and Real Estate</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8016-8d21-ded7b4346453" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Taxes and Real Estate</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4058ac6a-aab1-8014-b38f-e81d77200761" class="column-list" data-notion-column-list="" dir="auto"><div id="4058ac6a-aab1-804c-b8be-fe7ee189b499" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4058ac6a-aab1-800b-af77-f440be5d1de7" class="" dir="auto"><strong>Ad Valorem Property Taxes</strong><div class="indented"><ul id="4058ac6a-aab1-809e-8319-d51d6678bf04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Local Level Levy:</strong> Property taxes are levied exclusively at the local level to fund essential municipal services, including public schools, police and fire departments, street maintenance, and local public health programs.</li></ul><ul id="4058ac6a-aab1-80a3-b161-c3426a83f573" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ad Valorem Basis:</strong> &quot;According to value&quot;; annual tax bills are calculated directly from a property&#x27;s assessed monetary value.</li></ul></div></p><ul id="4058ac6a-aab1-80d5-bed3-eca2de300a84" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Tax Assessment &amp; Ratios</strong><ul id="4058ac6a-aab1-8020-a1f2-fa34ccd151e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assessment:</strong> The official determination of a property&#x27;s value for tax purposes, conducted by a local tax assessor using local market values and sales data.</li></ul><ul id="4058ac6a-aab1-80e9-abaa-d77203180413" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reassessment Schedule:</strong> Property values are updated periodically (annually or every few years depending on local law).</li></ul><ul id="4058ac6a-aab1-80ab-a3d5-e39b5d76d036" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assessment Ratio (Partial Assessment):</strong> Local statutory percentage applied to the appraised market value to establish the taxable portion of the property.</li></ul><ul id="4058ac6a-aab1-80b1-963f-c0aa7e1f67b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Assessment Ratio:</strong> Residential real estate in Tennessee is legally assessed at <strong>25%</strong> of its appraised market value.</li></ul></li></ul><ul id="4058ac6a-aab1-8065-9ffa-e679ee1da494" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Base, Tax District, and Tax Rate</strong><ul id="4058ac6a-aab1-802a-a932-d44a20ab6dc1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax District:</strong> The designated geographic area where a local governmental entity has the statutory authority to levy taxes.</li></ul><ul id="4058ac6a-aab1-80af-96a0-f23b0d3f06ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Base:</strong> The total aggregate sum of all taxable assessed real estate values located within a specific tax district.</li></ul><ul id="4058ac6a-aab1-80b0-b271-e956552c91d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Rate:</strong> The specific percentage set by local tax authorities and applied against a property&#x27;s assessed value to determine tax liability.</li></ul></li></ul><ul id="4058ac6a-aab1-80ea-9f90-ef086d3d62b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Formulas </strong><ul id="4058ac6a-aab1-808a-a5d2-e48a5ce27180" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Assessed Value = Appraised Market Value x Assessment Ratio</li></ul><ul id="4058ac6a-aab1-80d1-8f6e-dfb1de647523" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tax Liability = Assessed Value x Tax Rate</li></ul><ul id="4058ac6a-aab1-8033-8832-dd6cb675dd2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Combined Formula = (Appraised Market Value x Assessment Ratio) x Tax Rate</li></ul><ul id="4058ac6a-aab1-80fa-aa94-f5d26b10fd26" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee Residential Example = (Appraised Market Value x 0.25) x Tax Rate</li></ul></li></ul><ul id="4058ac6a-aab1-8032-95d2-c5fadf479c76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Assessor</strong><ul id="4058ac6a-aab1-80b1-954c-ddfb126dc399" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A public official authorized to evaluate real estate properties and establish assessed values for local property tax levying.</li></ul><ul id="4058ac6a-aab1-80a7-ae58-ce114686a31e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bulk Assessments:</strong> Groups of properties within a district assessed collectively using uniform percentage adjustments (e.g., applying a blanket 1% valuation increase across a neighborhood).</li></ul><ul id="4058ac6a-aab1-80bf-90db-f7d34da431e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Individual Assessments:</strong> Specific properties appraised individually to account for distinct features or recent structural modifications.</li></ul><ul id="4058ac6a-aab1-80de-b5dc-f892a2b94009" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reassessment Schedules:</strong> Reassessment intervals are determined by local and state statutory schedules.</li></ul></li></ul><ul id="4058ac6a-aab1-8076-8ea6-c40aa824a4db" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Records and Administrative Responsibilities</strong><ul id="4058ac6a-aab1-80c6-bb59-dae3a66838e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Ownership &amp; Parcel Location:</strong> Maintaining up-to-date indexes of property owners, parcel boundaries, and exact physical locations.</li></ul><ul id="4058ac6a-aab1-80da-ae9a-f95b3a8148cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Maps:</strong> Developing and maintaining official county/municipal tax maps.</li></ul><ul id="4058ac6a-aab1-8024-a6d8-efb324615fe9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Exemptions:</strong> Tracking active statutory, religious, charitable, or homeowner tax exemptions.</li></ul><ul id="4058ac6a-aab1-80ef-9e54-d8d342986803" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Improvements:</strong> Monitoring building permits and structural modifications that require reassessment.</li></ul><ul id="4058ac6a-aab1-8080-bb1e-e1a9dc5c218c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning &amp; Land Use:</strong> Recording applicable zoning classifications and land-use codes for each parcel.</li></ul></li></ul><ul id="4058ac6a-aab1-807f-9dbe-ffd8a95f2698" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Assessments: </strong><ul id="4058ac6a-aab1-8054-9721-ca21e59fd381" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Specific taxes levied against homeowners in a designated neighborhood or district to fund local public infrastructure improvements that directly benefit those properties.</li></ul><ul id="4058ac6a-aab1-80d2-8416-ccc898e40574" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Temporary Duration:</strong> Unlike general ad valorem property taxes, special assessments are not permanent; the tax obligation terminates once the improvement project is fully paid for.</li></ul><ul id="4058ac6a-aab1-80f7-b5a0-ef7ca5089e1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eligible Projects:</strong> Common projects include sidewalk construction/repairs, street lighting, curb and gutter installations, street paving, sewer lines, and local parks.</li></ul></li></ul><ul id="4058ac6a-aab1-80cc-ae56-ef6a23e081c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Voluntary vs. Involuntary Assessments</strong><ul id="4058ac6a-aab1-8005-9a46-d9b37ac6a5e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Involuntary:</strong> Mandated by local government entities without requiring individual homeowner consent.</li></ul><ul id="4058ac6a-aab1-8020-a632-c639e451dc9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voluntary:</strong> Requested by property owners who formally petition the local municipality for a specific community improvement.</li></ul></li></ul><ul id="4058ac6a-aab1-80fb-a3aa-e23deb15fe3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cost-Allocation &amp; Front-Footage Basis</strong><ul id="4058ac6a-aab1-80d3-947c-cadbe10aa44d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Benefit Distribution:</strong> Project expenses are divided among affected property owners based on the direct benefit received.</li></ul><ul id="4058ac6a-aab1-8042-adcc-d7a659b63537" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Front-Footage Rule:</strong> Charges are frequently calculated according to the property&#x27;s linear front footage (the width of the property lot along the improved street) rather than lot depth or total acreage.</li></ul></li></ul><ul id="4058ac6a-aab1-8043-90f8-e2b44d01c71b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payment Terms &amp; Lien Consequences</strong><ul id="4058ac6a-aab1-808f-99ae-ecdcb70f6053" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Options:</strong> Typically billed and paid in installments over several years alongside property tax bills, with the option to pay the balance off in full at any time.</li></ul><ul id="4058ac6a-aab1-80cc-b6ef-e5fca70c76a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Lien &amp; Foreclosure Risk:</strong> Nonpayment results in a statutory tax lien being placed on the defaulting owner&#x27;s real estate, which can eventually lead to judicial foreclosure if unpaid.</li></ul></li></ul><ul id="4058ac6a-aab1-80c8-ba9f-c2e5321825ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full vs. Partial Assessment</strong><ul id="4058ac6a-aab1-80bf-9472-fc1ceb5fe23d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Assessment:</strong> The local tax rate is applied to 100% of a property&#x27;s appraised market value.</li></ul><ul id="4058ac6a-aab1-8029-8b25-c2df892a0a36" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Partial Assessment (Tennessee System):</strong> The local tax rate is applied only to a statutory percentage (assessment ratio) of a property&#x27;s appraised value, reducing taxable value.</li></ul></li></ul><ul id="4058ac6a-aab1-806f-b085-def398e379b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Assessment Ratios</strong><ul id="4058ac6a-aab1-8028-90ac-f7d0194ccbca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Residential &amp; Agricultural/Farm Property:</strong> Assessed at <strong>25%</strong> of appraised market value.</li></ul><ul id="4058ac6a-aab1-805d-8bb3-d3f648b7df45" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commercial &amp; Industrial Property:</strong> Assessed at <strong>40%</strong> of appraised market value.</li></ul></li></ul><ul id="4058ac6a-aab1-80fb-8a77-de15a6334386" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Determining Tax Rates &amp; The Tax Levy</strong><ul id="4058ac6a-aab1-8094-9228-f756ab134711" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Base:</strong> Total aggregate assessed value of all taxable real estate within a municipality or tax district.</li></ul><ul id="4058ac6a-aab1-803f-bc25-c2801d869cd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Levy:</strong> The specific dollar amount a government entity needs to raise through property taxes to balance its budget after subtracting all alternative revenue sources (e.g., sales taxes, user fees, grants).</li></ul><ul id="4058ac6a-aab1-8027-85d2-ee0e4fa663fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Rate Formula:</strong> Tax Rate = Tax Levy / Tax Base</li></ul></li></ul><ul id="4058ac6a-aab1-80cb-bd8d-f9a2a5b0d3ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Millage Rates (Mills)</strong><ul id="4058ac6a-aab1-80b3-9ad4-e8f49229760d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Tax rates expressed in mills rather than percentages. A mill represents 1/1,000th of a dollar ($0.001), or $1 of tax for every $1,000 of assessed value.</li></ul><ul id="4058ac6a-aab1-8048-9684-e3be30ddbb2e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Converting Mills to Percentage:</strong> Divide the millage rate by 10 (or move the decimal point one place to the left). For example, 20 mills = 2.0% tax rate.</li></ul></li></ul><ul id="4058ac6a-aab1-8032-b3ea-d9bceb339126" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Formulas </strong><ul id="4058ac6a-aab1-80fe-9901-cc535b4a7daf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Assessed Value = Appraised Value x Assessment Ratio</li></ul><ul id="4058ac6a-aab1-80fa-b466-ff30486c5038" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tax Levy = Total Municipal Budget - Non-Property Tax Revenue</li></ul><ul id="4058ac6a-aab1-8040-83da-d1389b522671" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tax Rate = Tax Levy / Tax Base</li></ul><ul id="4058ac6a-aab1-804c-ae81-da69dca386ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tax Liability = Assessed Value x Tax Rate</li></ul><ul id="4058ac6a-aab1-8097-909e-dcd9ebe1860b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tax Liability (Millage) = (Assessed Value / 1,000) x Millage Rate</li></ul></li></ul><ul id="4058ac6a-aab1-8047-a347-fe27361904ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Tax Calculation: Two-Step Methodology</strong><ul id="4058ac6a-aab1-80ae-9591-dd9199620ec7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Determine Taxable Assessed Value</strong><ul id="4058ac6a-aab1-80b0-814c-fe8e5684b382" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formula:</strong> Appraised Market Value x Assessment Ratio = Taxable Assessed Value</li></ul><ul id="4058ac6a-aab1-8088-b477-da2053c88579" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Residential Application:</strong> Residential property is assessed at a statutory 25% (0.25) ratio.</li></ul><ul id="4058ac6a-aab1-800e-be24-cfed83402cdf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example Calculation:</strong> $250,000 Appraised Value x 0.25 Assessment Ratio = $62,500 Taxable Assessed Value.</li></ul></li></ul><ul id="4058ac6a-aab1-802f-a13d-ce51aaac1238" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Calculate Annual Property Tax Amount</strong><ul id="4058ac6a-aab1-80d0-9972-c5f167e7ff28" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formula:</strong> Taxable Assessed Value x Local Tax Rate = Total Tax Owed</li></ul><ul id="4058ac6a-aab1-8083-bda7-e127d231349d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example Calculation (using an 8% tax rate):</strong> $62,500 Taxable Assessed Value x 0.08 Tax Rate = $5,000 Total Annual Tax Owed.</li></ul></li></ul><ul id="4058ac6a-aab1-8045-af11-c2c256fb1589" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Formulas </strong><ul id="4058ac6a-aab1-8087-96d2-eeaf1ae4f6ac" class="bulleted-list" dir="auto"><li style="list-style-type:square">Taxable Assessed Value = Appraised Market Value x Assessment Ratio</li></ul><ul id="4058ac6a-aab1-80fc-ade9-c731e6b533bd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total Property Tax Owed = Taxable Assessed Value x Local Tax Rate</li></ul><ul id="4058ac6a-aab1-80a2-af04-fce4665d133b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Combined Calculation = (Appraised Market Value x Assessment Ratio) x Local Tax Rate</li></ul><ul id="4058ac6a-aab1-804f-89bf-edb3ba2ec510" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tennessee Residential Formula = (Appraised Market Value x 0.25) x Local Tax Rate</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80fc-b44d-e903b34e0c3b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Tax Assessment Appeals: Scope &amp; Valid Grounds</strong><ul id="4058ac6a-aab1-8054-b231-c89dd500c073" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Administrative Appeal:</strong> Property owners have the legal right to challenge a tax assessor&#x27;s valuation through an established administrative appeal process.</li></ul><ul id="4058ac6a-aab1-8020-9724-d0814d0508a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Valid Grounds for Appeal:</strong><ul id="4058ac6a-aab1-8045-b909-ed98a5554035" class="bulleted-list" dir="auto"><li style="list-style-type:square">Over-valuation of the property&#x27;s market value.</li></ul><ul id="4058ac6a-aab1-8085-87b6-c1d545cfdd3e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unfair or disproportionate assessment relative to comparable local properties.</li></ul><ul id="4058ac6a-aab1-80d6-a1d9-d3bb8f7dd7df" class="bulleted-list" dir="auto"><li style="list-style-type:square">Misclassification of property type (e.g., assessed as commercial instead of residential).</li></ul><ul id="4058ac6a-aab1-80cc-be71-f5d5d4938a6f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unlawful, unconstitutional, or improper assessment procedures.</li></ul></li></ul><ul id="4058ac6a-aab1-8000-a69c-c031515a71f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Burden of Proof:</strong> Appeals must be supported by objective market evidence (such as recent sales data and assessed values of similar nearby properties), not merely an owner&#x27;s desire to reduce tax liability.</li></ul></li></ul><ul id="4058ac6a-aab1-808e-acb6-eff4c23a4dca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Board of Equalization &amp; Appeals Hierarchy</strong><ul id="4058ac6a-aab1-80ca-9e79-d82f8d7fc2d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose of Board of Equalization:</strong> Ensures all properties within a jurisdiction are assessed fairly, equitably, and strictly in accordance with state and local tax laws.</li></ul><ul id="4058ac6a-aab1-80c3-ac43-f3f449eccb0f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sequential Administrative Appeals Pathway:</strong><ol type="1" id="4058ac6a-aab1-80ae-bb05-d59b46e3964e" class="numbered-list" start="1" dir="auto"><li><strong>County Board of Equalization:</strong> The initial administrative body that hears appeals challenging a county tax assessor&#x27;s valuation.</li></ol><ol type="1" id="4058ac6a-aab1-80e9-a881-d1c932f2b54a" class="numbered-list" start="2" dir="auto"><li><strong>Administrative Law Judge (ALJ):</strong> Reviews cases if the property owner or taxing entity is unsatisfied with the county board&#x27;s ruling.</li></ol><ol type="1" id="4058ac6a-aab1-807c-8051-ecd1776ef543" class="numbered-list" start="3" dir="auto"><li><strong>State Assessment Appeals Commission:</strong> The intermediate state-level review body following an ALJ determination.</li></ol><ol type="1" id="4058ac6a-aab1-80a0-9eb9-dfd949748b2a" class="numbered-list" start="4" dir="auto"><li><strong>State Board of Equalization:</strong> The final administrative appellate authority for property tax assessment disputes.</li></ol></li></ul></li></ul><ul id="4058ac6a-aab1-8016-9eaf-dd2cabae9d79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Tax Liens: Definition &amp; Characteristics</strong><ul id="4058ac6a-aab1-80a3-91a9-e871d278cfe4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A legal encumbrance placed against real estate due to unpaid property taxes.</li></ul><ul id="4058ac6a-aab1-8042-aa40-de3311b0c70c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specific Lien:</strong> Attaches exclusively to one specific parcel of real property (unlike general liens, which attach to all real and personal property of a debtor).</li></ul><ul id="4058ac6a-aab1-805f-b868-e9e2bc9da6f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Involuntary Lien:</strong> Created automatically by statutory law without requiring the property owner&#x27;s consent (unlike voluntary liens, such as mortgage loans).</li></ul><ul id="4058ac6a-aab1-80b7-ae70-ee623ab39d3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unrecorded Lien:</strong> Valid and enforceable by operation of law without requiring recordation in public county land records.</li></ul></li></ul><ul id="4058ac6a-aab1-807c-953b-c44346ce4fe2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lien Priority in Foreclosure</strong><ul id="4058ac6a-aab1-805f-9e89-f32ecec169c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Super-Priority Status:</strong> Ad valorem property tax liens hold top legal priority over all other encumbrances on the property.</li></ul><ul id="4058ac6a-aab1-8046-a27f-fa927cf17628" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Order of Distribution:</strong><ol type="1" id="4058ac6a-aab1-805f-ad50-d00a43da65a2" class="numbered-list" start="1" dir="auto"><li>Ad valorem property tax liens (highest priority)</li></ol><ol type="1" id="4058ac6a-aab1-805c-bb70-dc13cedcbf76" class="numbered-list" start="2" dir="auto"><li>Special assessment liens</li></ol><ol type="1" id="4058ac6a-aab1-805d-9e66-fc1c913be18a" class="numbered-list" start="3" dir="auto"><li>All other liens (mortgages, mechanics&#x27; liens, judgment liens) in the order they were recorded (&quot;first in time, first in right&quot;)</li></ol></li></ul><ul id="4058ac6a-aab1-8002-b69e-d170d1ae993e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Impact:</strong> Because property tax liens take precedence over first mortgages, mortgage lenders commonly require borrowers to pay monthly property tax escrow contributions.</li></ul></li></ul><ul id="4058ac6a-aab1-80fc-8ee1-e8526f5a72d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Methods for Removing a Tax Lien</strong><ul id="4058ac6a-aab1-804a-baa6-c194370758aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transfer Restriction:</strong> Encumbered property cannot be sold or transferred with marketable title until the tax lien is officially extinguished.</li></ul><ul id="4058ac6a-aab1-80fc-af58-fafef6083b41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Resolution Pathways:</strong><ul id="4058ac6a-aab1-8017-b37e-e155b9020363" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Full Satisfaction:</strong> Paying all delinquent taxes, statutory penalties, accrued interest, and associated fees in full.</li></ul><ul id="4058ac6a-aab1-80d4-8997-e537b3fe6bef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tax Sale:</strong> Transferring property title to a purchaser through a public tax foreclosure auction.</li></ul><ul id="4058ac6a-aab1-807c-9dfb-d842338e157b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Invalidation:</strong> Proving a administrative error or legal omission that legally invalidates the assessment or lien.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-802f-b49f-f1e0879c71ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Lawsuit &amp; Legal Notice</strong><ul id="4058ac6a-aab1-8019-a9be-d789ca6895fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Suit:</strong> The county initiates a formal judicial tax lawsuit against delinquent property owners, serving official notice via personal service or certified mail.</li></ul><ul id="4058ac6a-aab1-80b2-a59f-c647798b291d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Auction Notification:</strong> Official notice of the upcoming tax auction must be publicly posted or published in a local newspaper as ordered by the court. All owners and parties with an recorded legal interest are notified via certified mail.</li></ul><ul id="4058ac6a-aab1-805a-bc3c-f70b210a532b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right to Cure:</strong> Property owners retain the option to pay all delinquent taxes, accrued interest, and administrative fees prior to the sale to cure the delinquency and cancel the auction.</li></ul></li></ul><ul id="4058ac6a-aab1-80b1-acd6-c1b24a63363d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Sale Auction</strong><ul id="4058ac6a-aab1-8096-ab22-fa33f0151eb9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Auction:</strong> Held by the county if the delinquency remains uncured prior to the scheduled sale date.</li></ul><ul id="4058ac6a-aab1-80bf-b38c-cb9f86dba474" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>County Credit Bid:</strong> If no private buyers bid on the parcel, the county enters a bid on behalf of the taxing authority to secure the tax debt.</li></ul></li></ul><ul id="4058ac6a-aab1-80a7-90a8-cc2c172ad65d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statutory Right of Redemption</strong><ul id="4058ac6a-aab1-8044-b084-dc398afcbb63" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A legal statutory right allowing former property owners (or qualifying lienholders) to reclaim title to the real estate within a designated timeframe following a tax sale.</li></ul><ul id="4058ac6a-aab1-802e-9c29-f1c51cbdb11f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Redemption Period:</strong> Typically <strong>one year</strong> from the entry of the court order confirming the sale, though statutory changes allow shorter periods (e.g., 90 days or 30 days) depending on the duration of tax delinquency or property abandonment status.</li></ul><ul id="4058ac6a-aab1-80fc-a8ef-ce4c5521f9a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Redemption Calculation:</strong> To redeem the property, the owner must pay:<ul id="4058ac6a-aab1-80ac-be06-c4a146adf7b5" class="bulleted-list" dir="auto"><li style="list-style-type:square">All back taxes, statutory penalties, accrued interest, and court costs.</li></ul><ul id="4058ac6a-aab1-80fe-b0d0-def0acf2c6fe" class="bulleted-list" dir="auto"><li style="list-style-type:square">The full purchase price paid by the auction buyer plus statutory interest (12% per annum in Tennessee).</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80be-8a10-d0085b4f0f9f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Deed &amp; Title Transfer</strong><ul id="4058ac6a-aab1-80ba-920f-c00a14c8c5dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Sign-Off:</strong> If the statutory redemption window expires without a valid motion to redeem, the former owner&#x27;s equity rights are permanently extinguished.</li></ul><ul id="4058ac6a-aab1-807d-a9cc-c5fd950358d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Deed Issuance:</strong> The local authority issues an official tax deed to the auction purchaser, formally conveying property ownership.</li></ul></li></ul><p id="4058ac6a-aab1-8023-aa38-ca3e2f2c0972" class="" dir="auto">
+</p></div><div id="4058ac6a-aab1-8062-99f9-d87b2bb37b09" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4058ac6a-aab1-8079-87f5-f3c2d0f1451e" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4058ac6a-aab1-8025-b082-e37e442764f9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ad Valorem Taxes:</strong> Taxes calculated according to the assessed value of a piece of real estate.</li></ul><ul id="4058ac6a-aab1-80d1-ae94-f3a27878e4c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Assessment:</strong> The determination of the value of a property for tax purposes.</li></ul><ul id="4058ac6a-aab1-806e-a1f2-fb809951b945" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Base:</strong> The total taxable assets available in a specific area.</li></ul><ul id="4058ac6a-aab1-80cf-83f6-c236c7bf84d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax District:</strong> An area in which a taxing entity is authorized by the government to levy taxes.</li></ul><ul id="4058ac6a-aab1-8000-8126-c2fd5a7afc20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Rate:</strong> The percentage of the value that is taxed.</li></ul><p id="4058ac6a-aab1-8035-8963-f4e8a00960cd" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4058ac6a-aab1-80a0-830c-cba01b9a196f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ad Valorem Property Taxes:</strong> Property taxes are levied at the local level to fund municipal services, public improvements, and infrastructure. Tax obligations are calculated based on the area&#x27;s tax rate and the property&#x27;s assessed value.</li></ul><ul id="4058ac6a-aab1-806e-bd18-fa2bde952c5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Assessment Ratios:</strong> Real estate properties are taxed on partial assessment values:<ul id="4058ac6a-aab1-8008-9f9a-fa36ea79961e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Residential and Farm Properties:</em> Assessed at <strong>25%</strong> of appraised value.</li></ul><ul id="4058ac6a-aab1-80ab-8242-cd4d88d59bf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Commercial and Industrial Properties:</em> Assessed at <strong>40%</strong> of appraised value.</li></ul></li></ul><ul id="4058ac6a-aab1-801d-954b-d67b76c6a3ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax District and Tax Base:</strong><ul id="4058ac6a-aab1-80b4-8553-f22753a8cb78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Tax District:</em> The designated area where a taxing entity has legal authority to levy taxes.</li></ul><ul id="4058ac6a-aab1-80c8-bb8a-ff13046ead9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Tax Base:</em> The total aggregate sum of all taxable assessed property values within a tax district.</li></ul></li></ul><ul id="4058ac6a-aab1-80e2-86af-e0ad8118f199" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Levy:</strong> The specific dollar amount of a municipal budget that must be funded by property taxes after all alternative revenue sources (e.g., sales taxes, government grants, tolls) are subtracted from total budgetary needs.</li></ul><ul id="4058ac6a-aab1-8013-970d-f3a6827023b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Millage Rates:</strong> Tax rates expressed in mills (dollars per $1,000 of assessed value).<ul id="4058ac6a-aab1-80fa-8565-fbc1d085b7dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">One mill = 1/1,000 of a dollar ($0.001), or $1 of tax per $1,000 of assessed value.</li></ul><ul id="4058ac6a-aab1-8076-a71b-f26c3dbd839d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Conversion Rule:</em> Convert mills to a percentage tax rate by moving the decimal place one space to the left (e.g., 20 mills = 2%).</li></ul></li></ul><ul id="4058ac6a-aab1-8097-a479-e17b730dd407" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Assessments:</strong> Specific, non-permanent taxes levied on homeowners in a designated area to pay for local public improvements (such as sidewalks, streetlights, or paving) that directly benefit those properties.</li></ul><ul id="4058ac6a-aab1-804f-b205-dc73ca37dc91" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Liens:</strong> Unpaid property taxes result in a tax lien against the property. Property tax liens are <strong>specific</strong>, <strong>involuntary</strong>, and hold the <strong>highest lien priority</strong> (superior priority over all other encumbrances) in foreclosure.</li></ul><ul id="4058ac6a-aab1-8047-a188-c382f956e6ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Sale &amp; Statutory Right of Redemption:</strong> Real estate with unpaid taxes can be sold at a public tax sale. The previous owner retains a <strong>one-year statutory right of redemption</strong> to repurchase the property by paying all delinquent taxes, penalties, interest, and costs before title is permanently transferred via a tax deed.</li></ul><p id="4058ac6a-aab1-80a3-a56c-e91f81599a74" class="" dir="auto"><strong>Core Property Tax Formulas</strong></p><ul id="4058ac6a-aab1-80d3-ad78-dba862ae82ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Rate:</strong> Tax Rate = Tax Levy / Tax Base</li></ul><ul id="4058ac6a-aab1-8087-8998-d0e45a3f7e92" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxable Assessed Value:</strong> Taxable Value = Assessed Value x Assessment Rate</li></ul><ul id="4058ac6a-aab1-8090-ad63-d38d1c8f144c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxes Owed:</strong> Taxes Owed = Taxable Value x Tax Rate</li></ul><p id="4058ac6a-aab1-8093-aab8-cc596243e0e4" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

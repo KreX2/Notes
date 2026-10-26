@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Planning and Zoning</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8077-a56b-ff7707ad49c5" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Planning and Zoning</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4058ac6a-aab1-80ed-838d-ca004625c1c3" class="column-list" data-notion-column-list="" dir="auto"><div id="4058ac6a-aab1-807c-9b44-e1fc117b53e2" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4058ac6a-aab1-80f1-90d4-fcaff0dcad76" class="" dir="auto"><strong>Planning Commission: Definition &amp; Primary Function</strong><div class="indented"><ul id="4058ac6a-aab1-80ff-9d32-e3a90c47bb68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Purpose:</strong> An official administrative body tasked with developing, updating, and executing a municipality&#x27;s long-range master plan (comprehensive plan).</li></ul><ul id="4058ac6a-aab1-8029-ba6d-c8c7ab31ebe5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advisory Role:</strong> Serves as a consulting entity for municipal boards and legislative bodies regarding land development, zoning actions, and urban planning policies.</li></ul></div></p><ul id="4058ac6a-aab1-801b-adbb-fbfbcab1333c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Specific Responsibilities in Tennessee</strong><ul id="4058ac6a-aab1-8039-afa0-f7089a525fef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Master Plan Development:</strong> Creates and maintains the municipality&#x27;s comprehensive master plan.</li></ul><ul id="4058ac6a-aab1-80ba-9b12-e8887b4178c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Referral:</strong> Formally advises local legislative bodies and municipal boards on proposed planning actions and public land-use decisions before official adoption.</li></ul><ul id="4058ac6a-aab1-8082-b608-da121bb54af4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subdivision &amp; Site Plan Review:</strong> Evaluates preliminary and final subdivision regulations, land division proposals, and individual commercial/residential site plans.</li></ul><ul id="4058ac6a-aab1-80af-b1bb-d26d516adbcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Map &amp; Ordinance Oversight:</strong> Prepares initial recommended zoning maps and ordinances, and reviews all proposed amendments or re-zoning applications.</li></ul></li></ul><ul id="4058ac6a-aab1-80dd-bc51-c56ac72b0401" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Statutory Authority</strong><ul id="4058ac6a-aab1-8066-a110-d2f5c939a3d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Optional Adoption:</strong> Creation of a local planning commission or comprehensive master plan is not mandatory under the Tennessee Code.</li></ul><ul id="4058ac6a-aab1-8069-b20e-deed788c00f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compliance Mandate:</strong> If a local government chooses to establish a planning commission or adopt a master plan, it must strictly adhere to the organizational and procedural requirements outlined in state statutes.</li></ul></li></ul><ul id="4058ac6a-aab1-80d8-bfda-d61aee481d9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Master Plan (Comprehensive Plan): Definition &amp; Core Purpose</strong><ul id="4058ac6a-aab1-80d8-9c21-ffe074e40576" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A comprehensive, long-range policy document developed by a planning commission that establishes a community&#x27;s vision, land-use goals, and municipal development priorities (the terms <em>master plan</em> and <em>comprehensive plan</em> are legally interchangeable).</li></ul><ul id="4058ac6a-aab1-8050-83e0-cfa683b101ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Balanced Growth:</strong> Systematically balances social, economic, and commercial development needs against environmental sustainability and aesthetic standards.</li></ul><ul id="4058ac6a-aab1-80a8-85d9-cfd85fbb4511" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stakeholder Integration:</strong> Formulates future growth strategies by evaluating the needs of current residents, local businesses, environmental resources, and expected regional expansion.</li></ul></li></ul><ul id="4058ac6a-aab1-8037-bf12-e0eac0e8c89b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Development &amp; Legislative Adoption Process</strong><ul id="4058ac6a-aab1-80c1-badf-cb584af49819" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Policy Foundation:</strong> Serves as an ongoing blueprint and policy guide representing overall community values to steer future administrative decision-making.</li></ul><ul id="4058ac6a-aab1-80a8-a806-cf3ac25216f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Alignment:</strong> Once the master plan is finalized, the planning commission drafts and recommends corresponding zoning maps and zoning regulations to enforce the plan.</li></ul><ul id="4058ac6a-aab1-80d3-afd3-d7d33f2443ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Approval:</strong> The local municipal government (e.g., city council or county commission) holds ultimate authority to formally vote to adopt or reject the planning commission&#x27;s recommended master plan and zoning laws.</li></ul><ul id="4058ac6a-aab1-80ad-9c7e-e4fa53d5fc7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">How to create a Master Plan<ul id="4058ac6a-aab1-80da-888a-fd9ffa4d693c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Research &amp; Data Analysis Phase</strong><ul id="4058ac6a-aab1-8065-8df4-dcebce4b493e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Demographics &amp; Physical Surveys:</strong> Evaluates population age distributions, socioeconomic data, physical land surveys, and current housing inventory.</li></ul><ul id="4058ac6a-aab1-808f-803b-f45996d22d7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Infrastructure &amp; Public Services:</strong> Assesses capacity and future demands for transportation/roads, public transit, public schools, water/sewer utilities, and green space.</li></ul><ul id="4058ac6a-aab1-801e-8c33-cd10caccafdb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic &amp; Historical Preservation:</strong> Analyzes local economic trends, commercial growth opportunities, and historic preservation priorities.</li></ul><ul id="4058ac6a-aab1-8003-a583-efa3a6c687fa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Growth Management:</strong> Evaluates population migration patterns to determine optimal growth rates; master plans may cap building permits or subdivision approvals to regulate development speed and environmental impact.</li></ul></li></ul><ul id="4058ac6a-aab1-8016-8b32-da09d9359374" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Six-Step Master Plan Creation Process</strong><ol type="1" id="4058ac6a-aab1-802b-819f-dd0f36f3e4cf" class="numbered-list" start="1" dir="auto"><li><strong>Focus:</strong> Identify major community development issues, challenges, and priorities.</li></ol><ol type="1" id="4058ac6a-aab1-802a-9a40-c112cce18e83" class="numbered-list" start="2" dir="auto"><li><strong>Inventory:</strong> Conduct detailed land-use surveys and analyze demographic and infrastructural data.</li></ol><ol type="1" id="4058ac6a-aab1-80c5-a0a0-e4c8851311e5" class="numbered-list" start="3" dir="auto"><li><strong>Identify Goals &amp; Objectives:</strong> Define target outcomes based on community needs (e.g., expanding parkland, increasing affordable housing).</li></ol><ol type="1" id="4058ac6a-aab1-80e6-b510-e4aebaa41a0f" class="numbered-list" start="4" dir="auto"><li><strong>Develop Plan:</strong> Formulate comprehensive urban planning policies, maps, and development strategies.</li></ol><ol type="1" id="4058ac6a-aab1-80c2-be3a-fe12f075d6c5" class="numbered-list" start="5" dir="auto"><li><strong>Review Plan:</strong> Present the draft plan for public input, administrative evaluation, and legislative review.</li></ol><ol type="1" id="4058ac6a-aab1-8019-abe8-eb7c608d4be4" class="numbered-list" start="6" dir="auto"><li><strong>Implement &amp; Evaluate:</strong> Formally adopt the plan, enforce it through zoning maps and ordinances, and periodically measure its long-term effectiveness.</li></ol></li></ul></li></ul><ul id="4058ac6a-aab1-80b4-9203-f48b2a9f6ace" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Master Plan as a Living Document</strong><ul id="4058ac6a-aab1-80a2-ba7b-d2ee19b5b38f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Continuous Adaptation:</strong> Functions as a dynamic, long-term policy guide that is regularly revisited, modified, and expanded to accommodate shifting demographics, changing community priorities, and ongoing regional growth.</li></ul><ul id="4058ac6a-aab1-80df-be91-fc69d233b387" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Goals &amp; Timetables:</strong> Establishes specific development objectives paired with structured implementation schedules and problem-solving initiatives (e.g., expanding transit corridors to relieve traffic congestion, or restricting building permits to preserve open green space).</li></ul></li></ul><ul id="4058ac6a-aab1-807c-aaef-e5cd5e7158ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purposes &amp; Functions of a Master Plan</strong><ul id="4058ac6a-aab1-80b4-8244-e4c5838d54a9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Prerequisite for Zoning:</strong> Serves as the legally required comprehensive framework that a municipality must establish before enacting local zoning regulations and maps.</li></ul><ul id="4058ac6a-aab1-8075-8fde-d6baf1ab33ac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Holistic Alignment:</strong> Unifies physical land-use planning with overarching social, environmental, and economic development goals.</li></ul><ul id="4058ac6a-aab1-80b3-ba09-db616be44a51" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legislative Guidance:</strong> Provides elected officials and lawmakers with an official policy blueprint to guide future ordinances that incentivize or restrict community growth.</li></ul><ul id="4058ac6a-aab1-8094-8153-d0349978c871" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cross-Departmental Coordination:</strong> Consolidates public planning priorities across multiple municipal sectors—including transportation, land-use controls, utility infrastructure, road networks, and recreational space—into a single centralized document.</li></ul></li></ul><ul id="4058ac6a-aab1-802b-9592-f8c6619c0a03" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Creation of Zoning Ordinances</strong><ul id="4058ac6a-aab1-8027-b6f0-e508863edba1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sequence:</strong> Commences immediately following the completion and adoption of the municipal master plan.</li></ul><ul id="4058ac6a-aab1-8005-a3bb-cd96e3e0a763" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Two Core Components:</strong><ol type="1" id="4058ac6a-aab1-80c6-a6e2-f278486a49cf" class="numbered-list" start="1" dir="auto"><li><strong>Zoning Map:</strong> Dividing the municipality into designated geographic zones (classifications).</li></ol></li></ul><ol type="1" id="4058ac6a-aab1-80cb-9d9d-d0392d43a290" class="numbered-list" start="1" dir="auto"><li><strong>Permitted Uses:</strong> Codifying rules that specify allowed, conditional, and prohibited property uses, structures, and activities within each zone.</li></ol></li></ul></li></ul><ul id="4058ac6a-aab1-80ac-a594-f13aea4c4bdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role of Planning Commission vs. Local Government</strong><ul id="4058ac6a-aab1-80ce-8601-e519a852fa12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Planning Commission Recommendation:</strong> Drafts and submits recommended zoning maps and ordinances based on the goals established in the master plan.</li></ul><ul id="4058ac6a-aab1-80b4-a30b-d7b7b5a2da42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Enactment:</strong> The elected local government (e.g., city council or county commission) holds sole legislative authority to officially enact zoning suggestions into binding municipal law.</li></ul></li></ul><ul id="4058ac6a-aab1-804d-89b0-f145565507ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Specific Requirements &amp; Procedures</strong><ul id="4058ac6a-aab1-803c-bd5e-ef85fceda316" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory 15-Day Public Hearing Notice:</strong> Tennessee Code mandates that local municipal governments hold a public hearing with at least <strong>15 days advance notice</strong> prior to voting on proposed zoning regulations.</li></ul><ul id="4058ac6a-aab1-80a2-a99b-cf4995708ca1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Revision Referral:</strong> If the elected legislative body modifies the planning commission&#x27;s recommended zoning plan or regulations, the revised version must be referred back to the planning commission for review before final legislative action (though the legislative body retains ultimate authority).</li></ul></li></ul><ul id="4058ac6a-aab1-8079-ada5-f697846eb3c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Board of Zoning Appeals (BZA)</strong><ul id="4058ac6a-aab1-8023-b93a-d43824dff8a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Administrative &amp; Interpretive Role:</strong> The separate local government entity tasked with interpreting, applying, and hearing administrative appeals or variance requests regarding enacted zoning regulations</li></ul></li></ul><ul id="4058ac6a-aab1-803e-bf32-fe5c844eb923" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What Does Zoning Regulate?</strong><ul id="4058ac6a-aab1-802f-b47b-e5ca1432b11d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How land is used:</strong> Is this land residential? Industrial? Commercial? Depends on the zone.</li></ul><ul id="4058ac6a-aab1-8087-9da8-fe0fdf64ac6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Minimum lot size:</strong> What is the smallest &quot;buildable&quot; lot size?</li></ul><ul id="4058ac6a-aab1-8012-a3ae-c741cd9b25ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Maximum building height:</strong> How tall can the tallest building be?</li></ul><ul id="4058ac6a-aab1-8000-8eb7-eef12a93cd29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Kinds of structures that are allowed:</strong> The zone you&#x27;re in will determine the permitted structures.</li></ul><ul id="4058ac6a-aab1-80e2-a46a-d996f2e15f15" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Setback:</strong> This describes how far from the street (and other buildings) a building has to be.</li></ul><ul id="4058ac6a-aab1-80b2-89ef-f4ae4aff9e38" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Density:</strong> This is referring to the maximum allowable number of units — denser areas allow more people per square mile, less dense areas allow fewer.</li></ul><ul id="4058ac6a-aab1-800f-9e2d-ccb51084ee3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Parking spaces:</strong> Zoning regulations can require builders to create parking for residents, especially in dense areas.</li></ul><ul id="4058ac6a-aab1-80bf-bdbb-eb0e61f00c9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How air rights can be transferred:</strong> Some places allow residents to sell their air rights.</li></ul><ul id="4058ac6a-aab1-8038-a040-ddc6c1dbb0da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How natural resources can be used in the area:</strong> Water rights, conservation requirements, wetland protections, mineral rights, and other environmental concerns are part of zoning.</li></ul><ul id="4058ac6a-aab1-802a-a12c-f99381b7bb34" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How much land is set aside for public use and infrastructure:</strong> This includes land for streets, schools, hospitals, utility right-of-ways, parks, green space, and more.</li></ul><ul id="4058ac6a-aab1-8095-9c1e-ea0c2f20b21c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historic preservation and landmark sites:</strong> Sometimes these are overseen and regulated by a separate committee and set of laws, and sometimes they are part of zoning.</li></ul><ul id="4058ac6a-aab1-807c-9362-f3578c20528a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Limits on accessory buildings:</strong> What kind of structures other than a home can be built on a residential lot?</li></ul><ul id="4058ac6a-aab1-802d-ba77-ec385811aea4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lot coverage:</strong> What&#x27;s the maximum square footage that can exist on a given lot?</li></ul><ul id="4058ac6a-aab1-808e-8357-d6f17d6f54bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Regulations &amp; Population Density</strong><ul id="4058ac6a-aab1-80b8-9771-d3b4cdf8b6aa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Density:</strong> The concentration of inhabitants per unit of land area (square miles or kilometers).</li></ul><ul id="4058ac6a-aab1-805f-a19b-d35929bb2d4c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Policy Adjustment:</strong> Municipalities modify zoning regulations and land-use maps to manage population density in alignment with evolving master plans.</li></ul></li></ul><ul id="4058ac6a-aab1-802a-ab11-cff62af42882" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Upzoning vs. Downzoning</strong><ul id="4058ac6a-aab1-8050-b2e6-c9d216eb919d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Upzoning:</strong> Modifying zoning regulations to permit <strong>higher density</strong> and greater population concentration.<ul id="4058ac6a-aab1-8078-b668-c5e8eb712e93" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Common Requirements/Mechanisms:</em> Allowing multi-family residential development (apartments, condos), reducing minimum lot sizes, increasing allowable building heights/square footage, and reducing required setbacks or side yards.<figure id="4058ac6a-aab1-8021-9341-c6c9e08842c9" class="image" data-notion-image="Chapter%203%20-%20Planning%20and%20Zoning/flam.gif" dir="ltr"><a href="Chapter%203%20-%20Planning%20and%20Zoning/flam.gif"><img style="width:384px" src="Chapter%203%20-%20Planning%20and%20Zoning/flam.gif"/></a></figure></li></ul></li></ul><ul id="4058ac6a-aab1-80d5-a6de-e700cc4aab7d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Downzoning:</strong> Modifying zoning regulations to restrict development and reduce <strong>allowable density</strong>.<ul id="4058ac6a-aab1-802e-ace4-e0f78b1f6170" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Common Requirements/Mechanisms:</em> Increasing minimum lot size requirements, capping maximum building square footage, and expanding required setback and side-yard distances from property lines and roads.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8025-bd99-cdad0fc0be2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Fairness Test</strong><ul id="4058ac6a-aab1-80ae-8758-f4115b06de94" class="bulleted-list" dir="auto"><li style="list-style-type:square">To be legally enforceable and constitutionally sound, zoning ordinances and their administrative application must meet four standard criteria:</li></ul><ul id="4058ac6a-aab1-8029-a12b-f59ea3bd24d1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Clear &amp; Specific:</strong> Rules and requirements must be unambiguously defined.</li></ul><ul id="4058ac6a-aab1-8027-be15-cdde2bd19958" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Applied Equally:</strong> Regulations must be enforced uniformly across all properties within a given zoning classification.</li></ul><ul id="4058ac6a-aab1-80d9-bac4-ca91aa7fea12" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Nondiscriminatory:</strong> Regulations must be free from unlawful discrimination, complying fully with federal and state fair housing laws.</li></ul><ul id="4058ac6a-aab1-80e0-85ea-cc32c0a37c3b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reasonable:</strong> Requirements must bear a rational relationship to protecting public health, safety, morals, or general welfare (police power).</li></ul></li></ul><ul id="4058ac6a-aab1-8083-ba11-d5e20c9c38dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Concept &amp; Adaptability of Zoning Classifications</strong><ul id="4058ac6a-aab1-80d6-93d0-d9e374605c86" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Local Customization:</strong> Municipalities establish specific zoning classifications tailored to their unique geographic features, economic bases, and community needs.</li></ul><ul id="4058ac6a-aab1-8058-9368-ddb99de3c1d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>General Framework:</strong> Standard zoning categories exist across most jurisdictions, though specific permitted uses and regulations vary locally.</li></ul></li></ul><ul id="4058ac6a-aab1-80ff-81a3-c1438dce664a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Zoning Classifications</strong><ul id="4058ac6a-aab1-806b-89b1-e5b01af90178" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Residential:</strong> Reserved for housing ranging from single-family homes to high-density multi-family structures. Frequently permits complementary non-residential community facilities (e.g., schools, houses of worship, medical clinics).</li></ul><ul id="4058ac6a-aab1-8062-bde2-f46c4886cc9c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Commercial:</strong> Designated for business and retail enterprises, including shopping centers, offices, restaurants, hotels, and service establishments.</li></ul><ul id="4058ac6a-aab1-804c-8832-daaaa04635f0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Industrial:</strong> Set aside for manufacturing, industrial processing, assembly plants, and storage/distribution warehouses.</li></ul><ul id="4058ac6a-aab1-8066-9d64-c03856bafeed" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agricultural:</strong> Reserved for farming, crop cultivation, livestock production, and timber operations; non-agricultural zones restrict animal keeping.</li></ul><ul id="4058ac6a-aab1-80fc-9612-c50de2de4988" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Planned Unit Development (PUD):</strong> A specialized zoning classification designed for flexible land development that mixes multiple uses (such as residential, retail, office, and green space) within a unified site plan to maximize efficiency.</li></ul><ul id="4058ac6a-aab1-8074-af9d-e280a82bc861" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Institutional:</strong> Designated for large public, quasi-public, or community infrastructure facilities, including university campuses, major medical centers, government complexes, courthouses, and correctional institutions.</li></ul><ul id="4058ac6a-aab1-8079-a325-de69cc54dc0a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Open Space:</strong> Land designated to remain largely undeveloped, including undeveloped public forests, municipal parklands, and undeveloped shorelines.</li></ul><ul id="4058ac6a-aab1-8053-9dc8-c43337d425c0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conservation Land:</strong> Environmentally sensitive areas subject to strict protection and land-use restrictions, such as wetlands, coastal zones, aquifer recharge areas, and critical wildlife habitats.</li></ul><ul id="4058ac6a-aab1-8074-817d-cddfb62f38eb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recreational:</strong> Publicly or privately owned land explicitly dedicated to active community recreational activities, including public beaches, community parks, municipal forests, and multi-use trail networks.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8071-898e-d1047a61f62c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>As-of Right Zoning &amp; Development</strong><ul id="4058ac6a-aab1-809d-ba4a-e4355097b09f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Development that fully conforms to existing local zoning ordinances and building codes, allowing it to proceed automatically through standard administrative permitting.</li></ul><ul id="4058ac6a-aab1-80e2-bc51-c0ec0cef3b0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Approval Streamlining:</strong> Requires no special discretionary review, public hearings, community board votes, or approval from a planning commission or Board of Zoning Appeals (BZA).</li></ul><ul id="4058ac6a-aab1-806e-aab1-d5d229cf2c48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Scope:</strong><ul id="4058ac6a-aab1-8007-b523-cca9e64f9890" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Routine Projects:</em> Standard and uncontroversial for small developments and single-family homes, preventing unnecessary construction delays and administrative costs.</li></ul><ul id="4058ac6a-aab1-80cb-8696-e22211e0a5f4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>High-Density Controversy:</em> Controversial in dense urban areas for large-scale or supertall developments, as high-impact projects can alter neighborhood character, skylines, and light access without public input.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80c1-a846-e08e152720e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of Advanced Philosophical Zoning Concepts</strong><ul id="4058ac6a-aab1-80b7-8d47-caf4587758b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>As-of Right Zoning:</strong> Automatic entitlement for projects meeting all baseline zoning criteria.</li></ul><ul id="4058ac6a-aab1-80dd-bbea-d4c271c0541e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Incentive Zoning:</strong> Rewards developers with density bonuses or extra building height in exchange for public amenities (e.g., plazas, community centers).</li></ul><ul id="4058ac6a-aab1-80d9-a441-e6419ceb7130" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inclusionary Zoning:</strong> Requires a set percentage of units in new developments to be reserved as affordable workforce housing.</li></ul><ul id="4058ac6a-aab1-8032-a31f-f84612633a68" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cluster Zoning:</strong> Groups residential buildings closely together on smaller individual lots to preserve the remaining site acreage as permanent open green space.</li></ul><ul id="4058ac6a-aab1-8018-bad7-dcbc045605db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Floating Zones:</strong> A zoning classification codified in the text but not fixed to the zoning map until a developer&#x27;s proposal meets specific qualifying criteria.</li></ul><ul id="4058ac6a-aab1-80f8-a251-d5923f6a5f42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Aesthetic Zoning:</strong> Enforces architectural styles, building materials, and exterior design standards to maintain visual harmony.</li></ul><ul id="4058ac6a-aab1-80bc-ad4b-dfa7b91e429f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historic / Landmarked Districts:</strong> Strict overlay zones preserving architectural, historical, or cultural heritage by limiting exterior alterations or demolitions.</li></ul><ul id="4058ac6a-aab1-80a7-9c43-e424126d4110" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buffer Zones:</strong> Neutral transition strips of land (e.g., parks or landscaped greenbelts) placed between incompatible land uses, such as separating single-family housing from heavy industry.</li></ul><ul id="4058ac6a-aab1-8081-8982-c947d7046e27" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Incentive Zoning</strong><ul id="4058ac6a-aab1-80be-be22-f5a72fccf5e6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The relaxation of standard zoning restrictions (typically granting a density bonus permitting greater building capacity or height) in exchange for a developer providing a specified public benefit or amenity.</li></ul><ul id="4058ac6a-aab1-8014-b072-f1705b1a9334" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Precedent:</strong> Defined in <em>Levitt v. Town of South Kingstown Planning Bd. of Appeal</em> as the process where local authorities grant additional development capacity in exchange for public amenities.</li></ul><ul id="4058ac6a-aab1-80cd-8c95-da984e168c9d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Public Benefits:</strong> Used to fund and secure transit connections, public green spaces, waterfront access, mixed-use community areas, or affordable housing.</li></ul></li></ul><ul id="4058ac6a-aab1-8085-9da7-e02644925a69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inclusionary Zoning</strong><ul id="4058ac6a-aab1-809b-a5e1-db34fb152568" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A specialized form of incentive zoning that provides developers with density bonuses specifically for incorporating affordable housing, senior housing, or multi-unit housing into their projects.</li></ul><ul id="4058ac6a-aab1-802b-b1a2-ce55b4d4c8ee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Benefits:</strong><ul id="4058ac6a-aab1-80c0-aabc-d0ed2608afa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cost-Free to Municipalities:</strong> Operates without direct financial expenditure or tax credits for the local government, relying entirely on density allowances.</li></ul></li></ul><ul id="4058ac6a-aab1-804e-a252-f926c0a92d62" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Community Diversity:</strong> Successfully promotes mixed-use, mixed-age, and mixed-income neighborhoods.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80a1-b899-d9a7967cc8e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cluster Zoning Overview</strong><ul id="4058ac6a-aab1-80a5-8189-db23333854c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Also known as <em>density zoning</em> or <em>conservation-oriented development</em>, cluster zoning calculates overall community density for an entire parcel rather than on a traditional individual lot-by-lot basis.</li></ul><ul id="4058ac6a-aab1-80af-8b44-d23ffeaa236c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mechanism:</strong> Permits developers to group residential buildings tightly together (housing clusters) on a fraction of the land while preserving the remaining acreage as permanent open green space.</li></ul><ul id="4058ac6a-aab1-805d-9476-dbcd0582bb7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Metric:</strong> Frequently achieves <strong>twice the density on half the acreage</strong> compared to conventional uniform subdivisions.</li></ul><ul id="4058ac6a-aab1-8094-826f-cc8ca3f1b390" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affordability &amp; Sustainability Benefits</strong><ul id="4058ac6a-aab1-80d2-abc8-fd143625f363" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lower Construction Costs:</strong> Building smaller, attached, or multi-unit dwellings is significantly cheaper than constructing widely spaced single-family homes, increasing market affordability.</li></ul><ul id="4058ac6a-aab1-80a4-b722-db99f15656eb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Environmental &amp; Recreational Integration:</strong> Preserved open space can be utilized for community parks, shared gardens, wildlife habitats, pedestrian/biking trails, and natural water reclamation.</li></ul><ul id="4058ac6a-aab1-80ee-95da-d30bedd56778" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Targeted Communities:</strong> Highly effective for senior living facilities, group homes, and accessible developments for adults with disabilities.</li></ul><figure id="4058ac6a-aab1-803a-8439-e2f08329ea10" class="image" data-notion-image="Chapter%203%20-%20Planning%20and%20Zoning/image.png" dir="ltr"><a href="Chapter%203%20-%20Planning%20and%20Zoning/image.png"><img style="width:384px" src="Chapter%203%20-%20Planning%20and%20Zoning/image.png"/></a></figure></li></ul></li></ul><ul id="4058ac6a-aab1-80b5-a95a-edf2b5ec22b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros</strong><ul id="4058ac6a-aab1-8088-bb8d-c4d3670eb6c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Creates communities that are walkable/bikeable</li></ul><ul id="4058ac6a-aab1-80d4-b2ee-fd2a3706cea5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allows for more green space</li></ul><ul id="4058ac6a-aab1-80c1-ad22-d3860859ff40" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Makes offering affordable housing easier, as units are smaller and less expensive to build</li></ul><ul id="4058ac6a-aab1-80c6-9040-db3224054d86" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Is a great set-up for communities of older adults or adults with disabilities</li></ul><ul id="4058ac6a-aab1-803f-a273-cabf76dd4dc8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Encourages community</li></ul><ul id="4058ac6a-aab1-80ee-be6b-ca91732c0a3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allows land to be left uncultivated for wildlife and water reclamation</li></ul><ul id="4058ac6a-aab1-804d-848c-fc9fb748f381" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allows space for shared recreational use and community gardens</li></ul></li></ul><ul id="4058ac6a-aab1-8067-bb2d-d21819ada43b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Floating Zone: Definition &amp; Mechanism</strong><ul id="4058ac6a-aab1-808b-b222-fbf3a86d26e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A flexible zoning classification and set of regulations added to the municipal zoning text without being pinned to a specific location on the zoning map; it &quot;floats&quot; until a developer submits an qualifying project proposal.</li></ul><ul id="4058ac6a-aab1-80c6-b4eb-d015604507f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Activation Process:</strong> A parcel remains zoned for its current use (e.g., single-family residential) until a developer proposes a specific, desirable project (such as a mixed-use commercial/residential center) that satisfies the planning commission&#x27;s pre-approved requirements.</li></ul><ul id="4058ac6a-aab1-8066-867a-c4a9f3c39107" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Planning Commission Role:</strong> The planning commission reviews the proposal and recommends mapping the floating zone to the specific parcel.</li></ul><ul id="4058ac6a-aab1-8083-817b-fe2b145600b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Advantages of Floating Zones</strong><ul id="4058ac6a-aab1-80c7-87cb-d8f2bc32c633" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Community Selectivity:</strong> Allows municipalities to be highly selective about the exact types of development and architecture they permit in certain areas.</li></ul><ul id="4058ac6a-aab1-8067-a540-eedbe70880fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Eliminates As-of Right Uncertainty:</strong> Effectively prevents undesirable as-of right development by requiring discretionary project approval for higher-density or specialized uses.</li></ul><ul id="4058ac6a-aab1-8026-8b17-f293eee00e68" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Standing:</strong> Unlike unlawful spot zoning, floating zones are legally permissible because they serve a broader public interest and adhere to the comprehensive master plan.</li></ul></li></ul><ul id="4058ac6a-aab1-8015-bed3-e886b0522bcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Aesthetic Zoning</strong><ul id="4058ac6a-aab1-80a0-b5a4-cfa768fe1fe4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Primary Purpose:</strong> Regulates architectural styles, exterior building designs, materials, and overall visual appearance to ensure new construction conforms to community aesthetic standards.</li></ul><ul id="4058ac6a-aab1-80ca-8221-e6667a686cce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Alternative Enforcement:</strong> Neighborhoods frequently achieve similar architectural conformity through private restrictive covenants or HOA bylaws rather than municipal zoning.</li></ul></li></ul><ul id="4058ac6a-aab1-80de-bdd9-edeb086c5529" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historic &amp; Landmark Districts</strong><ul id="4058ac6a-aab1-80b5-b8da-d4ad9e2c054d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Special municipal overlay zones established to protect and preserve the architectural and cultural heritage of historically significant areas.</li></ul><ul id="4058ac6a-aab1-8027-8fe8-fcdfe4b1e3a6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Regulatory Oversight:</strong> Administered by a local municipal agency that may restrict certain types of development, demolition, or exterior modifications.</li></ul><ul id="4058ac6a-aab1-808d-854d-daa246be158b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Design Mandates:</strong> Property owners within historic districts are typically required to use historically appropriate materials and architectural styles for home repairs and updates.</li></ul><ul id="4058ac6a-aab1-80dd-b5b4-eed5a3b3a03f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Signage &amp; Interpretation:</strong> Agencies may also oversee the placement of historical plaques and interpretive signage on significant buildings.</li></ul></li></ul><ul id="4058ac6a-aab1-80ed-b03f-ccac3b981fe9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Registers of Historic Places (State &amp; National)</strong><ul id="4058ac6a-aab1-800e-b2c9-d1449e5dc570" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Official Listing:</strong> A formal inventory of noteworthy, historically significant buildings, structures, and sites.</li></ul><ul id="4058ac6a-aab1-80e9-94cc-f7a992374b41" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lack of Mandated Preservation:</strong> Inclusion on the historic register alone does <strong>not</strong> legally compel property owners to preserve or maintain the building in any specific way.</li></ul><ul id="4058ac6a-aab1-804e-b143-c62a2e15d3d5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financial Incentives:</strong> Listing provides property owners access to special tax credits designed to help offset the cost of period-appropriate repairs, maintenance, and structural restorations.</li></ul></li></ul><ul id="4058ac6a-aab1-80b7-92a9-eb41765d81ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buffer Zones: </strong><ul id="4058ac6a-aab1-800c-97cb-ca59a5a1cff1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Transitional areas of land designed to separate two incompatible zoning classifications (e.g., placing a barrier between a residential zone and an industrial zone) to provide spatial separation and aesthetic relief.</li></ul><ul id="4058ac6a-aab1-80d3-ad18-c4275e467a85" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Elements:</strong> Typically consists of parks, landscaped berms, open greenbelts, natural vegetative strips, or recreational spaces.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80c9-8574-db1bcffeccc2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Board of Zoning Appeals (BZA): Definition &amp; Authority</strong><ul id="4058ac6a-aab1-80e7-a118-cf5103f9fb72" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Basis:</strong> Authorized under Tennessee Code sections 13-7-304 and 13-7-305 for municipalities that utilize a planning commission.</li></ul><ul id="4058ac6a-aab1-8020-8eef-c2384a0dad56" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Primary Responsibilities:</strong><ol type="1" id="4058ac6a-aab1-8019-adee-e2214565bc6b" class="numbered-list" start="1" dir="auto"><li>Hearing and deciding appeals when a building permit or zoning enforcement decision is challenged.</li></ol><ol type="1" id="4058ac6a-aab1-804a-914e-e329e9d4a13a" class="numbered-list" start="2" dir="auto"><li>Reviewing and approving or denying special exceptions (uses on appeal).</li></ol><ol type="1" id="4058ac6a-aab1-8004-82b1-f2e413ce7c7a" class="numbered-list" start="3" dir="auto"><li>Reviewing and approving or denying variances.</li></ol></li></ul><ul id="4058ac6a-aab1-8065-a298-ea6ac4044949" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interpreting Zoning Law &amp; Permit Appeals</strong><ul id="4058ac6a-aab1-8014-ac68-d077106d6deb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Appellate Review:</strong> Hears appeals from property owners or builders who have been denied a building permit or have received an adverse ruling from municipal zoning officials.</li></ul><ul id="4058ac6a-aab1-8050-b6ee-f175a3b0a389" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Scope:</strong> Evaluates whether municipal officials correctly interpreted and enforced existing zoning ordinance provisions.</li></ul></li></ul><ul id="4058ac6a-aab1-8083-a97b-f0ebc0bda90a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special Exceptions (Uses on Appeal)</strong><ul id="4058ac6a-aab1-8064-9945-c3b82ec651d4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Specific land uses explicitly written into the zoning ordinance as permissible within a given zone, but which cannot be established as-of right.</li></ul><ul id="4058ac6a-aab1-8026-92aa-ef8b7a5cb5d2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BZA Oversight:</strong> Requires formal review and mandatory approval by the BZA (or &quot;use on appeal&quot;) to ensure compliance with explicit criteria set forth in the zoning code (e.g., maintaining a required distance buffer from similar establishments).</li></ul></li></ul><ul id="4058ac6a-aab1-808d-9f54-c7dab3248df8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Variances</strong><ul id="4058ac6a-aab1-8045-9137-dbf1b9850157" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Official administrative permission to depart from strict physical dimensional requirements of a zoning ordinance (such as setbacks, frontage, minimum lot size, or yard depth).</li></ul><ul id="4058ac6a-aab1-8024-94cf-fdd3cc884d17" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Qualifying Criteria (Hardship Test):</strong> To obtain a variance, the property owner must prove &quot;exceptional difficulties&quot; or &quot;undue hardship&quot; caused strictly by a <strong>pre-existing, inherent physical condition of the land</strong> (such as an unusual lot shape, a steep grade, or an environmental obstacle like a creek running through the property).</li></ul><ul id="4058ac6a-aab1-80c4-8891-c77d85c7e0e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Self-Created Hardship Exclusion:</strong> A variance will be denied if the hardship was self-created by the property owner.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80ee-a439-f844d922e09b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nonconforming </strong><ul id="4058ac6a-aab1-809e-aa5b-d63e17fe5996" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A property use, structure, or lot that was legally established and compliant under previous zoning laws, but became noncompliant due to a subsequent change in municipal zoning regulations.</li></ul><ul id="4058ac6a-aab1-8000-bdfd-c066a3457c2e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legacy Exception:</strong> Existing nonconforming structures and uses are generally permitted to continue (protected by a &quot;legacy exception,&quot; which is the preferred term over <em>grandfathering</em> due to its historical origins).</li></ul><ul id="4058ac6a-aab1-8097-9ae6-d6ad8e3db3ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Rule:</strong> Nonconforming uses are typically allowed to be maintained and continued, but <strong>cannot be expanded, enlarged, or structurally upgraded</strong> beyond existing footprints.</li></ul><ul id="4058ac6a-aab1-80fe-9213-e251e42e2f23" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loss of Legacy Exception (When Nonconforming Uses Become Illegal)</strong><ul id="4058ac6a-aab1-808d-9304-d07bb1aeda7c" class="bulleted-list" dir="auto"><li style="list-style-type:square">A legal nonconforming status can be terminated under specific circumstances determined by municipal law:<ul id="4058ac6a-aab1-8063-a88a-ca29b321c44e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Severe Damage or Destruction:</strong> If a majority (or specified percentage) of a nonconforming structure is destroyed or heavily damaged (e.g., by fire or storm), it must be rebuilt in strict compliance with current zoning laws.</li></ul><ul id="4058ac6a-aab1-80de-887a-ce9d80085b94" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Abandonment / Discontinuance:</strong> If a nonconforming use—particularly a commercial enterprise—ceases operation or remains vacant for a set statutory period (typically ranging from <strong>six months to two years</strong>), the legacy exception expires.</li></ul><ul id="4058ac6a-aab1-803d-8e66-efd7c69891c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Amortization Period:</strong> A new zoning ordinance may establish a mandated phase-out period, giving property owners a set number of years to recoup their investment before the nonconforming use must terminate or conform.</li></ul><ul id="4058ac6a-aab1-803f-82eb-dd87eaa14b27" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Change of Ownership / Business:</strong> For commercial nonconforming uses, the legacy exception usually applies only to the existing business; if the business closes and a new type of commercial venture moves in, it is classified as an illegal nonconforming use.</li></ul></li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-808a-8112-db6025799a54" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Spot Zoning</strong><ul id="4058ac6a-aab1-8039-9c71-dabbe63585f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The illegal or improper rezoning of a single small parcel of land for a use classification entirely inconsistent with the surrounding neighborhood.</li></ul><ul id="4058ac6a-aab1-8044-b02d-eefc96a91e50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Characteristics:</strong> Designed primarily to benefit a single property owner at the expense or detriment of neighboring property owners.</li></ul><ul id="4058ac6a-aab1-80c2-8747-faaa8499a83d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Status:</strong> Generally illegal and invalid because it violates the uniformity principle and contradicts the community&#x27;s comprehensive master plan.</li></ul><ul id="4058ac6a-aab1-8009-9c6c-d50d92244ba9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Amendments</strong><ul id="4058ac6a-aab1-805d-99f9-f82aa1a04329" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A legal change to the zoning classification of a specific area or property initiated or recommended by the planning commission.</li></ul><ul id="4058ac6a-aab1-802f-bc9b-c8e0524aa9ba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Distinction from Spot Zoning:</strong> While spot zoning serves private interests exclusively, a valid zoning amendment is enacted to serve the <strong>broader public interest</strong> and directly aligns with the goals of the municipal master plan.</li></ul><ul id="4058ac6a-aab1-803b-955d-d7d0b134ddf4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example:</strong> Rezoning an abandoned industrial warehouse into a commercial zone to establish a community center or public museum, benefiting the surrounding community as industrial needs decline.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8022-97d6-c6b3b014256c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Zoning Enforcement via Building Permits</strong><ul id="4058ac6a-aab1-8094-aa39-fc62797060cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permit Requirement:</strong> Developers and builders must secure an official building permit from the local department of buildings before commencing any construction.</li></ul><ul id="4058ac6a-aab1-80dd-984e-f44ca57a91db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Plan Review:</strong> Builders and architects must submit detailed construction plans; permits are denied if the proposed plans violate local zoning regulations or building codes.</li></ul><ul id="4058ac6a-aab1-80a5-a85a-f0ed2ea57f30" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Site Inspections:</strong> Municipal inspectors conduct on-site inspections during construction to verify compliance, and can shut down work sites if code violations are discovered.</li></ul><ul id="4058ac6a-aab1-806c-b893-c1fbec7ccf8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Ordinances vs. Building Codes</strong><ul id="4058ac6a-aab1-801b-a854-c3db0e7df1da" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Zoning Ordinances (&quot;The Outside&quot;):</strong><ul id="4058ac6a-aab1-8047-a05f-fc9e63f5e000" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Regulate external land use, lot sizes, building heights, setbacks, population density, and allowable activities within specific geographic districts.</li></ul><ul id="4058ac6a-aab1-803f-b880-c8cdfca593f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Administered by planning commissions and boards of zoning appeals.</li></ul></li></ul><ul id="4058ac6a-aab1-80a8-ac05-dcfb8d417031" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Building Codes (&quot;The Inside&quot;):</strong><ul id="4058ac6a-aab1-8085-9360-f9c018b2963c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Establish minimum statutory construction standards for structural safety, habitability, electrical wiring, plumbing, and fire prevention within structures.</li></ul><ul id="4058ac6a-aab1-806a-a051-f24bd182c796" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Created and enforced locally by the municipal building department through plan reviews and field inspections.</li></ul></li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8008-8630-ee342bd2cbdf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Certificate of Occupancy (CO)</strong><ul id="4058ac6a-aab1-80f9-afa9-efb8548212de" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An official document issued by the local building department after a newly constructed or substantially renovated building passes its final inspection.</li></ul><ul id="4058ac6a-aab1-8067-ba3e-d0d0effc096e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prerequisite for Use &amp; Sale:</strong> Required before a building can be legally occupied, rented, or sold.</li></ul><ul id="4058ac6a-aab1-8038-a19a-f36ffcad6307" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Renovations:</strong> For completed renovation projects, a comparable <strong>certificate of compliance</strong> is issued to certify that the work meets all current building codes.</li></ul><ul id="4058ac6a-aab1-80a4-b181-c46980b87053" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Critical Importance for Buyers &amp; Lenders</strong><ul id="4058ac6a-aab1-80d3-83ce-f7ed925a5549" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financing Requirement:</strong> Mortgage lenders strictly require a valid, matching Certificate of Occupancy before approving funds for property acquisition.</li></ul><ul id="4058ac6a-aab1-8089-8718-ff38180d67a6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mismatched CO Risks:</strong> Discrepancies between the physical structure and the CO (such as a converted single-family home still designated as a two-family property) create major legal hurdles and severe administrative delays.</li></ul><ul id="4058ac6a-aab1-800f-8a02-c4fb0b035d79" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Professional Rule:</strong> Real estate agents must never advise a client to purchase any property lacking a valid, accurate Certificate of Occupancy.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80b0-a787-f1f66a663006" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Post-Construction Enforcement &amp; Building Inspectors</strong><ul id="4058ac6a-aab1-8031-a7cf-e0b440f58543" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ongoing Compliance:</strong> Building safety inspectors conduct routine periodic checks on completed buildings even after a Certificate of Occupancy has been issued.</li></ul><ul id="4058ac6a-aab1-8045-ac66-c0a9de769287" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope of Checks:</strong> Verifies ongoing compliance with municipal building codes, fire regulations, and safety standards.</li></ul><ul id="4058ac6a-aab1-8027-8226-e99db91af8bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Penalties:</strong> Property owners found in violation are subject to administrative fines, civil penalties, or criminal charges.</li></ul></li></ul><ul id="4058ac6a-aab1-8095-8cfa-fd176b50b448" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Judicial Branch as the Ultimate Enforcement Arm</strong><ul id="4058ac6a-aab1-8060-9d40-dfcdce1f67b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Authority:</strong> The court system serves as the ultimate enforcement and legal arbiter for zoning laws and building codes.</li></ul><ul id="4058ac6a-aab1-8061-8e4a-eda3937121db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Judicial Scope:</strong> Handles civil lawsuits, administrative appeals, and criminal proceedings related to violations, while determining whether municipal regulations are legally valid and defensible.</li></ul></li></ul><ul id="4058ac6a-aab1-80ad-a845-d3171cada6b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Unofficial &amp; Professional Enforcement</strong><ul id="4058ac6a-aab1-80d2-95f6-f1ba4e6361d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Industry Practitioners:</strong> Day-to-day enforcement is informally upheld by qualified real estate and construction professionals, including architects, urban planners, land surveyors, engineers, contractors, and construction crews.</li></ul><ul id="4058ac6a-aab1-8043-8662-e59ecfc5db8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compliance Role:</strong> These professionals act as front-line enforcers by ensuring designs, measurements, and structural plans adhere to municipal land-use controls before formal review.</li></ul></li></ul><ul id="4058ac6a-aab1-80fe-8b8d-eb2cdfc389c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose &amp; Value of Urban Planning</strong><ul id="4058ac6a-aab1-80e2-8321-c3dc1527fca9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Objective:</strong> To transform cities into more livable, healthy, affordable, and equitable environments by balancing private development with public welfare.</li></ul><ul id="4058ac6a-aab1-807a-95e8-e702a47fa589" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Preventing Unregulated Growth:</strong> Acts as a vital check against chaotic, purely profit-driven development that would otherwise compromise community livability, infrastructure capacity, and public health.</li></ul><ul id="4058ac6a-aab1-8057-bc03-dbe41243b9a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Infrastructure Integration:</strong> Ensures space is successfully allocated and incentivized for essential municipal functions that private markets alone would neglect (e.g., utility infrastructure, transit hubs, government offices).</li></ul><ul id="4058ac6a-aab1-80c7-a1a0-c30aac554cc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Community Benefits of Effective Urban Planning</strong><ul id="4058ac6a-aab1-80a9-aa37-f8ae04e4d73a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Expanded open space and protected natural environments</li></ul><ul id="4058ac6a-aab1-8044-bcee-d0b3732f3bc1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Guaranteed access to public parks and green spaces</li></ul><ul id="4058ac6a-aab1-80e2-956a-e8b3ae6e3751" class="bulleted-list" dir="auto"><li style="list-style-type:square">Strategic placement of community facilities and schools</li></ul><ul id="4058ac6a-aab1-8045-a7f7-f2b474d0e8a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Designated recreation areas and waterfront access</li></ul><ul id="4058ac6a-aab1-807b-922e-f23a6b7f8f3e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Integrated public transportation networks and transit hubs</li></ul><ul id="4058ac6a-aab1-8032-a44c-d4b1edd19cf3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Dedicated infrastructure for active transportation (sidewalks, bike lanes, and bikeable/walkable neighborhoods)</li></ul><ul id="4058ac6a-aab1-80d0-95ed-dbede66cc4df" class="bulleted-list" dir="auto"><li style="list-style-type:square">Inclusionary opportunities for affordable housing</li></ul><ul id="4058ac6a-aab1-80b5-9194-e43c72b018a5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Organized corridors for essential municipal utilities</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80c2-9a04-e93012750686" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Urban Sprawl: Definition &amp; Characteristics</strong><ul id="4058ac6a-aab1-805a-96a9-d5ab83878202" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The opposite of thoughtful urban planning; characterized by <strong>low-density, monofunctional, and car-dependent</strong> communities (often referred to as unchecked suburbanization).</li></ul><ul id="4058ac6a-aab1-8059-9633-e0e14f4ce82d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unplanned Growth:</strong> Typically expands rapidly across open land outside municipal limits without synchronized infrastructure development (such as expanding roads, building schools, or establishing public utilities).</li></ul></li></ul><ul id="4058ac6a-aab1-80ae-a4bb-dd8357765041" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Negative Impacts of Sprawl</strong><ul id="4058ac6a-aab1-80de-9986-cbcbd81445e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Harm:</strong> Generates significantly higher vehicle emissions due to increased driving distances and absolute car dependence.</li></ul><ul id="4058ac6a-aab1-8066-9c91-dfa4571162cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Quality of Life:</strong> Contributes to longer, draining commute times that reduce individual happiness and daily free time.</li></ul><ul id="4058ac6a-aab1-80c4-a187-fd6b690553d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Economic Costs:</strong> Imposes massive societal and economic costs (estimated in studies at roughly $1 trillion annually in the U.S.) and increases individual automobile usage by up to <strong>60%</strong>.</li></ul></li></ul><ul id="4058ac6a-aab1-8089-bc82-e4c06e888465" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Smart Development vs. Sprawl</strong><ul id="4058ac6a-aab1-80b6-807c-c3b352183775" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Controlled Growth:</strong> Contrasts sharply with sprawl by prioritizing smart, compact growth, infrastructure adequacy, and environmental preservation.</li></ul><ul id="4058ac6a-aab1-8092-9d99-dd6babfd0575" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Philosophy:</strong> Balances private real estate development with community livability, sustainability, and public welfare.</li></ul></li></ul></div><div id="4058ac6a-aab1-809d-809f-f7522a1b9eb6" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4058ac6a-aab1-8010-8afd-dfcf65e52507" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4058ac6a-aab1-8091-b459-e304fb0c38ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Density:</strong> The number of people living in a square mile (or kilometer) of space.</li></ul><ul id="4058ac6a-aab1-8099-a314-fc32deff2446" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Non-conforming Use:</strong> Any property use which is inconsistent with the land use controls for that area, regardless of legality.</li></ul><ul id="4058ac6a-aab1-80e2-b8ac-d71c892a65ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Exception (Use on Appeal):</strong> Allows an out-of-zone use that benefits the community only with approval from a board of zoning appeals (BZA); is included as a permitted special use in a zoning ordinance.</li></ul><ul id="4058ac6a-aab1-803a-a607-ec7f3547e8b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Variance:</strong> Permission granted by the government so that property may be used in a manner not allowed by the current zoning.</li></ul><p id="4058ac6a-aab1-8052-8583-d7e36735b94b" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4058ac6a-aab1-8037-8112-c712d591c0a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Master Plans:</strong><ul id="4058ac6a-aab1-80de-81ba-c861954068f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The main task of planning commissions is to create a master plan for a municipality.</li></ul><ul id="4058ac6a-aab1-802e-a9d0-c5fcc08984e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A master plan balances the area&#x27;s social and economic needs against its environmental and aesthetic needs.</li></ul><ul id="4058ac6a-aab1-80c8-a12f-d91b4495914b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The priorities in a master plan will also help to set the zoning regulations. Once the plan is complete, the local legislative body will vote to adopt or reject it.</li></ul><ul id="4058ac6a-aab1-80bd-a138-cc583ae83011" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Typically, the steps of a master plan look something like this:<ol type="1" id="4058ac6a-aab1-8061-90f2-e055cd050cab" class="numbered-list" start="1" dir="auto"><li>Identify major issues</li></ol><ol type="1" id="4058ac6a-aab1-8049-8d43-dd07eb0f5896" class="numbered-list" start="2" dir="auto"><li>Survey and analysis</li></ol><ol type="1" id="4058ac6a-aab1-8083-8faa-e04ba8b01672" class="numbered-list" start="3" dir="auto"><li>Identify goals and objectives</li></ol><ol type="1" id="4058ac6a-aab1-808e-a400-d50eaab476d5" class="numbered-list" start="4" dir="auto"><li>Develop a plan</li></ol><ol type="1" id="4058ac6a-aab1-8054-b1a0-d397ac7d9747" class="numbered-list" start="5" dir="auto"><li>Review the plan</li></ol><ol type="1" id="4058ac6a-aab1-8084-ba6d-edf8f289b970" class="numbered-list" start="6" dir="auto"><li>Implement and evaluate</li></ol></li></ul><ul id="4058ac6a-aab1-8076-9c4f-e9fe3e087817" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once the plan is in place, the next step is zoning.</li></ul></li></ul><ul id="4058ac6a-aab1-8049-8594-e573608f8409" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Zoning:</strong><ul id="4058ac6a-aab1-803d-b41f-c02e7c149d92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Zoning regulations happen at the municipal level, so regulations will vary depending on the municipality. These regulations will change in order to match the needs of a changing municipality.</li></ul><ul id="4058ac6a-aab1-8087-a09b-e9a605808c9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Some common zoning classifications include residential, commercial, agricultural, and recreational land. The zoning classification for a parcel of land will dictate how the land can be used, and what can be built on it.</li></ul><ul id="4058ac6a-aab1-802c-9507-f954cfd2e6d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Zoning is enforced through both zoning laws and building code. As a general rule of thumb, zoning deals with land, and building code deals with buildings.</li></ul></li></ul><ul id="4058ac6a-aab1-80e5-8f7f-da233d1d2892" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Board of Zoning Appeals (BZA):</strong><ul id="4058ac6a-aab1-8048-9e63-f075365ef1d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a municipality creates zoning laws, they usually also create a board of zoning appeals (BZA).</li></ul><ul id="4058ac6a-aab1-8015-a023-ff28d9aa45a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The three main jobs of the BZA are:<ul id="4058ac6a-aab1-80e6-86f7-d6ce60d465b9" class="bulleted-list" dir="auto"><li style="list-style-type:square">To hear appeals from people denied building permits based on zoning issues (and interpret whether the law was correctly applied)</li></ul><ul id="4058ac6a-aab1-8056-bf46-fd76f54c6497" class="bulleted-list" dir="auto"><li style="list-style-type:square">To approve or deny special exceptions (sometimes called a &quot;use on appeal&quot;)</li></ul><ul id="4058ac6a-aab1-80b5-a530-e7b2294b12cc" class="bulleted-list" dir="auto"><li style="list-style-type:square">To approve or deny a variance</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-800b-88d4-c7e041103591" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Exceptions:</strong><ul id="4058ac6a-aab1-80ad-8a84-ef7fda428740" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The BZA can also approve or deny special exceptions, which in Tennessee are often called &quot;uses on appeal.&quot;</li></ul><ul id="4058ac6a-aab1-80ed-91f0-d56b8805dfde" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A use on appeal is a use written into the zoning law that can&#x27;t be accessed as-of-right. Instead, it must be specifically approved by the BZA.</li></ul><ul id="4058ac6a-aab1-80e9-8d04-ffe303bb3577" class="bulleted-list" dir="auto"><li style="list-style-type:circle">These uses are included in the zoning law itself as possibilities for a zone, but not things the planning commission wanted to be built without BZA oversight.</li></ul><ul id="4058ac6a-aab1-80ab-946b-e6d9805c0d3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Special exception uses MUST be:<ul id="4058ac6a-aab1-80e9-8655-c6d0039fc832" class="bulleted-list" dir="auto"><li style="list-style-type:square">Consistent with what is written in the zoning law</li></ul><ul id="4058ac6a-aab1-80f3-8cee-edbe63e2201f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Approved by the BZA</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8077-8e8d-fbb0bea2fcd7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Variances:</strong><ul id="4058ac6a-aab1-804b-a5d5-fc03546252a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Variances, unlike special exceptions, have to do with the physical characteristics of a property.</li></ul><ul id="4058ac6a-aab1-8018-903f-c27da1c0077a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If it would cause a homeowner &quot;exceptional difficulties&quot; or &quot;undue hardship&quot; to comply with a zoning ordinance, they can apply for a variance with the BZA.</li></ul><ul id="4058ac6a-aab1-8050-923d-cb98e28bb070" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To qualify for a variance, the size, shape, or topography of the homeowner&#x27;s lot must be incompatible with meeting the requirement.</li></ul></li></ul><p id="4058ac6a-aab1-80bb-877e-d3187942d03a" class="" dir="auto">
+</p></div></div><p id="4058ac6a-aab1-80bb-89c6-f4df692c41c9" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

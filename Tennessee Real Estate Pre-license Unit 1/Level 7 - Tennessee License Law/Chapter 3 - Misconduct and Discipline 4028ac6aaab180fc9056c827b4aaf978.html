@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Misconduct and Discipline</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-80fc-9056-c827b4aaf978" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Misconduct and Discipline</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4068ac6a-aab1-809b-aadc-f32da82ee89e" class="column-list" data-notion-column-list="" dir="auto"><div id="4068ac6a-aab1-80c6-a866-f575d8929b85" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4068ac6a-aab1-8038-820d-e31bae09b8a7" class="" dir="auto"><strong>Overview of Tennessee License Law Violations </strong></p><ul id="4068ac6a-aab1-8081-a377-c74f0ee8f953" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Governing Law:</strong> Outlined primarily in the Tennessee Real Estate Broker License Act of 1973 (TREBLA), specifically referencing sections <strong>§ 62-13-310</strong> and <strong>§ 62-13-312</strong>.</li></ul><ul id="4068ac6a-aab1-806e-bfd5-ca0dde6f15ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Prohibited Actions:</strong> Licensees are strictly forbidden from committing acts such as:<ul id="4068ac6a-aab1-8017-89f0-e7a30e9fa164" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Acting without a valid license or operating outside authorized parameters.</li></ul><ul id="4068ac6a-aab1-805c-b201-f69d0684abf5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Demonstrating untrustworthiness or incompetence in professional dealings.</li></ul><ul id="4068ac6a-aab1-80e5-96ce-dd132f4c3b7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Making false representations or fraudulent statements.</li></ul><ul id="4068ac6a-aab1-8026-85d0-c184b9ae73bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to provide required disclosures to clients and customers.</li></ul><ul id="4068ac6a-aab1-80d9-9ccb-cbb21fdb0f56" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Interfering with existing, valid contracts between other parties.</li></ul><ul id="4068ac6a-aab1-807a-b332-fe575e49a02b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to secure an owner&#x27;s explicit consent when marketing or selling property.</li></ul><ul id="4068ac6a-aab1-80a8-91f3-d30c57c0bbce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Accepting compensation or payments from any party other than their sponsoring principal broker.</li></ul><ul id="4068ac6a-aab1-80fc-a937-e3a7a353f55a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Including illegal provisions in listing agreements or real estate contracts.</li></ul><ul id="4068ac6a-aab1-807f-aa74-f102c1c2b2f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Engaging in the unauthorized practice of law.</li></ul><ul id="4068ac6a-aab1-809b-95fb-ebb80a5efbae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Improperly handling, commingling, or converting client funds (escrow violations).</li></ul><ul id="4068ac6a-aab1-80a4-b869-fdf214464e37" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Violating federal, state, or local fair housing laws.</li></ul><ul id="4068ac6a-aab1-809e-8283-d68236972414" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to maintain, store, or handle transaction documents and records properly.</li></ul><ul id="4068ac6a-aab1-80de-a9ca-d56a3e60ae8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maintaining disqualifying prior criminal convictions without proper disclosure or resolution.</li></ul></li></ul><ul id="4068ac6a-aab1-80a8-bdab-fb7d5e0be1b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibition Against Unlicensed Practice</strong><ul id="4068ac6a-aab1-80af-a68a-df8433349c10" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Engaging in real estate activities without a valid, active license—or employing individuals who lack the appropriate license—is a severe violation of Tennessee license law.</li></ul></li></ul><ul id="4068ac6a-aab1-80bd-9133-c9d765ad9007" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role &amp; Limitations of Unlicensed Assistants</strong><ul id="4068ac6a-aab1-8091-98be-cba7f5402774" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unlicensed assistants are strictly limited to performing administrative and clerical office duties.</li></ul><ul id="4068ac6a-aab1-80ab-86e1-f2b04be07438" class="bulleted-list" dir="auto"><li style="list-style-type:circle">They are legally prohibited from performing any acts that require a real estate license, such as listing, selling, negotiating contracts, or showing properties.</li></ul></li></ul><ul id="4068ac6a-aab1-8060-b116-de1a38b7c396" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibited Scenarios &amp; Violations</strong><ul id="4068ac6a-aab1-802d-a53a-dc6c0ab087bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unlicensed Individuals Operating for Compensation:</strong> A person without a license cannot handle real estate transactions for friends, family, or the public with the expectation of receiving fees or commissions (e.g., Molly).</li></ul><ul id="4068ac6a-aab1-80f5-9fbe-cdf523eae33f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unlicensed Assistants Performing Regulated Tasks:</strong> Unlicensed staff cannot participate in negotiations or receive commission-based compensation splits (e.g., Tamara).</li></ul><ul id="4068ac6a-aab1-801c-b2e3-fc6553f19ffb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitting Expired Practice:</strong> Principal brokers cannot allow affiliated licensees whose licenses have expired to continue working or practicing real estate, even with promises of imminent renewal (e.g., Tia permitting Roger to work on an expired license).</li></ul></li></ul><ul id="4068ac6a-aab1-8065-90f1-fb15812e8d03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Standard of Honesty and Competence</strong><ul id="4068ac6a-aab1-80a3-9229-f32b4c6fe7be" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Principle:</strong> Clients rely on agents for specialized expertise and trust them to act with absolute integrity and reasonable skill. Failing to meet these standards violates Tennessee license law.</li></ul></li></ul><ul id="4068ac6a-aab1-80f4-9bae-d183351b4141" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Acting Honestly &amp; Fair Dealing</strong><ul id="4068ac6a-aab1-8083-98c8-fe233fe1186c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Conduct:</strong> Licensees must never engage in deceptive practices, misrepresentation, false promises, fraudulent advertising, bait-and-switch tactics (selling/leasing a property different from the one represented), or procuring a license/submitting renewal applications through fraud, deceit, or misleading statements.</li></ul><ul id="4068ac6a-aab1-80cc-babf-c9df1afb4c39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples of Violations:</strong><ul id="4068ac6a-aab1-80a8-b872-e9fe955d4f5a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lying about property inspections (e.g., Ashley fabricating an HVAC inspection).</li></ul><ul id="4068ac6a-aab1-80a1-97d5-c56e0fc42596" class="bulleted-list" dir="auto"><li style="list-style-type:square">Delivering a different property than agreed upon (e.g., Tom delivering a different timeshare unit).</li></ul><ul id="4068ac6a-aab1-80ec-bd1c-ef20a89ba2fd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Misrepresenting professional designations (e.g., Daria using the trademarked term &quot;Realtor&quot; without membership).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80c9-b726-f379792b006a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Acting Competently &amp; Exercising Skill and Care</strong><ul id="4068ac6a-aab1-805d-94be-c87678b3f42c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope of Performance:</strong> Licensees are held to a professional standard requiring knowledge and expertise across core real estate duties—such as paperwork execution, contract drafting, MLS data entry, marketing, staging, showing, and price negotiation.</li></ul><ul id="4068ac6a-aab1-8039-89cf-d925f55c7a6a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Principles:</strong><ul id="4068ac6a-aab1-8055-840d-e00f1c509854" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Obligation to Disclose:</strong> Agents are liable for what they know or <em>should</em> have known based on their professional expertise.</li></ul><ul id="4068ac6a-aab1-80f7-9535-fe58a3d915fa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Stay in Your Lane:</strong> Agents must not provide professional services outside their competence (such as giving legal advice) and should refer clients to qualified professionals when necessary. (Note: Agents are not expected to possess expertise outside standard real estate licensing domains).</li></ul></li></ul><ul id="4068ac6a-aab1-80b0-b87b-dd77a357a24f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples of Violations:</strong><ul id="4068ac6a-aab1-809d-a529-cb62eda21a78" class="bulleted-list" dir="auto"><li style="list-style-type:square">Incompetently handling timelines, resulting in client financial loss (e.g., Ali missing contractual deadlines and costing a client their earnest money).</li></ul><ul id="4068ac6a-aab1-8074-b491-c57d96f766ab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Taking on specialty transactions without proper expertise or disclosure (e.g., Benny taking on a commercial transaction despite specializing exclusively in residential properties).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80a2-ad6d-e2ee9b3eee70" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of Misrepresentation</strong><ul id="4068ac6a-aab1-8056-8155-e8fa7da9af48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A written or spoken false or misleading statement made by a licensee. Because agents possess professional expertise, they carry a higher standard of liability and danger of misrepresentation.</li></ul><ul id="4068ac6a-aab1-8015-ae44-e95105e1fd49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Core Types:</strong> Innocent, negligent, and intentional.</li></ul><ul id="4068ac6a-aab1-80c4-bbed-cc49f25aa1c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Misrepresentation</strong><ul id="4068ac6a-aab1-8046-bf26-d2eec09befbf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Innocent Misrepresentation:</strong><ul id="4068ac6a-aab1-80cb-bc09-ef9b60ae5c4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Occurs when a licensee makes a false statement believing it to be true (e.g., relying on a seller&#x27;s disclosure statement or a reasonable visual inspection that misses a hidden defect).</li></ul><ul id="4068ac6a-aab1-80ae-a159-c44e8bb6ba22" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Liability:</strong> Licensees are generally <strong>not liable</strong> for innocent misrepresentation since sellers and agents are only responsible for disclosing material facts known to them.</li></ul></li></ul><ul id="4068ac6a-aab1-80f3-99ba-ef247a3523c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Negligent Misrepresentation:</strong><ul id="4068ac6a-aab1-807a-9fa5-d1b5e90c72d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Involves the &quot;should have known&quot; standard based on professional competence. Occurs when a licensee knows or should know a material fact is inaccurate, fails to catch obvious red flags, or unknowingly makes an unreasonable false statement.</li></ul><ul id="4068ac6a-aab1-8048-be29-c082840c6009" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Liability:</strong> Licensees <strong>can be held liable</strong> for negligence (e.g., failing to catch an obvious contradiction, such as a former gas station site falsely claiming no underground storage tanks).</li></ul></li></ul><ul id="4068ac6a-aab1-808c-bf1a-d1ced548f861" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Intentional Misrepresentation (Fraud):</strong><ul id="4068ac6a-aab1-8083-84c2-f28db17187c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Occurs when a licensee purposely conceals a known defect or fabricates information to prevent a buyer from discovering a material fact (e.g., lying about a home&#x27;s construction year to bypass federal lead-based paint disclosure rules for pre-1978 homes).</li></ul><ul id="4068ac6a-aab1-8094-8735-cd5b00ef7053" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Liability:</strong> Acts of fraud intended to harm or deceive subject the licensee to <strong>civil litigation and potential criminal prosecution</strong>.</li></ul></li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80db-b958-ea6f2fd54751" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of Mandatory Disclosures</strong><ul id="4068ac6a-aab1-80cf-92e9-c57dbe031bad" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees are legally required to make proper disclosures throughout real estate transactions, broken down into two primary categories: <strong>agency disclosures</strong> and <strong>material fact disclosures</strong>.</li></ul></li></ul><ul id="4068ac6a-aab1-80a7-9d9d-dc2bf23ea6f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Disclosures</strong><ul id="4068ac6a-aab1-8089-9325-db3818aa8f52" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Requirement:</strong> A licensee must explicitly make known any possible or existing agency relationships and personal interests.</li></ul><ul id="4068ac6a-aab1-8026-825a-c1230cb3d359" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Situations Requiring Disclosure:</strong><ul id="4068ac6a-aab1-80e5-86f1-e8ccbdd4adb7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Informing prospective buyers if the agent represents the seller.</li></ul><ul id="4068ac6a-aab1-805a-922b-e3dd042c557e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Informing sellers if the agent represents the buyer.</li></ul><ul id="4068ac6a-aab1-8021-976b-f727c6735062" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclosing agency representation to any other licensees involved in the same transaction.</li></ul><ul id="4068ac6a-aab1-8026-ac58-e99a91c7241d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclosing a licensee&#x27;s status as a principal when buying or selling on their own behalf.</li></ul></li></ul><ul id="4068ac6a-aab1-80fe-b2f1-d9c4bc633d51" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Violations:</strong> Acting as an undisclosed dual agent without explicit consent (e.g., Siena) or failing to disclose one&#x27;s real estate license status when acting as a principal in a transaction (e.g., Philomena).</li></ul></li></ul><ul id="4068ac6a-aab1-80e9-8de0-e9501d3c0497" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure of Material Facts</strong><ul id="4068ac6a-aab1-808c-b7ed-c6fe4dc8cf37" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Requirement:</strong> Agents must disclose all known material facts that would negatively affect a buyer&#x27;s decision or the value/habitability of the property.</li></ul><ul id="4068ac6a-aab1-80a1-a08e-de68901100a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Categories:</strong><ul id="4068ac6a-aab1-80a8-8dd3-e9621956ff04" class="bulleted-list" dir="auto"><li style="list-style-type:square">Land, soil conditions, lot size accuracy, encroachments, and easements.</li></ul><ul id="4068ac6a-aab1-803e-b18e-e91e2e34989f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Structural integrity and condition of major built-in systems, equipment, and appliances.</li></ul><ul id="4068ac6a-aab1-80f8-b464-cd332b5a6b48" class="bulleted-list" dir="auto"><li style="list-style-type:square">Known property alterations or additions.</li></ul><ul id="4068ac6a-aab1-80b1-8f43-d0de46133bb7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Environmental hazards (lead-based paint, asbestos, mold, pests, sinkholes).</li></ul><ul id="4068ac6a-aab1-8012-8786-ce3b1cd7e49a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Public controls (zoning restrictions, municipal services, boundaries).</li></ul></li></ul><ul id="4068ac6a-aab1-802c-9486-d0db3e9e0354" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusions: What Does NOT Need to be Disclosed (Stigmatized Properties)</strong><ul id="4068ac6a-aab1-8052-8e5f-e56f3d8bccea" class="bulleted-list" dir="auto"><li style="list-style-type:square">Facts that merely <strong>stigmatize</strong> a property are not legally considered material facts because they do not impact the physical condition or intrinsic value of the real estate.</li></ul><ul id="4068ac6a-aab1-805a-bc8f-f3a4f0672446" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Examples:</strong> Deaths, murders, suicides, or suspected paranormal activity associated with a property. Licensees cannot be disciplined for withholding this information.</li></ul><ul id="4068ac6a-aab1-8071-b508-c1dc3ec572e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Special Protection:</strong> Disclosing private health information, such as a previous occupant&#x27;s HIV status, is strictly prohibited and can constitute a federal fair housing violation.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8077-b9e7-cc8a2e3d249a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibition Against Interfering with Existing Contracts</strong><ul id="4068ac6a-aab1-80bd-9b09-cc32e546c72a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Licensees are strictly prohibited from interfering with exclusive representation or exclusive brokerage agreements established between other agents/brokers and their clients.</li></ul><ul id="4068ac6a-aab1-80af-b749-e10dc7fab8d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Conduct:</strong></li></ul><ul id="4068ac6a-aab1-80fe-8a3a-d24371a86fe2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Actively attempting to woo or solicit clients who are currently bound by an exclusive agency agreement with another professional.</li></ul><ul id="4068ac6a-aab1-808b-ab83-ed3145da7ce9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Encouraging or convincing a client to breach or terminate an existing representation contract prematurely (e.g., Agent Jessie signing Seller Jenna to a new listing agreement despite knowing Jenna is already bound by an exclusive agreement).</li></ul><ul id="4068ac6a-aab1-80ed-a0bf-fc9e81785fb2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitted Conduct:</strong> It is entirely acceptable to pursue or secure a listing agreement with a property owner <em>after</em> their current exclusive agreement has formally expired.</li></ul><ul id="4068ac6a-aab1-80f0-806f-ec9ae339dcd0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Affiliation Integrity (&quot;Don&#x27;t Cheat on Your Broker&quot;)</strong><ul id="4068ac6a-aab1-80df-83a3-c998e0a255c2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Affiliate brokers must properly and formally terminate their relationship with their current sponsoring broker before initiating work or affiliation at a new brokerage firm.</li></ul><ul id="4068ac6a-aab1-801e-b325-fc2365412cde" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sponsoring brokers who knowingly onboard an affiliate broker who has failed to properly and legally sever their previous affiliation are also in direct violation of license law.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80d3-87d4-f503a7466cec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Requirement for Owner&#x27;s Written Consent</strong><ul id="4068ac6a-aab1-80fe-ac39-dce7c56ddeb3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signage &amp; Advertising:</strong> Licensees are strictly prohibited from placing &quot;for sale,&quot; rent, lease, or exchange signs on any property without prior written authorization from the owner (or the owner&#x27;s authorized agent).</li></ul><ul id="4068ac6a-aab1-8088-98ad-d1885380faa0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Advertising Other Listings:</strong> Advertising a property listed by another licensee requires explicit written permission from the owner, typically documented within the listing agreement or a separate signed statement.</li></ul><ul id="4068ac6a-aab1-801c-b0ac-d792ea8635c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Practice:</strong> Always wait until a formal listing agreement is fully signed before launching any marketing or advertising campaigns for a property.</li></ul><ul id="4068ac6a-aab1-805e-826c-f14faac6af5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibitions on Unauthorized Signatures &amp; Offerings</strong><ul id="4068ac6a-aab1-80da-be79-cc988a2f62f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Forging or Signing Names:</strong> A licensee must never sign another person&#x27;s name on any document, contract, or form without explicit written consent—even if verbal permission or a casual instruction was given over the phone (e.g., Tom signing closing documents for an absent seller based solely on a phone call).</li></ul><ul id="4068ac6a-aab1-80e4-982b-e2567e337d12" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unauthorized Offerings:</strong> An agent is strictly prohibited from offering a property for sale or placing a sign without the owner&#x27;s direct agreement and permission (e.g., Will putting up a yard sign immediately after signing a listing contract without discussing signage with Greg).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8081-8ad8-e0329d62ffda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Rules for Receiving Compensation</strong><ul id="4068ac6a-aab1-8058-b1ed-ddc054ea2fc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sponsoring Broker Restriction:</strong> A licensee is legally prohibited from accepting compensation for real estate activities from <strong>any person other than their own principal broker</strong>.</li></ul><ul id="4068ac6a-aab1-8053-b22c-f6438e21937e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Direct Client Payments:</strong> Licensees cannot accept direct payments, bonuses, or &quot;tips&quot; from clients or third parties for real estate services (e.g., Pothik accepting a bonus check directly from a client).</li></ul><ul id="4068ac6a-aab1-8052-b177-f80e59b4767e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disclosure of Rebates &amp; Referral Fees</strong><ul id="4068ac6a-aab1-80fb-ade7-c14c3529b1a7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees must fully disclose ahead of time if they will receive any rebate, profit, compensation, or commission through making a referral (e.g., Morgan recommending an inspection company while hiding that a referral fee will be collected). Full disclosure allows the client to make an informed decision.</li></ul></li></ul><ul id="4068ac6a-aab1-8025-80bf-d4f71b5940b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibition on Unlicensed Payments</strong><ul id="4068ac6a-aab1-80d3-b1b0-f886c52ad95e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unlicensed assistants <strong>cannot</strong> receive commissions, fee splits, or referral fees under any circumstances; only licensed individuals are legally permitted to receive compensation for real estate services (e.g., Miranda paying her unlicensed assistant a commission).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-804c-86fa-fb53a3898ea0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Requirements for Listing Agreements</strong><ul id="4068ac6a-aab1-8052-a53d-f767bb2998ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contract Nature:</strong> Technically an agreement between the seller and the broker (with the agent acting on the broker&#x27;s behalf).</li></ul><ul id="4068ac6a-aab1-8008-9d9d-d59b3a529d51" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Core Prohibitions:</strong> Listing agreements cannot be net listings, cannot include automatic renewal provisions, and must feature a explicit expiration date.</li></ul><ul id="4068ac6a-aab1-80c8-8fbe-d1cf9c798d5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibition of Net Listings</strong><ul id="4068ac6a-aab1-80bd-b62d-ed99218c0233" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An agreement where the seller sets a fixed net amount they want to receive, and the agent keeps any excess sale proceeds above that figure as commission.</li></ul><ul id="4068ac6a-aab1-8068-891d-f2c774ead394" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Why It&#x27;s Illegal:</strong> It creates a massive conflict of interest and strong incentive for fraud, tempting unscrupulous agents to underprice a property to secure an oversized payday at the seller&#x27;s expense (e.g., Broker Bob purposely underpricing a home to pocket a $50,000 spread).</li></ul></li></ul><ul id="4068ac6a-aab1-806c-ab52-f2f6b4d68b3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibitions on Automatic Renewals &amp; Mandatory Expiration Dates</strong><ul id="4068ac6a-aab1-805a-ab31-ce00bcd227ea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Automatic Renewals:</strong> Listing agreements cannot contain clauses that automatically renew the contract upon expiration. Once expired, sellers have the legal right to list with a different agent without breach.</li></ul></li></ul><ul id="4068ac6a-aab1-8025-82f5-f15bb746ef38" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Required Expiration Date:</strong> In Tennessee, listing agreements, sales contracts, and all offers/counteroffers <strong>must</strong> specify a concrete termination/expiration date.<ul id="4068ac6a-aab1-808a-a0c0-fe5fb6f83681" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Brokerage Ownership of Listings</strong></li></ul><ul id="4068ac6a-aab1-80bb-8eef-fff61ab009d5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Listings Stay with the Firm:</strong> If an affiliate broker leaves a brokerage, they cannot take any pending listings or transaction documents with them. All listings belong exclusively to the principal broker and the firm (e.g., Greg refusing to turn over listings when leaving Victory Realty).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80a4-9a2c-e44c97e30b1d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibition Against the Practice of Law</strong><ul id="4068ac6a-aab1-80ba-8a49-f79f3fd25e5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope:</strong> Real estate licensees are strictly prohibited from practicing law—which includes giving legal advice, drafting legal documents, and representing clients in legal negotiations or court proceedings—unless they separately hold a valid license to practice law.</li></ul><ul id="4068ac6a-aab1-8076-884d-f49fa7f93bfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Explaining Contracts: Teach vs. Tell</strong><ul id="4068ac6a-aab1-808e-8f4c-f1a34a6f6382" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Explaining vs. Directing:</strong> Licensees may explain what forms and clauses mean and present options to clients, but they must <strong>never</strong> tell a client exactly which option to choose or make legal decisions on their behalf.</li></ul><ul id="4068ac6a-aab1-80ae-a9cb-c1f83e02b9b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Golden Rule:</strong> <em>Teach your clients, don&#x27;t tell them what to do.</em> Provide informational tools, explain standard contract terms, and defer to qualified attorneys whenever legal advice or interpretation is requested.</li></ul></li></ul><ul id="4068ac6a-aab1-8052-85a1-c30d5c14e922" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Conduct &amp; Examples</strong><ul id="4068ac6a-aab1-80e6-8fbf-e6fa562e9be6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Drafting Legal Instruments:</strong> Agents cannot draft specialized legal documents such as powers of attorney, deeds, or custom contract clauses—even if they appear simple or the agent has years of experience (e.g., Lucy drafting a power of attorney document for her client).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8080-ba43-e80c5f2a958d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Responsibility for Client Funds</strong><ul id="4068ac6a-aab1-803c-a478-d1e9cedb2de0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees are strictly required to manage client funds with absolute integrity, which includes meticulous financial record-keeping and strict compliance with escrow account regulations.</li></ul><ul id="4068ac6a-aab1-80be-9a9c-c142e79e4e29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affiliate Broker Rule:</strong> Affiliate brokers must turn over any trust funds (such as earnest money deposits) to their principal broker <strong>immediately upon receipt</strong> (e.g., Henry failing to immediately deliver an earnest money check to his principal broker).</li></ul><ul id="4068ac6a-aab1-803e-b70e-c8176e456803" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow Accounts (Trust Accounts)</strong><ul id="4068ac6a-aab1-8054-ae89-f7eb6eee30e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Special accounts established in a recognized financial institution, completely separated from personal or operational accounts, used to hold client money temporarily (e.g., earnest money deposits, advance fees).</li></ul><ul id="4068ac6a-aab1-8016-a4a4-edd15d7b1c88" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Principal Broker Responsibility:</strong> The principal broker is responsible for depositing trust funds immediately into the designated escrow account to safeguard them until proper disbursement according to the contract.</li></ul></li></ul><ul id="4068ac6a-aab1-80a8-a6c2-c2a3953a2e0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibition Against Commingling and Conversion</strong><ul id="4068ac6a-aab1-80b9-885f-c3e8c82df191" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Commingling:</strong> The illegal act of mixing personal or operating funds with client trust funds (e.g., Sampson depositing a client&#x27;s earnest money into the firm&#x27;s general operating account).</li></ul><ul id="4068ac6a-aab1-807a-9b14-e53ebf502328" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conversion:</strong> The severe illegal act of misappropriating or using trust funds for any purpose other than what they were intended for (e.g., using client escrow funds to pay personal bills or student loans).</li></ul><ul id="4068ac6a-aab1-800b-af4a-c6df7da19b5e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Trust funds must be disbursed properly and without unreasonable delay upon the conclusion or termination of a transaction.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-806e-b2e4-d16473b9db2c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of Fair Housing Laws</strong><ul id="4068ac6a-aab1-80e5-9071-ce9fd139a547" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mandate:</strong> Licensees are strictly prohibited from violating federal fair housing laws or any similar state and local ordinances.</li></ul><ul id="4068ac6a-aab1-80ab-8ddf-e25661e4864d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Ensure equal opportunity in housing and prohibit discrimination in all real estate transactions, practices, and negotiations.</li></ul><ul id="4068ac6a-aab1-8040-9804-de0f13e12b94" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Federal Fair Housing Act (1968)</strong><ul id="4068ac6a-aab1-80fe-8e73-e2fa98076e3b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Makes it unlawful to refuse to sell, rent to, negotiate with, or otherwise deny housing to any person based on their membership in a protected class.</li></ul></li></ul><ul id="4068ac6a-aab1-8074-b8aa-fab2af1a861e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protected Classes</strong><ul id="4068ac6a-aab1-8091-b413-e7c29f0b8b81" class="bulleted-list" dir="auto"><li style="list-style-type:square">Federal law establishes seven core protected classes:<ul id="4068ac6a-aab1-80e5-99fe-d7a12912f9a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Race</li></ul><ul id="4068ac6a-aab1-80ed-ad42-eda91b1c67e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Color</li></ul><ul id="4068ac6a-aab1-80a5-b9da-db360e03e133" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Religion</li></ul><ul id="4068ac6a-aab1-8080-9b32-de02638546e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">National origin</li></ul><ul id="4068ac6a-aab1-8050-8c2f-fbf0f86ca7b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sex (including gender identity and sexual orientation)</li></ul><ul id="4068ac6a-aab1-80b3-98b4-f7d5c09f34a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Disability</li></ul><ul id="4068ac6a-aab1-801a-8ad7-e546587ce4e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Familial status (families with children under 18, pregnant individuals, or those in the process of securing legal custody)</li></ul></li></ul><ul id="4068ac6a-aab1-80ef-8abf-fc01441b4b61" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Local/State Additions:</strong> State and municipal laws may include additional protected classes (such as source of income, age, or military status).</li></ul></li></ul><ul id="4068ac6a-aab1-80e0-a2e9-c1e3719c68a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Conduct &amp; Examples</strong><ul id="4068ac6a-aab1-8090-8a29-d05e3c85ecc0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discriminating in the quality of service, availability, terms, or conditions offered to clients and customers based on protected characteristics (e.g., treating a Hispanic customer poorly compared to a white customer).</li></ul><ul id="4068ac6a-aab1-80de-86f5-d5e8585a45be" class="bulleted-list" dir="auto"><li style="list-style-type:square">Imposing burdensome conditions, higher security deposits, or inflated rents on specific protected groups (e.g., charging families with children higher fees and rents).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80ed-a4ba-fa7e2c347e94" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker Responsibility &amp; Record Maintenance</strong><ul id="4068ac6a-aab1-8096-97dd-ea54a288bdac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Duty:</strong> The principal broker is legally responsible for maintaining all required brokerage and transaction records, ensuring proper organization and due diligence, and making them available to TREC upon request. Affiliated licensees must also ensure adequate maintenance of transaction records.</li></ul><ul id="4068ac6a-aab1-80f2-9a1f-df96f24b9321" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immediate Contract Copies:</strong> Licensees must provide copies of all signed real estate contracts to all signatories immediately upon execution.</li></ul><ul id="4068ac6a-aab1-80d8-8f71-cc4102822ede" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Transaction Documents Required</strong><ul id="4068ac6a-aab1-8036-bac9-ed027bcb57dd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Listing agreements</li></ul><ul id="4068ac6a-aab1-8063-b2bd-f5d6a637af7d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Inspection reports</li></ul><ul id="4068ac6a-aab1-8086-9a53-c2e45d91baab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agency and property disclosures</li></ul><ul id="4068ac6a-aab1-809f-8a8a-f68661b2db71" class="bulleted-list" dir="auto"><li style="list-style-type:square">Accepted and rejected offers</li></ul><ul id="4068ac6a-aab1-80d6-a202-cda9a2f2cdcf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Material correspondence</li></ul><ul id="4068ac6a-aab1-8026-8b41-df98cc66bb3f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property management and lease agreements</li></ul></li></ul><ul id="4068ac6a-aab1-80b7-ad95-e5b8513ab8fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>TREC Access &amp; Inspection Rules</strong><ul id="4068ac6a-aab1-80c6-b6e4-f26b9899f4b7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>24-Hour Rule:</strong> TREC has the legal authority to examine and copy a broker&#x27;s records (accounting, transaction, or general documents), which must be made fully accessible and available <strong>within 24 hours</strong> of a request.</li></ul><ul id="4068ac6a-aab1-80d0-9936-ee5118d54efa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Electronic Storage:</strong> Records may be kept electronically, provided the principal broker maintains a secure, authentic, accurate, readable, and accessible system that can still meet the 24-hour TREC production window.</li></ul></li></ul><ul id="4068ac6a-aab1-80d5-8585-e687ad5721fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three-Year Retention Rule</strong><ul id="4068ac6a-aab1-80fc-b193-c96ea1494e8d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under Tennessee law, all transaction documents, files, and escrow records must be retained and securely maintained for a minimum of <strong>three years</strong> from the date of closing or transaction termination.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8095-aa17-ec66253bb6c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disqualifying Criminal Offenses &amp; Prior Discipline</strong><ul id="4068ac6a-aab1-80e0-81f8-cab99d4476a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Offenses:</strong> TREC has the authority to discipline or revoke the license of any individual convicted of, or who has pled guilty or nolo contendere (no contest) to, specific financial and integrity-related crimes—including bribery, forgery, embezzlement, larceny, conspiracy to defraud, extortion, or obtaining money under false pretenses (e.g., Ezra being discovered with an out-of-state extortion conviction).</li></ul><ul id="4068ac6a-aab1-8095-a88f-de4a68279e33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 60-Day Notification Rule</strong><ul id="4068ac6a-aab1-808c-8f84-f8ba55d7bbbc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any licensee who pleads guilty or is convicted of a qualifying criminal offense must notify TREC in writing within <strong>60 days</strong> of the conviction and provide certified copies of the court conviction.</li></ul></li></ul><ul id="4068ac6a-aab1-80fc-8689-f58277442b95" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Automatic Revocation &amp; Hearing Rights</strong><ul id="4068ac6a-aab1-80c3-8d36-da3a2405be05" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Automatic Revocation:</strong> TREC automatically revokes the license of an individual who receives a qualifying conviction 60 days post-conviction, <strong>unless</strong> the licensee formally requests a hearing within that 60-day window.</li></ul><ul id="4068ac6a-aab1-808d-a6e0-ec553cf24c76" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Hearing Determination:</strong> If a timely hearing is requested, TREC will review the case and determine the appropriate disciplinary sanctions or penalties rather than enforcing an automatic permanent revocation.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80eb-be08-cf61194989ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker-Specific Violations &amp; Responsibilities</strong><ul id="4068ac6a-aab1-8057-b5e0-c5d5643156b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adequate Supervision:</strong> Principal brokers must provide proper oversight to affiliated licensees. This includes reviewing affiliate advertising, examining all transaction contracts, and fulfilling administrative duties required for firm management.</li></ul><ul id="4068ac6a-aab1-80ce-b68b-c7a439262275" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Proper Termination Procedures:</strong> Brokers must strictly follow legal procedures when terminating an affiliate broker&#x27;s affiliation with the firm.</li></ul><ul id="4068ac6a-aab1-8055-a313-fd2d6f09e3fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Additional License Law Violations</strong><ul id="4068ac6a-aab1-8048-be90-cd177e9193f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Timeshare Act of 1981:</strong> Violating any provision of the Tennessee Timeshare Act of 1981 constitutes a direct violation of real estate license law.</li></ul><ul id="4068ac6a-aab1-80a2-a432-c883b614be94" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Failure to Maintain E&amp;O Insurance:</strong> Operating with an active license without maintaining mandatory Errors &amp; Omissions (E&amp;O) insurance (applicable to all license types except acquisition agents) is a license law violation.</li></ul><ul id="4068ac6a-aab1-80f3-a5ae-c200416bc6d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Refusal to Comply with Investigations:</strong> Prohibiting TREC access during an investigation or disobeying a court order related to an inquiry can result in the immediate suspension or revocation of a license.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8037-9616-d8b1d341035d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of the TREC Hearing Process</strong><ul id="4068ac6a-aab1-8061-8ba0-fa465fb3d485" class="bulleted-list" dir="auto"><li style="list-style-type:circle">TREC has the legal authority to investigate licensee actions and hold hearings when a violation of law or rules is suspected. Investigations are triggered either by a written complaint from any party (client, customer, licensee) or initiated independently by the Commission.</li></ul><ul id="4068ac6a-aab1-80a8-83a2-c353a38d021d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Complaint Deadlines (Statute of Limitations)</strong><ul id="4068ac6a-aab1-8074-80c9-fd82a69a4c4d" class="bulleted-list" dir="auto"><li style="list-style-type:square">The deadline for filing a complaint is the <strong>longer</strong> of:<ul id="4068ac6a-aab1-8010-9304-ebac8c1a15ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two years</strong> from the date of the alleged violation or the date the complainant became aware of it.</li></ul><ul id="4068ac6a-aab1-8016-8462-f1bc69c39f78" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The applicable statute of limitations if the violation constitutes a criminal offense.</li></ul><ul id="4068ac6a-aab1-8048-a4e3-e643eb8a9700" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>10 days</strong> after a successful criminal prosecution becomes final, if the criminal offense timeline exceeds the standard limits.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8018-9ccc-c7dfc4726761" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Notification &amp; Licensee Response (Step 2)</strong><ul id="4068ac6a-aab1-80d3-8d36-feff9b593dd2" class="bulleted-list" dir="auto"><li style="list-style-type:square">TREC must notify the accused individual and provide a copy of the complaint.</li></ul><ul id="4068ac6a-aab1-801c-99af-df9bfce8ef25" class="bulleted-list" dir="auto"><li style="list-style-type:square">The respondent has <strong>10 days</strong> to file a formal response (objecting, admitting responsibility, denying allegations, or providing a defense).</li></ul></li></ul><ul id="4068ac6a-aab1-8095-bbc3-dc5057a6e9f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Investigation, Consent Orders, and Formal Hearings (Steps 3 &amp; 4)</strong><ul id="4068ac6a-aab1-8020-a767-ffc623ef73f5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Investigation &amp; Notice:</strong> TREC inspects records, subpoenas documents, and—if sufficient evidence of wrongdoing is found—schedules a formal hearing, notifying the individual of the time and place. No disciplinary action can be taken prior to this hearing.</li></ul><ul id="4068ac6a-aab1-80cc-9448-ca0b575c9efa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Consent Order:</strong> TREC offers an opportunity to settle the matter informally via a consent order before proceeding to a formal hearing.</li></ul><ul id="4068ac6a-aab1-80d0-910f-f7c41f333f29" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Hearing:</strong> The accused meets with the Commission to review the facts. TREC determines if a violation occurred and assigns appropriate discipline. Rulings may be appealed by the licensee.</li></ul></li></ul><ul id="4068ac6a-aab1-80b0-aa59-e69398429e2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unlicensed Activity Penalties (&quot;No License - No Rules?&quot;)</strong><ul id="4068ac6a-aab1-80af-887b-ee6f7bb2c47c" class="bulleted-list" dir="auto"><li style="list-style-type:square">TREC disciplinary jurisdiction and penalties extend beyond licensed individuals. Anyone acting as a broker, affiliate broker, timeshare salesperson, or acquisition agent without a license while accepting payment can be sued.</li></ul><ul id="4068ac6a-aab1-8079-8c1c-e3b139594beb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Penalties:</strong> Fines ranging from the <strong>exact amount of the payment accepted up to three times that amount</strong>, alongside potential court orders to halt unlicensed real estate activities.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-804b-ad7e-eeb3266a4d2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TREC Disciplinary Actions &amp; Penalties</strong><ul id="4068ac6a-aab1-80cb-a7bd-de271462fa7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Range of Punishments:</strong> Downgrading a broker&#x27;s license to an affiliate broker&#x27;s license, refusing license issuance to an applicant, suspending a license temporarily, revoking a license permanently (reinstatement requires the agreement of at least <strong>six TREC members</strong>), and imposing civil penalties ranging from <strong>$50 to $1,000 per violation</strong>.</li></ul><ul id="4068ac6a-aab1-8036-8fe2-f49dea97f3bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Penalty Determination Factors:</strong> TREC evaluates public interest/risk of harm, deterrence value, surrounding circumstances, severity, extent of profit gained by the violator, and criminal nature of the act.</li></ul><ul id="4068ac6a-aab1-8048-91b9-c22b5faf68c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voting Threshold:</strong> A majority of TREC members (<strong>at least five</strong>) must agree to impose a license suspension or revocation.</li></ul><ul id="4068ac6a-aab1-805b-b397-e83179034152" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specific Triggers for Suspension &amp; Revocation</strong><ul id="4068ac6a-aab1-80b2-acfa-fc46b01307c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Criminal Actions:</strong> Typically result in license revocation.</li></ul><ul id="4068ac6a-aab1-8020-b276-ef867c328018" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Nonpayment:</strong> Failure to pay taxes, child support, or student loans can trigger a license suspension.</li></ul><ul id="4068ac6a-aab1-80a8-85af-e14ee8cc1097" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recovery Account Payouts:</strong> If TREC pays out money from the Real Estate Education and Recovery Account due to a licensee&#x27;s actions, that licensee&#x27;s license may be suspended or revoked, and they remain ineligible for a new license until they <strong>repay the Account in full with interest</strong>.</li></ul><ul id="4068ac6a-aab1-80f0-91be-f205671c179e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broker Revocation Impact:</strong> If a principal broker&#x27;s license is suspended or revoked, the licenses of all affiliated licensees automatically become invalid.</li></ul></li></ul><ul id="4068ac6a-aab1-8013-a42c-ce2de3c0b7ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Class B Misdemeanor &amp; Unlicensed Practice</strong><ul id="4068ac6a-aab1-8043-9678-f3b751958c87" class="bulleted-list" dir="auto"><li style="list-style-type:square">Practicing real estate without a valid license is classified as a <strong>Class B misdemeanor</strong>, prosecutable in court with potential penalties of up to <strong>$500 in fines</strong> and/or <strong>up to six months of incarceration</strong>.</li></ul><ul id="4068ac6a-aab1-8060-9212-fe215ad23dce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Additional Penalties:</strong> Unlicensed individuals who accepted compensation are liable for up to <strong>three times the amount received</strong>. Each day of continued violation counts as a separate offense, and TREC may petition for a court injunction to halt the activity.</li></ul></li></ul><ul id="4068ac6a-aab1-80e9-9878-eb7c7fa2f0f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Civil Suits</strong><ul id="4068ac6a-aab1-8092-986e-c17ada7f9454" class="bulleted-list" dir="auto"><li style="list-style-type:square">In addition to administrative disciplinary actions by TREC, injured parties retain the right to file independent civil lawsuits against the licensee.</li></ul><figure id="4068ac6a-aab1-8052-949b-d11079849c81" class="image" data-notion-image="Chapter%203%20-%20Misconduct%20and%20Discipline/image.png" dir="ltr"><a href="Chapter%203%20-%20Misconduct%20and%20Discipline/image.png"><img style="width:384px" src="Chapter%203%20-%20Misconduct%20and%20Discipline/image.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-8013-943f-d9ce4b9a7df5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><p id="4068ac6a-aab1-806d-b733-da684776af32" class="" dir="auto">
+</p></div><div id="4068ac6a-aab1-8016-a5c7-d54089a8d59d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4068ac6a-aab1-8035-a221-c3ddb1bf90c9" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><p id="4068ac6a-aab1-80f3-974c-ca8004906d36" class="" dir="auto"><strong>License Law Violations</strong><div class="indented"><ul id="4068ac6a-aab1-803d-94c8-f756f2993b51" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Licensees must not:</li></ul><ul id="4068ac6a-aab1-80d9-aa94-c02fc9b791e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Act without a license</li></ul><ul id="4068ac6a-aab1-8046-8e99-d0c26a2046d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Act in a way that is untrustworthy or incompetent</li></ul><ul id="4068ac6a-aab1-8054-9937-c5ad48a419e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Make misrepresentations</li></ul><ul id="4068ac6a-aab1-80e7-84dd-dc45f3cf6b1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fail to make the proper disclosures</li></ul><ul id="4068ac6a-aab1-8043-aafa-de56187d75c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Interfere with an existing contract</li></ul><ul id="4068ac6a-aab1-809d-b19c-ea200f4482b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fail to get the owner&#x27;s consent when selling their property</li></ul><ul id="4068ac6a-aab1-8087-82d4-f1fa57916cf2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Accept payment from someone other than their principal broker</li></ul><ul id="4068ac6a-aab1-80de-b1ed-fd23da9a84a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sign a listing agreement with illegal provisions</li></ul><ul id="4068ac6a-aab1-80e6-9cf1-fa8837c9de14" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Practice law</li></ul><ul id="4068ac6a-aab1-8032-8aa6-e5f2cb00250d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Incorrectly handle client funds</li></ul><ul id="4068ac6a-aab1-80fe-91bc-f496a9221446" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Violate fair housing law</li></ul><ul id="4068ac6a-aab1-8040-ad29-db37bca7fdaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Keep documents and records improperly</li></ul><ul id="4068ac6a-aab1-80da-9f87-fcff32578a9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Have had certain prior criminal convictions</li></ul><p id="4068ac6a-aab1-8083-be5f-df75a718e25e" class="" dir="auto"><strong>The Process for Hearings</strong></p><figure id="4068ac6a-aab1-80e3-a555-e6524dc6bbfd" class="image" data-notion-image="Chapter%203%20-%20Misconduct%20and%20Discipline/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Misconduct%20and%20Discipline/image%201.png"><img style="width:1400px" src="Chapter%203%20-%20Misconduct%20and%20Discipline/image%201.png"/></a></figure><h3 id="4068ac6a-aab1-8050-a08e-eaa886ef84d0" class="" dir="auto"><strong>Consequences</strong></h3><ul id="4068ac6a-aab1-80af-b563-e68479cdcf5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When TREC determines that a rule or law has been violated, they have several disciplinary options that they might choose. These include:<ul id="4068ac6a-aab1-803c-bc46-f7848b532d50" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Downgrading a license from a broker&#x27;s license to an affiliate broker&#x27;s license</li></ul><ul id="4068ac6a-aab1-8009-9002-c4bb067f5f12" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Refusing to allow an applicant to get a license</li></ul><ul id="4068ac6a-aab1-80f8-997c-ca7df3c901c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Suspending an individual&#x27;s license</li></ul><ul id="4068ac6a-aab1-80ee-b1aa-fe7a2c29e581" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Revoking (taking away) an individual&#x27;s license (they do not give the license back unless six members of TREC agree to do so)</li></ul><ul id="4068ac6a-aab1-804c-a106-d534d0c4a15f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depending on the violation, TREC can also impose a penalty ranging from <strong>$50 to $1,000</strong></li></ul><p id="4068ac6a-aab1-8060-9ee6-d7cd788483bd" class="" dir="auto">
+</p></li></ul></div></p></div></div><p id="4068ac6a-aab1-80bc-8490-ff7a43f9a055" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Broker Supervision and Management</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-804e-b254-f17c23968305" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Broker Supervision and Management</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4068ac6a-aab1-80ae-9808-e330ee4a05b5" class="column-list" data-notion-column-list="" dir="auto"><div id="4068ac6a-aab1-80fc-b2b9-fb0ea3cfe595" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4068ac6a-aab1-805a-b4fb-fae87c06da48" class="" dir="auto"><strong>Brokerage Roles: Principal Broker vs. Affiliate Broker</strong></p><ul id="4078ac6a-aab1-80af-b313-eff04ea28f81" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker:</strong> The designated leader and supervisor of the real estate brokerage responsible for overseeing all affiliate licensees and ensuring full compliance with state and national laws. There is strictly <strong>one principal broker per brokerage</strong>.</li></ul><ul id="4078ac6a-aab1-80d6-b58f-f4fc69c1ba4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate Broker:</strong> A licensee sponsored by the principal broker to act as an agent on their behalf. A brokerage can have an unlimited number of affiliate brokers.<figure id="4078ac6a-aab1-8033-99e3-f0638f206e9c" class="image" data-notion-image="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image.png" dir="ltr"><a href="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image.png"><img style="width:432px" src="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image.png"/></a></figure></li></ul><ul id="4078ac6a-aab1-8004-9932-df17bd1ca9dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate Experience Requirement:</strong> Before an affiliate broker can apply to upgrade to their own broker&#x27;s license, they must have worked under a broker&#x27;s supervision for at least <strong>two to three years</strong>.</li></ul><ul id="4078ac6a-aab1-8054-82a0-fb44a523527a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Benefits of Affiliating with a Brokerage</strong><ul id="4078ac6a-aab1-80ec-8aaf-e2fdf672812b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Reduced or shared individual liability</li></ul><ul id="4078ac6a-aab1-8057-bf98-ccd6f1383693" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Professional training and development</li></ul><ul id="4078ac6a-aab1-80bb-b575-eb0177ee90ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Physical office space and floor time</li></ul><ul id="4078ac6a-aab1-80f2-88ed-c48d408e0d32" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Administrative support</li></ul><ul id="4078ac6a-aab1-80cb-8486-f9eb74de521d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Brand awareness and market recognition</li></ul><ul id="4078ac6a-aab1-804e-ad91-da7e41e70751" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Shared marketing and advertising costs</li></ul></li></ul><ul id="4078ac6a-aab1-8039-8258-d4870465425e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker (Branch Manager) Duties &amp; Liability</strong><ul id="4078ac6a-aab1-808e-addc-f840a9bfc94b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broad Supervisory Scope:</strong> The principal broker is legally liable for the activities of <strong>everyone</strong> at the firm—including independent contractors, affiliate brokers, regular employees, unlicensed assistants, and administrative staff.</li></ul><ul id="4078ac6a-aab1-8036-8cfb-fe8840a92801" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Responsibility:</strong> If any firm associate violates license laws, local/state statutes, or fair housing regulations during real estate activities, the principal broker can be held directly responsible.</li></ul><ul id="4078ac6a-aab1-80a3-9aa5-eba828405af6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Responsibilities:</strong><ul id="4078ac6a-aab1-805c-a7f3-fc52d8aab78a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Ensuring all affiliates and staff are properly licensed and maintain active Errors &amp; Omissions (E&amp;O) insurance.</li></ul><ul id="4078ac6a-aab1-80f0-b9ce-cd26b47e1a35" class="bulleted-list" dir="auto"><li style="list-style-type:square">Remaining available to affiliate licensees during normal working hours.</li></ul><ul id="4078ac6a-aab1-8064-ac48-d1102de3a94e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Providing comprehensive training on legal, ethical, and appropriate business practices.</li></ul><ul id="4078ac6a-aab1-8017-96be-d1474a23fc51" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reviewing and approving all transactional documents (listing agreements, purchase contracts, etc.).</li></ul><ul id="4078ac6a-aab1-803f-b182-dba22e148169" class="bulleted-list" dir="auto"><li style="list-style-type:square">Developing, communicating, and training staff on standardized company policies and procedures.</li></ul><ul id="4078ac6a-aab1-8023-be14-cabba0fc5b36" class="bulleted-list" dir="auto"><li style="list-style-type:square">Managing and maintaining accurate escrow/trust account records.</li></ul><ul id="4078ac6a-aab1-8001-9804-ed9b01e4569c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Supervising all firm advertising.</li></ul><ul id="4078ac6a-aab1-8082-88e8-d1ca680f4b48" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exercising the exclusive right to disburse payments/compensation to affiliated licensees.</li></ul></li></ul></li></ul><ul id="4078ac6a-aab1-80e6-97a6-c6b7a74fe09f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Concept of Vicarious Liability</strong><ul id="4078ac6a-aab1-8024-ae4b-f1e76034ab58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Vicarious liability is the legal responsibility imposed on a person for the actions of another, even without wrongful intent or direct participation in the wrongful act or omission.</li></ul><ul id="4078ac6a-aab1-8023-80c8-f536726095b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application to Principal Brokers:</strong> Principal brokers are vicariously liable for the actions, errors, and violations of all licensees and staff employed under them.</li></ul></li></ul><ul id="4078ac6a-aab1-8011-ae88-fcdc46fd61e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client Liability Protection in Misrepresentations</strong><ul id="4078ac6a-aab1-8037-8e8d-f7ec74c09012" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Rule:</strong> Under Tennessee license law, a client (such as a seller) <strong>cannot</strong> be held liable for the misrepresentations made by their real estate licensee.</li></ul><ul id="4078ac6a-aab1-808e-af5a-c71e630bb80a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Knowledge Exception:</strong> A client can only be held liable if they had actual prior knowledge of the licensee&#x27;s misrepresentation.</li></ul><ul id="4078ac6a-aab1-802c-8c65-d2659d7c5581" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Liability Unaffected:</strong> Client immunity does <strong>not</strong> limit the liability of the principal broker, who remains fully exposed to liability for the misrepresentations of their affiliated licensees (e.g., if Licensee Lisa misrepresents an AC unit without the seller&#x27;s knowledge, the seller is shielded, but Lisa and her principal broker can both be held liable).</li></ul></li></ul><ul id="4078ac6a-aab1-8048-9352-ead3ebaa46b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Branch Office Licensing &amp; Setup</strong><ul id="4078ac6a-aab1-8016-b7fb-e8ea26c52fec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Requirement:</strong> A branch office is any location where real estate business is conducted outside of the principal office. When a broker operates multiple places of business in Tennessee, a separate real estate firm license is legally required for each branch office.</li></ul><ul id="4078ac6a-aab1-80c7-8d90-f1f3cf948f1a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Prerequisites:</strong> Every branch office must maintain a fixed physical location with adequate facilities for affiliated licensees, hold a valid firm license, and have a principal broker licensed at that specific location.</li></ul></li></ul><ul id="4078ac6a-aab1-8066-97b7-e2e14dc0d623" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Branch Office Application Process &amp; Requirements</strong><ul id="4078ac6a-aab1-8070-bf45-c2cf79666152" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Applications must be submitted to TREC <em>before</em> operating the branch office and must include:<ul id="4078ac6a-aab1-8073-a7f5-c3211c36bd37" class="bulleted-list" dir="auto"><li style="list-style-type:square">A completed and notarized firm application.</li></ul><ul id="4078ac6a-aab1-8006-a64c-c96c20d54fc2" class="bulleted-list" dir="auto"><li style="list-style-type:square">A current zoning compliance letter from the local planning commission.</li></ul><ul id="4078ac6a-aab1-8023-bfa0-ca70a9d9c7f5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of Errors &amp; Omissions (E&amp;O) insurance.</li></ul><ul id="4078ac6a-aab1-804c-8860-cde2d87c0828" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of a properly established firm escrow account.</li></ul></li></ul><ul id="4078ac6a-aab1-808f-be8e-dfd7202a9e78" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Applications can be processed online, and the standard application fee is <strong>$90</strong>.</li></ul></li></ul><ul id="4078ac6a-aab1-8060-8a74-ebadb08373eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Signage &amp; Management Requirements</strong><ul id="4078ac6a-aab1-806f-b864-f07787e5ac2e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signage:</strong> Branch office exterior and interior signage must comply with standard office rules and must explicitly include the designation <strong>&quot;branch office.&quot;</strong></li></ul><ul id="4078ac6a-aab1-8054-b3d2-df68e562b25d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Management &amp; Supervision:</strong> Each branch office must be managed by a principal broker (branch manager) licensed at that address (e.g., Huma overseeing advertising, training, contracts, and trust accounts at her branch location).</li></ul><ul id="4078ac6a-aab1-8080-8830-fc3023894fb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Leadership Changes:</strong> TREC must be notified within <strong>10 days</strong> of the death, resignation, termination, or incapacity of a branch principal broker, accompanied by an actionable continuity plan for ongoing operations.</li></ul></li></ul><ul id="4078ac6a-aab1-80cd-b6ee-cca9c9992a5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Termination &amp; Transfer Process</strong><ul id="4078ac6a-aab1-809d-92b3-e41f265fb6cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Required Documentation:</strong> To leave a brokerage or transfer a license, the licensee must complete the <strong>Transfer, Release and Change of Status Form (TREC Form 1)</strong> and submit it to TREC via hand-delivery, fax, mail, email, or online.</li></ul><ul id="4078ac6a-aab1-8098-8197-db57a8eace0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effective Date:</strong> Online submissions are recognized as effective immediately upon submission, terminating the previous affiliation instantly. For paper forms, the affiliation is terminated once TREC receives the document.</li></ul><ul id="4078ac6a-aab1-8073-8db9-eeb9a7c498dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Post-Termination Window:</strong> Within <strong>10 days</strong> of release, the licensee must declare whether they are retiring from real estate or affiliating with a new broker.</li></ul><ul id="4078ac6a-aab1-80a2-a1e6-e9a7e5f64d98" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Restriction on Activity:</strong> Licensees <strong>cannot</strong> perform any real estate brokerage activities during the gap between leaving a firm and having their new affiliation processed by TREC.</li></ul></li></ul><ul id="4078ac6a-aab1-80c9-905c-f94975d25e97" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker Release Obligations &amp; Exceptions</strong><ul id="4078ac6a-aab1-8042-9e3e-f8e4fd1bc3a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Surrendering the License:</strong> The original principal broker is expected to surrender the licensee&#x27;s license upon request.</li></ul><ul id="4078ac6a-aab1-802a-ae90-e276878ca1ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Uncooperative Brokers:</strong> If a principal broker refuses or is unable to sign a release, the affiliate broker must submit a <strong>notarized Affidavit for Release</strong> directly to TREC.</li></ul><ul id="4078ac6a-aab1-80c9-921a-da23e9b4c2fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Incapacitated Licensees:</strong> If a licensee becomes unable to sign a release, the principal broker must handle the termination paperwork.</li></ul></li></ul><ul id="4078ac6a-aab1-8015-84fe-dfe4b8e376c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ownership of Listings Upon Departure</strong><ul id="4078ac6a-aab1-80db-839d-ff7cbdc03f9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Listings Stay with the Firm:</strong> All listing agreements and buyer representation contracts belong exclusively to the principal broker and the firm.</li></ul><ul id="4078ac6a-aab1-800d-80b8-de3006d3d610" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exception:</strong> An affiliate broker may only take clients or listings with them if they receive <strong>explicit written permission</strong> from the principal broker.</li></ul></li></ul><ul id="4078ac6a-aab1-80f2-b9f0-f6e99045d9bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Unlicensed Employees</strong><ul id="4078ac6a-aab1-8091-a8e4-d84db96ad77d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unlicensed personnel (assistants, secretaries, administrative staff) are hired by brokers to handle clerical, bookkeeping, accounting, and general support duties.</li></ul><ul id="4078ac6a-aab1-80f8-96ad-df95f8ab631b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">They are strictly prohibited from performing any tasks that require a real estate license.</li></ul><ul id="4078ac6a-aab1-80c1-89d8-f7692560f1b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitted Activities for Unlicensed Personnel</strong><br/>Unlicensed assistants <strong>are allowed</strong> to perform routine administrative and support tasks, including:<ul id="4078ac6a-aab1-80e2-90fc-fe47d507a55b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Answering phones, forwarding calls, and sharing limited information found directly on the listing agreement (as authorized by the broker).</li></ul><ul id="4078ac6a-aab1-807a-90be-edc3ddff7efe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Completing and submitting MLS listings and updates.</li></ul><ul id="4078ac6a-aab1-80f4-978a-c178614aad2d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tracking loan commitments post-negotiation and securing loan status reports.</li></ul><ul id="4078ac6a-aab1-809c-a007-d2174d306566" class="bulleted-list" dir="auto"><li style="list-style-type:square">Assembling closing documents and gathering public information from courthouses or utility districts.</li></ul><ul id="4078ac6a-aab1-8080-891d-fee0c961a81b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Making keys, placing broker-approved ads and signs, and ordering repairs directed by a licensee.</li></ul><ul id="4078ac6a-aab1-8098-8a55-f47b2d9e2971" class="bulleted-list" dir="auto"><li style="list-style-type:square">Receiving, recording, and depositing earnest money, security deposits, and advance rents <strong>under the direct supervision of the principal broker</strong>.</li></ul><ul id="4078ac6a-aab1-8081-812f-e99302832fe8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Typing contract forms for licensee/broker review, monitoring personnel files, and calculating or distributing commission checks.</li></ul><ul id="4078ac6a-aab1-80fb-b426-e5a297cc04d5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Preparing broker-approved promotional flyers, delivering documents, picking up keys, and placing routine late-rent reminder calls.</li></ul><ul id="4078ac6a-aab1-801e-ae03-e15c8b13af59" class="bulleted-list" dir="auto"><li style="list-style-type:square">Gathering data for comparative market analyses (CMAs), unlocking properties under a licensee&#x27;s direction, and disclosing a property&#x27;s current sales status.</li></ul></li></ul><ul id="4078ac6a-aab1-804c-ab81-c91dee91a1a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Activities for Unlicensed Personnel</strong><br/>Unlicensed assistants <strong>cannot</strong> perform core brokerage functions, including:<ul id="4078ac6a-aab1-807d-a37c-cd41f93821d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Making cold calls (by phone or in person) to potential clients.</li></ul><ul id="4078ac6a-aab1-80ff-9f10-cb1f4716dab1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Showing properties for sale or lease to prospective buyers.</li></ul><ul id="4078ac6a-aab1-80f2-9417-d27eef5ca1b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Hosting open houses, home shows, booths, or trade fair exhibits.</li></ul><ul id="4078ac6a-aab1-8035-bd31-f33dab6d75c9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discussing or explaining listings, offers, contracts, or related real estate matters with individuals outside the firm.</li></ul><ul id="4078ac6a-aab1-806d-9d1e-f207bc06ff36" class="bulleted-list" dir="auto"><li style="list-style-type:square">Negotiating any terms of a real estate transaction.</li></ul><ul id="4078ac6a-aab1-804b-b4c8-fd63afb408c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Negotiating or agreeing to commission splits or referral fees on behalf of a licensee.</li></ul><ul id="4078ac6a-aab1-80f3-84ac-c6ccdc234d76" class="bulleted-list" dir="auto"><li style="list-style-type:square">Receiving compensation tied to or dependent upon a real estate transaction.</li></ul></li></ul><ul id="4078ac6a-aab1-807e-ba22-e73cbb2824c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compensation &amp; Payment Rules</strong><ul id="4078ac6a-aab1-80ea-b2a5-f61346b3bc80" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unlicensed employees may be paid a regular salary or hourly wage by the licensee or brokerage for clerical and secretarial duties.</li></ul><ul id="4078ac6a-aab1-803a-b628-dd25e3f124fb" class="bulleted-list" dir="auto"><li style="list-style-type:square">They <strong>cannot</strong> receive commissions, transaction bonuses, or any compensation contingent upon completed real estate deals.</li></ul></li></ul><ul id="4078ac6a-aab1-80ea-a17e-c7ab241d08c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Penalties for Unlicensed Activity</strong><ul id="4078ac6a-aab1-80bd-a75b-ccce6a6e9b55" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Class B Misdemeanor:</strong> Any unlicensed individual who performs acts requiring a license or holds themselves out as a licensee is guilty of a Class B misdemeanor, punishable by fines up to $500 and/or up to six months in jail.</li></ul><ul id="4078ac6a-aab1-8046-b75c-f05391c4d981" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financial Penalties:</strong> Unlicensed individuals who unlawfully accept compensation are liable in a court of law for an amount ranging from the total sum received up to <strong>three times that amount</strong>.</li></ul><ul id="4078ac6a-aab1-805a-9c32-ca8f1e9d28b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Firm Ineligibility:</strong> Any office found guilty of allowing unlicensed real estate practice faces disciplinary action and becomes <strong>ineligible to obtain a license for one year</strong> from the conviction date.</li></ul></li></ul></li></ul><ul id="4078ac6a-aab1-802f-be20-e7adfef413e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Independent Contractor vs. Employee Distinction</strong><ul id="4078ac6a-aab1-80cc-a815-cf08fec9a07d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Employee:</strong> The employer controls <em>how</em> the worker accomplishes their tasks and dictates the methods used.</li></ul><ul id="4078ac6a-aab1-80b5-b62f-e8c2b429b502" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Independent Contractor:</strong> The worker controls <em>how</em> they accomplish their work and is responsible to the employer only for the final results. Most real estate salespeople operate as independent contractors (e.g., Madeline choosing to work from home and setting her own hours around school schedules).</li></ul><ul id="4078ac6a-aab1-80c2-b905-caf98af01374" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supervision Note:</strong> While independent contractors enjoy scheduling flexibility regarding the <em>how, when, and where</em>, principal brokers still maintain regulatory oversight over their licensee activities.</li></ul></li></ul><ul id="4078ac6a-aab1-80e8-8768-e011f9a208cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>IRS Guidelines, Safe Harbor &amp; TEFRA</strong><ul id="4078ac6a-aab1-8035-a0a2-f9da436d6f47" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Section 530 of the Revenue Act of 1978 (made permanent under the Tax Equity and Fiscal Responsibility Act [TEFRA] of 1982) provides &quot;Safe Harbor&quot; protections preventing the IRS from misclassifying qualified real estate professionals as traditional employees.</li></ul></li></ul><ul id="4078ac6a-aab1-8031-9897-e16b228516b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three TEFRA Tests for Real Estate Independent Contractors</strong><br/>To be classified legally as an independent contractor under IRS Safe Harbor guidelines, a real estate agent must satisfy three specific criteria:<ol type="1" id="4078ac6a-aab1-80b7-b481-f81e8c39e038" class="numbered-list" start="1" dir="auto"><li><strong>Licensure:</strong> The individual holds a valid real estate license.</li></ol><ol type="1" id="4078ac6a-aab1-80d3-8050-e9a933c2faf2" class="numbered-list" start="2" dir="auto"><li><strong>Compensation Structure:</strong> Substantially all income is based on sales performance or commission outcomes rather than an hourly wage or fixed salary (e.g., Maritza earning strictly commission-based pay).</li></ol><ol type="1" id="4078ac6a-aab1-80a9-938d-d0a88f8b23bf" class="numbered-list" start="3" dir="auto"><li><strong>Written Agreement:</strong> A written independent contractor agreement exists between the agent and the principal broker explicitly stating that the agent will not be treated as an employee for federal tax reporting purposes.</li></ol></li></ul><p id="4078ac6a-aab1-8040-afc7-c5888d87906f" class="" dir="auto">
+</p></div><div id="4068ac6a-aab1-8081-8b2a-edc39675597d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4068ac6a-aab1-8074-9a42-f68cb5f5809e" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4078ac6a-aab1-8096-ae89-e6ebe3d4c1d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>branch office</strong>- any office where business is conducted other than the principal office</li></ul><ul id="4078ac6a-aab1-805c-b6c1-f1efd7b63250" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>independent contractor </strong>- one who contracts to do work according to their own methods, and is responsible to their employer only as to the results of that work</li></ul><ul id="4078ac6a-aab1-8036-941b-d088c4f5b520" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>liability </strong>- the state of being responsible for something</li></ul><p id="4078ac6a-aab1-80d9-9973-ff0415bc510e" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4078ac6a-aab1-80ce-8c16-c5ef09d8d8de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker Responsibilities</strong><ul id="4078ac6a-aab1-8057-8a1b-f4140649a877" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Principal brokers are liable for the activities of all associated firm members, including independent contractors, affiliate brokers, employees, unlicensed personal assistants, and administrative staff.</li></ul></li></ul><ul id="4078ac6a-aab1-80a2-8031-dd3b64584f5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Unlicensed Assistants</strong><ul id="4078ac6a-aab1-80ae-b2f5-c54162d64122" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An unlicensed assistant is hired by a real estate broker or salesperson to perform clerical, bookkeeping, accounting, and other administrative and support duties. <strong>An unlicensed assistant cannot do anything that requires a real estate license</strong>.</li></ul></li></ul><ul id="4078ac6a-aab1-8064-a979-d7874ccce15d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Independent Contractors</strong><ul id="4078ac6a-aab1-80cf-b29b-e8893096827a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here&#x27;s a comparison of independent contractors and employees.<figure id="4078ac6a-aab1-80f0-96f7-dc14b7b84119" class="image" data-notion-image="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image%201.png"><img style="width:413.796875px" src="Chapter%201%20-%20Broker%20Supervision%20and%20Management/image%201.png"/></a></figure></li></ul></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

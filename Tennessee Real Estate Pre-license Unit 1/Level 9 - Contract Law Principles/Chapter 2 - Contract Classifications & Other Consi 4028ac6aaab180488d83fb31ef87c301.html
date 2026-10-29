@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Contract Classifications &amp; Other Considerations</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8048-8d83-fb31ef87c301" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Contract Classifications &amp; Other Considerations</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4088ac6a-aab1-808d-b646-ebaa06214f38" class="column-list" data-notion-column-list="" dir="auto"><div id="4088ac6a-aab1-8006-b6a7-da58ab31340d" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4088ac6a-aab1-80d5-afe8-e763539f4177" class="" dir="auto"><strong>Contract Classifications Overview</strong></p><ul id="4088ac6a-aab1-80d0-994c-e44e7d3c9247" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Valid contracts are categorized using three primary dual classifications (either/or pairs):<ul id="4088ac6a-aab1-80c7-806f-e08419eb4eb2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Implied</strong><ul id="4088ac6a-aab1-809e-888f-c76c1d3e2e3f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Contracts established by the actions, conduct, or circumstances of the parties rather than through written documents or explicit verbal discussions.</li></ul><ul id="4088ac6a-aab1-8045-b757-e79b2aaab2a7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Standing:</strong> Despite lacking explicit or written terms, implied contracts carry the full legally binding power and enforceability of formal contracts.</li></ul><ul id="4088ac6a-aab1-804f-9c40-d44a31847a85" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Everyday Scenarios</strong><ul id="4088ac6a-aab1-8054-ab9a-fe5e1979ee75" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Restaurants:</strong> Ordering and consuming food creates an implied obligation to pay the posted menu price.</li></ul><ul id="4088ac6a-aab1-806b-85ae-da8271473dd2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxis:</strong> Hailing a cab creates an implied contract requiring the passenger to pay the mandatory fare upon reaching their destination.</li></ul><ul id="4088ac6a-aab1-8032-b13d-e843cdce2130" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Barbers / Services:</strong> Sitting in a provider&#x27;s chair and requesting services establishes an implied contract to compensate them for their work.</li></ul></li></ul><ul id="4088ac6a-aab1-806a-be40-ea08e0b6a4c2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Social Conventions &amp; Transparency</strong><ul id="4088ac6a-aab1-80b6-b7a5-da0e648001ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Professionals often rely on social norms or explicit pricing disclosures (such as posted rates on cab windows or menu prices) to clarify that services are commercial transactions rather than gifts.</li></ul></li></ul><ul id="4088ac6a-aab1-8037-9ff8-f7f5c21dd1b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Application in Real Estate</strong><ul id="4088ac6a-aab1-80b3-ad13-f6afb47fbf59" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibited:</strong> Implied real estate contracts do not exist. Due to the Statute of Frauds, all real estate contracts and agency agreements must be in writing to be enforceable.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80a5-8c56-e4f6eba1b31a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Express</strong><ul id="4088ac6a-aab1-8026-91aa-c644dbfe5bf0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Oral or written contracts where the parties explicitly state their intentions, expectations, and exchange of promises, with all terms and conditions fully identified and agreed upon.</li></ul><ul id="4088ac6a-aab1-8098-84ff-f21b49ebf372" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contrast:</strong> Unlike implied contracts—where terms are inferred from conduct—express contracts rely on direct, explicit communication.</li></ul><ul id="4088ac6a-aab1-809b-9069-c41779c39a3c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Real Estate Applications</strong><ul id="4088ac6a-aab1-80ad-aad0-ce7300b900b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Common examples encountered in a real estate career include listing agreements, buyer representation agreements, purchase and sales contracts, and lease agreements.</li></ul></li></ul><ul id="4088ac6a-aab1-80d1-b4a5-c1ed89397832" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Recourse &amp; Dispute Resolution</strong><ul id="4088ac6a-aab1-80d1-ae56-e5cf59488abb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because terms are explicitly stated (especially when put in writing), express contracts provide clear documentation for resolving disputes and seeking legal remedies if one party fails to perform.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80ad-9034-f96f92f2b2f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unilateral<ul id="4088ac6a-aab1-806d-a5c5-c3686124c4eb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unilateral Contracts Overview</strong><ul id="4088ac6a-aab1-80e1-ae6e-fef6d5463f47" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> An agreement in which <strong>one party (the offeror)</strong> makes a promise in exchange for a reciprocal act or performance by the <strong>second party (the offeree)</strong>.</li></ul><ul id="4088ac6a-aab1-80b3-8c62-fdc9375bc393" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Structure:</strong> Involves two parties but <strong>one promise</strong>. The second party is never bound or obligated to participate, but they retain the option to accept the terms through performance.</li></ul></li></ul><ul id="4088ac6a-aab1-80eb-9be5-faf9786e48c0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Obligations &amp; Mutuality</strong><ul id="4088ac6a-aab1-800c-b922-f1197ce73c5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Once the offeree performs the requested act, the offeror is legally bound and obligated to fulfill their promise.</li></ul><ul id="4088ac6a-aab1-8037-903e-e25517dca029" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because only one party is obligated from the outset while the other has complete freedom of choice, a unilateral contract is said to <strong>lack mutuality</strong>.</li></ul></li></ul><ul id="4088ac6a-aab1-8021-9cc0-fc2e195af6bb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example</strong><ul id="4088ac6a-aab1-80f7-b4ad-d0f3319e70e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mimi offers $5 to any neighbor for every bag of trash cleaned from the local park. Neighbors are under no obligation to participate, but if they pick up trash, Mimi is legally required to pay.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-807a-8a8c-ceb631e67967" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Bilateral<ul id="4088ac6a-aab1-8049-8311-e199c428fae7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An agreement in which <strong>both parties</strong> make a promise to perform specified actions, creating reciprocal obligations where each party has a direct responsibility to the other.</li></ul><ul id="4088ac6a-aab1-8090-9b28-e6f814d05347" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Prevalence:</strong> This is the most common type of contract used in business and real estate transactions.</li></ul><ul id="4088ac6a-aab1-805c-a9ef-dd2a042c6cde" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Structure &amp; Completion</strong><ul id="4088ac6a-aab1-80d1-ab4a-dd5c460bff5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Party A promises to do something for Party B, and Party B promises to do something for Party A.</li></ul><ul id="4088ac6a-aab1-8069-b213-e95a35428ca9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To fulfill and complete a bilateral contract, all involved parties must successfully carry out their respective promises.</li></ul></li></ul><ul id="4088ac6a-aab1-80d8-ad76-ed26c38bb1cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example</strong><ul id="4088ac6a-aab1-80d2-a622-e8c686512dc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Anna contracts with a bakery to buy a dog-friendly celebration cake for $50, and the bakery promises to deliver the cake (along with a complementary matching top hat and bowtie). Because both sides made enforceable promises, it is a bilateral contract.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80fc-b2d8-c83d5d7708ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bilateral vs. Unilateral Contracts </strong><ul id="4088ac6a-aab1-805f-b266-edf429985f03" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Bilateral Contracts:</strong> The standard choice for general business and real estate transactions (such as a standard real estate sales contract), where <strong>both parties</strong> make reciprocal promises.</li></ul><ul id="4088ac6a-aab1-8003-aebe-ded0a41240fa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unilateral Contracts:</strong> Involve <strong>one promise</strong> made in exchange for a performance or act (such as reward offers, contests, and certain commission structures).</li></ul><ul id="4088ac6a-aab1-8075-8ed1-cebaf6195a77" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Distinction:</strong> While both contract classes involve two parties, the fundamental difference lies in whether <strong>two promises</strong> (bilateral) or <strong>one promise</strong> (unilateral) are made.</li></ul></li></ul><ul id="4088ac6a-aab1-80a0-9ee7-f70878609138" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Executory <ul id="4088ac6a-aab1-8061-929d-e3e2acaaad7f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A contract that has been formed but has not yet been fully performed by all parties. Describing a contract as executory identifies its current stage of existence rather than its nature or purpose.</li></ul><ul id="4088ac6a-aab1-80e5-a9c8-cfd14d4e77c2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Elements:</strong> An executory contract requires:<ol type="1" id="4088ac6a-aab1-80a3-bef9-f21d97c99733" class="numbered-list" start="1" dir="auto"><li>A binding contract involving multiple parties.</li></ol><ol type="1" id="4088ac6a-aab1-808c-9b53-f591575d33fa" class="numbered-list" start="2" dir="auto"><li>One or more parties still having unperformed contractual duties remaining.</li></ol></li></ul><ul id="4088ac6a-aab1-8055-9f73-ebca00ffd375" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Relevance &amp; Court Intervention</strong><ul id="4088ac6a-aab1-80f0-b689-f3907dacb68d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Most agreements spend time in the executory stage before becoming fully executed.</li></ul><ul id="4088ac6a-aab1-800e-96f7-d86b92854025" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a contract is not materially complete, courts are generally hesitant to entertain premature breach of contract claims until performance is due or has been improperly withheld.</li></ul></li></ul><ul id="4088ac6a-aab1-80c3-b24e-cdf071f437e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ongoing Executory Contracts: The Exception</strong><ul id="4088ac6a-aab1-80a0-acdc-e028da69400d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exception to Court Timing:</strong> Unlike standard short-term executory contracts where courts wait for completion, courts <strong>will</strong> intervene and entertain breach claims at any point during an ongoing or long-term executory contract if a party fails to meet their ongoing obligations.</li></ul><ul id="4088ac6a-aab1-805d-920b-e8973fe192dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nature of Long-Term Contracts:</strong> Involve extended, continuous promises or exchanges of promises with no immediate or near-term completion date.</li></ul><ul id="4088ac6a-aab1-8072-ba00-d303fdb1c930" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Examples Without an End Date</strong><ul id="4088ac6a-aab1-8069-b9ae-dce91298e07a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Residential or Commercial Leases:</strong> Tenants make periodic payments in continuous exchange for living or operating quarters.</li></ul><ul id="4088ac6a-aab1-80a7-8299-d720a9306dfc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equipment Leases:</strong> Users pay ongoing rent for as long as they borrow and use the equipment.</li></ul></li></ul><ul id="4088ac6a-aab1-809a-a1f8-e02c15bf9604" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Examples With an End Date</strong><ul id="4088ac6a-aab1-808e-829c-ec97928164f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rent-to-Buy Leases:</strong> Agreements where a tenant rents property with a future option to purchase.</li></ul><ul id="4088ac6a-aab1-80de-bab1-d6644164785a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Car Leases:</strong> Fixed-term vehicle financing and usage agreements spanning a set number of months.</li></ul></li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-805a-8cc6-ead5f31a0bcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executed</strong><ul id="4088ac6a-aab1-8071-b8f6-c4237fa14bc5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An agreement in which all parties have fully performed and fulfilled all of their contractual terms and obligations.</li></ul><ul id="4088ac6a-aab1-8036-ba52-f3e88144d67e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Status:</strong> Once every promise has been carried out, the contract is fully executed, ceases to exist, and loses all further legal power to bind the parties.</li></ul></li></ul><ul id="4088ac6a-aab1-806a-b6b0-d58c020cd3b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real Estate Sales Contract Phase</strong><ul id="4088ac6a-aab1-800f-81a8-f736d6916ded" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Executory Phase:</strong> From the moment a buyer and seller sign a real estate purchase contract until closing, the agreement remains executory (active and awaiting final fulfillment).</li></ul><ul id="4088ac6a-aab1-807b-9c73-f7e94b273bf8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Executed Phase:</strong> Upon successful completion of closing and final transfer of obligations, the contract becomes fully executed and is completed.</li></ul><ul id="4088ac6a-aab1-8087-aefa-faab71f96ce6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Terminology Note: Execution Confusion</strong><ul id="4088ac6a-aab1-8015-beae-f767fed72c34" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In common industry parlance, people often say &quot;I executed a contract today&quot; to mean they <strong>signed or created</strong> a contract, rather than meaning the contract has been fully performed or fulfilled.<figure id="4088ac6a-aab1-8036-9e04-e76af3f2598a" class="image" data-notion-image="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image.png" dir="ltr"><a href="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image.png"><img style="width:480px" src="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image.png"/></a></figure></li></ul></li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-808b-b84e-f967590062aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Classifications</strong><figure id="4088ac6a-aab1-80ab-848c-d06f325309e4" class="image" data-notion-image="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%201.png"><img style="width:576px" src="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%201.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8031-929f-c93e294cba5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer &amp; Acceptance Revisited</strong><ul id="4088ac6a-aab1-809c-9fdc-eecfe302f4be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Reaching a meeting of the minds (mutual assent) often involves a sequential process of offers, counteroffers, and negotiations.</li></ul><ul id="4088ac6a-aab1-8040-ab04-f64d076f577a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If negotiations fail to achieve consensus, the back-and-forth process ultimately concludes with either an offer revocation or termination.</li></ul></li></ul><ul id="4088ac6a-aab1-80b9-b147-ce1f14a9aee0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Players in Negotiation</strong><ul id="4088ac6a-aab1-807c-a5c9-fd40e5cc8fad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Offeror:</strong> The party who makes the initial or subsequent offer.</li></ul><ul id="4088ac6a-aab1-809e-8048-dc8adc8c6e40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Offeree:</strong> The party who receives the offer and has the power to accept, reject, or counter it.</li></ul></li></ul><ul id="4088ac6a-aab1-80fd-981a-d881f527cda6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Precision in Offers</strong><ul id="4088ac6a-aab1-80bf-8fdb-e02bc28498e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specificity:</strong> Offers must be precise and accurate to satisfy the &quot;meeting of the minds&quot; (mutual assent) requirement, ensuring both parties share the exact same view of the terms and conditions.</li></ul><ul id="4088ac6a-aab1-8030-bfc1-cbc3755066fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Form:</strong> Putting offers in writing enhances specificity and clearly demonstrates legal intent to enter into an agreement.</li></ul></li></ul><ul id="4088ac6a-aab1-8008-9b4b-e4d7f32593b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Time Is of the Essence &amp; Expiration</strong><ul id="4088ac6a-aab1-807d-baf9-c42aae89b140" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Explicit Expiration:</strong> Offerors can include an exact expiration date and time by using the phrase <strong>&quot;time is of the essence,&quot;</strong> placing the offeree on a strict deadline.</li></ul><ul id="4088ac6a-aab1-80f8-a302-cbd43670e2a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reasonable Time:</strong> If an offer does not specify an expiration date, the offeree is granted a <strong>&quot;reasonable time&quot;</strong> to accept, which varies depending on state laws and the type of agreement.</li></ul></li></ul><ul id="4088ac6a-aab1-8060-a887-ef609620718f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offeree Options</strong><ul id="4088ac6a-aab1-80f7-b4d0-fb2962d3d787" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Upon receiving an offer, the offeree has four distinct options:<ol type="1" id="4088ac6a-aab1-80b0-af0d-dbbd9bdfa9d6" class="numbered-list" start="1" dir="auto"><li><strong>Accept - </strong>Agree to all terms as written, creating a binding contract upon communication.<ul id="4088ac6a-aab1-80e1-b8c6-f39750fe71b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Unconditional agreement to every term and condition of an offer without any alterations, modifications, or added contingencies.</li></ul><ul id="4088ac6a-aab1-804f-aae1-c6d17395cb51" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Mirror Image Rule:</strong> Any change to the terms of an offer (such as adding a financing contingency) invalidates the original offer and constitutes a counteroffer, not an acceptance.</li></ul><ul id="4088ac6a-aab1-804d-830c-d11d44160d5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Manner and Communication of Acceptance</strong><ul id="4088ac6a-aab1-8094-99aa-e6c60790cb3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>In Like Manner:</strong> If the offeror specifies the format, it must be followed. Otherwise, acceptance should match the medium of the offer (e.g., written offer requires written acceptance).</li></ul><ul id="4088ac6a-aab1-801f-afb3-c3be60b48569" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unilateral Acceptance:</strong> Unilateral offers are accepted solely through performance rather than through verbal or written communication.</li></ul><ul id="4088ac6a-aab1-8051-9611-fb0905baf7ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Communication:</strong> Acceptance is legally ineffective until it is formally communicated to the offeror. Signing a document alone (without communicating it) does not constitute a valid acceptance.</li></ul></li></ul><ul id="4088ac6a-aab1-80ac-9807-d4114b2f85e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Acceptance Rules</strong><ul id="4088ac6a-aab1-8083-a7ce-d8463fda0c90" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Writing Requirement:</strong> Because real estate conveyances fall under the Statute of Frauds, acceptance must be in writing.</li></ul><ul id="4088ac6a-aab1-80c8-9205-f9b95d9ceac3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Constructive vs. Actual Notice:</strong> Constructive notice occurs when written acceptance is put into the delivery process (such as mail), while actual notice occurs upon physical receipt.</li></ul><ul id="4088ac6a-aab1-8004-a939-fb86dd4438dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Digital Signatures:</strong> Federal law (since 2000) gives electronic signatures equal legal standing to handwritten ones, enabling instantaneous communication and eliminating traditional lag times.</li></ul></li></ul></li></ol><ol type="1" id="4088ac6a-aab1-80aa-96f5-dc4470af69c1" class="numbered-list" start="2" dir="auto"><li><strong>Counter - </strong>Propose new terms, which simultaneously rejects the original offer and creates a new offer (reversing roles).<ul id="4088ac6a-aab1-80a5-b41e-f19ab88864b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Any alteration, modification, or added contingency to an existing offer (such as adding a financing clause) rejects the original offer and constitutes a brand-new counteroffer.</li></ul><ul id="4088ac6a-aab1-80f4-a65e-ce09a6f0e679" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dual Action:</strong><ol type="1" id="4088ac6a-aab1-802f-97bc-f1912db64ce0" class="numbered-list" start="1" dir="auto"><li><strong>Role Reversal:</strong> The original offeree becomes the new offeror, and the original offeror becomes the new offeree.</li></ol><ol type="1" id="4088ac6a-aab1-8013-873f-d0a04fc57a6d" class="numbered-list" start="2" dir="auto"><li><strong>Termination of Original Offer:</strong> The original offer is rendered null and void, meaning it can no longer be accepted unless revived by the new offeror.</li></ol></li></ul><ul id="4088ac6a-aab1-8094-8ded-fac8b91e7aa4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nature &amp; Options</strong><ul id="4088ac6a-aab1-8005-98df-e4ccc5094938" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A counteroffer functions as a simultaneous <strong>rejection</strong> and <strong>new offer</strong>.</li></ul><ul id="4088ac6a-aab1-802a-a83d-d0f914119f24" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The recipient of the counteroffer now holds all standard offeree options (accept, reject, ignore, or issue another counteroffer). A party cannot unilaterally alter an agreement and claim it is binding without the other party&#x27;s explicit acceptance of those changes.</li></ul></li></ul></li></ol><ol type="1" id="4088ac6a-aab1-8057-978b-c71d923fa818" class="numbered-list" start="3" dir="auto"><li>Rejecting or Ignoring<ol type="a" id="4088ac6a-aab1-80db-8490-e5d757f43668" class="numbered-list" start="1" dir="auto"><li><strong>Reject:</strong> Explicitly decline the offer, terminating it immediately.</li></ol><ol type="a" id="4088ac6a-aab1-80d3-abb8-c87a40596293" class="numbered-list" start="2" dir="auto"><li><strong>Ignore:</strong> Let the offer sit without action until it expires by its terms or after a reasonable time.<ul id="4088ac6a-aab1-80a4-b4de-f6ff0300f5d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Intent &amp; Signal:</strong> Explicitly rejecting or ignoring an offer typically signals either the complete abandonment of the objective or an unwillingness to negotiate further (unlike a counteroffer, which keeps negotiations alive).</li></ul><ul id="4088ac6a-aab1-80fc-bf8a-d13922427126" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Reasons:</strong> Sellers might reject or ignore an offer because they received a better competing bid, refuse to compromise on price, or feel the offer is insulting.</li></ul><ul id="4088ac6a-aab1-80e3-86b5-e738b9e35948" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Communication Breakdown:</strong> While ignoring an offer leaves the exact motivation ambiguous, the ultimate outcome is a halt in communication and a lack of mutual agreement.</li></ul><ul id="4088ac6a-aab1-8090-a602-c2ba816c142f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An offer can be terminated either through the voluntary actions of the parties or by operation of law.<ul id="4088ac6a-aab1-809c-8e5c-fa38534c4ec4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The most favorable method of termination is <strong>acceptance</strong>, which successfully transitions the offer into a binding contract.</li></ul></li></ul><ul id="4088ac6a-aab1-8071-8f96-d3f1e472246e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ways an Offer Can Terminate</strong><ul id="4088ac6a-aab1-8047-8a83-d11e3f0f7d1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acceptance:</strong> Replaces the offer with a fully formed contract.</li></ul><ul id="4088ac6a-aab1-8045-85f6-f59b368170bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Counteroffer:</strong> Rejects the original offer and replaces it with a new one.</li></ul><ul id="4088ac6a-aab1-8019-a6a3-c6fa397b3b29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rejection:</strong> Explicitly declines the offer without proposing new terms.</li></ul><ul id="4088ac6a-aab1-80c5-a42b-ca1c4b353d4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expiration:</strong> Passes a specified expiration date or a reasonable amount of time without acceptance.</li></ul><ul id="4088ac6a-aab1-8093-be6d-e8da52e9dc4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revocation:</strong> The offeror withdraws the offer at any time prior to the proper communication of acceptance.</li></ul><ul id="4088ac6a-aab1-806b-abae-e86d046fb8f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Death or Mental Incapacity:</strong> Occurs if either party dies or loses mental capacity before acceptance is communicated.</li></ul><ul id="4088ac6a-aab1-8017-8959-feeb506f496c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Destruction:</strong> The physical destruction of the subject property.</li></ul><ul id="4088ac6a-aab1-8042-8c49-c3ab9f8a5f6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Improper Acceptance:</strong> Failing to follow the required manner or format of acceptance (which invalidates the attempt as an official acceptance).</li></ul></li></ul><ul id="4088ac6a-aab1-805c-9cf5-e2b8cdc9752f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Rule on Revocation</strong><ul id="4088ac6a-aab1-8093-bfb4-e3bfd51f919a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An offeror retains the right to revoke an offer at any moment <strong>before</strong> proper communication of acceptance has been received—even if a stated deadline has not yet arrived. Once acceptance is communicated, revocation is no longer possible.</li></ul></li></ul></li></ol></li></ol></li></ul><ul id="4088ac6a-aab1-80b7-b9f5-c4dac91d00be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An offer must be affirmatively accepted for a valid contract to be formed.</li></ul><ul id="4088ac6a-aab1-8097-813b-d80df7604271" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contract Preparation &amp; State Laws</strong><ul id="4088ac6a-aab1-8075-832d-f3f545ac8040" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Variations:</strong> Regulations regarding who can draft contracts vary by state. Some states use mandatory promulgated forms, while others (like Tennessee) permit licensees to fill in blanks on pre-printed standard forms (&quot;boilerplate language&quot;) prepared by local Realtor associations or attorneys, restricted to adding factual information (names, dates, prices).</li></ul><ul id="4088ac6a-aab1-8070-8351-f43610113894" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Single vs. Multiple Documents:</strong> A contract may consist of a single document or multiple integrated documents necessary to establish a true meeting of the minds.</li></ul></li></ul><ul id="4088ac6a-aab1-8014-82a1-cae64f9b31f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contract Modifications: Addenda vs. Amendments</strong><ul id="4088ac6a-aab1-800d-880b-cc5a624fa80c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Addendum:</strong> Introduces <strong>new information or provisions</strong> to the original agreement (e.g., adding a backyard swing set to the purchase). Once incorporated, it becomes part of the original contract. (<em>Singular:</em> addendum; <em>plural:</em> addenda).</li></ul><ul id="4088ac6a-aab1-8014-8f09-caf303c2a640" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Amendment:</strong> Modifies, corrects, or alters <strong>existing information</strong> within the established contract (e.g., changing purchase price or repair terms following a home inspection).</li></ul><ul id="4088ac6a-aab1-80a1-bef3-fa3bde31bf69" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Execution Requirement:</strong> All parties must date and sign (or initial) any addenda or amendments to make them legally binding.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80a9-8519-c6b62947c79e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addenda vs. Amendments</strong><figure id="4088ac6a-aab1-8087-8756-cfe795f6ca61" class="image" data-notion-image="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%202.png"><img style="width:528px" src="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%202.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80e5-b0c8-c100a5009708" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Preprinted Forms &amp; Blanks</strong><ul id="4088ac6a-aab1-8058-8b16-ce132e65e65d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Best practice is never to leave a blank space empty on a preprinted form. If something is not applicable, explicitly write &quot;N/A&quot; (not applicable) to eliminate any ambiguity.</li></ul></li></ul><ul id="4088ac6a-aab1-80e7-88b5-ff24bd7e2395" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Electronic Records and Signatures</strong><ul id="4088ac6a-aab1-80bd-93e5-e644edfc8219" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Standing:</strong> Federal and state acts—most notably the <strong>Uniform Electronic Transactions Act (UETA)</strong>—recognize electronic records, signatures, acknowledgments, and notarizations as fully satisfying the written requirement under the Statute of Frauds.</li></ul><ul id="4088ac6a-aab1-8019-a9a3-e930a1a6eb84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Important Exceptions:</strong> Electronic transactions governed by UETA do <strong>not</strong> apply to certain residential real estate actions, including default, acceleration, repossession, foreclosure, eviction, or the right to cure under a primary residence credit agreement or primary residence rental agreement.</li></ul></li></ul><ul id="4088ac6a-aab1-80d3-b168-e9f218f9e209" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Avoiding the Unauthorized Practice of Law (UPL)</strong><ul id="4088ac6a-aab1-8043-9233-efd639e63518" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Actions:</strong> Real estate licensees must avoid making massive alterations or crossing out large sections of preprinted contracts, and they must never dispense legal advice or legal interpretations.</li></ul><ul id="4088ac6a-aab1-8092-8250-c49770fa7d67" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitted Actions:</strong> Licensees may explain or answer questions regarding factual information (such as names, dates, and prices) that belongs in the contract blanks.</li></ul><ul id="4088ac6a-aab1-80c8-8627-f38863025f11" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Involvement Rule:</strong> Even with attorney-prepared contracts, a broker who is <strong>not</strong> acting as a principal or as a representative of a principal in the transaction commits the unauthorized practice of law if they attempt to draft or modify legal instruments outside of filling in permitted blanks.</li></ul></li></ul><ul id="4088ac6a-aab1-80b9-9a70-dbb525f9f3a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Court Interpretation of Contracts</strong><ul id="4088ac6a-aab1-80aa-9a47-d1cce3dc950f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Repair of Invalid Contracts:</strong> Courts will not fix or rewrite an invalid contract; instead, they declare that no valid contract exists.</li></ul><ul id="4088ac6a-aab1-8033-8200-e9943a53abb6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Corners Rule:</strong> Courts restrict their review and consideration exclusively to what is written within the four corners of the document.</li></ul><ul id="4088ac6a-aab1-803b-8174-c764f84015a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Practical Interpretation &amp; Intent:</strong> Courts strive for a practical interpretation that honors the mutual intent of the parties.</li></ul><ul id="4088ac6a-aab1-8092-91bc-eb8d05b61b84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interpretation of Ambiguity:</strong> Any ambiguous language is interpreted strictly against the party responsible for drafting the contract (in favor of the non-drafting party).</li></ul><ul id="4088ac6a-aab1-801c-8d6e-cc6f24a66286" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Priority of Contract Terms:</strong> Handwritten terms override typed terms, which in turn override preprinted boilerplate terms (handwritten &gt; typed &gt; preprinted).</li></ul><ul id="4088ac6a-aab1-8066-8b59-c46003f393f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Constructive Conditions:</strong> Courts may impose a constructive condition for the sake of equity and justice.</li></ul></li></ul><ul id="4088ac6a-aab1-80c9-ae47-d77fb2b9c1d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Time Is of the Essence in Contracts</strong><ul id="4088ac6a-aab1-8073-87a6-f71a0ea19daf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strict Compliance:</strong> When &quot;time is of the essence&quot; is included in a contract, all parties must meet every time limitation and deadline exactly as written.</li></ul><ul id="4088ac6a-aab1-80bc-bb5d-c2fbbe74c4f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modifications:</strong> Changing any contract date (such as moving the closing day) requires mutual agreement from all parties.</li></ul><ul id="4088ac6a-aab1-8001-b004-f5f2c3857312" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Language:</strong> If flexibility is desired, contracts may use looser language such as &quot;on or about&quot; a specific date.</li></ul></li></ul></div><div id="4088ac6a-aab1-80d8-9a98-c1bc28b930bf" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4088ac6a-aab1-80fa-bc81-ef83d30803dd" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4088ac6a-aab1-802f-89c4-f643b72893b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>bilateral contract</strong> - a contract wherein both parties are obligated to perform in an exchange of promises</li></ul><ul id="4088ac6a-aab1-8071-bb62-df86e5c62d78" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>executory contract</strong> - a contract that has not yet been fully performed (both sides have not yet completed their obligations)</li></ul><ul id="4088ac6a-aab1-8020-9b15-f5be24c8b0c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>implied contract</strong> - a contract created by the actions of the parties rather than by express agreement</li></ul><ul id="4088ac6a-aab1-8071-8628-c52e631edfe3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>unilateral contract</strong> - a contract wherein one party makes a promise and is obligated to perform if a second party chooses to accept the offer and perform in exchange for that which was promised</li></ul><p id="4088ac6a-aab1-809d-b981-d1147e8ef209" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4088ac6a-aab1-8069-a418-e51d9ba2457e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Classifications</strong><ul id="4088ac6a-aab1-8048-8883-f7bd27b18406" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Express or implied</li></ul><ul id="4088ac6a-aab1-80d3-afea-c860e26fb04d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unilateral or bilateral</li></ul><ul id="4088ac6a-aab1-8033-adc3-d2fcc0d50ece" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Executory or executed<figure id="4088ac6a-aab1-80c1-bcad-f9de14c9d16f" class="image" data-notion-image="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%203.png"><img style="width:1201px" src="Chapter%202%20-%20Contract%20Classifications%20&amp;%20Other%20Consi/image%203.png"/></a></figure></li></ul></li></ul><ul id="4088ac6a-aab1-8019-8b3e-c8ec9346a50b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer and Acceptance - </strong>is the series of steps that leads to a contract<ul id="4088ac6a-aab1-8090-911c-cfab2c7230a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Offeree: the party receiving the offer</strong></li></ul><ul id="4088ac6a-aab1-8018-be68-d942d5494bbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Offeror:</strong> the party making the offer</li></ul><ul id="4088ac6a-aab1-8060-b330-fec8698f4e02" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once an offer has been made, the offeree has <strong>four possible options regarding the offer</strong>:<ul id="4088ac6a-aab1-802a-8eef-d582198e710f" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can accept it.</li></ul><ul id="4088ac6a-aab1-805f-83bf-f01dfe7b7162" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can counter it.</li></ul><ul id="4088ac6a-aab1-80a6-b015-dfb650501254" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can reject it.</li></ul><ul id="4088ac6a-aab1-8055-9ff2-ddbba2255cf3" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can ignore it.</li></ul></li></ul><ul id="4088ac6a-aab1-8080-baf8-ffa6ed859903" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acceptance</strong> of an offer is unconditional, meaning every term and condition is agreed to.</li></ul><ul id="4088ac6a-aab1-808b-9c95-fbbf6bfd09a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The slightest alteration to an offer is not acceptance but, rather, a <strong>counteroffer</strong>. In a very real sense, a counteroffer is the combination of a rejection and a new offer, all rolled up into one.</li></ul></li></ul><ul id="4088ac6a-aab1-80c1-88c6-e42128b7299b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Preparation</strong><ul id="4088ac6a-aab1-80ef-a119-ceb2ea65ec5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee does not have promulgated forms but allows for the completion of preprinted forms with <strong>boilerplate language</strong> that have been prepared by a local Realtor association or an attorney.</li></ul></li></ul><ul id="4088ac6a-aab1-8053-ad06-f9d4443a60cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Courts and Contracts</strong><ul id="4088ac6a-aab1-806c-b409-f6e9ae8835fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The courts will take into consideration only that which appears in the written document. This is known as the <strong>four corners rule</strong>. The courts will interpret any ambiguity in favor of the party NOT responsible for the construction of the contract.</li></ul><ul id="4088ac6a-aab1-805f-aa22-d7f082e2cb85" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In general, the legal priority of words in a contract looks like this: handwritten &gt; typed &gt; preprinted.</li></ul></li></ul><ul id="4088ac6a-aab1-807d-847a-ce3b2df1ff9f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addenda &amp; Amendments</strong><ul id="4088ac6a-aab1-809b-8505-ee00e6addc2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Any modification of a contract should occur by way of an:<ul id="4088ac6a-aab1-80da-bc86-e5ef88ee741b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Addendum:</strong> introduction of <em>new</em> information to the contract</li></ul><ul id="4088ac6a-aab1-80ab-838e-d0e4d4ce2583" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Amendment:</strong> the change of <em>existing</em> information to the contract</li></ul></li></ul><figure id="4088ac6a-aab1-80ac-ad8c-f7f862756636" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png"><img style="width:384px" src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80f5-9d05-f2b42c06c28d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Time Is of the Essence</strong><ul id="4088ac6a-aab1-804c-8356-ea648528cd9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When you see &quot;time is of the essence&quot; in contract language, <strong>that means all parties agree to meet the time limitations exactly as they appear in the contract.</strong></li></ul><p id="4088ac6a-aab1-808d-b260-c790e06e38b6" class="" dir="auto">
+</p></li></ul></div></div><p id="4088ac6a-aab1-8006-bfc1-f5a85701ab68" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

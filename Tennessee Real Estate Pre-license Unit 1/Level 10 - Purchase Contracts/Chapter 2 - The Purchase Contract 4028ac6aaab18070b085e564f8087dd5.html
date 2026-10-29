@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - The Purchase Contract</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8070-b085-e564f8087dd5" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>The Purchase Contract</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4088ac6a-aab1-80f8-ad23-f1b2f986f3f9" class="column-list" data-notion-column-list="" dir="auto"><div id="4088ac6a-aab1-80a2-938e-d02467367203" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4088ac6a-aab1-8055-b78a-fbdfa8842203" class="" dir="auto"><strong>Essential Elements and Categories</strong></p><ul id="4088ac6a-aab1-8051-9ab4-c9847eaa3c46" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Remember the five essential elements of a legally valid contract: <strong>offer &amp; acceptance, consideration, legally competent parties, reality of consent, and lawful objective</strong>.<figure id="4088ac6a-aab1-80ae-b074-d56845ba49a6" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image.png"><img style="width:432px" src="Chapter%202%20-%20The%20Purchase%20Contract/image.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8009-a49c-d9d1d954cc20" class="bulleted-list" dir="auto"><li style="list-style-type:disc">And once a contract has been created, it falls into one of four categories: <strong>valid, unenforceable, void, or voidable.</strong><figure id="4088ac6a-aab1-8096-921b-ed25ea56b1f2" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%201.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%201.png"><img style="width:432px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%201.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8099-979e-d57276194bc4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>A purchase contract that&#x27;s not in writing falls into the unenforceable category.</strong> It&#x27;s legal for the parties to carry out their verbal contract, but if a dispute pops up, the courts probably won&#x27;t enforce the contract.</li></ul><ul id="4088ac6a-aab1-8096-9413-f283ef5eff01" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Executory vs. Executed</strong><ul id="4088ac6a-aab1-807d-a38b-c4cddcde8322" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executory contracts</strong> are contracts that have not yet been fully performed.</li></ul><ul id="4088ac6a-aab1-80ec-87a3-c62041bf6757" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executed contracts</strong> are contracts in which all terms have been fulfilled by all parties. Once executed, all contracts cease to legally exist.</li></ul></li></ul><ul id="4088ac6a-aab1-8093-b93f-e424cc6e7821" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bilateral vs. Unilateral</strong><ul id="4088ac6a-aab1-8058-bfcd-caa3b87e1669" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate purchase contracts are <strong>bilateral contracts</strong>. Both parties have rights and reciprocal obligations.</li></ul><ul id="4088ac6a-aab1-80d2-a140-d71d3b819929" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In <strong>unilateral contracts</strong>, only one party is obligated to perform. That&#x27;s not the case for a purchase contract!</li></ul></li></ul><ul id="4088ac6a-aab1-8088-9d2a-ea420bbcf815" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addenda vs. Amendments</strong><figure id="4088ac6a-aab1-8008-8036-dd19dd84e39b" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%202.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%202.png"><img style="width:432px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%202.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8081-ad6a-c7a639fcd824" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Assignment vs. Novation</strong><ul id="4088ac6a-aab1-809b-9f3c-e0d03713d156" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When one or more of the parties involved in a contract wants to withdraw from it without actually terminating the contract, the contracting parties may have the option of transferring their rights and duties to a third party. This is <strong>assignment.</strong></li></ul><ul id="4088ac6a-aab1-8000-8e50-e2684c05f839" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Novation</strong> is an alternative to assignment. Novation is a new contract substituting the obligations of an original contract. Legally, it is understood to be the exchange of one contract for another.</li></ul></li></ul><ul id="4088ac6a-aab1-8041-8091-e6cca9afc88c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Breach of Contract</strong><ul id="4088ac6a-aab1-8084-8994-ff5ddc39067d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Both the buyer and seller have rights and obligations under the contract. If either party partially or completely fails to fulfill their contractual obligations, it is referred to as <strong>breach of contract</strong>.</li></ul><ul id="4088ac6a-aab1-803f-81e4-c867f373a729" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a breach occurs, the injured party has a number of options for remedying it: <strong>specific performance, rescission, forfeiture,</strong> or <strong>suit for damages.</strong></li></ul></li></ul><ul id="4088ac6a-aab1-8057-91a4-eb9f9cc07a08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Rescission</strong><ul id="4088ac6a-aab1-802a-b3c3-fc1bbe97ffc6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In <strong>unilateral rescission</strong>, one party decides to rescind, the other party is notified, and whoever needs to return payments does so.</li></ul><ul id="4088ac6a-aab1-8082-b4b1-d29ed82642a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In <strong>mutual rescission</strong>, both parties agree to cancel the contract.</li></ul></li></ul><ul id="4088ac6a-aab1-8076-b06d-c08023019f79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Damages</strong><ul id="4088ac6a-aab1-80e7-b431-c4610f240688" class="bulleted-list" dir="auto"><li style="list-style-type:circle">There can be <strong>liquidated damages, compensatory damages,</strong> or <strong>punitive damages</strong>.</li></ul></li></ul><ul id="4088ac6a-aab1-8011-994a-f1c2019f03c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase Contract </strong><ul id="4088ac6a-aab1-8090-bfbb-cd1f485e2d1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A binding agreement between a buyer and seller used in the sale of real property that outlines transaction terms and party responsibilities, serving as the blueprint for the entire real estate transaction.</li></ul><ul id="4088ac6a-aab1-800e-b065-cde5e2944c84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Functions:</strong> Establishes the details of the agreement and identifies the legal rights and obligations of both buyer and seller.</li></ul><ul id="4088ac6a-aab1-8076-b480-cb32e5d54bd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Names:</strong> Sales contract, purchase agreement, or purchase and sale agreement (PSA).</li></ul><ul id="4088ac6a-aab1-8097-acc5-c61afcb4c85c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Purchase Contracts</strong><ul id="4088ac6a-aab1-805c-86a2-dbf9334233d7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Residential Contract of Sale (the most common type)</li></ul><ul id="4088ac6a-aab1-80d5-924b-ee092ff7fca9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Commercial Contract of Sale</li></ul><ul id="4088ac6a-aab1-8050-b368-f34b57b47650" class="bulleted-list" dir="auto"><li style="list-style-type:square">Foreclosure Contract of Sale</li></ul><ul id="4088ac6a-aab1-8066-990e-eb030613ff41" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contract of Sale for New Construction</li></ul><ul id="4088ac6a-aab1-8020-b4e6-c8845d793828" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contract of Sale for Land</li></ul><ul id="4088ac6a-aab1-80cf-8635-e16a87e462d8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exchange Agreement</li></ul></li></ul><ul id="4088ac6a-aab1-8091-a1c6-d28126df36df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Regulation</strong><ul id="4088ac6a-aab1-80b7-9545-cf546e85448d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Promulgated Contracts:</strong> Tennessee does not promulgate a single standardized purchase contract that is mandatory for all real estate transactions.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80e5-88ed-f876c3b55c16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Who Writes a Purchase Contract</strong><ul id="4088ac6a-aab1-803b-b88a-eb145233e68e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standardized Forms:</strong> Agents typically use standard contract forms approved by their brokerage (often prepared by the brokerage attorney) or templates provided by Tennessee REALTORS® and local Realtor associations.</li></ul><ul id="4088ac6a-aab1-8029-8781-e3a432152d50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role of the Affiliate Broker:</strong> Tennessee law permits affiliate brokers to fill in the blanks of lawyer- or Realtor-approved forms, but they are strictly prohibited from drafting contracts from scratch.</li></ul><ul id="4088ac6a-aab1-800f-92dd-d330c8c89473" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Practices for Filling Blanks:</strong><ul id="4088ac6a-aab1-8044-a54a-f2e7af9944f2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Every blank must be filled in, using &quot;N/A&quot; for any fields that do not apply.</li></ul><ul id="4088ac6a-aab1-8045-912d-e43521bf0892" class="bulleted-list" dir="auto"><li style="list-style-type:square">Brokers are legally responsible for any errors or incompleteness in contracts filled out by their affiliate brokers.</li></ul><ul id="4088ac6a-aab1-806c-81b9-cde9a4b1f431" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees must never charge a separate fee for completing contracts, as this can constitute the unauthorized practice of law (UPL).</li></ul><ul id="4088ac6a-aab1-80f6-803a-e3415ba6f9a2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Avoid striking out sections, altering standard meanings, or inserting unusual provisions outside the scope of the form. Recommend that clients consult an attorney for complex concerns or questions.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8096-a882-d901c14e2edd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Explain vs. Advise (Avoiding UPL)</strong><ul id="4088ac6a-aab1-8037-9f64-d0572fba7559" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permissible Guidance:</strong> Licensees may explain the meaning of factual statements, business details, and standard contract terms to the principals, including reading forms aloud to help them understand.</li></ul><ul id="4088ac6a-aab1-809a-88cd-e1e022674e93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited Legal Advice:</strong> When clients ask what they <em>should</em> do or seek legal counsel regarding their rights and liabilities, licensees must refrain from advising them. Crossing this line constitutes the unauthorized practice of law, requiring the client to seek independent legal counsel.</li></ul></li></ul><ul id="4088ac6a-aab1-8059-8b9d-d675ab054b39" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase Contract Content &amp; Agent Responsibilities</strong><ul id="4088ac6a-aab1-804d-9e2e-fcf94e91066e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose:</strong> The purchase contract outlines transaction terms and party responsibilities, serving as the operational blueprint for the sale. Agents must guide clients in meeting all contractual deadlines and obligations (e.g., helping buyers secure insurance and funding, or reminding sellers to complete required repairs before closing).</li></ul></li></ul><ul id="4088ac6a-aab1-80e4-8c13-e57fdbc8e116" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Requirements of a Purchase Contract</strong><ul id="4088ac6a-aab1-8051-96d8-c44e2239cc42" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must include:<ul id="4088ac6a-aab1-802a-9463-d80869625189" class="bulleted-list" dir="auto"><li style="list-style-type:square">Names of the parties involved</li></ul><ul id="4088ac6a-aab1-806d-933f-f068c7374537" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identification of the subject property</li></ul><ul id="4088ac6a-aab1-80bb-ac09-d3db78cfea29" class="bulleted-list" dir="auto"><li style="list-style-type:square">Signatures of all parties bound by the contract</li></ul><ul id="4088ac6a-aab1-8023-ae1b-f3f44ea986da" class="bulleted-list" dir="auto"><li style="list-style-type:square">Evidence of intent to convey an ownership interest</li></ul><ul id="4088ac6a-aab1-80db-a05e-e1c4acab88aa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Terms of the sale</li></ul><ul id="4088ac6a-aab1-80f8-93ed-cbefb7b30ac3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Purchase price</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-807f-9511-fc2ab58f92ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Standard Contract Inclusions</strong><ul id="4088ac6a-aab1-8016-b728-e2bc7f995f03" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mortgage and financing details<ul id="4088ac6a-aab1-8090-a800-c1844681fc2f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Earnest money deposit amount</li></ul><ul id="4088ac6a-aab1-801d-9caa-e4b7b6ede920" class="bulleted-list" dir="auto"><li style="list-style-type:square">Closing date, time, and location</li></ul><ul id="4088ac6a-aab1-80a1-867b-fbfb8b044be9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property inclusions and exclusions (personal property vs. fixtures)</li></ul><ul id="4088ac6a-aab1-806e-87aa-c48329d9592a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Inspection provisions</li></ul><ul id="4088ac6a-aab1-8088-b5f5-e1c9f66c70de" class="bulleted-list" dir="auto"><li style="list-style-type:square">Acceptance procedures and deadlines</li></ul><ul id="4088ac6a-aab1-803c-967f-cce2a9a16cd1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property disclosures</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8050-b36f-ec59ad92fa0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Important Buyer Reminders &amp; Best Practices</strong><ul id="4088ac6a-aab1-80b5-9491-f4f57072d351" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyers must be advised to:<ol type="1" id="4088ac6a-aab1-802c-bdc6-c245c4b14e53" class="numbered-list" start="1" dir="auto"><li>Read the entire legally binding contract before signing.</li></ol><ol type="1" id="4088ac6a-aab1-80ed-895c-e132eebb19c8" class="numbered-list" start="2" dir="auto"><li>Review the <strong>Tennessee Residential Property Condition Disclosure</strong> (which the buyer should receive prior to making an offer).</li></ol><ol type="1" id="4088ac6a-aab1-80e4-a0a6-d2f8c29ae68a" class="numbered-list" start="3" dir="auto"><li>Schedule and conduct important property inspections.</li></ol><ol type="1" id="4088ac6a-aab1-802f-a244-d82f9ba08452" class="numbered-list" start="4" dir="auto"><li>Verify property insurability.</li></ol><ol type="1" id="4088ac6a-aab1-8080-a6a3-e363801e90b4" class="numbered-list" start="5" dir="auto"><li>Apply promptly for a mortgage if financing the purchase.</li></ol><ol type="1" id="4088ac6a-aab1-8018-aeae-e8735602afc9" class="numbered-list" start="6" dir="auto"><li>Review the title commitment, CC&amp;Rs, and related documents within <strong>five days</strong> of receipt.</li></ol><ol type="1" id="4088ac6a-aab1-80da-8803-d7306581236b" class="numbered-list" start="7" dir="auto"><li>Perform a final walkthrough of the property immediately prior to closing.</li></ol></li></ul></li></ul><ul id="4088ac6a-aab1-80a1-a067-e2d3edc3128b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Contract</strong><figure id="4088ac6a-aab1-806d-93ef-c572e8bb9356" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%203.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%203.png"><img style="width:432px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%203.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8064-bd48-e3693c947f24" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer and Seller Information </strong><ul id="4088ac6a-aab1-80d7-ad98-f648141d95c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Names of Parties:</strong> A purchase contract must clearly state the full legal names of all buyers and sellers at the top of the document, fulfilling a core requirement of the Statute of Frauds. Misspelled names can render a contract voidable, so any errors must be corrected immediately.</li></ul><ul id="4088ac6a-aab1-80e3-b806-f1bceeedeedf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensee Disclosures:</strong> Licensees must explicitly disclose within the contract if they maintain any personal relationship or financial interest with either principal, or if the licensee is acting as a principal in the transaction.</li></ul></li></ul><ul id="4088ac6a-aab1-80e4-8a97-cfdcb4f82e21" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Information</strong><ul id="4088ac6a-aab1-80bd-8216-d21cc0b6899a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Contracts include a designated section acknowledging the real estate brokerages and licensees representing each party to the transaction.</li></ul></li></ul><ul id="4088ac6a-aab1-8061-ae6f-f6896fcd5cab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer and Seller Information </strong><ul id="4088ac6a-aab1-8065-9f9c-e02957fe5f2a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Names of Parties:</strong> A purchase contract must clearly state the full legal names of all buyers and sellers at the top of the document, fulfilling a core requirement of the Statute of Frauds. Misspelled names can render a contract voidable, so any errors must be corrected immediately.</li></ul><ul id="4088ac6a-aab1-80a1-bc99-d727146902d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensee Disclosures:</strong> Licensees must explicitly disclose within the contract if they maintain any personal relationship or financial interest with either principal, or if the licensee is acting as a principal in the transaction.</li></ul></li></ul><ul id="4088ac6a-aab1-80d2-8fe9-ccff3db40a4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Information</strong><ul id="4088ac6a-aab1-807e-9099-dfd7f7ec4ed6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Contracts include a designated section acknowledging the real estate brokerages and licensees representing each party to the transaction.</li></ul></li></ul><ul id="4088ac6a-aab1-8057-aa72-d601f818bf94" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Property </strong><ul id="4088ac6a-aab1-809e-8205-e84b632390c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A purchase contract must include both the street address and a distinct, precise legal property description (such as metes and bounds, rectangular survey, or lot and block system) to uniquely identify the property.</li></ul><ul id="4088ac6a-aab1-808c-a5cd-d2f482670609" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Personal Property &amp; Exclusions:</strong><ul id="4088ac6a-aab1-808b-8555-e4fb94a5d65a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Inclusions:</em> Specific personal property negotiated into the sale (e.g., rugs, appliances) transfers to the buyer alongside the real property.</li></ul><ul id="4088ac6a-aab1-8092-9c90-d079875b2128" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Exclusions:</em> Items that normally convey with real estate that the seller wishes to keep (e.g., specific light fixtures, built-in appliances, or decorative trees) must be explicitly listed as excluded in the contract.</li></ul></li></ul><ul id="4088ac6a-aab1-8094-81bc-c577618f419a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deed and Title:</strong><ul id="4088ac6a-aab1-8008-b819-f825ea9f6ef7" class="bulleted-list" dir="auto"><li style="list-style-type:square">The seller agrees to convey marketable, lien- and encumbrance-free title via deed.</li></ul><ul id="4088ac6a-aab1-80da-a29f-dffc55c58a37" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Deed:</em> The physical legal document demonstrating ownership.</li></ul><ul id="4088ac6a-aab1-8050-b990-e005b41f36b5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Title:</em> The abstract concept representing the bundle of ownership rights.</li></ul></li></ul><ul id="4088ac6a-aab1-806a-9beb-fe6a65ebf7ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Closing Date vs. Possession:</strong><ul id="4088ac6a-aab1-8023-b699-c8ecc92dbfca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Closing Date:</em> The final deadline for performing all acts and supplying necessary documents, marked by the official recording of the deed at the county recorder&#x27;s office.</li></ul><ul id="4088ac6a-aab1-8029-aea5-d1d42b6b4828" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Possession:</em> When the buyer receives the keys and is permitted to move in (which may occur on closing day or a separately negotiated date).</li></ul></li></ul><ul id="4088ac6a-aab1-801f-a94d-d2b674b5d8e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risk of Loss:</strong> A dedicated contract clause determining liability if the property suffers damage prior to closing or possession, typically placing full responsibility on the seller.</li></ul></li></ul><ul id="4088ac6a-aab1-8048-afbc-fb64f25a231b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Price and Costs </strong><ul id="4088ac6a-aab1-809a-b566-fd99b579d8aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financing Section:</strong> Specifies the loan type, purchase price, and allocates responsibility for transaction expenses (such as closing costs, appraisal fees, title and tax searches, and deed preparation). Pre-qualification forms should be attached to reassure the seller.</li></ul><ul id="4088ac6a-aab1-809f-b595-f11dc6d18583" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Earnest Money (Trust Money):</strong> A good-faith deposit proving the buyer&#x27;s serious intent to close. The contract outlines its form, timing, payee, holding location, and disbursement or refund rules.</li></ul><ul id="4088ac6a-aab1-8070-a9ac-f6b8986c506e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Handling and Deadlines in Tennessee:</strong><ul id="4088ac6a-aab1-804f-9c4d-f03bcab0f554" class="bulleted-list" dir="auto"><li style="list-style-type:square">Affiliate brokers must forward earnest money to the listing broker ASAP, who deposits it into an escrow company trust account no later than the <strong>next banking day</strong> (unless otherwise agreed). Any deviation requires a formal disclosure signed/initialed by the buyer.</li></ul><ul id="4088ac6a-aab1-809d-8f67-c76ec6c549c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">While earnest money is not legally mandatory for a valid contract, it is standard practice (typically <strong>at least 1%</strong> of the purchase price) and heavily strengthens an offer.</li></ul><ul id="4088ac6a-aab1-80e8-af8a-e520aa7ba182" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Non-Liquid Earnest Money:</strong> Valuable non-cash items (e.g., jewelry, property deeds, cryptocurrency) can be used <em>only</em> if mutually approved by both parties and explicitly written into the contract.</li></ul><ul id="4088ac6a-aab1-8070-a420-d1ba86e187b7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Missed Deadlines:</strong> If a buyer misses the earnest money delivery deadline, they receive a written late notice from the escrow officer and have <strong>one day</strong> to deliver the funds before falling into default.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8005-be57-d9b4988dc6d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lead-Based Paint Disclosure </strong><ul id="4088ac6a-aab1-80d0-87fa-f1e747f0acf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Applicability:</strong> Required by federal law (EPA and HUD) for any residential housing built prior to 1978, due to severe health hazards like brain, kidney, and nervous system damage (especially for children under six and pregnant women).</li></ul><ul id="4088ac6a-aab1-806a-aa44-e814dadc6175" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Mandatory Requirements:</strong></li></ul><ul id="4088ac6a-aab1-807e-bd6f-c0856b8da237" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Provide the EPA-approved information pamphlet titled <em>Protect Your Family From Lead in Your Home</em>.</li></ul><ul id="4088ac6a-aab1-8025-bb48-c36f37bf7928" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Disclose all known lead-based paint or hazard data, including sharing any records or reports from previous assessments (for multi-unit buildings, this includes common areas and other units).</li></ul><ul id="4088ac6a-aab1-80fb-a556-c7857029a5ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Include a specific <strong>Lead Warning Statement</strong> and certification language within or attached to the contract.</li></ul><ul id="4088ac6a-aab1-8045-a6c3-c689e316ed57" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Inspection Rights &amp; Timelines</strong><ul id="4088ac6a-aab1-8091-885e-f53cb50b2d9d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>10-Day Window:</strong> Buyers are granted a standard 10-day period (unless mutually modified or waived in writing) to conduct a risk assessment or paint inspection for lead hazards at their own expense before becoming legally bound by the purchase contract.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8064-bf2d-ce73b2a7c110" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Due Diligence &amp; Inspection Period </strong><ul id="4088ac6a-aab1-8037-9b9e-cffac10c2045" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Allows the buyer time to gather relevant information about the property before finalizing the purchase.</li></ul><ul id="4088ac6a-aab1-80cb-8364-d8a89fb67b4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Option Period:</strong> Grants the buyer the non-obligatory right to terminate the contract without penalty during a mutually agreed-upon timeframe.</li></ul><ul id="4088ac6a-aab1-8094-83e1-d8891c55663a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Activities:</strong> Buyers conduct environmental reports, zoning checks, deed restriction reviews, insurability checks, and property inspections (which, in Tennessee, must be performed by licensed inspectors).</li></ul><ul id="4088ac6a-aab1-8070-8972-c3af28aca070" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Binding Agreement Date &amp; Clock Mechanics</strong><ul id="4088ac6a-aab1-802a-8e35-d445b762e0b4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The date the contract officially goes into effect, defined as the day the final offeror receives notice of the offeree&#x27;s acceptance (e.g., when a buyer receives notice that the seller accepted their counteroffer).</li></ul><ul id="4088ac6a-aab1-8060-ba11-df5c4f687d4e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Starting the Clock:</strong> The final offeror fills in the binding agreement date, and the official time clocks for contingencies and earnest money delivery start ticking the <em>following day</em>.</li></ul></li></ul><ul id="4088ac6a-aab1-80f7-853f-e6fe585f3fc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Options After Inspection</strong><ol type="1" id="4088ac6a-aab1-8024-94bb-d4a058a6ebd5" class="numbered-list" start="1" dir="auto"><li>Send written objections and terminate the contract.</li></ol><ol type="1" id="4088ac6a-aab1-80a8-b65f-e9d5f4560f31" class="numbered-list" start="2" dir="auto"><li>Proceed to buy the property &quot;as is&quot; with no repairs or concessions.</li></ol><ol type="1" id="4088ac6a-aab1-80d0-bf0c-d0bcde338b9b" class="numbered-list" start="3" dir="auto"><li>Request specific repairs, triggering the <strong>Inspection Contingency Resolution Period</strong>.</li></ol></li></ul><ul id="4088ac6a-aab1-80d7-952a-f0277e5e9513" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inspection Contingency Resolution Period &amp; Pest Inspections</strong><ul id="4088ac6a-aab1-8009-9b04-d34a91c85ad7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Resolution Period:</strong> Parties negotiate requested repairs using the <strong>RF654 Repair/Replacement Proposal</strong> form. If an agreement is reached, it amends the contract; if negotiations fail by the deadline, the contract dissolves and the buyer&#x27;s earnest money is refunded.</li></ul><ul id="4088ac6a-aab1-802e-9f32-d309e9cec5d2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pest Inspections:</strong> Focuses on wood-destroying organisms like termites. If an infestation is found, the buyer can pay for remediation, request seller payment, or walk away.</li></ul></li></ul><ul id="4088ac6a-aab1-80a5-99a7-e6d8c84cf3db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller&#x27;s Property Disclosure Statement</strong><ul id="4088ac6a-aab1-809b-ac86-eddf8721c3a7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sellers are typically required to provide the buyer with the <strong>Tennessee Residential Property Condition Disclosure</strong> <em>before</em> the buyer makes an offer, detailing any known material defects.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8084-b05d-c5a7969ec553" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Time Is of the Essence </strong><ul id="4088ac6a-aab1-80b4-9c85-d8c6811f78cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Purpose:</strong> A contractual clause establishing that strict adherence to specific dates and times is mandatory. Without this clause, courts typically allow &quot;reasonable&quot; delays; with it, all time limits are strictly enforced.</li></ul><ul id="4088ac6a-aab1-8038-950c-c373ec209c27" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Consequence:</strong> Failure to perform contractual duties or exercise options by the precise deadline constitutes a breach of contract. For example, if an option period expires at 5:00 p.m., attempting to terminate or act even minutes later is legally ineffective.</li></ul></li></ul><ul id="4088ac6a-aab1-804d-90ce-fca92558c09d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Notification Form RF656</strong><ul id="4088ac6a-aab1-805d-b58b-d8423c8fb802" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Usage in Tennessee:</strong> Standard Tennessee real estate contracts require formal, official communication between buyers and sellers regarding various contractual notices, deadlines, and contingencies.</li></ul><ul id="4088ac6a-aab1-803a-be09-fcd6bc91a176" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Implementation:</strong> Parties use <strong>Notification Form RF656</strong> to officially document and deliver these required notices.</li></ul></li></ul><ul id="4088ac6a-aab1-8075-beb2-e5fa76dccb37" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Default by Parties </strong><ul id="4088ac6a-aab1-800d-b786-ef9e18456eaf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Occurs when one or both parties fail to perform their contractual obligations by the stated deadline (especially when &quot;time is of the essence&quot; applies). Conflicts are governed by the contract&#x27;s <strong>Remedies</strong> clause.</li></ul></li></ul><ul id="4088ac6a-aab1-804c-9b53-fc7c32e0d91c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Default</strong><ul id="4088ac6a-aab1-8038-abec-d45a188e9265" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consequences:</strong><ul id="4088ac6a-aab1-808e-aea1-fee7a8eb61b1" class="bulleted-list" dir="auto"><li style="list-style-type:square">The buyer forfeits and loses their earnest money deposit.</li></ul><ul id="4088ac6a-aab1-80dc-982f-dc7525da79c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">The seller has the right to sue the buyer for <strong>specific performance</strong> (forcing the buyer to complete the purchase) or file a lawsuit for <strong>damages</strong>.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-801f-ab73-e7f8ad9344a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Default</strong><ul id="4088ac6a-aab1-8053-b083-d721e2987c5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consequences:</strong><ul id="4088ac6a-aab1-80f2-99fb-dc2e3cdbd3e6" class="bulleted-list" dir="auto"><li style="list-style-type:square">The earnest money is promptly returned to the buyer.</li></ul><ul id="4088ac6a-aab1-80a0-80a5-e4feb2bd824a" class="bulleted-list" dir="auto"><li style="list-style-type:square">The buyer has the right to sue the seller for <strong>specific performance</strong> (forcing the seller to hand over the property) or file a lawsuit for <strong>damages</strong>.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80e4-86ce-d41f85ac56fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contingencies </strong><ul id="4088ac6a-aab1-809d-8f23-ea8cd48a87d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Contractual provisions making performance conditional upon the occurrence or non-occurrence of a stated event. Until fulfilled or waived, contracts subject to contingencies remain voidable or unenforceable.</li></ul></li></ul><ul id="4088ac6a-aab1-80c2-bdd7-e79f26ab1119" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Real Estate Contingencies</strong><ul id="4088ac6a-aab1-8085-9426-ce0c35415f11" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financing Contingency:</strong> Makes the sale conditional on the buyer obtaining an adequate mortgage loan.<ul id="4088ac6a-aab1-801c-8cd1-c99ba9bebdcd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Without financing contingency (waived):</em> Buyer has <strong>five days</strong> after the binding agreement date to provide proof of funds (a risky move if financing is actually needed).</li></ul><ul id="4088ac6a-aab1-8020-a471-c78e88ffe688" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>With financing contingency:</em> Buyer has <strong>14 days</strong> after the binding agreement date to prove adequate funds/financing to close.</li></ul></li></ul><ul id="4088ac6a-aab1-8093-87af-fd06e9305c33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal Contingency:</strong> Protects the buyer by allowing them to exit the contract if a certified appraiser estimates the property&#x27;s value is lower than an agreed-upon threshold.</li></ul><ul id="4088ac6a-aab1-8088-8b4b-dd46ca9b592e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contingent on the Sale of Another Property:</strong> Protects buyers who need to sell their current home before purchasing the new one, preventing them from being forced to own two homes simultaneously or lacking closing funds.</li></ul><ul id="4088ac6a-aab1-80f9-a8f0-effb7967eb21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inspection Contingency:</strong> Allows buyers to back out of the deal without penalty if an inspection reveals severe property defects (e.g., roof leaks). Licensees should never advise clients to waive inspections.</li></ul><ul id="4088ac6a-aab1-8046-8a51-e600e08d6117" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Attorney Review Contingency:</strong> Grants the parties&#x27; legal counsel a specific timeframe to review and approve or disapprove the contract terms.</li></ul><ul id="4088ac6a-aab1-808b-b70e-e38eab2c8142" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Termination Under Contingencies </strong><ul id="4088ac6a-aab1-809e-985e-c47b709f1cca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Communication Requirements:</strong> Every contingency must explicitly state <em>how</em> and <em>when</em> termination is to be communicated, as delivering a termination notice carries the same critical importance and priority as communicating an initial offer.</li></ul></li></ul><ul id="4088ac6a-aab1-8080-8b82-ff6702056feb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Preventing Contingency Abuse</strong><ul id="4088ac6a-aab1-8023-a93b-c605170faac7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Risk:</strong> Both buyers and sellers can attempt to exploit ambiguous contingencies as a convenient loophole to exit a contract without technically being in default.</li></ul><ul id="4088ac6a-aab1-80ce-a4a2-d4b7d78eba42" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Safeguards Against Abuse:</strong> To prevent bad-faith cancellations, well-crafted contingencies must:<ul id="4088ac6a-aab1-8072-b4a7-e709931e4491" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Be clear and unambiguous.</li></ul><ul id="4088ac6a-aab1-805f-80ea-d606af04b3ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Contain a strict expiration date.</li></ul><ul id="4088ac6a-aab1-8081-bf26-f845ff1a83e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Explicitly require good-faith diligence and effort from the responsible party to fulfill the underlying obligation.<figure id="4088ac6a-aab1-801c-a442-f5dd2b70c52b" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%204.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%204.png"><img style="width:480px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%204.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80ef-abe9-e18f8ef3b46d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special Stipulations </strong><ul id="4088ac6a-aab1-8082-ac52-ff76b571d2aa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Additional custom conditions added to a contract to meet specific party needs that are not addressed in the main agreement or that modify existing contract language.</li></ul><ul id="4088ac6a-aab1-80d1-8413-d11693f55917" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Tennessee &quot;Special Stips&quot; Section:</strong> A designated area in the Tennessee purchase contract requiring extreme care, as imprecise wording can lead to severe unintended consequences or legal issues. Agents should consult their broker or an attorney when drafting stips.</li></ul></li></ul><ul id="4088ac6a-aab1-80f3-bdc2-e7a779f17a55" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Rules &amp; Hierarchy</strong><ul id="4088ac6a-aab1-80cb-a343-c6eed9946f1b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Handwritten Beats Printed:</strong> Handwritten clauses or additions supersede pre-printed contract language. Consequently, poorly drafted special stipulations can inadvertently override or cancel out other essential terms of the purchase contract.</li></ul><ul id="4088ac6a-aab1-803d-84a5-eeb12232e79a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Use Standard Forms First:</strong> Special stipulations should <em>not</em> be used if an approved standard form or addendum already exists for the purpose. For example, standard contingencies should utilize official Tennessee REALTORS® forms rather than custom stipulations.</li></ul><ul id="4088ac6a-aab1-8015-85c0-f27f882b5017" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Special Stipulations Library:</strong> Tennessee REALTORS® provides an approved resource—the <strong>Special Stipulations Library (RF707)</strong>—to help agents draft appropriate and enforceable clauses.</li></ul></li></ul><ul id="4088ac6a-aab1-8080-af0b-ede4c15edd29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Drafting Best Practices &amp; Avoiding UPL</strong><ul id="4088ac6a-aab1-8003-91fb-ceb26fe214ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Clarity and Specificity:</strong> Language must be explicit and precise; ambiguous terms like &quot;TBD&quot; or &quot;negotiable&quot; must be avoided.</li></ul><ul id="4088ac6a-aab1-8030-8292-d255eebea533" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unauthorized Practice of Law (UPL):</strong> Licensees must remain extremely careful not to cross the line into drafting complex legal provisions that constitute the practice of law. New agents should always seek guidance from their managing broker or a real estate attorney.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-803d-81f1-c5b51b7fb765" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addenda </strong><ul id="4088ac6a-aab1-8063-8c85-f49b435d8ade" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Purpose:</strong> An addendum is an addition to a contract specifying supplementary information not covered in the main body. The purchase contract typically includes a dedicated paragraph to list all relevant addenda and mandated forms being attached.</li></ul><ul id="4088ac6a-aab1-806e-8d62-dd60ad4491e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Review &amp; Conflict Resolution:</strong><ul id="4088ac6a-aab1-8059-b757-ed129544e02e" class="bulleted-list" dir="auto"><li style="list-style-type:square">An attorney should review all attached addenda to prevent unwanted alterations to the core agreement.</li></ul><ul id="4088ac6a-aab1-8099-973e-cd692ddbe1b5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conflict Rule:</strong> If an addendum conflicts with any term in the main contract, the addendum controls.</li></ul></li></ul><ul id="4088ac6a-aab1-80c1-835d-e258239ac249" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sources:</strong> REALTORS® associations provide many standard pre-printed addenda forms. If no standard form exists, an attorney must draft the addendum.</li></ul><ul id="4088ac6a-aab1-807e-a5d4-fd3196e366e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples of Common Addenda</strong><ul id="4088ac6a-aab1-800b-a20b-f1388fcc4ce9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lead-Based Paint Disclosure</li></ul><ul id="4088ac6a-aab1-809b-ac03-e4d8c110fa45" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan Assumption Addendum</li></ul><ul id="4088ac6a-aab1-80f0-a088-e9e3be314749" class="bulleted-list" dir="auto"><li style="list-style-type:square">Buyer Contingency Addendum</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-808a-a696-fc7973737360" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Signatures &amp; Acceptance Overview</strong><ul id="4088ac6a-aab1-80fa-9616-f128cd50df62" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Section:</strong> The acceptance and signatures page is the concluding portion of the purchase contract where parties formalize the agreement.</li></ul><ul id="4088ac6a-aab1-80f3-8448-d9650bbfc2ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contact &amp; License Holder Details:</strong> Signature lines and complete contact information must be included for both the principals (buyers and sellers) and their respective real estate licensees.</li></ul><ul id="4088ac6a-aab1-808e-b58a-ff641550d7bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Pro Tips for Names and Married Couples</strong><ul id="4088ac6a-aab1-8034-8b8d-c44d6a9d6364" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Full Legal Names:</strong> Always verify and use official legal names (e.g., ensuring &quot;Tommy&quot; is entered as &quot;Thomas&quot;) to satisfy the Statute of Frauds and prevent voidability.</li></ul><ul id="4088ac6a-aab1-805c-86ca-e528b2b9525d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formatting Married Couples:</strong> Married parties can be designated using separate signature lines or combined formats:<ul id="4088ac6a-aab1-803b-b9d4-e6461423abb9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Separate Lines:</em> &quot;Austin Myers&quot; and &quot;Joanne Myers&quot;</li></ul><ul id="4088ac6a-aab1-80ee-8781-ced14fc57faa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Combined Line:</em> &quot;Austin and Joanne Myers, a married couple&quot;</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8027-9e3d-f0a45d5b2ee4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Electronic Signatures Overview</strong><ul id="4088ac6a-aab1-8037-a705-f9849ad72a0d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An electronic signature is an electronic sound, symbol, or process attached to an electronic record and adopted by a person as their signature. Just like traditional ink signatures, an e-signature <strong>must</strong> be submitted personally by the intended signer.</li></ul></li></ul><ul id="4088ac6a-aab1-8056-989e-d8e418ab6f90" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Validity &amp; Governing Acts</strong><ul id="4088ac6a-aab1-80da-abac-c86476927d11" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>UETA (1999):</strong> The Uniform Electronic Transactions Act established that electronic signatures hold the exact same legal status and binding power as handwritten signatures.</li></ul><ul id="4088ac6a-aab1-8013-bb64-f9b48ead73e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>E-SIGN Act (2000):</strong> The Electronic Signatures in Global and National Commerce Act further reinforced and validated the legal enforceability of electronic signatures across national and global commerce.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8007-ad8f-cb76d31cf143" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract to Closing Overview</strong><ul id="4088ac6a-aab1-80e2-8d4d-f3e201f697b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Responsibilities:</strong> The period between final contract signing and closing requires proactive agent management to ensure a smooth transaction.</li></ul><ul id="4088ac6a-aab1-80de-a65f-f917704d841d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Agent Actions Between Signing and Closing</strong><ul id="4088ac6a-aab1-807d-9f66-d347166bf83e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Maintain Open Communication:</strong> Stay in continuous contact with all parties involved in the transaction.</li></ul><ul id="4088ac6a-aab1-80fa-bcaf-f27798709d5e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Distribute Copies of the Signed Contract:</strong> Ensure all relevant parties receive a copy of the fully executed contract, including the buyer, seller, brokerages, lender, and closing attorney.</li></ul><ul id="4088ac6a-aab1-8072-a457-dede68340c49" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Enforce Deadlines (&quot;Time is of the Essence&quot;):</strong> Strictly monitor all timelines. For instance, if a buyer attempts to terminate after an inspection period or due diligence deadline passes, they lose their right to do so and remain bound by the contract.</li></ul><ul id="4088ac6a-aab1-8015-a227-ce9b474461a9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Track Loan Applications:</strong> Actively follow up on the buyer&#x27;s mortgage application status to prevent delays.</li></ul><ul id="4088ac6a-aab1-80bb-b39b-f30aff2bf409" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Prepare Clients for Closing:</strong> Advise clients to review all relevant closing documents <em>before</em> the actual closing appointment, as there is rarely time to read them thoroughly at the table.</li></ul><ul id="4088ac6a-aab1-807a-9ea2-d6187e291c42" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Provide Cost and Net Worksheets:</strong> Supply buyers and sellers with estimated closing cost and net sheets ahead of time to approximate final financial figures.</li></ul><ul id="4088ac6a-aab1-808d-ac99-ed2163a6fb5b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Attend the Closing:</strong> While attendance is not legally required, it is a professional best practice for licensees to attend and support their clients.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80a5-9a27-d2ecf307e563" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Purchase Contract Requirements</strong><figure id="4088ac6a-aab1-8024-a988-ff85c94851e7" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%205.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%205.png"><img style="width:288px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%205.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8000-bcd4-d0ad1cdbceaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease-Option Agreements Overview</strong><ul id="4088ac6a-aab1-8023-af9c-cae0ca7c3b2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A rent-to-own arrangement (lease with option to buy) where a tenant leases a property for a set period (typically one to two years) with the right to purchase it under specified terms.</li></ul><ul id="4088ac6a-aab1-807a-a29a-cb6ec79d2f1a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Elements:</strong><ul id="4088ac6a-aab1-8008-b484-e7113fbb4ee9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sales Price:</strong> Can be locked in at the start of the agreement or determined by market value at the time of purchase.</li></ul><ul id="4088ac6a-aab1-809d-80e9-fe5b1380324f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rent Credits:</strong> The contract specifies whether a portion of the rental payments applies toward the purchase price or down payment.</li></ul></li></ul><ul id="4088ac6a-aab1-809b-928e-c61d17792cd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Parties &amp; Obligations</strong><ul id="4088ac6a-aab1-8066-84b6-e48f05a2c22f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Optionor (Seller):</strong> Extends the option and is legally bound to sell if the buyer exercises the option.</li></ul><ul id="4088ac6a-aab1-80b6-9c2d-d6153f749839" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Optionee (Buyer/Tenant):</strong> Holds the non-obligatory choice to buy. They can walk away at the end of the term without purchasing, but they <strong>forfeit</strong> the upfront option fee (consideration) and any accumulated rent credits meant for the down payment.</li></ul></li></ul><ul id="4088ac6a-aab1-80d7-8f57-d1e31049c26b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contractual Nature</strong><ul id="4088ac6a-aab1-8059-a18a-d94136a81578" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Executory Contract:</strong> An ongoing agreement where obligations are fulfilled over time rather than instantaneously at closing.</li></ul><ul id="4088ac6a-aab1-808e-9880-c44fbced8bed" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unilateral to Bilateral:</strong> Initially, the option agreement is <strong>unilateral</strong> because only the seller is obligated to perform if the buyer decides to buy. Once the buyer exercises the option, it transforms into a binding <strong>bilateral</strong> purchase contract requiring performance from both parties.</li></ul></li></ul><ul id="4088ac6a-aab1-8046-82d0-f9e5148ae11b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mechanics of Lease-Option Agreements</strong><ul id="4088ac6a-aab1-808f-bd57-f3c6a6ba8a9a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contract Requirements:</strong> Must follow all standard valid contract rules and explicitly state a fixed, definite option period (never indefinite).</li></ul><ul id="4088ac6a-aab1-80b6-a530-d6b6f7d98113" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Time Is of the Essence:</strong> Often included to establish strict, unyielding deadlines; missing the cutoff time to exercise the option (e.g., 5:01 p.m. on the expiration date) terminates the right to purchase.</li></ul></li></ul><ul id="4088ac6a-aab1-80ab-aaa7-f4c35e93ddd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financial Components</strong><ul id="4088ac6a-aab1-8092-b8af-ce7b647ae3b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Option Fee:</strong> A nonrefundable upfront deposit paid by the optionee (tenant/buyer) to the optionor (landlord/seller) in exchange for the right to purchase, which is typically credited toward the purchase price.</li></ul><ul id="4088ac6a-aab1-80ae-bae6-dceb9a7e4665" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rent Credit:</strong> Monthly rent paid during the lease term, with a specified fraction usually credited toward the eventual purchase price or down payment if the option is exercised. If the lease expires without exercise, the option expires and all accumulated credits and fees are forfeited.</li></ul></li></ul><ul id="4088ac6a-aab1-80de-87aa-c116548ed0df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Market Environment &amp; Strategy</strong><ul id="4088ac6a-aab1-8022-8f96-fdee3aec1592" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Historical Context:</strong> Gained popularity in stagnant real estate markets as a tool for frustrated sellers struggling to find traditional buyers.</li></ul><ul id="4088ac6a-aab1-804b-84eb-c67dbb7d7149" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Incentive Structure:</strong> By bundling fixed future purchase prices, option fees, and rent credits, sellers incentivize tenants to build equity over time, making walking away less financially attractive and ultimately securing a delayed sale.</li></ul></li></ul><ul id="4088ac6a-aab1-8074-8e0a-dd844600c88c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Problems in Lease-Option Agreements</strong><ul id="4088ac6a-aab1-8060-b9bf-f4eed8b4084a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Challenges:</strong><ul id="4088ac6a-aab1-802d-ace6-ddb4278636dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Property Maintenance Disputes:</em> While landlords normally maintain rental properties, a seller looking to divest is unmotivated to spend money on upkeep, while tenants might create damage and simply walk away at the end of the term.</li></ul><ul id="4088ac6a-aab1-8067-b792-f7a651e91f28" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Financial Instability of Buyer:</em> Sellers knowingly enter agreements with tenants in poor financial standing who may ultimately fail to qualify for mortgage financing, risking the future sale.</li></ul></li></ul><ul id="4088ac6a-aab1-80d7-8cb3-d59ac926d6fb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer Challenges:</strong><ul id="4088ac6a-aab1-80d9-ab0f-e82598777750" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>High Overall Costs:</em> Option fees can be expensive, and monthly rental rates are often inflated to cover the portion credited toward the down payment, creating heavy financial investment for a transaction that may never close.</li></ul><ul id="4088ac6a-aab1-800f-a0a1-e0035723d5b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Undesirable Property:</em> The home itself may be difficult to sell traditionally, which is why it ended up in a rent-to-own arrangement.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8008-8b2e-cf70dca2eef4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lease-Purchase vs. Lease-Option</strong><ul id="4088ac6a-aab1-805e-ad27-fed35ed02f2d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lease-Purchase Agreement:</strong> Differs from a lease-option because the tenant is <strong>legally required</strong> to purchase the property at a specified future date rather than having a choice.</li></ul><ul id="4088ac6a-aab1-800f-9771-f4acd749dec6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Safety Comparison:</strong> Both appeal to buyers unable to secure immediate financing who want time to improve their credit. However, the flexibility of a <strong>lease-option</strong> is considered much safer for buyers, whereas lease-purchases carry high risk if financing falls through.</li></ul></li></ul><ul id="4088ac6a-aab1-801f-b9dc-e038cfa1a758" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Attorney Involvement</strong><ul id="4088ac6a-aab1-808a-8a31-c57adb631b09" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Best Practice:</strong> Due to the complex legal and financial risks involved, real estate licensees should always refer clients to a qualified real estate attorney to draft and review lease-option or lease-purchase agreements.</li></ul></li></ul><ul id="4088ac6a-aab1-80cd-b25d-dbec57b9a7d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contract for Deed Overview</strong><ul id="4088ac6a-aab1-8095-8580-c57d6504091b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A purchase contract—also known as an <em>installment sales contract</em> or <em>land contract</em>—where the buyer pays the seller in multiple installments over a predetermined timeframe, and the seller retains the deed and legal title until the property is paid in full.</li></ul><ul id="4088ac6a-aab1-809b-b287-d15145a27c03" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Mechanism:</strong> Operates like a layaway plan. The buyer receives immediate possession and the right to use, occupy, and profit from the property while making regular payments, but does not receive the title until the final payment is made.</li></ul></li></ul><ul id="4088ac6a-aab1-8040-9560-e6cb62761920" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Rights and Responsibilities</strong><ul id="4088ac6a-aab1-8067-b24a-cce00e7f7ca7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer Obligations &amp; Rights:</strong> Must make timely installment payments and maintain the property. Holds an <strong>equitable title interest</strong> (granting right of possession and an insurable interest), even though legal title remains with the seller.</li></ul><ul id="4088ac6a-aab1-808c-be0c-c1fceeca4406" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Obligations &amp; Risks:</strong> Keeps legal title and remains responsible for paying off any underlying original mortgage. <em>Major Risk:</em> If the seller fails to pay their original mortgage, the lender can foreclose, wiping out the buyer&#x27;s rights and resulting in eviction. Furthermore, the seller can take out additional liens against the property.</li></ul><ul id="4088ac6a-aab1-80bf-9f5a-cc57bfd650d6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Default Remedies:</strong> If the buyer defaults, the seller can sue for specific performance or damages, and may foreclose on the property.</li></ul></li></ul><ul id="4088ac6a-aab1-8073-9a92-c16ba2819e6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equitable Title Interest</strong><ul id="4088ac6a-aab1-808d-b5ca-cab25455384f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An interest held by a buyer in an executory contract (such as a purchase contract before closing or a contract for deed), meaning that while someone else holds legal title, the buyer possesses lawful rights of possession and an insurable interest.</li></ul></li></ul></li></ul><p id="4088ac6a-aab1-8062-96cd-dc14043769d1" class="" dir="auto">
+</p></div><div id="4088ac6a-aab1-801d-a850-fc4454830589" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4088ac6a-aab1-80f6-86fe-f70e18be7738" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4088ac6a-aab1-800d-b0b9-d4d77eaed242" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>contingency</strong> - a provision within a contract that makes performance conditional upon the occurrence of a stated event</li></ul><ul id="4088ac6a-aab1-8073-8a74-f7d8fa3ceb33" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>contract for deed</strong> - a purchase contract in which the buyer pays the seller for the property in multiple installments for a predetermined length of time, and the seller holds the title until the property has been fully paid for; aka <em>installment sales contract</em> or <em>land contract</em></li></ul><ul id="4088ac6a-aab1-801a-9b00-e346db631553" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>earnest money</strong> - funds paid to confirm or commit to a contract</li></ul><ul id="4088ac6a-aab1-806d-b91e-c24200dfcc76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>option</strong> - an agreement that gives one party the right to perform a non-obligatory action within a time period</li></ul><ul id="4088ac6a-aab1-8055-aabc-ea22c5b1168c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>purchase contract</strong> - a contract used in the sale of real property that outlines the responsibilities of the parties and terms of the sale</li></ul><ul id="4088ac6a-aab1-80f0-94a1-f29a49f8fd31" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>time is of the essence</strong> - communicates to parties of a contract that they must perform their contractual duties by a specific date and time in order to avoid a breach of contract</li></ul><p id="4088ac6a-aab1-8029-87cd-f9b6983ce091" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4088ac6a-aab1-80c0-9289-d363d3768b4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Residential Resale Purchase Contract - </strong>A <strong>purchase contract</strong> is a contract used in the sale of real property that outlines the responsibilities of the parties and terms of the sale. It is the blueprint for the completion of a real estate transaction.<figure id="4088ac6a-aab1-80ce-b8dc-ca20f84a9044" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%206.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%206.png"><img style="width:288px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%206.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-801f-813a-cbcad0aa9f4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contingencies -  </strong>Most real estate contracts will include at least one or two contingencies. A <strong>contingency</strong> is a provision within a contract that makes performance conditional upon the occurrence of a stated event.<ul id="4088ac6a-aab1-8008-bba7-c8f26db70e9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Another way to put this is <strong>until the contingencies have been fulfilled, the contract is voidable or unenforceable.</strong></li></ul><figure id="4088ac6a-aab1-805a-bc6d-d11e9f4616ce" class="image" data-notion-image="Chapter%202%20-%20The%20Purchase%20Contract/image%207.png" dir="ltr"><a href="Chapter%202%20-%20The%20Purchase%20Contract/image%207.png"><img style="width:1200px" src="Chapter%202%20-%20The%20Purchase%20Contract/image%207.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8082-9e7c-d608677879d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Other Types of Purchase Contracts</strong><ul id="4088ac6a-aab1-8037-8177-fc8f9b93eba0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A lease-option agreement or lease-purchase agreement</strong> is a contract in which the buyer agrees to lease a property for a period of time and then has the option or obligation to buy the property.</li></ul><ul id="4088ac6a-aab1-807b-b45b-f74f2aa9cc66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A contract for deed</strong> (aka <em>land contract)</em> is a purchase contract in which the buyer pays the seller for the property in multiple installments for a predetermined length of time, and the seller holds the deed and title until the property has been fully paid for.</li></ul><p id="4088ac6a-aab1-8043-a6b2-d08b557514f0" class="" dir="auto">
+</p></li></ul></div></div><p id="4088ac6a-aab1-80e8-a831-f5d0a637ff16" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

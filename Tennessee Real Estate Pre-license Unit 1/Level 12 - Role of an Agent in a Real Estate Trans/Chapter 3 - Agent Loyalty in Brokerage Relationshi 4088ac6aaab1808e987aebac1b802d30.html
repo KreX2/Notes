@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Agent Loyalty in Brokerage Relationships</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-808e-987a-ebac1b802d30" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Agent Loyalty in Brokerage Relationships</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40d8ac6a-aab1-80c7-8725-fcf50cc9b697" class="column-list" data-notion-column-list="" dir="auto"><div id="40d8ac6a-aab1-8071-9123-d9bddca4c8c0" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40d8ac6a-aab1-80ca-b0f5-f71091707bca" class="" dir="auto"><strong>Degrees of Loyalty in Brokerage Relationships</strong></p><ul id="40d8ac6a-aab1-804c-a085-c9f500eee613" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real estate brokerage relationships span a spectrum based on the degree of fiduciary loyalty they demand, ranging from complete undivided loyalty to zero loyalty.</li></ul><ul id="40d8ac6a-aab1-8019-82ae-dd2374f3d733" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Loyalty Hierarchy:</strong><ol type="1" id="40d8ac6a-aab1-80ff-8bcb-ca36b7ae8461" class="numbered-list" start="1" dir="auto"><li><strong>Undivided Loyalty:</strong> Single agency &amp; Subagency</li></ol><ol type="1" id="40d8ac6a-aab1-80ec-ab93-fb2a9a5b28f7" class="numbered-list" start="2" dir="auto"><li><strong>Quasi-Undivided Loyalty:</strong> Designated agency (intended to be undivided, but often viewed as falling slightly short in practice)</li></ol><ol type="1" id="40d8ac6a-aab1-8079-b474-edee3dbe1ef6" class="numbered-list" start="3" dir="auto"><li><strong>Limited Loyalty:</strong> Dual agency</li></ol><ol type="1" id="40d8ac6a-aab1-8012-a755-e4eabb33e7aa" class="numbered-list" start="4" dir="auto"><li><strong>No Loyalty:</strong> Transaction brokerage</li></ol></li></ul><ul id="40d8ac6a-aab1-800b-b6d4-c28ea7e15a72" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Undivided Loyalty: Single Agency</strong><ul id="40d8ac6a-aab1-8064-a10f-cd70e203cccd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Single agency (also called exclusive agency) is a brokerage relationship where <strong>one agent exclusively represents one party</strong> in a real estate transaction.</li></ul><ul id="40d8ac6a-aab1-80bd-b625-fdd3ec6bac4c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Benefit:</strong> Provides the client with complete, undivided loyalty, drastically reducing conflicts of interest and fostering a high level of trust.</li></ul><ul id="40d8ac6a-aab1-8071-8e90-e432895de5aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who a Single Agent Can Represent</strong><ul id="40d8ac6a-aab1-8013-9a27-ea8d6818d7c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Every transaction has two sides, allowing a single agent to represent one of four possible principals:<ul id="40d8ac6a-aab1-80f5-8b91-d871f99dd136" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sellers or Landlords</strong> (listing/lease side: looking to transfer property and make money).</li></ul><ul id="40d8ac6a-aab1-8095-95da-d9db856e8c85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyers or Tenants</strong> (purchase/rent side: looking to procure property for use).</li></ul></li></ul><ul id="40d8ac6a-aab1-80af-96e3-fd0feff36cc0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Documentation:</strong> Single agency relationships are legally established using either a <strong>listing agreement</strong> or a <strong>buyer representation agreement</strong>.</li></ul></li></ul><ul id="40d8ac6a-aab1-8032-bb81-cc28a43ffc01" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Evolution of Single Agency (When Both Sides Meet)</strong><ul id="40d8ac6a-aab1-8080-b21d-d0d03b305eaa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Starting out with an expectation of undivided loyalty is standard, but what happens when the other party to the transaction is represented by the <em>same</em> brokerage? When this happens, one of three things occurs:<ol type="1" id="40d8ac6a-aab1-80f0-9981-fb0793f184c7" class="numbered-list" start="1" dir="auto"><li><strong>Hold the Line (Customer Status):</strong> The client demands that the brokerage honor their original single agency relationship and promise of undivided loyalty, forcing the other party to be treated strictly as an unrepresented customer.</li></ol><ol type="1" id="40d8ac6a-aab1-80f4-876d-c71ae49c8ab2" class="numbered-list" start="2" dir="auto"><li><strong>Shift to Designated Agency:</strong> The client agrees to transition, allowing the principal broker to appoint specific, separate designated agents to each party so they can attempt to maintain undivided loyalty.</li></ol><ol type="1" id="40d8ac6a-aab1-8010-bb35-e9d3d4c73336" class="numbered-list" start="3" dir="auto"><li><strong>Shift to Dual Agency:</strong> The client agrees to step down from undivided loyalty into a state of <strong>limited loyalty</strong> by accepting dual agency.</li></ol></li></ul></li></ul><ul id="40d8ac6a-aab1-802b-91c8-f7a60e8af240" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Undivided Loyalty: Subagency </strong><ul id="40d8ac6a-aab1-80d4-a322-f75ab22d049b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Subagency is a direct branch of single agency, classically defined as being an <strong>agent of an agent</strong>.</li></ul><ul id="40d8ac6a-aab1-802e-be28-e11a2ce4c004" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Who Can Be a Subagent?</strong><ol type="1" id="40d8ac6a-aab1-8092-9985-de57b6282026" class="numbered-list" start="1" dir="auto"><li><strong>Sponsored Affiliate Brokers:</strong> Licensees working under a principal broker who extend the broker&#x27;s agency to serve the broker&#x27;s clients.</li></ol><ol type="1" id="40d8ac6a-aab1-802c-9d51-e6fe549882cc" class="numbered-list" start="2" dir="auto"><li><strong>Unaffiliated Cooperating Brokers:</strong> Outside brokers assisting a listing broker to help sell a property. While increasingly rare in modern real estate practice, subagency via cooperating brokers <strong>remains legal in Tennessee</strong>.</li></ol></li></ul></li></ul><ul id="40d8ac6a-aab1-8046-a96c-cd4d435ed0ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fiduciary Duties and Working Dynamics</strong><ul id="40d8ac6a-aab1-8096-998b-f0b6bb95e314" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Identical Loyalty:</strong> Regardless of whether the subagent is an internal affiliate or an outside cooperating broker, they owe the principal the exact same fiduciary duties the primary broker owes—including <strong>undivided loyalty</strong>.</li></ul><ul id="40d8ac6a-aab1-8039-aa4e-c0b0e4def73c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Working Relationship:</strong> Subagents always <strong>work </strong><em><strong>for</strong></em><strong> the principal</strong> and <strong>work </strong><em><strong>with</strong></em><strong> the customer</strong>. That foundational rule never changes.</li></ul></li></ul><ul id="40d8ac6a-aab1-803a-9c30-c183d3bbcdd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subagency via Cooperating Brokerage </strong><ul id="40d8ac6a-aab1-8075-8f8b-fe5c94d0b3c4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Cooperating brokerage occurs when two unaffiliated brokerages work together to complete a real estate transaction. An outside broker who brings a buyer to a listing broker&#x27;s property is a <strong>cooperating broker</strong>.</li></ul><ul id="40d8ac6a-aab1-80ea-a8a4-d2917c87682f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Subagent Route:</strong> If the listing broker permits it, a cooperating broker can operate as a <strong>subagent of the seller</strong> (via the listing broker) rather than as a buyer&#x27;s agent.</li></ul></li></ul><ul id="40d8ac6a-aab1-8076-94d2-faf1edf59fff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The &quot;It&#x27;s Either/Or&quot; Rule</strong><ul id="40d8ac6a-aab1-80f4-9142-edbca88e1d46" class="bulleted-list" dir="auto"><li style="list-style-type:square">An unaffiliated cooperating broker can only wear <strong>one hat</strong> in a transaction:<ol type="1" id="40d8ac6a-aab1-8005-8048-df06b1a80c8c" class="numbered-list" start="1" dir="auto"><li>A <strong>buyer&#x27;s agent</strong> representing the buyer-client.</li></ol><ol type="1" id="40d8ac6a-aab1-802b-8739-d61213a9ee96" class="numbered-list" start="2" dir="auto"><li>A <strong>subagent</strong> working for the seller-client and treating the buyer as an unrepresented customer.</li></ol></li></ul></li></ul><ul id="40d8ac6a-aab1-803a-9e0c-cf92bafa7377" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario: Casa Brokerage and Haus Brokerage</strong><ul id="40d8ac6a-aab1-8075-a2e3-cc284c14eee9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Players:</strong> Breck (Casa Brokerage / Listing Broker for Seller Simone) and Dillon (Haus Brokerage / Cooperating Broker working with Buyer Janine as a customer).</li></ul><ul id="40d8ac6a-aab1-803d-bdd8-c9840b42d674" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Dynamic:</strong> Dillon enters into a subagency agreement with Breck to bring Janine&#x27;s offer to Simone&#x27;s listing.</li></ul><ul id="40d8ac6a-aab1-803a-bc4c-ce5dd9c6021d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Legal Result:</strong> Dillon becomes a subagent owing <strong>fiduciary duties strictly to Seller Simone</strong>, not to Buyer Janine.</li></ul></li></ul><ul id="40d8ac6a-aab1-80ca-a480-db6c78348428" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Critical Warning for Buyers</strong><ul id="40d8ac6a-aab1-8009-bf18-c1f4440b7329" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because Dillon is a subagent of the seller, <strong>Buyer Janine is completely unrepresented</strong>.</li></ul><ul id="40d8ac6a-aab1-8083-848d-ff9266357d5e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proper disclosure is vital here: Janine must be informed early on that no one in this transaction is looking out for her personal interests or negotiating on her behalf.<figure id="40d8ac6a-aab1-8041-9a0b-e0c8ea90d42e" class="image" data-notion-image="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/1.gif" dir="ltr"><a href="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/1.gif"><img style="width:288px" src="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/1.gif"/></a></figure></li></ul></li></ul></li></ul><p id="40d8ac6a-aab1-80d3-b4ef-fe2aa866be19" class="" dir="auto">
+</p><ul id="40d8ac6a-aab1-801d-9d54-ff223219d211" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quasi-Undivided Loyalty: Designated Agency </strong><ul id="40d8ac6a-aab1-805e-b2db-d0a68b005321" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The In-House Transaction Dilemma:</strong> When a single brokerage represents <em>both</em> principals (buyer and seller) in a transaction, it creates an in-house transaction. In Tennessee, brokerages handle this via <strong>dual agency</strong> or <strong>designated agency</strong>.</li></ul><ul id="40d8ac6a-aab1-80c6-a424-c7c222ced080" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Goal of Designated Agency:</strong> It strives to offer true undivided loyalty to both clients, even though they are under the same roof.</li></ul><ul id="40d8ac6a-aab1-80c5-8a35-d73ea632ddab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How Designated Agency Works</strong><ul id="40d8ac6a-aab1-80ee-a523-d4f736b0f57f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Isolating the Agents:</strong> The principal broker appoints one designated agent for the seller and a separate designated agent for the buyer.</li></ul><ul id="40d8ac6a-aab1-802b-82dd-d144ed5d12d5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Chinese Wall Effect:</strong> These designated agents (and the principal broker) are strictly isolated from one another regarding transaction confidences. Each agent acts like an independent, self-contained brokerage fully dedicated to their assigned client.</li></ul><ul id="40d8ac6a-aab1-803b-b6a6-ff9d2eeb7634" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Information Firewall:</strong> A designated agent has no access to confidential information about the opposing principal—knowing only what they would know if the other party used a completely separate brokerage.</li></ul></li></ul><ul id="40d8ac6a-aab1-801c-b67d-f28e28e275f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why &quot;Quasi&quot;-Undivided Loyalty?</strong><ul id="40d8ac6a-aab1-808b-8afd-fb691e67a809" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Optimistic View:</strong> Proponents argue that strict isolation measures make designated agency functionally equivalent to undivided single agency.</li></ul><ul id="40d8ac6a-aab1-804c-893c-d309c3b7b844" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Skeptical View:</strong> Critics point out that because both agents ultimately answer to the same principal broker and belong to the same business entity, the absolute purity of loyalty is inevitably diluted or compromised to a degree.</li></ul><ul id="40d8ac6a-aab1-80d5-a841-f2ccd84e872a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Verdict:</strong> Designated agency is classified as <em>quasi-undivided loyalty</em>—it represents an intentional, structured effort to give both sides independent representation within an in-house setting.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-80bd-9f27-f55512fae374" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Limited Loyalty: Dual Agency </strong><ul id="40d8ac6a-aab1-8067-b09f-c2b5cf162eb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Context:</strong> Dual agency occurs in an <strong>in-house transaction</strong> when the exact same broker represents both the buyer and the seller. While still legally recognized, it is rarely practiced in Tennessee today because designated agency is widely preferred as a more client-friendly solution.</li></ul><ul id="40d8ac6a-aab1-80a4-b326-e038f9e35f7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A Compromise in Loyalty:</strong> Unlike designated agency (which attempts to isolate agents to preserve undivided loyalty), dual agency explicitly offers <strong>limited loyalty</strong>.</li></ul><ul id="40d8ac6a-aab1-801b-9874-e7ba6679ab69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Loyalty and Disclosure Are Limited</strong><ul id="40d8ac6a-aab1-80c9-aac7-ee08229b6ce7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Conflict:</strong> A principal broker cannot simultaneously fight for the absolute best interests of <em>both</em> opposing parties.</li></ul><ul id="40d8ac6a-aab1-8062-8673-c5a608d015ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Shared Information Channels:</strong> Even if two different affiliate brokers are working with the buyer and seller, under dual agency, both agents report back to the shared principal broker. Because the broker possesses confidential details on both sides, absolute loyalty is impossible.</li></ul><ul id="40d8ac6a-aab1-80bd-b274-db4683be1cba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Equal Treatment Rule:</strong> Dual agency rules dictate that an agent&#x27;s loyalty and disclosures must be restricted to information that <strong>does not favor one principal over the other</strong>.</li></ul></li></ul><ul id="40d8ac6a-aab1-807f-925e-c304d92aa5d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Agency vs. Designated Agency (The Core Difference)</strong><ul id="40d8ac6a-aab1-80e5-b229-ee1eff5d90be" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Dual Agency:</strong> Information flows back to the principal broker, creating a dual-representation scenario where both parties forfeit full loyalty and full disclosure to ensure neither side gains an unfair advantage.</li></ul><ul id="40d8ac6a-aab1-80be-9878-e9e70327cd11" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Designated Agency:</strong> The principal broker cuts the information cord, isolating the designated agents so the broker does not hold dual confidences—allowing the brokerage to maintain separate, quasi-undivided representation for both clients.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8093-ad49-d3083d15bebf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No Loyalty: Transaction Brokerage </strong><ul id="40d8ac6a-aab1-807a-beff-c5e1d48cc1ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A transaction broker (also known as a facilitator) is a licensee who assists in completing a real estate transaction <strong>without establishing an agency relationship</strong> with either party.</li></ul><ul id="40d8ac6a-aab1-803b-8863-d6a3eab94b8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Clients, Only Customers:</strong> Because there is no agency relationship, there is no fiduciary duty of loyalty whatsoever, and all parties involved are treated strictly as <strong>customers</strong>, not clients.</li></ul><ul id="40d8ac6a-aab1-80c6-8d21-f47a4a15717b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ministerial Acts Only:</strong> Facilitators perform ministerial acts—tasks that do not require professional judgment and do not provide counsel, advice, or advocacy.</li></ul><ul id="40d8ac6a-aab1-80b3-8125-c0214c4cb306" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Duties Owed as a Transaction Broker (Customer-Level Duties):</strong><ul id="40d8ac6a-aab1-80b4-9954-ff5ccae2795e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Honesty &amp; Fair Dealing:</strong> Treating all parties with integrity and fairness.</li></ul><ul id="40d8ac6a-aab1-802c-975a-d1692ed5df5c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accounting for Funds:</strong> Safely handling and accounting for all monies entrusted to them.</li></ul><ul id="40d8ac6a-aab1-80d4-9b7f-ece81d0a78a0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Skill, Care, &amp; Diligence:</strong> Performing duties competently without favoring one side over the other.</li></ul><ul id="40d8ac6a-aab1-800f-902b-ccae54e45832" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Material Adverse Fact Disclosure:</strong> Disclosing known defects or material facts that affect the property&#x27;s value or safety.</li></ul><ul id="40d8ac6a-aab1-802a-be90-df06c81eb8f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Prompt Offer Presentation:</strong> Delivering all written offers and counteroffers in a timely manner.</li></ul><ul id="40d8ac6a-aab1-80b6-a444-e94a03d76c94" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Limited Confidentiality:</strong> Protecting certain sensitive details (such as bottom-line pricing willingness) from being weaponized against either party, while still fulfilling mandatory disclosure laws.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8078-8285-e55edbfdf283" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Loyalty Recap</strong><figure id="40d8ac6a-aab1-8023-9d96-e6ababd1b0a0" class="image" data-notion-image="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image.png" dir="ltr"><a href="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image.png"><img style="width:336px" src="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image.png"/></a></figure></li></ul><ul id="40d8ac6a-aab1-800c-8ef6-c5a094daed82" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><p id="40d8ac6a-aab1-80a5-b7b1-df087f4e3281" class="" dir="auto">
+</p></div><div id="40d8ac6a-aab1-800a-b1bc-e7ec2cb16f7f" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40d8ac6a-aab1-8038-9494-c7dcf16f6dd0" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40d8ac6a-aab1-8096-b816-ea43988a197f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>cooperating brokerage</strong> - an agency arrangement in which two brokerages collaborate to achieve a real estate transaction for a specific piece of property</li></ul><ul id="40d8ac6a-aab1-80a1-8d51-d770155577a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>exclusive agency</strong> - an agency arrangement in which one agent represents one party in a real estate transaction; the party may be either a seller or a buyer; aka <em>single agency</em></li></ul><ul id="40d8ac6a-aab1-80ee-9330-ced6b1cefe84" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>subagency</strong> - an agency arrangement in which one agent represents one party in a real estate transaction; the party may be either a seller or a buyer; aka <em>single agency</em></li></ul><ul id="40d8ac6a-aab1-8020-8d08-cebb3b334c84" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>transaction brokerage</strong> - a form of non-agency carried out by a broker who facilitates a transaction absent of any agency relationship with either party to the contract</li></ul><p id="40d8ac6a-aab1-8077-9d3c-e8fa30be34a7" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40d8ac6a-aab1-803c-a0ce-de0c1aa73043" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single Agency - </strong>Single agency is an exclusive agency arrangement in which one agent represents one party in a real estate transaction. The agent is exclusively responsible for and loyal to their client and their client only.</li></ul><ul id="40d8ac6a-aab1-8051-a47e-f7f8188b5cc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subagency - </strong>Subagency is really a branch of single agency. Subagents always owe the principal the same fiduciary duties the broker owes the principal — including the duty of undivided loyalty.<ul id="40d8ac6a-aab1-8046-82f6-f92939b8d14d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Subagents can be:<ul id="40d8ac6a-aab1-80d0-b91a-c02fa06652ba" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sponsored license holders</li></ul><ul id="40d8ac6a-aab1-80a6-affc-e96d3869de5d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unaffiliated cooperating brokers</li></ul></li></ul><figure id="40d8ac6a-aab1-80ba-a8b1-caabb25448fb" class="image" data-notion-image="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%201.png"><img style="width:1200px" src="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%201.png"/></a></figure></li></ul><ul id="40d8ac6a-aab1-8025-b42a-f9de1fcc04c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Designated Agency - </strong>Brokerages that practice designated agency make every attempt to offer undivided loyalty to both clients in an in-house transaction. They do this by isolating the two designated agents (one assigned to each principal) from each other and everyone else in the brokerage — including the principal broker. These designated agents do not share what they learn of their assigned client with anyone else in or out of the brokerage.</li></ul><ul id="40d8ac6a-aab1-800c-824d-f7cdeb8eb1e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dual Agency - </strong>Dual agency is rarely practiced in Tennessee, but it is legal. It is used with in-house transactions. The principal broker operates as a dual agent to both parties, both of whom receive only partial disclosure and limited loyalty.</li></ul><ul id="40d8ac6a-aab1-8083-acee-c2ef042f3810" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transaction Brokerage - </strong>A <strong>facilitator</strong> or transaction broker is a licensee who facilitates a transaction <strong>absent of any agency relationship</strong> with either party to the contract. They can perform ministerial acts but offer no loyalty to either party.<figure id="40d8ac6a-aab1-8017-9b1f-e8aa2f9fe25b" class="image" data-notion-image="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%202.png"><img style="width:413.796875px" src="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%202.png"/></a></figure><p id="40d8ac6a-aab1-80ea-a2bb-ed7cb85465bd" class="" dir="auto">
+</p></li></ul></div></div><figure id="40d8ac6a-aab1-8012-a49c-eace86464082" class="image" data-notion-image="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%203.png"><img style="width:703.984375px" src="Chapter%203%20-%20Agent%20Loyalty%20in%20Brokerage%20Relationshi/image%203.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

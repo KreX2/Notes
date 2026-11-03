@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - How Brokerage Affects Agency</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-80fe-8edf-ea09fdf8adae" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>How Brokerage Affects Agency</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40d8ac6a-aab1-8031-9a5a-d29cb9526dfe" class="column-list" data-notion-column-list="" dir="auto"><div id="40d8ac6a-aab1-8070-9898-c5eb1ccd665d" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40d8ac6a-aab1-802c-93f3-f94e29c1ca31" class="" dir="auto"><strong>Brokerage and Agency </strong></p><ul id="40d8ac6a-aab1-80e9-9fed-f53cad6b9883" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Recap:</strong> Focuses on representation, advocacy, duties owed, and the key players in a transaction (Principal Broker, Affiliate Broker, Clients, Principals, Customers, Third Parties).</li></ul><ul id="40d8ac6a-aab1-802e-9eb8-cfb07856e478" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Definition:</strong> A for-profit business specifically formed to complete real estate transactions involving the sale, purchase, lease, or management of property.</li></ul><ul id="40d8ac6a-aab1-8073-a392-cf0006bacfee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role of the Brokerage:</strong> Brokerages can be categorized by property specialization, geographic area, or the types of agency relationships they permit—all of which are strictly governed by company guidelines outlined in the <strong>brokerage policy manual</strong>.</li></ul><ul id="40d8ac6a-aab1-80cc-a5bb-ddf4a90c05a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker: Noun vs. Verb</strong><ul id="40d8ac6a-aab1-8030-9d59-cfd98c4d132b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>As a Verb:</strong> Describes the various acts and efforts undertaken to bring real estate transactions to completion among buyers, sellers, landlords, and tenants.</li></ul><ul id="40d8ac6a-aab1-800f-acfd-c36b02ef67ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>As a Noun:</strong> Refers to the licensed individual who runs the business.</li></ul><ul id="40d8ac6a-aab1-80d8-ac90-fec14c83bffa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Specific:</strong> The official term for the person designated to oversee all brokerage activities is the <strong>principal broker</strong>.</li></ul></li></ul><ul id="40d8ac6a-aab1-8085-b476-c682bac8f8fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Middleman Role</strong><ul id="40d8ac6a-aab1-8016-afbe-df78791c72f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate licensees act as agents advocating on behalf of the brokerage&#x27;s clients, serving as the essential link or middleman between sellers and buyers, or landlords and tenants.<figure id="40d8ac6a-aab1-802c-bdcd-f881e8005b4f" class="image" data-notion-image="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image.png" dir="ltr"><a href="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image.png"><img style="width:384px" src="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image.png"/></a></figure></li></ul></li></ul><ul id="40d8ac6a-aab1-805d-b069-debb83935a79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency at the Broker Level </strong><ul id="40d8ac6a-aab1-802a-b79c-efa82a565da2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Chain of Representation:</strong> Agency agreements are established at the <strong>broker level</strong>. When an affiliate broker signs a client, they do so on behalf of their sponsoring principal broker.</li></ul><ul id="40d8ac6a-aab1-8028-8e0b-eb4dbda0d37f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Reality:</strong> The actual agency relationship is formed between the <strong>client and the principal broker</strong> (Broker Bob and Seller Sam), even though the affiliate broker (Emma) performs all the day-to-day work and transactional tasks.</li></ul><ul id="40d8ac6a-aab1-80ae-8bf4-ca782acae205" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Rule:</strong> The principal broker represents all clients of the brokerage, and all affiliate brokers represent their principal broker.</li></ul><ul id="40d8ac6a-aab1-80a1-bea3-e074fdef2844" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Brokerage Agreement</strong><ul id="40d8ac6a-aab1-8026-9cb2-eadc19ecf7c0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The written contract between the sponsored licensee (affiliate broker) and the principal broker that authorizes the affiliate to represent brokerage clients and sign agreements on the broker&#x27;s behalf.</li></ul><ul id="40d8ac6a-aab1-8005-8f99-f034cb6652d4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Requirements:</strong><ul id="40d8ac6a-aab1-807b-b7b8-dd204628b240" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Must be in writing:</strong> To ensure clear legal accountability regarding roles and expectations.</li></ul><ul id="40d8ac6a-aab1-8099-a308-d3838bf4c59d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addresses compensation:</strong> Outlines how commissions are split between the principal broker and the affiliate broker.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8014-bfa9-e786adc63cb5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Establishing Agency Types</strong><ul id="40d8ac6a-aab1-8085-b3fc-d564f4f77fde" class="bulleted-list" dir="auto"><li style="list-style-type:square">Brokerages dictate the scope of agency an affiliate broker can practice through their policy manuals, falling under two broad categories:<ol type="1" id="40d8ac6a-aab1-80e0-b451-e03b392d7ee9" class="numbered-list" start="1" dir="auto"><li><strong>Exclusive / Unlimited Agency:</strong> Single agency, designated agency, and subagency.</li></ol><ol type="1" id="40d8ac6a-aab1-80f5-ba36-ed605b024488" class="numbered-list" start="2" dir="auto"><li><strong>Limited Agency:</strong> Dual agency and transaction brokerage.</li></ol></li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-80e7-b859-fe6315175852" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage in Action </strong><ul id="40d8ac6a-aab1-8075-8f83-c290e51b6960" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Universal Application:</strong> Real estate brokerage is uniquely structured; every licensed professional actively engages in the &quot;act of brokerage,&quot; which goes beyond just the broker who owns the office.</li></ul><ul id="40d8ac6a-aab1-801f-a906-caa53b7dea56" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition of Brokerage Acts:</strong> The continuous process of bringing people together to exchange real estate products or services, constantly prospecting for clients, and actively solving problems to drive transactions through to closing.</li></ul><ul id="40d8ac6a-aab1-8063-9815-c712f00054fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Requirement:</strong> Brokerage acts always involve a licensee representing a client&#x27;s best interests in a transaction with another party.</li></ul><ul id="40d8ac6a-aab1-8016-b93c-d0b2e0be048a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Four Major Categories of Real Estate Brokerage Acts</strong><ul id="40d8ac6a-aab1-806b-8ed5-c8f978d4b874" class="bulleted-list" dir="auto"><li style="list-style-type:square">Real estate brokerage acts involve a licensee representing a client&#x27;s best interests across four primary areas, each established via specific written agreements:<ol type="1" id="40d8ac6a-aab1-80c6-b25c-e0aff0968899" class="numbered-list" start="1" dir="auto"><li><strong>Listing (Seller&#x27;s Agent / Listing Agent):</strong><ul id="40d8ac6a-aab1-8095-ba83-ce8cf3154b17" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role:</strong> Represents a property owner&#x27;s fiduciary interests in selling real estate.</li></ul><ul id="40d8ac6a-aab1-80ca-8414-eee9bf19c18a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agreement:</strong> Created in writing via a <strong>listing agreement</strong> (e.g., helping an owner sell an art gallery or home).</li></ul></li></ol><ol type="1" id="40d8ac6a-aab1-8042-8b8b-dc9cf31a294d" class="numbered-list" start="2" dir="auto"><li><strong>Buying (Buyer&#x27;s Agent / Selling Agent):</strong><ul id="40d8ac6a-aab1-80a3-847f-e041b15bbca8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role:</strong> Represents a buyer&#x27;s fiduciary interests when purchasing real estate. <em>(Note: The term &quot;selling agent&quot; is an older, sometimes confusing term for a buyer&#x27;s agent because they assist in bringing about the sale).</em></li></ul><ul id="40d8ac6a-aab1-801f-8604-c3ffd941ec88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agreement:</strong> Created in writing via a <strong>buyer/tenant representation agreement</strong>.</li></ul></li></ol><ol type="1" id="40d8ac6a-aab1-80c1-aa86-ef65f59bd6bc" class="numbered-list" start="3" dir="auto"><li><strong>Property Management (Landlord&#x27;s Agent):</strong><ul id="40d8ac6a-aab1-80d2-90af-ff3f242d9c6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role:</strong> Represents a property owner or landlord seeking to rent out, manage, and maximize returns on investment properties.</li></ul><ul id="40d8ac6a-aab1-802f-b963-e64029f20e60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agreement:</strong> Created in writing via a <strong>property management agreement</strong>.</li></ul></li></ol><ol type="1" id="40d8ac6a-aab1-8037-896b-c1c01009878d" class="numbered-list" start="4" dir="auto"><li><strong>Leasing (Tenant Agent / Leasing Agent):</strong><ul id="40d8ac6a-aab1-8075-9392-c917d128db7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role:</strong> Represents a tenant looking to lease real estate and navigate lease terms.</li></ul><ul id="40d8ac6a-aab1-80e4-bd1d-c846681db344" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agreement:</strong> Created in writing via a <strong>buyer/tenant representation agreement</strong>.</li></ul></li></ol></li></ul><ul id="40d8ac6a-aab1-80e3-b894-fc4ee61a839a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Quick Recap<ul id="40d8ac6a-aab1-80f4-bbaa-cf6545d010ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing</strong> is done by a <em>seller&#x27;s or listing agent</em></li></ul><ul id="40d8ac6a-aab1-808c-b429-c33b38e4feec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buying</strong> is done by a <em>buyer&#x27;s or selling agent</em></li></ul><ul id="40d8ac6a-aab1-8097-a006-e15698d6465b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property management</strong> is done by a <em>landlord&#x27;s agent</em></li></ul><ul id="40d8ac6a-aab1-8097-82e6-c8098b412e95" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leasing</strong> is done by a <em>tenant agent</em></li></ul></li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8025-a48f-ea2a64912307" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage People </strong><ul id="40d8ac6a-aab1-8085-8921-fe697a793dc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate brokerage operations rely on specific tiers of licensed professionals who carry out brokerage acts under defined legal relationships and supervisory structures.</li></ul><ul id="40d8ac6a-aab1-80aa-878a-dea02f6a2a05" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Principal Broker</strong><ul id="40d8ac6a-aab1-80c5-897d-ffd778f4c462" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Role:</strong> Every real estate brokerage must designate a principal broker who <strong>assumes ultimate liability and supervisory responsibility</strong> for all real estate activities and transactions conducted through the brokerage.</li></ul><ul id="40d8ac6a-aab1-80ac-bc8e-f424cbbefca8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ownership &amp; Staff:</strong> The principal broker often holds a full or partial ownership stake in the company and sponsors a team of licensees (affiliate brokers) while also employing unlicensed administrative assistants.</li></ul><ul id="40d8ac6a-aab1-8067-a53e-cff46d23ba6f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Independent Status:</strong> Unlike affiliate brokers, a fully licensed broker possesses the legal qualification to operate completely independently without needing sponsorship or supervision from another license holder.</li></ul></li></ul><ul id="40d8ac6a-aab1-803c-8e87-f0c8642f8d59" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Affiliate Broker</strong><ul id="40d8ac6a-aab1-801c-8864-f2fd4377324b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Supervisory Requirement:</strong> Licensed to engage in real estate only under the direct guidance, control, and supervision of their sponsoring principal broker.</li></ul><ul id="40d8ac6a-aab1-800e-b2c4-c77abbfd52b8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agency Hierarchy:</strong><ul id="40d8ac6a-aab1-80dc-b490-f0184e6237bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The affiliate broker acts as an <strong>agent of their sponsoring broker</strong> and a <strong>subagent of the broker&#x27;s clients (principals)</strong>.</li></ul><ul id="40d8ac6a-aab1-80a7-a746-e2f613af094c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Although affiliate brokers perform the day-to-day transactional &quot;heavy lifting&quot; and secure clients, <strong>affiliate brokers are NOT parties to client agency agreements</strong>; listing and buyer representation contracts are legally established directly between the client and the principal broker.</li></ul></li></ul><ul id="40d8ac6a-aab1-803c-ba2b-c2089fb30f99" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Compensation Rule:</strong> Affiliate brokers must receive all compensation and commissions <strong>exclusively through their sponsoring principal broker</strong>.</li></ul><ul id="40d8ac6a-aab1-8084-b823-cc98826e4880" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Title Distinction:</strong> The formal title of &quot;broker&quot; is strictly reserved for those who do not require sponsorship. Affiliate brokers are properly referred to as agents, licensees, or license holders, never simply as &quot;brokers.&quot;<figure id="40d8ac6a-aab1-809a-9802-f5dad5a0e66e" class="image" data-notion-image="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%201.png" dir="ltr"><a href="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%201.png"><img style="width:576px" src="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8028-8ab2-ce0879af7dca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Cooperating Broker </strong><ul id="40d8ac6a-aab1-8032-9c47-e59ae929128d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A <strong>cooperating broker</strong> is a broker who is <strong>not affiliated</strong> with the brokerage representing the principal (typically the seller) in a real estate transaction, but steps in to &quot;cooperate&quot; by bringing the other party—usually the buyer.</li></ul><ul id="40d8ac6a-aab1-80ff-b07e-e52d924d2e30" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Paths of Operation:</strong> An unaffiliated cooperating broker can function in one of two ways:<ol type="1" id="40d8ac6a-aab1-80d3-8786-cd499d35b7df" class="numbered-list" start="1" dir="auto"><li><strong>As a Buyer&#x27;s Broker:</strong> Represents the buyer in the transaction, treating the seller as a customer.</li></ol><ol type="1" id="40d8ac6a-aab1-802b-9e39-e1e49685061c" class="numbered-list" start="2" dir="auto"><li><strong>As a Subagent of the Listing Broker:</strong> Operates under subagency where both brokers ultimately work in the interest of the seller.</li></ol></li></ul><ul id="40d8ac6a-aab1-8069-9d20-ed34d90785ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Breakdown:</strong> If Janice represents a seller (Cielo) and Gretta—from a completely separate brokerage—brings a buyer (Sarah) to purchase the home, Gretta acts as the <strong>cooperating broker operating as a buyer&#x27;s broker</strong>.</li></ul><ul id="40d8ac6a-aab1-80b1-a798-e871ecff4496" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cooperating Brokerage &amp; Sponsored Licensees</strong><ul id="40d8ac6a-aab1-80cc-8860-ee8b083bf897" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cooperating Brokerage Definition:</strong> An agency arrangement where two independent, unaffiliated brokerages collaborate to successfully complete a transaction for a specific property.</li></ul><ul id="40d8ac6a-aab1-801b-9e4a-f55783c2e60e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Role of Affiliate Brokers:</strong> In everyday practice, you will usually deal with an affiliate broker working under the cooperating broker. Because all agency legally operates at the broker level, the relationship is still classified as cooperating brokerage.</li></ul></li></ul><ul id="40d8ac6a-aab1-80b8-839c-ef2d17d87a16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clarifying Terminology: Agents and Brokers</strong><ul id="40d8ac6a-aab1-80ce-956b-d913d831d121" class="bulleted-list" dir="auto"><li style="list-style-type:square">While real estate licensees are frequently called &quot;agents&quot; in everyday conversation, legal reality defines distinct roles:<ul id="40d8ac6a-aab1-801a-a1cd-f17dd95192ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokers</strong> are the only professionals who can officially enter into direct agency relationships with buyers or sellers.</li></ul><ul id="40d8ac6a-aab1-801a-8e80-c6a02dc43eea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate Brokers</strong> are agents <em>for their sponsoring brokers</em> and act on their broker&#x27;s behalf when serving clients. An affiliate broker cannot practice real estate or act as an agent without a sponsoring broker.</li></ul></li></ul><figure id="40d8ac6a-aab1-8019-b222-c4b53a512939" class="image" data-notion-image="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%202.png" dir="ltr"><a href="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%202.png"><img style="width:528px" src="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%202.png"/></a></figure></li></ul></li></ul><ul id="40d8ac6a-aab1-80b4-a8e2-ea1c0e5f72ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability </strong><ul id="40d8ac6a-aab1-80e8-b3ac-f0cd76566dc8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A common law legal concept holding that a person or entity is fully liable for the actions of individuals who are acting with authority on their behalf.</li></ul><ul id="40d8ac6a-aab1-8066-a181-f36d5a104ee6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Principal Broker&#x27;s Burden:</strong> In a real estate brokerage, regardless of the size or number of owners, <strong>one principal broker</strong> is legally responsible for <strong>all</strong> brokerage activities conducted by their team.</li></ul><ul id="40d8ac6a-aab1-8015-8859-d903a82e4c12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Necessity of Teamwork:</strong> Because running a solo real estate operation is practically impossible if a broker wants to serve multiple clients, brokers sponsor affiliate brokers to expand their reach—thereby knowingly accepting vicarious liability as part of the job description.</li></ul><ul id="40d8ac6a-aab1-8060-9da7-ef29acaadf78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Responsibility &amp; Liability Mechanics</strong><ul id="40d8ac6a-aab1-8081-80d2-c94525b76932" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contractual Reality:</strong> Because client representation agreements are legally established between the client and the principal broker (not the affiliate broker), the broker cannot simply blame the affiliate broker and walk away when mistakes happen.</li></ul><ul id="40d8ac6a-aab1-80d2-bbc2-fa9076737e36" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Chain of Command &amp; Liability Trickle-Up:</strong><ul id="40d8ac6a-aab1-8086-9d2f-e8f3275b5d96" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Affiliate brokers work on behalf of their sponsoring principal broker.</li></ul><ul id="40d8ac6a-aab1-805b-8c25-f673ba5dd73a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clients have a direct agent (the principal broker) and a subagent (the affiliate broker acting as the agent of the broker).</li></ul><ul id="40d8ac6a-aab1-80ae-82d7-cddae97be3b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Liability trickles straight up</strong> from the affiliate broker to the principal broker.</li></ul></li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8061-ad9e-f226ff04cef2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability Scenarios </strong><ul id="40d8ac6a-aab1-802c-b6f1-f2579cc9f458" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Takeaway:</strong> These scenarios demonstrate how agency relationships and liability flow through the brokerage hierarchy, proving that a principal broker&#x27;s legal responsibility extends to every transaction handled by their affiliate brokers.</li></ul><ul id="40d8ac6a-aab1-806d-911d-cbcdeaefac06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario #1: H2O Realty</strong><ul id="40d8ac6a-aab1-80d5-986f-f8503807c0ed" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Players:</strong> Shira (Principal Broker), Lenny (Affiliate Broker), DeAndre (Buyer).</li></ul><ul id="40d8ac6a-aab1-80f1-845a-fde8666b9546" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Relationships:</strong><ul id="40d8ac6a-aab1-80ac-86cc-fb0a38002a4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Shira is technically DeAndre&#x27;s agent because agency is established at the broker level.</li></ul><ul id="40d8ac6a-aab1-8036-9edb-c1c52344ec89" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lenny is Shira&#x27;s agent, acting on her behalf to help DeAndre find a property.</li></ul></li></ul><ul id="40d8ac6a-aab1-80b4-b15a-e4fa6250467f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Liability:</strong> Because Lenny acts with authority granted by Shira, <strong>Shira is vicariously liable</strong> for Lenny&#x27;s actions in the transaction.</li></ul><figure id="40d8ac6a-aab1-8018-af0e-dfff76aa81a3" class="image" data-notion-image="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%203.png" dir="ltr"><a href="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%203.png"><img style="width:528px" src="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%203.png"/></a></figure></li></ul><ul id="40d8ac6a-aab1-803f-af0b-d36eee6779e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario #2: Radical Real Estate</strong><ul id="40d8ac6a-aab1-809e-8654-d1e614b89070" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Players:</strong> Miguel (Principal Broker / Owner), Natalia (Affiliate Broker), Danielle (Client selling a lakefront property).</li></ul><ul id="40d8ac6a-aab1-80f4-b5b7-f53850d6a59f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Relationships:</strong><ul id="40d8ac6a-aab1-80b8-8e05-f96694f855b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Natalia secures an agency relationship on behalf of the brokerage.</li></ul><ul id="40d8ac6a-aab1-802a-9563-dc178efb3147" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Miguel is technically Danielle&#x27;s agent, while Natalia acts as Miguel&#x27;s agent.</li></ul></li></ul><ul id="40d8ac6a-aab1-80a3-b7dd-e3850d8bbad8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Liability:</strong> Miguel is ultimately responsible for the brokerage&#x27;s activities and <strong>stands vicariously liable</strong> for Natalia&#x27;s performance and actions.</li></ul></li></ul><ul id="40d8ac6a-aab1-80f8-ab6b-c2492e9cc63c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recap &amp; Real-World Impact</strong><ul id="40d8ac6a-aab1-805b-876b-dcd2bd362ebc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>For Principal Brokers:</strong> Because you authorize affiliate brokers to carry out the business of the brokerage, you must rigorously supervise them—you will ultimately have to answer for their mistakes.</li></ul><ul id="40d8ac6a-aab1-80e7-bfd2-f19da4f9e8ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>For Affiliate Brokers:</strong> Your daily actions and decisions do not just impact your own career; they carry direct legal and professional consequences for your sponsoring broker.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-805f-9521-dcd6675cec93" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scope of Practice </strong><ul id="40d8ac6a-aab1-80ba-82fc-c968b4942c55" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balancing Act:</strong> Brokerages must guide clients through transactions while strictly staying within their licensed professional boundaries. Overstepping can lead to severe liability and legal consequences.</li></ul><ul id="40d8ac6a-aab1-8077-a9d4-f40297210721" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What License Holders CAN Do:</strong><ul id="40d8ac6a-aab1-800a-928b-d30e9d971243" class="bulleted-list" dir="auto"><li style="list-style-type:square">Advise clients on market changes and trends.</li></ul><ul id="40d8ac6a-aab1-8047-bea9-effb12fd9c3d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discuss reasonable offers.</li></ul><ul id="40d8ac6a-aab1-807e-ae5f-dd23155d188f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Explain general real estate processes, such as how property taxes or financing generally work.</li></ul></li></ul><ul id="40d8ac6a-aab1-8096-a51a-c12f16f3800d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What License Holders CANNOT Do:</strong><ul id="40d8ac6a-aab1-809a-bbda-e9ee74ac0c38" class="bulleted-list" dir="auto"><li style="list-style-type:square">Direct clients on where they can or cannot live (steering/fair housing violations).</li></ul><ul id="40d8ac6a-aab1-80b1-9929-c8cbb24e1216" class="bulleted-list" dir="auto"><li style="list-style-type:square">Guarantee a specific sale or purchase price.</li></ul><ul id="40d8ac6a-aab1-8090-a297-c39887359f62" class="bulleted-list" dir="auto"><li style="list-style-type:square">Calculate precise property taxes.</li></ul><ul id="40d8ac6a-aab1-8006-9830-cb38447274bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Practice law or provide legal counsel.</li></ul></li></ul><ul id="40d8ac6a-aab1-80c6-8a7f-d4a75f754e18" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Golden Rule: Teach vs. Tell</strong><ul id="40d8ac6a-aab1-803f-81b8-c2ed13a7125a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Educate, Don&#x27;t Dictate:</strong> Provide clients with the tools, market data, and information they need to make informed decisions, but never tell them what choice to make.</li></ul><ul id="40d8ac6a-aab1-80e8-9bb4-c7f02d068358" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Refer to Experts:</strong> If a client asks a question outside your professional scope or expertise, always refer them to qualified professionals (e.g., attorneys, tax advisors, home inspectors).</li></ul><ul id="40d8ac6a-aab1-80f7-a091-eb707b118162" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contracts &amp; Business Details:</strong> Agents can handle matters of fact and business terms within contracts, but they must <strong>never</strong> interpret, alter legal meaning, or pass judgment on the legal contents of a contract.</li></ul></li></ul><ul id="40d8ac6a-aab1-8063-bdeb-ceaeffb1a41c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mitigating Vicarious Liability</strong><ul id="40d8ac6a-aab1-800f-b779-d411778993c4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Office Policy Manual:</strong> A comprehensive office policy manual is a principal broker&#x27;s primary tool for mitigating vicarious liability. It establishes clear, written boundaries regarding the scope of authority for all sponsored licensees.</li></ul><ul id="40d8ac6a-aab1-8062-aa8b-c776c9b5c63b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Protection for All:</strong> A strong policy manual protects the brokerage, the principal broker, the affiliate brokers, and the clients alike.</li></ul><ul id="40d8ac6a-aab1-8077-bcf3-f832c8295c5c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Affiliate Responsibility:</strong> Affiliate brokers must thoroughly read, understand, and adhere to their brokerage&#x27;s manual whenever questions arise during daily operations.</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-804f-a73a-c58994123c0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><p id="40d8ac6a-aab1-80c4-a8a1-f874b94d021e" class="" dir="auto">
+</p></div><div id="40d8ac6a-aab1-80a5-8941-f23d042c728b" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40d8ac6a-aab1-8045-aa9c-f9a281352a2f" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40d8ac6a-aab1-8065-ad98-db45322ed8d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker: A Noun or Verb</strong></li></ul><figure id="40d8ac6a-aab1-8007-aceb-fded7c0d46bb" class="image" data-notion-image="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%204.png" dir="ltr"><a href="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%204.png"><img style="width:451.78125px" src="Chapter%201%20-%20How%20Brokerage%20Affects%20Agency/image%204.png"/></a></figure><ul id="40d8ac6a-aab1-80df-8515-efa59eebd0bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency at the Broker Level</strong><ul id="40d8ac6a-aab1-809e-8bf6-d8a8b3728495" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The principal broker represents all clients of the brokerage.</li></ul><ul id="40d8ac6a-aab1-80c9-bb1a-c19e6e0fb4f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All affiliated brokers represent their principal broker.</li></ul></li></ul><ul id="40d8ac6a-aab1-80b8-8507-cced2e04702c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Brokerage Agreement</strong> - The brokerage agreement is the written agreement that creates a brokerage (or agency) relationship between the agent and the broker. This is what allows an agent to do things like work for the broker&#x27;s clients or sign a listing agreement on their broker&#x27;s behalf.</li></ul><ul id="40d8ac6a-aab1-80b0-97a6-c6d5ad704ba8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage in Action </strong>- Brokerage is the joining of two people to exchange products or services.</li></ul><ul id="40d8ac6a-aab1-8039-aaa1-dbbcc259bb55" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage People</strong><ul id="40d8ac6a-aab1-801f-a5c8-d77c3b228b3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal broker: </strong>Every brokerage is required to have a principal broker who will assume liability for all actions flowing from that brokerage.</li></ul><ul id="40d8ac6a-aab1-80a2-9633-d0e75397be7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent (affiliate broker): </strong>The affiliate broker is an agent of their sponsoring broker and a subagent of the broker&#x27;s principals/clients.</li></ul><ul id="40d8ac6a-aab1-80ec-9e0f-d97038cde13b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cooperating broker: </strong>A cooperating broker is a broker who is NOT affiliated with the brokerage representing a principal in a real estate transaction. Cooperating brokers from a separate brokerage bring the other party to a transaction.</li></ul><ul id="40d8ac6a-aab1-8091-ac54-d357b276cf71" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>An unaffiliated cooperating broker can operate as:</strong><ul id="40d8ac6a-aab1-8038-8cf1-c566fb11260a" class="bulleted-list" dir="auto"><li style="list-style-type:square">An agent of the listing broker (through subagency)</li></ul><ul id="40d8ac6a-aab1-80a3-9cb7-d828d2b48840" class="bulleted-list" dir="auto"><li style="list-style-type:square">A buyer&#x27;s broker</li></ul></li></ul></li></ul><ul id="40d8ac6a-aab1-8042-9760-d6d163177dba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cooperating Brokerage - </strong>When cooperating brokers come into play, an agency relationship known as <strong>cooperating brokerage</strong> is formed. Cooperating brokerage is an agency arrangement in which two unaffiliated brokerages collaborate to achieve a real estate transaction for a specific piece of property.</li></ul><ul id="40d8ac6a-aab1-80d8-9d79-cd83a3b6e909" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability - </strong>Vicarious liability is a common law concept. It holds that a person is liable for the actions of those acting with authority on their behalf.<ul id="40d8ac6a-aab1-8034-a6ac-fe67b8135598" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Regardless of how many owners there are, a brokerage has only one principal broker who is legally liable for that brokerage&#x27;s activity.</li></ul><ul id="40d8ac6a-aab1-80da-8841-ea059c708195" class="bulleted-list" dir="auto"><li style="list-style-type:circle">By authorizing license holders (affiliate brokers) to act on their behalf, principal brokers knowingly open themselves up to what is referred to as <strong>vicarious liability.</strong></li></ul><p id="40d8ac6a-aab1-8020-94e9-d20b12d43c67" class="" dir="auto">
+</p></li></ul></div></div><p id="40d8ac6a-aab1-80b2-9342-e5db014e3cdb" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Types of Listing Agreements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8072-8020-ea583a212da8" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Types of Listing Agreements</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40e8ac6a-aab1-80fb-a089-ce883a361da3" class="column-list" data-notion-column-list="" dir="auto"><div id="40e8ac6a-aab1-8042-a2c1-c362a1ee1625" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40e8ac6a-aab1-80f0-94bf-fb1f3d456880" class="" dir="auto"><strong>Listing Presentation &amp; Marketing Plan</strong></p><ul id="40e8ac6a-aab1-8033-86fb-d8dbac51b436" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Purpose:</strong> A listing presentation is essentially a job interview where you pitch your services, build trust, and prove your competence, honesty, and communication skills to secure a listing agreement.</li></ul><ul id="40e8ac6a-aab1-800f-b103-fea799710927" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pricing Strategy:</strong> You must present a suggested price range based on local market knowledge, backed by a <strong>Competitive Market Analysis (CMA)</strong>.</li></ul><ul id="40e8ac6a-aab1-80d8-94d8-fb954317cfde" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Marketing Plan</strong><ul id="40e8ac6a-aab1-8063-96e9-c3c76a435350" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A structured strategy outlining how you will advertise and market the property to secure a buyer.</li></ul><ul id="40e8ac6a-aab1-8009-87b0-f9ac7c6b0e6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Demonstrating Capability:</strong> How you market yourself during the presentation shows the seller how you will market their home, so bringing concrete examples and platform strategies (like social media and targeted advertising) is essential.</li></ul></li></ul><ul id="40e8ac6a-aab1-80c3-ad06-d63728ba9986" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Ultimate Goal</strong><ul id="40e8ac6a-aab1-8015-ba57-c572fbae063d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Impress the prospective seller so thoroughly that they willingly sign a written <strong>listing agreement</strong>, officially transitioning from a customer to a client.</li></ul></li></ul><ul id="40e8ac6a-aab1-8057-8f3f-f9785cb0705c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Agreement Definition &amp; Parties</strong><ul id="40e8ac6a-aab1-8098-b331-c45ec1f811e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Contract:</strong> A listing agreement is a bilateral employment agreement between a <strong>property owner/seller (or landlord) and a broker</strong>.</li></ul><ul id="40e8ac6a-aab1-80bb-87d3-d34dc0468a17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Objective:</strong> The broker is hired to find a <strong>ready, willing, and able buyer</strong>.</li></ul><ul id="40e8ac6a-aab1-80fb-bf61-c737e1f8d232" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clarification:</strong> It is strictly an employment agreement for professional services—it is <strong>not</strong> a purchase-and-sale contract or a lease agreement.</li></ul><ul id="40e8ac6a-aab1-809f-91e8-f6a93d07dd05" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Establishing Listing Agency</strong><ul id="40e8ac6a-aab1-80a1-972c-fc9eb73810d7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Legally establishes an agency relationship authorizing the licensee to represent the principal and market the property.</li></ul><ul id="40e8ac6a-aab1-80db-8477-d2999beae1e5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Can be structured as <strong>traditional seller agency</strong> (working with the overall brokerage) or <strong>designated seller agency</strong> (working with a specific appointed affiliate broker).</li></ul><ul id="40e8ac6a-aab1-80b3-97b4-d20ed13465d6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Triggers the full suite of fiduciary duties owed to the principal, remembered by the acronym <strong>OLD CAR</strong> (Obedience, Loyalty, Disclosure, Confidentiality, Accounting, Reasonable Care).</li></ul></li></ul><ul id="40e8ac6a-aab1-809c-9911-ebcabfa52bc0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Disclosures in Listing Contracts</strong><ul id="40e8ac6a-aab1-80b3-b4da-ce01e89b39f3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any personal interest the agent holds in the property must be explicitly disclosed in the listing contract.</li></ul><ul id="40e8ac6a-aab1-80c7-b49d-c1980f2cb1e2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any familial relationship between the listing agent and any party to the transaction must also be disclosed.</li></ul></li></ul><ul id="40e8ac6a-aab1-80c1-b2be-f5f28daeb8a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Obligations &amp; Delegation</strong><ul id="40e8ac6a-aab1-80bf-88eb-e54eaa853bc9" class="bulleted-list" dir="auto"><li style="list-style-type:square">The broker agrees to provide necessary real estate services until the property is successfully sold or rented.</li></ul><ul id="40e8ac6a-aab1-8028-b74c-f9b238768266" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because the contract is legally between the seller and the broker (not individual affiliates), the principal broker may permit sponsored affiliate brokers or cooperating brokers to assist, provided they remain under the broker&#x27;s supervision.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f0-a0d6-fb6ab349f474" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Form Requirements in Tennessee</strong><ul id="40e8ac6a-aab1-8074-a522-f764d05ae98a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Must be in <strong>writing</strong> to be legally valid.</li></ul><ul id="40e8ac6a-aab1-80c8-8ed6-f722fee20c94" class="bulleted-list" dir="auto"><li style="list-style-type:square">The State of Tennessee does <strong>not</strong> promulgate or mandate a specific official form.</li></ul><ul id="40e8ac6a-aab1-80be-a055-c9072df41c1c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Brokers use attorney-approved custom forms or standardized templates provided by <strong>Tennessee REALTORS®</strong> (which feature separate forms for traditional vs. designated seller agency).</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80b0-9152-dfd501f6f31b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Types of Listing Agreements Overview</strong><ul id="40e8ac6a-aab1-80d4-b689-fcd5847beb51" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Listing agreements vary based on how the broker&#x27;s compensation is earned and how marketing rights are distributed. The four primary types are:<ol type="1" id="40e8ac6a-aab1-802c-8146-f2ca0fe73fb6" class="numbered-list" start="1" dir="auto"><li><strong>Open Listing</strong><ul id="40e8ac6a-aab1-80b8-a99f-fcad816394a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> An open listing is a <strong>nonexclusive, unilateral employment agreement</strong> where a property owner gives multiple brokers (and themselves) the right to sell the property.</li></ul><ul id="40e8ac6a-aab1-8091-89d7-d35251ca1d19" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Commission Rule (Procuring Cause):</strong> Only the broker who can successfully prove they were the <strong>procuring cause</strong> of the sale gets paid. If the seller finds their own buyer independently, <strong>no commission is owed</strong> to any broker.</li></ul><ul id="40e8ac6a-aab1-803d-b1af-f44fc2aaf745" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Written Requirement in Tennessee:</strong> Even though open listings are unilateral contracts, remember that <strong>Tennessee real estate law strictly requires a written agreement</strong> to establish any legal employment relationship or enforce a commission claim.</li></ul><ul id="40e8ac6a-aab1-80cf-8bb2-ffe23ec65b7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros for Sellers</strong><ul id="40e8ac6a-aab1-80e1-babb-f227468e02b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maximizes immediate exposure by listing with multiple brokerages simultaneously.</li></ul><ul id="40e8ac6a-aab1-8052-9742-ca399ebea2f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allows the seller to reserve the right to sell the property themselves without owing a commission.</li></ul><ul id="40e8ac6a-aab1-8078-979f-ee94bfc3ca47" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Can be terminated with any or all brokers at any time prior to performance.</li></ul></li></ul><ul id="40e8ac6a-aab1-80d5-a1be-ca0d583a85ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Major Downsides</strong><ul id="40e8ac6a-aab1-8007-9e61-f138d517cde3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lack of Agent Motivation:</strong> Because brokers face a high risk of doing all the marketing work and walking away empty-handed if another broker (or the seller) closes the deal, agents are rarely motivated to invest time or advertising dollars.</li></ul><ul id="40e8ac6a-aab1-80bd-8109-f9b11deb8c3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Procuring Cause Burden:</strong> Even if an agent brings a prospect, they must legally prove they were the primary procuring cause of the transaction.</li></ul><ul id="40e8ac6a-aab1-8034-80f2-c219d622144d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rarely on the MLS:</strong> Open listings are exceptionally rare in modern residential real estate and almost never appear on the Multiple Listing Service (MLS).</li></ul></li></ul><ul id="40e8ac6a-aab1-80c3-9fbd-ea48543923c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Historical Context</strong><ul id="40e8ac6a-aab1-8050-9edb-d7483a19d789" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In early real estate history, open listings were informal handshake deals where agents carried lists in their pockets. Because they were purely verbal, if an owner refused to pay, agents had little legal recourse. Today, modern courts and state laws <strong>require a written contract</strong>, throwing out unwritten commission claims entirely.</li></ul></li></ul><ul id="40e8ac6a-aab1-80d7-b7a3-e4e11a2bc708" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Procuring Cause </strong><ul id="40e8ac6a-aab1-8005-ae4f-d81f7ada9837" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Procuring cause is the uninterrupted series of causal events—or the defining actions—that directly results in the successful sale of a property and brings a ready, willing, and able buyer to the transaction.</li></ul><ul id="40e8ac6a-aab1-80c7-8078-c52cba3e0a7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Relevance to Open Listings:</strong> It is most prominently featured in open listings, where multiple brokers compete. Because multiple agents or the seller may be marketing the property, a broker seeking compensation must legally prove they were the <strong>procuring cause</strong> of the sale to earn their commission.</li></ul></li></ul><ul id="40e8ac6a-aab1-804f-ba88-e4d388b2db14" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: Lisa, Jermaine, and Brett</strong><ul id="40e8ac6a-aab1-8012-b594-d390264cb76c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Setup:</strong> Lisa lists her home via open listings with both Jermaine and Brett.</li></ul><ul id="40e8ac6a-aab1-8063-88d5-e54c8be75b3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jermaine&#x27;s Efforts:</strong> Runs mail campaigns and shows the house to multiple prospects, but none of these efforts result in an offer.</li></ul><ul id="40e8ac6a-aab1-8075-a71d-ee3e6573d0f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Brett&#x27;s Breakthrough:</strong> Connects directly with a buyer (Murray), shows him Lisa&#x27;s home, and guides the process through to a successful purchase.</li></ul><ul id="40e8ac6a-aab1-8009-b904-c937243e8930" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Result:</strong> Brett is legally awarded the commission because his specific actions were established as the procuring cause of the sale, whereas Jermaine&#x27;s marketing efforts did not bring about the transaction.</li></ul></li></ul></li></ol><ol type="1" id="40e8ac6a-aab1-8023-aa02-e07a5a2ce68b" class="numbered-list" start="2" dir="auto"><li><strong>Exclusive Right-to-Sell Listing</strong><ul id="40e8ac6a-aab1-80c6-824f-e9a3cbb9c5f9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> The <strong>most common and preferred</strong> listing agreement in the real estate industry. It grants the named listing broker the exclusive legal right to market the property and earn a commission if the property sells within the contract&#x27;s specified timeframe.</li></ul><ul id="40e8ac6a-aab1-8083-b03e-c42a25d742ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bilateral Contract Status:</strong> It is a bilateral employment agreement where the broker promises to actively market and attempt to sell the property in exchange for the seller&#x27;s binding promise of compensation.</li></ul><ul id="40e8ac6a-aab1-8073-abce-e51949ebdc56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Guaranteed Commission Rule (Getting Paid No Matter What)</strong><ul id="40e8ac6a-aab1-805f-8763-f1d9dce1d8b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under this agreement, the listing broker gets paid <strong>regardless of who finds the buyer</strong>, as long as the property closes before the contract expires:<ul id="40e8ac6a-aab1-80ce-9898-ff52da84ac23" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the listing broker brings the buyer → Listing broker gets paid.</li></ul><ul id="40e8ac6a-aab1-8084-8ed3-c81c05b81e8d" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a cooperating broker, buyer&#x27;s agent, or subagent brings the buyer → Listing broker gets paid.</li></ul><ul id="40e8ac6a-aab1-80d6-a174-e1616193299e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>If the seller themselves finds the buyer</strong> → Listing broker <em>still</em> gets paid.</li></ul></li></ul><ul id="40e8ac6a-aab1-80cb-be58-cf517fb24ca4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Warning:</em> A seller should never sign exclusive right-to-sell agreements with multiple brokers simultaneously, or they risk liability for multiple full commissions.</li></ul></li></ul><ul id="40e8ac6a-aab1-807c-9878-cf077b7ccee1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cooperation and Commission Splitting</strong><ul id="40e8ac6a-aab1-808a-98df-e5b81f0989d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When an outside licensee (such as a buyer&#x27;s broker from another firm) brings the buyer, the transaction utilizes <strong>cooperation</strong>.</li></ul><ul id="40e8ac6a-aab1-80ef-9bec-cfdac178330a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The commission is ultimately split between the listing broker and the cooperating buyer&#x27;s broker according to the pre-agreed terms outlined in the listing contract and MLS offer of compensation.</li></ul></li></ul></li></ol><ol type="1" id="40e8ac6a-aab1-80d5-a6a7-e298ea6050b4" class="numbered-list" start="3" dir="auto"><li><strong>Exclusive Agency Listing</strong><ul id="40e8ac6a-aab1-800a-9e31-c5020b7c0300" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Hybrid Definition:</strong> An exclusive agency listing blends elements of both open listings and exclusive right-to-sell agreements.<ul id="40e8ac6a-aab1-80cc-85b5-e142727ffa28" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Like an <strong>exclusive right-to-sell</strong>, the seller agrees to list the property with <strong>only one broker</strong> for a specified timeframe, and it is a bilateral contract.</li></ul><ul id="40e8ac6a-aab1-802d-8bbe-cda2331bc6d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Like an <strong>open listing</strong>, the seller retains the right to sell the property on their own without owing anyone a commission.</li></ul><ul id="40e8ac6a-aab1-8016-92bd-d07fdf044435" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who Gets the Commission?</strong> The designated listing broker is guaranteed a commission if <em>anyone</em> sells the property—<strong>except</strong> if the seller procures the buyer themselves.</li></ul></li></ul><ul id="40e8ac6a-aab1-8037-b1ce-c3adc6d8d3d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Practical Mechanics</strong><ul id="40e8ac6a-aab1-8031-be28-fb67bca1ce9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Appeal:</strong> Favored by sellers who want professional marketing and representation from a single broker, but who also want the freedom to secure their own buyer (e.g., a friend, family member, or neighbor) to avoid paying a commission.</li></ul><ul id="40e8ac6a-aab1-8092-bc9c-c3cd2f6f9ef3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carve-Outs &amp; Prospective Buyers:</strong> Sellers often need to explicitly name or register specific prospective buyers at the inception of the agreement to prevent disputes over who actually procured the buyer.</li></ul></li></ul><ul id="40e8ac6a-aab1-8029-aaf8-ee010b966050" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Example Scenario: Allison and Broker Brett</strong><ul id="40e8ac6a-aab1-8094-a3fa-d3a7be4d91c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Allison lists her condo with Broker Brett under an exclusive agency agreement. Allison ends up selling the property directly to a friend. Because the seller secured the buyer independently, <strong>Broker Brett receives no commission</strong>.</li></ul></li></ul><ul id="40e8ac6a-aab1-8057-9ed7-cd2c6293b75b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Potential Pitfalls</strong><ul id="40e8ac6a-aab1-80e6-b099-e45306e6397e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While attractive to sellers, exclusive agency listings can sometimes create friction and conflicts of interest (which we will explore next), as agents may hesitate to invest heavy marketing dollars into a property where the seller can cut them out of a commission entirely.</li></ul></li></ul><ul id="40e8ac6a-aab1-8003-8a01-d48c3cc261e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exclusive Agency Listings: Potential Problems Overview</strong><ul id="40e8ac6a-aab1-8063-a460-d6d44e0cffcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While exclusive agency agreements offer a middle-ground compromise for sellers, they carry two major structural risks that frequently cause friction in real estate transactions.</li></ul><ol type="1" id="40e8ac6a-aab1-80d9-8df5-f0eacf573fc4" class="numbered-list" start="1" dir="auto"><li><strong>Agent Demotivation</strong><ul id="40e8ac6a-aab1-801d-9154-f17abbc91813" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Just like open listings, exclusive agency listings can <strong>ndermine broker motivation</strong>.</li></ul><ul id="40e8ac6a-aab1-804b-9841-eae90b0d3f68" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If agents know the seller is reserving the right to compete against them and find their own buyer, agents may hesitate to invest significant personal time and marketing dollars.</li></ul><ul id="40e8ac6a-aab1-80a0-9d28-dddffe071abb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">It is not uncommon to see fragmented marketing efforts where both the agent and the seller are running separate, uncoordinated campaigns (advertisements, flyers, social media posts).</li></ul><ul id="40e8ac6a-aab1-80fe-914a-ecaf804dfd14" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Broker Perspective:</em> An agent might view an exclusive agency listing slightly more favorably only if the seller genuinely does not plan to actively market the property, but simply wants a safety-net right to sell to a specific person (like a neighbor or family member) if they happen to stumble across them.</li></ul></li></ol><ol type="1" id="40e8ac6a-aab1-8079-b2cd-f43788df53d6" class="numbered-list" start="2" dir="auto"><li><strong> &quot;Washing of Hands&quot; (Loss of Broker Support)</strong><ul id="40e8ac6a-aab1-80b5-836b-ce7ba2f1a70b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If the seller successfully procures their own buyer independently and informs the listing broker that no commission will be paid, the broker&#x27;s legal and financial obligation to assist ends.</li></ul><ul id="40e8ac6a-aab1-8059-b010-d387054a98c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The broker will typically <strong>wash their hands of the transaction</strong> and walk away immediately.</li></ul><ul id="40e8ac6a-aab1-8046-b5f4-fd42a75807b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Without compensation, there is no further broker guidance, contract assistance, or transactional support. Sellers opting for an exclusive agency listing must be fully prepared to handle the closing process independently if they trigger this scenario.</li></ul></li></ol></li></ul></li></ol><ol type="1" id="40e8ac6a-aab1-80b8-8040-d70e798aa5bc" class="numbered-list" start="4" dir="auto"><li><strong>Net Listing</strong><ul id="40e8ac6a-aab1-802b-847f-faae8dd7d857" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Improper Listing Agreements &amp; License Law Violations</strong><ul id="40e8ac6a-aab1-800b-852d-f43046945225" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Written &amp; Disclosure Rule:</strong> Listing agreements must always be in writing, and the mandatory written agency disclosure must be delivered <em>before</em> the listing agreement is executed. A licensee cannot claim agency status without an explicit written contract. Misrepresenting one&#x27;s status violates Tennessee license law and the NAR Code of Ethics.</li></ul><ul id="40e8ac6a-aab1-8059-bff4-ca009d1a5dce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Termination Date:</strong> In Tennessee, <strong>every</strong> listing agreement, sales contract, offer, and counteroffer <strong>must explicitly specify a definite termination date</strong>. Open-ended listings or contracts without an expiration date are prohibited.</li></ul></li></ul><ul id="40e8ac6a-aab1-807a-967e-c5009a500eec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Listings (Illegal in Tennessee)</strong><ul id="40e8ac6a-aab1-8080-a900-f1d17efb6638" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A net listing is an agreement where the seller specifies a target net amount they want to receive from the sale. Any sale proceeds achieved above that pre-determined floor price are kept by the broker as commission.</li></ul><ul id="40e8ac6a-aab1-806c-a2a8-f221a6cf2cd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Status:</strong> Net listings are illegal in many states and are <strong>strictly illegal in Tennessee</strong>.</li></ul><ul id="40e8ac6a-aab1-80e4-b108-c2ee4a8626c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Example (Joe &amp; the $50,000 Markup):</strong> Joe agrees that his client will take $100,000, and Joe pockets anything above that. When the home sells for $150,000, Joe takes the extra $50,000. Under Tennessee law, this is an illegal net listing.</li></ul><ul id="40e8ac6a-aab1-80e6-8be6-e60369946d39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why They Are Illegal:</strong> They create massive potential for fraud, self-dealing, and bad faith. Unscrupulous agents can exploit sellers who are unaware of true market value, tricking them into setting a low net price to secure an oversized, unfair payday. They also trigger severe conflicts of interest, tempting agents to hide competing offers or fail to present all offers in order to protect their inflated profit margin.</li></ul></li></ul><ul id="40e8ac6a-aab1-806d-b167-f816530d7f1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Yolanda&#x27;s Net Listing Scenario Overview</strong><ul id="40e8ac6a-aab1-8076-8290-d71774118b6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Setup:</strong> Seller Javier wants at least $100,000 for his land and enters into an agreement with License Holder Yolanda where she gets to keep any amount above that target figure as her &quot;commission.&quot;</li></ul><ul id="40e8ac6a-aab1-8089-93da-da7c98f0598d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three Outcomes:</strong><ul id="40e8ac6a-aab1-803e-b25d-f005cfe721ba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Option 1 ($110,000 Sale):</strong> Sells for $110,000; Yolanda pockets a $10,000 bonus (10% effective rate). Seems ideal, but...</li></ul><ul id="40e8ac6a-aab1-8086-b653-c959b482081f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Option 2 ($100,000 Sale):</strong> Sells right at Javier&#x27;s floor price of $100,000; Yolanda gets $0 and loses all her invested marketing time and money.</li></ul><ul id="40e8ac6a-aab1-80ca-b488-f4b32e555688" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Option 3 ($130,000 Sale - The Legal Trap):</strong> Yolanda hides the true market value, lists it for $130,000, and pockets a massive $30,000 (30%) spread. While Javier got his $100,000, Yolanda is legally liable for <strong>fraud, withholding vital information, and breaching her fiduciary duties</strong> by misleading her client.</li></ul></li></ul><ul id="40e8ac6a-aab1-805b-8213-f68aab459e6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Lesson:</strong> Net listings inherently incentivize bad behavior, fraud, and severe conflicts of interest, which is precisely why they are <strong>strictly illegal in Tennessee</strong> and many other jurisdictions.</li></ul></li></ul></li></ol></li></ul></li></ul><ul id="40e8ac6a-aab1-80c0-be20-dfb0e6e12191" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review of Listing Agreement Types </strong><ul id="40e8ac6a-aab1-8048-aec3-ec53d3c829dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Open Listing:</strong> A nonexclusive, unilateral agreement where multiple brokers and the owner can attempt to sell the property. Only the broker who proves they were the <strong>procuring cause</strong> gets paid; if the seller finds their own buyer, nobody gets paid. (Rare, low agent motivation).</li></ul><ul id="40e8ac6a-aab1-8017-b233-fb9d13dbb6a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive Right-to-Sell Listing:</strong> The most common and preferred bilateral agreement where the named broker is guaranteed a commission if the property sells within the contract term, <strong>regardless of who brings the buyer</strong> (even if the seller finds the buyer themselves).</li></ul><ul id="40e8ac6a-aab1-80c3-88b9-fbdb28b156b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive Agency Listing:</strong> A bilateral agreement establishing an exclusive relationship with a single broker, but reserving the seller&#x27;s right to sell the property themselves (often to pre-named prospects) without owing a commission. Carries risks of agent demotivation and the broker &quot;washing their hands&quot; of support if the seller procures their own buyer.</li></ul></li></ul><ul id="40e8ac6a-aab1-80de-87ca-c1e30db56843" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commission Eligibility</strong><figure id="40e8ac6a-aab1-8077-93fa-f56195983749" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image.png"><img style="width:384px" src="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image.png"/></a></figure></li></ul><p id="40e8ac6a-aab1-8032-93f7-c17c70f27a10" class="" dir="auto">
+</p></div><div id="40e8ac6a-aab1-80a2-a81a-e5eccaa8265b" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40e8ac6a-aab1-80a4-bea9-c74aedb47eeb" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40e8ac6a-aab1-804b-9b84-ca1222b02c2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>exclusive agency</strong> - an agreement in which the seller has an exclusive relationship with a broker but retains the right to sell the property to named prospects</li></ul><ul id="40e8ac6a-aab1-8076-8210-c611eefb4eaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>exclusive right to sell</strong> - an agreement in which the seller guarantees the named broker receives a commission if the property is sold, regardless of who brings the buyer</li></ul><ul id="40e8ac6a-aab1-802b-b73c-c8f59516deaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>net listing</strong> - an agreement in which the seller names an amount they will accept for a property and if the sales price exceeds that amount, the broker receives the excess as commission; illegal in Tennessee</li></ul><ul id="40e8ac6a-aab1-8065-a527-dd56e72a3b7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>procuring cause</strong> - the defining action or actions that brought a buyer to purchase a property</li></ul><p id="40e8ac6a-aab1-8020-afbf-d63abcb258f9" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40e8ac6a-aab1-80cd-9c4a-e5b32ea7228d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>A Review of Listing Types</strong><ul id="40e8ac6a-aab1-80fa-89a9-e3c44fdcdc53" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Open listing:</strong> a nonexclusive listing agreement that gives multiple brokers (and owners themselves) the right to sell the property</li></ul><ul id="40e8ac6a-aab1-805a-9a3b-fcc934fa83c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive right-to-sell listing:</strong> an agreement in which the seller guarantees the named broker receives a commission if the property is sold, regardless of who brings the buyer</li></ul><ul id="40e8ac6a-aab1-80ae-a44e-dadb027be348" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive agency listing:</strong> an agreement in which the seller has an exclusive relationship with a broker but retains the right to sell the property to named prospects</li></ul><ul id="40e8ac6a-aab1-80de-aa8a-e66de5fab0a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net listing: </strong>an agreement in which the seller names an amount they will accept for a property and if the sales price exceeds that amount, the broker receives the excess as commission; illegal in Tennessee</li></ul></li></ul><ul id="40e8ac6a-aab1-8001-a26b-f162fa78754c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commission Eligibility</strong><figure id="40e8ac6a-aab1-80e1-bb5c-e96ba63fffbd" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image%201.png"><img style="width:413.796875px" src="Chapter%202%20-%20Types%20of%20Listing%20Agreements/image%201.png"/></a></figure><p id="40e8ac6a-aab1-805c-9504-edaf602c4ae0" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Property Condition Disclosure and Liability</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8088-bd52-db7e068f749f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Property Condition Disclosure and Liability</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40f8ac6a-aab1-80f5-bb92-e85a4140bec3" class="column-list" data-notion-column-list="" dir="auto"><div id="40f8ac6a-aab1-802d-afb1-f006c5a9ea9f" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40f8ac6a-aab1-80fe-9c97-cce5cad5c8ec" class="" dir="auto"><strong>Tennessee Residential Property Disclosure Act </strong></p><ul id="40f8ac6a-aab1-80c5-919b-ff2c481549ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full Disclosure State:</strong> Unlike caveat emptor states that place the primary burden of inspection on the buyer, Tennessee is a strict <strong>full-disclosure state</strong>, legally requiring residential sellers to provide detailed condition information to buyers.</li></ul><ul id="40f8ac6a-aab1-80e1-b49b-dcf61b749abb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Material Facts vs. Adverse Facts:</strong><ul id="40f8ac6a-aab1-80ad-bc60-e106a227b879" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Material Facts:</strong> Any significant or essential fact regarding the property that could impact a buyer&#x27;s purchasing decision.</li></ul><ul id="40f8ac6a-aab1-8040-b32d-f565a74f340c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adverse Facts:</strong> Specifically defined by Tennessee law as conditions or occurrences recognized by competent licensees that significantly reduce the structural integrity of improvements or present a significant health risk to occupants.</li></ul></li></ul><ul id="40f8ac6a-aab1-8017-816a-cfeb1ac51d23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee Responsibilities:</strong> Listing agents must inform sellers of their statutory disclosure duties, while buyer&#x27;s agents must educate buyers on their legal rights to this property condition information.</li></ul><ul id="40f8ac6a-aab1-80bf-8fbb-c5920e4e7510" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exemptions from Disclosure Requirements</strong><ul id="40f8ac6a-aab1-8086-a41f-c6e49945b40e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sellers of certain properties are legally exempt from providing the standard disclosure statement, including:<ul id="40f8ac6a-aab1-8034-b896-eb56a8959796" class="bulleted-list" dir="auto"><li style="list-style-type:square">Commercial or non-residential properties.</li></ul><ul id="40f8ac6a-aab1-8095-8241-d652d884aaee" class="bulleted-list" dir="auto"><li style="list-style-type:square">Residential properties with more than four units (e.g., apartment complexes).</li></ul><ul id="40f8ac6a-aab1-8042-bca1-c7b3550e6bab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Court-ordered transfers (foreclosures, eminent domain).</li></ul><ul id="40f8ac6a-aab1-8062-a482-dc13be36ec3f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Transfers to/by a beneficiary of a deed of trust.</li></ul><ul id="40f8ac6a-aab1-800e-906d-d0668d7e1257" class="bulleted-list" dir="auto"><li style="list-style-type:square">Transfers between family members or divorced spouses.</li></ul><ul id="40f8ac6a-aab1-80ee-939c-f787328bb3af" class="bulleted-list" dir="auto"><li style="list-style-type:square">Properties the seller <strong>has not lived in for the past three years</strong>.</li></ul><ul id="40f8ac6a-aab1-8094-8e6f-d53c0f06d1b1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Transfers between co-owners.</li></ul><ul id="40f8ac6a-aab1-80e3-9df5-e99d82ff4ad8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Properties sold at public auction.</li></ul><ul id="40f8ac6a-aab1-80a1-97b3-f1264dbf156d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Bankruptcy transfers from a debtor to a creditor.</li></ul><ul id="40f8ac6a-aab1-80a1-b1ee-fbf03f11e37c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Newly constructed properties</strong> (provided the builder supplies a written warranty).</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-802e-91ab-c141d9f309d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Tennessee Disclosure Forms</strong><ul id="40f8ac6a-aab1-8023-8530-e0bfb7b98169" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While disclosure is mandatory, the state does not mandate a single rigid form. Sellers utilize one of three documents:<ul id="40f8ac6a-aab1-8015-93fb-ed4a1f4019ff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemption Statement:</strong> Used when the property legally qualifies under one of the exemption categories listed above.</li></ul><ul id="40f8ac6a-aab1-80e3-89e5-df967d752ca6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disclosure Statement:</strong> A detailed written statement provided by the seller cataloging the actual physical condition of the property and any known material defects.</li></ul><ul id="40f8ac6a-aab1-80f2-bed1-ed59a4c68ffb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disclaimer Statement:</strong> Permitted <em>only</em> if the buyer explicitly waives the disclosure; states that the seller makes no representations or warranties and sells the property strictly <strong>&quot;as is.&quot;</strong></li></ul></li></ul><ul id="40f8ac6a-aab1-802b-b27f-f952c5172c97" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standard Practice:</strong> REALTOR® listing agents in Tennessee typically provide their seller clients with the standardized <strong>Tennessee REALTORS® Residential Property Condition Disclosure form</strong>.</li></ul></li></ul><ul id="40f8ac6a-aab1-8073-812d-db6c07d42964" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Anatomy of a Tennessee Residential Property Disclosure Form</strong><ol type="1" id="40f8ac6a-aab1-80c0-bb3a-eaf7cd376ec1" class="numbered-list" start="1" dir="auto"><li><strong>Property and Ownership:</strong> Identifies the precise location of the property, its legal owners, and current occupants.</li></ol><ol type="1" id="40f8ac6a-aab1-8033-8143-d715edf20da9" class="numbered-list" start="2" dir="auto"><li><strong> Statutory Act Statement:</strong> Explicitly outlines the legal framework and mandates set by the Tennessee Residential Property Disclosure Act.</li></ol><ol type="1" id="40f8ac6a-aab1-80bc-a022-dfcdb3d83078" class="numbered-list" start="3" dir="auto"><li><strong> Seller Obligations &amp; Buyer Rights:</strong> Details what the seller is required (and not required) to disclose, strongly advises buyers to obtain a professional home inspection, and outlines available legal remedies in the event of misrepresentation or non-disclosure.</li></ol><ol type="1" id="40f8ac6a-aab1-805e-9cbb-f98e69ccb8a4" class="numbered-list" start="4" dir="auto"><li><strong> Limitations of the Form:</strong> Clarifies key legal guardrails:<ul id="40f8ac6a-aab1-8014-996e-d0e98628ca8f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The disclosures represent the statements of the <strong>seller</strong>, not the real estate licensee.</li></ul><ul id="40f8ac6a-aab1-8056-9d2f-c8779f15645b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The form is <strong>not a substitute</strong> for a professional home inspection.</li></ul><ul id="40f8ac6a-aab1-8097-8587-f54383d8ebfa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provisions and terms in the final sales agreement ultimately override what is written in the disclosure form.</li></ul></li></ol><ul id="40f8ac6a-aab1-8067-960f-de4c45c9a419" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>5. Property Inclusions (Section A):</strong> A checklist where the seller marks included fixtures and appliances (e.g., ovens, dishwashers, rain gutters, central HVAC systems).</li></ul><ul id="40f8ac6a-aab1-80c7-b8bb-e260703e103b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>6. Defects and Malfunctions (Section B):</strong> A structured inventory where the seller checks &quot;Yes,&quot; &quot;No,&quot; or &quot;Unknown&quot; regarding structural and mechanical systems like roofs, ceilings, floors, plumbing, and electrical.</li></ul><ul id="40f8ac6a-aab1-80fc-995d-fd39bbc3258f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>7. Other Conditions and Factors:</strong> Captures any remaining material facts that do not fit neatly into previous sections, including environmental hazards, major structural modifications, and neighborhood details.</li></ul><ul id="40f8ac6a-aab1-8033-a327-c9fd64f8b146" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>8. Certification and Signatures:</strong> The formal closing section where both the seller and the buyer sign and certify receipt/completion of the document.</li></ul><ul id="40f8ac6a-aab1-80df-afbe-e9eb4555b91d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>9. Golden Rule of Disclosure:</strong> When in doubt, disclose! Honesty is always the safest policy, and sellers are strongly encouraged to err on the side of full transparency rather than hiding information they are on the fence about.</li></ul></li></ul><ul id="40f8ac6a-aab1-805c-88e9-c7049b4524bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Agent&#x27;s Role in Property Disclosures</strong><ul id="40f8ac6a-aab1-8060-9481-c758defc69bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While the core responsibility for detailing a property&#x27;s condition rests on the seller (the person who knows it best), affiliate brokers must actively ensure the disclosure process is handled correctly and lawfully.</li></ul><ul id="40f8ac6a-aab1-803c-a60b-e80ab04223e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Listing Agent Responsibilities</strong><ul id="40f8ac6a-aab1-8083-8b2a-cce0321ea7c0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Advise the Seller:</strong> Inform sellers of their statutory duty to disclose known material defects by completing the appropriate form (disclosure, disclaimer, or exemption).</li></ul><ul id="40f8ac6a-aab1-8036-9ac1-c3d665a51031" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Independent Duty to Disclose:</strong> Independently disclose any material facts to the buyer that a competent agent should reasonably know.</li></ul><ul id="40f8ac6a-aab1-801c-ac65-d658824ee158" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Timing &amp; Execution:</strong> Provide the disclosure form to the seller at the <strong>initial listing appointment</strong>. This allows the agent to learn property details and answer seller questions. The seller must sign the form certifying its completeness and accuracy.</li></ul></li></ul><ul id="40f8ac6a-aab1-805f-adda-fc78c1902c14" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer&#x27;s Agent Responsibilities</strong><ul id="40f8ac6a-aab1-80a5-86bd-c959fb1b8685" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Delivery &amp; Acknowledgment:</strong> Ensure the completed disclosure form is delivered to the buyer in a timely manner and direct the buyer to sign it to formally acknowledge receipt.</li></ul></li></ul><ul id="40f8ac6a-aab1-80fd-b976-fcdc0d4f508a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Shared Responsibilities (Listing &amp; Buyer Agents)</strong><ul id="40f8ac6a-aab1-801e-8f5f-c6f9f30a43cb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Due Diligence &amp; Discrepancies:</strong> Regardless of representation side, agents must exercise good professional ethics. If an agent notices conflicting information or obvious discrepancies on the disclosure form, they have a duty to investigate and look into them rather than turning a blind eye.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80f9-bc80-fe2ed63cf3c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Limitations and Liability in Property Disclosures</strong><ul id="40f8ac6a-aab1-807b-91d8-c9fad873569f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Responsibility:</strong> The seller—<em>not</em> the listing agent—has the sole legal responsibility for filling out the property disclosure statement. Agents are strictly limited to answering questions or offering guidance; they must never fill out the form on the seller&#x27;s behalf.</li></ul><ul id="40f8ac6a-aab1-8086-9195-d4c4a02e9f82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope of Disclosure:</strong> The statement is strictly limited to facts <strong>actually known by the seller</strong>. Sellers are never held liable for hiding or failing to disclose defects of which they are genuinely unaware.</li></ul><ul id="40f8ac6a-aab1-80a7-be47-f1883c2759f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Not a Warranty or Inspection:</strong> The disclosure statement is a reporting tool, <strong>not a warranty or guarantee</strong> of the home&#x27;s condition, and it can never replace a comprehensive professional home inspection.</li></ul><ul id="40f8ac6a-aab1-80b0-84fd-e9da6a67d209" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Liability and Protection</strong><ul id="40f8ac6a-aab1-80f2-aa30-e01a3c5608a6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Immunity from Seller Deception:</strong> A seller&#x27;s agent is generally <em>not</em> held liable if a seller violates disclosure laws—u<strong>nless</strong> the agent knowingly participates in, assists with, or covers up the seller&#x27;s deception or misrepresentation.</li></ul><ul id="40f8ac6a-aab1-8006-ab96-f917e5d9106f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Severe Consequences for Complicity:</strong> If an agent knowingly aids or abets a seller&#x27;s disclosure violation, they face severe disciplinary action, including thousands of dollars in statutory fines and potential license revocation.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80bd-b69f-f2193770b083" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Liability &amp; Scope of Disclosure</strong><ul id="40f8ac6a-aab1-807e-a21c-db6404cd98d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Actual Knowledge Standard:</strong> Sellers are liable for disclosing known material facts in writing <em>before</em> accepting a purchase, exchange, or lease-to-own contract. Crucially, sellers are <strong>not</strong> held liable for facts they &quot;should have known&quot; but were genuinely unaware of.</li></ul><ul id="40f8ac6a-aab1-80fa-9aa8-c2aabab54fc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reliance on Experts &amp; Public Agencies:</strong> A seller is not liable for incorrect or incomplete data provided by qualified experts (e.g., home inspectors) or public agencies, provided the seller passes the information along accurately without alteration or concealment.</li></ul><ul id="40f8ac6a-aab1-80ab-aeb5-e7027a28b5b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Andrew Example:</strong> If a home inspector misidentifies a 15-year-old water heater as 5 years old, and the seller honestly shares that report with the buyer, the seller is shielded from liability for the inspector&#x27;s error.</li></ul><ul id="40f8ac6a-aab1-8001-b7f1-e5290b1716db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Expert Exception:</strong> If a seller possesses actual knowledge that <em>contradicts</em> a public agency or qualified expert&#x27;s findings, the seller is legally obligated to disclose the true condition.</li></ul><ul id="40f8ac6a-aab1-80e2-9437-d2d03a4d3597" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inaccessible Areas:</strong> Neither sellers nor agents are expected or required to disclose material facts that would require invasive inspections of inaccessible portions of the property or specialized expert discovery.</li></ul><ul id="40f8ac6a-aab1-8003-9cdb-c523ebdf4ca1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>&quot;Material&quot; is in the Eye of the Buyer</strong><ul id="40f8ac6a-aab1-80c4-8c84-c8ca1db10566" class="bulleted-list" dir="auto"><li style="list-style-type:square">While material facts are legally defined, any specific question asked by a buyer regarding the property <em>must</em> be answered honestly to the best of the seller&#x27;s knowledge—regardless of whether the seller personally considers the matter minor or immaterial.</li></ul></li></ul><ul id="40f8ac6a-aab1-80a6-9d79-e34a9c9713b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consequences of Seller Non-Disclosure &amp; Deception</strong><ul id="40f8ac6a-aab1-8085-b5cf-cd6234dfde1a" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a seller conceals defects or fails to provide honest disclosures, severe legal penalties apply:<ul id="40f8ac6a-aab1-80fa-a4b8-ef50fa2dc468" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The buyer may <strong>cancel the purchase agreement</strong> prior to closing.</li></ul><ul id="40f8ac6a-aab1-803a-9635-d37f075eeb49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If closing has already occurred, the buyer can pursue legal action based on <strong>fraud or misrepresentation</strong>.</li></ul><ul id="40f8ac6a-aab1-8013-a5f0-e4acf45538db" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The buyer can sue the seller in civil court for monetary <strong>damages</strong>.</li></ul></li></ul><ul id="40f8ac6a-aab1-80bd-b3f0-d2cb830a2ccc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Missing Disclosures:</strong> If a seller attempts to &quot;forget&quot; or withhold the written disclosure statement, Tennessee law dictates that while the buyer cannot automatically terminate the contract solely on that procedural omission, they retain full rights to pursue legal action.</li></ul></li></ul><ul id="40f8ac6a-aab1-8056-8cbc-c92482f6113e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Truth About “As Is” Properties</strong><ul id="40f8ac6a-aab1-80d0-b168-ed1ad5b17703" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Waiver Requirement:</strong> A disclaimer statement (selling &quot;as is&quot;) is only permitted if the buyer explicitly <em>waives</em> their right to a disclosure statement, meaning the seller refuses to agree to any repairs.</li></ul><ul id="40f8ac6a-aab1-8012-ba11-ffd7a971106c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Immunity from Fraud:</strong> A massive misconception is that labeling a home &quot;as is&quot; excuses a seller from disclosing known defects. <strong>Omission or concealment of known material facts is strictly illegal</strong>, even on &quot;as is&quot; properties.</li></ul><figure id="40f8ac6a-aab1-80ed-859b-ea5194cd98f0" class="image" data-notion-image="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image.png" dir="ltr"><a href="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image.png"><img style="width:384px" src="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image.png"/></a></figure></li></ul></li></ul><ul id="40f8ac6a-aab1-8068-a86b-e8f606bb5525" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: Dawson’s Leak</strong><ul id="40f8ac6a-aab1-8087-9b18-cc2991fee92c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Fraud &amp; Concealment:</strong> Dawson actively attempted to deceive potential buyers and his agent by painting over water stains and falsely certifying &quot;no&quot; on the Tennessee Residential Property Disclosure statement regarding roof defects.</li></ul><ul id="40f8ac6a-aab1-8035-ae52-e23855a3b131" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Inspector&#x27;s Blind Spot:</strong> Because the home inspector found no physical evidence (due to the cosmetic cover-up), the buyer proceeded with the purchase based on false disclosures.</li></ul><ul id="40f8ac6a-aab1-8059-b7cc-cee87330620d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Consequences and Fallout</strong><ul id="40f8ac6a-aab1-8058-bcfb-c31b9b6e9397" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Liability for Fraud:</strong> Even though the inspector missed it, Dawson committed deliberate misrepresentation and active concealment of a known material fact. Under Tennessee law, sellers are liable for intentional fraud and deceptive concealment.</li></ul><ul id="40f8ac6a-aab1-8084-a93b-ea3f8e54e9f0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Available Buyer Remedies:</strong><ul id="40f8ac6a-aab1-8003-a1bc-c27faa02bcba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If caught before closing, the buyer could cancel the purchase agreement.</li></ul><ul id="40f8ac6a-aab1-802e-80be-c3ff0426bc7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because the sale closed, the buyer can sue Dawson in civil court for <strong>fraud, misrepresentation, and damages</strong> once the hidden damage inevitably reveals itself.</li></ul></li></ul><ul id="40f8ac6a-aab1-80ce-a374-d68f389949c1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agent Liability Protection:</strong> As long as the listing agent had no actual knowledge of Dawson’s deception and did not aid or abet the cover-up, the agent is generally shielded from liability, while Dawson bears the full weight of the fraudulent disclosure violation.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80c7-aaae-fb46f055f75e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="40f8ac6a-aab1-805c-88a3-ead0016dd091" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CLUE Reports </strong><ul id="40f8ac6a-aab1-8073-8fe8-f745fdebd814" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> CLUE stands for <strong>Comprehensive Loss Underwriting Exchange</strong>. It is a specialized insurance history report that compiles all insurance claims filed on a specific property over the <strong>previous seven years</strong>.</li></ul><ul id="40f8ac6a-aab1-803b-9fe5-d9b2241de0c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What&#x27;s Included:</strong> The report captures claims where the insurance company paid out money, established a file for a potential claim, or formally denied a claim.</li></ul><ul id="40f8ac6a-aab1-8009-8cfc-d64bc0b1a177" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Usage by Parties:</strong><ul id="40f8ac6a-aab1-8000-bdc6-ef6efd75bea3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sellers:</strong> May order a CLUE report to double-check their own property disclosures for accuracy or use it as a powerful marketing tool demonstrating full transparency (&quot;nothing to hide here&quot;).</li></ul><ul id="40f8ac6a-aab1-8097-a975-f6d60620c155" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyers:</strong> Often require the provision of a CLUE report as an explicit contingency in their purchase offer to evaluate past insurability and property risk.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-801d-94b9-c22a029693b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee Liability &amp; Professional Standards</strong><ul id="40f8ac6a-aab1-80c8-bc3b-faf2d078b30c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees possess professional expertise and are held to a higher standard of knowledge than ordinary sellers, creating specific pathways for legal liability if mistakes or cover-ups occur.</li></ul><ul id="40f8ac6a-aab1-80c7-ae33-e2c37ffa5c53" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Cover-Up Example:</strong> If a seller confesses to a hidden defect (e.g., attic termite damage) and instructs the agent to keep quiet, and the agent agrees to conceal it, <strong>the agent becomes legally liable for misrepresentation</strong> alongside the seller.</li></ul><ul id="40f8ac6a-aab1-8007-96ba-de5864cd2705" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Agent Responsibility:</strong> Ensure sellers understand their legal disclosure duties and ensure buyers are fully informed of known issues before committing to a purchase.</li></ul></li></ul><ul id="40f8ac6a-aab1-802e-b77f-de506292764b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Forms of Misrepresentation</strong><ul id="40f8ac6a-aab1-8053-8fba-d488ec62a81a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Misrepresentation involves making a false or misleading statement (written or spoken). It is categorized into three legal types: <strong>Innocent</strong>, <strong>Negligent</strong>, and <strong>Intentional (including silent fraud)</strong>.</li></ul><ul id="40f8ac6a-aab1-8010-90f1-d94441cbbbdf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Innocent Misrepresentation</strong><ul id="40f8ac6a-aab1-80d6-b3ef-fadee3c95aa9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Occurs when a licensee makes a statement they genuinely believe is true, but which is objectively false (often relying in good faith on the seller&#x27;s written disclosure).</li></ul><ul id="40f8ac6a-aab1-80e7-919c-d2a555fbaae5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Roof Leak Example:</strong> As a listing agent, your seller checks &quot;No&quot; on roof leaks. You inspect the accessible areas and find nothing. When a buyer asks, you state, &quot;According to the seller, no.&quot; It turns out there is a hidden leak in an inaccessible attic space that neither you nor the seller knew about.</li></ul><ul id="40f8ac6a-aab1-809b-96cb-e315865a638a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Liability Status:</strong> Licensees are <strong>nlikely to be held liable</strong> for innocent misrepresentation because liability for property conditions is legally anchored to actual known material facts.</li></ul></li></ul><ul id="40f8ac6a-aab1-80f2-946d-fbd60490d31f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negligent Misrepresentation</strong><ul id="40f8ac6a-aab1-8065-976e-fd6054483ec7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Occurs when a licensee:<ul id="40f8ac6a-aab1-80f5-9966-e6947bcc9a1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Knows or <em>should have known</em> that a material fact was inaccurate.</li></ul><ul id="40f8ac6a-aab1-803c-bd62-d42978619b39" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Knows or <em>should have known</em> that certain information required disclosure.</li></ul><ul id="40f8ac6a-aab1-8077-bbb9-c3e397644e65" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unknowingly makes a false statement that lacks a reasonable basis to believe.</li></ul></li></ul><ul id="40f8ac6a-aab1-803b-98db-f031f8f3c076" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The &quot;Should Have Known&quot; Standard:</strong> Judged against the legal expectation of professional competence and ordinary care expected of a licensed real estate agent.</li></ul><ul id="40f8ac6a-aab1-808c-a3d0-ee2503b0f13a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Former Gas Station Example:</strong> A seller&#x27;s property was formerly a gas station (strongly suggesting past underground storage tanks), but the seller checks &quot;No&quot; on the disclosure. You fail to catch the glaring contradiction, pass the form to the buyer, and let it slide. Because a competent agent <em>should</em> have connected the dots and questioned the seller, you have engaged in negligent misrepresentation.</li></ul><ul id="40f8ac6a-aab1-8001-aa1c-f0f0f6cab579" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Liability Status:</strong> Licensees <strong>can be held legally liable</strong> for negligence if they fail to exercise reasonable competence in catching and addressing flawed property disclosures.</li></ul></li></ul><ul id="40f8ac6a-aab1-800f-a09a-f5c6e4d2e784" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Intentional Misrepresentation (Fraud)</strong><ul id="40f8ac6a-aab1-8054-8c15-f0792d08864d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Occurs when a licensee purposefully attempts to prevent a buyer from discovering a material fact by actively or intentionally concealing a known defect or falsifying information for personal or financial gain.</li></ul><ul id="40f8ac6a-aab1-80d5-8066-f134d65c9fdf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Lead-Based Paint Example:</strong> You are the listing agent for a home built in 1974. Knowing federal law mandates lead-based paint disclosures for all properties built prior to 1978, you intentionally lie and tell buyers the home was built in 1980 solely to bypass the disclosure requirement and make the sale smoother.</li></ul><ul id="40f8ac6a-aab1-8013-bdab-fb48905ad067" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Severe Liability &amp; Consequences:</strong> Because acts of fraud involve deliberate intent to deceive and harm, licensees engaging in intentional misrepresentation face severe repercussions, including <strong>civil litigation, heavy fines, license revocation, and potential criminal prosecution</strong>.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80be-bcce-d73e8e024e19" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fiduciary Duties vs. Unlawful Demands</strong><ul id="40f8ac6a-aab1-80ce-81e8-c6c04665a116" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Loyalty Limit:</strong> While the fiduciary duty of loyalty requires an agent to prioritize their client&#x27;s interests, <strong>loyalty and obedience never obligate an agent to break the law</strong> or conceal material facts.</li></ul><ul id="40f8ac6a-aab1-80b8-aca0-ebba13dd46f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protocol for Unlawful Client Requests:</strong><ol type="1" id="40f8ac6a-aab1-80ca-acf5-fbc01dceda6a" class="numbered-list" start="1" dir="auto"><li>Remind the client of their legal disclosure obligations.</li></ol><ol type="1" id="40f8ac6a-aab1-8081-ac6c-e13ef8e53f8f" class="numbered-list" start="2" dir="auto"><li>If the client persists in demanding misrepresentation or fraud, <strong>immediately terminate the brokerage relationship</strong>.</li></ol><ol type="1" id="40f8ac6a-aab1-8060-abcb-c49061ea0ad6" class="numbered-list" start="3" dir="auto"><li>No commission check is ever worth sacrificing your real estate license or inviting severe legal penalties.</li></ol></li></ul><ul id="40f8ac6a-aab1-8000-9643-f5d604b7afc6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immunity for Truth-Telling:</strong> Licensees will <em>never</em> face disciplinary action or liability for disclosing material facts, even if an upset seller claims the agent violated their instructions. Unlawful client demands carry zero legal weight.</li></ul><ul id="40f8ac6a-aab1-802e-8998-eb69a4537d0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Duties to Customers and Non-Client Inquiries</strong><ul id="40f8ac6a-aab1-8033-a7ec-fc7829049e2b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Real estate licensees owe a baseline duty of <strong>honesty and fairness</strong> to third parties, customers, and non-clients.</li></ul><ul id="40f8ac6a-aab1-8088-aabf-ed318ab0662d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Engaging in misrepresentation or hiding material defects when questioned by a customer is a direct breach of this fundamental legal and ethical duty.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-8096-a6d6-f9f2724780f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Latent Defects vs. Patent Defects</strong><ul id="40f8ac6a-aab1-80e9-812d-d2c218924ef8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Principle:</strong> While material facts broadly cover anything impacting a buyer&#x27;s purchasing decision, physical property flaws are specifically categorized into latent and patent defects based on how easily they can be discovered.</li></ul><ol type="1" id="40f8ac6a-aab1-80b7-adb7-c211075d2ea7" class="numbered-list" start="1" dir="auto"><li><strong> Latent Defects</strong><ul id="40f8ac6a-aab1-80f3-88be-db5c7e4efd8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Structural or physical defects that <strong>cannot be detected by an ordinary, reasonable visual inspection</strong> (e.g., hidden foundation cracks, internal plumbing leaks behind walls, faulty wiring, or subterranean termite damage).</li></ul><ul id="40f8ac6a-aab1-80e9-a5ed-f2515f149c4b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duty to Disclose:</strong> Sellers and listing agents have a strict legal and ethical duty to disclose all <strong>known</strong> latent defects.</li></ul><ul id="40f8ac6a-aab1-80dc-983b-c33b1e33bc6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Agent Role:</strong> Buyer agents must remain vigilant, look out for warning signs, and actively ask probing questions to unearth hidden latent defects that are not readily visible on the surface.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-807f-aff5-c52468f56ae6" class="numbered-list" start="2" dir="auto"><li><strong> Patent Defects</strong><ul id="40f8ac6a-aab1-8039-8352-ca2a028e1265" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Flaws or defects that <strong>ARE easily discoverable</strong> upon a normal, ordinary visual inspection of the property (e.g., a massive hole in a living room wall, missing floorboards, or obvious roof damage visible from the yard).</li></ul><ul id="40f8ac6a-aab1-80ab-9b6e-d21163b82ada" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Liability Distinction:</strong> While sellers should still disclose all known defects for maximum protection, they carry <strong>less legal liability</strong> for patent defects. This is because patent defects are out in the open—meaning a buyer or inspector can readily see them with ordinary diligence, making it much harder for a buyer to claim they were fraudulently deceived by something hiding in plain sight.</li></ul></li></ol></li></ul><ul id="40f8ac6a-aab1-80ae-a69d-c2431c0fc79f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: James and the Giant Hole in the Wall</strong><ul id="40f8ac6a-aab1-80a7-992e-efadb5815af5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Patent Defect Nature:</strong> Because a massive hole in the wall is glaringly obvious and easily discoverable upon a normal visual inspection, it qualifies as a <strong>patent defect</strong>.</li></ul><ul id="40f8ac6a-aab1-805d-95b8-ea17148ef54b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lowered Disclosure Obligation &amp; Rationale:</strong> While good practice encourages disclosing all known conditions, sellers and listing agents carry less legal liability for patent defects because a buyer (or their agent) is reasonably expected to see them in plain sight. If James walks right past a giant hole, the obviousness of the defect heavily protects the seller from claims of hidden fraud regarding that specific item.</li></ul></li></ul><ul id="40f8ac6a-aab1-8001-bccf-fb5fd64ac31c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: The Secret Asbestos</strong><ul id="40f8ac6a-aab1-8013-9ad7-c9d22ab36a4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Latent Defect Nature:</strong> Asbestos tucked away inside wall cavities cannot be seen or detected through ordinary visual inspection, making it a classic <strong>latent defect</strong> and a serious environmental health hazard.</li></ul><ul id="40f8ac6a-aab1-8066-a359-d8b7056b07d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Violation &amp; Liability:</strong> Danny’s deliberate decision to conceal the known asbestos in hopes that the buyer won&#x27;t hire a specialized inspector constitutes <strong>intentional concealment / fraud</strong>. Because latent defects <em>must</em> be disclosed if known, Danny faces severe legal liability, civil lawsuits for misrepresentation, and potential damages for hiding a hazardous defect.</li></ul></li></ul><ul id="40f8ac6a-aab1-80d1-93e8-db56f8b7d8fa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: Carpenter Ants</strong><ul id="40f8ac6a-aab1-8064-82d0-c5e9d90f18b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Historical Material Fact:</strong> Even though Susan successfully treated the carpenter ants and completed repairs four years ago, the past infestation remains a <strong>known material fact</strong>.</li></ul><ul id="40f8ac6a-aab1-805a-b7e1-da10fbe17ca7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disclosure Requirement:</strong> Historical issues that could impact structural integrity or property condition must be disclosed on the seller&#x27;s property disclosure statement. A past issue does not disappear just because time has passed or professional treatments were performed.</li></ul><ul id="40f8ac6a-aab1-80a8-ab71-daba400cd65e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Listing Agent&#x27;s Role:</strong> As the listing agent, your professional duty is to ensure Susan transparently notes this history on the form, preventing potential allegations of concealment down the road if minor wood damage or secondary pest activity resurfaces later.</li></ul></li></ul><ul id="40f8ac6a-aab1-8098-bf66-f21ac75e694e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Material Facts in Property Condition</strong><ul id="40f8ac6a-aab1-80b5-9e83-f0114a4eb5da" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Essential categories of material facts that must be disclosed include land and soil conditions, size/encroachments/easements, structural integrity, major systems and fixtures, known alterations/additions, and environmental hazards.</li></ul><ol type="1" id="40f8ac6a-aab1-8018-8cc4-db193890eba4" class="numbered-list" start="1" dir="auto"><li><strong> Land and Soil Conditions</strong><ul id="40f8ac6a-aab1-801a-9c69-c99327ec9fff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee Expectation:</strong> The depth of knowledge required depends on the licensee&#x27;s specialty (e.g., an agricultural specialist vs. a standard residential subdivision agent).</li></ul><ul id="40f8ac6a-aab1-80c9-9259-e45fc3b524c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Visual Red Flags:</strong> For standard residential sales, agents should watch for signs of flooding, noticeable soil erosion, or pooling water in the yard, prompting further questions to the seller.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-8021-9689-f1f49576085e" class="numbered-list" start="2" dir="auto"><li><strong> Size, Encroachments, and Easements</strong><ul id="40f8ac6a-aab1-802c-9e7e-d866368218d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Representations:</strong> Sellers are responsible for accurately representing lot size, improvements, easements, and encroachments.</li></ul><ul id="40f8ac6a-aab1-8028-912d-d9956d363d86" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Source Attribution (&quot;Pro Tip&quot;):</strong> Agents should never quote exact figures without qualifying them with a source (e.g., saying &quot;According to the tax records...&quot; or &quot;According to the survey...&quot;).</li></ul><ul id="40f8ac6a-aab1-801e-abbb-fb68435334c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Encroachments:</strong> Involve neighbor relations—such as a neighbor’s fence spilling onto the seller&#x27;s property or vice versa—which physically alters usable lot boundaries and represents a critical material fact.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-80e8-b773-c859f34077b9" class="numbered-list" start="3" dir="auto"><li><strong> Structural Issues</strong><ul id="40f8ac6a-aab1-80e5-8e6f-fba117b377e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Visual Inspection Duties:</strong> Licensees are expected to perform basic visual inspections of major structural components from ground level (roofs, gutters, downspouts, doors, windows, and foundations) and inquire with the seller about known issues.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-80ec-aa48-e2d986987cee" class="numbered-list" start="4" dir="auto"><li><strong> Condition of Major Systems &amp; Fixtures</strong><ul id="40f8ac6a-aab1-8019-881a-e8a4bf0da6f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Encompasses electrical, plumbing, HVAC systems, and built-in appliances (fixtures).</li></ul><ul id="40f8ac6a-aab1-806a-a2f8-e18ec98ebfdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Distinction:</em> Built-in appliances convey with the property, whereas freestanding appliances are personal property.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-80c9-85c8-f3e1841f493b" class="numbered-list" start="5" dir="auto"><li><strong> Known Alterations or Additions</strong><ul id="40f8ac6a-aab1-80cb-b48d-ee1523d4040d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Requires sellers to disclose structural modifications (e.g., converting a garage into a guest house or adding a second story).</li></ul><ul id="40f8ac6a-aab1-805a-b233-f8665df563b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Zoning Violations:</strong> If alterations or additions were built <strong>without proper permits</strong>, the buyer inherits potential municipal zoning violations, making unpermitted work a mandatory material fact to disclose.</li></ul></li></ol></li></ul><ul id="40f8ac6a-aab1-8076-987a-c3868bddd69d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Recap: Material Facts Related to Property Condition</strong><figure id="40f8ac6a-aab1-80ec-bbf7-d45fe21891c7" class="image" data-notion-image="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%201.png"><img style="width:384px" src="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%201.png"/></a></figure></li></ul><p id="40f8ac6a-aab1-80a8-ba7e-ea8f75c7f8ab" class="" dir="auto">
+</p><p id="40f8ac6a-aab1-8029-866b-f4a540fffe01" class="" dir="auto">
+</p></div><div id="40f8ac6a-aab1-8089-94eb-c4e38a250d98" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="40f8ac6a-aab1-8035-91f3-ef490e190168" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40f8ac6a-aab1-80eb-b49c-da7d019881fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>fraud </strong>- wrongful or criminal deception intended to result in financial or personal gain</li></ul><ul id="40f8ac6a-aab1-80a7-ae84-db1b196e538b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>latent defect </strong><em>- </em>any structural defects that cannot be detected by ordinary inspection</li></ul><ul id="40f8ac6a-aab1-8081-bd6a-d2e2f2c0a90d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>material fact </strong>- any fact that is significant or essential to the transaction; information that could impact the buyer&#x27;s decision to purchase the property</li></ul><ul id="40f8ac6a-aab1-806e-bbea-c15ed50d6b58" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>misrepresentation </strong>- a statement, written or spoken, that is false or misleading</li></ul><ul id="40f8ac6a-aab1-80d6-8427-c27f69cf8cce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>negligent misrepresentation </strong>- misrepresentation that occurs when the licensee either knows or should have known that a material fact is not accurate, that certain information should be disclosed, or unknowingly makes a false statement that is not reasonable to believe</li></ul><ul id="40f8ac6a-aab1-8010-acaf-cf7dbbb75e0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>patent defect </strong>- any structural defects that are easily discoverable upon inspection</li></ul><p id="40f8ac6a-aab1-8000-97e6-d49b01cb1f02" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40f8ac6a-aab1-8016-9d59-ced8a5f99748" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Residential Seller&#x27;s Property Disclosure Statement</strong><ul id="40f8ac6a-aab1-80d8-a437-edbccb79a45a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sellers must disclose all <em>known </em>material facts by completing and signing a disclosure statement. The disclosure must be delivered to the buyer before the seller accepts their purchase. The buyer will also sign the disclosure to acknowledge receiving it.</li></ul></li></ul><ul id="40f8ac6a-aab1-80ee-9045-d919b51d5127" class="bulleted-list" dir="auto"><li style="list-style-type:disc">We looked at the Tennessee Realtors&#x27; <em><strong>Tennessee Residential Property Condition Disclosure </strong></em>and reviewed important sections:<ul id="40f8ac6a-aab1-8006-b677-f33900376d3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property and ownership</li></ul><ul id="40f8ac6a-aab1-8083-a784-e90f7f3d3bc0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee Residential Property Disclosure Act statement</li></ul><ul id="40f8ac6a-aab1-8028-9852-feb888e025b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Seller requirements and buyer&#x27;s rights</li></ul><ul id="40f8ac6a-aab1-8002-8a34-d327953f9331" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Limitations of the form</li></ul><ul id="40f8ac6a-aab1-80eb-b379-c7f2ed2da108" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property inclusions</li></ul><ul id="40f8ac6a-aab1-8020-9d84-d1a3816459cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Defects/malfunctions</li></ul><ul id="40f8ac6a-aab1-8016-b851-c040fda69fc0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Other conditions and factors</li></ul><ul id="40f8ac6a-aab1-80e9-9a5a-ca905572e040" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Certification and signatures</li></ul></li></ul><ul id="40f8ac6a-aab1-8007-a81f-cb005c422510" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Latent vs. Patent Defects</strong><ul id="40f8ac6a-aab1-80c0-8dbb-f79efe059cfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The seller and the listing agent have a duty to disclose <strong>latent defects</strong>, which are <strong>any structural defects that cannot be detected by ordinary inspection.</strong></li></ul><ul id="40f8ac6a-aab1-8053-a130-e7b62698d5fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The seller and the listing agent also have a duty to disclose what are known as <strong>patent defects,</strong> which are those that ARE <strong>easily discoverable upon inspection</strong>. Because these are easy to see, the seller may be less liable for disclosing these types of defects. However, it&#x27;s best that sellers disclose <strong>all</strong> known defects.<figure id="40f8ac6a-aab1-809f-8155-d710984a7856" class="image" data-notion-image="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%202.png"><img style="width:375.796875px" src="Chapter%201%20-%20Property%20Condition%20Disclosure%20and%20Liab/image%202.png"/></a></figure></li></ul></li></ul><ul id="40f8ac6a-aab1-8054-9af8-f605ebe5d60b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee Responsibilities</strong><ul id="40f8ac6a-aab1-80d3-8ee1-c42ba56d1cc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees involved in a real estate transaction have an obligation to:<ul id="40f8ac6a-aab1-8098-afaf-c6da4e38e4d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose material facts they &quot;should have known&quot; given their expertise and experience</li></ul><ul id="40f8ac6a-aab1-8097-83ab-f080499fd379" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose material facts made known to them by reasonable care or due diligence during their own inspection of the property</li></ul></li></ul><ul id="40f8ac6a-aab1-80ed-ad51-e4c7e87f7edd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A licensee can be found liable if they:<ul id="40f8ac6a-aab1-80a4-a6fd-fe7bdb4a515d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Knowingly make a false representation of a material fact</li></ul><ul id="40f8ac6a-aab1-80da-989b-e53a4574a1ec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Omit known material facts</li></ul><ul id="40f8ac6a-aab1-80b8-94d8-c3addb0a2a6f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Conceal or aid the seller in concealing a material fact</li></ul></li></ul></li></ul><p id="40f8ac6a-aab1-80be-9945-e2e5ac8399b1" class="" dir="auto">
+</p></div></div><h3 id="40f8ac6a-aab1-805a-bc57-c34712a33ae7" class="" dir="auto"><strong>Licensee Responsibilities</strong></h3><p id="40f8ac6a-aab1-80a9-aef4-ca6c066d2767" class="" dir="auto">Licensees involved in a real estate transaction have an obligation to:</p><p id="40f8ac6a-aab1-8034-b505-fc1487b3f1a0" class="" dir="auto"><strong>Disclose material facts they &quot;should have known&quot; given their expertise and experienceDisclose material facts made known to them by reasonable care or due diligence during their own inspection of the property</strong></p><ul id="40f8ac6a-aab1-8063-bfed-cf3455af0793" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Disclose material facts they &quot;should have known&quot; given their expertise and experience</li></ul><ul id="40f8ac6a-aab1-8081-a643-c0bb9508fba9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Disclose material facts made known to them by reasonable care or due diligence during their own inspection of the property</li></ul><p id="40f8ac6a-aab1-80e1-a3aa-df1a4f0e5ab4" class="" dir="auto">A licensee can be found liable if they:</p><p id="40f8ac6a-aab1-80fe-8677-dc90c4e41ce9" class="" dir="auto"><strong>Knowingly make a false representation of a material factOmit known material factsConceal or aid the seller in concealing a material fact</strong></p><ul id="40f8ac6a-aab1-80da-ae67-e76dc97a00c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Knowingly make a false representation of a material fact</li></ul><ul id="40f8ac6a-aab1-802c-bf21-df98ffecc6c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Omit known material facts</li></ul><ul id="40f8ac6a-aab1-80ad-afab-f11f3e27edd2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Conceal or aid the seller in concealing a material fact</li></ul><p id="40f8ac6a-aab1-8027-8ddc-ef7b60d35993" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

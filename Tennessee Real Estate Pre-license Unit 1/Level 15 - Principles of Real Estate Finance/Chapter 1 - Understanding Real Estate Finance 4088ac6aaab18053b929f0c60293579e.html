@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Understanding Real Estate Finance</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8053-b929-f0c60293579e" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Understanding Real Estate Finance</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4108ac6a-aab1-80de-97ec-c34652798f85" class="column-list" data-notion-column-list="" dir="auto"><div id="4108ac6a-aab1-8048-88db-f0f577171fa0" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4108ac6a-aab1-80c2-9d20-df9b45a4707b" class="" dir="auto"><strong>The Evolution of Real Estate Finance &amp; American Currency</strong></p><ul id="4108ac6a-aab1-80b7-9590-ea7eadd560ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Concept:</strong> Real estate financing mirrors standard credit cards—allowing buyers to acquire an asset immediately and pay for it over an extended period, just on a massive scale.</li></ul><ul id="4108ac6a-aab1-80f8-97ab-f05e734c8dae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Early Paper Money History:</strong><ul id="4108ac6a-aab1-8074-97fe-ce890b099b65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Continentals:</strong> Issued by the Continental Congress during the American Revolution; overprinting led to runaway inflation and worthlessness.</li></ul><ul id="4108ac6a-aab1-80e8-bd5c-d98ca82ba639" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Greenbacks (United States Notes):</strong> Issued during the American Civil War by the Union; served as the predecessor to modern currency (and technically remained legal tender until 1971).</li></ul><ul id="4108ac6a-aab1-8092-95ec-e69bb0a44a3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Currency Chaos:</strong> Before central standardization, everyone from local banks to drugstores printed their own currencies, leading to widespread economic instability and frequent bank failures.</li></ul></li></ul><ul id="4108ac6a-aab1-802a-b2c2-f1663452dde1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Creation of the Federal Reserve (1913)</strong><ul id="4108ac6a-aab1-804b-9aa9-ee42b1414ad3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Federal Reserve Act:</strong> Signed into law by President Woodrow Wilson in 1913 to stabilize the erratic economy and eliminate currency chaos.</li></ul><ul id="4108ac6a-aab1-80f2-84d8-e3b89a1a30e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Structure:</strong> Divided into <strong>12 regional Federal Reserve districts</strong> across the country, governed by the Federal Reserve Board.</li></ul><ul id="4108ac6a-aab1-8090-960c-c51389324eca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Reserve Notes:</strong> Authorized as the official banknotes put into circulation by regional Fed banks (the familiar paper currency used today).</li></ul></li></ul><ul id="4108ac6a-aab1-800e-8b9a-f3c00f937cbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Fed&#x27;s Three Primary Monetary Policy Tools</strong><ul id="4108ac6a-aab1-808d-a8e7-caf0a9b3f9d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Key Interest Rates:</strong> Lowering rates makes borrowing cheap, stimulating the economy; raising rates makes borrowing expensive, slowing economic activity.</li></ul><ul id="4108ac6a-aab1-808c-99ef-cabb24b43832" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Reserve Requirements:</strong> Dictates the percentage of customer deposits banks must hold in reserve (preventing Great Depression-style &quot;bank runs&quot;). Lowering requirements increases money available for bank lending; raising requirements slows lending down.</li></ul><ul id="4108ac6a-aab1-8017-a595-e7fdc30f612e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Open Market Operations:</strong> Buying and selling government securities. Buying securities injects cash into circulation (lowering rates/stimulating growth); selling securities pulls cash out of circulation (raising rates/cooling growth).<figure id="4108ac6a-aab1-805a-a30f-df9f693a76b4" class="image" data-notion-image="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image.png" dir="ltr"><a href="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image.png"><img style="width:432px" src="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image.png"/></a></figure></li></ul></li></ul><ul id="4108ac6a-aab1-8066-88a4-f5bb29ba6d65" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Impact on Real Estate and Market Cycles</strong><ul id="4108ac6a-aab1-809d-bf38-dedd70506034" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Power of Interest Rates:</strong> Interest rates directly dictate housing affordability. Lower interest rates mean &quot;cheap money,&quot; allowing buyers to afford more expensive homes and driving transaction volume.</li></ul><ul id="4108ac6a-aab1-80e6-8bcf-fd30f310b6f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cyclical Real Estate Markets:</strong> Real estate naturally fluctuates between <strong>buyer&#x27;s markets</strong> (oversupply) and <strong>seller&#x27;s markets</strong> (high demand).</li></ul><ul id="4108ac6a-aab1-804b-ab51-f9d543185dc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Balancing the Economy:</strong> The Federal Reserve&#x27;s monetary levers play a vital role in smoothing out real estate and economic cycles, keeping supply, demand, and national growth in balance.</li></ul></li></ul><ul id="4108ac6a-aab1-8077-9865-cb936d235c59" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Deposit Insurance Corporation (FDIC)</strong><ul id="4108ac6a-aab1-803a-a8b4-e5da44df4e2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Created in response to Great Depression bank panics to restore public confidence in the banking system by insuring consumer deposits.</li></ul><ul id="4108ac6a-aab1-8010-aa0a-dbed386c0114" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope &amp; Coverage:</strong> Insures deposits in all FDIC-insured depository institutions (national banks, federal savings associations) across checking, savings, money market accounts, and certificates of deposit (CDs).</li></ul><ul id="4108ac6a-aab1-80d2-8039-c489b9817088" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Insurance Limit:</strong> The standard insurance coverage limit is <strong>$250,000 per depositor, per insured depository institution</strong> for each distinct account ownership category.</li></ul></li></ul><ul id="4108ac6a-aab1-80d2-9e2a-e2a2e501df29" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Federal Home Loan Bank System (FHLB)</strong><ul id="4108ac6a-aab1-8047-ab4c-cb53789f84df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Structure:</strong> Composed of <strong>11 regional banks</strong> operating as member-owned cooperatives (serving roughly 7,200 member institutions, including local banks, thrifts, credit unions, and insurance companies as shareholders).</li></ul><ul id="4108ac6a-aab1-8096-9896-ed64617f4519" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The &quot;Lenders&#x27; Bank&quot;:</strong> FHLBs do not lend directly to consumers; instead, they function as a <strong>lender for financial institutions</strong>, providing member lenders with reliable, favorable capital to fund local housing, mortgages, and economic development.</li></ul></li></ul><ul id="4108ac6a-aab1-80d8-bd55-c4e0cb157e52" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Housing Administration (FHA)</strong><ul id="4108ac6a-aab1-8093-b89e-fed128cc06e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origins:</strong> Established by the <strong>National Housing Act of 1934</strong> following the Great Depression. It is currently the <strong>largest mortgage insurer in the world</strong>.</li></ul><ul id="4108ac6a-aab1-805c-ac1a-e4800c4a0471" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How FHA Insurance Works:</strong> The FHA provides mortgage insurance on loans issued by FHA-approved lenders. By guaranteeing lenders against financial loss if a homeowner defaults, lenders assume significantly less risk and can pass on <strong>more favorable terms</strong> (such as lower down payment requirements) to borrowers.</li></ul><ul id="4108ac6a-aab1-804b-951b-e4652629b14b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modern Market Legacy:</strong> The FHA pioneered and introduced the standard <strong>15-year and 30-year mortgage amortization terms</strong> that continue to dominate modern real estate finance today.</li></ul></li></ul><ul id="4108ac6a-aab1-8002-9a7c-c42de2a25c31" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Capital Stack &amp; Cash Sales</strong><ul id="4108ac6a-aab1-8067-9837-cd0da89fdfdc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Capital Stack:</strong> The combined sources of funds used to purchase a property, consisting of equity (the buyer&#x27;s cash down payment) and debt (the mortgage loan).</li></ul><ul id="4108ac6a-aab1-805f-a657-de2c48220fef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cash Sale:</strong> A real estate transaction completed entirely with cash, requiring zero loan financing.</li></ul></li></ul><ul id="4108ac6a-aab1-8013-b76b-c4f52241a1de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-to-Value (LTV) Ratio</strong><ul id="4108ac6a-aab1-8037-8362-d68482fe3170" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The percentage of a property&#x27;s purchase price that is covered by the mortgage loan.</li></ul><ul id="4108ac6a-aab1-8082-8927-d19bf44d71a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Calculation Example:</strong> If a home costs <strong>$200,000</strong> and the buyer puts down <strong>$40,000</strong> (20%), financing the remaining <strong>$160,000</strong>, the LTV is calculated as:<ul id="4108ac6a-aab1-8029-9136-fc2384d4f826" class="bulleted-list" dir="auto"><li style="list-style-type:square">$160,000/$200,000} = 80%</li></ul></li></ul><ul id="4108ac6a-aab1-807a-8fa5-c331a89f3b3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risk Implication:</strong> High LTV ratios mean a smaller down payment and a larger loan, which represents higher risk for the lender.</li></ul><ul id="4108ac6a-aab1-8086-9b25-cdc3f38af4d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Qualification:</strong> The process where a lender evaluates a borrower&#x27;s financial history to decide whether to issue a loan and under what terms. Mortgages are typically amortized over <strong>15-year or 30-year terms</strong>, and borrowers repay the principal plus <strong>interest</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-8016-b8e5-de12be874813" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Home Equity</strong><ul id="4108ac6a-aab1-8086-90ea-fdd62510de3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The portion of a property&#x27;s total value owned outright by the titleholder (representing the actual cash invested/paid off).</li></ul><ul id="4108ac6a-aab1-80b8-b3fc-c21e0eaac966" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Growth:</strong> In the initial $200,000 home example, the $40,000 down payment establishes the buyer&#x27;s initial equity. Equity increases over time as mortgage principal payments are made or as market values rise.</li></ul><ul id="4108ac6a-aab1-802d-a609-c9dbf351a908" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Upon Resale:</strong> When a home is sold before the mortgage is fully paid off, the outstanding loan balance is settled first from the sale proceeds, and the remainder is the seller&#x27;s realized equity.</li></ul></li></ul><ul id="4108ac6a-aab1-801c-9d75-ce2334177284" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Financial Leverage</strong><ul id="4108ac6a-aab1-80cf-a0ac-effb53a2ecd8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The strategic use of borrowed money (debt) to amplify purchasing power and return on investment (ROI).</li></ul><ul id="4108ac6a-aab1-807b-9c07-c3fe127f9742" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How It Works:</strong> By putting down $40,000 to control a $200,000 asset, the buyer gains full exposure to the property&#x27;s appreciation. If the home value rises to $225,000, the seller pockets the $25,000 gain, effectively leveraging a smaller cash outlay to generate a substantial financial return.</li></ul></li></ul><ul id="4108ac6a-aab1-800d-a0e4-cf9256ca08f7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The PITI Mortgage Payment Structure</strong><ul id="4108ac6a-aab1-801e-9c5c-ee71a7160ecf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Most lenders require borrowers to make a comprehensive monthly payment known as <strong>PITI</strong>, which combines four core components:<ul id="4108ac6a-aab1-801b-9d9e-e5d9152c7a9e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>P — Principal:</strong> The portion of the payment that reduces the actual loan balance owed.</li></ul><ul id="4108ac6a-aab1-8030-be0e-c00dd4f55b1d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>I — Interest:</strong> The cost of borrowing the money, paid to the lender.</li></ul><ul id="4108ac6a-aab1-8078-a254-f72058bc3cc5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>T — Taxes:</strong> An amount equal to 1/12th of the annual property tax bill.</li></ul><ul id="4108ac6a-aab1-8099-af19-f27d95e81f62" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>I — Insurance:</strong> An amount equal to 1/12th of the annual hazard/homeowner&#x27;s insurance bill.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8051-b678-dc6fbd37b26f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role of Escrow Accounts</strong><ul id="4108ac6a-aab1-80c0-8804-e61ba89b0fff" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The monthly tax and insurance portions of the PITI payment are deposited into an <strong>escrow account</strong>.</li></ul><ul id="4108ac6a-aab1-80e5-b49b-ea4df6320a79" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The loan servicing agency holds these funds and pays the annual property taxes and insurance premiums on behalf of the homeowner when they come due.</li></ul></li></ul><ul id="4108ac6a-aab1-80d6-93f1-c1bc4724a7fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Interest vs. Annual Percentage Rate (APR)</strong><ul id="4108ac6a-aab1-806c-a4a7-d0a6e6b7bbd8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interest Rate:</strong> The percentage charged by the lender strictly for the use of borrowed funds (calculated as an annual percentage of the outstanding loan balance).</li></ul><ul id="4108ac6a-aab1-8021-9a34-f95d6475939e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>APR (Annual Percentage Rate):</strong> A broader, more comprehensive metric that includes the nominal interest rate <em>plus</em> any additional loan fees, points, or closing costs required to secure the mortgage. Because it folds in upfront costs, the <strong>APR is typically higher than the basic interest rate</strong>, making it a more accurate reflection of the true annual cost of borrowing.</li></ul></li></ul><ul id="4108ac6a-aab1-806d-8bd9-e63782704ddb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Promissory Note (The &quot;Note&quot;)</strong><ul id="4108ac6a-aab1-8045-9475-c17bb89ed7b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The legal contract and formal acknowledgement in which a borrower recognizes their debt to the lender and promises to repay the holder of the note (essentially a grown-up IOU).</li></ul><ul id="4108ac6a-aab1-8057-8bf8-f6383509d24c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Provisions Specified:</strong><ul id="4108ac6a-aab1-8072-b29c-c6b1e60056b7" class="bulleted-list" dir="auto"><li style="list-style-type:square">The total principal amount of the debt</li></ul><ul id="4108ac6a-aab1-805f-b899-d461b3ed3195" class="bulleted-list" dir="auto"><li style="list-style-type:square">The interest rate</li></ul><ul id="4108ac6a-aab1-805a-b7aa-f4184cd3145c" class="bulleted-list" dir="auto"><li style="list-style-type:square">The date on which interest charges begin accruing</li></ul><ul id="4108ac6a-aab1-8013-9e0d-d7325a3dc997" class="bulleted-list" dir="auto"><li style="list-style-type:square">The exact amount and terms of repayment</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-809e-9f09-e1681f725c47" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transferability and Negotiability</strong><ul id="4108ac6a-aab1-805e-884d-ff65dd630cc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negotiable Instrument:</strong> Promissory notes can be sold, transferred, or assigned to secondary market investors or other lenders.</li></ul><ul id="4108ac6a-aab1-8023-9ded-fd08061d288d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The &quot;Holder of the Note&quot; Rule:</strong> Because the note is negotiable, the borrower promises to repay <em>the holder of the note</em>, not just the original lender. If a loan is sold to a new bank, the borrower must repay that new entity.</li></ul></li></ul><ul id="4108ac6a-aab1-80ff-a10f-ef0b48a2058a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Secured vs. Unsecured Notes</strong><ul id="4108ac6a-aab1-806e-b90c-f7bf23fc208f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Secured Notes:</strong><ul id="4108ac6a-aab1-8095-a2c3-d75c9ce594f0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Backed by borrower assets (<strong>collateral</strong>).</li></ul><ul id="4108ac6a-aab1-80b2-8241-e27a50e7bc42" class="bulleted-list" dir="auto"><li style="list-style-type:square">Explicitly references a security instrument (such as a mortgage or a deed of trust).</li></ul><ul id="4108ac6a-aab1-800c-a8e3-d8bc8b57be9a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Example:</em> If a borrower defaults on a secured mortgage note, the lender has the legal right to foreclose on the home to satisfy the debt.</li></ul></li></ul><ul id="4108ac6a-aab1-8091-b88c-c4378883bd0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unsecured Notes:</strong><ul id="4108ac6a-aab1-8074-9a44-d834ae8396a4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Rely solely on the borrower&#x27;s personal promise to repay with <strong>no underlying collateral</strong> or security instrument.</li></ul><ul id="4108ac6a-aab1-80f8-97d9-c38ef359f874" class="bulleted-list" dir="auto"><li style="list-style-type:square">Represent a much higher risk for lenders, which results in <strong>substantially higher interest rates</strong>.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8074-a77b-d8b67b61349f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Security Instruments &amp; Collateral</strong><ul id="4108ac6a-aab1-8083-aa35-d78d2f23088d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Distinction:</strong> A promissory note by itself is an unsecured promise to pay. A <strong>security instrument</strong> is the formal document that pledges property as <strong>collateral</strong>—giving the lender a legal claim to the borrower&#x27;s asset to protect their investment.</li></ul><ul id="4108ac6a-aab1-80d4-a4df-e6ced4bfad5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mortgage:</strong> In real estate, the standard security instrument is a <strong>mortgage</strong>, which acts as a pledge of property as collateral.</li></ul></li></ul><ul id="4108ac6a-aab1-8017-ad55-e6c29cabc98d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Notes and Mortgages Work Together</strong><ul id="4108ac6a-aab1-803b-8f05-d2c864b4c492" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Promissory Note:</strong> The borrower&#x27;s personal promise to repay the loan under specific terms (acts as a &quot;grown-up IOU&quot;).</li></ul><ul id="4108ac6a-aab1-8088-a010-d8cfadeae859" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage (Security Instrument):</strong> The agreement stating that if the borrower defaults on the promissory note, the lender has the legal right to take ownership of the property through <strong>foreclosure</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-80c7-9f20-d5bf3366e2a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Creating a Lien &amp; Two-Party Roles</strong><ul id="4108ac6a-aab1-80a1-a3f7-dbd5709f1d2a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lien:</strong> A mortgage creates a claim or encumbrance on the property, giving the lender &quot;dibs&quot; if the debt goes unpaid.</li></ul><ul id="4108ac6a-aab1-8099-9b83-c74c3a099c53" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Parties Involved:</strong><ul id="4108ac6a-aab1-80d3-885e-c2db1d7b3d43" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgagor:</strong> The <strong>borrower</strong> who gives the mortgage to the lender (remember: suffixes ending in <em>or</em> or <em>er</em> perform the action, just like an <em>employ</em><em><strong>er</strong></em>).</li></ul><ul id="4108ac6a-aab1-806f-80b6-de5f9b5feb98" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgagee:</strong> The <strong>lender</strong> who receives the mortgage and holds the money (suffixes ending in <em>ee</em> receive the action, just like an <em>employ</em><em><strong>ee</strong></em>).</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8033-8832-fc1006bb457e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duties of the Mortgagor (Avoiding Default)</strong><br/>To prevent default and potential foreclosure, the mortgagor (borrower) is legally required to:<ul id="4108ac6a-aab1-80e3-98cc-e0f31c29e0ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Keep the property in good repair</li></ul><ul id="4108ac6a-aab1-80fe-b04c-d59d440995bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maintain adequate hazard insurance</li></ul><ul id="4108ac6a-aab1-809b-96a5-f31419a708eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Pay all property taxes and municipal assessments</li></ul><ul id="4108ac6a-aab1-8018-9f55-d514ddb3dcee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Timely pay the underlying debt secured by the mortgage</li></ul></li></ul><ul id="4108ac6a-aab1-805a-a328-c9bd2006717e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Hypothecation</strong><ul id="4108ac6a-aab1-80b1-9208-fa117c818af2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The formal legal term describing the act of pledging real property as collateral for a mortgage loan without surrendering possession or title to the lender (essentially describing a secured debt arrangement).</li></ul></li></ul><ul id="4108ac6a-aab1-8076-a9e0-fa336387e482" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lien Theory vs. Title Theory States</strong><ul id="4108ac6a-aab1-805a-99a8-d080d1c42ca3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lien Theory States:</strong><ul id="4108ac6a-aab1-8040-a2a7-ed16b57805d0" class="bulleted-list" dir="auto"><li style="list-style-type:square">The <strong>borrower holds the legal title</strong> to the property from day one, even though the lender financed the majority of the purchase.</li></ul><ul id="4108ac6a-aab1-80c3-adcc-da78288b0461" class="bulleted-list" dir="auto"><li style="list-style-type:square">The lender does <em>not</em> hold title, but rather places a <strong>mortgage lien</strong> on the property. This lien gives the lender the right to foreclose if the borrower defaults. The lien is removed once the loan is fully paid off.</li></ul><ul id="4108ac6a-aab1-801a-89bf-e3e414aaeec2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Preferred security instrument: The standard <strong>mortgage</strong>.<figure id="4108ac6a-aab1-80b8-83f7-e039a09f1f1d" class="image" data-notion-image="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%201.png"/></a></figure></li></ul></li></ul><ul id="4108ac6a-aab1-80b1-96aa-d3a0c0b99b0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title Theory States (e.g., Tennessee):</strong><ul id="4108ac6a-aab1-8047-bf6e-ec32d04437b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">The legal title to the property is conveyed and <strong>held by a trustee</strong> (via a deed of trust) until the mortgage debt is completely satisfied.</li></ul><ul id="4108ac6a-aab1-800e-a652-ee960f3c2556" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because the lender (via the trustee) already effectively holds title rights, foreclosure in the event of default can often bypass lengthy court procedures (<strong>non-judicial foreclosure</strong>), making the process significantly faster and easier for lenders.</li></ul></li></ul><ul id="4108ac6a-aab1-805c-8a5d-cb8d38fad6f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Practical Reality:</strong> While their theoretical mechanics differ, in daily practice both systems ensure lenders can secure their collateral and foreclose upon borrower default.<figure id="4108ac6a-aab1-805d-8f0c-ff59e0f0540b" class="image" data-notion-image="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%202.png"><img style="width:432px" src="Chapter%201%20-%20Understanding%20Real%20Estate%20Finance/image%202.png"/></a></figure></li></ul></li></ul><ul id="4108ac6a-aab1-8003-8403-e2ceef64c25f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trust Fundamentals</strong><ul id="4108ac6a-aab1-80d4-8d2d-fcb739646607" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A fiduciary arrangement where a nominal owner (<strong>trustee</strong>) holds property on behalf of a recipient (<strong>beneficiary</strong>) for the benefit of heirs or creditors.</li></ul></li></ul><ul id="4108ac6a-aab1-80af-a810-f84708342c26" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Deed of Trust</strong><ul id="4108ac6a-aab1-8042-bcf8-ef8d3e12fcef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A specialized trust used in real estate financing to secure a promissory note. Instead of creating a simple lien (like a mortgage), a deed of trust transfers the right/title to the property to a neutral third party until the loan is fully repaid.</li></ul><ul id="4108ac6a-aab1-80e3-aa39-ea960e4fafee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three Parties Involved:</strong><ul id="4108ac6a-aab1-808f-8353-fcc41c60f73b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Trustor:</strong> The <strong>borrower</strong> who takes out the loan and establishes the trust.</li></ul><ul id="4108ac6a-aab1-80d7-94a0-ece56b6c587c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Trustee:</strong> The neutral <strong>third party</strong> who holds the legal right/title to the property for the duration of the loan.</li></ul><ul id="4108ac6a-aab1-80fc-b3f4-e18afdc005a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Beneficiary:</strong> The <strong>lender</strong> (bank or financial institution) who provides the funds and benefits from the security instrument.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-80bf-9094-c30912d3cc57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Loan Origination</strong><ul id="4108ac6a-aab1-807f-91cb-cab29c86e34c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The process by which a mortgage is created. A <strong>mortgage loan originator</strong> (institution or individual) guides the borrower through the application process and helps qualify both the buyer and the property (collateral).</li></ul><ul id="4108ac6a-aab1-80f9-9e89-dcb64597f238" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Originators:</strong><ul id="4108ac6a-aab1-808a-af2a-efb3572d441f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgage Bankers:</strong> Typically work for a financial institution and <strong>fund loans directly</strong> using their institution&#x27;s funds.</li></ul><ul id="4108ac6a-aab1-80bb-b9c7-ee1ec6ea39cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgage Brokers:</strong> Have <strong>no money of their own to lend</strong>. They act as intermediaries who bring borrowers and lenders together, shopping multiple lenders to match the buyer with the best loan program.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8087-b967-e007f5156673" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Amortization Fundamentals</strong><ul id="4108ac6a-aab1-8024-8871-c2adb8414436" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The Latin root means &quot;killing off.&quot; In finance, <strong>amortization</strong> is the process of paying off a mortgage debt through regular, scheduled installments over a set term.</li></ul><ul id="4108ac6a-aab1-802e-b8da-f597d89c36ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment in Arrears:</strong> Mortgage interest is paid <strong>in arrears</strong> (at the end of each payment period to cover charges accrued during that time), contrasting with residential rent, which is traditionally paid in advance.</li></ul></li></ul><ul id="4108ac6a-aab1-8051-acb4-f8f52e365f61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Amortization</strong><ol type="1" id="4108ac6a-aab1-8091-a9c6-e4aa145ca383" class="numbered-list" start="1" dir="auto"><li><strong> Fully Amortized Loans:</strong><ul id="4108ac6a-aab1-80a2-973e-c1cc4b520e35" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Involves consistent, equal monthly payments covering both principal and interest.</li></ul><ul id="4108ac6a-aab1-80e9-8639-fcb5ae2cfe1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Payments are applied to interest first, with the remainder reducing the principal.</li></ul><ul id="4108ac6a-aab1-801f-8a9a-fa8a9eb9d7dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If all payments are made on time, the loan balance reaches exactly zero by the final scheduled payment.</li></ul></li></ol><ol type="1" id="4108ac6a-aab1-80e9-9228-c237d22fd3ca" class="numbered-list" start="2" dir="auto"><li><strong> Partially Amortized Loans:</strong><ul id="4108ac6a-aab1-800d-9378-efe5bff7275d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Features regular payments toward principal and interest, but the amortization schedule is not long enough to pay off the entire balance.</li></ul><ul id="4108ac6a-aab1-80a1-bf39-d44fc47f23f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Concludes with a large final lump-sum payment known as a <strong>balloon payment</strong> to clear the remaining debt.</li></ul></li></ol><ol type="1" id="4108ac6a-aab1-80f5-b9c0-d1a9595f0abd" class="numbered-list" start="3" dir="auto"><li><strong> Negatively Amortized Loans (Negative Amortization):</strong><ul id="4108ac6a-aab1-800d-a120-c1eee858db76" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Occurs when the borrower&#x27;s scheduled payment is smaller than the interest accrued during that period.</li></ul><ul id="4108ac6a-aab1-8003-8234-f05cbb14ace2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The unpaid interest is added directly to the principal balance, meaning <strong>the borrower ends up owing more over time</strong> rather than less (also known as deferred interest)</li></ul></li></ol></li></ul><ul id="4108ac6a-aab1-8017-b14f-d3c911a3cd16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Satisfaction of Mortgage</strong><ul id="4108ac6a-aab1-80d6-bad3-c1f02e39060b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Event:</strong> Occurs when a borrower successfully pays off their mortgage in full—either by bringing the loan to the end of its term or by selling the property early.</li></ul><ul id="4108ac6a-aab1-80bf-b205-c95a7de57004" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Satisfaction Piece:</strong> Upon full payoff, the lender issues a <strong>satisfaction of mortgage</strong> (or release), which officially notifies the public that the mortgage lien has been removed and the property is cleared of that encumbrance.</li></ul></li></ul><ul id="4108ac6a-aab1-8070-804a-d1e72c5efdc0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Default &amp; Foreclosure Triggers</strong><ul id="4108ac6a-aab1-80b6-9235-fbd4372169f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Borrower Duties:</strong> A borrower defaults by failing to uphold their mortgagor obligations: keeping the property in good repair, maintaining adequate hazard insurance, paying property taxes/assessments, and timely paying the underlying debt.</li></ul><ul id="4108ac6a-aab1-80d2-a02f-e81c9e25df32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Options Before Foreclosure:</strong> Lenders typically attempt alternative workouts (loan modifications, reduced interest rates, or structured repayment plans) before resorting to foreclosure.</li></ul><ul id="4108ac6a-aab1-8038-91d3-c3e0e8e174c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 3-to-4 Month Rule:</strong> As a general rule, if a borrower remains delinquent for <strong>3 to 4 months</strong> without an active repayment plan, the lender will initiate foreclosure proceedings.</li></ul><ul id="4108ac6a-aab1-8096-9054-fe36dcbf56dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> <strong>Foreclosure</strong> is the legal process where a lender seizes control of a defaulted borrower&#x27;s property collateral and sells it to recover their financial losses.</li></ul></li></ul><ul id="4108ac6a-aab1-804a-94f0-cf4fb35972ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Foreclosure</strong><ol type="1" id="4108ac6a-aab1-8088-abf7-e558d4566ef0" class="numbered-list" start="1" dir="auto"><li><strong> Judicial Foreclosure:</strong><ul id="4108ac6a-aab1-8023-9b3d-da8b5ade3ff8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Processed directly through the court system via a lawsuit.</li></ul><ul id="4108ac6a-aab1-808d-b687-c8c26c2cb764" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Under Tennessee law, if the property sells at a foreclosure auction for less than the total balance owed, the lender can obtain a <strong>deficiency judgment</strong> against the borrower for the remaining unpaid debt.</li></ul></li></ol><ol type="1" id="4108ac6a-aab1-80b1-8935-d15e0062c6b3" class="numbered-list" start="2" dir="auto"><li><strong> Nonjudicial Foreclosure:</strong><ul id="4108ac6a-aab1-80df-9054-d5bee5ee777f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Conducted <strong>without court involvement or judicial rulings</strong> (common forms include power-of-sale and strict foreclosures, leveraging pre-agreed clauses in security instruments like deeds of trust).</li></ul></li></ol></li></ul></div><div id="4108ac6a-aab1-80b4-8066-ca3ef1b2e7f4" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4108ac6a-aab1-809d-9ad0-d95824c83570" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4108ac6a-aab1-801b-95ae-f7ec5e5abcd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>amortization</strong> - <strong> </strong>the process of paying off a debt/mortgage in regular installments based on a fixed payment schedule</li></ul><ul id="4108ac6a-aab1-805a-8204-d64255c18e03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>annual percentage rate (APR) </strong> - a measure of how much the borrower will pay in interest over the course of a year, plus any fees associated with getting a loan</li></ul><ul id="4108ac6a-aab1-807a-a008-e8bbbc1acda6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>arrears</strong> - describes<strong> </strong>payment that occurs at the end of a period to compensate for charges accrued during that time</li></ul><ul id="4108ac6a-aab1-8066-81d1-cca40a6ea1bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>collateral </strong> - property liened by a lender in order to assure payment of the loan and protect the lender&#x27;s investment</li></ul><ul id="4108ac6a-aab1-808c-925b-f8c5cd4579d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>equity </strong> - the portion of a property&#x27;s total value owned outright by the holder to title</li></ul><ul id="4108ac6a-aab1-80dd-9265-d47820ca29a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>loan-to-value ratio</strong> - the amount of money being loaned compared to the value of the property</li></ul><ul id="4108ac6a-aab1-80d5-80ef-d4dec9108de8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>mortgage </strong>- a legal agreement between a creditor and borrower in which the creditor lends money with interest to the borrower for the purchase of property with the condition that the creditor takes ownership of the title if the borrower defaults in repayment of the loan</li></ul><ul id="4108ac6a-aab1-806a-b22e-c7cbf4c384ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>mortgagee </strong> - the organization or person who lends the money in a loan (the lender)</li></ul><ul id="4108ac6a-aab1-8015-ae22-c3f6597adc0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>mortgagor</strong> - the person who takes out the loan (the borrower)</li></ul><ul id="4108ac6a-aab1-80a2-b454-e3729d366290" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Deposit Insurance Corporation (FDIC)</strong> - an independent agency of the federal government that provides deposit insurance to depositors in U.S. banks<strong> </strong></li></ul><ul id="4108ac6a-aab1-8056-884a-e71cabde3ac3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Housing Administration (FHA)</strong> - government agency charged with insuring mortgages</li></ul><ul id="4108ac6a-aab1-801b-bcca-f83ca67f2093" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Reserve System - </strong>centralized United States bank created to conduct monetary policy and stabilize the U.S. economy</li></ul><ul id="4108ac6a-aab1-807d-a537-d3ceaa198792" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>foreclosure</strong> - the legal process whereby a lender takes control of a property held by a borrower in default and sells it to recover the lender’s losses <strong> </strong></li></ul><ul id="4108ac6a-aab1-80d9-8029-f978252ff2db" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>qualification</strong> - process by which a lender decides whether they want to give a loan to a hopeful borrower, and if so, what the terms of the loan would be</li></ul><ul id="4108ac6a-aab1-807e-96d4-cc0d4c429027" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>security</strong> - <strong> </strong>the collateral for a loan</li></ul><p id="4108ac6a-aab1-8050-8058-dbafbce89feb" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4108ac6a-aab1-8070-98fb-f48f2a1f52c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Basics</strong><ul id="4108ac6a-aab1-8007-afa8-e121dca40c96" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A mortgage is a loan used to buy real property. Government agencies such as the Federal Reserve (also known as the Fed) influence and shape mortgage lending. The Fed uses tools such as interest rates to influence mortgage lending.</li></ul><ul id="4108ac6a-aab1-801c-90a4-f82f031a7d35" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A mortgage is a security instrument used by lenders to secure a promissory note.</li></ul><ul id="4108ac6a-aab1-8064-9583-c758fc6c35e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A<strong> promissory note</strong> <em>(borrower&#x27;s promise and loan terms)</em> states the terms of the loan and is also where the borrower promises to repay the loan.</li></ul><ul id="4108ac6a-aab1-80d0-a031-ea3537bf84b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A<strong> mortgage</strong> <em>(the collateral)</em> states that the lender and borrower agree that if the borrower does not keep their promise, the lender can take ownership of the property.</li></ul><ul id="4108ac6a-aab1-8033-ba5a-db5632a8dd25" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mortgage documents require two parties: a mortgagor and mortgagee.</li></ul></li></ul><ul id="4108ac6a-aab1-80dc-a9a1-f93a8dbbc9ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The terms of a promissory note specify the:<ul id="4108ac6a-aab1-800c-89d2-cf184af96975" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Amount of debt</li></ul><ul id="4108ac6a-aab1-80d7-93ea-f11f07430aa2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Interest rate</li></ul><ul id="4108ac6a-aab1-80d1-a02d-f6c59766271e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Date on which interest charges are to begin</li></ul><ul id="4108ac6a-aab1-8041-92bf-d954e72455bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Amount and terms of repayment</li></ul><ul id="4108ac6a-aab1-8079-bcf4-c303322b652f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Residential mortgages will usually be paid off in portions over the term of the loan, or, <strong>amortized</strong>. A borrower could eventually pay off their mortgage, either by bringing the loan to term or by selling the property and paying off the loan early.</li></ul></li></ul><ul id="4108ac6a-aab1-80c1-8824-e9386838894a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foreclosure</strong><ul id="4108ac6a-aab1-80f7-940f-c721aa8c9b78" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Foreclosure is the legal process whereby a lender takes control of a property held by a borrower in default and sells it to recover the lender’s losses. Foreclosure usually happens only when the alternatives provided by the lender are not enough to allow the borrower to repay the loan amount.</li></ul></li></ul><p id="4108ac6a-aab1-803c-ae2f-ff2fdc212d56" class="" dir="auto">
+</p></div></div><p id="4108ac6a-aab1-8071-bb01-dd562149cd2f" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

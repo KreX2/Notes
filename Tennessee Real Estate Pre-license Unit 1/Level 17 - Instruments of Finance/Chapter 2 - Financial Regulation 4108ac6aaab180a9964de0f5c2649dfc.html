@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Financial Regulation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80a9-964d-e0f5c2649dfc" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Financial Regulation</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4148ac6a-aab1-80e1-85d9-f7db7fc0e58f" class="column-list" data-notion-column-list="" dir="auto"><div id="4148ac6a-aab1-8038-b496-fc9a01f14902" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4148ac6a-aab1-8048-9a5a-f67db25950d3" class="" dir="auto"><strong>Truth in Lending Act (TILA) &amp; Consumer Credit Protection Act </strong></p><ul id="4148ac6a-aab1-803b-a898-d68cd6f9bc06" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Historical Context:</strong> Prior to TILA&#x27;s enactment, lenders used diverse, unstandardized credit terms, making comparison shopping impossible (leaving consumers comparing &quot;apples to oranges&quot;). In response, Congress passed the <strong>Consumer Credit Protection Act in 1968</strong>.</li></ul><ul id="4148ac6a-aab1-8099-9627-f77c02f1c91f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title I (TILA):</strong> Designed to ensure that credit terms are disclosed in a meaningful, uniform way so consumers can compare credit terms knowledgeably.</li></ul><ul id="4148ac6a-aab1-8041-8fae-c7992ce950be" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role of Regulation Z (Reg Z):</strong> TILA is enacted and enforced through <strong>Regulation Z</strong>, promulgated by the Federal Reserve (and overseen by the CFPB). In practice, TILA and Regulation Z are used interchangeably to describe consumer lending protection rules.</li></ul><ul id="4148ac6a-aab1-80c3-9225-f62218ecfa35" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Covered Loans:</strong> Applies to consumer credit where a finance charge is made or repayment exceeds four installments, specifically including real estate loans and personal/family/household loans up to $25,000. Business loans are excluded.</li></ul><ul id="4148ac6a-aab1-8081-b372-fadd37acf0e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What TILA Does NOT Do:</strong> It does not cap interest rates, nor does it force lenders to approve loan applications.</li></ul><ul id="4148ac6a-aab1-8031-9a87-f153a011924e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Pillars of Regulation Z</strong><ol type="1" id="4148ac6a-aab1-80db-9666-f2541fe91af2" class="numbered-list" start="1" dir="auto"><li><strong>Loan Originator Compensation Rules:</strong> Prohibits kickbacks and steering borrowers toward loans that yield higher commissions for the originator. (Applies to dwelling-secured consumer loans, excluding open-end HELOCs and timeshares).</li></ol><ol type="1" id="4148ac6a-aab1-80f7-abc0-d557881292cd" class="numbered-list" start="2" dir="auto"><li><strong>Mandatory Loan Disclosures:</strong> Lenders must provide comprehensive cost disclosures, including application fees, property address, total sale price, amount financed, finance charges, total payments, <strong>Annual Percentage Rate (APR)</strong>, prepayment penalties, late fees, assumption policies, and ARM rate adjustment mechanics.</li></ol><ol type="1" id="4148ac6a-aab1-804c-938f-c94a617638cd" class="numbered-list" start="3" dir="auto"><li><strong>Right of Rescission:</strong> For loans using an already-owned primary residence as collateral (such as refinances or home equity loans), borrowers enjoy a <strong>3-day cooling-off period</strong> after loan consummation to rescind the contract without penalty, obligating the lender to refund all related fees.</li></ol><ol type="1" id="4148ac6a-aab1-801f-b5ee-e7b6eaec7911" class="numbered-list" start="4" dir="auto"><li><strong>Advertising Rules:</strong> Prevents deceptive or misleading credit advertising by banning false claims (e.g., falsely advertising a variable rate as &quot;fixed&quot;).</li></ol></li></ul><ul id="4148ac6a-aab1-8019-a57a-ee32de586be7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TILA Advertising Rules &amp; Trigger Terms</strong><ul id="4148ac6a-aab1-8088-b1ba-c3fdb8be2031" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Trigger Items:</strong> If an advertisement for credit mentions specific financing terms—such as the <strong>monthly payment amount, number of payments, down payment amount, finance charges, or loan terms</strong>—it triggers a strict legal requirement for <strong>Full Disclosure</strong>.</li></ul><ul id="4148ac6a-aab1-8035-b540-c0bf8fc29bf1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Disclosure Requirements:</strong> When a trigger term is used, the ad must conspicuously disclose:<ul id="4148ac6a-aab1-8054-8253-c95ad7030942" class="bulleted-list" dir="auto"><li style="list-style-type:square">Cash price</li></ul><ul id="4148ac6a-aab1-8000-ba54-f9a047729b9e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Required down payment</li></ul><ul id="4148ac6a-aab1-808e-8fb3-fe6eb87cad99" class="bulleted-list" dir="auto"><li style="list-style-type:square">Number, amount, and due date of all payments</li></ul><ul id="4148ac6a-aab1-8093-9ec9-dd2b50bd99e4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total of all payments (exempt for home-purchase loans)</li></ul><ul id="4148ac6a-aab1-803f-8cd3-c9f401465c52" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Annual Percentage Rate (APR)</strong></li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8032-92e9-c70069491b62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding APR vs. Interest Rate</strong><ul id="4148ac6a-aab1-80e6-92e0-c1e8e14dfafd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The <strong>Annual Percentage Rate (APR)</strong> represents the <em>true total cost of obtaining credit</em>, expressed as an annualized percentage.</li></ul><ul id="4148ac6a-aab1-80b9-a435-ceb49ff8ea5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What is Included:</strong> Interest paid, discount points, and loan origination fees.</li></ul><ul id="4148ac6a-aab1-80ab-9d7b-fe085350184f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What is Excluded:</strong> Third-party fees that would be required regardless of financing (e.g., standard title insurance, home inspection fees).</li></ul><ul id="4148ac6a-aab1-80a8-b8a7-fafb1cfc99a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Prevents lenders from quoting a deceptively low interest rate while hiding high fees, allowing true &quot;apples-to-apples&quot; comparison.</li></ul></li></ul><ul id="4148ac6a-aab1-8075-a514-e2c4e4f95159" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Enforcement &amp; Penalties</strong><ul id="4148ac6a-aab1-80cd-82f8-dfccda102c3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Criminal Liability:</strong> Anyone who willfully and knowingly violates TILA or Regulation Z provisions faces severe penalties, including fines up to <strong>$5,000</strong>, imprisonment for up to <strong>one year</strong>, or both.</li></ul></li></ul><ul id="4148ac6a-aab1-800b-a62d-ff17efeb2ed4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Settlement Procedures Act (RESPA) </strong><ul id="4148ac6a-aab1-80f6-9623-ebe510e7efc7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historical Context:</strong> Enacted by Congress in <strong>1974</strong> to eliminate abusive practices in the real estate settlement process—specifically kickbacks, unearned referral fees, and fee-splitting arrangements that artificially and needlessly inflated closing costs for consumers.</li></ul><ul id="4148ac6a-aab1-805c-b9bf-cb479fd72d50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Goals:</strong><ol type="1" id="4148ac6a-aab1-80d2-90b7-d48ca9954b02" class="numbered-list" start="1" dir="auto"><li>Help consumers become informed, effective shoppers for settlement and closing services by requiring transparent cost disclosures.</li></ol><ol type="1" id="4148ac6a-aab1-8049-b75b-fad2db3bdb34" class="numbered-list" start="2" dir="auto"><li>Strictly prohibit harmful kickbacks and unearned referral fees.</li></ol></li></ul><ul id="4148ac6a-aab1-8086-bd68-dfe7523722e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Administration &amp; Regulation:</strong> Originally administered by the Department of Housing and Urban Development (HUD) through <strong>Regulation X</strong> (though industry professionals almost universally refer to the law by its statutory acronym, RESPA, rather than &quot;Reg X&quot;). Jurisdiction and rule-making authority later transferred to the Consumer Financial Protection Bureau (CFPB) under TRID.</li></ul></li></ul><ul id="4148ac6a-aab1-806e-b623-d90e0fbf6261" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Covered Loans Under RESPA</strong><ul id="4148ac6a-aab1-80fe-a31c-f6aec2289a66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federally Related Mortgage Loans:</strong> To fall under RESPA, a loan must be a &quot;federally related mortgage loan,&quot; meaning it is directly or indirectly supported by federal regulation, insurance, guarantees, or assistance, or originates from a lender insured/regulated by the federal government (including loans intended to be sold into the secondary market to government-sponsored enterprises like Fannie Mae or Freddie Mac).</li></ul><ul id="4148ac6a-aab1-80fb-8ea0-d805de89d8f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Scope:</strong> RESPA applies to the vast majority of loans secured by a mortgage lien placed on <strong>one- to four-family residential properties</strong>.</li></ul></li></ul><ul id="4148ac6a-aab1-80ac-a797-cd06ea4b5b89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exemptions to RESPA</strong><figure id="4148ac6a-aab1-808c-9248-ccd768863615" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image.png"><img style="width:432px" src="Chapter%202%20-%20Financial%20Regulation/image.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-80c1-9e24-db84b2a76308" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RESPA Section 8 </strong><ul id="4148ac6a-aab1-80e8-bb1a-d50e044c22af" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Applicability:</strong> While certain RESPA disclosure rules apply strictly to lenders, other regulations apply directly to real estate license holders (agents and brokers) involved in federally related mortgage transactions.</li></ul></li></ul><ul id="4148ac6a-aab1-804e-8047-ee210c327234" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Section 8(a): Business Referrals &amp; Kickbacks</strong><ul id="4148ac6a-aab1-80e2-8975-ea32f4c5593c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Prohibition:</strong> Strictly prohibits the giving or accepting of any fee, kickback, or &quot;thing of value&quot; pursuant to any agreement or understanding (oral or written) to refer settlement service business tied to a federally related mortgage loan.</li></ul><ul id="4148ac6a-aab1-80bf-9029-f3f322008a5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who It Applies To:</strong> Applies to <strong>anyone</strong> involved in the transaction—not just lenders, but also real estate agents, title companies, and home warranty providers. For instance, paying or receiving a referral fee from a home warranty company or a mortgage lender is an illegal kickback.</li></ul><ul id="4148ac6a-aab1-8017-bc33-eb2549a4a35b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitted Practices (Not Kickbacks):</strong><ul id="4148ac6a-aab1-8008-ba34-fcc9974bf42e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fee splitting among cooperating brokers or MLS members.</li></ul><ul id="4148ac6a-aab1-80b7-aa7b-fe80c22cccd2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Standard brokerage referral arrangements between brokerages.</li></ul><ul id="4148ac6a-aab1-80a2-b5eb-cd25ec5b682e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Division of commissions between a broker and their own licensed sales agents.</li></ul><ul id="4148ac6a-aab1-8059-9c4c-c70b0aaccbf4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Internal referrals made by an employee to generate business for their own company.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80a8-a8cc-c0390a6844aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Marketing Services Agreements (MSAs) vs. Referrals</strong><ul id="4148ac6a-aab1-8016-b7dd-e7dccb52b021" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An MSA is an agreement where one business pays another for marketing or promotional services (e.g., a mortgage broker paying a real estate agent to mail promotional flyers).</li></ul><ul id="4148ac6a-aab1-8026-a2a6-fbf4cfc903f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Distinction:</strong> An MSA involves marketing to a <strong>wide audience</strong>, whereas a referral involves recommending a specific provider to an <strong>individual client</strong>.</li></ul><ul id="4148ac6a-aab1-80ed-b1b2-cb09088e63e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compliance Requirements:</strong> To be legal under RESPA, an MSA must reflect fair market value paid strictly for actual, documented marketing services rendered—it cannot serve as a disguised backdoor payment for client referrals.</li></ul></li></ul><ul id="4148ac6a-aab1-8086-8d15-df0c8b3dfe5a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Section 8(b): Splitting Charges &amp; Unearned Fees</strong><ul id="4148ac6a-aab1-8083-8de1-e191e2f2ab40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Prohibition:</strong> Prohibits giving or accepting any portion, split, or percentage of a settlement service charge <em>other than for services actually performed</em>.</li></ul><ul id="4148ac6a-aab1-801d-9354-ea2cbaa7e79c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Takeaway:</strong> A lender cannot share a portion of their loan origination fee with an agent for a client referral, even if it adds no extra cost to the borrower. Sharing fees without performing a corresponding settlement service violates RESPA.</li></ul></li></ul><ul id="4148ac6a-aab1-8031-b307-ea9327a5baa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Section 8(c): Permitted Compensation</strong><ul id="4148ac6a-aab1-80bc-ad09-d65b3ad90a3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Rule:</strong> Explicitly allows the payment of a <strong>bona fide salary, compensation, or payment for goods/facilities actually furnished or services actually performed</strong>.</li></ul><ul id="4148ac6a-aab1-8064-ba05-e24f6ce434fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Principle:</strong> Payment for legitimate labor and services gets the RESPA thumbs-up 👍; payment for unearned referrals or ghost services gets the RESPA thumbs-down 👎.</li></ul></li></ul><ul id="4148ac6a-aab1-8043-9238-f20436cd71f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Computerized Loan Origination (CLO) Systems</strong><ul id="4148ac6a-aab1-809b-aa31-e413303bb971" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Rule:</strong> Real estate brokers may charge a fee for utilizing a Computerized Loan Origination (CLO) system to help a buyer select and originate a mortgage, provided:<ol type="1" id="4148ac6a-aab1-80b4-9e26-fac4706c618c" class="numbered-list" start="1" dir="auto"><li>The fee is fully disclosed on the closing cost estimate.</li></ol><ol type="1" id="4148ac6a-aab1-80a2-8e92-f0ba8e8e76ec" class="numbered-list" start="2" dir="auto"><li>The fee is reasonably related to the actual value of the services provided.</li></ol></li></ul><ul id="4148ac6a-aab1-8015-ba9b-edf161a041f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The SAFE Act Connection:</strong> Anyone who takes a residential loan application or negotiates loan rates and terms via a system like a CLO must be properly licensed as a Mortgage Loan Originator (MLO).</li></ul></li></ul><ul id="4148ac6a-aab1-805d-adad-c6033792ef74" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliated Business Arrangement (ABA) </strong><ul id="4148ac6a-aab1-8076-84d3-e96d871e8cd7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> An Affiliated Business Arrangement (ABA) occurs when a real estate brokerage offers bundled settlement and closing services—such as title insurance, mortgage origination, home inspections, and moving services—from subsidiary companies or partners operating under the same corporate umbrella.</li></ul><ul id="4148ac6a-aab1-8090-8e3b-dcc6ff2f6315" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Consumer Dilemma:</strong> While bundling offers convenience and saves buyers time in vetting providers, it also creates potential risks for high-pressure sales tactics and hidden kickbacks, which is why RESPA tightly regulates how ABAs operate.</li></ul></li></ul><ul id="4148ac6a-aab1-801e-af92-fe10b9ee307f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RESPA Restrictions &amp; Compliance Rules for ABAs</strong><ul id="4148ac6a-aab1-80ec-a434-e5a5bf8de94e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To legally operate an Affiliated Business Arrangement under RESPA guidelines, the brokerage and its partners must strictly adhere to the following rules:<ol type="1" id="4148ac6a-aab1-80b0-bbce-d6033d0126d0" class="numbered-list" start="1" dir="auto"><li><strong>Written Disclosure:</strong> Provide consumers with a clear, written disclosure of the corporate affiliation at or prior to the time of referral.</li></ol><ol type="1" id="4148ac6a-aab1-80ce-9276-e8167f3e222f" class="numbered-list" start="2" dir="auto"><li><strong>Estimated Charges:</strong> Provide consumers with accurate written estimates of the charges and fees for the provided settlement services.</li></ol><ol type="1" id="4148ac6a-aab1-8091-9c4d-fbc3f682575a" class="numbered-list" start="3" dir="auto"><li><strong>Right to Shop:</strong> Explicitly communicate to the consumer that <strong>they are entirely free to obtain services elsewhere</strong> and are not required to use the affiliated providers.</li></ol><ol type="1" id="4148ac6a-aab1-807e-9d6b-e122bd880dfe" class="numbered-list" start="4" dir="auto"><li><strong>No Referral Fees:</strong> Refrain strictly from exchanging internal referral fees, kickbacks, or unearned fee splits among the subsidiary companies.</li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-8052-93c4-fe8d1fcefdbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RESPA Rules: Title Companies &amp; Escrow Accounts</strong><ul id="4148ac6a-aab1-8089-9e91-f27cae9f4f3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title Company Selection (The Seller Rule):</strong> Under RESPA, a seller is strictly prohibited from requiring a buyer to purchase title insurance from a specific title company as a condition of sale. Sellers choose their own title company for their side, but <strong>if the seller pays for all closing and title costs for both themselves and the buyer</strong>, they gain the right to mandate the title company.</li></ul><ul id="4148ac6a-aab1-80be-85b9-cc65422b3185" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow Account Limits:</strong> Lenders often collect tax and insurance payments in advance into an escrow account. RESPA caps the maximum amount a lender can hold in escrow at <strong>up to 14 months of payments</strong> (including a cushion). Escrow cushions, account setups, and interest on escrows are lender options, not federal mandates.</li></ul><ul id="4148ac6a-aab1-8020-92d3-dc1882e9c1db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow Overages &amp; Shortages (Repayment Rules):</strong><ul id="4148ac6a-aab1-80f9-a800-dfb9d6d75d4a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Overages (Excess Funds):</strong> If the escrow balance exceeds the allowed limit by less than $50, the lender can refund it or apply it to future payments. If the overage is <strong>more than $50</strong>, the lender must refund the money to the borrower within <strong>30 days</strong>.</li></ul><ul id="4148ac6a-aab1-800b-a8a9-c1c87cdb1b7c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Shortages (Deficiencies):</strong> If the borrower owes the lender less than one month’s escrow payment, the lender can demand payment within <strong>30 days</strong>. Otherwise, the shortage must be spread out and amortized over a <strong>12-month period</strong> via increased monthly payments.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8052-81d4-c1e66d5319e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Penalties for Violating RESPA</strong><ul id="4148ac6a-aab1-807a-ae37-d543723f5c28" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Violators face severe civil and criminal sanctions:<ul id="4148ac6a-aab1-8048-b4b1-f723b5e12cf0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Civil Liability:</strong> Affected parties can recover <strong>three times (treble damages)</strong> the amount of any charge paid for settlement services.</li></ul><ul id="4148ac6a-aab1-8088-a522-e7c63b588aa3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Court Costs:</strong> Violators must cover all associated court proceedings and reasonable attorney&#x27;s fees.</li></ul><ul id="4148ac6a-aab1-8005-af87-cc6fbfe069ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Criminal Penalties:</strong> Fines of up to <strong>$10,000</strong>, imprisonment for up to <strong>one year</strong>, or both.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8017-bd9b-eed123fc5dd1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Historical Context: The Subprime Mortgage Crisis &amp; 2007–2010 Recession</strong><ul id="4148ac6a-aab1-802a-b37f-fca53af2806c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Build-Up (Early 2000s):</strong> Lenders drastically loosened credit standards, fueling a massive surge in subprime lending (surjumping from 8% of the market in 2004 to roughly 20% by 2006).</li></ul><ul id="4148ac6a-aab1-801e-a186-d2715d9e0a78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subprime vs. Predatory Loans:</strong> While &quot;subprime&quot; simply means lending to borrowers with lower credit scores (which is not inherently illegal), it carried higher default risks. Unscrupulous lenders crossed the line into <strong>predatory lending</strong>, offering high-cost adjustable-rate loans, balloon payments, and zero-down products to vulnerable buyers.</li></ul><ul id="4148ac6a-aab1-8043-ba40-f5c7db3ddb4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Predatory Inclusion:</strong> Studies (such as Louise Seamster’s <em>Black Debt, White Debt</em>) highlighted <strong>&quot;predatory inclusion,&quot;</strong> where high-risk subprime loans and targeted foreclosures disproportionately impacted Black and Latinx communities (with high-income Black borrowers often receiving subprime loans more frequently than low-income white borrowers).</li></ul><ul id="4148ac6a-aab1-8095-ab09-d4fd09120369" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financial Engineering (PMBS &amp; CDOs):</strong> Wall Street packaged prime and subprime mortgages into complex <strong>Private-Label Mortgage-Backed Securities (PMBS)</strong> and <strong>Collateralized Debt Obligations (CDOs)</strong>. Fueled by rising home prices, investors—including institutional retirement funds—falsely viewed these toxic products as safe, setting the stage for the historic 2007–2010 economic meltdown.</li></ul></li></ul><ul id="4148ac6a-aab1-802e-8fdb-f054cf658307" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Subprime Mortgage Meltdown &amp; 2007–2010 Recession</strong><ul id="4148ac6a-aab1-80cc-b7cf-c1695ee65a5e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Bubble Bursts:</strong> Home prices peaked in 2006. As interest rates rose and ARM rates adjusted upward, subprime and overextended borrowers began defaulting. Homes lost value, leaving many zero-down buyers <strong>&quot;underwater&quot;</strong> (owing more than their home&#x27;s worth) and unable to refinance.</li></ul><ul id="4148ac6a-aab1-8015-8545-e4b515bd177b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Market Collapse &amp; Foreclosure Floods:</strong> Short sales and foreclosures flooded the market with distressed properties, driving home prices down further. Private-Label Mortgage-Backed Securities (PMBS) and Collateralized Debt Obligations (CDOs) collapsed in value, triggering institutional giant failures (such as New Century Financial in April 2007) and culminating in the global <strong>stock market crash of September 2008</strong>.</li></ul></li></ul><ul id="4148ac6a-aab1-8094-b106-d7ec99d39b00" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Dodd-Frank Act of 2010 </strong><ul id="4148ac6a-aab1-8037-884d-ebd77e0a4779" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Origins:</strong> Enacted in <strong>July 2010</strong> (named after Senator Christopher J. Dodd and Representative Barney Frank), the <em>Dodd-Frank Wall Street Reform and Consumer Protection Act</em> introduced the most sweeping banking and financial regulatory reforms since the Great Depression to prevent a recurrence of the 2008 financial crisis.</li></ul><ul id="4148ac6a-aab1-800a-8214-c586ba82d630" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Structural Reforms:</strong><ul id="4148ac6a-aab1-8089-a38a-df24639af92f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Volcker Rule:</strong> Restricted commercial banks from engaging in speculative proprietary trading (trading for their own profit using customer deposits) and limited their investments in hedge funds and private equity to 3%.</li></ul><ul id="4148ac6a-aab1-80e0-8433-d342648e8978" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>FDIC Real Estate Lending Standards:</strong> Abolished the Office of Thrift Supervision, transferred state savings association oversight to the FDIC, permanently increased federal deposit insurance limits from <strong>$100,000 to $250,000</strong>, and empowered the FDIC to establish robust underwriting and lending standards.</li></ul><ul id="4148ac6a-aab1-8017-bc36-d43039d76a4a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Creation of the CFPB:</strong> Established the <strong>Consumer Financial Protection Bureau (CFPB)</strong> as an independent watchdog to oversee financial institutions, protect consumers from abusive practices, and consolidate enforcement authority over major federal consumer financial laws—including <strong>TILA and RESPA</strong>.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8081-ac96-e17591432ef8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consumer Financial Protection Bureau (CFPB) </strong><ul id="4148ac6a-aab1-800c-b8b9-ee367456c074" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mission:</strong> Created by the Dodd-Frank Act to protect borrowers from dishonest and abusive lending practices, improve consumer comprehension, aid in loan comparison shopping, and eliminate closing-table surprises under the <strong>&quot;Know Before You Owe&quot; (KBYO)</strong> initiative.</li></ul><ul id="4148ac6a-aab1-80f1-8c08-e241d3a047e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jurisdiction &amp; Enforcement:</strong> Holds exclusive enforcement authority over <strong>TILA (Regulation Z)</strong> and <strong>RESPA (Regulation X)</strong> across covered consumer financial markets and mortgages.</li></ul><ul id="4148ac6a-aab1-8030-b862-c1719916b0e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Important Distinction:</strong> The CFPB regulates consumer financial products and lending practices, but it <strong>does not</strong> field complaints regarding racial bias or housing discrimination (which fall under fair housing laws and other agencies).</li></ul></li></ul><ul id="4148ac6a-aab1-80ef-8997-c9a6f93f2d0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CFPB Penalty Structure</strong><ul id="4148ac6a-aab1-802b-81d5-f36d2b4595e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Violating CFPB regulations carries steep daily administrative and statutory fines depending on culpability:<ul id="4148ac6a-aab1-80c9-b29d-f440da455d94" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Failure to follow the law:</strong> Up to <strong>$5,000 per day</strong>.</li></ul><ul id="4148ac6a-aab1-80b3-a89c-cedc52ecc570" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross negligence:</strong> Up to <strong>$25,000 per day</strong>.</li></ul><ul id="4148ac6a-aab1-80ac-8ffa-d3886be58a2d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Intentional violations:</strong> Up to <strong>$1,000,000 per day</strong>.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-808e-8d1d-d58065dde0d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Birth of TRID (TILA-RESPA Integrated Disclosure)</strong><ul id="4148ac6a-aab1-8030-b9ef-c35b38401d6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Historical Problem:</strong> For over 30 years, federal law required lenders to provide two separate sets of overlapping, inconsistent disclosure forms under two different statutes (TILA and RESPA)—one set at application and another at closing—burdening both consumers and lenders.</li></ul><ul id="4148ac6a-aab1-805f-a57e-f8246c241614" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The TRID Solution:</strong> Mandated by Section 1032(f) of the Dodd-Frank Act, the CFPB published the final <strong>TILA-RESPA Integrated Disclosure (TRID)</strong> rule (with subsequent amendments through 2016).</li></ul><ul id="4148ac6a-aab1-800d-b0b1-e894d74c74a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What TRID Did:</strong> Combined the separate TILA and RESPA disclosures into unified, streamlined forms (specifically the <strong>Loan Estimate</strong> and the <strong>Closing Disclosure</strong>) designed to make loan terms, costs, and risks transparent so buyers can truly &quot;Know Before You Owe.&quot;</li></ul></li></ul><ul id="4148ac6a-aab1-80af-a5b5-f41219cb6db8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subprime Mortgage Crisis Timeline</strong><figure id="4148ac6a-aab1-801c-83da-ebd13222b397" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image%201.png"><img style="width:384px" src="Chapter%202%20-%20Financial%20Regulation/image%201.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-80ae-8f7d-e9a577037630" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4148ac6a-aab1-8011-bdd5-fdfbb2af154d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TRID Disclosures </strong><ul id="4148ac6a-aab1-8025-b177-d987942e1cad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Under the TILA-RESPA Integrated Disclosure (TRID) rule, lenders are required to provide two primary standardized disclosures designed to ensure transparency, prevent closing-table surprises, and empower comparison shopping: the <strong>Loan Estimate</strong> and the <strong>Closing Disclosure</strong>.</li></ul><ul id="4148ac6a-aab1-8009-820a-f47e7574ff65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zero Cost for Disclosures:</strong> For loans subject to RESPA, lenders are <strong>strictly prohibited from charging any fee</strong> for the preparation or delivery of the Loan Estimate, Closing Disclosure, escrow account statements, or any other TILA/RESPA-mandated disclosures.</li></ul></li></ul><ul id="4148ac6a-aab1-80f5-a8b6-d9eec52423df" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Loan Estimate (LE)</strong><ul id="4148ac6a-aab1-8005-a62e-ee2ad3753685" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Provides a good-faith estimate of the loan terms, projected monthly payments, and estimated closing costs.</li></ul><ul id="4148ac6a-aab1-8037-8741-e648a69df41b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Delivery Timelines:</strong><ol type="1" id="4148ac6a-aab1-802b-90e4-e8556ab13e78" class="numbered-list" start="1" dir="auto"><li><strong>At Application:</strong> The creditor must deliver or mail the Loan Estimate <strong>no later than the third business day</strong> after receiving the consumer’s formal loan application.</li></ol><ol type="1" id="4148ac6a-aab1-800e-b4ff-c91f7f22e3ee" class="numbered-list" start="2" dir="auto"><li><strong>Before Consummation:</strong> It must be delivered or placed in the mail <strong>no later than the seventh business day</strong> before consummation (closing) of the transaction.</li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-8076-94f6-cdde25ed2b23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Closing Disclosure (CD)</strong><ul id="4148ac6a-aab1-8038-a830-d24e3ff12c50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Evolution from HUD-1:</strong> Replaced the legacy HUD-1 Settlement Statement, Good Faith Estimate, and separate TILA disclosures, consolidating them into a single, comprehensive itemized statement of actual fees and services.</li></ul><ul id="4148ac6a-aab1-803b-91ef-ec2a2799c7bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Delivery Timeline (3-Day Rule):</strong> The creditor must ensure the borrower receives the Closing Disclosure <strong>no later than three business days before consummation</strong> of the loan.</li></ul><ul id="4148ac6a-aab1-8093-bf29-ee14200bfa4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accuracy &amp; Recalculation:</strong> The CD must reflect the actual financial terms of the transaction. If key terms or costs change prior to closing, a corrected disclosure must be issued, which <strong>triggers a new 3-day waiting period</strong> before closing can occur.</li></ul></li></ul><ul id="4148ac6a-aab1-804e-b520-deb82e93c4f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exemptions from TRID</strong><ul id="4148ac6a-aab1-802f-847f-eb7c97665f5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The TRID integrated disclosure rules <strong>do not apply</strong> to:<ul id="4148ac6a-aab1-80a4-b201-fefb16c9887a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reverse mortgages</li></ul><ul id="4148ac6a-aab1-80ef-b406-f98cecff4ba4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Home equity lines of credit (HELOCs)</li></ul><ul id="4148ac6a-aab1-804d-9305-d078ccb1800e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Chattel-dwelling loans (e.g., mobile homes not attached to real property / land)</li></ul><ul id="4148ac6a-aab1-803e-bcc2-fbaa11166e36" class="bulleted-list" dir="auto"><li style="list-style-type:square">Other specialized loan products not covered by the TRID rule</li></ul><ul id="4148ac6a-aab1-8016-b66f-c4dd4dff3208" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loans originated by creditors who make <strong>five or fewer mortgages in a calendar year</strong> (who must continue using legacy disclosures).</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80a5-9cef-e9e5694dcdc4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legislative Postscript: The Dodd-Frank Rollback (Crapo Bill)</strong><ul id="4148ac6a-aab1-80e7-9e72-e52f0813b657" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In May 2018, the <em>Economic Growth, Regulatory Relief, and Consumer Protection Act</em> (commonly known as the <strong>Crapo Bill</strong>) was enacted to roll back some of the stricter regulatory burdens imposed by Dodd-Frank, particularly for smaller and mid-sized banks and credit unions.</li></ul></li></ul><ul id="4148ac6a-aab1-806b-bf52-f606d705d9e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4148ac6a-aab1-80ec-a1b0-d471dde7d1bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equal Credit Opportunity Act (ECOA) </strong><ul id="4148ac6a-aab1-80c5-81f2-fbb61e91f3b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Administration:</strong> Passed in <strong>1974</strong> and administered primarily by the Federal Trade Commission (FTC), the ECOA prohibits lenders from discriminating against credit applicants based on protected classes.</li></ul><ul id="4148ac6a-aab1-801f-abfc-cb833c047708" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protected Categories:</strong> Race, color, religion, national origin, sex, marital status, age, receipt of public assistance, or sexual orientation/gender identity (clarified via CFPB interpretive rule in March 2021).</li></ul><ul id="4148ac6a-aab1-80a8-a45d-eaa8fefaf32a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Scope:</strong> Applies to any entity that regularly participates in credit decisions, including banks, credit unions, finance companies, and card issuers. Lenders may evaluate financial fitness using objective metrics (income, debt, expenses, credit history), but cannot use protected demographic factors to make lending decisions or set credit terms.</li></ul></li></ul><ul id="4148ac6a-aab1-8083-a932-d4428051021b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Historical &amp; Systemic Context</strong><ul id="4148ac6a-aab1-80eb-a3cf-f75d81d63775" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Redlining:</strong> A historic discriminatory practice where lenders marked low-income or predominantly non-white neighborhoods in red on maps, refusing to extend credit or mortgages in those areas.</li></ul><ul id="4148ac6a-aab1-809f-b6df-e4de66e17dbf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Racial Wealth Gap:</strong> Because housing equity constitutes roughly two-thirds of median household wealth, systemic credit discrimination and historical exclusion from homeownership created a profound racial wealth gap.</li></ul><ul id="4148ac6a-aab1-80e2-b210-fd4e7283c39c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Limitations of Credit Scoring:</strong> While credit scores are often viewed as value-neutral, critics and housing analysts note that credit scoring models reflect and embed historical economic disadvantages. Studies (such as from the Urban Institute) indicate that even when controlling for credit profiles, Black and Latinx borrowers face significantly higher loan denial rates and unfavorable terms compared to white borrowers.</li></ul></li></ul><ul id="4148ac6a-aab1-807a-beb0-ed33020ce1df" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibited Creditor Practices Under ECOA</strong><ul id="4148ac6a-aab1-8030-a3c4-cdfdc05c885c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lenders are strictly barred from:<ul id="4148ac6a-aab1-806b-937f-fb56452d9fa9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discouraging potential applicants or rejecting applications based on protected classes.</li></ul><ul id="4148ac6a-aab1-80a5-89e6-c79e01025d5a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Considering protected demographic categories (such as race, sex, or national origin) when determining creditworthiness or loan terms.</li></ul><ul id="4148ac6a-aab1-80b0-a89a-d8e8213f92f6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Imposing discriminatory terms, higher interest rates, or elevated fees based on protected traits.</li></ul><ul id="4148ac6a-aab1-80d0-a835-d098d48a3d6e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Asking if an applicant is <strong>widowed or divorced</strong> (permitted terms are strictly limited to <em>married, unmarried,</em> or <em>separated</em>; &quot;unmarried&quot; encompasses widowed and divorced).</li></ul><ul id="4148ac6a-aab1-8035-98a9-ef4af21232b8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Inquiring about marital status for separate, unsecured accounts (with exceptions for community property states, joint accounts, secured loans, or when applicants rely on alimony/child support income).</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8092-ab7f-cf563e19250b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agent Empowerment &amp; Best Practices</strong><ul id="4148ac6a-aab1-8044-af15-de2910254324" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate professionals must remain vigilant, ask probing questions if a client faces unjustified denials or predatory terms, and stand empowered to serve as advocates against discriminatory lending.</li></ul></li></ul><ul id="4148ac6a-aab1-8098-bd95-ef824c9b4127" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4148ac6a-aab1-80a0-9b61-d57d4912830f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equal Credit Opportunity Act (ECOA) Applicant Rights Overview</strong><ul id="4148ac6a-aab1-80bf-a0ba-cb8590ab5972" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Building on foundational anti-discrimination protections, the ECOA guarantees specific, actionable consumer rights throughout the credit application and account management lifecycle.</li></ul></li></ul><ul id="4148ac6a-aab1-80b5-8759-f39a69e0d673" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Rights of Credit Applicants</strong><ul id="4148ac6a-aab1-8084-b02a-e1c4a42d74d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Choice of Name:</strong> Applicants have the absolute right to maintain credit accounts in their birth name (e.g., <em>Mary Smith</em>), their first name combined with a spouse&#x27;s last name (<em>Mary Jones</em>), or a hyphenated/combined last name (<em>Mary Smith Jones</em>).</li></ul><ul id="4148ac6a-aab1-8045-9fbc-fbd32a0e9007" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cosigner Independence:</strong><ul id="4148ac6a-aab1-80c0-8d47-dd08ef8fae95" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the applicant independently meets the creditor’s underwriting standards, they cannot be forced to provide a cosigner.</li></ul><ul id="4148ac6a-aab1-80cc-9712-ec07911c5ee6" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a cosigner <em>is</em> genuinely required, the creditor cannot mandate that the cosigner be the applicant&#x27;s spouse.</li></ul></li></ul><ul id="4148ac6a-aab1-8030-be92-df06bab0a357" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Account Continuity Upon Life Changes:</strong> Existing credit accounts remain undisturbed when a borrower changes their name, marital status, reaches a certain age, or retires, unless the creditor has verifiable, documented evidence that the borrower is unwilling or unable to pay.</li></ul><ul id="4148ac6a-aab1-8005-b9e7-c9786e93191d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timely Application Decisions:</strong> Borrowers have the right to be notified whether their credit application was accepted or rejected <strong>within 30 days</strong> of submitting a complete application.</li></ul><ul id="4148ac6a-aab1-8008-bbe0-de1aa5ab5e9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right to Specific Rejection Reasons:</strong> If an application is denied, the creditor must provide the specific reason for rejection (or inform the applicant of their right to request it within 60 days).<ul id="4148ac6a-aab1-801b-9510-fb7f2465549d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Valid Reason Example:</em> &quot;Your income is too low&quot; or &quot;Insufficient unencumbered employment history.&quot;</li></ul><ul id="4148ac6a-aab1-805b-ab9e-c1729e4c797a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Invalid Reason Example:</em> &quot;You didn&#x27;t meet our minimum standards&quot; (which is legally impermissible due to a lack of specific, actionable clarity).</li></ul></li></ul><ul id="4148ac6a-aab1-80d4-9840-e5d82d8e6b9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Explanation for Less Favorable Terms:</strong> If a lender offers counter-offer terms that are less favorable than originally applied for (such as a smaller loan amount or higher interest rate) and the applicant <strong>rejects</strong> those terms, they are legally entitled to know why those specific terms were offered.</li></ul><ul id="4148ac6a-aab1-8071-8c40-d0d8c6dac5ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Account Closure &amp; Modification Explanations:</strong> Consumers have the right to know why an existing account was closed or why its terms were tightened, unless the account was voluntarily closed due to inactivity or the customer failed to make payments as agreed</li></ul></li></ul><ul id="4148ac6a-aab1-8028-a96e-e99165b4c84d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If Discrimination Is Suspected</strong><figure id="4148ac6a-aab1-8089-a1b0-d5506c75f2af" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image%202.png"><img style="width:288px" src="Chapter%202%20-%20Financial%20Regulation/image%202.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-8021-8481-d400561bba30" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Community Reinvestment Act (CRA) Overview</strong><ul id="4148ac6a-aab1-80bb-8d77-f3bd8c179eac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment:</strong> Passed by Congress in <strong>1977</strong> with the primary purpose of encouraging FDIC-insured commercial banks and savings associations to help meet the credit needs of the local communities where they are chartered and operate.</li></ul><ul id="4148ac6a-aab1-8019-bed8-c552bc3c9419" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Combating Redlining:</strong> Directly targets and combats historical redlining by requiring financial institutions to actively extend credit, mortgages, and small business loans in low- and moderate-income (LMI) neighborhoods within their assessment areas, rather than taking deposits from those communities while investing elsewhere.</li></ul></li></ul><ul id="4148ac6a-aab1-801e-abbe-f76955b2ab19" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Requirements &amp; Enforcement</strong><ul id="4148ac6a-aab1-80a3-96ee-c259e563e0d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Periodic Evaluations:</strong> Covered depository institutions are evaluated periodically by federal financial regulatory agencies to assess their &quot;good faith&quot; compliance in meeting local community credit needs.</li></ul><ul id="4148ac6a-aab1-80bb-99ab-f9c23fded0a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Performance Evaluations:</strong> Banks must submit annual disclosures that include public comments regarding their community outreach and lending efforts.</li></ul><ul id="4148ac6a-aab1-800c-90c9-cdd837926431" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Impact on Corporate Growth:</strong> An institution’s CRA performance rating is a critical factor when regulators review applications for corporate expansion, including new branch openings, mergers, and acquisitions. A poor CRA rating can legally delay or block corporate deals.</li></ul></li></ul><ul id="4148ac6a-aab1-8035-aa4d-da2725c80d97" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4148ac6a-aab1-80bb-b8f5-eb2e89dec0b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consumer Protection Laws</strong><figure id="4148ac6a-aab1-80e6-b7ce-e0b9054e7ab2" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image%203.png"><img style="width:384px" src="Chapter%202%20-%20Financial%20Regulation/image%203.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-8081-a321-cec7606d8d61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Secure and Fair Enforcement for Mortgage Licensing Act of 2008 (SAFE Act) </strong><ul id="4148ac6a-aab1-8000-a4e2-c12bb788f7f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Origins:</strong> Passed on <strong>July 30, 2008</strong>, in the immediate wake of the subprime mortgage crisis to establish rigorous, standardized national licensing and registration requirements for mortgage professionals. In 2011, Title X of the Dodd-Frank Act transferred administrative and enforcement authority over the SAFE Act to the CFPB.</li></ul><ul id="4148ac6a-aab1-806e-8abf-d0746af1f8d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The NMLS:</strong> Established the <strong>Nationwide Mortgage Licensing System and Registry (NMLS)</strong>, a centralized, public online database requiring mandatory participation from every U.S. state to track and license mortgage loan originators (MLOs).</li></ul></li></ul><ul id="4148ac6a-aab1-80a4-bb54-e40d45be6ba6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Requirements for Mortgage Loan Originators (MLOs)</strong><ul id="4148ac6a-aab1-80b4-9613-f24eca8d5a6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unique NMLS Identifier:</strong> Any individual engaging in the business of originating residential mortgage loans must register and obtain a unique, permanent NMLS ID (which must be renewed annually).</li></ul><ul id="4148ac6a-aab1-80ac-8ce3-e9226c5315cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-Licensing &amp; Continuing Education:</strong> State-licensed MLOs must complete mandatory pre-licensure education courses, pass a rigorous written qualification test, and fulfill annual continuing education (CE) requirements.</li></ul><ul id="4148ac6a-aab1-80c8-8ff1-e83c09125eaf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Background Checks &amp; Fingerprints:</strong> All MLOs must submit fingerprints to the NMLS for an FBI criminal background check. Additionally, state-licensed MLOs must authorize the NMLS to pull an independent credit report.</li></ul><ul id="4148ac6a-aab1-806d-b38c-c33a06fa25fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unified Online System:</strong> All federal registrations and state-level licenses must be processed, maintained, and updated through the shared NMLS portal.</li></ul></li></ul><ul id="4148ac6a-aab1-804e-a166-cc643192467d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Primary Purpose &amp; Objectives of the SAFE Act</strong><ul id="4148ac6a-aab1-8080-9b7c-c50a45fe2cde" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consumer Protection &amp; Fraud Reduction:</strong> Designed specifically to prevent a recurrence of the rogue origination practices that fueled the 2007–2010 financial crisis.</li></ul><ul id="4148ac6a-aab1-80c3-b05e-c7323c602a0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Regulatory Transparency:</strong> Streamlines and aggregates communication between federal and state regulators, enhances MLO accountability, and provides robust anti-fraud safeguards.</li></ul><ul id="4148ac6a-aab1-8067-920e-c9d185859384" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Consumer Access:</strong> Empowers consumers by providing a free, publicly searchable database (<code>nmlsconsumeraccess.org</code>) to check an MLO&#x27;s employment history and view any publicly adjudicated disciplinary or enforcement actions.</li></ul></li></ul></div><div id="4148ac6a-aab1-80d7-8c5f-db371e257fe8" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4148ac6a-aab1-80e3-960d-fa8ce69ce509" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4148ac6a-aab1-8020-8dd3-c40f57e531c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Dodd-Frank Act - a law passed in response to the subprime mortgage crisis that created the Consumer Finance Protection Bureau</li></ul><ul id="4148ac6a-aab1-8071-af81-f2bca79fa54f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Equal Credit Opportunity Act (ECOA) - a fair lending law that aims to bar discriminatory lending practices</li></ul><ul id="4148ac6a-aab1-8082-9e24-c76f0cb578ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real Estate Settlement Procedures Act (RESPA) - legislation<strong> </strong>passed to eliminate kickbacks in lending and disclose the costs of closing a loan</li></ul><ul id="4148ac6a-aab1-80c0-8ea6-c3ce1c52d97c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Regulation Z - the part of the Truth in Lending Act (TILA) that seeks to protect consumers by requiring proper disclosures and fair lending practices</li></ul><p id="4148ac6a-aab1-802b-ba0a-dd5d2fd21664" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4148ac6a-aab1-8041-9eeb-d721b5f36611" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What TILA Does</strong><ul id="4148ac6a-aab1-8046-b988-d180b3b164ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">TILA protects consumers against inaccurate and unfair credit billing and credit card practices. It requires lenders to provide consumers with loan cost information so that consumers can comparison shop for certain types of loans.</li></ul></li></ul><ul id="4148ac6a-aab1-80da-a408-d0098af04fc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TILA, RESPA, and TRID</strong><ul id="4148ac6a-aab1-80e9-90ea-f9f2e7f0c3ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Review the laws, the organizations that regulate them, and the names of the regulations.<figure id="4148ac6a-aab1-808e-b82e-e033adaabb96" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image%204.png"><img style="width:336px" src="Chapter%202%20-%20Financial%20Regulation/image%204.png"/></a></figure></li></ul></li></ul><h3 id="4148ac6a-aab1-80cb-a33b-ecf001f55239" class="" dir="auto"><strong>Reg Z Rules</strong></h3><p id="4148ac6a-aab1-805e-b637-d10fcbeb3481" class="" dir="auto">The four big Reg Z rules to know are:</p><p id="4148ac6a-aab1-8005-9c9c-e942689a17b6" class="" dir="auto"><strong>Loan originator compensation rules: Kickbacks are not allowed.Disclosure of loan terms: Creditors must disclose terms to all borrowers.Right of rescission for loans using an already-owned house as collateral: Borrowers have a three-day period to back out of the loan if they&#x27;re getting a refinance or home equity loan.Rules for advertising loan rates: Certain things trigger a full disclosure of loan rates.</strong></p><ul id="4148ac6a-aab1-8052-bd45-f71a801b34c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan originator compensation rules:</strong> Kickbacks are not allowed.</li></ul><ul id="4148ac6a-aab1-801f-b759-fdff8250110c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure of loan terms:</strong> Creditors must disclose terms to all borrowers.</li></ul><ul id="4148ac6a-aab1-80cf-bd31-f330ff4d7b9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Right of rescission</strong> <strong>for loans using an already-owned house as collateral: </strong>Borrowers have a three-day period to back out of the loan if they&#x27;re getting a refinance or home equity loan.</li></ul><ul id="4148ac6a-aab1-801c-bd40-fe86471a98f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rules for advertising loan rates: </strong>Certain things trigger a full disclosure of loan rates.</li></ul><ul id="4148ac6a-aab1-804f-9ec9-d9acefca67f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trigger Items</strong><ul id="4148ac6a-aab1-805d-a223-f59edb598cdf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If any of the following trigger items appear in an ad, full disclosure becomes a requirement to stay compliant with Reg Z:<ul id="4148ac6a-aab1-80c5-a095-ed77c26358a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Monthly payment amount</li></ul><ul id="4148ac6a-aab1-8001-b2bd-e2927e196b98" class="bulleted-list" dir="auto"><li style="list-style-type:square">Number of payments</li></ul><ul id="4148ac6a-aab1-80e1-b295-ce5bd22bfa60" class="bulleted-list" dir="auto"><li style="list-style-type:square">Amount of down payment</li></ul><ul id="4148ac6a-aab1-80f1-b955-f2c933fbcccf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Finance charges</li></ul><ul id="4148ac6a-aab1-809b-9ce2-dd668441e26c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan terms</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8075-b2da-f9d1cb96d351" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full Disclosure</strong><ul id="4148ac6a-aab1-809d-b1ee-f9980bdfc35e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">What does full disclosure mean? If any of the trigger items appear in an ad, ALL of the following items must <em>also</em> appear in the ad:</li></ul><ul id="4148ac6a-aab1-8077-b5be-deef866d782d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Cash price</li></ul><ul id="4148ac6a-aab1-801c-9b8a-d817e6dc1c6b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Required down payment</li></ul><ul id="4148ac6a-aab1-8089-9033-f73c418310fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Number, amount, and due date of all payments</li></ul><ul id="4148ac6a-aab1-8064-88c4-d338342b7637" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Total of all payments to be made, unless the loan is for buying a home</li></ul><ul id="4148ac6a-aab1-8086-8c8e-f01b041de89c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">APR</li></ul></li></ul><ul id="4148ac6a-aab1-80a4-80c9-e0aab8d28311" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RESPA Rules</strong><ul id="4148ac6a-aab1-8002-b440-cd4408361c58" class="bulleted-list" dir="auto"><li style="list-style-type:circle">RESPA prohibits kickbacks for referrals for closing services.</li></ul><ul id="4148ac6a-aab1-8059-a529-f7e38d6a3f8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Per RESPA, sellers can&#x27;t require buyers to use their preferred title company unless they are paying for all of the title fees.</li></ul><ul id="4148ac6a-aab1-80ec-9bc4-ed2fbbc8a7cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">RESPA allows lenders to keep up to 14 months of payments in escrow accounts.</li></ul><ul id="4148ac6a-aab1-809a-8f41-dbfca8feaf31" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subprime Lending Crisis Timeline</strong><ul id="4148ac6a-aab1-8088-9117-f9cc4087a551" class="bulleted-list" dir="auto"><li style="list-style-type:square">Here&#x27;s a timeline of the lead-up to (and passage of) the Dodd-Frank Act.</li></ul><figure id="4148ac6a-aab1-8090-806e-d8bb84c6f21a" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SubprimeMortgageCrisisTimeline.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SubprimeMortgageCrisisTimeline.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SubprimeMortgageCrisisTimeline.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-8021-b2a8-d836581a81c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TRID Disclosures</strong><ul id="4148ac6a-aab1-8093-b01c-cc4649368f80" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The two forms mandated for most loans by TRID are the <em><strong>Loan Estimate</strong></em><strong> </strong>and the <em><strong>Closing Disclosure.</strong></em><strong> </strong>Lenders cannot charge for the preparation of either of these documents.</li></ul></li></ul><ul id="4148ac6a-aab1-80d8-82fb-c1d576c763e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Estimate</strong><ul id="4148ac6a-aab1-80fa-af26-e141fcfa4151" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Loan Estimate</strong></em> is just what it sounds like – an estimate of what the terms of the loan will be and how much it will cost. A few key things about the <em><strong>Loan Estimate:</strong></em></li></ul><ul id="4148ac6a-aab1-80b4-9a59-ebc14bcbbc00" class="bulleted-list" dir="auto"><li style="list-style-type:circle">It must contain <strong>a good faith estimate</strong> of credit costs and transaction terms.</li></ul><ul id="4148ac6a-aab1-8026-bf08-fc7544e942ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The creditor must deliver or place it in the mail <strong>no later than the third business day after having received the consumer’s application</strong>.</li></ul><ul id="4148ac6a-aab1-807f-ba42-cb032638e382" class="bulleted-list" dir="auto"><li style="list-style-type:circle">It must also be delivered or placed in the mail no later than the seventh business day before consummation of the transaction.</li></ul></li></ul><ul id="4148ac6a-aab1-8078-b49f-e7b13e8e9648" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Closing Disclosure</strong><ul id="4148ac6a-aab1-80be-ab94-e3229cd659fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Closing Disclosure</strong></em> (also called the <em>closing statement)</em> is a form used to itemize services and fees charged to the borrower by the lender when applying for a real estate loan.</li></ul><ul id="4148ac6a-aab1-8008-88b1-e810b03ddb68" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For loans that require a <em><strong>Loan Estimate</strong></em> and that proceed to closing, creditors must provide the <em><strong>Closing Disclosure</strong></em> reflecting the actual terms of the transaction. The creditor is generally required to ensure that <strong>the consumer receives the </strong><em><strong>Closing Disclosure</strong></em><strong> no later than three business days before consummation of the loan.</strong></li></ul><ul id="4148ac6a-aab1-80a6-8fb8-fe11994d8602" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Closing Disclosure</strong></em> should contain the actual terms and costs of the transaction.</li></ul></li></ul><ul id="4148ac6a-aab1-8063-9dc9-e94be4ab0263" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Other Consumer Protection Laws</strong><ul id="4148ac6a-aab1-808b-acd5-c4149df00711" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here is a big chart with all of the consumer protection laws we covered in this and the last chapter.<figure id="4148ac6a-aab1-80df-aac6-f283b26cee23" class="image" data-notion-image="Chapter%202%20-%20Financial%20Regulation/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Financial%20Regulation/image%205.png"><img style="width:375.796875px" src="Chapter%202%20-%20Financial%20Regulation/image%205.png"/></a></figure><p id="4148ac6a-aab1-80c6-b2d4-e2d9bad77704" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="4148ac6a-aab1-800d-8f12-e7dd395b824d" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

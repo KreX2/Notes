@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Closing the Loan</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80ad-ac1d-c8f39ebac26b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Closing the Loan</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4158ac6a-aab1-8094-af6f-c01a522a380f" class="column-list" data-notion-column-list="" dir="auto"><div id="4158ac6a-aab1-804b-a985-fc4bf4f8292e" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4158ac6a-aab1-800d-9b5d-decdd7274062" class="" dir="auto"><strong>Loan Origination &amp; Pre-Closing Timeline </strong></p><ul id="4158ac6a-aab1-800b-aff6-ce9fae18896b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Process:</strong> Loan origination and settlement is an extended process. It requires systematic steps to evaluate the borrower, assess the property collateral, verify title, prepare legal instruments, and execute closing documents before title transfers and funds disburse.</li></ul><ul id="4158ac6a-aab1-80d3-ae1d-ce31cb4ef8e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Application (URLA):</strong> The process formally begins when the borrower completes the <strong>Uniform Residential Loan Application (URLA / Fannie Mae Form 1003 / Freddie Mac Form 65)</strong> to provide complete financial and property details to the lender.</li></ul><ul id="4158ac6a-aab1-8020-9e30-ef702935f39b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Loan Estimate (LE):</strong> Within <strong>3 business days</strong> of receiving the completed loan application, the lender must issue a Loan Estimate (LE).<ul id="4158ac6a-aab1-80ac-999c-d50233b7ad3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Replaces the legacy Good Faith Estimate (GFE) and initial Truth-in-Lending (TIL) disclosure.</li></ul><ul id="4158ac6a-aab1-80c2-ab03-f3f5425df40f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Highlights estimated interest rates, projected monthly payments (PITI), cash to close, and total closing costs.</li></ul><ul id="4158ac6a-aab1-80c3-8206-eb8264a6c2f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Acts as an official disclosure for shopping across multiple lenders (does not constitute loan approval).</li></ul></li></ul><ul id="4158ac6a-aab1-8017-a189-ce975cce9ae4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underwriting &amp; Verification:</strong> Lenders review income, credit, net worth, and liabilities using the Residential Mortgage Credit Report (RMCR) and formal Verification of Employment (VOE) forms. Lenders are legally bound by ECOA to evaluate creditworthiness strictly on financial metrics, prohibiting discrimination based on protected classes.</li></ul><ul id="4158ac6a-aab1-80ef-a167-f5309075f0b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraisal &amp; Valuation:</strong> The lender orders an independent third-party appraisal to establish market value and verify the Loan-to-Value (LTV) ratio, determining required down payments and PMI/MIP requirements. Lenders must notify applicants within <strong>3 business days</strong> of application that they will receive a copy of the completed appraisal report.</li></ul><ul id="4158ac6a-aab1-806c-8901-f72a14ae2a0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Inspections:</strong> Pest inspections (WDI/WDO) and general home inspections are conducted to verify structural and property integrity; formal reports are incorporated into the closing packet.</li></ul><ul id="4158ac6a-aab1-8056-8b32-f077fd0fd75f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title Search &amp; Title Insurance:</strong><ul id="4158ac6a-aab1-8018-985a-dd9775dd6ca1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A title search examines public records for existing liens, clouds, or encumbrances, yielding a preliminary title report.</li></ul><ul id="4158ac6a-aab1-8064-a7c1-e9e3276f650b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title Insurance Policy:</strong> Paid at closing via a single one-time premium. Unlike standard insurance protecting against future events, title insurance protects against financial losses arising from past defects, liens, or unrecorded claims discovered after closing.</li></ul></li></ul><ul id="4158ac6a-aab1-80c1-abe4-d205e21d3a51" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Closing, Settlement &amp; Possession Mechanics</strong><ul id="4158ac6a-aab1-8081-a837-dc7707554afb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Loan Approval &amp; Loan Commitment:</strong> Lenders re-verify borrower credit and financial status right before closing. Clients must avoid making large purchases, opening new credit accounts, or changing employment during origination. Upon final underwriting approval, the lender issues a formal <strong>loan commitment</strong>.</li></ul><ul id="4158ac6a-aab1-8049-9b41-fa108518eb39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Document Preparation:</strong> Lenders prepare required legal instruments to secure their first-lien priority and protect financial interests (sales contract, deed, mortgage/deed of trust, property survey, inspection reports, homeowner&#x27;s insurance policy, bill of sale for personal property, and IRS Form 1099-S).</li></ul><ul id="4158ac6a-aab1-8000-8ac9-e42ca09973b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Closing Disclosure (CD):</strong> Delivered to the borrower at least <strong>3 business days prior to closing</strong>. Reflects exact final numbers, loan terms, and settlement charges, matching the figures presented at escrow signing.</li></ul><ul id="4158ac6a-aab1-80d6-9a30-dbe6b3377a37" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow Signing:</strong> Borrower deposits required down payment and closing costs into escrow while signing the loan packet, which includes:<ol type="1" id="4158ac6a-aab1-8015-8c6e-e7b1e16e798c" class="numbered-list" start="1" dir="auto"><li><strong>Promissory Note:</strong> The legal obligation establishing debt liability, repayment terms, and interest rate (holds negotiable value similar to a check).</li></ol><ol type="1" id="4158ac6a-aab1-80b2-afea-cd1b11959fa5" class="numbered-list" start="2" dir="auto"><li><strong>Security Instrument (Mortgage or Deed of Trust):</strong> Pledges the property as collateral for the note (hypothecation).</li></ol><ol type="1" id="4158ac6a-aab1-8034-9967-f96940538a2e" class="numbered-list" start="3" dir="auto"><li><strong>Truth in Lending Statement &amp; Closing Disclosure:</strong> Final accounting of total financing costs over the life of the loan.</li></ol><ol type="1" id="4158ac6a-aab1-8005-a11c-c7217d6002af" class="numbered-list" start="4" dir="auto"><li><strong>Title Insurance Commitment &amp; Proration Statements:</strong> Details title status and prorated monthly expenses (HOA dues, property taxes, utilities).</li></ol><ol type="1" id="4158ac6a-aab1-8010-8bdb-fa9fdf7115b6" class="numbered-list" start="5" dir="auto"><li><strong>Supporting Affidavits &amp; Reports:</strong> Statement of identity, inspection declarations, and abstract of title.</li></ol></li></ul><ul id="4158ac6a-aab1-8024-886f-ca00f712bca4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recording &amp; Constructive Notice:</strong> Executed documents (deed and mortgage/deed of trust) are recorded in county title records to establish legal ownership and provide <strong>constructive notice</strong> to the public regarding property interests.</li></ul><ul id="4158ac6a-aab1-803a-aed8-e7684bc79037" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disbursement of Funds &amp; Possession:</strong> Escrow releases funds to the seller once all closing conditions are satisfied and documents are verified. Upon funding and legal recording, the buyer receives the keys and officially takes possession as the new homeowner.<figure id="4158ac6a-aab1-80c8-aeab-c5fdabe4153f" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image.png"><img style="width:240px" src="Chapter%203%20-%20Closing%20the%20Loan/image.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-809f-a810-ca50a1cca905" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Government Influence in Loan Origination </strong><ul id="4158ac6a-aab1-8043-a199-c74d23cb9f3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Federal regulations and legislation shape mortgage loan origination, ensuring transparency, preventing abusive lending practices, standardized disclosures, and protecting consumer rights throughout the transaction.</li></ul></li></ul><ul id="4158ac6a-aab1-803f-9d2e-c646f1ea97c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Regulation Z (Truth in Lending Act / TILA)</strong><ul id="4158ac6a-aab1-80b7-be7f-ec15f002bbd3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Enacted to ensure credit terms are disclosed clearly and meaningfully, enabling consumers to compare credit costs across lenders knowledgeably. Applies to all residential mortgage loans.</li></ul><ul id="4158ac6a-aab1-80ce-9ff7-cc87710cef76" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Lender Requirements:</strong><ul id="4158ac6a-aab1-80e3-8e18-ebf248949381" class="bulleted-list" dir="auto"><li style="list-style-type:square">Must disclose all loan fees and the <strong>Annual Percentage Rate (APR)</strong> during origination.</li></ul><ul id="4158ac6a-aab1-8066-9016-f35a51304cf2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Must comply with strict advertising guidelines regarding trigger terms (e.g., down payment amounts, interest rates, monthly payments).</li></ul></li></ul><ul id="4158ac6a-aab1-8044-814b-c3e190f61bb5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right of Rescission:</strong> Provides borrowers taking out home equity loans or refinancing an existing mortgage a <strong>3-business-day right of rescission</strong> to cancel the transaction after consummation (does <em>not</em> apply to purchase-money mortgages).</li></ul></li></ul><ul id="4158ac6a-aab1-8017-9e33-ce917dbdd0a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Settlement Procedures Act (RESPA) Guidelines</strong><ul id="4158ac6a-aab1-80f6-83ef-e6406a04ff41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>RESPA Mandatory Requirements (The &quot;DOs&quot;):</strong><ul id="4158ac6a-aab1-807f-bdf1-f3b1e8ab989c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>CFPB Educational Booklet:</strong> Lenders must supply applicants with the CFPB booklet explaining loan options and the settlement process.</li></ul><ul id="4158ac6a-aab1-8099-a845-e6d3189f5f2e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Standard Disclosure Delivery:</strong> Must provide the Loan Estimate within <strong>3 business days</strong> of application and the Closing Disclosure at least <strong>3 business days</strong> prior to closing.</li></ul><ul id="4158ac6a-aab1-8052-b5aa-ca6e5a42f625" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Computerized Loan Origination (CLO) Fees:</strong> Brokers may charge up to 0.5% for CLO matching services provided the fee is paid by the borrower (not the lender), disclosed upfront, and reflects reasonable services rendered.</li></ul></li></ul><ul id="4158ac6a-aab1-8001-9d95-d5c004bb7192" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>RESPA Restrictions &amp; Prohibitions (The &quot;DON&#x27;Ts&quot;):</strong><ul id="4158ac6a-aab1-8082-827b-f057569c4b26" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Escrow Cushion Limits:</strong> Lenders cannot hold excessive funds in escrow for taxes and insurance. RESPA caps maximum escrow collections at <strong>14 months of payments</strong> (a 2-month safety cushion above the 12-month annual requirement). Surplus funds over 14 months must be refunded or applied to future obligations.</li></ul><ul id="4158ac6a-aab1-802b-8193-ed2de1ffd3a7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Fee for Required Disclosures:</strong> Lenders are strictly prohibited from charging borrowers fees for preparing the Loan Estimate, Closing Disclosure, escrow statements, or TILA disclosures.</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80e1-bb96-f9958b226e25" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TILA-RESPA Integrated Disclosure (TRID) &amp; The Dodd-Frank Act</strong><ul id="4158ac6a-aab1-8017-85fb-f727c359d970" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dodd-Frank Wall Street Reform and Consumer Protection Act (2010):</strong> Created the <strong>Consumer Financial Protection Bureau (CFPB)</strong> as a centralized agency to enforce federal consumer financial laws.</li></ul><ul id="4158ac6a-aab1-808e-a17c-eaabea2db99f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>TRID Integration (2015):</strong> Streamlined legacy TILA and RESPA disclosure rules into two unified, transparent forms:<ol type="1" id="4158ac6a-aab1-80a9-a8d1-da3046405b86" class="numbered-list" start="1" dir="auto"><li><strong>Loan Estimate (LE):</strong> Replaced the Good Faith Estimate (GFE) and initial Truth-in-Lending (TIL) statement.</li></ol><ol type="1" id="4158ac6a-aab1-80ad-a56d-c056c2a38719" class="numbered-list" start="2" dir="auto"><li><strong>Closing Disclosure (CD):</strong> Replaced the HUD-1 Settlement Statement and final Truth-in-Lending statement.</li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-80b2-9cea-c8a932df949b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Key Rescission &amp; Escrow Benchmarks<table id="4158ac6a-aab1-80d7-8e0f-edcd18c7d521" class="simple-table" dir="ltr"><tbody><tr id="4158ac6a-aab1-804d-96bc-e136af555f5f" dir="ltr"><td id="w`u;" class=""><strong>Metric / Requirement</strong></td><td id="qTFO" class=""><strong>Statutory Standard</strong></td><td id="l@[|" class=""><strong>Application Scope</strong></td></tr><tr id="4158ac6a-aab1-8052-a72b-c2c48e460cdb" dir="ltr"><td id="w`u;" class=""><strong>Right of Rescission</strong></td><td id="qTFO" class=""><strong>3 Business Days</strong></td><td id="l@[|" class="">Home Equity Loans &amp; Refinances (Not Purchase Loans)</td></tr><tr id="4158ac6a-aab1-8054-a430-c3f9555e975d" dir="ltr"><td id="w`u;" class=""><strong>Escrow Account Maximum Cap</strong></td><td id="qTFO" class=""><strong>14 Months Total</strong> (12 Months Annual + 2 Month Cushion)</td><td id="l@[|" class="">Property Taxes &amp; Homeowners Insurance Escrows</td></tr><tr id="4158ac6a-aab1-8039-b9ae-e1da2e092148" dir="ltr"><td id="w`u;" class=""><strong>Loan Estimate Delivery</strong></td><td id="qTFO" class=""><strong>Within 3 Business Days</strong> of Application</td><td id="l@[|" class="">All Covered Residential Mortgage Loans</td></tr><tr id="4158ac6a-aab1-80b2-ba3c-eaba2764f7b1" dir="ltr"><td id="w`u;" class=""><strong>Closing Disclosure Delivery</strong></td><td id="qTFO" class=""><strong>At Least 3 Business Days</strong> Before Settlement</td><td id="l@[|" class="">All Covered Residential Mortgage Loans</td></tr></tbody></table></li></ul><ul id="4158ac6a-aab1-80f5-8cf0-c711d1f54553" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CFPB Integrated Disclosures (TRID) Summary</strong><ul id="4158ac6a-aab1-803a-94ec-c1ad682f8524" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Loan Estimate (LE):</strong><ul id="4158ac6a-aab1-8075-8128-d6774fc116b3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Replaces the legacy <strong>Good Faith Estimate (GFE)</strong> and the initial <strong>Truth-in-Lending (TIL)</strong> statement.</li></ul><ul id="4158ac6a-aab1-8081-bd92-e68841fea49d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Designed to simplify comparison shopping among competing lenders by highlighting essential loan parameters early in the origination process.</li></ul></li></ul><ul id="4158ac6a-aab1-809c-95be-f393a636cf12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Closing Disclosure (CD):</strong><ul id="4158ac6a-aab1-8021-abd8-cb0d73ee2800" class="bulleted-list" dir="auto"><li style="list-style-type:square">Replaces the legacy <strong>HUD-1 Settlement Statement</strong> and the final <strong>Truth-in-Lending (TIL)</strong> statement.</li></ul><ul id="4158ac6a-aab1-80dc-a392-ca361e65ad8e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mirrors the structure, design, and line-item formatting of the Loan Estimate so borrowers can easily compare side-by-side and spot any cost increases or fee changes prior to closing.</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80fc-bb07-d5db1b88d115" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TRID Statutory Delivery Deadlines (Exam Critical)</strong><ul id="4158ac6a-aab1-807b-a706-c1a02300702d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Estimate (LE) Deadline:</strong> Must be delivered or placed in the mail by the lender within <strong>3 business days</strong> of receiving the borrower&#x27;s loan application.</li></ul><ul id="4158ac6a-aab1-8057-9f9a-f360efc8819b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fee Collection Restriction:</strong> Lenders cannot charge application, appraisal, or processing fees (except a reasonable credit report fee) until the applicant has received the LE and given intent to proceed.</li></ul><ul id="4158ac6a-aab1-801b-80cc-d5484eead691" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Closing Disclosure (CD) Deadline:</strong> The borrower must <strong>receive</strong> the CD at least <strong>3 business days</strong> prior to closing day.</li></ul><ul id="4158ac6a-aab1-8005-86f1-e39fd7fee046" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Impact of Missed CD Deadline:</strong> Failing to meet the 3-day receipt window forces the settlement date to be postponed, delaying closing and potential property possession.</li></ul></li></ul><ul id="4158ac6a-aab1-8082-8e85-ff84fc29921c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How LE and CD Work Together (Page 1 Alignment)</strong><ul id="4158ac6a-aab1-80f5-89e1-c48acac05c00" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Projected Payments:</strong> Both forms display a clear breakdown of estimated total monthly payments (PITI), helping borrowers evaluate ongoing housing expenses alongside unescrowed costs like HOA dues or property maintenance.</li></ul><ul id="4158ac6a-aab1-80bd-b1eb-f43dedf30c89" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Costs at Closing:</strong> Page 1 of both documents explicitly states:<ul id="4158ac6a-aab1-80bd-8518-eea3aa14eb96" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Total Closing Costs:</strong> Loan origination, title, appraisal, and third-party fees.</li></ul><ul id="4158ac6a-aab1-80cd-88de-cc526c6e0574" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Estimated Cash to Close:</strong> Total liquid funds required at closing (down payment + closing costs - earnest money deposit/credits).</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80ba-83fb-e295b602faaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Triggers for Revised Loan Estimates</strong><ul id="4158ac6a-aab1-80b6-a778-d741e77a7910" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If material changes occur during underwriting, lenders must issue a <strong>revised Loan Estimate</strong>. Common change triggers include:<ul id="4158ac6a-aab1-806a-8bad-e0e6e6c2f51b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Switching loan products (e.g., from an adjustable-rate mortgage to a fixed-rate loan).</li></ul><ul id="4158ac6a-aab1-80c1-8bb9-f5c7a1d7c21c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Altering the down payment amount or loan balance.</li></ul><ul id="4158ac6a-aab1-8088-b2a0-c75df815d37f" class="bulleted-list" dir="auto"><li style="list-style-type:square">An appraisal coming in lower than purchase price.</li></ul><ul id="4158ac6a-aab1-80c8-a149-fd18ac70f70d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Changes in the borrower&#x27;s credit score or credit profile.</li></ul><ul id="4158ac6a-aab1-8062-87ac-f761fd80bc68" class="bulleted-list" dir="auto"><li style="list-style-type:square">Income or employment verification discrepancies.</li></ul><ul id="4158ac6a-aab1-800d-b031-eeb5488661ec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Floating interest rate lock changes (adjusting discount points or lender credits).</li></ul><figure id="4158ac6a-aab1-802c-ad37-e96c10b0b383" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image%201.png"><img style="width:528px" src="Chapter%203%20-%20Closing%20the%20Loan/image%201.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8064-960c-cf326afc2039" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Comparison of TRID Legacy vs. Integrated Disclosures<table id="4158ac6a-aab1-80f3-bc93-eb5043cda259" class="simple-table" dir="ltr"><tbody><tr id="4158ac6a-aab1-80f4-aca1-c6b953741e04" dir="ltr"><td id="luf&gt;" class=""><strong>Stage</strong></td><td id="n}:z" class=""><strong>Legacy Forms (Pre-TRID)</strong></td><td id="D]hz" class=""><strong>Integrated Forms (TRID / CFPB)</strong></td><td id="zChz" class=""><strong>Statutory Delivery Deadline</strong></td></tr><tr id="4158ac6a-aab1-804d-9738-c261a42d8d75" dir="ltr"><td id="luf&gt;" class=""><strong>Initial Application</strong></td><td id="n}:z" class="">Good Faith Estimate (GFE) &amp; Initial TIL</td><td id="D]hz" class=""><strong>Loan Estimate (LE)</strong></td><td id="zChz" class="">Within <strong>3 business days</strong> of application</td></tr><tr id="4158ac6a-aab1-80cb-bd8c-eecbeaeddbe1" dir="ltr"><td id="luf&gt;" class=""><strong>Final Settlement</strong></td><td id="n}:z" class="">HUD-1 Settlement Statement &amp; Final TIL</td><td id="D]hz" class=""><strong>Closing Disclosure (CD)</strong></td><td id="zChz" class="">Received at least <strong>3 business days</strong> before closing</td></tr></tbody></table></li></ul><ul id="4158ac6a-aab1-806d-8924-f8eab5982d3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Full Form<figure id="4158ac6a-aab1-803d-86e7-fb28410a4487" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image%202.png"><img style="width:432px" src="Chapter%203%20-%20Closing%20the%20Loan/image%202.png"/></a></figure></li></ul><ul id="4158ac6a-aab1-8053-8cdd-df41b2a56ecf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discount Points vs. Lender Credits </strong><ul id="4158ac6a-aab1-8035-b771-fc25a8e246c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Discount Points (Buydown):</strong> Upfront fees paid by the borrower at closing to lock in a lower ongoing interest rate over the life of the loan (prepaying interest upfront).</li></ul><ul id="4158ac6a-aab1-80a5-938e-c9412a802f64" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Credits:</strong> Credit offered by the lender to reduce upfront closing costs in exchange for accepting a higher ongoing interest rate over the life of the loan.</li></ul><ul id="4158ac6a-aab1-806e-b86b-d66dedc75649" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 1% Universal Rule:</strong> <strong>1 point strictly equals 1% of the loan principal amount</strong> (applies equally to both loan origination points and discount points).</li></ul></li></ul><ul id="4158ac6a-aab1-8022-a80b-df18713085c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Interest Rate Reductions &amp; Lender Rules of Thumb</strong><ul id="4158ac6a-aab1-8044-b160-fce9e36f38a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standard Threshold:</strong> As a general rule of thumb, paying <strong>1 discount point (1% of loan principal)</strong> typically lowers the mortgage interest rate by <strong>25 basis points (0.25%)</strong>.</li></ul><ul id="4158ac6a-aab1-80b3-b432-e40e4547613c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Diminishing Returns:</strong> Purchasing additional points does not guarantee linear rate reductions. Purchasing 2 points may yield less than a 50 basis point (0.50%) drop depending on individual lender pricing structures. Borrowers should always evaluate the specific break-even timeline for each point purchased.</li></ul></li></ul><ul id="4158ac6a-aab1-8031-a2cd-d5254ed4d037" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Break-Even Analysis &amp; Mathematical Formulas</strong><ul id="4158ac6a-aab1-8020-ad90-cd5088c797ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Decision Strategy:</strong> Prepaying interest via discount points makes economic sense only if the borrower intends to remain in the home (and retain the original mortgage without refinancing) beyond the financial <strong>break-even point</strong>.</li></ul><ul id="4158ac6a-aab1-80ea-8da7-cdb6d65436c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Break-Even Formula :</strong><code>Discount point fee ÷ Monthly payment savings = Months to break even</code></li></ul></li></ul><ul id="4158ac6a-aab1-80ae-bb8a-e40a431597a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Example (Break-Even Calculation)</strong><ul id="4158ac6a-aab1-801e-b6bf-c1601662bf07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables:</strong><ul id="4158ac6a-aab1-8086-9da4-fe1c82d745ce" class="bulleted-list" dir="auto"><li style="list-style-type:square">Upfront Discount Point Fee: <strong>$3,000</strong></li></ul><ul id="4158ac6a-aab1-8058-8226-c40a3a917d75" class="bulleted-list" dir="auto"><li style="list-style-type:square">Monthly Mortgage Payment Reduction: <strong>$100</strong></li></ul></li></ul><ul id="4158ac6a-aab1-80ee-a345-e47c25709ea7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Calculation:</strong><code>$3,000 ÷ $100 = 30 months</code></li></ul><ul id="4158ac6a-aab1-809b-88ac-ea2af9f349b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Result &amp; Takeaway:</strong> The borrower must stay in the loan for at least <strong>30 months (2.5 years)</strong> to recover the $3,000 upfront cost. Keeping the loan beyond 30 months generates an ongoing net savings of $100 per month.<figure id="4158ac6a-aab1-805d-8c43-f02543015277" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image%203.png"><img style="width:384px" src="Chapter%203%20-%20Closing%20the%20Loan/image%203.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8022-9c8d-dfe693be74a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Points &amp; Credits Tradeoff Matrix<table id="4158ac6a-aab1-803d-8462-d7a534239211" class="simple-table" dir="ltr"><tbody><tr id="4158ac6a-aab1-802f-a8ad-f769ecd456bd" dir="ltr"><td id="TPga" class=""><strong>Option</strong></td><td id="YQMZ" class=""><strong>Upfront Closing Costs</strong></td><td id="[&lt;d`" class=""><strong>Mortgage Interest Rate</strong></td><td id="mVL:" class=""><strong>Ideal Borrower Profile</strong></td></tr><tr id="4158ac6a-aab1-805c-98d1-cdcbf1d7d55d" dir="ltr"><td id="TPga" class=""><strong>Pay Discount Points</strong></td><td id="YQMZ" class=""><strong>Higher</strong> (Pays upfront fee)</td><td id="[&lt;d`" class=""><strong>Lower</strong></td><td id="mVL:" class="">Long-term homeowner intending to hold the mortgage past break-even</td></tr><tr id="4158ac6a-aab1-80e9-8a6d-c9d9d918e04d" dir="ltr"><td id="TPga" class=""><strong>Zero Points / Zero Credits</strong></td><td id="YQMZ" class=""><strong>Standard</strong> (Base closing costs)</td><td id="[&lt;d`" class=""><strong>Base Rate</strong></td><td id="mVL:" class="">Uncertain timeline or standard cash-on-hand scenario</td></tr><tr id="4158ac6a-aab1-800e-8ee8-e21abbe8c3ae" dir="ltr"><td id="TPga" class=""><strong>Receive Lender Credits</strong></td><td id="YQMZ" class=""><strong>Lower</strong> (Lender covers costs)</td><td id="[&lt;d`" class=""><strong>Higher</strong></td><td id="mVL:" class="">Cash-strapped buyer needing lower upfront costs at closing</td></tr></tbody></table></li></ul><ul id="4158ac6a-aab1-80f1-b07e-f3cf6eb90489" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Cash to Close</strong><ul id="4158ac6a-aab1-8015-950d-c79a92783c70" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Cash to close is the total amount a buyer needs to bring to closing. This includes cash for such things as fees, taxes, prepaid and escrow items, title policy, points, down payment, etc.</li></ul><ul id="4158ac6a-aab1-802b-96a8-ef89cc21da03" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If you reviewed the <em><strong>Loan Estimate</strong></em> form I provided earlier, you might have noticed that the bottom of page two contains a section titled <em>Calculating Cash to Close</em>. It provides a line-item list of what would be added and subtracted to get to the total estimated cash to close. (This will also appear with the latest numbers in the <em><strong>Closing Disclosure</strong></em> form.)<figure id="4158ac6a-aab1-803f-a08c-ecbaeded47b5" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image%204.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image%204.png"><img style="width:480px" src="Chapter%203%20-%20Closing%20the%20Loan/image%204.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-800a-88e5-c44937b8e70a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cash to Close Calculation Overview</strong><ul id="4158ac6a-aab1-80c4-8af0-e7dd1a0ae065" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The total liquid amount of cash a borrower must bring to the settlement table (via cashier&#x27;s check or wire transfer) to execute the transaction.</li></ul><ul id="4158ac6a-aab1-80a9-a3b2-ccab7bc0f249" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Formula: </strong><code>Total Closing Costs + Down Payment - Earnest Money Deposit - Seller Credits - Other Credits = Estimated Cash to Close</code></li></ul></li></ul><ul id="4158ac6a-aab1-8087-a8c3-f15007e750eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Gabby&#x27;s Cash to Close Breakdown</strong><ul id="4158ac6a-aab1-8077-8572-d6a45804e7a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables:</strong><ul id="4158ac6a-aab1-8021-bd9b-f664edc57bbe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Purchase Price: <strong>$250,000</strong></li></ul><ul id="4158ac6a-aab1-80cf-8176-e1a1d444c508" class="bulleted-list" dir="auto"><li style="list-style-type:square">Earnest Money Deposit: <strong>$25,000</strong></li></ul><ul id="4158ac6a-aab1-800e-aac3-ca5155e62822" class="bulleted-list" dir="auto"><li style="list-style-type:square">Financing: <strong>80% LTV Loan</strong> (implies a <strong>20% down payment</strong>)</li></ul><ul id="4158ac6a-aab1-80f2-bd33-e7bf5897fba8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total Closing Costs: <strong>$9,382</strong> (not financed into the loan)</li></ul><ul id="4158ac6a-aab1-80ef-8065-c115b0fe5184" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seller Credit: <strong>$2,000</strong></li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-8041-8d98-d9f883b72a49" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Line-by-Line LE/CD Breakdown &amp; Calculations:</strong><figure id="4158ac6a-aab1-80c2-a87e-ed5ea43239b1" class="image" data-notion-image="Chapter%203%20-%20Closing%20the%20Loan/image%205.png" dir="ltr"><a href="Chapter%203%20-%20Closing%20the%20Loan/image%205.png"><img style="width:432px" src="Chapter%203%20-%20Closing%20the%20Loan/image%205.png"/></a></figure></li></ul><ul id="4158ac6a-aab1-808b-8890-ce2b7011c2cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Takeaways &amp; Bonus Knowledge</strong><ul id="4158ac6a-aab1-801f-9747-feaa978f2249" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Estimated Cash to Close:</strong> Gabby must provide <strong>$32,382</strong> at closing via cashier&#x27;s check or wire transfer.</li></ul><ul id="4158ac6a-aab1-802f-aace-ea01f8b23047" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Total Out-of-Pocket Cost to Close:</strong> Adding back the <strong>$25,000</strong> earnest money paid upfront to the <strong>$32,382</strong> cash to close gives Gabby&#x27;s total out-of-pocket investment of <strong>$57,382</strong> (<code>$50,000 down payment + $9,382 closing costs - $2,000 seller credit</code>).</li></ul></li></ul></div><div id="4158ac6a-aab1-80ec-9fb7-ee3d2ac3f949" style="width:31.250000000000007%" class="column" data-notion-column-ratio="0.31250000000000006" dir="auto"><p id="4158ac6a-aab1-80be-84c4-c79701764f52" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4158ac6a-aab1-8040-af2f-d79be1cb598f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>loan commitment </strong>- a lender&#x27;s approval of a specific loan for a specific property; occurs upon completion of final loan approval step </li></ul><ul id="4158ac6a-aab1-8085-9442-c90fe264547c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>loan estimate </strong>- combines and replaces the <em><strong>Good Faith Estimate </strong></em>and the initial <em><strong>Truth-in-Lending</strong></em> (TIL) statement; highlights the most important elements of the transaction</li></ul><p id="4158ac6a-aab1-8074-ab54-f51f228664bd" class="" dir="auto">
+</p><p id="4158ac6a-aab1-802c-8093-e400726cd673" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4158ac6a-aab1-8040-9a3d-f6d7130f878e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Origination Timeline</strong><figure id="4158ac6a-aab1-8024-9252-fe41689eb3d1" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_LoanOrigination_Timeline_22837.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_LoanOrigination_Timeline_22837.png"><img style="width:384px" src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_LoanOrigination_Timeline_22837.png"/></a></figure></li></ul><ul id="4158ac6a-aab1-8082-b0dd-f6fbead02094" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Uniform Residential Loan Application</strong></li></ul><ul id="4158ac6a-aab1-807e-9de2-e3df6d312735" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Fannie Mae&#x27;s <em><strong>Uniform Residential Loan Application</strong></em> (URLA) is the standard form most lenders use to collect the information necessary to evaluate the loan risk their applicants represent. The benefit of using this form is that it allows lenders to approach the task of underwriting without bias and with consistency.</li></ul><ul id="4158ac6a-aab1-8027-8cfc-de507159af9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Government Influence in Loan Origination</strong></li></ul><ul id="4158ac6a-aab1-8069-9c37-d763e52a57b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Truth in Lending Act: ensures that credit terms are disclosed in a clear and meaningful wayRESPA: regulates the lending process related to real estate settlement proceduresConsumer Financial Protection Bureau (CFPB): created a single point of accountability for enforcing federal consumer financial laws and protecting consumers in the financial marketplace</strong></li></ul><ul id="4158ac6a-aab1-803f-b04f-dc46e307108d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Truth in Lending Act:</strong> ensures that credit terms are disclosed in a clear and meaningful way</li></ul><ul id="4158ac6a-aab1-80b0-99b0-d9c41a21e39d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RESPA:</strong> regulates the lending process related to real estate settlement procedures</li></ul><ul id="4158ac6a-aab1-8097-9e5f-ddabae0371f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consumer Financial Protection Bureau (CFPB):</strong> created a single point of accountability for enforcing federal consumer financial laws and protecting consumers in the financial marketplace</li></ul><ul id="4158ac6a-aab1-806d-9cfa-ec4033e46f4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Loan Estimate</strong></li></ul><ul id="4158ac6a-aab1-80b3-88e6-e140bfbb1bbd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The <em><strong>Loan Estimate</strong></em> combines and replaces the <em><strong>Good Faith Estimate</strong></em> and the initial <em><strong>Truth-in-Lending</strong></em> (TIL) statement. The form highlights the most important elements of the transaction and allows for easy comparisons among competing lenders.</li></ul><ul id="4158ac6a-aab1-80f9-9287-df20e8bb60da" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A lender is obligated to deliver or mail the <em><strong>Loan Estimate</strong></em> form <em>by the third business day</em> after the lender receives the loan application from the borrower.</li></ul><ul id="4158ac6a-aab1-80b1-9207-c48641900dfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Closing Disclosure</strong></li></ul><ul id="4158ac6a-aab1-80ba-af06-d6ae63a06d6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The <em><strong>Closing Disclosure</strong></em> combines and replaces the <em><strong>HUD-1 Settlement Statement</strong></em> and the final <em><strong>Truth-in-Lending </strong></em>(TIL) statement. It provides the final details about the mortgage loan.</li></ul><ul id="4158ac6a-aab1-80ef-bd08-fd83d320db2f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Regardless of how it&#x27;s delivered, the borrower must receive the <em><strong>Closing Disclosure</strong></em> three business days before closing day. The implications of a missed <em><strong>Closing Disclosure</strong></em> deadline generally mean that closing itself gets moved.</li></ul><ul id="4158ac6a-aab1-803a-af10-f37e3dc69dde" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Things to Remember about Discount Points</strong></li></ul><ul id="4158ac6a-aab1-80b6-8c8e-fd1883c0bafb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>1 point = 1% of the loan principal (this is true whether it is an origination point or a discount point).In the purchase of discount points (aka </strong><em><strong>buydown</strong></em><strong>), a borrower is basically agreeing to pay some interest upfront as a trade-off for a lower interest rate over the life of the mortgage.</strong></li></ul><ul id="4158ac6a-aab1-8082-8f7f-c6191ef6d0fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1 point = 1% of the loan principal (this is true whether it is an origination point or a discount point).</li></ul><ul id="4158ac6a-aab1-800d-aac1-f5b8e9ce8f18" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In the purchase of discount points (aka <em>buydown</em>), a borrower is basically agreeing to pay some interest upfront as a trade-off for a lower interest rate over the life of the mortgage.</li></ul><ul id="4158ac6a-aab1-80fc-9e26-eaae99ffb869" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To evaluate whether or not it makes sense to pay for discount points, use this formula:</li></ul><ul id="4158ac6a-aab1-80a5-8f56-c506a12290a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Discount point fee ÷ Monthly payment savings = Months in loan</em></li></ul><ul id="4158ac6a-aab1-8064-8c89-c4b993660b02" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To solve for the cost of discount points, use this formula:</li></ul><ul id="4158ac6a-aab1-80a5-a8cd-e0ed49dcffc0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Loan principal x Loan points = Total cost of points</em></li></ul><ul id="4158ac6a-aab1-80eb-bb77-da70648cb65f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To find the loan principal, given the points and the total cost of points, use this formula:</li></ul><ul id="4158ac6a-aab1-8069-89ed-e55d1216e059" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Total cost of points ÷ Loan points = Loan principal</em></li></ul><ul id="4158ac6a-aab1-804f-8af0-dc7cb705fc4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lender Credits</strong></li></ul><ul id="4158ac6a-aab1-8037-81b7-f3f89db509d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lender credits work the same way as points but in reverse. You pay a higher interest rate and the lender gives you money to offset your closing costs.</li></ul><ul id="4158ac6a-aab1-80ab-a34e-e054af9181ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Cash to Close</strong></li></ul><ul id="4158ac6a-aab1-80c6-995f-d4c11ada0a05" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cash to close is the total amount a buyer needs to bring to closing. This includes such things as fees, taxes, prepaid and escrow, title policy, points, down payment, etc.</li></ul><ul id="4158ac6a-aab1-8093-a9cb-e74b6864cb94" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You&#x27;ll find a Calculating Cash to Close section on both the <em><strong>Loan Estimate</strong></em> and the <em><strong>Closing Disclosure</strong></em> forms.</li></ul><p id="4158ac6a-aab1-8094-854e-d2dd4908ffbf" class="" dir="auto">
+</p></div></div><p id="4158ac6a-aab1-8082-9b8b-c184c8b8d524" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

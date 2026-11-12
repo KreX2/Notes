@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Elements of a Valid Lease</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80c6-92a3-e2e7b40bd858" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Elements of a Valid Lease</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4168ac6a-aab1-8035-8093-d257487b3154" class="column-list" data-notion-column-list="" dir="auto"><div id="4168ac6a-aab1-80da-a015-ea637ae42576" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4168ac6a-aab1-8044-9689-c6be8c43f6c1" class="" dir="auto"><strong>Lease Contracts &amp; Essential Contract Law Elements</strong></p><ul id="4168ac6a-aab1-80f6-b446-de6c9a85c6c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because a lease is a legally binding contract, it must satisfy the <strong>five essential elements of a valid contract</strong>:<ol type="1" id="4168ac6a-aab1-80d8-9663-e1aaa289efde" class="numbered-list" start="1" dir="auto"><li><strong>Offer and acceptance</strong> (mutual assent / meeting of the minds between lessor and lessee)</li></ol><ol type="1" id="4168ac6a-aab1-8048-b745-f05a29ca56a5" class="numbered-list" start="2" dir="auto"><li><strong>Consideration</strong> (something of legal value exchanged, such as rent paid for the right of possession)</li></ol><ol type="1" id="4168ac6a-aab1-802f-a205-cf55c6257c1d" class="numbered-list" start="3" dir="auto"><li><strong>Legally competent parties</strong> (parties of legal age and sound mind)</li></ol><ol type="1" id="4168ac6a-aab1-8052-a4c5-d77472864f9c" class="numbered-list" start="4" dir="auto"><li><strong>Reality of consent</strong> (voluntary agreement free of fraud, duress, menace, or undue influence)</li></ol><ol type="1" id="4168ac6a-aab1-8097-b3d6-e7ef74a66d48" class="numbered-list" start="5" dir="auto"><li><strong>Lawful objective</strong> (the property is leased for a legal purpose)</li></ol></li></ul><ul id="4168ac6a-aab1-804c-a975-eedca223b10e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Lease-Specific Provisions to Include</strong><ul id="4168ac6a-aab1-805e-be38-d6b4c267e3db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Beyond basic contract validity, a well-drafted lease should explicitly address operational terms covering:<ul id="4168ac6a-aab1-8084-b371-f67ee19c1b9f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property ownership</strong> (confirming the lessor&#x27;s authority to lease)</li></ul><ul id="4168ac6a-aab1-8021-8d53-c383c0c2a480" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Insurance</strong> (liability and property coverage obligations for landlord and tenant)</li></ul><ul id="4168ac6a-aab1-80fa-a5c3-ce15c3bceb81" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Monies</strong> (rent amounts, due dates, late fees, and security deposit handling)</li></ul><ul id="4168ac6a-aab1-800c-b797-dad1c52f64b8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subleasing and assignments</strong> (whether and under what conditions the tenant may transfer lease rights)</li></ul><ul id="4168ac6a-aab1-80ce-b19f-fbd32e360ff9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Alterations</strong> (rules governing physical modifications, tenant improvements, and trade fixtures)</li></ul><ul id="4168ac6a-aab1-8070-aae7-f452360fcba8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Renewals</strong> (options, notice periods, and rent adjustments upon extension)</li></ul><ul id="4168ac6a-aab1-80f4-bf21-e8c9c6e8e2e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reversionary rights</strong> (the landlord&#x27;s right to regain possession when the lease terminates)</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8029-b3e3-c6c06845a917" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Uniform Residential Landlord and Tenant Act (URLTA) Framework</strong><ul id="4168ac6a-aab1-80ca-bcb1-ff2e9c083e6b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Objectives:</strong> Serves as a model residential leasing statute designed to balance landlord and tenant rights while protecting tenants from unfair, confusing, or abusive leasing practices.</li></ul><ul id="4168ac6a-aab1-809e-846b-c6b4d5672047" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How URLTA Regulates Residential Leasing:</strong><ul id="4168ac6a-aab1-80bb-9ded-e2212a13b85a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Money Handling:</strong> Governs how landlords, brokers, and leasing agents manage tenant funds (especially security deposits), consistently erring on the side of tenant protection.</li></ul><ul id="4168ac6a-aab1-8025-8812-e29d3845438b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lease Provisions &amp; Default Rules:</strong><ul id="4168ac6a-aab1-807d-ac78-f8d55f81b635" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a lease&#x27;s <strong>term is unclear</strong>, it defaults to a <strong>periodic estate</strong>.</li></ul><ul id="4168ac6a-aab1-801f-b542-f909e0c8e860" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If the <strong>rent amount is unclear</strong>, it is set at <strong>fair market value</strong>.</li></ul><ul id="4168ac6a-aab1-80e0-aecb-ce7163f6afd2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If a lease attempts to <strong>waive too many statutory tenant rights</strong>, those provisions (or the lease) are unenforceable.</li></ul></li></ul><ul id="4168ac6a-aab1-804a-8ae6-deeac3cc35cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Eviction Standardization:</strong> Establishes uniform legal procedures for terminating tenancies and filing evictions.</li></ul></li></ul><ul id="4168ac6a-aab1-8097-9e3b-ff92f3c177f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Scope &amp; Exemptions:</strong> Applies strictly to <strong>residential leases</strong> and excludes <strong>transient occupancies</strong> (such as hotel or motel guests).</li></ul></li></ul><ul id="4168ac6a-aab1-8050-bee3-fb270a570b1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Essential Elements of a Valid Lease</strong><ul id="4168ac6a-aab1-807e-a1a8-fe715a64d650" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In accordance with contract law and the Uniform Residential Landlord and Tenant Act (URLTA), real estate licensees must ensure leases contain these foundational elements:<ul id="4168ac6a-aab1-80c6-b992-e5a7576c331b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capacity to Contract:</strong> Both parties must be legally competent and <strong>over the age of 18</strong>.</li></ul><ul id="4168ac6a-aab1-80ef-8abf-e69cff326b00" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Clear Statement of the Term:</strong> Explicitly states the lease duration, start date, and expiration date; the landlord must deliver <strong>full possession</strong> of the rental unit to the tenant on the very first day of the term.</li></ul><ul id="4168ac6a-aab1-8057-b6ee-c1d979987ceb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Demising Clause:</strong> The specific contract clause in which the lessor grants the lessee possession of the property.</li></ul><ul id="4168ac6a-aab1-80a6-b5c5-e2bbf7392b9d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Description of the Premises:</strong> A clear identification or legal description of the leased space (commonly the street address and unit number).</li></ul><ul id="4168ac6a-aab1-8026-81b4-fe6300c28afe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>In Writing (Statute of Frauds &amp; Tennessee Recording Rules):</strong><ul id="4168ac6a-aab1-8060-bf2f-f53ec6159648" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Leases for <strong>less than one year</strong> may legally be verbal or implied in Tennessee (though written leases are always recommended).</li></ul><ul id="4168ac6a-aab1-803a-89c0-f9a4ec282bee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Leases for <strong>one year or longer</strong> <strong>must be in writing</strong> to be enforceable.</li></ul><ul id="4168ac6a-aab1-80e9-88d9-e5404e233c9a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Leases for <strong>three years or longer</strong> in Tennessee must have signatures authenticated by <strong>at least two witnesses</strong> and must be <strong>registered (recorded) with the county clerk</strong> in the county where the property is located.</li></ul></li></ul><ul id="4168ac6a-aab1-8083-af79-ccf131566617" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Signatures:</strong> Both the lessor and lessee must sign voluntarily (free of duress or undue pressure), and the signed lease must be delivered and accepted.</li></ul><ul id="4168ac6a-aab1-80dd-84ab-ef6c10544cc7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Specification of Rent &amp; Payment Terms (Consideration):</strong> States the exact rent amount, due date, payment method, and which party is responsible for utilities.</li></ul><ul id="4168ac6a-aab1-807a-832f-e0aec55369cb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Use Provisions:</strong> Defines permitted property uses (e.g., residential leases restrict occupancy strictly to living purposes, prohibiting commercial operations like running a coffee shop out of an apartment).</li></ul><ul id="4168ac6a-aab1-80f4-a82d-c0abd0a7c2c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mutual Responsibilities:</strong> Clearly delineates the specific rights and maintenance/operational duties of both landlord and tenant.</li></ul><ul id="4168ac6a-aab1-80d1-9c3d-c817dd5133c6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lawful Objective:</strong> The purpose and terms of the lease must be legal.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-806f-8a06-f1f5612038f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial vs. Residential Drafting Standards</strong><table id="4168ac6a-aab1-805c-ab85-d578e20281e9" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8043-90d1-f6c7101a7572" dir="ltr"><td id="NdLL" class=""><strong>Lease Category</strong></td><td id="yXSv" class=""><strong>Drafting &amp; Use Clause Standards</strong></td></tr><tr id="4168ac6a-aab1-806a-bb47-fdc5aa902cca" dir="ltr"><td id="NdLL" class=""><strong>Residential Leases</strong></td><td id="yXSv" class="">Often required to be written in <strong>&quot;plain language&quot;</strong> (clear, everyday terms) so an average tenant can easily understand their obligations.</td></tr><tr id="4168ac6a-aab1-802f-ac02-c9de2d9f259b" dir="ltr"><td id="NdLL" class=""><strong>Commercial Leases</strong></td><td id="yXSv" class="">Typically contain strict <strong>use restriction clauses</strong> specifying exactly how the space may and may not be operated—often using the explicit phrase <strong>&quot;for no other purpose.&quot;</strong></td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-80cd-b6fa-e56952244a36" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Practical Lease Clauses</strong><ul id="4168ac6a-aab1-805a-a8d6-ddb65608ee8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Comprehensive leases also address operational rules and contingencies, including:<ul id="4168ac6a-aab1-80a1-a8b2-fa7c856c3ade" class="bulleted-list" dir="auto"><li style="list-style-type:square">Late fees and grace periods</li></ul><ul id="4168ac6a-aab1-8023-ab69-c9cfc8d35aa0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property rules (e.g., painting/decorating limits, enforced quiet hours)</li></ul><ul id="4168ac6a-aab1-80be-8620-f01395c16609" class="bulleted-list" dir="auto"><li style="list-style-type:square">Smoking and pet policies</li></ul><ul id="4168ac6a-aab1-80d4-ad3b-f4ec5a2a3cc4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Parking allocations and rules</li></ul><ul id="4168ac6a-aab1-8090-a039-e14f3341cfa2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Permitted improvements and alterations</li></ul><ul id="4168ac6a-aab1-803d-8f89-c03e549c20ae" class="bulleted-list" dir="auto"><li style="list-style-type:square">Breach of contract remedies and termination procedures</li></ul><ul id="4168ac6a-aab1-80fd-8a21-cba01d647d9f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Renter&#x27;s insurance requirements</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80b2-adff-dfa61e22e7d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Tenant Rights &amp; Lease Provisions (Bundle of Rights in Leasing)</strong><ul id="4168ac6a-aab1-80a9-96d1-f942ac526933" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While tenants do <strong>not</strong> hold the right to convey title (since they do not own the property), a valid lease grants them three core possessory rights:<ol type="1" id="4168ac6a-aab1-80da-88c4-cc489742d50b" class="numbered-list" start="1" dir="auto"><li><strong>Covenant of Quiet Enjoyment:</strong> The tenant&#x27;s legal right to peaceful possession and enjoyment of the premises without unreasonable disturbance or unauthorized entry by the landlord (landlord entry is restricted to legitimate reasons such as required maintenance with proper notice or health/safety emergencies).</li></ol><ol type="1" id="4168ac6a-aab1-8035-b604-d6880956277b" class="numbered-list" start="2" dir="auto"><li><strong>Right to Control:</strong> The tenant&#x27;s right to decide how to use and enjoy the leased premises—provided all activities are lawful and comply with lease rules.</li></ol><ol type="1" id="4168ac6a-aab1-8076-9f34-fc0000d0c393" class="numbered-list" start="3" dir="auto"><li><strong>Right to Exclusion:</strong> The tenant&#x27;s right to privacy and to deny unauthorized individuals entry into the leased unit, subject to narrow legal exceptions such as <strong>easements</strong>, authorized landlord maintenance/emergency entry, and <strong>authorized entry by law enforcement</strong>.</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-802b-a730-fd9e6ee49d88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Defining Inclusions and Exclusions in a Lease</strong><ul id="4168ac6a-aab1-80f3-8934-fb30548a37ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A well-drafted lease must explicitly specify what is <strong>included</strong> and <strong>excluded</strong> in the rental agreement across three primary categories: <strong>property (real and personal)</strong>, <strong>insurance</strong>, and <strong>monetary obligations</strong>.<ol type="1" id="4168ac6a-aab1-80df-8df0-c1352a906f76" class="numbered-list" start="1" dir="auto"><li><strong> Real and Personal Property Inclusions</strong><ul id="4168ac6a-aab1-800c-b94d-d4b7fad02259" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scope:</strong> Clarifies the exact physical space and any personal property (chattel/appliances, such as a refrigerator, washer/dryer, or furnishings) included with the unit.</li></ul><ul id="4168ac6a-aab1-806b-9db6-d18e73e73aff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maintenance Accountability:</strong> Any personal property or appliance provided by the landlord and included in the lease becomes part of the landlord&#x27;s <strong>maintenance obligations</strong>—meaning the landlord or property manager must budget and plan for its upkeep and repair.</li></ul><ul id="4168ac6a-aab1-8031-b437-eabbcf548a02" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Insurance Implications:</strong> Clearly separating landlord-owned property from tenant-owned property prevents coverage gaps or disputes, because <strong>a party cannot insure property they do not own</strong> (landlord policies cover the structure and landlord-supplied appliances, while renter&#x27;s insurance covers the tenant&#x27;s personal belongings).</li></ul></li></ol><ol type="1" id="4168ac6a-aab1-80fa-903a-f1782d7b0843" class="numbered-list" start="2" dir="auto"><li><strong> Monetary Obligations &amp; Expense Allocations</strong><ul id="4168ac6a-aab1-8032-a689-cdeefdce9c57" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Beyond base rent, a lease must explicitly define whether the <strong>owner (landlord)</strong> or the <strong>tenant</strong> is responsible for paying recurring property-related costs, including:<ul id="4168ac6a-aab1-8050-8d14-ec2cdbfcd947" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Homeowner&#x27;s Association (HOA) fees</strong></li></ul><ul id="4168ac6a-aab1-80d9-acbe-cd7be67149e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage principal or interest</strong> (relevant in certain commercial triple-net or pass-through arrangements)</li></ul><ul id="4168ac6a-aab1-803d-a406-caa18dc32a5f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Operating expenses</strong> (utilities, property taxes, routine maintenance)</li></ul><ul id="4168ac6a-aab1-800c-9ea8-dde695e4631f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Insurance costs</strong> (hazard/liability policies)</li></ul></li></ul></li></ol></li></ul><ul id="4168ac6a-aab1-80a2-b54b-c96a51a92d66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>URLTA Compliance:</strong> All monetary terms—including rent schedules, fees, and security deposit handling, disclosures, and return deadlines—must adhere strictly to <strong>Uniform Residential Landlord and Tenant Act (URLTA)</strong> statutory standards.</li></ul></li></ul><ul id="4168ac6a-aab1-807b-a1ca-f1c80821f173" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Elements of a Lease</strong><figure id="4168ac6a-aab1-8012-b682-db50aa8fb6d0" class="image" data-notion-image="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image.png" dir="ltr"><a href="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image.png"><img style="width:480px" src="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-8024-93e1-c554fd0ecd9c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transferring Lease Interests: Subleases vs. Assignments</strong><ul id="4168ac6a-aab1-8076-8239-c127cca1b697" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Both subletting and assignment allow an original tenant to transfer their leasehold interest to a new occupant before the lease expires.</li></ul><ul id="4168ac6a-aab1-80b5-9d1f-ef02637f917e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because residential renting is transient, a well-drafted lease should include a <strong>sublease clause</strong> or <strong>assignment clause</strong> specifying whether transfers are permitted, whether landlord approval is required, and what paperwork and payment procedures apply.</li></ul></li></ul><ul id="4168ac6a-aab1-807c-9e9d-fafd0351f93c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subleases (Subletting)</strong><ul id="4168ac6a-aab1-80b4-a317-d0b91e78967c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A sublease occurs when the original tenant transfers <strong>less than their entire remaining leasehold interest</strong> (e.g., occupying the unit for a portion of the remaining lease term or renting out part of the space) to a substitute occupant.</li></ul><ul id="4168ac6a-aab1-80be-b236-fdd452ed81d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Parties:</strong><ul id="4168ac6a-aab1-808b-b998-f042d5da2ede" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Prime Tenant (Sublessor):</strong> The original tenant who holds the primary lease with the landlord.</li></ul><ul id="4168ac6a-aab1-8068-a39c-c02f831981a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subtenant (Sublessee):</strong> The new occupant temporarily renting the premises from the prime tenant.</li></ul></li></ul><ul id="4168ac6a-aab1-8026-a997-d083d5d8c726" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Right &amp; Landlord Consent:</strong> Unless expressly prohibited by the lease, subleasing is generally a tenant&#x27;s legal right—though most leases require prior written approval from the landlord.</li></ul><ul id="4168ac6a-aab1-802c-a059-f73b36afc228" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Continuing Liability &amp; Payment Flow:</strong><ul id="4168ac6a-aab1-8096-a343-dee14fbd01a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">The <strong>prime tenant remains legally responsible</strong> to the landlord for fulfilling all lease obligations (rent payments, property care, and rule compliance) throughout the sublease period.</li></ul><ul id="4168ac6a-aab1-8056-aa05-ef40c0a1fdff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Payment Chain:</strong> The subtenant pays rent to the prime tenant (<code>Tenant B → Tenant A</code>), and the prime tenant remains responsible for paying rent to the landlord (<code>Tenant A → Landlord</code>).<table id="4168ac6a-aab1-8022-a7a9-d65813bb765c" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80c7-bfa9-c910426022c4" dir="ltr"><td id="hUYb" class=""><strong>Aspect of a Sublease</strong></td><td id="V}Em" class=""><strong>How It Operates</strong></td></tr><tr id="4168ac6a-aab1-8019-9c41-d355516e464f" dir="ltr"><td id="hUYb" class=""><strong>Extent of Interest Transferred</strong></td><td id="V}Em" class=""><strong>Partial interest</strong> (temporary period shorter than the remaining lease term, or partial space)</td></tr><tr id="4168ac6a-aab1-800b-b3cf-cb09b38adb8a" dir="ltr"><td id="hUYb" class=""><strong>Primary Liability to Landlord</strong></td><td id="V}Em" class="">Retained fully by the <strong>prime tenant</strong> (original lessee)</td></tr><tr id="4168ac6a-aab1-80fc-8841-e34499ac4c0b" dir="ltr"><td id="hUYb" class=""><strong>Rent Payment Path</strong></td><td id="V}Em" class="">Subtenant pays the prime tenant; prime tenant pays the landlord</td></tr><tr id="4168ac6a-aab1-80cd-a0aa-f15fa900ab21" dir="ltr"><td id="hUYb" class=""><strong>Common Use Case</strong></td><td id="V}Em" class="">Tenant travels out of town for a few months or relocates temporarily before their lease ends</td></tr></tbody></table><figure id="4168ac6a-aab1-801f-bee7-ee09ab1472a0" class="image" data-notion-image="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%201.png"><img style="width:480px" src="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8082-af2b-d0ab1606ca7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4168ac6a-aab1-8050-bead-f83e169750d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Assignment of a Lease</strong><ul id="4168ac6a-aab1-800b-84f5-c962836000ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> An assignment occurs when a tenant transfers their <strong>entire remaining interest</strong> in a lease to a new tenant and permanently vacates the property before the lease term expires.</li></ul><ul id="4168ac6a-aab1-8021-a453-dedd3caa3391" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Parties:</strong><ul id="4168ac6a-aab1-8085-8a1e-d360a50dc79f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assignor:</strong> The original tenant transferring the lease.</li></ul><ul id="4168ac6a-aab1-8049-92da-e3b7de53a839" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assignee:</strong> The new tenant assuming the lease and taking over possession.</li></ul></li></ul><ul id="4168ac6a-aab1-8091-a546-d11411ea5719" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Direct Liability &amp; Payment Flow:</strong><ul id="4168ac6a-aab1-8055-a818-fee3cdf7981b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Provides a clean exit for the original tenant: the <strong>assignee becomes directly responsible to the landlord</strong> for paying rent, maintaining the property&#x27;s condition, and complying with all lease provisions <em>(note: unless released by a novation agreement, an assignor can still remain secondarily liable as a guarantor if the assignee defaults, depending on lease terms)</em>.</li></ul><ul id="4168ac6a-aab1-8091-bdd8-ddfd3a7827ca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Payment Chain:</strong> The assignee pays rent directly to the landlord (<code>Tenant B → Landlord</code>).</li></ul></li></ul><ul id="4168ac6a-aab1-80c6-b902-efdda2600a09" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contractual Governance:</strong> A thorough lease should include an <strong>assignment clause</strong> stating whether assignments are permitted, whether prior written landlord consent is required, and what approval conditions apply.</li></ul></li></ul><ul id="4168ac6a-aab1-80f7-be07-c6390885f579" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sublease vs. Assignment Comparison<table id="4168ac6a-aab1-8072-b90e-e38d3ea6aa0b" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80e9-adc8-dee15651cecd" dir="ltr"><td id="C}WB" class=""><strong>Feature</strong></td><td id="WIo=" class=""><strong>Sublease (Subletting)</strong></td><td id="XF_?" class=""><strong>Assignment</strong></td></tr><tr id="4168ac6a-aab1-8065-9560-f69766be5b5e" dir="ltr"><td id="C}WB" class=""><strong>Interest Transferred</strong></td><td id="WIo=" class=""><strong>Partial interest</strong> (a portion of the remaining lease term or part of the space)</td><td id="XF_?" class=""><strong>Entire remaining interest</strong> (the full balance of the lease term)</td></tr><tr id="4168ac6a-aab1-80a0-b51f-c299531b6b78" dir="ltr"><td id="C}WB" class=""><strong>Occupancy Status</strong></td><td id="WIo=" class="">Temporary arrangement; prime tenant often intends to return</td><td id="XF_?" class="">Permanent departure; original tenant vacates the premises</td></tr><tr id="4168ac6a-aab1-800c-9c0e-f60a9e709b2e" dir="ltr"><td id="C}WB" class=""><strong>Primary Liability to Landlord</strong></td><td id="WIo=" class="">Retained by the <strong>prime tenant</strong> (original lessee)</td><td id="XF_?" class="">Transferred directly to the <strong>assignee</strong> (new tenant)</td></tr><tr id="4168ac6a-aab1-803a-adc4-f20e2d1f5cde" dir="ltr"><td id="C}WB" class=""><strong>Rent Payment Path</strong></td><td id="WIo=" class="">Subtenant pays Prime Tenant (<code>Tenant B → Tenant A</code>), who then pays the Landlord (<code>Tenant A → Landlord</code>)</td><td id="XF_?" class="">Assignee pays the Landlord directly (<code>Tenant B → Landlord</code>)</td></tr></tbody></table><figure id="4168ac6a-aab1-80f4-8dbc-c4e6ee7bb4d7" class="image" data-notion-image="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%202.png"><img style="width:672px" src="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%202.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-8039-95bb-c41b0558b480" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Lease Clauses</strong><ul id="4168ac6a-aab1-8028-88fd-ea9b12743e41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Renewals:</strong><ul id="4168ac6a-aab1-8020-a1b5-fe8072996947" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Option to Renew:</strong> Outlines the advance terms and conditions allowing the tenant to extend the lease at the end of its initial term.</li></ul><ul id="4168ac6a-aab1-807e-9137-db53388eb3d4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Automatic Renewal Clause:</strong> Automatically extends the lease (such as converting to a month-to-month periodic tenancy or renewing for another set period) unless the tenant gives advance notice to vacate in accordance with the lease terms. Landlords are generally required to remind the tenant of the upcoming deadline to give notice regarding renewal or termination.</li></ul></li></ul><ul id="4168ac6a-aab1-8099-bf06-d4d752ec0726" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alterations:</strong><ul id="4168ac6a-aab1-80b5-96b6-e9055ddf0730" class="bulleted-list" dir="auto"><li style="list-style-type:square">Specifies what physical modifications a tenant is permitted to make (e.g., painting walls or remodeling).</li></ul><ul id="4168ac6a-aab1-809b-a92a-e6873c7c256f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unless the lease states otherwise, any <strong>permanent alterations</strong> made by the tenant automatically become part of the real property and remain with the <strong>lessor</strong> when the lease ends.</li></ul></li></ul><ul id="4168ac6a-aab1-80d4-8c8d-eeda83c7a333" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reversionary Rights:</strong><ul id="4168ac6a-aab1-80a7-b086-eec61b8d88e6" class="bulleted-list" dir="auto"><li style="list-style-type:square">The landlord&#x27;s legal right to retake full possession and control of the property once the lease term expires—reinforcing that a tenant holds only a temporary possessory interest and has no right to sell or convey the property.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8022-b236-f31ef99bc1e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Essential Elements of a Valid Lease-Option Contract</strong><ul id="4168ac6a-aab1-8002-998b-da64817756ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because a lease-option is a binding unilateral contract granting the optionee the right to buy, it must include specific legal elements:<table id="4168ac6a-aab1-8048-8a17-fa15865a0214" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80c8-95d3-e51cbeb4cf76" dir="ltr"><td id="L\^G" class=""><strong>Lease-Option Element</strong></td><td id="g&gt;@t" class=""><strong>Legal Requirement &amp; Operational Rule</strong></td></tr><tr id="4168ac6a-aab1-80a6-b70f-d44d6f09f95a" dir="ltr"><td id="L\^G" class=""><strong>Consideration</strong></td><td id="g&gt;@t" class="">Must be <strong>nonrefundable</strong> and separate from the purchase price. It is retained by the optionor if the optionee walks away, or credited toward the sales price if the option is exercised.</td></tr><tr id="4168ac6a-aab1-804c-8919-fc92cfbdc9e3" dir="ltr"><td id="L\^G" class=""><strong>Price and Terms</strong></td><td id="g&gt;@t" class="">Must lock in or clearly define the exact purchase price and financing/sale terms upfront—especially critical for multi-year options facing market fluctuations. Terms cannot be unilaterally changed during the option period, and the contract must state what portion of monthly rent (if any) applies toward the final price.</td></tr><tr id="4168ac6a-aab1-80f2-83af-c617ba4354a7" dir="ltr"><td id="L\^G" class=""><strong>Expiration Date</strong></td><td id="g&gt;@t" class="">Establishes a strict deadline after which the right to purchase permanently terminates and the optionee forfeits all accumulated rent credits and upfront consideration.</td></tr><tr id="4168ac6a-aab1-80cc-acd8-fa3d37750f72" dir="ltr"><td id="L\^G" class=""><strong>Signatures</strong></td><td id="g&gt;@t" class="">Because an option is a <strong>unilateral contract</strong> binding only the seller to perform if exercised, <strong>only the optionor&#x27;s (seller&#x27;s) signature</strong> is legally required for the option to be valid.</td></tr><tr id="4168ac6a-aab1-802c-89e2-f47698638287" dir="ltr"><td id="L\^G" class=""><strong>In Writing</strong></td><td id="g&gt;@t" class="">Must be in writing to be legally enforceable under the <strong>Statute of Frauds</strong>.</td></tr><tr id="4168ac6a-aab1-8094-b6db-ea6132b0136b" dir="ltr"><td id="L\^G" class=""><strong>Recording (Public Notice)</strong></td><td id="g&gt;@t" class="">While standard short-term leases are rarely recorded, recording a lease-option in public land records is best practice because an unrecorded or active option creates an encumbrance (<strong>cloud on title</strong>) that affects marketable title for future buyers (e.g., preventing a third party like Reem from unknowingly buying a property already under an exclusive option).</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-80c7-b0b1-de8b62c0ebfd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Protective Provisions in Lease-Option Agreements</strong><ul id="4168ac6a-aab1-80ae-a8f7-e4f9d7351abd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Beyond basic validity, a thorough lease-option contract should include three specialized clauses to protect both parties:<ol type="1" id="4168ac6a-aab1-8067-aff5-cca715ccedbd" class="numbered-list" start="1" dir="auto"><li><strong>Election Notice:</strong> Specifies the exact method and deadline by which the optionee must formally notify the optionor that they are exercising their option to purchase (e.g., requiring written notice delivered by a specific date) so a sale is not lost due to miscommunication.</li></ol><ol type="1" id="4168ac6a-aab1-804b-a2e6-fbf986a5ffe4" class="numbered-list" start="2" dir="auto"><li><strong>Consideration and Forfeitures:</strong> Explicitly protects the <strong>optionor</strong> by confirming their right to keep the nonrefundable consideration if the buyer declines to purchase, while protecting the <strong>optionee</strong> by detailing how upfront fees and rent credits will be applied at closing if they do buy.</li></ol><ol type="1" id="4168ac6a-aab1-8038-b74b-c90f914443b3" class="numbered-list" start="3" dir="auto"><li><strong>Maintenance &amp; Property Condition:</strong> Clarifies who is responsible for ongoing repairs and upkeep during a multi-year lease period, and establishes the required physical condition of the property at the time of purchase.</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-806d-939a-c88080d24758" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evictions &amp; Property Removal Actions</strong><ul id="4168ac6a-aab1-80eb-b22a-d9cb5ec15f8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An <strong>eviction</strong> is the forced removal of a tenant resulting from a lease default. Under the Uniform Residential Landlord and Tenant Act (URLTA), strict procedural rules govern evictions to ensure fairness, and specific eviction terms should be clearly outlined in the lease agreement.<table id="4168ac6a-aab1-8008-b4c2-ff5ef30c6128" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80dc-82a3-c010283ef747" dir="ltr"><td id="{{vg" class=""><strong>Removal Type</strong></td><td id="^@]l" class=""><strong>Initiating Party &amp; Cause</strong></td><td id="^RJ;" class=""><strong>Legal Mechanics &amp; Consequences</strong></td></tr><tr id="4168ac6a-aab1-8013-aded-eefe10076715" dir="ltr"><td id="{{vg" class=""><strong>1. Actual Eviction</strong></td><td id="^@]l" class=""><strong>Landlord</strong> initiates due to <strong>tenant default</strong> (nonpayment of rent, illegal activity, lease/rule violations)</td><td id="^RJ;" class="">The formal <strong>legal process</strong> (filing a <strong>suit for possession</strong>) through the courts to legally expel a defaulting tenant and prevent re-entry.</td></tr><tr id="4168ac6a-aab1-8059-9e51-eae93af74ff8" dir="ltr"><td id="{{vg" class=""><strong>2. Constructive Eviction</strong></td><td id="^@]l" class=""><strong>Tenant</strong> claims due to <strong>landlord default</strong> (failing to make required repairs or violating quiet enjoyment, making the unit uninhabitable)</td><td id="^RJ;" class="">The tenant <strong>must physically vacate (move out)</strong> to claim constructive eviction; if granted, the lease terminates and the tenant owes <strong>no further rent liability</strong>.</td></tr><tr id="4168ac6a-aab1-8051-a878-eb380bb06511" dir="ltr"><td id="{{vg" class=""><strong>3. Self-Help Eviction</strong> <em>(Lock-outs)</em></td><td id="^@]l" class=""><strong>Landlord</strong> acts unilaterally outside the courts (changing locks, shutting off utilities, making premises inhospitable, or threatening the tenant)</td><td id="^RJ;" class=""><strong>Illegal in Tennessee</strong> and strictly prohibited under URLTA; landlords must use formal court eviction procedures rather than taking matters into their own hands.</td></tr><tr id="4168ac6a-aab1-80ab-b7e2-f54b75044c27" dir="ltr"><td id="{{vg" class=""><strong>Ejectment</strong> <em>(Non-Tenant Removal)</em></td><td id="^@]l" class=""><strong>Property owner</strong> removes an occupant who has <strong>no rental agreement</strong> (e.g., a squatter or unauthorized occupant)</td><td id="^RJ;" class="">Technically <strong>not an eviction</strong> (since no landlord-tenant relationship exists), but the legal equivalent used to remove non-tenants from real property.</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-803f-98f5-e57795726156" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Other Legal Ways a Lease Terminates (Non-Eviction)</strong><ul id="4168ac6a-aab1-8053-997e-c60b3a1d8677" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Outside of default and eviction, a lease agreement may legally terminate through any of the following events:<ul id="4168ac6a-aab1-802c-8499-c6a960cafb24" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expiration:</strong> The lease naturally reaches its predetermined end date (standard in an <strong>estate for years</strong>).</li></ul><ul id="4168ac6a-aab1-8007-9e69-fa9ab142f431" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Performance:</strong> All parties fully complete their contractual obligations for the lease period (e.g., in a month-to-month lease, the tenant pays rent and the landlord provides habitable housing through the end of the month, after which proper notice ends the tenancy).</li></ul><ul id="4168ac6a-aab1-80e2-9b2d-e4a8bffcc3f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mutual Agreement (Surrender):</strong> Both the landlord and tenant mutually consent to cancel the lease early.</li></ul><ul id="4168ac6a-aab1-80d3-84f2-c4fec9e3ebdc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Destruction of the Premises:</strong> The rental property is substantially destroyed by fire, natural disaster, or casualty, rendering occupancy impossible.</li></ul><ul id="4168ac6a-aab1-8084-8796-ec022d50346b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Death of a Party:</strong><ul id="4168ac6a-aab1-804c-9538-ed9ba3324361" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate at Will:</strong> Terminates immediately upon the death of <strong>either</strong> the landlord or the tenant.</li></ul><ul id="4168ac6a-aab1-80ce-881d-fad24c18e5d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate for Years &amp; Periodic Estate:</strong> Generally <strong>do not terminate</strong> upon the landlord&#x27;s death; the lease remains binding on the landlord&#x27;s estate/heirs until its term expires.</li></ul></li></ul><ul id="4168ac6a-aab1-80dc-ab88-e2b1449fc643" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Foreclosure (Protecting Tenants at Foreclosure Act of 2009):</strong><ul id="4168ac6a-aab1-80c5-ab7d-d9634a910dba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Protects bona fide tenants from sudden eviction when a landlord loses a rental property to foreclosure:<ul id="4168ac6a-aab1-8038-bbb7-ce769656bc9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The new owner must provide tenants with <strong>at least 90 days&#x27; advance written notice</strong> to vacate.</li></ul><ul id="4168ac6a-aab1-8025-a4b3-f903c9312dae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tenants with an existing fixed-term lease must generally be allowed to <strong>finish out their remaining lease term</strong>—unless the new owner intends to occupy the property as their <strong>primary residence</strong>, in which case the 90-day notice terminates the lease.<figure id="4168ac6a-aab1-8022-9653-fe02ab89d236" class="image" data-notion-image="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%203.png"><img style="width:480px" src="Chapter%203%20-%20Elements%20of%20a%20Valid%20Lease/image%203.png"/></a></figure></li></ul></li></ul></li></ul></li></ul></li></ul><p id="4168ac6a-aab1-809e-b112-e7c72f5359a8" class="" dir="auto">
+</p></div><div id="4168ac6a-aab1-802f-9da3-fff7b97ae0de" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4168ac6a-aab1-80c7-b3e3-fd652168276b" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4168ac6a-aab1-8065-ad7b-ffcaab6f4f3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>actual eviction</strong> - the legal process by which someone is expelled from a property and prevented from re-entry</li></ul><ul id="4168ac6a-aab1-8087-855f-d43e23f02e07" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>constructive eviction</strong> - the termination of a lease in circumstances in which the landlord defaults and acts, or fails to act, in such a way that the premises become unusable</li></ul><ul id="4168ac6a-aab1-80c0-ae3a-c325839e6d04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>demise</strong> - transfer by lease</li></ul><ul id="4168ac6a-aab1-80c2-9b93-db15cbb06ba1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ejectment</strong> - process by which a property owner removes an occupant from a property; the equivalent of eviction for non-tenants</li></ul><ul id="4168ac6a-aab1-8063-add2-cc66e5cceaa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>eviction</strong> - forced removal of a tenant due to a default under the terms of the lease</li></ul><ul id="4168ac6a-aab1-801b-a7bf-da321370c9a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>sublease</strong> - a tenant’s transfer of part of their right of possession in a leased property to another person for a period of the lease term</li></ul><ul id="4168ac6a-aab1-808a-b8ce-ecf2c8b99f80" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>suit for possession</strong> - a legal action brought by a landlord to evict a tenant</li></ul><p id="4168ac6a-aab1-80dd-8f75-ffdd9b53a071" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4168ac6a-aab1-80b5-a0c1-fc266c8970bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>URLTA </strong>- The Uniform Residential Landlord and Tenant Act (URLTA) is national legislation that helps <strong>regulate the leasing of residential properties</strong>. It serves as a sort of template for each state to use and alter, but its ultimate goal is to secure landlord and tenant rights and protect tenants from poor leasing practices and unfair or confusing leases.</li></ul><ul id="4168ac6a-aab1-8001-b75e-c59b5affa15c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>URLTA has two main objectives:</strong><ul id="4168ac6a-aab1-8019-a5ba-de0d36cdb8a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ensuring landlords and tenants maintain their respective rights</li></ul><ul id="4168ac6a-aab1-80fe-8965-ebb10747c6c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Protecting tenants against unfair lease agreements and dishonorable leasing practices</li></ul><ul id="4168ac6a-aab1-807d-80e5-ece5663b8356" class="bulleted-list" dir="auto"><li style="list-style-type:circle">URLTA does this by:<ul id="4168ac6a-aab1-8040-9280-d1807722fc7d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regulating how landlords manage money</li></ul><ul id="4168ac6a-aab1-8050-8f5a-e5d949ea5c66" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regulating lease elements and provisions</li></ul><ul id="4168ac6a-aab1-80d7-8f62-cf7f7546dd0c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Standardizing the eviction process</li></ul><ul id="4168ac6a-aab1-80d9-894b-f7e5e3c54402" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regulating leases</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8080-b74c-f16de9b021e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subleases and Assignments</strong><ul id="4168ac6a-aab1-80df-80ff-d85fd0b4f481" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Subletting and assignment are both methods of transferring a tenant’s legal interest in a rental property to another person. A thorough lease will specify whether these actions are allowed and if so, how they are accomplished.</li></ul><ul id="4168ac6a-aab1-80c5-a6bc-cada8f38cc8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>sublease</strong> occurs when a tenant transfers part of their right of possession in a leased property to another person for a period of the lease term. Subleases transfer less than the entire interest in the property. Subleasing is a tenant&#x27;s legal right as long as it&#x27;s not prohibited by the lease.<figure id="4168ac6a-aab1-807b-9e26-fa6d7a2ebd1d" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SubleaseFlowChart.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SubleaseFlowChart.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SubleaseFlowChart.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-80c1-98f3-c74b46850d10" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Assignment</strong> occurs when a tenant transfers the remaining balance of their lease to another person. The original tenant gets out of their lease before the term ends.</li></ul><ul id="4168ac6a-aab1-80c9-9f79-f36192549880" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To <em>assign</em> a lease means that the tenant is transferring the entire interest in the lease to someone else and permanently vacating the premises. The new tenant taking over the lease becomes directly responsible to the landlord for rent payments, the property&#x27;s condition, etc.<figure id="4168ac6a-aab1-80eb-92e4-da1d3c3fedeb" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/AssignmentFlowChart.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/AssignmentFlowChart.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/AssignmentFlowChart.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-80ee-bc14-f12e4f404302" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Lease Clauses</strong></li></ul><ul id="4168ac6a-aab1-80bc-902c-d6d3f23bfe04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Renewals:</strong> Many leases contain an option to renew, which sets forth the terms for a lease renewal, making it easier for the parties to renew the lease at the end of its term. Other leases contain an automatic renewal clause. This means the lease will be renewed (either on a month-to-month basis or on some other specified terms) without action taken by the tenant or landlord.</li></ul><ul id="4168ac6a-aab1-8000-870d-df58a81f13a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alterations:</strong> An alteration clause in a lease should address what changes can be made to a property. If not stated in the lease, the lessor usually takes possession of permanent alterations.</li></ul><ul id="4168ac6a-aab1-803d-b44d-ebf552715eda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reversionary rights:</strong> A lease may contain a clause making it clear that the landlord has a reversionary right, which means that the landlord has the power to retake the property after the lease term has expired. This means that a tenant doesn&#x27;t have the right to sell the property.</li></ul><ul id="4168ac6a-aab1-80a5-bdf8-e05a51a9bcfa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evictions</strong><ul id="4168ac6a-aab1-8095-ab03-ccef592f29ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An <strong>eviction</strong> is the forced removal of a tenant due to a default under the terms of the lease. The specific terms for eviction should be outlined in the lease in order to protect the lessor or lessee if an eviction does occur.</li></ul><ul id="4168ac6a-aab1-8000-9752-f451ab44996c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">There are three main types of evictions:<ul id="4168ac6a-aab1-8080-9998-c3e242c14f76" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Actual eviction</strong> is the legal process by which someone (a tenant) is expelled from a property and prevented from re-entry. To pursue actual eviction, a lessor will have to file a <strong>suit for possession</strong>. A tenant who fails to pay rent within <strong>five days</strong> of it being due can legally be evicted by the landlord. The landlord must provide proper written notice to the tenant.</li></ul><ul id="4168ac6a-aab1-805c-9ae5-c3cb7a8a317f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Constructive eviction</strong> is the termination of a lease in circumstances in which the landlord defaults and acts or fails to act in such a way that the premises become unusable, whether by preventing quiet enjoyment or failure to make required repairs.</li></ul><ul id="4168ac6a-aab1-801e-80f8-d4b8f9c61e15" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Self-help eviction,</strong> also called a lock-out, occurs when a landlord takes matters into their own hands during an eviction process. This could include a landlord making the environment inhospitable or inaccessible, or directly threatening tenants to make them leave. <strong>This is illegal in Tennessee.</strong></li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80ea-999c-cf38fc8315f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease Termination - </strong>There are many ways a lease can terminate.<figure id="4168ac6a-aab1-8072-bc26-e711ec73290c" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TypesOfLeaseTermination.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TypesOfLeaseTermination.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TypesOfLeaseTermination.png"/></a></figure></li></ul><p id="4168ac6a-aab1-80fa-9d75-e4ec2e8f3d2b" class="" dir="auto">
+</p></div></div><p id="4168ac6a-aab1-80da-b047-cb1d119aaf40" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

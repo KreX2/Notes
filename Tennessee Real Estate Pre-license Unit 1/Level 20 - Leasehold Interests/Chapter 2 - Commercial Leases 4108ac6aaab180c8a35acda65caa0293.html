@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Commercial Leases</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80c8-a35a-cda65caa0293" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Commercial Leases</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4168ac6a-aab1-80de-aa5c-f9d7be47c0a7" class="column-list" data-notion-column-list="" dir="auto"><div id="4168ac6a-aab1-80f1-933a-f62e6893a757" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4168ac6a-aab1-8059-93f1-d60476006565" class="" dir="auto"><strong>Commercial Leasing Agents: Representation Roles</strong></p><ul id="4168ac6a-aab1-802e-a406-e88e64b2d3fa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real estate licensees specializing in commercial leasing generally represent either property owners (<strong>landlord representatives</strong>) or business occupants (<strong>tenant representatives</strong>).<table id="4168ac6a-aab1-80ac-add4-f2742c0bfc11" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-802a-b2f7-c0241557830d" dir="ltr"><td id="=Cjn" class=""><strong>Representation Type</strong></td><td id="s{c_" class=""><strong>Primary Client</strong></td><td id="pHgO" class=""><strong>Core Responsibilities</strong></td><td id="Hg|c" class=""><strong>Commission &amp; Deal Dynamics</strong></td></tr><tr id="4168ac6a-aab1-80a7-9189-c08140c5ad5f" dir="ltr"><td id="=Cjn" class=""><strong>Landlord Representative</strong></td><td id="s{c_" class="">Commercial property owners</td><td id="pHgO" class="">• Learn property features and owner requirements<br/><br/>• Market vacant spaces to prospective business tenants<br/><br/>• Screen and secure qualified tenants<br/><br/>• Negotiate lease terms and conditions</td><td id="Hg|c" class="">One multi-tenant building provides many units to lease—yielding more frequent commission opportunities, though individual transaction fees are typically smaller</td></tr><tr id="4168ac6a-aab1-804c-bf5a-e6647d87b2b8" dir="ltr"><td id="=Cjn" class=""><strong>Tenant Representative</strong></td><td id="s{c_" class="">Business owners and corporate managers</td><td id="pHgO" class="">• Locate available commercial spaces matching operational needs<br/><br/>• Explain pass-through fees and complex lease clauses<br/><br/>• Negotiate favorable lease terms on the tenant&#x27;s behalf</td><td id="Hg|c" class="">Each client typically leases a single space (fewer total transactions), so commission rates/fees per deal are generally higher to compensate</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-80be-9c83-e917b1d6272d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Essential Qualities &amp; Skills of Commercial Leasing Agents</strong><ul id="4168ac6a-aab1-807c-8e0f-d4395c61eca7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Networking &amp; Reputation:</strong> Because the commercial real estate sector is tight-knit, building strong business community relationships and a trusted reputation is a licensee&#x27;s most valuable asset.</li></ul><ul id="4168ac6a-aab1-80b8-9fd2-e19571987035" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mastery of Complex Lease Clauses:</strong> Commercial contracts involve custom operational terms—such as tenant improvements/build-outs, maintenance allocations, and expense pass-throughs. Licensees must thoroughly understand these clauses while always advising clients to have a <strong>real estate attorney</strong> review final commercial leases.</li></ul><ul id="4168ac6a-aab1-80b0-a100-e7e3de6a1baa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Patience &amp; Negotiation Stamina:</strong> Unlike standardized residential leases, commercial leases involve higher dollar values, longer commitments, and extensive custom negotiations, resulting in significantly longer transaction timelines.</li></ul></li></ul><ul id="4168ac6a-aab1-807f-82a0-f5d37f7984d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Leases Classified by Rent Calculation</strong><ul id="4168ac6a-aab1-804a-876f-c8dd37389103" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While commercial leases also establish traditional leasehold estates (for years, periodic, at will, or at sufferance), they are primarily categorized by <strong>how rent and property expenses are calculated and paid</strong>—and a single commercial lease often blends features from multiple categories:<ol type="1" id="4168ac6a-aab1-800f-8596-d34163dd5e6b" class="numbered-list" start="1" dir="auto"><li><strong>Gross Lease</strong></li></ol><ol type="1" id="4168ac6a-aab1-80e1-bc03-e7def040da20" class="numbered-list" start="2" dir="auto"><li><strong>Net Lease</strong></li></ol><ol type="1" id="4168ac6a-aab1-807f-b711-ea642566ffc4" class="numbered-list" start="3" dir="auto"><li><strong>Percentage Lease</strong></li></ol><ol type="1" id="4168ac6a-aab1-802d-b18d-e923e14eac5a" class="numbered-list" start="4" dir="auto"><li><strong>Variable Lease</strong></li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-80f4-bbab-c71af72c60d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gross Lease (Full-Service Lease)</strong><ul id="4168ac6a-aab1-8083-9c7e-fe7ccf5a2ee0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A lease structure in which the tenant pays a <strong>fixed, all-inclusive monthly rent</strong>, while the landlord assumes responsibility for paying all property operating expenses (taxes, insurance, utilities, and maintenance).</li></ul><ul id="4168ac6a-aab1-80e5-ac9a-d5d0dacb3bd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pricing &amp; Usage:</strong> Because the landlord builds estimated operating costs into the base rental rate, the monthly rent appears higher than in net leases. Gross leases are standard for <strong>residential apartments</strong> and are frequently used in <strong>commercial office and industrial spaces</strong> where tenants prefer predictable, lump-sum monthly expenses.</li></ul><ul id="4168ac6a-aab1-8061-a87b-c65cfc2b0f65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expense Stop Provision:</strong><ul id="4168ac6a-aab1-80de-ac40-feb15f18db85" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A protective cap negotiated into a gross lease setting the <strong>maximum dollar amount</strong> the landlord will pay toward annual operating expenses; if actual expenses exceed that cap, the tenant pays the overage.</li></ul><ul id="4168ac6a-aab1-8064-a398-f2b4c0ba938f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Worked Example:</strong> Zied&#x27;s retail lease includes a <strong>$50,000</strong> annual expense stop. When annual operating expenses total <strong>$60,000</strong>, the landlord pays <strong>$50,000</strong> and Zied pays the remaining <strong>$10,000</strong> (<code>$60,000 - $50,000 = $10,000</code>).</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8031-91f3-cc2f9529821f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Lease</strong><ul id="4168ac6a-aab1-8058-9e29-f2d9763ed40f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A commercial lease structure (common in retail, office, and industrial properties) in which the tenant pays a <strong>lower base rent plus all or a prorated share of the property&#x27;s operating expenses</strong> (fixed costs like property taxes and variable costs like maintenance).</li></ul><ul id="4168ac6a-aab1-8064-a7d3-ce5f40f4ffe4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three Tiers of Net Leases:</strong> Each additional &quot;net&quot; shifts another core operating expense category from the landlord onto the tenant.<figure id="4168ac6a-aab1-80e8-b854-d8b6579be621" class="image" data-notion-image="Chapter%202%20-%20Commercial%20Leases/1.gif" dir="ltr"><a href="Chapter%202%20-%20Commercial%20Leases/1.gif"><img style="width:576px" src="Chapter%202%20-%20Commercial%20Leases/1.gif"/></a></figure><table id="4168ac6a-aab1-8027-a5a2-eb4b81362e4d" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80d9-b762-cd436add1d67" dir="ltr"><td id="ydhV" class=""><strong>Net Lease Tier</strong></td><td id="a{x~" class=""><strong>Alternative Names</strong></td><td id="xd;&lt;" class=""><strong>What the Tenant Pays</strong></td><td id="jraz" class=""><strong>Key Characteristics</strong></td></tr><tr id="4168ac6a-aab1-8026-ba4c-e7f5a6d5b328" dir="ltr"><td id="ydhV" class=""><strong>Single-Net Lease (N)</strong></td><td id="a{x~" class="">Net lease</td><td id="xd;&lt;" class=""><strong>Base rent + Property taxes</strong></td><td id="jraz" class="">Tenant pays their share of real estate taxes; landlord retains insurance and maintenance costs</td></tr><tr id="4168ac6a-aab1-8060-b4a1-d5752efb6238" dir="ltr"><td id="ydhV" class=""><strong>Double-Net Lease (NN)</strong></td><td id="a{x~" class="">Net-net lease</td><td id="xd;&lt;" class=""><strong>Base rent + Property taxes + Insurance</strong></td><td id="jraz" class="">Tenant covers taxes (first net) and property insurance (second net); landlord covers structural maintenance</td></tr><tr id="4168ac6a-aab1-80cf-9b98-faff633b1086" dir="ltr"><td id="ydhV" class=""><strong>Triple-Net Lease (NNN)</strong></td><td id="a{x~" class="">Net-net-net lease</td><td id="xd;&lt;" class=""><strong>Base rent + Property taxes + Insurance + Maintenance</strong> (all operating expenses)</td><td id="jraz" class="">Tenant pays a prorated share of <em>all</em> operating expenses—and in some agreements, even a portion of interest on the landlord&#x27;s loan</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-8039-bad9-f8b02c6e947e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gross Lease vs. Net Lease Comparison</strong><ul id="4168ac6a-aab1-807d-9213-e0c9785692f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Both lease structures determine how property operating expenses (taxes, insurance, utilities, and maintenance) are divided between the landlord and the tenant.<table id="4168ac6a-aab1-80bf-bc4a-efb55e01bd93" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8071-9808-f2176997470f" dir="ltr"><td id="|dPv" class=""><strong>Feature</strong></td><td id="r;DU" class=""><strong>Gross Lease (Full-Service Lease)</strong></td><td id="cH~Z" class=""><strong>Net Lease (Single, Double, or Triple Net)</strong></td></tr><tr id="4168ac6a-aab1-8030-81c0-e379e13601fb" dir="ltr"><td id="|dPv" class=""><strong>Tenant Payment Structure</strong></td><td id="r;DU" class="">Pays a <strong>single flat, all-inclusive monthly rent</strong></td><td id="cH~Z" class="">Pays a <strong>fixed base rent plus an additional amount</strong> for property operating expenses</td></tr><tr id="4168ac6a-aab1-806d-8d63-e660ab5c148d" dir="ltr"><td id="|dPv" class=""><strong>Operating Expense Responsibility</strong></td><td id="r;DU" class=""><strong>Landlord pays</strong> all property operating expenses (unless capped by an expense stop)</td><td id="cH~Z" class=""><strong>Tenant pays</strong> a prorated share or all of the property&#x27;s operating expenses (fixed and variable)</td></tr><tr id="4168ac6a-aab1-8027-9230-ed597aae4dad" dir="ltr"><td id="|dPv" class=""><strong>Cost Predictability</strong></td><td id="r;DU" class="">High predictability for the tenant (lump-sum rate built into rent)</td><td id="cH~Z" class="">Variable monthly outlay for the tenant as taxes, insurance, and maintenance costs fluctuate</td></tr><tr id="4168ac6a-aab1-8052-b639-ccd83fa1f95b" dir="ltr"><td id="|dPv" class=""><strong>Primary Property Usage</strong></td><td id="r;DU" class="">Most common in <strong>residential properties</strong> (and some commercial office/industrial spaces)</td><td id="cH~Z" class="">Most common in <strong>commercial real estate</strong> (retail, office, and industrial properties)</td></tr></tbody></table><figure id="4168ac6a-aab1-8046-830b-f25bb8acbdc9" class="image" data-notion-image="Chapter%202%20-%20Commercial%20Leases/image.png" dir="ltr"><a href="Chapter%202%20-%20Commercial%20Leases/image.png"><img style="width:480px" src="Chapter%202%20-%20Commercial%20Leases/image.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-8021-a2c3-d11274016ae9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Percentage Lease</strong><ul id="4168ac6a-aab1-805d-98eb-eaa039960421" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A commercial lease structure (most commonly used for <strong>retail properties</strong>, such as storefronts and shopping malls) in which the tenant pays a <strong>fixed base rent plus a specified percentage of their gross sales</strong> generated at the property.</li></ul><ul id="4168ac6a-aab1-80cf-ae82-db44c3694a33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rent Variability:</strong> Total monthly rent fluctuates directly with the tenant&#x27;s business revenue—aligning the landlord&#x27;s return with the retail location&#x27;s commercial performance.</li></ul></li></ul><ul id="4168ac6a-aab1-80fe-8974-e9b1aaf8d899" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Percentage Lease Rent Formula </strong><ul id="4168ac6a-aab1-80bf-bba7-c5b4f0e417ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>Fixed rent + (Overage × Sales rate) = Rent</code><ul id="4168ac6a-aab1-80f3-a8cf-dcfda1e86b80" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fixed rent:</strong> The guaranteed minimum base rent paid each period.</li></ul><ul id="4168ac6a-aab1-8034-a9c6-cad58646c334" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Overage:</strong> The tenant&#x27;s gross sales volume (or gross sales exceeding a stipulated breakpoint, depending on lease terms).</li></ul><ul id="4168ac6a-aab1-80da-9865-cea5da469f58" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sales rate:</strong> The percentage of gross sales applied toward rent (converted to a decimal during calculation).</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-800e-af9e-fe0f8b1b9f4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Example: Candy Store Monthly Rent</strong><ul id="4168ac6a-aab1-803b-a7e8-e813861053d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables:</strong><ul id="4168ac6a-aab1-8041-b977-c9d0ec268c69" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fixed Monthly Rent: <strong>$3,000</strong></li></ul><ul id="4168ac6a-aab1-8020-8ea7-c7bf84f8816f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Gross Monthly Sales (Overage): <strong>$50,000</strong></li></ul><ul id="4168ac6a-aab1-80ff-b7c4-dfa5ae67a4c7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sales Rate: <strong>2%</strong> (<code>0.02</code>)</li></ul></li></ul><ul id="4168ac6a-aab1-8046-8c30-f92df8ee2878" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ol type="1" id="4168ac6a-aab1-8098-a227-c858c5f0a176" class="numbered-list" start="1" dir="auto"><li><strong>Insert known variables:</strong> <code>$3,000 + ($50,000 × 2%) = Rent</code></li></ol><ol type="1" id="4168ac6a-aab1-8067-bcbf-c3c7901e140b" class="numbered-list" start="2" dir="auto"><li><strong>Calculate percentage of sales (convert 2% to 0.02):</strong> <code>$50,000 × 0.02 = $1,000</code></li></ol><ol type="1" id="4168ac6a-aab1-8090-9a7a-daf6eee98705" class="numbered-list" start="3" dir="auto"><li><strong>Add fixed rent and sales-based rent:</strong> <code>$3,000 + $1,000 = $4,000</code></li></ol></li></ul><ul id="4168ac6a-aab1-8020-beab-f92df5f7601d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Result:</strong> The candy store&#x27;s total monthly rent is <strong>$4,000</strong>.</li></ul></li></ul><ul id="4168ac6a-aab1-8044-911e-e2111caff702" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Variable Lease </strong><ul id="4168ac6a-aab1-8087-b9d8-ca61d0b0507a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A commercial leasehold agreement in which the <strong>base rent changes over time</strong> rather than remaining fixed throughout the entire lease term.</li></ul><ul id="4168ac6a-aab1-80ac-959d-fd5205ae2ce0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Property Fit:</strong> Used almost exclusively in <strong>long-term commercial leases</strong> (e.g., 20- to 50-year terms) to protect landlords and property managers against inflation, rising utility costs, and shifting property values while locking in a long-term tenant. Residential leases rarely use variable structures because their shorter terms (typically one year or less) allow landlords to simply adjust rent upon renewal.</li></ul><ul id="4168ac6a-aab1-8015-8b37-ebae66f96dac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escalation Clause:</strong> Both forms of variable leases rely on an <strong>escalation clause</strong>—a contract provision that legally secures the lessor&#x27;s right to increase rent payments at specified intervals based on a predetermined factor or economic benchmark.</li></ul></li></ul><ul id="4168ac6a-aab1-801c-8e91-e49e879d5bb6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Types of Variable Leases</strong><table id="4168ac6a-aab1-8026-ba19-dd6da58fa2f5" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-800c-92c0-c1194950cdd1" dir="ltr"><td id="&lt;&gt;fI" class=""><strong>Variable Lease Type</strong></td><td id="qf~H" class=""><strong>Alternative Name</strong></td><td id="GR[B" class=""><strong>Mechanism for Rent Adjustment</strong></td><td id="\^PX" class=""><strong>Benefits &amp; Practical Example</strong></td></tr><tr id="4168ac6a-aab1-8032-9d5a-ee67f32fb3c9" dir="ltr"><td id="&lt;&gt;fI" class=""><strong>Graduated Lease</strong></td><td id="qf~H" class=""><strong>Step-up lease</strong></td><td id="GR[B" class="">Rent increases at specific intervals by <strong>fixed, predetermined amounts or percentages</strong> written into the escalation clause</td><td id="\^PX" class="">• <strong>Tenant benefit:</strong> Lower initial rent payments make move-in affordable for growing businesses.<br/><br/>• <strong>Landlord benefit:</strong> Predictable rent growth matching rising property values.<br/><br/>• <strong>Example:</strong> A 20-year lease with an escalation clause increasing rent by <strong>5% every year</strong>.</td></tr><tr id="4168ac6a-aab1-8030-8680-c73802bd308b" dir="ltr"><td id="&lt;&gt;fI" class=""><strong>Index Lease</strong></td><td id="qf~H" class="">—</td><td id="GR[B" class="">Rent adjusts at periodic intervals based on changes in an external <strong>economic indicator</strong>, such as the <strong>Consumer Price Index (CPI)</strong></td><td id="\^PX" class="">• <strong>Tenant benefit:</strong> Protects against arbitrary hikes by tying increases to real economic inflation.<br/><br/>• <strong>Landlord benefit:</strong> Preserves profitability as broader market costs shift.<br/><br/>• <strong>Mechanism:</strong> Escalation clause ties rent adjustments directly to fluctuations in the specified index.</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8090-978d-cc66a69c8ec5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Recap: Commercial Leases Classified by How Rent Is Paid<ul id="4168ac6a-aab1-8092-bacd-d3cb98401610" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Gross Lease (Full-Service Lease):</strong> Tenant pays a single fixed rent; landlord pays all operating expenses (unless capped by an expense stop).</li></ul><ul id="4168ac6a-aab1-8026-866c-cface2ca6c25" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net Lease (Single, Double, Triple Net):</strong> Tenant pays base rent plus one, two, or all three core property expenses (taxes, insurance, and maintenance).</li></ul><ul id="4168ac6a-aab1-8086-8e18-d43d4d6e6f9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Percentage Lease:</strong> Tenant pays a fixed base rent plus a specified percentage of gross retail sales (<code>Fixed rent + (Overage × Sales rate) = Rent</code>).</li></ul><ul id="4168ac6a-aab1-8080-aaff-ce7f0b2bbafc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Variable Lease:</strong> Base rent adjusts over a long-term lease via an escalation clause, structured either as a <strong>graduated (step-up) lease</strong> or an <strong>index lease</strong>.<figure id="4168ac6a-aab1-80b0-93df-c0d8f5500b8d" class="image" data-notion-image="Chapter%202%20-%20Commercial%20Leases/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Commercial%20Leases/image%201.png"><img style="width:480px" src="Chapter%202%20-%20Commercial%20Leases/image%201.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-8097-850e-d8bc49befb89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leases Based on Property Type</strong><ul id="4168ac6a-aab1-80cc-892d-ce17911515a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Rather than how rent is calculated, <strong>ground leases</strong> and <strong>shell leases</strong> are defined by the physical condition of the property being leased.</li></ul></li></ul><table id="4168ac6a-aab1-800c-8f6f-dafdedb0e511" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-806e-b35b-f70b2e1aa43f" dir="ltr"><td id="LqFX" class=""><strong>Lease Type</strong></td><td id="XB[Z" class=""><strong>What Is Leased</strong></td><td id="VIiG" class=""><strong>Typical Term &amp; Tenant Responsibilities</strong></td><td id="O[zN" class=""><strong>Ownership of Improvements &amp; Occupancy Rules</strong></td></tr><tr id="4168ac6a-aab1-8050-ae95-fa807154f681" dir="ltr"><td id="LqFX" class=""><strong>Ground Lease</strong> (Land Lease)</td><td id="XB[Z" class="">Bare, undeveloped land only</td><td id="VIiG" class="">• <strong>50+ years</strong> (allows time to build and recoup capital investment)<br/><br/>• Used in commercial development (no land down payment frees capital for construction), agriculture, mining, and oil/gas extraction</td><td id="O[zN" class="">• Upon expiration, <strong>the land and any constructed buildings revert to the landowner</strong> (unless the lease requires the tenant to demolish the structure prior to reversion).<br/><br/>• Requires a <strong>Certificate of Occupancy (CO)</strong> after final municipal safety inspection before opening.</td></tr><tr id="4168ac6a-aab1-8046-8a18-cda540899ab4" dir="ltr"><td id="LqFX" class=""><strong>Shell Lease</strong> (Building Shell Lease)</td><td id="XB[Z" class="">An existing structure with an <strong>unfinished interior</strong></td><td id="VIiG" class="">• Tenant pays to finish interior construction to their exact business specifications</td><td id="O[zN" class="">• Provides a customizable space without ground-up exterior construction.<br/><br/>• Must also pass final municipal inspection and obtain a <strong>Certificate of Occupancy (CO)</strong> before occupancy.</td></tr></tbody></table><ul id="4168ac6a-aab1-80fc-b4d7-c6f00ca04684" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Oil &amp; Gas Leases (Tennessee Statutory Rules)</strong><ul id="4168ac6a-aab1-8090-a248-e3c483aa83f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Structure:</strong> The lessee (energy company) typically pays the lessor (landowner) an upfront signing bonus, followed by ongoing lease payments plus royalties based on a percentage of well production.</li></ul><ul id="4168ac6a-aab1-8099-93d5-d69561a6b837" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Statutory Expiration &amp; Reversion:</strong><ul id="4168ac6a-aab1-8077-aebe-d648e25c5f9f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Leaseholds for oil and natural gas automatically expire <strong>10 years</strong> from the execution date unless the company is actively producing oil or natural gas for marketable uses at the end of that 10-year period.</li></ul><ul id="4168ac6a-aab1-8044-9940-db20114b38c8" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the lessee ceases production for <strong>six consecutive months</strong> after the 10-year period expires, all mineral/leasehold rights immediately <strong>revert back to the lessor</strong>.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8071-bed5-fb5ddc642d7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Property Improvements, Maintenance &amp; Trade Fixtures</strong><ul id="4168ac6a-aab1-8000-af44-dfe3354b34ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Area Maintenance (CAM) &amp; Anchor Tenants:</strong><ul id="4168ac6a-aab1-80de-be7b-efc38f381061" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>CAM Charges:</strong> Regular fees paid by commercial tenants in addition to base rent to fund shared spaces (lobbies, elevators, parking lots, walkways).</li></ul><ul id="4168ac6a-aab1-80cf-b7fa-c93e0e8681fa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Anchor Tenant:</strong> The largest, highest-traffic business in a multi-tenant retail center (such as a major supermarket or department store) that draws customers to neighboring shops.</li></ul></li></ul><ul id="4168ac6a-aab1-8087-80c7-cf4fc9cb66d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Handling Commercial Tenant Improvements (Build-Outs):</strong><ol type="1" id="4168ac6a-aab1-80d5-bb53-ee0c28b2a0c3" class="numbered-list" start="1" dir="auto"><li><strong>Improvement Allowances (Tenant Improvement / TI Allowance):</strong> The landlord grants the tenant a negotiated cash allowance to manage and pay for their own interior construction.</li></ol><ol type="1" id="4168ac6a-aab1-80ac-ba32-d36d8cd2a161" class="numbered-list" start="2" dir="auto"><li><strong>Turn-Key Projects:</strong> The landlord completes and funds all agreed-upon renovations upfront so the space is completely ready for the tenant to move in and operate immediately.</li></ol></li></ul><ul id="4168ac6a-aab1-8047-8efb-da10b3da080d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Trade Fixtures vs. Permanent Improvements:</strong><ul id="4168ac6a-aab1-8006-a004-f19a259ac2a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Trade Fixtures:</strong> Specialized equipment or installations attached by a commercial tenant strictly to conduct their business; these remain the tenant&#x27;s personal property and <strong>go with the tenant</strong> when the lease ends (provided the tenant repairs any removal damage).</li></ul><ul id="4168ac6a-aab1-8075-a7d4-e8de5b9f6d49" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Permanent Improvements:</strong> Structural or general building upgrades that are <strong>not</strong> trade fixtures; these become real property and <strong>remain with the landlord</strong> upon lease expiration.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80b5-a46d-e1358197ac67" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Residential vs. Commercial Leases Comparison</strong><ul id="4168ac6a-aab1-8019-80a4-dce26859fe41" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Understanding how leases operate across residential and commercial sectors helps organize their structure, negotiation dynamics, and financial risk.<table id="4168ac6a-aab1-80a2-b9fa-c9c71b37673f" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8035-a117-fe0af783c71d" dir="ltr"><td id="KK_H" class=""><strong>Feature</strong></td><td id="phrA" class=""><strong>Residential Leases</strong></td><td id="GSY:" class=""><strong>Commercial Leases</strong></td></tr><tr id="4168ac6a-aab1-80f7-b56a-d8bead5e00ed" dir="ltr"><td id="KK_H" class=""><strong>Common Rent Structure</strong></td><td id="phrA" class="">Typically <strong>gross leases</strong> (tenant pays a fixed rent; landlord covers property taxes, insurance, and maintenance)</td><td id="GSY:" class=""><strong>Net, gross, percentage, or variable leases</strong> depending on business needs and property type</td></tr><tr id="4168ac6a-aab1-804b-9fb4-e66b2d399ce9" dir="ltr"><td id="KK_H" class=""><strong>Typical Term Length</strong></td><td id="phrA" class=""><strong>Shorter terms</strong> (usually 1 year or less, reflecting higher tenant mobility)</td><td id="GSY:" class=""><strong>Longer terms</strong> (multi-year commitments, allowing businesses time to build clientele and recoup build-out costs)</td></tr><tr id="4168ac6a-aab1-8098-992c-f429371c9cb1" dir="ltr"><td id="KK_H" class=""><strong>Standardization &amp; Negotiation</strong></td><td id="phrA" class=""><strong>Uniform and largely non-negotiable</strong> (standardized forms streamline apartment management)</td><td id="GSY:" class=""><strong>Highly customized and negotiable</strong> (tailored clauses for improvements, CAM charges, escalation, and liability)</td></tr><tr id="4168ac6a-aab1-800d-9d3b-f1feaa808258" dir="ltr"><td id="KK_H" class=""><strong>Financial Scope &amp; Complexity</strong></td><td id="phrA" class="">Lower dollar commitment with straightforward terms</td><td id="GSY:" class=""><strong>Higher financial stakes</strong> involving large capital outlays, business operations, and specialized legal review</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-802e-bab9-cfa0961feaa0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comprehensive Lease Classification Recap</strong><ul id="4168ac6a-aab1-80c3-a361-e33f72ab0a3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Leases are categorized across three distinct dimensions—and because these categories are <strong>not mutually exclusive</strong>, a single lease contract regularly combines features from multiple groups (for example, a commercial contract can be both a <em>triple-net lease</em> and an <em>estate for years</em>, or a <em>ground lease</em> with a <em>graduated</em> rent schedule):</li></ul><ol type="1" id="4168ac6a-aab1-8069-89fc-dd7b15fbd371" class="numbered-list" start="1" dir="auto"><li><strong>Leases by Leasehold Estate (Duration &amp; Renewal):</strong><ul id="4168ac6a-aab1-80b8-997b-da0f8816762e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate for Years:</strong> Fixed starting and ending dates; terminates automatically with no automatic renewal.</li></ul><ul id="4168ac6a-aab1-802b-a8fb-edfad1cd9007" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Periodic Estate:</strong> Recurring periods (e.g., month-to-month) that automatically renew until either party gives proper notice.</li></ul><ul id="4168ac6a-aab1-8000-955f-db7d900f774d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate at Will:</strong> Permissive occupancy without a formal lease; terminable at any time by either party.</li></ul><ul id="4168ac6a-aab1-808a-b61c-d775dfcb5337" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate at Sufferance:</strong> Holdover tenancy where a tenant remains after lease expiration without landlord consent.</li></ul></li></ol><ol type="1" id="4168ac6a-aab1-80b0-a42a-f66d89586ef7" class="numbered-list" start="2" dir="auto"><li><strong>Leases by Rent Calculation (Payment Structure):</strong><ul id="4168ac6a-aab1-8077-af4a-ec62e0babbb9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gross Lease (Full-Service):</strong> Fixed all-inclusive rent; landlord pays operating expenses (unless capped by an expense stop).</li></ul><ul id="4168ac6a-aab1-806f-92b5-ce392b6b7336" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Lease (Single, Double, Triple Net):</strong> Base rent plus property taxes (N), insurance (NN), and maintenance/operating costs (NNN).</li></ul><ul id="4168ac6a-aab1-806e-bc64-ddbf83d0fce0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Percentage Lease:</strong> Fixed base rent plus a percentage of the retail tenant&#x27;s gross sales (<code>Fixed rent + (Overage × Sales rate) = Rent</code>).</li></ul><ul id="4168ac6a-aab1-8099-b2e9-e7d580bbadca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Variable Lease:</strong> Base rent adjusts over time via an escalation clause—either by fixed steps (<strong>Graduated / Step-up Lease</strong>) or an economic benchmark like the CPI (<strong>Index Lease</strong>).</li></ul></li></ol><ol type="1" id="4168ac6a-aab1-809e-9baf-d55cc34388e4" class="numbered-list" start="3" dir="auto"><li><strong>Leases by Property Condition &amp; Financing Purpose:</strong><ul id="4168ac6a-aab1-8055-be9b-d5099c4cfb28" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ground Lease (Land Lease):</strong> Long-term lease (50+ years) of bare, undeveloped land where the tenant constructs improvements that revert to the landowner at expiration.</li></ul><ul id="4168ac6a-aab1-803a-ae55-ebed5f435ee3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Shell Lease:</strong> Lease of an unfinished building structure where the tenant completes the interior build-out.</li></ul><ul id="4168ac6a-aab1-80ce-b71f-cf8f4295f3fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Proprietary Lease:</strong> Exclusive long-term lease granted by a housing cooperative to a resident shareholder.</li></ul><ul id="4168ac6a-aab1-80a2-a95e-e749e6c40ce6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease-Option / Lease-Purchase:</strong> Rent-to-own structures giving the tenant either a unilateral option or a binding obligation to buy the property.</li></ul><figure id="4168ac6a-aab1-80af-a7fe-e38d112215b8" class="image" data-notion-image="Chapter%202%20-%20Commercial%20Leases/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Commercial%20Leases/image%202.png"><img style="width:480px" src="Chapter%202%20-%20Commercial%20Leases/image%202.png"/></a></figure></li></ol></li></ul><p id="4168ac6a-aab1-80c9-b221-f015b0aad669" class="" dir="auto">
+</p></div><div id="4168ac6a-aab1-80bc-adc5-c5377f56e569" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4168ac6a-aab1-80d4-aa4a-e51a0447a37f" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4168ac6a-aab1-80c8-81ab-c21a10925885" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>escalation clause</strong> - a clause in a lease allowing payments to increase in relation to a specified factor or index</li></ul><ul id="4168ac6a-aab1-80dd-bb7f-fcd0cb2505d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>graduated lease</strong> - a lease in which the rental rate increases over time in specific increments</li></ul><ul id="4168ac6a-aab1-8014-ac24-c75dbe8a1d0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>gross lease</strong> - a lease in which the tenant will be responsible for the payment of a fixed monthly charge, while the landlord is responsible for paying all operating expenses; aka <em>full-service lease</em></li></ul><ul id="4168ac6a-aab1-80d3-8db2-ef7501301604" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ground lease</strong> - the lease of bare, undeveloped land; aka <em>land lease</em></li></ul><ul id="4168ac6a-aab1-80fd-9540-d84fe8aa7093" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>net lease</strong> - a lease in which the tenant pays a base rent rate plus all or part of the operating expenses</li></ul><ul id="4168ac6a-aab1-802d-98ee-f9c6b3c24036" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>percentage lease</strong> - type of (usually commercial) lease in which the tenant pays a base rent amount and a percentage of their business profits to the landlord</li></ul><ul id="4168ac6a-aab1-80ae-a7d5-dfdadcbf1a15" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>triple-net lease</strong> - a type of lease requiring the tenant to pay a prorated portion of ALL the operating expenses for the property</li></ul><p id="4168ac6a-aab1-8053-831c-c978503e3f60" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4168ac6a-aab1-803f-b15f-f3de9ce75388" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Leases Based on Rent</strong><ul id="4168ac6a-aab1-807f-b489-cb1e2bb9e914" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Gross lease</li></ul><ul id="4168ac6a-aab1-8012-918b-ede1733c1eaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Net lease</li></ul><ul id="4168ac6a-aab1-80e2-858f-fc6cb6db369a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Percentage lease</li></ul><ul id="4168ac6a-aab1-8090-9e9f-c118fb047978" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Variable lease</li></ul><figure id="4168ac6a-aab1-8069-b7d7-ff74349199eb" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/LeasesBasedOnRent.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/LeasesBasedOnRent.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/LeasesBasedOnRent.jpg"/></a></figure></li></ul><ul id="4168ac6a-aab1-80c9-b93a-f0f842d536b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ground Leases</strong><ul id="4168ac6a-aab1-80e0-b848-e93c278c8d7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>ground lease,</strong> also known as a <em>land lease,</em> is the lease of bare, undeveloped land. These leases usually last for very long terms, like 50 years or more. This accounts for the fact that the lessee will be performing construction (making improvements) upon the land. In a ground lease, the owner grants the tenant a leasehold interest in the land only.</li></ul><ul id="4168ac6a-aab1-80b7-9be8-eefba45414bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Upon expiration of a ground lease, the land, as well as any construction on the land, reverts back to the original landowner.</li></ul></li></ul><ul id="4168ac6a-aab1-8060-9792-cb36e222ce89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Oil and gas leases in Tennessee carry the following regulations:</strong><ul id="4168ac6a-aab1-80f0-bb10-dadd06024051" class="bulleted-list" dir="auto"><li style="list-style-type:circle">They expire 10 years from the date executed, unless companies are producing natural gas or oil for marketable uses at the end of the 10-year period.</li></ul><ul id="4168ac6a-aab1-8074-94bf-df76e7012f43" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the lessee ceases production for six months after the 10-year period has expired, then all rights will revert back to the lessor.</li></ul><ul id="4168ac6a-aab1-80cc-90a5-ef8efde3d10a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>building shell lease</strong> (or simply, a <em>shell lease</em>) is a type of commercial lease that involves renting an unfinished building.</li></ul></li></ul><ul id="4168ac6a-aab1-809e-b4ec-f24ab5b149ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tenant Improvements</strong><ul id="4168ac6a-aab1-8071-aa11-eebeea2a66b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Improvements are usually handled in one of the two following ways:<ul id="4168ac6a-aab1-801a-8076-e08e0d974f1c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Improvement allowances: </strong>The tenant negotiates to receive a cash allowance from their landlord. The tenant will use this money to pay for construction costs.</li></ul><ul id="4168ac6a-aab1-80ac-8835-feaa024a968e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Turn-key projects:</strong> The improvements are handled completely by the landlord. The tenant can move in and have the use of all the amenities and features they need for doing business.</li></ul><ul id="4168ac6a-aab1-80fe-9b83-e671b5457e6b" class="bulleted-list" dir="auto"><li style="list-style-type:square">In either situation, the property manager should be clear about which improvements will be deemed trade fixtures and which will not.</li></ul></li></ul></li></ul><p id="4168ac6a-aab1-80d3-81b6-e1820d069fab" class="" dir="auto">
+</p></div></div><p id="4168ac6a-aab1-80ad-8d75-c808b9ae95a6" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Types of Leases</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-8021-abba-ca8ff847f73b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Types of Leases</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4168ac6a-aab1-804c-9064-e57313a60ceb" class="column-list" data-notion-column-list="" dir="auto"><div id="4168ac6a-aab1-80f0-aed9-ce24ee187dcc" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4168ac6a-aab1-80a2-b9f7-ed60ee0280f4" class="" dir="auto"><strong>Property Interests (Estates in Land)</strong></p><ul id="4168ac6a-aab1-80e4-9e86-dcaa9409f25c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Definition:</strong> An <strong>estate</strong> is a possessory interest in real property—meaning the terms <em>estate</em> and <em>interest</em> refer to the same legal concept regarding the degree, quantity, nature, and extent of a person&#x27;s right to possess real estate.</li></ul><ul id="4168ac6a-aab1-8002-ba8d-e3c846f847ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Primary Distinction:</strong> The fundamental difference between a freehold interest and a leasehold interest is <strong>title/ownership</strong> and <strong>duration</strong>.</li></ul><ul id="4168ac6a-aab1-800a-b3c4-c2c31f176b99" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Freehold vs. Leasehold Estates Comparison</strong><table id="4168ac6a-aab1-8017-9bfa-f98479a50ce1" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80cb-b9a9-e6139ca8b139" dir="ltr"><td id="C{g[" class=""><strong>Feature</strong></td><td id="|Q?`" class=""><strong>Freehold Interest (Freehold Estate)</strong></td><td id="qgil" class=""><strong>Leasehold Interest (Non-Freehold / Less-Than-Freehold Estate)</strong></td></tr><tr id="4168ac6a-aab1-8047-9da2-fe9a8dbee71e" dir="ltr"><td id="C{g[" class=""><strong>Ownership Status</strong></td><td id="|Q?`" class=""><strong>Includes ownership</strong> (title) of the real property</td><td id="qgil" class=""><strong>Does NOT include ownership</strong>; grants only the right to possess and occupy</td></tr><tr id="4168ac6a-aab1-8024-b48b-e9d1b811809c" dir="ltr"><td id="C{g[" class=""><strong>Duration / Length</strong></td><td id="|Q?`" class=""><strong>Indeterminate length</strong> (no fixed expiration date; lasts for a lifetime or forever until transferred/sold)</td><td id="qgil" class=""><strong>Determined length</strong> (established by a lease for a defined period, such as four days, six months, or 10 years)</td></tr><tr id="4168ac6a-aab1-804a-b465-d79b0880e742" dir="ltr"><td id="C{g[" class=""><strong>Typical Holder</strong></td><td id="|Q?`" class="">Homeowner or fee simple property owner</td><td id="qgil" class="">Tenant (lessee) renting a residential or commercial space</td></tr><tr id="4168ac6a-aab1-8045-ba9e-cd7143e32edb" dir="ltr"><td id="C{g[" class=""><strong>Legal Mechanism</strong></td><td id="|Q?`" class="">Conveyed via a <strong>deed</strong></td><td id="qgil" class="">Established via a <strong>lease agreement</strong></td></tr></tbody></table><figure id="4168ac6a-aab1-8002-b7bb-f503b6114b46" class="image" data-notion-image="Chapter%201%20-%20Types%20of%20Leases/image.png" dir="ltr"><a href="Chapter%201%20-%20Types%20of%20Leases/image.png"><img style="width:576px" src="Chapter%201%20-%20Types%20of%20Leases/image.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-80e6-aa26-e9ed64055f0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leases &amp; Leasehold Creation</strong><ul id="4168ac6a-aab1-8044-a2ac-c4a7979a097f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A <strong>lease</strong> (also called a rental agreement) is a legally binding express contract in which the <strong>lessor</strong> (landlord) conveys the right to possess and occupy real property to the <strong>lessee</strong> (tenant) for a predetermined period of time in exchange for periodic rent payments.</li></ul><ul id="4168ac6a-aab1-8042-84ea-e925f4715cb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Writing Requirement:</strong> While oral leases are enforceable in Tennessee for shorter terms, putting all lease agreements in writing is strongly recommended to prevent disputes.</li></ul><ul id="4168ac6a-aab1-8068-8cf1-e65fa17e595e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mutual Rights:</strong> The tenant receives the right of exclusive possession, while the landlord retains the right to collect rent and holds a <strong>reversionary right</strong> (the right to regain full possession of the property when the lease expires).</li></ul></li></ul><ul id="4168ac6a-aab1-8073-b7cd-f4e485311123" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Essential Components of a Comprehensive Lease</strong><ul id="4168ac6a-aab1-80e5-924a-c45610181409" class="bulleted-list" dir="auto"><li style="list-style-type:circle">At a foundational level, a lease defines <strong>party rights/obligations</strong>, the <strong>time frame</strong>, and the <strong>price</strong>, specifically containing:<ul id="4168ac6a-aab1-805d-98a2-fd77fd2d08d0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Identification &amp; Execution:</strong> Legal names and signatures of both the lessor and lessee.</li></ul><ul id="4168ac6a-aab1-8010-bf1f-c6054082b88a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property Description:</strong> Specific identification of the leased space, including street address and unit number.</li></ul><ul id="4168ac6a-aab1-80ae-ab19-c869c85e9ff7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Term &amp; Dates of Occupancy:</strong> Exact start and expiration dates of the tenancy.</li></ul><ul id="4168ac6a-aab1-8040-9a35-da01dccf25f5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Payment Specifics:</strong> Rent amount, due dates, where/how to pay rent, security deposit procedures, and any policies for automatic rent adjustments.</li></ul><ul id="4168ac6a-aab1-80fd-bf2b-fca515f8d343" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Operational Rules &amp; Remedies:</strong> Mutual rights/responsibilities, landlord right-of-access terms, prohibition of illegal activities, and eviction procedures.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8043-8401-ff0659848d3e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Broad Categories of Leases</strong><ol type="1" id="4168ac6a-aab1-803b-9177-c7ac640c80f3" class="numbered-list" start="1" dir="auto"><li><strong>Residential Leases (Classified by Estate / Term Length):</strong> Typically last one year or less and rely on standardized, uniform terms with minimal negotiation.</li></ol><ol type="1" id="4168ac6a-aab1-80a9-b299-f9adf47708b7" class="numbered-list" start="2" dir="auto"><li><strong>Commercial Leases (Classified by Rent Payment Structure):</strong> Primarily defined by how base rent, operating expenses, and revenue shares are calculated and paid.</li></ol></li></ul><ul id="4168ac6a-aab1-8003-a942-f35261b97fbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Types of Leasehold Estates</strong><table id="4168ac6a-aab1-8041-8e58-e334e1a34923" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-806a-9bb4-e80bbf9c7f66" dir="ltr"><td id="LYuG" class=""><strong>Leasehold Estate Type</strong></td><td id="rWCc" class=""><strong>Alternative Names</strong></td><td id="xAsI" class=""><strong>Duration &amp; Renewal Structure</strong></td><td id="&gt;Cr|" class=""><strong>Termination &amp; Consent Rules</strong></td></tr><tr id="4168ac6a-aab1-8012-9db0-edeb46e583ab" dir="ltr"><td id="LYuG" class=""><strong>1. Estate for Years</strong></td><td id="rWCc" class="">Tenancy for years; Tenancy for a specific term</td><td id="xAsI" class=""><strong>Definite, fixed starting and ending dates</strong> (can be any set length: days, months, or years)</td><td id="&gt;Cr|" class="">Terminates automatically on the specified end date; no advance notice required unless stated</td></tr><tr id="4168ac6a-aab1-80fe-a164-d20b1598b0ba" dir="ltr"><td id="LYuG" class=""><strong>2. Periodic Estate</strong></td><td id="rWCc" class="">Periodic tenancy; Estate from period to period; Estate from year to year</td><td id="xAsI" class="">Fixed initial period (e.g., month-to-month or year-to-year) that <strong>automatically renews</strong> for successive periods</td><td id="&gt;Cr|" class="">Continues until either the landlord or tenant gives proper advance notice to cancel</td></tr><tr id="4168ac6a-aab1-8093-80f9-fdf1c5b2a745" dir="ltr"><td id="LYuG" class=""><strong>3. Estate at Will</strong></td><td id="rWCc" class="">Tenancy at will</td><td id="xAsI" class="">No fixed duration; tenant occupies with the <strong>landlord&#x27;s ongoing consent</strong></td><td id="&gt;Cr|" class="">Either the landlord or the tenant may terminate the tenancy at any time (subject to statutory notice)</td></tr><tr id="4168ac6a-aab1-8026-832d-d06344616130" dir="ltr"><td id="LYuG" class=""><strong>4. Estate at Sufferance</strong></td><td id="rWCc" class="">Tenancy at sufferance; Holdover tenancy</td><td id="xAsI" class="">Begins when a tenant <strong>remains in possession after the lease expires</strong></td><td id="&gt;Cr|" class="">Exists <strong>without the landlord&#x27;s consent</strong>; lowest form of leasehold estate prior to eviction or renewal</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-80c5-abba-f4b18163c79f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate for Years (Tenancy for a Specific Term)</strong><ul id="4168ac6a-aab1-8020-884f-fa76af55427c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A leasehold estate governed by a lease with <strong>specific, fixed starting and ending dates</strong>. Despite the name &quot;for years,&quot; the duration can be any set timeframe (days, weeks, months, or multiple years).</li></ul><ul id="4168ac6a-aab1-802c-94d6-d7dd4900a316" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Termination &amp; Renewal:</strong> Terminates automatically upon reaching the specified expiration date—neither the landlord nor the tenant is required to give advance termination notice. It does <strong>not</strong> automatically renew; extending the tenancy requires an express mutual agreement to renew or execute a new lease.</li></ul><ul id="4168ac6a-aab1-807b-a911-df60d9233219" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Example:</strong> Rachel signs a lease in Nashville starting on July 1 and ending on July 1 of the following year; the lease ends automatically on that date without notice.</li></ul></li></ul><ul id="4168ac6a-aab1-80a5-9c0c-f76bcb27dd62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Periodic Estate (Periodic Tenancy)</strong><ul id="4168ac6a-aab1-80dc-85de-fa1b9cca9ae8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> A leasehold estate with a recurring lease period (e.g., month-to-month or year-to-year) and <strong>no fixed final ending date</strong>, which <strong>automatically renews</strong> for successive periods until either party gives proper notice to terminate.</li></ul><ul id="4168ac6a-aab1-80a7-a31f-eb101d2e3865" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Defaults:</strong> When lease terms are vague regarding duration, courts generally classify the tenancy as a periodic estate. Under the Uniform Residential Landlord and Tenant Act (URLTA) and in Tennessee, the default periodic estate is a <strong>month-to-month lease</strong>.</li></ul><ul id="4168ac6a-aab1-801e-950b-da2016161cdc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Practical Pitfall:</strong> A fixed-term lease (such as a one-year lease) can convert into or behave like a periodic estate if it includes an automatic renewal clause requiring the tenant to give 30–60 days&#x27; advance notice before vacating.</li></ul><ul id="4168ac6a-aab1-808e-827e-f63e2055b0d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Example:</strong> Rowen signs a month-to-month lease in Memphis that automatically renews every month until he gives his landlord proper advance notice to end it.</li></ul></li></ul><ul id="4168ac6a-aab1-8081-a587-c7528b5bd97d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate at Will (Tenancy at Will)</strong><ul id="4168ac6a-aab1-8007-bddd-f0e21a568c58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> An informal tenancy in which a tenant occupies a property with the <strong>landlord&#x27;s knowledge and consent</strong>, but without a formal written lease or fixed expiration date.</li></ul><ul id="4168ac6a-aab1-80d1-957d-c90977b80a61" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pros and Cons:</strong><ul id="4168ac6a-aab1-8074-98f2-f63426f9a85f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Advantages:</strong> Offers maximum flexibility for tenants needing temporary housing and allows landlords to earn short-term rental income without a long-term commitment.</li></ul><ul id="4168ac6a-aab1-805d-8821-e97d4d1d8d18" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disadvantages:</strong> Lacks stability and predictability for both housing and rental income because either party can terminate the arrangement at any time (subject to statutory notice), and it leaves maintenance and repair responsibilities (such as fixing broken appliances) undefined.</li></ul></li></ul><ul id="4168ac6a-aab1-8040-b722-f776623db800" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Example:</strong> Josiah occupies a family friend&#x27;s studio apartment with permission while looking for permanent housing, without signing a formal lease.</li></ul></li></ul><ul id="4168ac6a-aab1-80e6-8b49-cc8addf5003a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Comparison of Leasehold Estates Covered<table id="4168ac6a-aab1-805d-be85-dfe1aae40135" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8019-a3a4-f45ea5ea4bec" dir="ltr"><td id="W?~~" class=""><strong>Leasehold Type</strong></td><td id="e@p`" class=""><strong>Ending Date</strong></td><td id="\}AL" class=""><strong>Renewal Behavior</strong></td><td id=";[x{" class=""><strong>Notice Required to End</strong></td><td id="FO^A" class=""><strong>Key Characteristics &amp; Risks</strong></td></tr><tr id="4168ac6a-aab1-801b-93cf-e3778c90d597" dir="ltr"><td id="W?~~" class=""><strong>Estate for Years</strong></td><td id="e@p`" class=""><strong>Fixed &amp; specific</strong></td><td id="\}AL" class=""><strong>No automatic renewal</strong> (requires express agreement)</td><td id=";[x{" class=""><strong>None</strong> (ends automatically on expiration date)</td><td id="FO^A" class="">Duration can be days, months, or years; highest predictability</td></tr><tr id="4168ac6a-aab1-800d-955d-fa32031b4b62" dir="ltr"><td id="W?~~" class=""><strong>Periodic Estate</strong></td><td id="e@p`" class=""><strong>None</strong> (indefinite recurring cycles)</td><td id="\}AL" class=""><strong>Automatically renews</strong> each period</td><td id=";[x{" class=""><strong>Yes</strong> (advance notice required by either party)</td><td id="FO^A" class="">Month-to-month is the Tennessee default; vague leases default here</td></tr><tr id="4168ac6a-aab1-8091-bef2-f6a524cc3e9f" dir="ltr"><td id="W?~~" class=""><strong>Estate at Will</strong></td><td id="e@p`" class=""><strong>None</strong></td><td id="\}AL" class="">Continues at mutual consent</td><td id=";[x{" class="">Terminable at any time (with statutory notice)</td><td id="FO^A" class="">No formal lease; high flexibility but lacks stability and clear maintenance terms</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8029-b0df-df8ea38716ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Estate at Sufferance (Tenancy at Sufferance)</strong><ul id="4168ac6a-aab1-801f-a85a-e561e1ed3c1d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> The lowest form of leasehold estate, occurring when a tenant who originally took possession legally under a valid lease remains in possession of the property <strong>after the lease has expired</strong> and <strong>without the landlord&#x27;s consent</strong> (while the landlord has not yet completed formal eviction proceedings).</li></ul><ul id="4168ac6a-aab1-80cf-8a1b-e31590b9d5a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Holdover Tenant:</strong> A tenant who stays past the designated termination date of their lease without a renewal or new agreement is legally referred to as a <strong>holdover tenant</strong>.</li></ul><ul id="4168ac6a-aab1-8089-9603-d986a33e1baa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Example:</strong> Emily&#x27;s lease ends on August 30, and her landlord already has new tenants scheduled to move in on September 1. By remaining in the home through October without the landlord&#x27;s permission, Emily becomes a holdover tenant and creates an <strong>estate at sufferance</strong>.</li></ul></li></ul><ul id="4168ac6a-aab1-8059-81b1-c05337a1754f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Status &amp; Landlord Options for Holdover Tenants</strong><ul id="4168ac6a-aab1-804d-9743-f61766450f1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Trespasser vs. Tenant at Sufferance:</strong> Unlike a standard trespasser who never had a right to enter, a tenant at sufferance initially entered the property lawfully—so the landlord cannot use &quot;self-help&quot; (such as changing locks or shutting off utilities) to force them out and must follow formal legal eviction (unlawful detainer) procedures.</li></ul><ul id="4168ac6a-aab1-806e-88a6-f2399a885c54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Paths Available to the Landlord:</strong><ol type="1" id="4168ac6a-aab1-804d-81fb-cfa1352e470b" class="numbered-list" start="1" dir="auto"><li><strong>Initiate Eviction Proceedings:</strong> Refuse rent payments and file a formal legal action to regain possession of the property (and potentially recover holdover damages or double/treble rent penalties if specified in the lease or state statute).</li></ol><ol type="1" id="4168ac6a-aab1-8064-aaa4-d7461c7d7007" class="numbered-list" start="2" dir="auto"><li><strong>Consent &amp; Convert to a Periodic Tenancy:</strong> Accept rent payments from the holdover tenant, which generally implies consent and converts the estate at sufferance into a <strong>periodic estate</strong> (typically month-to-month) under the original lease terms.</li></ol><figure id="4168ac6a-aab1-80de-8dca-c89e1ce56da4" class="image" data-notion-image="Chapter%201%20-%20Types%20of%20Leases/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Types%20of%20Leases/image%201.png"><img style="width:528px" src="Chapter%201%20-%20Types%20of%20Leases/image%201.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-8042-aa25-f3009794e485" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Proprietary Leases (Cooperative Housing)</strong><ul id="4168ac6a-aab1-80ff-af2e-e167a8353644" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A long-term, exclusive lease granted by a <strong>housing cooperative</strong> (the landlord/lessor) to a resident who owns stock/shares in that cooperative corporation (the tenant/lessee).</li></ul><ul id="4168ac6a-aab1-80b8-8238-e048b0a8608a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Distinction:</strong> Unlike standard residential leases where the tenant holds no ownership interest in the entity owning the building, the tenant in a proprietary lease is a <strong>shareholder</strong> occupying a specific unit within the cooperative&#x27;s property.</li></ul></li></ul><ul id="4168ac6a-aab1-80b7-8ade-e19f7417661a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Residential Leasing &amp; Section 8 Housing Programs</strong><ul id="4168ac6a-aab1-80b9-9a12-e1a86b07a931" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Program Overview:</strong> Federally funded by the <strong>U.S. Department of Housing and Urban Development (HUD)</strong> and administered locally by state and municipal public housing authorities to help low-income households afford decent, safe, and sanitary housing.</li></ul><ul id="4168ac6a-aab1-802e-b384-cfaaaf85c4ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Administration (THDA):</strong> The <strong>Tennessee Housing Development Agency (THDA)</strong> manages two primary rental assistance tracks in Tennessee:<ol type="1" id="4168ac6a-aab1-807c-a95e-fc8a009794e5" class="numbered-list" start="1" dir="auto"><li><strong>Subsidized Apartments:</strong> Private or participating apartment owners offer reduced rental rates directly to qualified low-income tenants.</li></ol><ol type="1" id="4168ac6a-aab1-80bf-839f-d24d4b6576da" class="numbered-list" start="2" dir="auto"><li><strong>Public Housing &amp; Housing Choice Vouchers (Project-Based &amp; Tenant-Based):</strong> Properties operate under <strong>Housing Assistance Payments (HAP) Contracts</strong> with HUD (administered by THDA/PBCA), where THDA pays a rental subsidy directly to the landlord and the tenant pays the remaining portion.</li></ol></li></ul><ul id="4168ac6a-aab1-8070-86aa-f670e66a077b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eligibility &amp; Preferences:</strong> Applicants are evaluated primarily on <strong>financial need</strong> (income limits and family size), with statutory preferences often granted to <strong>the elderly, families, and individuals with disabilities</strong>. Landlords retain responsibility for screening tenants and maintaining units to HUD Housing Quality Standards (HQS).</li></ul></li></ul><ul id="4168ac6a-aab1-8048-8c99-f6a95a4e2cc6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease With an Option to Buy (Lease-Option / Rent-to-Own)</strong><ul id="4168ac6a-aab1-805b-966d-c9dcda3077b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Concept:</strong> A hybrid financing and leasing contract allowing a tenant (<strong>optionee</strong>) to rent a property for a fixed period (typically 1–2 years) while holding the exclusive right—but <strong>not the obligation</strong>—to purchase the property at a predetermined price (either locked in upfront or tied to future market value) before the lease expires.</li></ul><ul id="4168ac6a-aab1-80b9-885e-dfd3992b57f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Structural &amp; Legal Features:</strong><table id="4168ac6a-aab1-80ed-9354-deb64f0faf28" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80d1-b4d3-e39c50fc3a2c" dir="ltr"><td id="nBCU" class=""><strong>Feature</strong></td><td id="]&lt;P^" class=""><strong>Mechanics &amp; Legal Rules</strong></td><td id="_`TS" class=""><strong>Financial Impact on Parties</strong></td></tr><tr id="4168ac6a-aab1-8060-8f27-f62b9d238678" dir="ltr"><td id="nBCU" class=""><strong>Unilateral Contract</strong></td><td id="]&lt;P^" class="">Only the <strong>optionor (landlord/seller)</strong> is legally bound to sell if the buyer exercises the option; the <strong>optionee (tenant/buyer)</strong> can walk away without buying</td><td id="_`TS" class="">Protects the tenant&#x27;s right to purchase while preserving their flexibility to decline</td></tr><tr id="4168ac6a-aab1-80ae-a387-d51b9c8beeb9" dir="ltr"><td id="nBCU" class=""><strong>Option Fee</strong></td><td id="]&lt;P^" class="">A <strong>nonrefundable upfront deposit</strong> paid by the optionee to the optionor at contract signing</td><td id="_`TS" class="">Serves as legal <strong>consideration</strong> making the option binding; typically credited toward the purchase price if exercised, or forfeited to the seller if the tenant walks away</td></tr><tr id="4168ac6a-aab1-8070-b099-f9d603141184" dir="ltr"><td id="nBCU" class=""><strong>Rent Credits (Potential Equity)</strong></td><td id="]&lt;P^" class="">A specified portion of each monthly rent payment is credited toward the future purchase price or down payment</td><td id="_`TS" class="">Allows the tenant to build potential equity while renting; if the option is <strong>not</strong> exercised before expiration, the landlord retains all accumulated rent credits and the option expires</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-8038-b1c6-eb1765b47472" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Drawbacks &amp; Risks of Lease-Option Agreements</strong><ul id="4168ac6a-aab1-8035-99d4-e9b5eb74887e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While lease-options provide flexibility for buyers who need time to qualify for financing, they create significant operational, financial, and legal risks for both parties:<table id="4168ac6a-aab1-80f0-9a76-f2f7ba99a6ad" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80fc-9046-d6cb45fd0e9a" dir="ltr"><td id="jgGT" class=""><strong>Party</strong></td><td id="JKx&lt;" class=""><strong>Primary Risks &amp; Drawbacks</strong></td><td id="G=&lt;~" class=""><strong>Practical Consequences</strong></td></tr><tr id="4168ac6a-aab1-807b-a9a6-cc8726373ac4" dir="ltr"><td id="jgGT" class=""><strong>Seller (Optionor)</strong></td><td id="JKx&lt;" class="">• <strong>Unclear Maintenance Responsibilities:</strong> Sellers intending to divest may resist spending money on upkeep, while tenants who decide not to buy may neglect the home and leave behind costly damage.<br/><br/>• <strong>Buyer Financing Risk:</strong> Lease-option tenants typically cannot currently qualify for a mortgage; if they fail to improve their credit or income, the sale falls through—especially risky in a declining housing market.</td><td id="G=&lt;~" class="">Contracts must explicitly assign routine maintenance and damage liability during the lease period.</td></tr><tr id="4168ac6a-aab1-806e-85e8-e67066577b88" dir="ltr"><td id="jgGT" class=""><strong>Buyer (Optionee)</strong></td><td id="JKx&lt;" class="">• <strong>High Upfront &amp; Ongoing Costs:</strong> Nonrefundable option fees can be steep, and monthly rent is often charged above market rate to fund rent credits—money forfeited if the buyer cannot close.<br/><br/>• <strong>Title &amp; Valuation Risks:</strong> Properties offered via lease-option may struggle to sell traditionally; the buyer may later discover a defective title or that the home fails to appraise for the locked-in purchase price.</td><td id="G=&lt;~" class="">Buyers risk losing substantial capital if financing falls through, title issues emerge, or market values drop below the agreed price.</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-801b-be7c-fa39aa3de5c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease-Option vs. Lease-Purchase Agreements</strong><ul id="4168ac6a-aab1-8042-ba93-f82adba9ebd8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lease-Option Agreement (Right, Not Obligation):</strong> Grants the tenant the unilateral choice to buy the property within a set timeframe. If title defects arise, the home under-appraises, or financing fails, the buyer can walk away (forfeiting the option fee and rent credits, without further legal liability).</li></ul><ul id="4168ac6a-aab1-802d-b6a2-c24a3ac09f6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lease-Purchase Agreement (Binding Obligation to Buy):</strong> Legally <strong>requires</strong> the tenant to purchase the property at the end of the lease term. Buyers are generally advised to avoid lease-purchase contracts in favor of lease-options due to the lack of an exit strategy if financing or title problems occur.</li></ul></li></ul><ul id="4168ac6a-aab1-809d-a5ac-d43c4dede2a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Takeaway &amp; Legal Counsel</strong><ul id="4168ac6a-aab1-80b1-a311-ff9cb14f798e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who Benefits Most:</strong> Lease-options work best for buyers who want to lock in a home while spending 1–2 years repairing credit or saving for a down payment, offering far safer flexibility than a binding lease-purchase contract.</li></ul><ul id="4168ac6a-aab1-800d-8578-ee04a5d0d722" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Legal Representation:</strong> Because rent-to-own contracts combine complex leasing, financing, and conveyance terms, real estate licensees should always refer clients to a qualified <strong>real estate attorney</strong> to draft, review, and finalize the legal documentation.</li></ul></li></ul><p id="4168ac6a-aab1-80dd-b84c-ef954dbcf7bf" class="" dir="auto">
+</p></div><div id="4168ac6a-aab1-80a8-a636-f14d0d4bd775" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4168ac6a-aab1-8002-98e6-eb785b02c647" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4168ac6a-aab1-8057-ac25-daa244be529c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>estate at sufferance</strong> - a tenant’s occupancy of a property beyond their lease’s terms and without the landlord’s consent</li></ul><ul id="4168ac6a-aab1-809a-a065-c7fc59852afd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>estate at will</strong> - a tenant’s occupancy of a property with the landlord’s consent but without a lease</li></ul><ul id="4168ac6a-aab1-806c-a183-fe5907d54629" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>estate for years</strong> - a lease with a specific starting and ending date; aka <em>tenancy for years</em></li></ul><ul id="4168ac6a-aab1-801e-9ce8-d5f05b8d31d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>lease</strong> - a contract in which one party conveys property to another for a specific predetermined period of time, generally in return for periodic payment</li></ul><ul id="4168ac6a-aab1-806f-90a8-f39567f32744" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>leasehold interest</strong> - an interest in the occupation of a property established through a lease</li></ul><ul id="4168ac6a-aab1-8082-8a4d-d608100d6e1d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>lessee - </strong>the party to whom the lease is granted; aka <em>tenant</em></li></ul><ul id="4168ac6a-aab1-8020-a418-dcaa1e895438" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>lessor</strong> - the party granting the lease; aka <em>landlord</em></li></ul><ul id="4168ac6a-aab1-8049-bfab-d61c5e878a04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>periodic estate</strong> - a leasehold estate which automatically renews until canceled by either party; aka <em>estate from period-to-period, periodic tenancy, estate from year to year</em></li></ul><ul id="4168ac6a-aab1-80d7-93cd-f8a30ee0108e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>proprietary lease</strong> - long-term and exclusive lease given to resident and stock owner of a cooperative</li></ul><p id="4168ac6a-aab1-8067-a9a8-e31f7b78dda1" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4168ac6a-aab1-806a-a50b-fe0287693610" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Freehold vs. Leasehold - </strong>The main difference between a leasehold interest and a freehold interest is ownership. Freehold estates include ownership and leasehold estates do NOT include ownership.<figure id="4168ac6a-aab1-8008-ae10-cd36e3e46ed3" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/Freehold_vs_Leasehold_VennDiagram.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/Freehold_vs_Leasehold_VennDiagram.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/Freehold_vs_Leasehold_VennDiagram.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-8067-bfef-d4405aaddd05" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Leases</strong><ul id="4168ac6a-aab1-8003-b5be-e4653a999ce8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A lease is a contract that creates a conceptual interest in property and defines what that interest looks like. <strong>In Tennessee, a lease doesn&#x27;t always have to be in writing, but it&#x27;s recommended.</strong></li></ul><ul id="4168ac6a-aab1-8006-991a-d33bd2088ff8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A lease allows the tenant to occupy the landlord’s property for a specified period of time at a certain rental price until the lease expires.</li></ul><ul id="4168ac6a-aab1-8067-9ad1-fe705ca1fc9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">At a basic level, a comprehensive lease must define:<ul id="4168ac6a-aab1-80ef-a828-f179940c253f" class="bulleted-list" dir="auto"><li style="list-style-type:square">The tenant and landlord’s rights and obligations</li></ul><ul id="4168ac6a-aab1-8059-9354-c3e73c2c260a" class="bulleted-list" dir="auto"><li style="list-style-type:square">The time frame of the contract</li></ul><ul id="4168ac6a-aab1-807c-8a1b-f8e92398a069" class="bulleted-list" dir="auto"><li style="list-style-type:square">The price to use the property</li></ul></li></ul><ul id="4168ac6a-aab1-80dd-8507-f3eaf99fe0cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The lease agreement is an express contract between the parties giving the tenant the right to possession and the landlord rental income. The landlord has a right to collect payment and also has a <em>reversionary right</em>, which is the right to regain ownership of a property.</li></ul></li></ul><ul id="4168ac6a-aab1-8037-a8e5-faff3b8ca53f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lease-option Agreements</strong><ul id="4168ac6a-aab1-80b5-b74b-d12d8f311310" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A lease with an option to buy, or lease-option agreement, is a contract in which the buyer can lease a property for a period of time (usually a year or two) and then have the option to buy the property. The lease contract will spell out when the property can be purchased and at what price.</li></ul><ul id="4168ac6a-aab1-80c2-99ea-faa909dde97b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An option-to-buy is unilateral, meaning only one of the parties is required to act. Since it&#x27;s an <em>option</em>, the tenant does not have to buy the property if they don&#x27;t want to. (But the seller is required to sell if the buyer chooses to buy.)</li></ul><ul id="4168ac6a-aab1-8088-9a5c-d452c5cd02fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In a lease-purchase agreement, the tenant is required to purchase the property. Both types of transactions call for the services of a real estate attorney.</li></ul></li></ul><p id="4168ac6a-aab1-80fa-9cd6-d8f9e9194c0d" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

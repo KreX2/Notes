@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Methods of Estimating Value</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-8020-9d73-e515ce3b034d" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Methods of Estimating Value</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41b8ac6a-aab1-802b-94b1-db17509d3aa2" class="column-list" data-notion-column-list="" dir="auto"><div id="41b8ac6a-aab1-8086-845f-dfd65976aed4" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41b8ac6a-aab1-8039-8a5f-e7ef28f23639" class="" dir="auto"><strong>Overview of the Three Approaches to Value &amp; Reconciliation</strong></p><ul id="41b8ac6a-aab1-805b-8afd-e11ee18a37d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Appraisers rely on three primary valuation approaches depending on the property type:<table id="41b8ac6a-aab1-8034-a3ca-f9b92a8eaf99" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80c1-adc0-fa80a368e90a" dir="ltr"><td id="}mDO" class=""><strong>Valuation Approach</strong></td><td id="&lt;ce?" class=""><strong>Core Formula / Methodology</strong></td><td id="YzT&lt;" class=""><strong>Best Suited Property Types</strong></td></tr><tr id="41b8ac6a-aab1-808d-9086-d953de9cfa00" dir="ltr"><td id="}mDO" class=""><strong>Sales Comparison Approach</strong> <em>(Market Data / Direct Sales Comparison)</em></td><td id="&lt;ce?" class="">Estimates value by comparing the subject property to recent sales of similar properties in the same market area and adjusting for differences:<br/><br/><code>Comparable property sales ± Adjustments = Subject property value</code></td><td id="YzT&lt;" class=""><strong>Owner-occupied residential properties</strong> and <strong>vacant land</strong> (also the primary method agents use for CMAs)</td></tr><tr id="41b8ac6a-aab1-805f-a86f-ee9115bd8ae8" dir="ltr"><td id="}mDO" class=""><strong>Cost Approach</strong></td><td id="&lt;ce?" class="">Estimates value by calculating replacement/reproduction cost of improvements, subtracting depreciation, and adding land value</td><td id="YzT&lt;" class="">New construction, special-purpose properties (schools, churches, libraries), and properties with few comparables</td></tr><tr id="41b8ac6a-aab1-803a-bfc4-c5c35c20e765" dir="ltr"><td id="}mDO" class=""><strong>Income Approach</strong></td><td id="&lt;ce?" class="">Estimates value by applying a rate of return (capitalization rate) to the net operating income (NOI) the property generates</td><td id="YzT&lt;" class="">Income-producing commercial properties (apartments, offices, retail centers)</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-80a8-a257-de8fced65d08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reconciliation (Correlation):</strong> When multiple approaches are used, they often yield different value figures. Rather than using a rigid formula or simple average, the appraiser exercises professional judgment—giving the greatest weight to the approach most relevant to the property type (for example, weighting the <strong>Sales Comparison Approach</strong> most heavily for an owner-occupied single-family home).</li></ul><ul id="41b8ac6a-aab1-8007-9fec-c3d0f6d5f928" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sales Comparison Approach Fundamentals</strong><ul id="41b8ac6a-aab1-80b2-adbb-ce19b74b36af" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Underlying Economic Principles:</strong><ul id="41b8ac6a-aab1-80ab-9bbc-e4ef7dc7e526" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Principle of Substitution:</strong> A buyer will pay no more for a property than the cost of acquiring an equally desirable substitute property in the same market.</li></ul><ul id="41b8ac6a-aab1-801c-8146-decd772fda1f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Principle of Contribution:</strong> A property feature or improvement is worth only what it adds to the property&#x27;s market value—not what it cost to build (e.g., a $20,000 swimming pool may contribute only $10,000 to home value).</li></ul></li></ul><ul id="41b8ac6a-aab1-8049-adbd-c58b327a63fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Selecting Comparables (Comps) &amp; Bracketing:</strong><ul id="41b8ac6a-aab1-8016-82c3-ffca2c89ddd2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Minimum Count &amp; Criteria:</strong> Lenders typically require <strong>at least three comparables</strong> sold within the <strong>past 6 to 12 months</strong> in the same or similar neighborhood, closely matching square footage, room count, amenities, and location.</li></ul><ul id="41b8ac6a-aab1-80dd-9e3c-cc61eb5d5dc9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Deriving Final Value:</strong> After adjusting each comparable, the appraiser determines the final indicator by using the median, leaning on the comp with the fewest adjustments, or averaging the adjusted values.</li></ul><ul id="41b8ac6a-aab1-80fd-bda9-e58d25f3516d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Bracketing:</strong> Selecting a group of comparables that includes both <strong>superior and inferior</strong> units of comparison relative to the subject property (e.g., bracketing a 15-year-old subject home with a 10-year-old comp and a 20-year-old comp) to establish a reliable value range.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8026-898f-ec6bfa8f600b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Making Adjustments in the Sales Comparison Approach</strong><ul id="41b8ac6a-aab1-80c3-9d6f-c6d3465b7b76" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because no two properties are identical, appraisers isolate feature values using recent market sales data (paired sales) and adjust comparable sale prices to reflect differences:<table id="41b8ac6a-aab1-80cb-a8a9-fdc53762329d" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80a4-bafa-cf7a0d7f6b55" dir="ltr"><td id="=eks" class=""><strong>Adjustment Category</strong></td><td id="KnDz" class=""><strong>How It Works &amp; Inline Formula</strong></td></tr><tr id="41b8ac6a-aab1-80b5-9bb4-c0645f751000" dir="ltr"><td id="=eks" class=""><strong>Features &amp; Amenities</strong></td><td id="KnDz" class="">Adjusts for bedrooms, floor plan, garage size/existence, pools, or guesthouses based on local market value (not construction cost).</td></tr><tr id="41b8ac6a-aab1-8047-8261-c9c5ccf093a5" dir="ltr"><td id="=eks" class=""><strong>Size (Square Footage &amp; Lot)</strong></td><td id="KnDz" class="">Calculate price per square foot first, then multiply by the square footage difference:<br/><br/><code>Comparable Sale Price ÷ Comparable Sq. Ft. = Price per Sq. Ft.</code><br/><br/><code>Sq. Ft. Difference × Price per Sq. Ft. = Size Adjustment</code><br/><br/><em>(Example: </em><em><code>$400,000 ÷ 2,000 sq. ft. = $200/sq. ft.</code></em><em>; a subject property that is 100 sq. ft. smaller requires subtracting </em><em><code>100 sq. ft. × $200/sq. ft. = $20,000</code></em><em>.)</em></td></tr><tr id="41b8ac6a-aab1-80f2-bd55-ccf377187ae3" dir="ltr"><td id="=eks" class=""><strong>Age</strong></td><td id="KnDz" class="">Accounts for physical age/depreciation (while recognizing historic premiums when applicable):<br/><br/><code>Age Difference (Years) × Annual Depreciation Rate = Age Adjustment</code><br/><br/><em>(Example: At </em><em><code>$1,000/year</code></em><em>, if a comp is 20 years older than the subject, add </em><em><code>20 × $1,000 = $20,000</code></em><em> to the comp.)</em></td></tr><tr id="41b8ac6a-aab1-8011-83ec-fe317e3b079e" dir="ltr"><td id="=eks" class=""><strong>Market Conditions (Time)</strong></td><td id="KnDz" class="">Adjusts for market appreciation or depreciation between the comp&#x27;s sale date and the appraisal&#x27;s effective date:<br/><br/><code>Comparable Sale Price × Market Change % = Market Adjustment</code><br/><br/><em>(Example: If prices dropped 5% since a </em><em><code>$300,000</code></em><em> comp sold 6 months ago, subtract </em><em><code>$300,000 × 0.05 = $15,000</code></em><em>.)</em></td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-804c-b21e-f06aaca91b60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Standard Order of Elements of Comparison &amp; Worked Example</strong><ul id="41b8ac6a-aab1-8080-9959-f25f9f4bee9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sequence for Applying Adjustments (Rule of Thumb):</strong><ol type="1" id="41b8ac6a-aab1-8062-b404-fe84ed4a34c3" class="numbered-list" start="1" dir="auto"><li><strong>Financing terms</strong> (e.g., whether the comp sold with atypical seller-carried or favorable financing)</li></ol><ol type="1" id="41b8ac6a-aab1-803d-b64d-c802e3902c23" class="numbered-list" start="2" dir="auto"><li><strong>Conditions of sale</strong> (e.g., non-arm&#x27;s-length relationship between buyer and seller, or personal property included in the sale)</li></ol><ol type="1" id="41b8ac6a-aab1-8067-9120-cd1a571c793c" class="numbered-list" start="3" dir="auto"><li><strong>Market conditions</strong> (changes in market prices between contract/closing date and the effective appraisal date)</li></ol><ol type="1" id="41b8ac6a-aab1-80db-90d9-cd7b6509c8d1" class="numbered-list" start="4" dir="auto"><li><strong>Location</strong> (neighborhood desirability or micro-location differences)</li></ol><ol type="1" id="41b8ac6a-aab1-8054-83cc-e8a47bdd9b05" class="numbered-list" start="5" dir="auto"><li><strong>Physical characteristics</strong> (age, square footage, lot size, condition, and features)</li></ol></li></ul><ul id="41b8ac6a-aab1-809b-a141-d21c365fcd5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Combined Adjustment Example:</strong><ul id="41b8ac6a-aab1-80ea-8dc1-f5e00b1bd816" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Baseline Comps Average:</strong> <code>$200,000</code></li></ul><ul id="41b8ac6a-aab1-8089-a0af-f456708a3765" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subject Property Differences:</strong> Has a swimming pool (<code>+$15,000</code>), an extra bedroom (<code>+$20,000</code>), and is 10 years older (<code>$8,000</code>).</li></ul><ul id="41b8ac6a-aab1-80bc-a74b-d3d3d9a64b24" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Calculation:</strong> <code>$200,000 + $15,000 + $20,000 - $8,000 = $227,000</code> adjusted value.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80dd-bb99-fad7b0a0645b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income Approach </strong><ul id="41b8ac6a-aab1-80db-9cd3-f7e47f9d5001" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Names:</strong> Also referred to as the <strong>income analysis approach</strong> or <strong>income capitalization approach</strong>.</li></ul><ul id="41b8ac6a-aab1-8051-8680-e9ebdfb11fc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mechanism:</strong> Converts the income a property is capable of producing into an estimate of its market value.</li></ul><ul id="41b8ac6a-aab1-80ec-8334-e405c9b3c5a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Use Cases:</strong> Used primarily for <strong>investment and commercial properties</strong>—such as shopping centers, office buildings, and large apartment complexes—rather than owner-occupied single-family residences.</li></ul><ul id="41b8ac6a-aab1-8083-98f8-f096f6574357" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition of an Investment:</strong> The purchase of an asset with the intention of generating future profit or income streams. Any property capable of producing an income stream (regardless of size or shape, across the four main investment property categories) qualifies as an investment property.<figure id="41b8ac6a-aab1-80ae-bfd5-e3267a30de6a" class="image" data-notion-image="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image.png" dir="ltr"><a href="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image.png"><img style="width:864px" src="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-8021-b8b9-c6199e9f3c83" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underlying Economic Principle: Principle of Anticipation</strong><ul id="41b8ac6a-aab1-806e-be6a-f26f1242a2ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The income approach is grounded in the <strong>principle of anticipation</strong>, which states that a property&#x27;s present value is determined by the <strong>anticipated future income, benefits, or utility</strong> it will generate for its owner.</li></ul></li></ul><ul id="41b8ac6a-aab1-8002-a820-ee5a10c5aa2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros and Cons of the Income Approach</strong><table id="41b8ac6a-aab1-80f6-ae55-f2934431e1b6" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8051-be9e-dd94a950f109" dir="ltr"><td id="xNu\" class=""><strong>Advantages (Pros)</strong></td><td id="YRti" class=""><strong>Limitations (Cons)</strong></td></tr><tr id="41b8ac6a-aab1-80cb-9ff2-fe65f4f98669" dir="ltr"><td id="xNu\" class="">• <strong>Measures Ongoing Profitability:</strong> It is the <strong>only valuation approach</strong> that directly reveals a building&#x27;s earning potential and monthly cash flow rather than just estimating a resale price.<br/><br/>• <strong>Aligns with Investor Priorities:</strong> Focuses directly on the passive monthly income stream that real estate investors prioritize most.</td><td id="YRti" class="">• <strong>Limited Access to Financial Data:</strong> Obtaining complete, accurate income and expense records for comparable properties can be difficult for prospective buyers and appraisers.<br/><br/>• <strong>Cap Rate Complexity:</strong> Determining an accurate capitalization rate (cap rate) can be challenging, especially for inexperienced investors.<br/><br/>• <strong>Restricted Property Scope:</strong> Applicable <strong>only to income-producing investment properties</strong>—unsuitable for owner-occupied residential homes.</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-8063-94d8-eacfe4aef45b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Working with Real Estate Investors &amp; Key Income Tools</strong><ul id="41b8ac6a-aab1-807a-88b9-dd4d6533c49a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Representing individual or corporate investor clients is a lucrative niche with less emotional decision-making than traditional residential sales, though it requires technical financial fluency.</li></ul><ul id="41b8ac6a-aab1-80a3-833b-fccd736587ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Metrics Used in Day-to-Day Investor Analysis:</strong><ul id="41b8ac6a-aab1-80c9-91b2-f652679731fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Net Operating Income (NOI)</strong></li></ul><ul id="41b8ac6a-aab1-8069-a011-e9b6a75c6d1e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Rent Multiplier (GRM)</strong></li></ul><ul id="41b8ac6a-aab1-80a4-a458-d757c8e17476" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Income Multiplier (GIM)</strong></li></ul><ul id="41b8ac6a-aab1-8050-bebc-fae39905ec17" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capitalization Rate (Cap Rate)</strong></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80b9-ad2b-ed93bf0ffae3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Case Study Setup: The Baxter Building</strong><ul id="41b8ac6a-aab1-80b6-8583-e8ae96e00bb6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Profile:</strong> A 35-story apartment building in Springfield currently listed for sale after experiencing a string of regrettable events, drawing purchase interest from several local investors. It serves as the running example for applying the <strong>Income Approach</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-800f-be3a-ee6d089c4968" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Income Approach Terms &amp; The IRV Formula</strong><ul id="41b8ac6a-aab1-805e-beb6-ca9c641d7915" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Definitions:</strong><ul id="41b8ac6a-aab1-80bf-adac-dd083a0bc1fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Net Operating Income (NOI):</strong> A property&#x27;s remaining annual income after subtracting operating expenses (excluding the owner&#x27;s mortgage debt service).</li></ul><ul id="41b8ac6a-aab1-8049-a2eb-f870cacef1db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Operating Expenses:</strong> Ongoing or periodic costs required to run and maintain an income-producing property (e.g., building staff salaries, routine maintenance, utilities, property insurance, property taxes). <em>Note: The owner&#x27;s debt obligation/mortgage payments are </em><em><strong>not</strong></em><em> included in operating expenses.</em></li></ul><ul id="41b8ac6a-aab1-8062-a7f4-fbffcaccc7f3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capitalization Rate (Cap Rate):</strong> The rate of return representing the expected annual income percentage relative to a property&#x27;s value.</li></ul></li></ul><ul id="41b8ac6a-aab1-8000-ba2e-d4abca0906fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The IRV Formula:</strong><ul id="41b8ac6a-aab1-80b3-a4c8-fc4a10e982d5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Net Operating Income (I) ÷ Capitalization Rate (R) = Value (V)</code></li></ul><ul id="41b8ac6a-aab1-8088-8831-d8deb764174d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Rearranged Variations:</em><ul id="41b8ac6a-aab1-8025-b473-cfeaac921c00" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Net Operating Income (I) ÷ Value (V) = Capitalization Rate (R)</code></li></ul><ul id="41b8ac6a-aab1-80eb-8af4-c684433cead6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Value (V) × Capitalization Rate (R) = Net Operating Income (I)</code></li></ul></li></ul><ul id="41b8ac6a-aab1-806e-ba24-f55b7777ada6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Worked Example:</em> With an NOI of <code>$20,000</code> and a market cap rate of <code>10%</code> (<code>0.10</code>):<ul id="41b8ac6a-aab1-8064-b58a-c336884e85fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$20,000 ÷ 0.10 = $200,000</code> (Estimated Property Value)</li></ul></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-800a-8301-ee20b0804fb3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Tiers of Income Calculations</strong><ul id="41b8ac6a-aab1-80fc-bb84-cc2a8758efa1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Before applying the IRV formula, an appraiser or investor must step down through three progressive income calculations:<table id="41b8ac6a-aab1-8038-ba16-eb94b3ae5d25" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80cd-908a-c684bb2d7682" dir="ltr"><td id="yvXf" class=""><strong>Income Tier</strong></td><td id="skvC" class=""><strong>Definition</strong></td><td id="Awhg" class=""><strong>Inline Calculation Formula</strong></td></tr><tr id="41b8ac6a-aab1-801e-b94e-fd3c4fbad6e4" dir="ltr"><td id="yvXf" class=""><strong>1. Potential Gross Income (PGI)</strong></td><td id="skvC" class="">Total annual rental income the property would generate at <strong>100% occupancy</strong> with all rent collected</td><td id="Awhg" class=""><code>Sum of all scheduled rents at 100% occupancy = PGI</code></td></tr><tr id="41b8ac6a-aab1-800d-bb06-fe1a58e53ba6" dir="ltr"><td id="yvXf" class=""><strong>2. Effective Gross Income (EGI)</strong></td><td id="skvC" class="">Total annual income the property actually collects after accounting for vacancies and uncollected rent (typically smaller than PGI)</td><td id="Awhg" class=""><code>PGI - Vacancy &amp; Collection Losses = EGI</code></td></tr><tr id="41b8ac6a-aab1-8028-a68d-d7ee39a8a16c" dir="ltr"><td id="yvXf" class=""><strong>3. Net Operating Income (NOI)</strong></td><td id="skvC" class="">The most accurate measure of property-level earnings after deducting operating expenses (before debt service)</td><td id="Awhg" class=""><code>EGI - Operating Expenses = NOI</code></td></tr></tbody></table><figure id="41b8ac6a-aab1-8006-bea7-e57e15330646" class="image" data-notion-image="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%201.png"><img style="width:672px" src="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%201.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-8072-aac9-da77a1e9621d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Steps to Calculate Value Using the Income Approach</strong><ol type="1" id="41b8ac6a-aab1-80e8-839d-e9681ad7ed2c" class="numbered-list" start="1" dir="auto"><li><strong>Find Potential Gross Income (PGI):</strong> Calculate total annual rent assuming 100% occupancy.</li></ol><ol type="1" id="41b8ac6a-aab1-80d5-b521-cbac93303935" class="numbered-list" start="2" dir="auto"><li><strong>Determine Effective Gross Income (EGI):</strong> Subtract expected vacancy and collection losses from PGI.</li></ol><ol type="1" id="41b8ac6a-aab1-8096-8d61-e4f523838bb1" class="numbered-list" start="3" dir="auto"><li><strong>Estimate Net Operating Income (NOI):</strong> Subtract allowable operating expenses from EGI (excluding mortgage debt service).</li></ol><ol type="1" id="41b8ac6a-aab1-80c1-8ba7-df7164643875" class="numbered-list" start="4" dir="auto"><li><strong>Select a Market Capitalization Rate (Cap Rate):</strong> Determine the appropriate cap rate based on comparable investment property sales in the local market.</li></ol><ol type="1" id="41b8ac6a-aab1-8053-8fa6-cd0af3b3c681" class="numbered-list" start="5" dir="auto"><li><strong>Apply the IRV Formula:</strong> Divide NOI by the chosen cap rate (<code>I ÷ R = V</code>) to estimate the property&#x27;s value.</li></ol></li></ul><ul id="41b8ac6a-aab1-80bb-afbc-f626096a433b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Potential Gross Income (PGI)</strong><ul id="41b8ac6a-aab1-80cd-becf-f19790a017ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Terminology:</strong> PGI—also referred to as <strong>Gross Potential Rental (GPR)</strong> or <strong>Gross Potential Rent Income (GPRI)</strong>—is the maximum total annual rental income a property would generate at <strong>100% occupancy</strong> with all rents collected. It does <strong>not</strong> account for operating expenses or vacancy/collection losses.</li></ul><ul id="41b8ac6a-aab1-8026-93d8-d7d9b31aae5f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>PGI Formulas:</strong><ul id="41b8ac6a-aab1-8005-8b1b-e454ae21095a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>By Lease Status:</strong> <code>Contract rent + Projected rent = PGI</code><ul id="41b8ac6a-aab1-80c1-a734-d7bc66e30d57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Rent:</strong> Rental income from units/spaces currently leased under active rental agreements.</li></ul><ul id="41b8ac6a-aab1-809b-9c55-f1dffd750689" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Projected Rent:</strong> Estimated market rental income from currently vacant units/spaces if they were leased.</li></ul></li></ul><ul id="41b8ac6a-aab1-80f0-94ae-f931ce12772b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>By Total Unit Count:</strong> <code>Total units × Monthly rent per unit × 12 months = PGI</code></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8052-828c-ec1cd87f6bd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked PGI Examples</strong><table id="41b8ac6a-aab1-8041-9e14-e5062f913266" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-809a-958a-ce318f439022" dir="ltr"><td id="l]m|" class=""><strong>Property</strong></td><td id="l~`J" class=""><strong>Given Data</strong></td><td id="~&gt;@{" class=""><strong>Step-by-Step Calculation</strong></td><td id="Ly^}" class=""><strong>Final PGI</strong></td></tr><tr id="41b8ac6a-aab1-80a8-8515-dc4ddebe490b" dir="ltr"><td id="l]m|" class=""><strong>The Baxter Building</strong> <em>(100 units)</em></td><td id="l~`J" class="">• 75 leased units generating <code>$1,800,000</code> (contract rent)<br/><br/>• 25 vacant units at <code>$24,000/yr</code> market rent = <code>$600,000</code> (projected rent)</td><td id="~&gt;@{" class=""><code>$1,800,000 + $600,000 = $2,400,000</code></td><td id="Ly^}" class=""><strong>$2,400,000</strong></td></tr><tr id="41b8ac6a-aab1-805b-98b8-e49091319342" dir="ltr"><td id="l]m|" class=""><strong>Low Country Mews</strong> <em>(27 units)</em></td><td id="l~`J" class="">• Method 1: 25 occupied units = <code>$450,000/yr</code>; 2 vacant units = <code>$36,000/yr</code><br/><br/>• Method 2: 27 total units at <code>$1,500/month</code></td><td id="~&gt;@{" class="">• <code>$450,000 + $36,000 = $486,000</code><br/><br/>• <code>27 × $1,500 × 12 = $486,000</code></td><td id="Ly^}" class=""><strong>$486,000</strong></td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-809b-a660-d57a64fbc1b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Effective Gross Income (EGI)</strong><ul id="41b8ac6a-aab1-808a-9ffb-e96adb5c3be2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The estimated total annual income a property actually produces after accounting for lost rent from vacancies and non-paying tenants, plus any non-rental revenue streams. Like PGI, EGI does <strong>not</strong> deduct operating expenses.</li></ul><ul id="41b8ac6a-aab1-8094-b201-c3f3a8ce8337" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Components Needed to Calculate EGI:</strong><ul id="41b8ac6a-aab1-80bc-aa85-df7d002a62c5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Potential Gross Income (PGI):</strong> Baseline 100%-occupied rental income.</li></ul><ul id="41b8ac6a-aab1-80c2-8347-efc4576846be" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Vacancy Cost (Vacancy &amp; Collection Losses):</strong> Income lost due to <strong>vacancies</strong> (unoccupied units) and <strong>collections</strong> (tenants who fail to pay rent). Because vacancy rates are rarely handed over directly, appraisers estimate them using historical operating statements or local submarket averages.<ul id="41b8ac6a-aab1-800e-9c07-e729ebc4066c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formula:</strong> <code>Vacancy percentage (%) × PGI = Vacancy cost</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8080-b376-dee600b1e311" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Other Income:</strong> Non-rental revenue generated by the property, such as laundry machines, parking fees, vending machines, application fees, or event space rentals.</li></ul></li></ul><ul id="41b8ac6a-aab1-8027-9425-cd1c1e970ce3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>EGI Formula:</strong><ul id="41b8ac6a-aab1-80db-be5f-e17eb09917b5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>PGI + Other income - Vacancy cost = EGI</code></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80eb-9ee6-eb9ba3a4034b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked EGI Example: The Baxter Building</strong><ul id="41b8ac6a-aab1-8016-b465-d94f8d5ce667" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Baseline PGI:</strong> <code>$2,400,000</code></li></ul><ul id="41b8ac6a-aab1-80f7-8c6b-e98a077f94b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Calculate Vacancy Cost (4% historical 5-year vacancy rate):</strong><ul id="41b8ac6a-aab1-80b8-9108-d34bcbe94e30" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>0.04 × $2,400,000 = $96,000</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8013-a765-c4f9ed757a32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Add Other Income:</strong> <code>$50,000</code> annually from tenant laundry machines</li></ul><ul id="41b8ac6a-aab1-80ad-b138-e78a52a21b74" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4. Calculate EGI:</strong><ul id="41b8ac6a-aab1-80d1-a126-c419bb71e9a2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$2,400,000 + $50,000 - $96,000 = $2,354,000</code></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-809e-8975-d79399b03f11" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Operating Income (NOI) Fundamentals</strong><ul id="41b8ac6a-aab1-8022-9611-d386e1290705" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A property&#x27;s remaining annual profit after deducting day-to-day <strong>operating expenses</strong> from <strong>Effective Gross Income (EGI)</strong>. NOI measures the property&#x27;s core earning power independent of how the owner finances it.</li></ul><ul id="41b8ac6a-aab1-805e-a256-d760190c04ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>NOI Formula:</strong> <code>EGI - Operating expenses = NOI</code></li></ul><ul id="41b8ac6a-aab1-8018-8b4b-d64a4058569e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Higher Gross Income Isn&#x27;t Always Better:</strong><ul id="41b8ac6a-aab1-80c2-af37-fdff7412a123" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property A:</strong> <code>$30,000,000</code> income − <code>$35,000,000</code> operating expenses = <code>$5,000,000</code> (net operating loss)</li></ul><ul id="41b8ac6a-aab1-8028-9e28-c359e2d4f763" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property B:</strong> <code>$15,000,000</code> income − <code>$10,000,000</code> operating expenses = <code>+$5,000,000</code> (net operating profit)</li></ul></li></ul><ul id="41b8ac6a-aab1-80b7-a226-de1b0956247e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Is Excluded from Operating Expenses:</strong><ul id="41b8ac6a-aab1-80d9-ad01-cbeb63d6252f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Debt Service:</strong> Mortgage principal and interest payments.</li></ul><ul id="41b8ac6a-aab1-802e-bbc1-db87e93ec3d4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Replacement Reserves:</strong> Funds set aside for major, one-time <strong>capital expenditures (CapEx)</strong>—such as replacing a roof, adding a swimming pool, or upgrading building wiring.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-804d-905d-f87722477ae7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Operating Expenses: Fixed vs. Variable &amp; Repairs vs. Reserves</strong><ul id="41b8ac6a-aab1-80c7-a5cd-d9c2d8dbabee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Operating expenses are broken into two main categories depending on whether they fluctuate with tenant occupancy:</li></ul></li></ul><table id="41b8ac6a-aab1-8039-bc5a-de9d415357f4" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8027-b012-c00514b15ee4" dir="ltr"><td id="F?zi" class=""><strong>Category</strong></td><td id="]JbX" class=""><strong>Definition</strong></td><td id="he`D" class=""><strong>Common Examples</strong></td></tr><tr id="41b8ac6a-aab1-805f-8f61-fb5b9b628eca" dir="ltr"><td id="F?zi" class=""><strong>Fixed Expenses</strong></td><td id="]JbX" class="">Predictable costs that stay consistent year after year regardless of occupancy levels</td><td id="he`D" class="">• Property taxes<br/><br/>• Property insurance<br/><br/>• Landscaping fees</td></tr><tr id="41b8ac6a-aab1-80dd-b394-d7322293ad96" dir="ltr"><td id="F?zi" class=""><strong>Variable Expenses</strong></td><td id="]JbX" class="">Fluctuating costs that rise or fall based on property occupancy and usage</td><td id="he`D" class="">• Ongoing property repairs<br/><br/>• Property management payroll<br/><br/>• Utilities</td></tr></tbody></table><ul id="41b8ac6a-aab1-806d-abbc-d7c6e46ce243" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Routine Property Repairs vs. Replacement Reserves (CapEx):</strong><ul id="41b8ac6a-aab1-8030-ba1c-ee351ca8fa50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Repairs (Included in Operating Expenses):</strong> Day-to-day maintenance required to keep the building running (e.g., fixing a leaky faucet, repairing a broken window, unstopping a toilet).</li></ul><ul id="41b8ac6a-aab1-806a-91c5-c79a08db4ff0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Replacement Reserves (Excluded from Operating Expenses):</strong> Savings reserved for major, one-time capital upgrades or structural replacements (ultimately separated for tax/accounting classification).</li></ul></li></ul><ul id="41b8ac6a-aab1-809c-ad6e-fd441772a6ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked NOI Example: The Baxter Building</strong><ul id="41b8ac6a-aab1-80a5-8bc8-d14f5b49d159" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Data:</strong><ul id="41b8ac6a-aab1-8047-880b-e83a576baa6c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Effective Gross Income (EGI): <code>$2,354,000</code></li></ul><ul id="41b8ac6a-aab1-8094-9405-ecb5ca6c0b8a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Operating Expenses: <code>$125,000</code> (property management fees) + <code>$150,000</code> (property repairs) + <code>$134,000</code> (property taxes) + <code>$110,000</code> (property insurance)</li></ul></li></ul><ul id="41b8ac6a-aab1-80dc-90c0-d1a1fac2b3e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 — Total Operating Expenses:</strong><ul id="41b8ac6a-aab1-80eb-8f0d-dd77a801f23e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$125,000 + $150,000 + $134,000 + $110,000 = $519,000</code></li></ul></li></ul><ul id="41b8ac6a-aab1-803c-937d-eeb44723fd50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 — Subtract Operating Expenses from EGI:</strong><ul id="41b8ac6a-aab1-80ce-8241-d0f9c3d3a2f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$2,354,000 - $519,000 = $1,835,000</code> (Baxter Building NOI)</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8049-8db9-c0aaa3368f48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Capitalization Rate (Cap Rate) &amp; Worked Example</strong><ul id="41b8ac6a-aab1-8069-9565-cdb7a914bab0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The rate of return expressing the percentage of a property&#x27;s value earned back annually in Net Operating Income (<code>$10,000 NOI ÷ $100,000 value = 10% cap rate</code>).</li></ul><ul id="41b8ac6a-aab1-80d2-bd13-edb58a4a4079" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How Cap Rates Are Determined:</strong> Driven by external market forces, location, and property type rather than a single building in isolation—prime downtown properties typically carry <strong>lower cap rates</strong> (lower perceived risk), while higher-risk or lower-income areas carry <strong>higher cap rates</strong>.</li></ul><ul id="41b8ac6a-aab1-8071-aab6-c690f4045d07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cap Rate Formula:</strong><ul id="41b8ac6a-aab1-80fe-819b-ebdad6951507" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Net operating income ÷ Property value = Cap rate</code></li></ul></li></ul><ul id="41b8ac6a-aab1-809a-bf04-f52f5a98b391" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Cap Rate Example (The Baxter Building):</strong><ul id="41b8ac6a-aab1-80d5-886e-dc2b588d19e1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given Data:</strong> NOI = <code>$1,835,000</code> | Listed Property Value = <code>$20,388,888</code></li></ul><ul id="41b8ac6a-aab1-803b-a67b-c0aac6d90b6a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Divide NOI by Property Value:</strong><ul id="41b8ac6a-aab1-8039-932d-c3a233eb0c2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$1,835,000 ÷ $20,388,888 = 0.09</code> <em>(rounded)</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8003-989e-d66c14c3e937" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Convert Decimal to Percentage:</strong><ul id="41b8ac6a-aab1-80b4-a6c3-fe3776e9b225" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>0.09 × 100 = 9%</code> (Baxter Building Cap Rate)</li></ul></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8013-bb23-e3586f52c5b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Simplified Income Valuation Methods: GRM and GIM</strong><ul id="41b8ac6a-aab1-8013-b479-f9f3866c9dd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While the full <strong>IRV formula</strong> (<code>NOI ÷ Cap Rate = Value</code>) is the gold standard for large, complex commercial investments, investors use two quicker, less formal multiplier methods when comparing smaller or simpler income-producing properties:<ul id="41b8ac6a-aab1-800e-97e5-c4d57c4cdf45" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Rent Multiplier (GRM)</strong></li></ul><ul id="41b8ac6a-aab1-8024-b599-d02aaa41c59d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Income Multiplier (GIM)</strong></li></ul></li></ul><ul id="41b8ac6a-aab1-80e8-b717-c4012224e8dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Shared Limitation:</strong> Neither GRM nor GIM accounts for <strong>vacancies</strong> or <strong>operating expenses</strong> (such as property taxes, insurance, or maintenance), meaning they provide a quick screening benchmark rather than a complete profitability analysis.</li></ul></li></ul><ul id="41b8ac6a-aab1-8008-96bc-e81f358e3be6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gross Rent Multiplier (GRM)</strong><ul id="41b8ac6a-aab1-8067-83bb-dbb0df01d2e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The ratio of an investment property&#x27;s price to its <strong>annual gross rental income</strong> before considering vacancies or operating expenses.</li></ul><ul id="41b8ac6a-aab1-80b6-aedb-ed1be4497d7d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Property Fit:</strong> Works well for <strong>1-to-4 residential rental units</strong> (such as single-family rentals, duplexes, triplexes, fourplexes, or individual condos that typically generate only rental income).</li></ul><ul id="41b8ac6a-aab1-8015-83f4-cc88b9751138" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core GRM Formulas:</strong><ul id="41b8ac6a-aab1-8098-aa57-f4fafeddc455" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Finding Annual Rent:</strong> <code>Monthly rent × 12 = Annual rent income</code></li></ul><ul id="41b8ac6a-aab1-8009-b262-d5ffcade37ed" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Solving for GRM:</strong> <code>Property price ÷ Annual rent income = GRM</code></li></ul><ul id="41b8ac6a-aab1-8032-be9d-fe18e8683a50" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Estimating Property Value:</strong> <code>GRM × Annual rent income = Value</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80c3-a44a-c3b0832b7229" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked GRM Math Practice:</strong><ul id="41b8ac6a-aab1-8062-8071-f79d2a9d83d3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given Data:</strong> Condo selling price = <code>$200,000</code> | Monthly rent = <code>$1,200</code></li></ul><ul id="41b8ac6a-aab1-80cc-9ba2-db102452605f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Calculate Annual Rent:</strong> <code>$1,200 × 12 = $14,400</code></li></ul><ul id="41b8ac6a-aab1-80b4-aaf4-c1f852c82ef3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Calculate GRM:</strong> <code>$200,000 ÷ $14,400 = 13.89</code> <em>(rounded)</em></li></ul><ul id="41b8ac6a-aab1-80b2-b143-ec12cf675bf5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Estimate Value from GRM:</strong> <code>13.89 × $14,400 = $200,016</code> <em>(slight variance from </em><em><code>$200,000</code></em><em> due to rounding GRM to two decimal places)</em></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8039-b55c-f13dba1d73b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gross Income Multiplier (GIM)</strong><ul id="41b8ac6a-aab1-80ce-91dd-ecfb3924e4ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Similar to GRM, except it divides the property price by <strong>all gross annual income streams</strong>—capturing both base rental income and additional non-rental revenue (e.g., percentage lease overages, coin laundry, parking fees, or application processing fees).</li></ul><ul id="41b8ac6a-aab1-800c-ab64-d398c4fb5f8f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Property Fit:</strong> Works well for <strong>5-unit or larger residential properties</strong> and smaller commercial properties that collect ancillary income beyond base rent.</li></ul><ul id="41b8ac6a-aab1-8070-918c-fe5e76920041" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pros and Cons of GIM:</strong><ul id="41b8ac6a-aab1-8078-9989-c1154f618bcc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pros:</strong> Quick and straightforward to compute, and provides a more complete revenue picture than GRM by capturing non-rent income streams.</li></ul><ul id="41b8ac6a-aab1-8094-8d06-e6a8303481f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cons:</strong> Still ignores operating expenses and vacancies completely; large apartment complexes or major commercial retail buildings carry too much financial risk to rely on GIM alone instead of the full <strong>IRV / NOI</strong> income approach.</li></ul></li></ul><ul id="41b8ac6a-aab1-8035-92cc-e630cc666331" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core GIM Formula:</strong><ul id="41b8ac6a-aab1-80cf-8e38-e77996ff44c2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Property price ÷ (Annual rent income + Annual other income) = GIM</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80d3-bb0f-d0c671e2bfab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked GIM Math Practice:</strong><ul id="41b8ac6a-aab1-800f-8d0b-e57668c299d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given Data:</strong> Building selling price = <code>$200,000</code> | Monthly rent = <code>$1,200</code> | Monthly premium parking fee = <code>$100</code></li></ul><ul id="41b8ac6a-aab1-8033-8cb0-daad348528ae" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Combine Monthly Income Streams:</strong> <code>$1,200 + $100 = $1,300</code> per month</li></ul><ul id="41b8ac6a-aab1-8021-adcd-efa49e27f338" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Convert to Annual Total Income:</strong> <code>12 × $1,300 = $15,600</code> per year</li></ul><ul id="41b8ac6a-aab1-807b-bec5-ed2cc0a94089" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Calculate GIM:</strong> <code>$200,000 ÷ $15,600 = 12.82</code> <em>(rounded)</em></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80c3-86ed-d06b29a1f543" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Comparison: GRM vs. GIM vs. Cap Rate (IRV)</strong><table id="41b8ac6a-aab1-8042-9fc9-e840a140334c" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80d7-8e31-d03d8f15a36d" dir="ltr"><td id="DJNt" class=""><strong>Metric</strong></td><td id="`v|&gt;" class=""><strong>Income Measured</strong></td><td id="s;:Q" class=""><strong>Accounts for Expenses &amp; Vacancies?</strong></td><td id="h{g}" class=""><strong>Best Suited Property Size / Type</strong></td></tr><tr id="41b8ac6a-aab1-80ad-a99e-d9f05fefeb39" dir="ltr"><td id="DJNt" class=""><strong>GRM</strong></td><td id="`v|&gt;" class="">Gross <strong>rental income only</strong> (<code>Monthly rent × 12</code>)</td><td id="s;:Q" class=""><strong>No</strong></td><td id="h{g}" class=""><strong>1–4 residential units</strong> (single-family, condos, small multifamily)</td></tr><tr id="41b8ac6a-aab1-80e7-a5e6-f56fb5d7f089" dir="ltr"><td id="DJNt" class=""><strong>GIM</strong></td><td id="`v|&gt;" class="">Gross <strong>rental income + other income</strong> (laundry, parking, fees)</td><td id="s;:Q" class=""><strong>No</strong></td><td id="h{g}" class=""><strong>5+ unit residential</strong> or smaller commercial properties</td></tr><tr id="41b8ac6a-aab1-801a-b1ec-f75fe6914668" dir="ltr"><td id="DJNt" class=""><strong>Cap Rate (IRV)</strong></td><td id="`v|&gt;" class=""><strong>Net Operating Income (NOI)</strong> (<code>PGI + Other income - Vacancy - Operating expenses</code>)</td><td id="s;:Q" class=""><strong>Yes</strong> (deducts both vacancy and operating expenses)</td><td id="h{g}" class="">Large apartments, office buildings, shopping centers, and major commercial investments</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-80b0-99b7-fe2d3e74e21e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cost Approach Fundamentals</strong><ul id="41b8ac6a-aab1-801b-b8e6-f64d105e9d39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Names:</strong> Also known as the <strong>summation approach</strong> or <strong>reproduction cost approach</strong>.</li></ul><ul id="41b8ac6a-aab1-80e3-b700-db5610b73180" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Underlying Economic Principle:</strong> Grounded in the <strong>principle of substitution</strong>—a buyer will pay no more for an existing property than the cost of purchasing a comparable vacant lot and constructing a similar replacement building.</li></ul><ul id="41b8ac6a-aab1-8046-a87e-e50924b41376" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Cost Approach Formula:</strong><ul id="41b8ac6a-aab1-8043-b77d-d2883353b3cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Reproduction (or Replacement) cost - Depreciation + Land value = Property value</code></li></ul><ul id="41b8ac6a-aab1-8034-b382-cd008d5b79a3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Land Value:</strong> Estimated separately by comparing recent sales of similar unimproved (vacant) lots.</li></ul></li></ul><ul id="41b8ac6a-aab1-800f-b092-d74c31d429ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When to Use the Cost Approach:</strong><ul id="41b8ac6a-aab1-80b4-8581-ffe8e8681628" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>New construction</strong> (where little to no physical depreciation has occurred and construction costs are current).</li></ul><ul id="41b8ac6a-aab1-80ed-88a1-d359628fcb87" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unique, special-purpose, or historic properties</strong> (such as museums, public libraries, schools, or churches) that rarely sell on the open market and lack reliable sales comparables or rental income data.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8050-b676-e26d7ff2c02c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Replacement Cost vs. Reproduction Cost</strong><ul id="41b8ac6a-aab1-80a4-b42e-d61bfbf88ae4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When estimating construction costs for the improvements, the appraiser selects between two distinct cost standards:<table id="41b8ac6a-aab1-8053-9223-eb5f1cbfb252" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8097-b06f-f6e5313f310d" dir="ltr"><td id="QlMe" class=""><strong>Cost Standard</strong></td><td id="OVnF" class=""><strong>Definition &amp; Construction Method</strong></td><td id="{?QG" class=""><strong>Typical Use Case</strong></td></tr><tr id="41b8ac6a-aab1-8089-8e5e-d79c3711106d" dir="ltr"><td id="QlMe" class=""><strong>Replacement Cost</strong></td><td id="OVnF" class="">The cost to construct a building with <strong>similar utility and features</strong> using <strong>comparable modern materials and current construction standards</strong> at today&#x27;s prices (before deducting depreciation).</td><td id="{?QG" class="">Most standard modern buildings where exact historical replication is unnecessary or impractical.</td></tr><tr id="41b8ac6a-aab1-802d-a911-ee23fae23e9a" dir="ltr"><td id="QlMe" class=""><strong>Reproduction Cost</strong></td><td id="OVnF" class="">The cost to construct an <strong>exact replica</strong> of the subject building, duplicating the <strong>original architectural styles, craftsmanship, and materials</strong> used when it was first built.</td><td id="{?QG" class=""><strong>Historic properties</strong> or landmark structures where preserving original materials and design is required.</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-8054-9e92-d8453950482a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Correlating (Reconciling) the Three Approaches to Value</strong><ul id="41b8ac6a-aab1-80e1-97c8-f3c7705a91f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Weighting Is Necessary:</strong> When an appraiser applies all three approaches (Sales Comparison, Cost, and Income), each method typically yields a different value estimate. Rather than calculating a simple average, the appraiser uses <strong>correlation (reconciliation)</strong> to assign greater percentage weight to the approach most relevant to the property type.</li></ul><ul id="41b8ac6a-aab1-80d0-a9cc-c3a6348217ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Weighted Reconciliation Example (Owner-Occupied Single-Family Home):</strong><ul id="41b8ac6a-aab1-8033-b901-c82562314f99" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Multiply Each Approach&#x27;s Value by Its Assigned Weight:</strong><ul id="41b8ac6a-aab1-8084-9687-dd5689da1115" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sales Comparison Approach (70% weight — primary method for residential homes):</strong> <code>$250,000 × 0.70 = $175,000</code></li></ul><ul id="41b8ac6a-aab1-80b3-b9f6-c6c26928a597" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cost Approach (20% weight):</strong> <code>$260,000 × 0.20 = $52,000</code></li></ul><ul id="41b8ac6a-aab1-800f-b424-ead9f8e06120" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income Approach (10% weight):</strong> <code>$240,000 × 0.10 = $24,000</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80ab-a64e-d4649fcb11cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Sum the Weighted Values:</strong><ul id="41b8ac6a-aab1-803f-b852-f98e3dcbd86f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$175,000 + $52,000 + $24,000 = $251,000</code> (Final Reconciled Appraised Value)</li></ul><figure id="41b8ac6a-aab1-80b9-8be4-c110c8074c51" class="image" data-notion-image="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%202.png"><img style="width:528px" src="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%202.png"/></a></figure></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-807f-8fc8-f2975257e8a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Depreciation Fundamentals</strong><ul id="41b8ac6a-aab1-809f-a31e-e3da8293dfa2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A reduction in property value for any reason. In the <strong>Cost Approach</strong>, depreciation must be subtracted from replacement/reproduction cost so an existing building is not valued the same as brand-new construction.</li></ul><ul id="41b8ac6a-aab1-804c-aa6b-c444e167eba5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Land Exception:</strong> While land value can fluctuate with market conditions, <strong>undeveloped land is never subject to depreciation</strong>—only buildings and man-made improvements depreciate.</li></ul></li></ul><ul id="41b8ac6a-aab1-80a6-a7b9-e5c40cb7c5b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Ages &amp; Economic Life</strong><ul id="41b8ac6a-aab1-8001-bd98-c2f02be4949c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Chronological Age:</strong> The literal, actual age of the structure based on the year it was built (e.g., a house built 30 years ago has a chronological age of <strong>30</strong>).</li></ul><ul id="41b8ac6a-aab1-8062-a5cf-fe65cbd72753" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effective Age:</strong> An estimated age reflecting the property&#x27;s actual physical condition, maintenance, and updates (e.g., a well-maintained 30-year-old home may have an effective age of <strong>15</strong>).</li></ul><ul id="41b8ac6a-aab1-8007-8b0b-c107fd691ee2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Economic Life:</strong> The total period of time over which an improvement on a property is expected to remain functional, useful, and contribute value.</li></ul></li></ul><ul id="41b8ac6a-aab1-8050-af2e-c2143cc29c96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Curable vs. Incurable Depreciation</strong><ul id="41b8ac6a-aab1-8011-8b6e-d76dc74eb1f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Curable Depreciation:</strong> A defect or deficiency that can be physically corrected at a <strong>reasonable cost</strong> that is justified by the resulting increase in property value.</li></ul><ul id="41b8ac6a-aab1-801c-8e12-c0f9df895995" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Incurable Depreciation:</strong> A defect that is either physically impossible to fix or <strong>not financially worth the expense</strong> (the cost to cure exceeds the value added to the property).</li></ul></li></ul><ul id="41b8ac6a-aab1-808a-9153-c6bbe51421cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types &amp; Classifications of Depreciation</strong><ul id="41b8ac6a-aab1-80f3-8acb-cca8abadd6cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depreciation falls into two broad categories—<strong>Physical Deterioration</strong> and <strong>Obsolescence</strong> (split into <strong>Functional</strong> and <strong>External/Economic</strong>)—and is further classified by whether it is curable or incurable:<table id="41b8ac6a-aab1-805a-8f58-d12f28775f70" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80a1-bd4b-d23888220c85" dir="ltr"><td id="z?g&lt;" class=""><strong>Depreciation Type</strong></td><td id="AbgK" class=""><strong>Definition</strong></td><td id="zlLw" class=""><strong>Curable Example</strong></td><td id="ST`C" class=""><strong>Incurable Example</strong></td></tr><tr id="41b8ac6a-aab1-802d-907b-e0fc74ea2ee0" dir="ltr"><td id="z?g&lt;" class=""><strong>Physical Deterioration</strong></td><td id="AbgK" class="">Loss of value caused by physical wear and tear, weather, or deferred maintenance over time</td><td id="zlLw" class=""><strong>Curable Physical Deterioration:</strong> Replacing a broken window</td><td id="ST`C" class=""><strong>Incurable Physical Deterioration:</strong> A major foundation failure that would cost more to repair than the structure is worth</td></tr><tr id="41b8ac6a-aab1-8067-b877-f3648a016faf" dir="ltr"><td id="z?g&lt;" class=""><strong>Functional Obsolescence</strong></td><td id="AbgK" class="">Loss of value because the building&#x27;s design, layout, or features are outdated or less effective than modern standards</td><td id="zlLw" class=""><strong>Curable Functional Obsolescence:</strong> Updating outdated electrical wiring to meet current safety standards</td><td id="ST`C" class=""><strong>Incurable Functional Obsolescence:</strong> A severely outdated floor plan combined with no HVAC system</td></tr><tr id="41b8ac6a-aab1-801f-8e66-d1eefcd5f2f1" dir="ltr"><td id="z?g&lt;" class=""><strong>External (Economic) Obsolescence</strong></td><td id="AbgK" class="">Loss of value caused by negative external forces outside the property boundaries and beyond the owner&#x27;s control (environmental or market shifts)</td><td id="zlLw" class=""><strong>None — External obsolescence is ALWAYS incurable</strong> because the owner cannot control or fix off-site external conditions</td><td id="ST`C" class=""><strong>Incurable External Obsolescence:</strong> Neighborhood decline, nearby industrial pollution, or unfavorable zoning/traffic changes</td></tr></tbody></table><figure id="41b8ac6a-aab1-804a-9fe8-e7e0a74daf39" class="image" data-notion-image="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%203.png"><img style="width:912px" src="Chapter%202%20-%20Methods%20of%20Estimating%20Value/image%203.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-8096-b700-d3ded9698b4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Age-Life Depreciation Method &amp; Formula</strong><ul id="41b8ac6a-aab1-8023-a728-d46fb86a703c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Concept:</strong> Calculates the percentage of value a building or improvement has lost over time by comparing its age to its total expected economic useful life.</li></ul><ul id="41b8ac6a-aab1-803d-8fc6-ebf575d66e02" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formulas:</strong><ul id="41b8ac6a-aab1-8068-a510-d408cfbc5c59" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Current age + Remaining useful life = Total useful life</code></li></ul><ul id="41b8ac6a-aab1-8008-9a66-ff0757ed618b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Age of property ÷ Total useful life = Depreciation (%)</code></li></ul><ul id="41b8ac6a-aab1-80d6-a317-c871f5445cba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Replacement (or Reproduction) cost × Depreciation (%) = Total depreciation ($)</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8033-ae76-ffa436b21295" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Example: The Laser Tag Center</strong><ul id="41b8ac6a-aab1-80a5-9756-c9d5a10f3783" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given Data:</strong> Current age = <code>25 years</code> | Remaining useful economic life = <code>15 years</code></li></ul><ul id="41b8ac6a-aab1-80ba-aa4f-c5564ddc92c6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Calculate Total Useful Life:</strong> <code>25 years + 15 years = 40 years</code></li></ul><ul id="41b8ac6a-aab1-8062-8c30-f3144e3cd7a9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Divide Age by Total Useful Life:</strong> <code>25 ÷ 40 = 0.625</code></li></ul><ul id="41b8ac6a-aab1-8098-bae9-f565ebaed19a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Convert Decimal to Percentage:</strong> <code>0.625 × 100 = 62.5%</code> (Total accrued depreciation)</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80e5-94ac-d8c292c83d68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Steps to the Cost Approach</strong><ol type="1" id="41b8ac6a-aab1-802d-8776-de52ec5c92b1" class="numbered-list" start="1" dir="auto"><li><strong>Estimate Land Value:</strong> Value the land separately using recent sales of comparable <strong>unimproved (vacant) lots</strong>.</li></ol><ol type="1" id="41b8ac6a-aab1-8037-8251-e9e643e33217" class="numbered-list" start="2" dir="auto"><li><strong>Estimate New Construction Cost:</strong> Determine the cost to build the improvements new (using <strong>replacement cost</strong>, <strong>reproduction cost</strong>, or another cost-estimating method).</li></ol><ol type="1" id="41b8ac6a-aab1-8019-806a-fc9729668e96" class="numbered-list" start="3" dir="auto"><li><strong>Calculate Accrued Depreciation:</strong> Total all forms of depreciation (physical deterioration, functional obsolescence, and external obsolescence).</li></ol><ol type="1" id="41b8ac6a-aab1-8071-8a52-ea310e21d23c" class="numbered-list" start="4" dir="auto"><li><strong>Determine Depreciated Improvement Value:</strong> Subtract total accrued depreciation from the new construction cost (<code>New construction cost - Accrued depreciation = Current improvement value</code>).</li></ol><ol type="1" id="41b8ac6a-aab1-80c2-b9ce-d244cbdbebcd" class="numbered-list" start="5" dir="auto"><li><strong>Add Land Value to Depreciated Improvement Value:</strong> Combine both figures to reach total property value:<ul id="41b8ac6a-aab1-80ce-8303-e55a17130474" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Reproduction (or Replacement) cost - Depreciation + Land value = Property value</code></li></ul></li></ol></li></ul><ul id="41b8ac6a-aab1-8021-b63a-dfff9e54ecaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Methods for Determining New Construction Cost</strong><ul id="41b8ac6a-aab1-8009-8ca3-d8263f13c8ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Appraisers use three standard methods—ranging from most detailed to most simplified—to estimate new construction costs:<table id="41b8ac6a-aab1-80ca-b9e5-dde539700755" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8036-a359-e478052c0752" dir="ltr"><td id="B{OT" class=""><strong>Cost-Estimating Method</strong></td><td id="FkAT" class=""><strong>How It Works</strong></td><td id="?Ooe" class=""><strong>Granularity &amp; Accuracy</strong></td></tr><tr id="41b8ac6a-aab1-806a-9cc5-cf6c52433d36" dir="ltr"><td id="B{OT" class=""><strong>Quantity Survey Method</strong></td><td id="FkAT" class="">Individually itemizes and tallies every component of construction—including labor, equipment, raw materials, contractor overhead, and fees.</td><td id="?Ooe" class=""><strong>Most detailed and accurate</strong>, but extremely time-consuming and complex.</td></tr><tr id="41b8ac6a-aab1-805a-a5e8-c175d6126960" dir="ltr"><td id="B{OT" class=""><strong>Unit-in-Place Method</strong></td><td id="FkAT" class="">Combines direct and indirect costs into a single simplified installed cost per building component or unit (e.g., cost per square foot of roofing, per linear foot of wall, or per plumbing fixture).</td><td id="?Ooe" class=""><strong>Moderate detail</strong>—less granular than the quantity survey method while still accounting for specific building components.</td></tr><tr id="41b8ac6a-aab1-8047-bdc2-effa231ef628" dir="ltr"><td id="B{OT" class=""><strong>Square Foot Method</strong> <em>(Comparative Unit Method)</em></td><td id="FkAT" class="">Multiplies the structure&#x27;s total square footage by an estimated benchmark cost per square foot for that specific building type and quality class (<code>Total sq. ft. × Cost per sq. ft. = Construction cost</code>).</td><td id="?Ooe" class=""><strong>Simplest and most widely used</strong>, though generally the <strong>least precise</strong> of the three methods.</td></tr></tbody></table></li></ul></li></ul><p id="41b8ac6a-aab1-8078-ae0c-fac874eb6e1b" class="" dir="auto">
+</p><p id="41b8ac6a-aab1-8023-84f6-e64f144c4423" class="" dir="auto">
+</p></div><div id="41b8ac6a-aab1-803a-b500-f2b7f5a5990d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41b8ac6a-aab1-80e6-919c-e39103137b58" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41b8ac6a-aab1-8045-a226-eaf209f84603" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>capitalization rate</strong> - a rate of return that calculates the percentage of expected annual income earned over a property&#x27;s value; the present value for expected future income earned</li></ul><ul id="41b8ac6a-aab1-80e5-9c8a-fd7b74df5880" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>correlation</strong> - the process in which an appraiser weighs the relevance of each approach to value for the subject property in order to come up with a final value estimate</li></ul><ul id="41b8ac6a-aab1-806f-ae0c-ca84fc2ddd5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>cost approach</strong> - a method of estimating the value of a property by determining how much it would cost to replace the building or other improvements, minus the cost of depreciation, plus the value of the land itself</li></ul><ul id="41b8ac6a-aab1-800f-92be-ed49ae9ed380" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>depreciation</strong> - a reduction in value for any reason</li></ul><ul id="41b8ac6a-aab1-8039-8bf0-e83fafc94bd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>effective gross income</strong> - the total annual income that a property produces; does not account for any expenses</li></ul><ul id="41b8ac6a-aab1-80d2-bef8-fd30a3bedc39" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>external obsolescence</strong> - loss of property value caused by negative forces outside the property which are beyond the control of the owner (unfavorable changes in the environment or market)</li></ul><ul id="41b8ac6a-aab1-8023-b93b-f1afa7c0e370" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>functional obsolescence</strong> - loss of value because a property’s function or appearance has gone out of style or has been replaced by a more appealing or effective version</li></ul><ul id="41b8ac6a-aab1-80f9-9843-fdfd0f3c5fd4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>gross rent multiplier</strong> - the ratio of the price of investment property to its annual rental income before considering expenses like taxes and insurance, etc.</li></ul><ul id="41b8ac6a-aab1-805d-a0c8-e557d4288b7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>income capitalization approach</strong> - method of estimating the value of a property by applying a rate of return to the net income it produces</li></ul><ul id="41b8ac6a-aab1-80e2-bdea-cb22fe82801b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>investment</strong> - the purchase of an asset with the intention of profiting from it in the future</li></ul><ul id="41b8ac6a-aab1-80ad-b957-fc40c42edc9f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>net operating income</strong> - a property&#x27;s annual income that remains after paying its operating expenses</li></ul><ul id="41b8ac6a-aab1-800a-bab5-c8834a35fb5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>obsolescence</strong> - a property&#x27;s loss of value due to economic or functional factors</li></ul><ul id="41b8ac6a-aab1-8044-a846-e4bb260a077f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>operating expense</strong> - occasional or continuous expenses required for the operation of an income-producing property</li></ul><ul id="41b8ac6a-aab1-801e-9b08-fc81a720b87c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>physical deterioration</strong> - loss of value caused by physical wear and tear over time</li></ul><ul id="41b8ac6a-aab1-8064-b7af-dc4dbc9e3033" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>potential gross income </strong>- the total rental income a property would receive if the property was 100% leased</li></ul><ul id="41b8ac6a-aab1-80d2-8ff5-d1c5f9c9a285" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>replacement cost</strong> - the actual cost of replacement without regard to the depreciation of the property</li></ul><p id="41b8ac6a-aab1-8007-a643-d59a6b6925d8" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41b8ac6a-aab1-8042-8729-fa336b2b9f48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Value Approaches</strong><figure id="41b8ac6a-aab1-8014-b3da-e066b9fc25f2" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_ValueApproaches_9877.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_ValueApproaches_9877.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_ValueApproaches_9877.png"/></a></figure></li></ul><ul id="41b8ac6a-aab1-801f-9231-ebaa7cf6cfa2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sales Comparison Approach</strong><ul id="41b8ac6a-aab1-80bf-a320-f01197e2ca8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The sales comparison approach bases its valuation on the local real estate market. The appraiser is <strong>concerned with local market demand </strong>for the property. Appraisers rely heavily upon the sales comparison approach for appraising <strong>owner-occupied residential properties </strong>and <strong>vacant land</strong>.</li></ul><ul id="41b8ac6a-aab1-8021-bd30-fedc1d35874f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">It is based on two value principles:<ul id="41b8ac6a-aab1-80dc-bce1-d397a1a368a5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The principle of substitution</strong></li></ul><ul id="41b8ac6a-aab1-804a-a558-c3087b7b570f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The principle of contribution</strong></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8034-9bad-eb9664a4438e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Steps to the Cost Approach</strong><ul id="41b8ac6a-aab1-8021-bd43-e5238a146a48" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Using unimproved lots as comps, estimate the value of the land itself.</li></ul><ul id="41b8ac6a-aab1-80e3-9101-e2a96edde47c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Estimate the new construction cost of improvements (using replacement cost, reproduction cost, or another method).</li></ul><ul id="41b8ac6a-aab1-804f-8905-ed5050dab2ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Add up any and all types of depreciation.</li></ul><ul id="41b8ac6a-aab1-807b-af34-e2656c82bcf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Subtract the accrued depreciation from new construction cost to get the estimated value of current improvements.</li></ul><ul id="41b8ac6a-aab1-8017-a1fe-e1cbde79578d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Add the land value and improvement value together.</li></ul></li></ul><ul id="41b8ac6a-aab1-8075-8f1e-da8cf0e3127a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Value With the Income Approach</strong><ul id="41b8ac6a-aab1-80e4-a1c8-e77ecc92bd5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">You can calculate value via the income approach in five steps:<ul id="41b8ac6a-aab1-801c-a141-e5a23a3b2e17" class="bulleted-list" dir="auto"><li style="list-style-type:square">Find the property&#x27;s potential gross income (PGI).</li></ul><ul id="41b8ac6a-aab1-8074-8a0c-cc28d14a6e67" class="bulleted-list" dir="auto"><li style="list-style-type:square">Determine (or estimate) the property&#x27;s effective gross income (EGI).</li></ul><ul id="41b8ac6a-aab1-8030-a842-d3b2395ecca1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Estimate the net operating income (NOI).</li></ul><ul id="41b8ac6a-aab1-80b7-a7aa-c8f117b8ec95" class="bulleted-list" dir="auto"><li style="list-style-type:square">Choose a cap rate based on market data.</li></ul><ul id="41b8ac6a-aab1-8078-adbe-ec61bedc2896" class="bulleted-list" dir="auto"><li style="list-style-type:square">Apply the cap rate using the IRV formula to find the value.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-807b-bf61-c7ec2f57718f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Correlating Approaches (Reconciliation)</strong><ul id="41b8ac6a-aab1-806e-af58-f25dc78e8349" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An appraiser can potentially use all three approaches to value when appraising a property. Those three approaches will probably give the appraiser three different values. The appraiser needs to reconcile those three values into one final estimate of value.</li></ul></li></ul><ul id="41b8ac6a-aab1-802f-b8b7-c492ae73e417" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Weighing Approaches</strong><ul id="41b8ac6a-aab1-804c-a3ce-dd7e3aac4593" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To come up with a final value estimate, the appraiser will weigh the relevance of each approach to value for the subject property. (The combined relevance weighting should equal 100%.)<figure id="41b8ac6a-aab1-806a-bb78-e18010bf3562" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_WeightedValues_5080.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_WeightedValues_5080.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_WeightedValues_5080.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-8052-95c0-d52fd29fc60f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formulas to Know:</strong><ul id="41b8ac6a-aab1-80a1-8983-f05a71126505" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sales Comparison Approach </strong><ul id="41b8ac6a-aab1-801e-bd7c-c1666e9f53bf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Comparable property sales ± Adjustments = Subject property value</em></li></ul></li></ul><ul id="41b8ac6a-aab1-801b-bf8a-cc696f4ded4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost Approach</strong><ul id="41b8ac6a-aab1-807d-ac6b-c3db511e2a4d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Reproduction cost - Depreciation + Land value = Property value</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8068-9935-e368334fde1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Age-life Depreciation</strong><ul id="41b8ac6a-aab1-8097-b5f5-df6d0b35b177" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Age of property ÷ Total useful life = Depreciation (%)</em></li></ul></li></ul><ul id="41b8ac6a-aab1-808f-9532-c88636012dfb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Depreciation Cost</strong><ul id="41b8ac6a-aab1-8079-9370-cac0c8353270" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Reproduction cost x Depreciation (%) = Depreciation cost</em></li></ul></li></ul><ul id="41b8ac6a-aab1-80eb-8bc0-fc6edbcd855c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Potential Gross Income</strong><ul id="41b8ac6a-aab1-80f5-85b8-d785bfdf07c7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Contract rent + Projected rent = PGI</em></li></ul></li></ul><ul id="41b8ac6a-aab1-800d-9b7b-c89ab7c6eb1b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Vacancy Cost</strong><ul id="41b8ac6a-aab1-8049-82cc-eb7ede4c5efd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Vacancy percentage (%) x PGI = Vacancy cost</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8002-8ae4-fcc47f4abc2e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effective Gross Income</strong><ul id="41b8ac6a-aab1-8022-87da-f3ab9a4f82b0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>PGI + Other income - Vacancy cost = EGI</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8097-a721-e9fbd5396fa2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net Operating Income</strong><ul id="41b8ac6a-aab1-804a-b69b-dc35f69adc50" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>EGI - Operating expenses = NOI</em></li></ul></li></ul><ul id="41b8ac6a-aab1-80b0-9ba0-c9aac11a172f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>IRV</strong><ul id="41b8ac6a-aab1-80f8-8555-e60a273d979e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Net operating income (I) ÷ Capitalization rate (R) = Value (V)</em></li></ul></li></ul><ul id="41b8ac6a-aab1-807b-89bd-f87db90adb78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cap Rate</strong><ul id="41b8ac6a-aab1-80e3-b061-e0db00f46d0a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Net operating income ÷ Property value = Cap rate</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8076-ac3f-c4fbae503f03" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Gross Rent Multiplier</strong><ul id="41b8ac6a-aab1-8088-8d96-cd2391e7294a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Property price ÷ Annual rent income = GRM</em></li></ul></li></ul><ul id="41b8ac6a-aab1-8097-ad42-ea2322dcec87" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Gross Income Multiplier</strong><ul id="41b8ac6a-aab1-80f7-9074-c0206b2fa49f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Property price ÷ (Annual rent income + Annual other income) = GIM</em></li></ul></li></ul></li></ul><p id="41b8ac6a-aab1-803a-aeb7-d4a19b7243e3" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

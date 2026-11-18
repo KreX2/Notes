@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Deeds and the Transfer of Property</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-805c-9b73-c90b238aac82" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Deeds and the Transfer of Property</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41c8ac6a-aab1-8024-af2e-f74b0d99e579" class="column-list" data-notion-column-list="" dir="auto"><div id="41c8ac6a-aab1-808f-a00b-e7dddcb0068b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41c8ac6a-aab1-8084-8034-f8c898413ecc" class="" dir="auto"><strong>Acquisitions and Transfers Overview</strong></p><ul id="41c8ac6a-aab1-8075-a756-e42840004cf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Transaction Concept:</strong> When a buyer purchases real property, they acquire an <strong>ownership interest</strong> in that parcel along with all legal rights attached to it.</li></ul><ul id="41c8ac6a-aab1-80c5-b754-d39058155f07" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conveyance &amp; Instrument of Conveyance:</strong><ul id="41c8ac6a-aab1-806e-820d-c4c259aa9b43" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conveyance:</strong> The legal act of transferring an ownership interest in real property from one party (the <strong>grantor</strong>) to another (the <strong>grantee</strong>).</li></ul><ul id="41c8ac6a-aab1-804e-9db8-c64e46fd19ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Instrument of Conveyance:</strong> The formal legal tool used to execute that transfer—most commonly a <strong>deed</strong>.</li></ul></li></ul><ul id="41c8ac6a-aab1-80fa-afe6-df1b83bab654" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title vs. Deed: Key Distinctions</strong><ul id="41c8ac6a-aab1-80d7-9c84-e1659d10249c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although often confused in everyday conversation, <strong>title</strong> and <strong>deed</strong> refer to two distinct legal concepts in real estate transfers:<table id="41c8ac6a-aab1-8062-88d7-de715c07e973" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8062-899a-f52a304ba46c" dir="ltr"><td id="eK=M" class=""><strong>Concept</strong></td><td id="b|yn" class=""><strong>Nature</strong></td><td id="KXCi" class=""><strong>Definition &amp; Legal Role</strong></td></tr><tr id="41c8ac6a-aab1-8080-b307-d9c477f23ccf" dir="ltr"><td id="eK=M" class=""><strong>Title</strong></td><td id="b|yn" class=""><strong>Abstract legal concept</strong></td><td id="KXCi" class="">Represents the <strong>bundle of legal ownership rights</strong> attached to a piece of real property (such as the rights of possession, control, enjoyment, exclusion, and disposition).</td></tr><tr id="41c8ac6a-aab1-80fa-b58b-d1cba20d99d4" dir="ltr"><td id="eK=M" class=""><strong>Deed</strong></td><td id="b|yn" class=""><strong>Physical, written legal document</strong></td><td id="KXCi" class="">The formal <strong>instrument of conveyance</strong> that transfers real estate title from one party to another, establishes an official public record of when property changes hands, and serves as proof of ownership transfer.</td></tr></tbody></table><figure id="41c8ac6a-aab1-80ce-939e-f4ada59a233e" class="image" data-notion-image="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image.png" dir="ltr"><a href="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image.png"><img style="width:288px" src="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image.png"/></a></figure></li></ul></li></ul><ul id="41c8ac6a-aab1-804f-ae10-eb00de24493f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Grantor and Grantee</strong><ul id="41c8ac6a-aab1-80cb-b315-e9a205c5bce4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every deed involves two primary parties:<ul id="41c8ac6a-aab1-80fd-ac24-e971dc57054b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Grantor:</strong> The current property owner who transfers (conveys) title to real property in a transaction.</li></ul><ul id="41c8ac6a-aab1-80eb-bc8f-def01d7c48dc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Grantee:</strong> The party who receives the conveyance of title to real property in a transaction.</li></ul><ul id="41c8ac6a-aab1-809f-bb77-e0986aca9587" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Example:</em> When Alan sells his farm to Garrett, <strong>Alan is the grantor</strong> and <strong>Garrett is the grantee</strong>.</li></ul></li></ul></li></ul><ul id="41c8ac6a-aab1-8019-89e0-f56425ea8989" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alienation &amp; Conveyance</strong><ul id="41c8ac6a-aab1-80d7-bda8-d855e6271f56" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alienation:</strong> The general legal act of transferring title/ownership of real property from one party to another.</li></ul><ul id="41c8ac6a-aab1-808b-89b3-d4c1925e214c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conveyance:</strong> The formal transfer of title when put into writing using an instrument of conveyance (such as a <strong>deed</strong>).<table id="41c8ac6a-aab1-800c-85e6-cd9d25d3fcd3" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-800f-8232-cc36706af674" dir="ltr"><td id="B:LC" class=""><strong>Type of Alienation</strong></td><td id="}x]K" class=""><strong>Definition</strong></td><td id="&lt;oII" class=""><strong>Common Methods / Mechanisms</strong></td></tr><tr id="41c8ac6a-aab1-8085-8a81-d02cb8bc8df6" dir="ltr"><td id="B:LC" class=""><strong>Voluntary Alienation</strong></td><td id="}x]K" class="">Transfer of title made willingly by the current owner of their own free will</td><td id="&lt;oII" class="">• <strong>By Deed</strong> (sale or gift)<br/><br/>• <strong>Public Grant</strong> (government transfer of public land to a private party)<br/><br/>• <strong>By Will</strong> (testate transfer upon the owner&#x27;s death)</td></tr><tr id="41c8ac6a-aab1-80d3-b1e3-de9ab9771b4c" dir="ltr"><td id="B:LC" class=""><strong>Involuntary Alienation</strong></td><td id="}x]K" class="">Transfer of title occurring without the owner&#x27;s consent</td><td id="&lt;oII" class="">• <strong>Operation of Law</strong> (e.g., foreclosure, tax sale, eminent domain/condemnation, adverse possession, intestate succession, or court-ordered partition/judgment)</td></tr></tbody></table><figure id="41c8ac6a-aab1-80af-a3dc-f0df3e39f335" class="image" data-notion-image="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Deeds%20and%20the%20Transfer%20of%20Property/image%201.png"/></a></figure></li></ul></li></ul><ul id="41c8ac6a-aab1-80fb-853e-ec8ec51d88d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Voluntary Alienation Works</strong><ul id="41c8ac6a-aab1-80f9-8c68-f460187e2ffb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Instrument Used:</strong> The owner (<strong>grantor</strong>) executes a <strong>deed</strong> to formally convey property title to the recipient (<strong>grantee</strong>).</li></ul><ul id="41c8ac6a-aab1-808d-92a0-e09b29544a71" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Frauds Requirement:</strong> To be legally valid and enforceable, a deed transferring real property ownership <strong>must be in writing</strong> in compliance with the <strong>statute of frauds</strong>.</li></ul></li></ul><ul id="41c8ac6a-aab1-8016-bda7-e10282de4fc6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Voluntary Alienation</strong><ul id="41c8ac6a-aab1-8024-9b97-c6dac43bb26f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Voluntary alienation occurs when an owner intentionally transfers title to real property of their own free will through four primary methods:<table id="41c8ac6a-aab1-80b8-8207-d38beffc968e" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8019-a2c6-daf60f9570b5" dir="ltr"><td id="hgbW" class=""><strong>Method of Voluntary Alienation</strong></td><td id="IDue" class=""><strong>Definition &amp; Mechanism</strong></td><td id="hw^T" class=""><strong>Instrument / Key Details</strong></td></tr><tr id="41c8ac6a-aab1-8061-b41d-d75bd981c59f" dir="ltr"><td id="hgbW" class=""><strong>Private Grant</strong></td><td id="IDue" class="">The voluntary transfer of real property by a private party via <strong>sale or gift</strong>—the most common form of conveyance.</td><td id="hw^T" class="">Executed using a <strong>deed</strong> (grantor conveys title to grantee).</td></tr><tr id="41c8ac6a-aab1-80b8-9816-d2fd4797fe7d" dir="ltr"><td id="hgbW" class=""><strong>Dedication</strong></td><td id="IDue" class="">The voluntary gift of private land to the public for public use.</td><td id="hw^T" class="">Includes <strong>statutory dedication</strong>, which occurs during subdivision development when a developer dedicates paved streets, sidewalks, or utility easements to the local municipality.</td></tr><tr id="41c8ac6a-aab1-80ea-9957-fb9cde1664d4" dir="ltr"><td id="hgbW" class=""><strong>Public Grant</strong></td><td id="IDue" class="">The transfer of government-owned public land to a private individual.</td><td id="hw^T" class="">Uses a <strong>land patent</strong> (rather than a deed) to convey title.</td></tr><tr id="41c8ac6a-aab1-8013-b37d-c5c3bf1933aa" dir="ltr"><td id="hgbW" class=""><strong>Devise</strong></td><td id="IDue" class="">The transfer of real property upon the owner&#x27;s death according to the instructions in a valid <strong>will</strong>.</td><td id="hw^T" class="">Transfers title at death (the recipient is called a <em>devisee</em>, and the will writer is the <em>testator</em>).</td></tr></tbody></table></li></ul></li></ul><ul id="41c8ac6a-aab1-80df-9bf3-dc7c0e55f9d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Involuntary Alienation Overview</strong><ul id="41c8ac6a-aab1-80fb-b402-c942746ac295" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The transfer of title to real property <strong>without the owner&#x27;s consent</strong>, typically carried out by <strong>operation of law</strong>.</li></ul><ul id="41c8ac6a-aab1-80a2-9fb7-fda2dbfad7bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seven Forms of Involuntary Alienation:</strong><ol type="1" id="41c8ac6a-aab1-80f7-946f-c3039b0058fd" class="numbered-list" start="1" dir="auto"><li><strong>Eminent domain</strong> (and condemnation)</li></ol><ol type="1" id="41c8ac6a-aab1-806b-b5b2-f8835f29b168" class="numbered-list" start="2" dir="auto"><li><strong>Foreclosure and lawsuits</strong> (e.g., mortgage foreclosure, tax sales, judgment liens, partition suits)</li></ol><ol type="1" id="41c8ac6a-aab1-80fc-8284-eaf56703ebad" class="numbered-list" start="3" dir="auto"><li><strong>Adverse possession</strong> (acquiring title through continuous, hostile, open, and notorious possession for a statutory period)</li></ol><ol type="1" id="41c8ac6a-aab1-8099-bf04-c69fcd2105ac" class="numbered-list" start="4" dir="auto"><li><strong>Descent</strong> (intestate succession—transfer of property to legal heirs by state statute when an owner dies without a valid will)</li></ol><ol type="1" id="41c8ac6a-aab1-80a8-964d-e22809db314d" class="numbered-list" start="5" dir="auto"><li><strong>Escheat</strong> (reversion of property to the state when an owner dies without a valid will and leaves no identifiable heirs)</li></ol><ol type="1" id="41c8ac6a-aab1-80e5-b9c0-e0656f808aea" class="numbered-list" start="6" dir="auto"><li><strong>Forfeiture of title</strong> (loss of title due to breaching a condition subsequent in a defeasible fee deed)</li></ol><ol type="1" id="41c8ac6a-aab1-802b-a940-fa63e5888f00" class="numbered-list" start="7" dir="auto"><li><strong>Accession</strong> (acquisition of additional land or improvements through natural forces like accretion/alluvion or annexation)</li></ol></li></ul></li></ul><ul id="41c8ac6a-aab1-80a5-ae82-ec1b8b6813a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Eminent Domain vs. Condemnation</strong><ul id="41c8ac6a-aab1-8042-870a-ec49e41ea756" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eminent Domain:</strong> The inherent constitutional <strong>right/power</strong> of the government (and authorized public utilities/agencies) to take private property for <strong>public use</strong>, subject to the payment of <strong>just compensation</strong> to the owner.</li></ul><ul id="41c8ac6a-aab1-8027-8a79-ff111e59ccd7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condemnation (Appropriation):</strong> The formal <strong>legal proceeding/action</strong> through which the government exercises its power of eminent domain to acquire the private property and determine just compensation.</li></ul><ul id="41c8ac6a-aab1-80af-830c-d64368ce591d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Distinction:</strong> <strong>Eminent domain is the right; condemnation is the action.</strong></li></ul></li></ul><ul id="41c8ac6a-aab1-8097-8d4c-e14f4eda9829" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foreclosure &amp; Lawsuits (Legal Forms of Involuntary Alienation)</strong><ul id="41c8ac6a-aab1-8059-a350-e3dd670e2a08" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foreclosure:</strong> One of the most common forms of involuntary alienation; when a loan is secured by real property (such as a mortgage or deed of trust) and the borrower defaults, the lender has the legal right to seize and sell the property without the borrower&#x27;s consent.</li></ul><ul id="41c8ac6a-aab1-80c8-9152-fe9219296c4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lawsuits:</strong> Court actions can resolve ownership disputes or compel a transfer of title when co-owners or claimants cannot reach a voluntary agreement:<ul id="41c8ac6a-aab1-80aa-a88b-ed014dba66db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Quiet Title Action:</strong> A legal remedy filed in court to clear a <strong>cloud on the title</strong> (such as an unresolved claim, boundary dispute, or defect) when an amicable agreement and a quitclaim deed cannot be obtained.</li></ul><ul id="41c8ac6a-aab1-80b7-8c13-fe1c8d4ce29a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Partition Suit:</strong> A legal action used to sever joint ownership (such as tenancy in common or joint tenancy) when co-owners disagree on how to use, divide, or sell a property—resulting in either a physical division of the land (<em>partition in kind</em>) or a court-ordered sale with divided proceeds (<em>partition by sale</em>).</li></ul></li></ul></li></ul><ul id="41c8ac6a-aab1-8070-b96a-dd241e7190be" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adverse Possession Fundamentals</strong><ul id="41c8ac6a-aab1-80d4-a8fc-f7c2798ddce7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The involuntary transfer of title from a property owner who fails to use, inspect, or defend their land over a statutory period to another person who openly occupies and claims the land.</li></ul><ul id="41c8ac6a-aab1-805a-9369-c4c2f14f4337" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Designed not to encourage theft, but to resolve long-standing boundary and title disputes when an owner <strong>&quot;sleeps on their rights&quot;</strong> and fails to eject a trespasser within the statutory timeframe.</li></ul><ul id="41c8ac6a-aab1-8091-ae7a-ed2cefa78a12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Essential Attributes of Adverse Possession (Memory Aid: </strong><em><strong>OCEAN</strong></em><strong> / </strong><em><strong>HAEOC</strong></em><strong>):</strong><table id="41c8ac6a-aab1-8032-b140-ea577ef76549" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-804b-a8d4-ef34f7908e51" dir="ltr"><td id="jH?C" class=""><strong>Attribute</strong></td><td id="J;[M" class=""><strong>Legal Requirement</strong></td></tr><tr id="41c8ac6a-aab1-803a-84f5-d2360b709269" dir="ltr"><td id="jH?C" class=""><strong>Hostile</strong> <em>(Adverse)</em></td><td id="J;[M" class="">Possession is without the true owner&#x27;s permission and directly in opposition to the owner&#x27;s rights and wishes.</td></tr><tr id="41c8ac6a-aab1-8084-9de6-f1724e84b228" dir="ltr"><td id="jH?C" class=""><strong>Actual</strong></td><td id="J;[M" class="">Physical dominion, occupation, or active use of the property must be apparent (not merely a verbal claim).</td></tr><tr id="41c8ac6a-aab1-8034-8b29-e3638f89301e" dir="ltr"><td id="jH?C" class=""><strong>Exclusive</strong></td><td id="J;[M" class="">The adverse possessor holds possession solely for themselves, excluding the true owner and the general public.</td></tr><tr id="41c8ac6a-aab1-8083-96cc-e496dcb223b4" dir="ltr"><td id="jH?C" class=""><strong>Open and Notorious</strong></td><td id="J;[M" class="">Possession is visible, obvious, and unconcealed so that a reasonably diligent owner inspecting the property would discover it.</td></tr><tr id="41c8ac6a-aab1-805d-b223-e6db92c74ca3" dir="ltr"><td id="jH?C" class=""><strong>Continuous</strong></td><td id="J;[M" class="">Possession must be uninterrupted throughout the entire statutory period—the claimant cannot abandon the property and restart at will.</td></tr></tbody></table></li></ul></li></ul><ul id="41c8ac6a-aab1-802a-a940-fd917f9c2c6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adverse Possession Rules in Tennessee</strong><ul id="41c8ac6a-aab1-80f7-a724-d884d8c2819a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Possession Periods:</strong><ul id="41c8ac6a-aab1-80ef-bf13-e22a7ab2bcd4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>7 Years (With Color of Title):</strong> Required when the possessor holds <strong>color of title</strong>—a recorded instrument/document that appears to convey title on its face but is legally defective or invalid.</li></ul><ul id="41c8ac6a-aab1-8000-bd16-ed6ad32e5060" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>20 Years (Without Color of Title):</strong> Required under common law prescription when the claimant has no written instrument purporting to convey title.</li></ul></li></ul><ul id="41c8ac6a-aab1-8068-89af-ea47cd30ba8f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Tax Payment Presumption:</strong> Under Tennessee law, an adverse possessor who pays state and county property taxes on the land continuously for <strong>20 or more years</strong> is legally presumed to be the prima facie owner of the property.</li></ul></li></ul><ul id="41c8ac6a-aab1-80f1-a7a8-c306c9eedb45" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Descent vs. Escheat (Intestate Property Transfers)</strong><ul id="41c8ac6a-aab1-80f9-b9c1-e3a736799046" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Both <strong>descent</strong> and <strong>escheat</strong> occur when an owner dies <strong>intestate</strong> (without a valid will) and are classified as <strong>involuntary alienation</strong> because the decedent did not direct the transfer in writing. The core distinction is whether the decedent leaves behind <strong>known legal heirs</strong>:<table id="41c8ac6a-aab1-8088-8dec-d409e87471af" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-808f-b2b2-c64e395cb14d" dir="ltr"><td id="h[nI" class=""><strong>Transfer Method</strong></td><td id="K{eH" class=""><strong>Condition of Heirs</strong></td><td id=":^_y" class=""><strong>What Happens to the Property</strong></td></tr><tr id="41c8ac6a-aab1-80c7-b35d-f3ea2592fb78" dir="ltr"><td id="h[nI" class=""><strong>Descent</strong> <em>(Laws of Descent &amp; Distribution / Intestate Succession)</em></td><td id="K{eH" class="">Decedent dies without a will <strong>with known heirs</strong> (surviving spouse, children, or next of kin)</td><td id=":^_y" class="">State intestacy statutes determine who inherits the property and in what shares.</td></tr><tr id="41c8ac6a-aab1-80e6-b25a-e80832526b17" dir="ltr"><td id="h[nI" class=""><strong>Escheat</strong></td><td id="K{eH" class="">Decedent dies without a will <strong>with no surviving spouse, lineal descendants, or known heirs</strong></td><td id=":^_y" class="">Ownership of the property reverts directly to the <strong>state</strong> so the land does not become ownerless.</td></tr></tbody></table></li></ul></li></ul><ul id="41c8ac6a-aab1-80c7-a7ec-e83a27395a46" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Forfeiture of Title</strong><ul id="41c8ac6a-aab1-80ff-8944-f8a93da7126b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A form of involuntary alienation occurring when an owner violates a deed restriction or condition attached to a <strong>defeasible fee estate</strong>, causing title to automatically revert back to the original grantor (or the grantor&#x27;s heirs).</li></ul><ul id="41c8ac6a-aab1-80fa-8bb5-fb6b8a025b04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Example:</strong> Geanna is granted a 100-acre estate on the condition that it be used strictly for residential purposes. When she attempts to sell it to a commercial developer in violation of that condition, she forfeits title and the estate reverts back to the grantor.</li></ul></li></ul><ul id="41c8ac6a-aab1-801c-b5ea-c1618a398701" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Accession (Natural &amp; Artificial Additions to Property)</strong><ul id="41c8ac6a-aab1-800d-883e-ea56ec69032f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The legal right of a property owner to all that their property produces, as well as any land or improvements added to it—whether through <strong>natural forces</strong> or <strong>human action (artificial accession)</strong>—without requiring a deed or other instrument of conveyance.</li></ul><ul id="41c8ac6a-aab1-8096-afcb-c1de39eec919" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Artificial Accession:</strong> Occurs through human labor, construction, or annexation of permanent improvements onto land.</li></ul><ul id="41c8ac6a-aab1-807f-9f6f-c1a77aa9c70c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Natural Forces Affecting Land Area:</strong><table id="41c8ac6a-aab1-804f-aec7-e6c2bf59fb56" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-80f0-9e6e-f1d1a5015c74" dir="ltr"><td id="Y_@E" class=""><strong>Natural Force</strong></td><td id="BZEP" class=""><strong>Definition &amp; Effect on Land</strong></td></tr><tr id="41c8ac6a-aab1-80c3-82ca-da706676ad90" dir="ltr"><td id="Y_@E" class=""><strong>Accretion</strong></td><td id="BZEP" class="">The <strong>gradual increase</strong> in land area caused by natural deposits of soil/sediment along a waterway. <em>(The actual soil deposited during accretion is called </em><em><strong>alluvion</strong></em><em>.)</em></td></tr><tr id="41c8ac6a-aab1-80b1-b9cd-de6c858c5848" dir="ltr"><td id="Y_@E" class=""><strong>Avulsion</strong></td><td id="BZEP" class="">The <strong>sudden, violent loss</strong> (or tearing away) of land caused by an abrupt act of nature (such as a flash flood, earthquake, or sudden shift in a river&#x27;s channel).</td></tr><tr id="41c8ac6a-aab1-8070-ba3c-d486b693175c" dir="ltr"><td id="Y_@E" class=""><strong>Reliction</strong></td><td id="BZEP" class="">The <strong>gradual exposure of previously submerged land</strong> caused by the permanent recession of water (such as a lake, river, or sea receding).</td></tr></tbody></table></li></ul></li></ul><p id="41c8ac6a-aab1-8034-85df-ca4c9c595b90" class="" dir="auto">
+</p></div><div id="41c8ac6a-aab1-80e5-b29e-e7c30b5b4ab8" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41c8ac6a-aab1-8091-8c37-d202c0714ef6" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41c8ac6a-aab1-80e1-8c1c-c59e3054743a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>devise </strong>- the transfer of real or personal property through a will</li></ul><ul id="41c8ac6a-aab1-809d-86fb-d71b4d44d2a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>grantee </strong>- the person who receives a conveyance of real property in a transaction</li></ul><ul id="41c8ac6a-aab1-80d5-a86a-d312a4110dfa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>grantor </strong>- the person who conveys real property in a real estate transaction</li></ul><ul id="41c8ac6a-aab1-80c3-8d76-cb3f7b6df15b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>instrument of conveyance </strong>- a tool that transfers a grantor’s interest in real property</li></ul><ul id="41c8ac6a-aab1-80e0-b575-f04c1eae104f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>title </strong>-<strong> </strong>the actual ownership of a real property that includes the bundle of rights in which a party may own a legal or equitable interest; not an actual document</li></ul><p id="41c8ac6a-aab1-8002-ad31-c14eeafffb02" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41c8ac6a-aab1-80dd-babc-e8276a84deec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title vs. Deed</strong><figure id="41c8ac6a-aab1-8062-849e-fdf91cad5426" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TitleVSDeed_VennDiagram.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TitleVSDeed_VennDiagram.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TitleVSDeed_VennDiagram.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-806e-8b73-f4152a95ee62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Types of Alienation</strong><ul id="41c8ac6a-aab1-8008-a612-d053c166fc33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voluntary</strong>, usually by sale or gift</li></ul><ul id="41c8ac6a-aab1-80a5-b4e6-c2fa6f46c808" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Involuntary</strong>, usually by an operation of the law<figure id="41c8ac6a-aab1-80ec-a4b3-c430850471fa" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/FL_Alienation_4619.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/FL_Alienation_4619.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/FL_Alienation_4619.png"/></a></figure></li></ul></li></ul><ul id="41c8ac6a-aab1-807f-aaab-e2511e41f059" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Voluntary Alienation</strong><ul id="41c8ac6a-aab1-807c-a792-d05f767dddf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Private grant:</strong> selling the property or gifting the property to an individual</li></ul><ul id="41c8ac6a-aab1-8094-a91b-d91c1aa3dc4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dedication:</strong> giving the property to the government for public use</li></ul><ul id="41c8ac6a-aab1-8093-ab8d-ff39be027a65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public grant:</strong> the government giving a private entity land</li></ul><ul id="41c8ac6a-aab1-806b-be4a-f801cb49ab04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Devise:</strong> willing the land to someone</li></ul></li></ul><ul id="41c8ac6a-aab1-8041-9996-d79152cec590" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Involuntary Alienation</strong><ul id="41c8ac6a-aab1-8090-937b-d586cdb8ab14" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eminent domain:</strong> The government takes the land for a public good and compensates the landowner.</li></ul><ul id="41c8ac6a-aab1-80ef-82a2-d41d4c2f75ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foreclosure:</strong> The lender seizes the property after the owner defaults on the loan.</li></ul><ul id="41c8ac6a-aab1-8027-b836-c398132773f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lawsuits</strong>: Legal action is taken to quiet title or sever joint ownership by partition.</li></ul><ul id="41c8ac6a-aab1-804e-ba73-e4086f3f74b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adverse possession:</strong> This is the involuntary transfer of title from an owner who does not use or inspect their land to another person who has some claim to the land and takes possession.</li></ul><ul id="41c8ac6a-aab1-80de-aeac-e8c2fd9ca89d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escheat</strong>: A property owner dies with no will and no heirs, so the state takes the property.</li></ul><ul id="41c8ac6a-aab1-8076-b158-cce58e5eda4c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Forfeiture of title:</strong> A deed contains some kind of condition or restriction that gets violated and causes a change in ownership.</li></ul><ul id="41c8ac6a-aab1-805b-b8c7-d3381447ce39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accession:</strong> Natural forces remove some of a property&#x27;s land (doesn&#x27;t result in a title or deed change).</li></ul></li></ul><p id="41c8ac6a-aab1-8015-9267-e16466c427bb" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

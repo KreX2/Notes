@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Types of Deeds</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-8076-a2de-c38e31620cae" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Types of Deeds</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41c8ac6a-aab1-80ca-90e9-e7887a7ff4fe" class="column-list" data-notion-column-list="" dir="auto"><div id="41c8ac6a-aab1-80b5-96db-d8f5ce65ec36" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41c8ac6a-aab1-803c-95c2-ef004954372e" class="" dir="auto"><strong>The Four Main Types of Deeds (Ranked from Most to Least Grantee Protection)</strong></p><ul id="41c8ac6a-aab1-8051-abfa-f1e37819db02" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ranking Order:</strong><ol type="1" id="41c8ac6a-aab1-8083-bc09-d570086c4600" class="numbered-list" start="1" dir="auto"><li><strong>General warranty deed</strong> <em>(highest grantee protection)</em></li></ol><ol type="1" id="41c8ac6a-aab1-8014-95f3-e1ebf9e38089" class="numbered-list" start="2" dir="auto"><li><strong>Special warranty deed</strong></li></ol><ol type="1" id="41c8ac6a-aab1-8015-bd76-cf0fab36d9db" class="numbered-list" start="3" dir="auto"><li><strong>Bargain and sale deed</strong></li></ol><ol type="1" id="41c8ac6a-aab1-80cf-a917-fc85d6cede96" class="numbered-list" start="4" dir="auto"><li><strong>Quitclaim deed</strong> <em>(lowest grantee protection)</em></li></ol></li></ul><ul id="41c8ac6a-aab1-8041-9b60-dc6b12ab511d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conveyance vs. Financing Instruments:</strong> Instruments such as <strong>mortgages</strong> or deeds of trust affect title by establishing real property as security (collateral) for a debt, but they <strong>do not convey title</strong>.</li></ul><ul id="41c8ac6a-aab1-806f-b527-c29770e9a83f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Deed Usage:</strong><ul id="41c8ac6a-aab1-80f1-bf91-cd064788dabd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee most commonly uses the <strong>general warranty deed</strong>, though <strong>special warranty deeds</strong> and <strong>quitclaim deeds</strong> are also used.</li></ul><ul id="41c8ac6a-aab1-80f3-b924-e1dc40595d2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>bargain and sale deed is NOT used in Tennessee</strong>.</li></ul></li></ul><ul id="41c8ac6a-aab1-8074-9fa3-d80aa358e282" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Six Covenants (Warranties) of Title</strong><ul id="41c8ac6a-aab1-8061-ab6f-fb45522d9460" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Covenants are legally binding promises/guarantees included in certain deeds to protect the grantee against title defects:<table id="41c8ac6a-aab1-80ef-b7cb-c987798d8224" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-802a-bbdf-d222543db702" dir="ltr"><td id="r\sN" class=""><strong>Covenant / Warranty</strong></td><td id="Gv]q" class=""><strong>What the Grantor Guarantees to the Grantee</strong></td></tr><tr id="41c8ac6a-aab1-8026-8343-c28adc6ad15b" dir="ltr"><td id="r\sN" class=""><strong>1. Covenant of Seisin</strong></td><td id="Gv]q" class="">The grantor actually owns and holds the legal title and estate being conveyed in the deed <em>(considered the most central and important of all six covenants)</em>.</td></tr><tr id="41c8ac6a-aab1-805b-a382-c1f66f7cbecb" dir="ltr"><td id="r\sN" class=""><strong>2. Covenant of Right to Convey</strong></td><td id="Gv]q" class="">The grantor is the legal owner (or authorized fiduciary) and has the full legal right and capacity to convey title to the grantee.</td></tr><tr id="41c8ac6a-aab1-80aa-9e25-d6bcfacf01db" dir="ltr"><td id="r\sN" class=""><strong>3. Covenant Against Encumbrances</strong></td><td id="Gv]q" class="">The property is free from any liens, mortgages, easements, or other encumbrances—except those specifically disclosed or excepted in the deed.</td></tr><tr id="41c8ac6a-aab1-8062-a1c2-dfaad85fc9a5" dir="ltr"><td id="r\sN" class=""><strong>4. Covenant of Quiet Enjoyment</strong></td><td id="Gv]q" class="">The grantee will be able to possess and use the property peacefully without disturbance from any third party asserting a superior legal claim to title.</td></tr><tr id="41c8ac6a-aab1-80ba-8e2d-c6576910411a" dir="ltr"><td id="r\sN" class=""><strong>5. Covenant for Further Assurances</strong></td><td id="Gv]q" class="">The grantor promises to execute, obtain, and deliver any additional documents or instruments reasonably needed in the future to clear or perfect the grantee&#x27;s title.</td></tr><tr id="41c8ac6a-aab1-80fa-b567-f679dad80da0" dir="ltr"><td id="r\sN" class=""><strong>6. Covenant of Warranty Forever</strong> <em>(Covenant of Warranty of Title)</em></td><td id="Gv]q" class="">The grantor guarantees to defend the grantee&#x27;s title against all lawful third-party claims indefinitely and compensate the grantee for financial losses if the title ever fails.</td></tr></tbody></table></li></ul></li></ul><ul id="41c8ac6a-aab1-804f-b825-e0929cde473b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Warranty Deeds </strong><ul id="41c8ac6a-aab1-8095-b04b-eede558b5403" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Out of the four main types of deeds commonly used to convey real estate (<strong>general warranty</strong>, <strong>special warranty</strong>, <strong>bargain and sale</strong>, and <strong>quitclaim</strong>), warranty deeds provide the strongest legal assurances of title to the grantee (buyer) by incorporating the six covenants of title.</li></ul></li></ul><ul id="41c8ac6a-aab1-809e-80b4-c0ce1eac009f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Warranty Deed vs. Special Warranty Deed</strong><table id="41c8ac6a-aab1-80c0-9acc-cffdeea4b817" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8023-a402-ca8162683554" dir="ltr"><td id="Vz&lt;M" class=""><strong>Deed Type</strong></td><td id="`Isf" class=""><strong>Alternative Names</strong></td><td id="o^xA" class=""><strong>Scope of Title Protection</strong></td><td id="N?hE" class=""><strong>Covenants Included</strong></td></tr><tr id="41c8ac6a-aab1-806a-a3a1-ef626cc35462" dir="ltr"><td id="Vz&lt;M" class=""><strong>General Warranty Deed</strong></td><td id="`Isf" class="">• Full covenant and warranty deed<br/><br/>• Warranty deed</td><td id="o^xA" class=""><strong>Greatest protection for the grantee:</strong> The grantor guarantees and promises to defend the title against <strong>all lawful claims and defects</strong>, regardless of when they arose (covering the entire chain of title back to the property&#x27;s origin).</td><td id="N?hE" class="">Includes <strong>all six covenants of title</strong> <em>(seisin, right to convey, against encumbrances, quiet enjoyment, further assurances, and warranty forever)</em> across the entire history of the property.</td></tr><tr id="41c8ac6a-aab1-8015-adb4-ed3af537a2b9" dir="ltr"><td id="Vz&lt;M" class=""><strong>Special Warranty Deed</strong></td><td id="`Isf" class="">• Bargain and sale deed with covenants</td><td id="o^xA" class=""><strong>Limited timeframe protection:</strong> The grantor warrants and defends the title <strong>only against defects or encumbrances that occurred while the grantor held title</strong> (not prior owners&#x27; periods of ownership).</td><td id="N?hE" class="">Includes the <strong>same six covenants of title</strong>, but strictly limited to the <strong>period of time the grantor owned the property</strong>.</td></tr></tbody></table><figure id="41c8ac6a-aab1-808d-84ee-c6fd37c37396" class="image" data-notion-image="Chapter%203%20-%20Types%20of%20Deeds/image.png" dir="ltr"><a href="Chapter%203%20-%20Types%20of%20Deeds/image.png"><img style="width:528px" src="Chapter%203%20-%20Types%20of%20Deeds/image.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-80d9-b1e0-c4e5b9ceed85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="41c8ac6a-aab1-80f8-8ccd-ccbcdd355db7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deeds of Uncertainty Overview</strong><ul id="41c8ac6a-aab1-8032-9bf8-ff2855a02840" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unlike warranty deeds—which include express covenants defending the grantee&#x27;s title—<strong>bargain and sale deeds</strong> and <strong>quitclaim deeds</strong> offer little to no protection against title defects, placing significantly greater risk on the grantee.</li></ul></li></ul><ul id="41c8ac6a-aab1-80b9-974f-cf57361fc10e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bargain and Sale Deeds</strong><ul id="41c8ac6a-aab1-8095-b682-c2fc4099d006" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Scope:</strong> Also known as a <strong>deed without warranty</strong>, a true bargain and sale deed contains <strong>no express covenants or warranties against encumbrances</strong>. It merely implies that the grantor has possession of the property and holds the right to convey title.</li></ul><ul id="41c8ac6a-aab1-8043-9f9b-ef1aca70aeb2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Grantee Risk &amp; Financing Impact:</strong> Because there are no warranties defending against liens or title defects, the grantee has very little legal recourse if title problems surface later—making many mortgage lenders reluctant to finance purchases conveyed via a bargain and sale deed.</li></ul><ul id="41c8ac6a-aab1-8044-92be-ede880b392ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Uses:</strong> Typically used in official or court-related transfers where the seller lacks personal knowledge of the property&#x27;s full title history, such as:<ul id="41c8ac6a-aab1-8004-8bcd-e89ce4c85f16" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sheriff&#x27;s deeds</strong></li></ul><ul id="41c8ac6a-aab1-8009-91d5-e4010332d7c1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tax deeds</strong> <em>(foreclosed tax sales)</em></li></ul><ul id="41c8ac6a-aab1-8043-8e87-c47065ee3fc4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Trustee deeds</strong> <em>(foreclosure or trust administration sales)</em></li></ul></li></ul><ul id="41c8ac6a-aab1-8084-a397-c6200c4a7dc9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Note:</strong> Bargain and sale deeds are <strong>not used in Tennessee</strong>.</li></ul></li></ul><ul id="41c8ac6a-aab1-8008-8896-f8509827cc67" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quitclaim Deeds</strong><ul id="41c8ac6a-aab1-8034-9348-e903918f9397" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Scope:</strong> Conveys <strong>only whatever interest, title, or claim</strong> (if any) the grantor happens to possess at the moment the deed is executed, with <strong>zero warranties or guarantees</strong>.</li></ul><ul id="41c8ac6a-aab1-8032-a696-dbee2ecef8f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risk Allocation:</strong> Provides the <strong>least protection to the grantee</strong> of any deed type while imposing the <strong>least liability on the grantor</strong>.</li></ul><ul id="41c8ac6a-aab1-806c-a9bc-ddc7c107c852" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Practical Uses of Quitclaim Deeds:</strong><table id="41c8ac6a-aab1-8053-9e6c-debb4ab364f1" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8090-929e-fe9e93c12f48" dir="ltr"><td id="IEuW" class=""><strong>Use Case / Variant</strong></td><td id="\JWQ" class=""><strong>Purpose &amp; How It Works</strong></td></tr><tr id="41c8ac6a-aab1-8077-b794-e53248211424" dir="ltr"><td id="IEuW" class=""><strong>Correction Deed</strong> <em>(Deed of Confirmation)</em></td><td id="\JWQ" class="">Used to fix clerical or title defects discovered after closing—such as a misspelled grantor/grantee name, an inaccurate legal description, or an omitted recorded easement.</td></tr><tr id="41c8ac6a-aab1-8014-8f0d-d1d31df76390" dir="ltr"><td id="IEuW" class=""><strong>Non-Sale &amp; Family Transfers</strong></td><td id="\JWQ" class="">Used when ownership transfers without a traditional sale, such as between <strong>spouses during a divorce</strong>, adding/removing a family member on title, or clearing clouds on title when heirs release potential claims on property inherited through an unprobated will.</td></tr><tr id="41c8ac6a-aab1-8077-8661-e728207d0a6c" dir="ltr"><td id="IEuW" class=""><strong>Cession Deed</strong> <em>(Deed of Cession)</em></td><td id="\JWQ" class="">A specialized quitclaim deed used by a private owner to transfer property rights to a government entity (such as conveying street or right-of-way strips to a city government).</td></tr><tr id="41c8ac6a-aab1-8093-b35b-e4c5db48bed6" dir="ltr"><td id="IEuW" class=""><strong>Adverse Possession Formalization</strong></td><td id="\JWQ" class="">Used to formalize and record the transfer of ownership interest once an adverse possession claim is resolved.</td></tr></tbody></table></li></ul><ul id="41c8ac6a-aab1-80c7-a47c-cc8f3d492ef4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Note:</strong> Quitclaim deeds <strong>are used in Tennessee</strong>, where they are <strong>registered</strong> at the county Register of Deeds office rather than recorded as warranty conveyances.</li></ul></li></ul><ul id="41c8ac6a-aab1-8070-98e3-c146312e11f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bargain and Sale Deed vs. Quitclaim Deed</strong><table id="41c8ac6a-aab1-8074-8151-dd6dc840ac97" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-80ac-aa08-f485d3d54705" dir="ltr"><td id="G?A|" class=""><strong>Feature</strong></td><td id="OIEH" class=""><strong>Bargain and Sale Deed</strong></td><td id="FkhG" class=""><strong>Quitclaim Deed</strong></td></tr><tr id="41c8ac6a-aab1-80e4-856e-d2481274c68e" dir="ltr"><td id="G?A|" class=""><strong>Title Guarantees / Covenants</strong></td><td id="OIEH" class="">No express warranties against liens or encumbrances; implies only that the grantor holds possession and the right to convey.</td><td id="FkhG" class="">Zero warranties or guarantees—does not even warrant that the grantor owns any valid interest at all.</td></tr><tr id="41c8ac6a-aab1-8042-a283-ed771a28cea5" dir="ltr"><td id="G?A|" class=""><strong>Grantee Protection Level</strong></td><td id="OIEH" class="">Very low <em>(3rd out of 4 deed types)</em></td><td id="FkhG" class="">Lowest of all deed types <em>(4th out of 4 deed types)</em></td></tr><tr id="41c8ac6a-aab1-8032-9e43-f005a9c4dae3" dir="ltr"><td id="G?A|" class=""><strong>Typical Transactions</strong></td><td id="OIEH" class="">Tax sales, sheriff&#x27;s sales, foreclosure/trustee sales</td><td id="FkhG" class="">Clearing title clouds, boundary/spelling corrections, divorce/family transfers, cession to government</td></tr><tr id="41c8ac6a-aab1-80fe-b83a-fd6c93064b59" dir="ltr"><td id="G?A|" class=""><strong>Used in Tennessee?</strong></td><td id="OIEH" class=""><strong>No</strong></td><td id="FkhG" class=""><strong>Yes</strong> <em>(registered with the county Register of Deeds)</em></td></tr></tbody></table><figure id="41c8ac6a-aab1-8050-98fe-fa59bb15a369" class="image" data-notion-image="Chapter%203%20-%20Types%20of%20Deeds/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Types%20of%20Deeds/image%201.png"><img style="width:432px" src="Chapter%203%20-%20Types%20of%20Deeds/image%201.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-80e7-b970-f4a476fb586b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If Deeds Could Talk</strong><ul id="41c8ac6a-aab1-80c4-9ce1-cf3d5ed95420" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General warranty deed:</strong> <em>&quot;I own this property and I can vouch for the title.</em>&quot;</li></ul><ul id="41c8ac6a-aab1-808d-b276-c09230884e64" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special warranty deed:</strong> <em>&quot;I own this property and I can vouch for the title only during the time that I have owned it.&quot;</em></li></ul><ul id="41c8ac6a-aab1-80d1-9e13-ffecf4ed11e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bargain and sale deed:</strong> <em>&quot;I own this property, but I can&#x27;t guarantee anything beyond that.&quot;</em></li></ul><ul id="41c8ac6a-aab1-801a-9a65-c2ca0236d3ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Quitclaim deed:</strong> <em>&quot;I&#x27;m conveying my ownership interest to you, whatever that may be, and I may not even have ownership interest at all.&quot;</em> </li></ul></li></ul><ul id="41c8ac6a-aab1-8072-82e9-d519cbfde3c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deed Covenants by Deed Type</strong><figure id="41c8ac6a-aab1-80cf-9c75-e4e781028c29" class="image" data-notion-image="Chapter%203%20-%20Types%20of%20Deeds/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Types%20of%20Deeds/image%202.png"><img style="width:480px" src="Chapter%203%20-%20Types%20of%20Deeds/image%202.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-8043-8662-f57172410375" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Judicial Deeds</strong><ul id="41c8ac6a-aab1-80c5-bcf1-eb0217f4dc8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Core Characteristics:</strong> Deeds executed <strong>pursuant to a court order</strong> rather than an ordinary private sale.<ul id="41c8ac6a-aab1-808d-ac44-cd52692f8da3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Consideration:</strong> <strong>Full, exact consideration</strong> is typically stated in the deed.</li></ul><ul id="41c8ac6a-aab1-8058-8506-efd942b2005f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Warranties &amp; Covenants:</strong> Ownership is generally implied, but judicial deeds usually contain <strong>no general covenants or warranties</strong>; if any covenant is included, it typically states only that the grantor/fiduciary has not personally encumbered the property.</li></ul></li></ul><ul id="41c8ac6a-aab1-80dd-8fd2-c61ebe59a4d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seven Types of Judicial Deeds (Classified by the Role of the Executing Party):</strong><ol type="1" id="41c8ac6a-aab1-8017-bdca-e234481c3cd1" class="numbered-list" start="1" dir="auto"><li><strong>Guardian&#x27;s deed:</strong> Executed by a court-appointed guardian conveying property on behalf of a minor or legally incompetent person.</li></ol><ol type="1" id="41c8ac6a-aab1-8029-8e5f-e856cf6657d2" class="numbered-list" start="2" dir="auto"><li><strong>Executor&#x27;s deed:</strong> Executed by the person named in a deceased owner&#x27;s will to administer and convey estate property.</li></ol><ol type="1" id="41c8ac6a-aab1-807d-8455-e5770aefec9c" class="numbered-list" start="3" dir="auto"><li><strong>Administrator&#x27;s deed:</strong> Executed by a court-appointed administrator to convey property from the estate of someone who died intestate (without a will).</li></ol><ol type="1" id="41c8ac6a-aab1-80e8-9ea7-c3d12152cb38" class="numbered-list" start="4" dir="auto"><li><strong>Sheriff&#x27;s deed:</strong> Executed by a sheriff to convey property sold at a court-ordered execution or foreclosure auction.</li></ol><ol type="1" id="41c8ac6a-aab1-805a-9e96-ef7fafd4be0e" class="numbered-list" start="5" dir="auto"><li><strong>Referee&#x27;s deed:</strong> Executed by a court-appointed referee in a judicial partition or foreclosure proceeding.</li></ol><ol type="1" id="41c8ac6a-aab1-8087-aef8-fef3752f3bfd" class="numbered-list" start="6" dir="auto"><li><strong>Tax deed:</strong> Executed by a government official to convey property sold at a tax sale due to unpaid property taxes.</li></ol><ol type="1" id="41c8ac6a-aab1-803b-9044-ed495dd5accb" class="numbered-list" start="7" dir="auto"><li><strong>Deed in lieu of foreclosure:</strong> Executed by a defaulting borrower who voluntarily conveys property title directly to the lender to avoid formal foreclosure proceedings.</li></ol></li></ul></li></ul><ul id="41c8ac6a-aab1-808f-880c-ce744412dc8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Deed of Trust (Security Deed / Deed to Secure Debt)</strong><ul id="41c8ac6a-aab1-804e-972f-cdba74dd2bcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Standard:</strong> Most Tennessee real estate loans use a <strong>deed of trust</strong> (also called a <strong>security deed</strong> or <strong>deed to secure debt</strong>) as the security instrument rather than a traditional two-party mortgage.</li></ul><ul id="41c8ac6a-aab1-8048-bc36-f0b23248a6b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How a Deed of Trust Works:</strong><ul id="41c8ac6a-aab1-8052-aff2-d00ffe50c09e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Bare legal title (the right to real estate as security) is held by a neutral third party until the loan terms are satisfied:<ul id="41c8ac6a-aab1-8026-a41f-e03503865a60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If the borrower pays off the loan:</strong> The third party executes a <strong>deed of reconveyance</strong> transferring full title back to the borrower.</li></ul><ul id="41c8ac6a-aab1-80ca-9956-ec03d875ccdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If the borrower defaults on the loan:</strong> The third party exercises the power of sale to foreclose and convey the property to the lender (or winning auction bidder).</li></ul></li></ul></li></ul><ul id="41c8ac6a-aab1-80ad-b372-d16888340fbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three Parties to a Deed of Trust:</strong><table id="41c8ac6a-aab1-8035-8312-ebc9b0e36d88" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8021-87a2-ef667085e5be" dir="ltr"><td id="p~}F" class=""><strong>Party</strong></td><td id="ImyQ" class=""><strong>Role &amp; Legal Interest</strong></td></tr><tr id="41c8ac6a-aab1-80a5-9744-f0288e8f6d16" dir="ltr"><td id="p~}F" class=""><strong>Trustor</strong> <em>(Borrower / Homebuyer)</em></td><td id="ImyQ" class="">Holds <strong>equitable title</strong> and the right to possess/use the property, earning full unencumbered legal title once the debt is repaid.</td></tr><tr id="41c8ac6a-aab1-8038-b28f-fcd4d03c7fab" dir="ltr"><td id="p~}F" class=""><strong>Beneficiary</strong> <em>(Lender)</em></td><td id="ImyQ" class="">Holds the beneficial security interest through the trustee; cannot possess the property while the loan is current, but can instruct the trustee to seize and sell the property upon default.</td></tr><tr id="41c8ac6a-aab1-80fe-95ce-ee68c25bdc3a" dir="ltr"><td id="p~}F" class=""><strong>Trustee</strong> <em>(Neutral Third Party)</em></td><td id="ImyQ" class="">Holds bare legal title (the deed of trust) on behalf of the lender until the loan is satisfied (triggering reconveyance) or defaulted upon (triggering foreclosure sale).</td></tr></tbody></table></li></ul></li></ul><ul id="41c8ac6a-aab1-807a-9374-ca7312c0389f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deed of Trust vs. Mortgage</strong></li></ul><table id="41c8ac6a-aab1-80da-88e0-d56a1428fdbb" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8099-82dc-fb4009700e22" dir="ltr"><td id="hg:r" class=""><strong>Feature</strong></td><td id="TmEy" class=""><strong>Deed of Trust</strong></td><td id="OOA:" class=""><strong>Mortgage</strong></td></tr><tr id="41c8ac6a-aab1-803c-9f13-d01bbbbab331" dir="ltr"><td id="hg:r" class=""><strong>Number of Parties</strong></td><td id="TmEy" class=""><strong>Three parties:</strong> Borrower (trustor), Lender (beneficiary), and Third-Party Trustee</td><td id="OOA:" class=""><strong>Two parties:</strong> Borrower (mortgagor) and Lender (mortgagee)</td></tr><tr id="41c8ac6a-aab1-802a-8247-f5913a2344c4" dir="ltr"><td id="hg:r" class=""><strong>Foreclosure Process Upon Default</strong></td><td id="TmEy" class=""><strong>Non-judicial foreclosure</strong> <em>(power-of-sale foreclosure conducted by the trustee without needing a court lawsuit—faster and standard in Tennessee)</em></td><td id="OOA:" class=""><strong>Judicial foreclosure</strong> <em>(lender must file a formal foreclosure lawsuit and obtain a court order to sell the property)</em></td></tr></tbody></table></div><div id="41c8ac6a-aab1-8020-8663-e0c41b0805f1" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41c8ac6a-aab1-80d5-871f-e30735f21b84" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41c8ac6a-aab1-803b-9ea0-f37a80accbc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>bargain and sale deed </strong>- a deed without any covenants or warranties against encumbrances that only implies the grantor has possession of the property and holds the right to convey title</li></ul><ul id="41c8ac6a-aab1-80ef-8655-fd171816c463" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>covenant of seisin </strong>- a protection in which the grantor states they hold the title conveyed in the deed</li></ul><ul id="41c8ac6a-aab1-80b1-9bed-d8d989a8f14b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>general warranty deed </strong>- the transfer or claim of interest in the title free and clear of all liens and encumbrances to real property in public records per state law, aka <em>full covenant and warranty deed</em></li></ul><ul id="41c8ac6a-aab1-80a4-bb84-f021fbf98a96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>quitclaim deed </strong>- a type of deed that conveys any interest, title, or right to a parcel of land the grantor has at the time the deed is executed</li></ul><ul id="41c8ac6a-aab1-80e5-8b32-e820c3ed7bca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>special warranty deed </strong>- a deed that only protects against defects that occurred while the grantor held title</li></ul><ul id="41c8ac6a-aab1-8017-9904-c51937646b50" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>tax deed (treasurer&#x27;s deed) </strong>- a deed used to convey the title to a property sold in a tax foreclosure sale, aka <em>treasurer&#x27;s deed</em></li></ul><ul id="41c8ac6a-aab1-806a-88b1-e0e92af1c105" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>tax sale </strong>- the forced sale or auction of a property to cover outstanding debts</li></ul><p id="41c8ac6a-aab1-80a8-82e3-f52e621b5f92" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41c8ac6a-aab1-803f-95e6-eeade745e43a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Main Types of Deeds</strong><ul id="41c8ac6a-aab1-8032-a7cb-c7de288f4fce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General warranty deed:</strong> I own this property and I can vouch for the title.</li></ul><ul id="41c8ac6a-aab1-8060-a799-db874f81a052" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special warranty deed:</strong> I own this property and I can vouch for the title only during the time that I have owned it.</li></ul><ul id="41c8ac6a-aab1-8009-abfa-d48d9e2a7955" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bargain and sale deed:</strong> I own this property, but I can&#x27;t guarantee anything beyond that.</li></ul><ul id="41c8ac6a-aab1-8040-843d-d0033295c0ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Quitclaim deed:</strong> I&#x27;m conveying my ownership interest to you, whatever that may be, and I may not even have ownership interest at all.</li></ul><ul id="41c8ac6a-aab1-8090-b17d-d9f1d695a139" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Note:</strong> The bargain and sale deed is NOT used in Tennessee.<figure id="41c8ac6a-aab1-8034-9759-f419c81f0428" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNWAREPL_DeedCovenantsbyDeedType_17439_17440.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNWAREPL_DeedCovenantsbyDeedType_17439_17440.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNWAREPL_DeedCovenantsbyDeedType_17439_17440.png"/></a></figure></li></ul></li></ul><ul id="41c8ac6a-aab1-8042-b9e5-cb388a71e00e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Six Covenants</strong><ul id="41c8ac6a-aab1-802c-be1e-f820c3b4fa3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant of seisin: </strong>I hold the title to this property.</li></ul><ul id="41c8ac6a-aab1-80bc-a98b-c497c963e5cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant of right to convey:</strong> I have the right to convey this property.</li></ul><ul id="41c8ac6a-aab1-80b7-8f8d-f2828b669e95" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant against encumbrances: </strong>This property is free from encumbrances other than the ones listed in the deed.</li></ul><ul id="41c8ac6a-aab1-8098-ae01-fe15910380f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant of quiet enjoyment:</strong> The title is good against any third party who might bring a claim.</li></ul><ul id="41c8ac6a-aab1-80da-a132-e67bdaf974fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant for further assurances:</strong> I will help you later if someone makes a claim against the title.</li></ul><ul id="41c8ac6a-aab1-807c-b29e-d581693a0da2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The covenant of warranty forever</strong>: I will compensate you for losses if the title fails someday.</li></ul></li></ul><ul id="41c8ac6a-aab1-80c6-9251-c3bed9c077ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Judicial Deeds</strong><ul id="41c8ac6a-aab1-80c6-93d4-f52ceb21adfc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Judicial deeds are products of some kind of court order, but they are further defined by the role of the person who executes the deed. They include:<ul id="41c8ac6a-aab1-8062-9571-e22ac0cebae1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Guardian&#x27;s deed</li></ul><ul id="41c8ac6a-aab1-8091-94d2-d78c3199c2c2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Executor&#x27;s deed</li></ul><ul id="41c8ac6a-aab1-8064-87ea-cd0b336e1154" class="bulleted-list" dir="auto"><li style="list-style-type:square">Administrator&#x27;s deed</li></ul><ul id="41c8ac6a-aab1-80df-a302-e57275a8c691" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sheriff&#x27;s deed</li></ul><ul id="41c8ac6a-aab1-8035-a153-febef45324bb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Referee&#x27;s deed</li></ul><ul id="41c8ac6a-aab1-80d8-86eb-e9d158e28bb0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tax deed</li></ul><ul id="41c8ac6a-aab1-8012-a3cc-cd722ed14148" class="bulleted-list" dir="auto"><li style="list-style-type:square">Deed in lieu of foreclosure</li></ul></li></ul></li></ul><ul id="41c8ac6a-aab1-80d6-866d-cfadd442f408" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deed of Trust</strong><ul id="41c8ac6a-aab1-80fe-9b4d-f6984f4626bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A lender owns a property during the loan period, but the deed is held by a third party for that time. Title conveys to the borrower upon satisfaction of the loan. In case of default, the lender can use non-judicial foreclosure to take title.</li></ul></li></ul><p id="41c8ac6a-aab1-809d-a41c-e5b73c6e4e07" class="" dir="auto">
+</p></div></div><p id="41c8ac6a-aab1-8077-b1bb-ff5fdc2742ac" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

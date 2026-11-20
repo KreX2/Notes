@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Calculating Amortized Loans &amp; More</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-80d9-96da-e30829325010" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Calculating Amortized Loans &amp; More</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4108ac6a-aab1-8059-ac64-cc5bfe2a3cb2" class="column-list" data-notion-column-list="" dir="auto"><div id="4108ac6a-aab1-8072-a4bd-f2aeb73f6011" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4108ac6a-aab1-80e8-8038-c6f473f53585" class="" dir="auto"><strong>Amortization Fundamentals</strong></p><ul id="4108ac6a-aab1-8044-9725-c74796f101f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Concept:</strong> In an amortized loan (from the Latin for &quot;killing off&quot;), the total monthly payment amount remains fixed throughout the life of the loan, but the internal allocation of that payment shifts. Because interest is always calculated strictly on the <em>remaining balance</em>, the interest portion decreases and the principal portion increases as the loan gets paid down over time.</li></ul><ul id="4108ac6a-aab1-8017-ae23-e211edada892" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Payment Breakdown (PITI)</strong><ul id="4108ac6a-aab1-8067-be9d-c7a39fd82fbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal (P):</strong> The portion of the payment that pays down the remaining loan balance.</li></ul><ul id="4108ac6a-aab1-8089-964e-c9d4de3c9975" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interest (I):</strong> The fee paid to the lender based on the remaining balance.</li></ul><ul id="4108ac6a-aab1-8090-b3d6-fdae763ba1e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Taxes (T) &amp; Insurance (I):</strong> While full real-world payments usually include escrow funds for property taxes and homeowner&#x27;s insurance, the upcoming amortization math will focus strictly on the core <strong>PI</strong> (Principal and Interest) components.</li></ul></li></ul><ul id="4108ac6a-aab1-809b-97ef-e8c687c7758c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Amortization Math Shorthand Variables</strong><ul id="4108ac6a-aab1-8032-9af3-fcff58b70518" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To simplify step-by-step amortization calculations across multiple months, we will use the following standard variables (where the letter indicates the payment component, and the number indicates the chronological payment month):</li></ul><ul id="4108ac6a-aab1-809f-8c90-eb6903bae768" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>P1</code> = The portion of the 1st monthly payment applied to the principal</li></ul><ul id="4108ac6a-aab1-8063-889b-d4e79c09f62e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>I1</code> = The portion of the 1st monthly payment applied to interest</li></ul><ul id="4108ac6a-aab1-80d4-9e1e-d89fe3ca840a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>P2</code> = The portion of the 2nd monthly payment applied to the principal</li></ul><ul id="4108ac6a-aab1-80cc-a07d-cabf5084c194" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>I2</code> = The portion of the 2nd monthly payment applied to interest<figure id="4108ac6a-aab1-804b-a048-c3fb8348e6f7" class="image" data-notion-image="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image.png" dir="ltr"><a href="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image.png"><img style="width:432px" src="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image.png"/></a></figure></li></ul></li></ul><ul id="4108ac6a-aab1-80cb-bdc3-d5d66d6b1b72" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Mechanics of Diminishing Principal</strong><ul id="4108ac6a-aab1-805a-9da3-ea680877b19e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> In an amortized loan, the interest portion of a mortgage payment is highest at the beginning of the term. This happens because interest is calculated solely on the remaining balance. As the principal drops, the amount of interest owed drops alongside it.</li></ul><ul id="4108ac6a-aab1-8087-947e-cefc3d4f681d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Interest = Interest rate * Principal</code></li></ul><ul id="4108ac6a-aab1-8086-855f-efa397f091b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost-Saving Strategies:</strong> Making larger mortgage payments early in the loan term reduces the principal faster, resulting in massive long-term savings on interest. Alternatively, a borrower can utilize a <strong>buydown</strong>, which involves paying a lump sum upfront to permanently reduce the loan&#x27;s interest rate and subsequent monthly payments.</li></ul></li></ul><ul id="4108ac6a-aab1-8006-a64b-e87296e6f775" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real-World Application: Jimmy&#x27;s Loan Scenario</strong><ul id="4108ac6a-aab1-808f-b5a4-d6674620fd8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Terms:</strong> Jimmy purchases a $375,000 house with a $75,000 (20%) down payment, resulting in a <strong>$300,000 loan principal</strong>. The loan is a 30-year term (360 payments) at a <strong>4.25% interest rate</strong>, with a fixed monthly PI (Principal and Interest) payment of <strong>$1,476</strong>.</li></ul><ul id="4108ac6a-aab1-8056-b0bb-ced2d3f1b32e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The True Cost of Borrowing:</strong> If Jimmy makes exactly the minimum $1,476 payment every month for 30 years, he will pay off his $300,000 principal plus over $231,360 in interest. In total, he will pay the bank <strong>$531,360</strong> for borrowing $300,000.</li></ul></li></ul><ul id="4108ac6a-aab1-807a-9480-f44ebce076ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Jimmy&#x27;s Amortization Breakdown (The First 3 Months)</strong><ul id="4108ac6a-aab1-80de-859d-ff9da88ea93e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Notice how the fixed $1,476 monthly payment shifts its internal allocation as the principal slowly diminishes:</li></ul><ul id="4108ac6a-aab1-808f-8620-f19e3e19fee9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Month 1 (January):</strong><ul id="4108ac6a-aab1-80be-aa28-f0ac263a0a20" class="bulleted-list" dir="auto"><li style="list-style-type:square">Payment breakdown: <code>I1 = $1,063</code> goes to interest, and <code>P1 = $413</code> goes to the principal.</li></ul><ul id="4108ac6a-aab1-805c-97fb-e931cfb5b4ab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Remaining balance: $299,587.</li></ul></li></ul><ul id="4108ac6a-aab1-809f-935a-d3962475fa81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Month 2 (February):</strong><ul id="4108ac6a-aab1-80d4-ba62-c92852d212d8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because the balance is now slightly lower, the interest charge drops.</li></ul><ul id="4108ac6a-aab1-803b-b918-ef05eb7ccc1c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Payment breakdown: <code>I2 = $1,061</code> goes to interest, and <code>P2 = $415</code> goes to the principal.</li></ul><ul id="4108ac6a-aab1-80b3-ab71-cb228600559a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Remaining balance: $299,172.</li></ul></li></ul><ul id="4108ac6a-aab1-8085-87e9-c08c551bb5ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Month 3 (March):</strong><ul id="4108ac6a-aab1-801b-a0f4-ee3753286d60" class="bulleted-list" dir="auto"><li style="list-style-type:square">The shift continues.</li></ul><ul id="4108ac6a-aab1-8025-b80f-d1e18440b8ff" class="bulleted-list" dir="auto"><li style="list-style-type:square">Payment breakdown: <code>I3 = $1,060</code> goes to interest, and <code>P3 = $416</code> goes to the principal.</li></ul><ul id="4108ac6a-aab1-806e-88dc-f329a7a2c28f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Remaining balance: $298,756.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8095-84ca-ec340e0bcb86" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Jimmy&#x27;s Loan</strong><figure id="4108ac6a-aab1-80eb-9e9b-dab30ef4dde1" class="image" data-notion-image="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%201.png"><img style="width:432px" src="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%201.png"/></a></figure></li></ul><ul id="4108ac6a-aab1-809c-94d3-c47940a0c620" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the First Amortized Payment (Month 1)</strong><ul id="4108ac6a-aab1-80dd-a0ae-d3126e7db14d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Jimmy begins with a $300,000 principal balance, a 4.25% interest rate, and a fixed monthly payment of $1,476.</li></ul><ul id="4108ac6a-aab1-8071-96ec-eb5c719ef2cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Calculate the First Month&#x27;s Interest (I1):</strong><ul id="4108ac6a-aab1-805f-976f-d1a75be33b5d" class="bulleted-list" dir="auto"><li style="list-style-type:square">To determine the interest portion of the first payment, multiply the starting principal balance by the interest rate to find the annual interest, then divide by 12 months.</li></ul><ul id="4108ac6a-aab1-8061-9a72-daecac23d73b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formula:</strong> <code>Interest rate * Principal balance / 12 = I1</code></li></ul><ul id="4108ac6a-aab1-80dc-adea-ee45f3b4fa2d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Application:</em> Convert 4.25% to a decimal (0.0425). Multiply by the principal (<code>0.0425 * $300,000 = $12,750</code> in annual interest). Divide by 12 months to get <code>$1,062.50</code>. Rounding to the nearest dollar gives us <strong>$1,063</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-807c-95e4-f04fedc299c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Calculate the First Month&#x27;s Principal (P1):</strong><ul id="4108ac6a-aab1-800a-ac7a-c22823307e6c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Subtract the interest portion (I1) you just calculated from the total fixed monthly payment to reveal the remaining amount that will be applied to pay down the principal debt.</li></ul><ul id="4108ac6a-aab1-804d-af3d-e6ccb1a3e67d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formula:</strong> <code>Monthly payment - I1 = P1</code></li></ul><ul id="4108ac6a-aab1-8091-bcd7-edac0eb7cfba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Application:</em> Subtract the $1,063 interest from the total payment (<code>$1,476 - $1,063 = $413</code>).</li></ul></li></ul><ul id="4108ac6a-aab1-808f-ab6e-c990b65b16c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Month 1 Summary:</strong> Out of the initial $1,476 monthly payment, <strong>$1,063</strong> pays the lender&#x27;s interest charge and <strong>$413</strong> actually reduces the principal balance.</li></ul></li></ul><ul id="4108ac6a-aab1-802c-ab80-cc18b0643cdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>New Principal Balance</strong><figure id="4108ac6a-aab1-8013-a1b1-f4af8f21a7d2" class="image" data-notion-image="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%202.png" dir="ltr"><a href="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%202.png"><img style="width:432px" src="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%202.png"/></a></figure></li></ul><ul id="4108ac6a-aab1-8072-a04d-d9f85dad2a62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Second Amortized Payment (Month 2)</strong><ul id="4108ac6a-aab1-8021-9ac1-e5f0d42aa3f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Find the New Principal Balance (Month 2 Balance):</strong><ul id="4108ac6a-aab1-80fd-b4e0-ecb2e2953166" class="bulleted-list" dir="auto"><li style="list-style-type:square">Subtract the principal reduction from the first payment (P1) from the original starting balance to find the new balance going into Month 2.</li></ul><ul id="4108ac6a-aab1-806f-86b0-ee5187552909" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong> Formula:</strong> <code>Original principal balance - P1 = Month 2 balance</code></li></ul><ul id="4108ac6a-aab1-80b3-ba72-e235345b1376" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Application:</em> <code>$300,000 - $413 = $299,587</code></li></ul></li></ul><ul id="4108ac6a-aab1-80a8-af76-e4368b29c32e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Calculate the Second Month&#x27;s Interest (I2):</strong><ul id="4108ac6a-aab1-8020-bd06-fc13808de81b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Multiply the new Month 2 balance by the interest rate, then divide by 12.</li></ul><ul id="4108ac6a-aab1-803a-b6ab-e84642afda83" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong> Formula:</strong> <code>Interest rate * Month 2 balance / 12 = I2</code></li></ul><ul id="4108ac6a-aab1-8023-9a35-f40ee945445a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Application:</em> <code>0.0425 * $299,587 = $12,732.45</code> in annual interest. Divide by 12 to get <code>$1,061.04</code>. Rounding to the nearest dollar gives us <strong>$1,061</strong> going toward interest.</li></ul></li></ul><ul id="4108ac6a-aab1-80be-b4fd-c30ae2d70cc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3: Calculate the Second Month&#x27;s Principal (P2):</strong><ul id="4108ac6a-aab1-8087-bff4-d5352485bf69" class="bulleted-list" dir="auto"><li style="list-style-type:square">Subtract the new interest amount (I2) from the fixed monthly payment.</li></ul><ul id="4108ac6a-aab1-8045-bc75-c268a278eed4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong> Formula:</strong> <code>Monthly payment - I2 = P2</code></li></ul><ul id="4108ac6a-aab1-809d-8dce-f027aed9a0ea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Application:</em> <code>$1,476 - $1,061 = $415</code> going toward the principal.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-803f-a77d-d0d0a4cb358a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Future Amortized Payments (Month 3 and Beyond)</strong><ul id="4108ac6a-aab1-8020-9003-e7d5dc37c3b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To calculate the payment breakdown for any subsequent month, repeat the exact same three-step loop.</li></ul><ul id="4108ac6a-aab1-8036-ae4b-ccb7bd42c2e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong> Formula (Month 3 Balance):</strong> <code>Month 2 balance - P2 = Month 3 balance</code></li></ul><ul id="4108ac6a-aab1-8090-8737-c0931a4d0c0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Application (Month 3):</em> <code>$299,587 - $415 = $299,172</code>. You then use this $299,172 balance to calculate Month 3&#x27;s interest (I3) and principal (P3).</li></ul><ul id="4108ac6a-aab1-8049-9fe0-f992ce80f8ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Trend:</strong> Because interest is strictly based on the shrinking principal balance, the interest charge naturally decreases every month, allowing a larger &quot;lion&#x27;s share&quot; of the fixed monthly payment to be applied toward killing off the principal.</li></ul></li></ul><ul id="4108ac6a-aab1-80e9-bf59-dddef347119f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Full PITI Payments</strong><ul id="4108ac6a-aab1-80ce-a4e6-f0a531120c76" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While our amortization calculations focused purely on Principal (P) and Interest (I), real-world mortgage payments often require the borrower to fund an escrow account for Taxes (T) and Insurance (I) to protect the lender against tax defaults and property hazards.</li></ul><ul id="4108ac6a-aab1-8045-bde8-e2c120151ddf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong> Formula:</strong> <code>Principal + Interest + Taxes + Insurance = PITI</code></li></ul><ul id="4108ac6a-aab1-80af-b1c3-fced0f85c44b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step PITI Example (Amanda&#x27;s Loan):</strong><ul id="4108ac6a-aab1-807f-a90c-c5e29c5b65cf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given:</strong> Principal = $750; Interest = $1,200; Taxes = $200; Insurance = $50.</li></ul><ul id="4108ac6a-aab1-8003-bc69-eb2f13a052ea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Calculation (PITI):</strong> <code>$750 + $1,200 + $200 + $50 = $2,200</code>. Amanda&#x27;s full PITI payment is <strong>$2,200</strong>.</li></ul><ul id="4108ac6a-aab1-80d8-acb2-c2519da7800f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Calculation (PI Only):</strong> If Amanda was not required to escrow her taxes and insurance, her PI payment would simply be <code>$750 + $1,200 = $1,950</code>. However, she would be personally responsible for saving and paying her annual property taxes and insurance premiums separately.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-8023-93f1-c09ec1cb7b85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Total Interest Paid (Amortized Loans)</strong><ul id="4108ac6a-aab1-80c6-a2cd-e7e92622deb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> To find exactly how much interest a borrower pays over the entire lifetime of an amortized loan, you must first calculate the total out-of-pocket cost of the loan and then subtract the original principal borrowed. <em>Note: A 30-year loan requires 360 monthly payments, and a 15-year loan requires 180 monthly payments.</em></li></ul><ul id="4108ac6a-aab1-8098-b650-d5aa49d08f06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Find the Total Loan Cost.</strong> Multiply the fixed monthly payment by the total number of payments made over the life of the loan using the formula <code>Monthly payment * Number of payments = Total loan cost</code>.</li></ul><ul id="4108ac6a-aab1-80fc-ba83-dffde0ca6f19" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Find the Total Interest Paid.</strong> Subtract the original loan principal from the total loan cost calculated in Step 1 using the formula <code>Total loan cost - Original loan principal = Total interest paid</code>.</li></ul></li></ul><ul id="4108ac6a-aab1-80b4-907a-d64d68d3d55e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Example (Savannah&#x27;s Loan)</strong><ul id="4108ac6a-aab1-8002-b65f-e9fbd8202c96" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Savannah takes out a $300,000, 30-year amortized loan (360 payments) with a monthly payment of $1,500.</li></ul><ul id="4108ac6a-aab1-8075-8b95-f7508fb15ee5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 (Total Cost):</strong> <code>$1,500 * 360 = $540,000</code> in total lifetime payments.</li></ul><ul id="4108ac6a-aab1-80ec-b186-f86beee05301" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 (Total Interest):</strong> <code>$540,000 - $300,000 = $240,000</code>. Savannah will pay exactly <strong>$240,000</strong> in interest over the 30 years.</li></ul></li></ul><ul id="4108ac6a-aab1-8022-a366-d91f416e3102" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparing Mortgage Terms (Jakob&#x27;s Loan)</strong><ul id="4108ac6a-aab1-80f6-9831-fd2169c1b431" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Jakob is borrowing $100,000 at a 5% interest rate and comparing a 15-year term against a 30-year term.</li></ul><ul id="4108ac6a-aab1-8045-9a2d-e20272c264be" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan 1 (15-year term):</strong> With $791 monthly payments for 180 months, the calculation is <code>$791 * 180 = $142,380</code> in total payments. The total interest paid is <code>$142,380 - $100,000 = $42,380</code>.</li></ul><ul id="4108ac6a-aab1-8024-a978-d91e97392dfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan 2 (30-year term):</strong> With $537 monthly payments for 360 months, the calculation is <code>$537 * 360 = $193,320</code> in total payments. The total interest paid is <code>$193,320 - $100,000 = $93,320</code>.</li></ul><ul id="4108ac6a-aab1-8055-89df-def10a971938" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Takeaway:</strong> While the 30-year loan offers a lower monthly payment, it costs more than double in lifetime interest.</li></ul></li></ul><ul id="4108ac6a-aab1-805b-8a38-c1eb5d576d71" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparing Interest Using Percentages</strong><ul id="4108ac6a-aab1-805b-91d1-d0aa2fbda18c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> You can determine exactly how much more expensive one loan is compared to another by expressing the difference as a percentage.</li></ul><ul id="4108ac6a-aab1-80ca-b1b7-ebdfda740ee6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>(Loan interest 2 - Loan interest 1) / Loan interest 1 = Percentage difference</code></li></ul><ul id="4108ac6a-aab1-80f7-ac92-cc24ad43b33c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application (Jakob&#x27;s Comparison):</strong> Using the interest totals from Jakob&#x27;s scenario, the calculation is <code>($93,320 - $42,380) / $42,380 = 1.20</code>. By moving the decimal two places to the right, 1.20 converts to 120%. Therefore, the total interest paid on Loan 2 is <strong>120% more</strong> than the interest paid on Loan 1.</li></ul></li></ul><ul id="4108ac6a-aab1-8008-a17c-c4cba0ce7272" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Factor Charts (Mortgage Payment Tables)</strong><ul id="4108ac6a-aab1-80ad-929c-ca8864bf325f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A mortgage factor chart provides a mathematical shortcut to calculate a borrower&#x27;s fixed monthly Principal and Interest (PI) payment without using complex amortization formulas.</li></ul><ul id="4108ac6a-aab1-8011-bba2-d344446fadfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What the Factor Means:</strong> The mortgage factor represents the exact monthly PI payment required for every <strong>$1,000</strong> of the loan principal, based on a specific interest rate and loan term (e.g., 15 years or 30 years).</li></ul></li></ul><ul id="4108ac6a-aab1-8002-9b8c-c67247b0888c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How to Use a Mortgage Factor Chart</strong><ul id="4108ac6a-aab1-80d8-bdb2-f3ee3e793478" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Find the Factor.</strong> Locate the borrower&#x27;s interest rate on the chart, then move across to the column that matches their loan term to find the mortgage factor.</li></ul><ul id="4108ac6a-aab1-80bd-b58f-fdad9406b8fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Determine the Number of 1,000s.</strong> Divide the total loan principal by 1,000.</li></ul><ul id="4108ac6a-aab1-806e-a610-f44043467a25" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3: Calculate the Monthly Payment.</strong> Multiply the mortgage factor by the number of 1,000s in the loan.</li></ul><ul id="4108ac6a-aab1-809c-b38f-f5b13ffab729" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inline Copy-Pasteable Formula:</strong> <code>(Loan principal / 1,000) * Mortgage factor = Monthly payment</code></li></ul></li></ul><ul id="4108ac6a-aab1-80ed-afa8-c44d7817951f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Example</strong><ul id="4108ac6a-aab1-80b2-8bca-c623d56f5205" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> A borrower takes out a $250,000 loan with a 30-year term at a 5.5% interest rate.</li></ul><ul id="4108ac6a-aab1-80c1-9d06-c1189f4c4a92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Factor:</strong> Looking at a standard mortgage factor chart, the factor for 5.5% over 30 years is <code>5.68</code>.</li></ul><ul id="4108ac6a-aab1-8006-a9a3-e02ff18d89b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Calculation:</strong> The loan contains 250 thousands (<code>$250,000 / 1,000 = 250</code>). Multiply 250 by the mortgage factor of 5.68 (<code>250 * 5.68 = $1,420</code>).</li></ul><ul id="4108ac6a-aab1-8083-bf43-fa4089c61094" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> The fixed monthly PI payment is <strong>$1,420</strong>.<figure id="4108ac6a-aab1-80d1-b5f0-de2e25115fb6" class="image" data-notion-image="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%203.png" dir="ltr"><a href="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%203.png"><img style="width:576px" src="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%203.png"/></a></figure></li></ul></li></ul><ul id="4108ac6a-aab1-8003-969b-e144ad22daaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparing Monthly Payments</strong><figure id="4108ac6a-aab1-8025-b329-da44d587f52e" class="image" data-notion-image="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%204.png" dir="ltr"><a href="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%204.png"><img style="width:576px" src="Chapter%204%20-%20Calculating%20Amortized%20Loans%20&amp;%20More/image%204.png"/></a></figure></li></ul><ul id="4108ac6a-aab1-80ef-9a5e-e135de4bf5dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparing Loans Using Mortgage Factors</strong><ul id="4108ac6a-aab1-80dc-be21-e4208ad1af75" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> A borrower is comparing two different $200,000 loans. To calculate the monthly payments using a mortgage factor chart, first determine the number of 1,000s in the loan principal: <code>$200,000 / 1,000 = 200</code>.</li></ul><ul id="4108ac6a-aab1-80ba-826c-e3b08ad5fc24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan #1 (15-Year Term at 5%):</strong> Looking at the chart, the mortgage factor is 7.91. Multiply this factor by the number of thousands: <code>200 * 7.91 = $1,582</code> for the fixed monthly PI payment.</li></ul><ul id="4108ac6a-aab1-8039-b4eb-d6ec59845b42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan #2 (30-Year Term at 6.13%):</strong> Looking at the chart, the mortgage factor is 6.08. Multiply this factor by the number of thousands: <code>200 * 6.08 = $1,216</code> for the fixed monthly PI payment.</li></ul><ul id="4108ac6a-aab1-80dc-b79f-fa536f6aabd3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Conclusion:</strong> Loan #2 offers a monthly payment that is $366 cheaper than Loan #1 (<code>$1,582 - $1,216 = $366</code>). However, because Loan #2 is a 30-year term, it requires exactly twice as many total payments (360 months vs. 180 months), making it significantly more expensive in total lifetime interest despite the lower immediate monthly cost.</li></ul></li></ul><ul id="4108ac6a-aab1-8097-8ae9-f0732506bddd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Mortgage Points</strong><ul id="4108ac6a-aab1-80f7-9bf8-c4d659ad690b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Points are upfront fees a borrower pays to the lender when taking out a mortgage. Regardless of their type or purpose, the mathematical rule remains the same: <strong>1 point always equals 1% of the total loan principal</strong>.</li></ul><ul id="4108ac6a-aab1-8091-b02e-f383120bdf2d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origination Points:</strong> Fees charged by the lender to cover the administrative costs of processing and creating the loan.</li></ul><ul id="4108ac6a-aab1-8039-bb37-f689d662ac2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Discount Points:</strong> Optional fees paid by the borrower upfront to &quot;buy down&quot; or lower the loan&#x27;s interest rate for the lifetime of the mortgage.</li></ul></li></ul><ul id="4108ac6a-aab1-8072-bc5c-cab9a28e535b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Cost of Points</strong><ul id="4108ac6a-aab1-808c-89ea-cbeb975ba474" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> Because points are just percentages, calculating their cost is identical to a standard percentage problem. Convert the number of points into a decimal, then multiply by the total loan principal.</li></ul><ul id="4108ac6a-aab1-80bd-a4c1-f6da7cf34790" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inline Copy-Pasteable Formula:</strong> <code>Loan principal * Loan points = Total cost of points</code></li></ul><ul id="4108ac6a-aab1-80f3-89c1-e0ab81d60276" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Example (Angeline):</strong> Angeline purchases 4 discount points for her $250,000 mortgage. First, recognize that 4 points equals 4%, and convert that to a decimal (0.04). Multiply the decimal by the loan principal: <code>$250,000 * 0.04 = $10,000</code>. Angeline&#x27;s 4 points will cost her exactly <strong>$10,000</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-803d-a2b4-cb04f903c7f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Loan Principal from Points</strong><ul id="4108ac6a-aab1-8046-bf02-e05d81cdace1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> If you know the total dollar cost of the points and the number of points purchased, you can reconfigure the percentage formula to work backward and solve for the unknown loan principal.</li></ul><ul id="4108ac6a-aab1-809f-905e-d2d6ea5a1f7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inline Copy-Pasteable Formula:</strong> <code>Total cost of points / Loan points = Loan principal</code></li></ul><ul id="4108ac6a-aab1-80b4-85c6-d5e1b6f0aec1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Example (Katarina):</strong> Katarina pays $15,000 for 2 discount points. First, recognize that 2 points equals 2%, and convert that to a decimal (0.02). Divide the total dollar cost of the points by that decimal: <code>$15,000 / 0.02 = $750,000</code>. Katarina&#x27;s loan principal is exactly <strong>$750,000</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-808e-ad9c-fc625c806014" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Buydowns</strong><ul id="4108ac6a-aab1-80b0-879c-f69ae45b64b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A buydown is a financing technique where money is paid upfront to a lender to lower a borrower&#x27;s interest rate and monthly payments. This is most commonly utilized by builders and developers as a temporary incentive to attract buyers.</li></ul><ul id="4108ac6a-aab1-8098-b584-fbff05943342" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanism:</strong> For a temporary buydown, the builder deposits a lump sum of money into an escrow account with the borrower&#x27;s lender. This fund subsidizes the borrower&#x27;s monthly payments, covering the difference between the temporarily reduced interest rate and the actual, permanent interest rate on the note.</li></ul></li></ul><ul id="4108ac6a-aab1-8015-b770-f485bfbeca36" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Temporary Buydown Structures</strong><ul id="4108ac6a-aab1-80a9-aec7-d486646ebb19" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3-2-1 Buydown:</strong><ul id="4108ac6a-aab1-80cf-bbf0-e34c6e9f82db" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 1: Interest rate is reduced by 3%</li></ul><ul id="4108ac6a-aab1-805a-ab20-e80250d2466a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 2: Interest rate is reduced by 2%</li></ul><ul id="4108ac6a-aab1-805b-b167-c55fbd4a0909" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 3: Interest rate is reduced by 1%</li></ul><ul id="4108ac6a-aab1-8089-ab41-d45080f30cb4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 4 (and beyond): The rate returns to the true, permanent note rate.</li></ul></li></ul><ul id="4108ac6a-aab1-8085-9ff4-cb995928108e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2-1 Buydown:</strong><ul id="4108ac6a-aab1-8085-85e3-f4356a6ac4e0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 1: Interest rate is reduced by 2%</li></ul><ul id="4108ac6a-aab1-80eb-9aa8-e49cce76b60d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 2: Interest rate is reduced by 1%</li></ul><ul id="4108ac6a-aab1-8046-88b2-ea44ef5e7c59" class="bulleted-list" dir="auto"><li style="list-style-type:square">Year 3 (and beyond): The rate returns to the true, permanent note rate.</li></ul></li></ul></li></ul><ul id="4108ac6a-aab1-804a-b408-ed4d7ec16845" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why Builders &amp; Developers Offer Buydowns</strong><ul id="4108ac6a-aab1-800a-979d-e849af63f8f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inventory Movement:</strong> Developers do not realize profits until a property sells. Buydowns incentivize quicker sales, preventing completed homes from sitting idle on the market and racking up carrying costs (taxes, insurance, and utilities).</li></ul><ul id="4108ac6a-aab1-8028-a4be-dc6bb61cf2c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost Efficiency:</strong> It is often mathematically cheaper for a builder to fund a temporary buydown than it is to permanently slash the asking price of the home.</li></ul><ul id="4108ac6a-aab1-8002-8854-c186493a7599" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Qualification:</strong> A lower initial interest rate results in a lower initial monthly payment, which can help potential buyers qualify for a loan they might not have otherwise been approved for under the permanent, higher rate.</li></ul></li></ul></div><div id="4108ac6a-aab1-802c-995c-d4e1a135795d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4108ac6a-aab1-8011-b477-ed6fe7346566" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4108ac6a-aab1-803f-b4fe-c14eb15cd922" class="bulleted-list" dir="auto"><li style="list-style-type:disc">buydown - the paying of money upfront to reduce a loan&#x27;s interest rate and monthly payments</li></ul><ul id="4108ac6a-aab1-80d3-b0f7-d85f4e77aae2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">origination fee - fees charged by the lender to pay for the loan origination; aka <em>origination points</em></li></ul><ul id="4108ac6a-aab1-80c4-bba3-cef3e6a4318d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">points - fees that the borrower pays when they take out a loan; two kinds are origination points and discount points</li></ul><p id="4108ac6a-aab1-80a4-94eb-d4567ac6b42c" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4108ac6a-aab1-80d5-b259-dc9458bbed87" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Payment Breakdown</strong><ul id="4108ac6a-aab1-80f0-957b-fd512d55c657" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Most borrowers pay off their mortgage with monthly payments. Their mortgage payments include these two portions:</li></ul></li></ul><ul id="4108ac6a-aab1-8079-9cfd-ce0987fb9c1b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Interest - </strong>the rate the borrower pays the lender in exchange for the money lent</li></ul><ul id="4108ac6a-aab1-8052-9a5e-ebe94051bdb9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal - </strong>the remaining amount of the monthly payment goes towards the borrower&#x27;s remaining principal<ul id="4108ac6a-aab1-801b-9ecb-e0b44efa62cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Since <em>Interest = Interest rate x Principal</em>, we can then deduce that a lower principal will mean lower interest payments. <strong>Therefore, the greater the remaining principal, the greater amount of interest the borrower owes.</strong></li></ul></li></ul><ul id="4108ac6a-aab1-80cc-9787-f6140c545c89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solving for Total Interest Paid</strong><ul id="4108ac6a-aab1-8049-9cc9-c794f7eaa6e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To find the total cost of a mortgage, use the following formula:<ul id="4108ac6a-aab1-8092-9559-dcdf21537f23" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Monthly payment x Number of payments = Total loan cost</em></li></ul></li></ul><ul id="4108ac6a-aab1-80b8-8afa-cdd80a780a36" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Remember that 15-year loans have 180 monthly payments and 30-year loans have 360 monthly payments. Since 30-year loans require more payments, they are usually more expensive in the long run.</li></ul></li></ul><ul id="4108ac6a-aab1-805b-b585-e456954e7082" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Point Math</strong><ul id="4108ac6a-aab1-805f-b94c-fc2e9edc6f10" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origination points</strong> are fees charged by the lender to pay for the loan origination. <strong>Discount points</strong> are paid by the borrower to lower the interest rate.</li></ul><ul id="4108ac6a-aab1-8072-850f-efa5fcaab603" class="bulleted-list" dir="auto"><li style="list-style-type:circle">But whether they are origination or discount, they cost the same amount.</li></ul><ul id="4108ac6a-aab1-80f9-b663-df861fe6a809" class="bulleted-list" dir="auto"><li style="list-style-type:circle">1 point = 1% of the loan principal</li></ul><ul id="4108ac6a-aab1-8029-b025-f103ad44f6ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To find the cost of points, remember this formula:<ul id="4108ac6a-aab1-8082-8f60-fe4c7e1cda84" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Loan points x Loan principal = Total cost of points</em></li></ul></li></ul></li></ul><p id="4108ac6a-aab1-80d5-bafe-d8205a8d49b2" class="" dir="auto">
+</p></div></div><p id="4108ac6a-aab1-8038-aec4-d2a7237bdcde" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

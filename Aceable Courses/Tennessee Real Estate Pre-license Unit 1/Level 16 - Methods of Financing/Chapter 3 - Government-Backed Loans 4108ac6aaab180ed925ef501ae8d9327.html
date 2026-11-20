@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Government-Backed Loans</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80ed-925e-f501ae8d9327" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Government-Backed Loans</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4138ac6a-aab1-8064-8e2b-dfec051753aa" class="column-list" data-notion-column-list="" dir="auto"><div id="4138ac6a-aab1-8046-9e8c-c958943c7c90" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4138ac6a-aab1-80d5-a97b-c3b347473b08" class="" dir="auto"><strong>Federal Housing Administration (FHA) </strong></p><ul id="4138ac6a-aab1-80b0-8e7a-d863d41a2304" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Mission:</strong> Part of the U.S. Department of Housing and Urban Development (HUD), the FHA is tasked with increasing homeownership, facilitating home sales and repairs, and supporting healthy communities.</li></ul><ul id="4138ac6a-aab1-8097-9d97-d46504230567" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role (Insurer, Not Lender):</strong> The FHA is the largest mortgage insurer in the world. Crucially, <strong>the FHA does not originate or fund loans</strong>. Instead, it acts purely as an insurer, protecting approved private lenders against borrower default.</li></ul><ul id="4138ac6a-aab1-805e-9159-db10b94f95ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Benefit:</strong> Because lenders are fully protected by FHA insurance, they can confidently offer favorable, low-down-payment mortgages to borrowers who might not otherwise qualify for conventional financing.</li></ul><ul id="4138ac6a-aab1-8031-a245-d33b68b16429" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Loan: Section 203(b)</strong><ul id="4138ac6a-aab1-808f-ba1e-d93a52d030c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Standard Program:</strong> When people refer to a standard &quot;FHA loan,&quot; they are almost always talking about the <strong>FHA Section 203(b)</strong> program.</li></ul><ul id="4138ac6a-aab1-80d8-882a-edcdb3e77a87" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eligible Properties:</strong> It insures fixed-interest-rate mortgages for owner-occupied, 1- to 4-family residential properties, including manufactured homes on permanent foundations in both urban and rural areas.</li></ul><ul id="4138ac6a-aab1-80b1-851d-d36437133f10" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Terms &amp; Rates:</strong> Lenders typically offer 15-year or 30-year loan terms under this program. Note that <strong>the FHA does not set interest rates</strong>; rates are negotiated directly between the borrower and the private lender.</li></ul></li></ul><ul id="4138ac6a-aab1-80d8-a92d-ca0a39f7862b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Loan Characteristics </strong><ul id="4138ac6a-aab1-80db-aa41-d83cfdef6fa2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Insured directly by the Federal Housing Administration (HUD), FHA loans are designed to expand homeownership opportunities by protecting lenders against default, thereby allowing more flexible qualification criteria for everyday homebuyers.</li></ul></li></ul><ul id="4138ac6a-aab1-8009-b4bf-faba831bc3ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Characteristics &amp; Requirements</strong><ul id="4138ac6a-aab1-80f4-ba3b-da51faf3b618" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Low Down Payments:</strong> FHA loans do not offer a no-money-down option, but they feature a remarkably low minimum down payment of <strong>3.5%</strong> (e.g., a $200,000 home requires just a $7,000 down payment). Furthermore, this down payment can legally come from a family member or charitable organization as a gift.</li></ul><ul id="4138ac6a-aab1-802c-a8ae-dc05b9899129" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Credit Check &amp; Underwriting:</strong> While a credit check is mandatory, FHA loans are <strong>not strictly credit-score driven</strong>. Underwriters heavily evaluate the borrower&#x27;s overall history of reliable payment activity rather than relying solely on arbitrary credit score cutoffs.</li></ul><ul id="4138ac6a-aab1-8068-9fb8-f24f6a6b6ff8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Approved Participating Lenders Only:</strong> Not all banks can offer FHA loans. Lenders must seek and receive official approval from HUD and the FHA before originating them.</li></ul><ul id="4138ac6a-aab1-80d0-8826-d0ba225afda4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Debt and Income Ratios:</strong> HUD enforces strict minimum housing-to-income and total debt-to-income (DTI) ratios, which can scale based on the applicant&#x27;s credit profile.</li></ul><ul id="4138ac6a-aab1-80b7-9675-e3ea69f6faa0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Geographic Loan Limits:</strong> The maximum allowable FHA loan amount varies significantly by county and state to reflect local real estate costs (verifiable via HUD&#x27;s official lookup tool).</li></ul><ul id="4138ac6a-aab1-8077-9195-e0bbf4617a78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Insurance Premium (MIP) Mandate:</strong> Every FHA loan requires mandatory mortgage insurance funded through two parts: an upfront fee (<strong>1.75% of the loan total</strong>, which can be financed) and an ongoing annual premium paid monthly.</li></ul><ul id="4138ac6a-aab1-8040-a0ff-d31e6d5100b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Prepayment Penalties:</strong> By federal law, FHA-insured loans <strong>cannot carry prepayment penalties</strong>. Borrowers are completely free to pay off their loan early or refinance at any time without facing lender fees.</li></ul></li></ul><ul id="4138ac6a-aab1-80be-9ca3-d00e0c08771b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Specialized FHA Loan Programs </strong><ul id="4138ac6a-aab1-8064-8965-dfc1576c52e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 221(d)(3):</strong> Insures up to <strong>100% of the loan amount</strong> for nonprofit sponsors looking to construct, purchase, or rehabilitate multi-family housing for moderate-income families. Features no maximum loan amount and terms up to 40 years.</li></ul><ul id="4138ac6a-aab1-801d-87f7-cdc30b1ec57a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 221(d)(4):</strong> Structurally similar to 221(d)(3), but designed for <strong>for-profit sponsors</strong> and insures only <strong>90%</strong> of the loan amount.</li></ul><ul id="4138ac6a-aab1-80e5-af1b-f0cfbf1990a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 223(f):</strong> Designed for the purchase, rehabilitation, or refinancing of existing multi-family housing (such as apartment complexes). Restricted to single-asset legal entities or individuals, and applies only to properties at least <strong>3 years old</strong> where no more than <strong>20%</strong> of the space is devoted to commercial services.</li></ul><ul id="4138ac6a-aab1-80ee-a5d5-e006971977cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 234(c):</strong> Insures mortgages specifically for buyers purchasing individual <strong>condominium units</strong>, provided the condo project has received official HUD approval.</li></ul><ul id="4138ac6a-aab1-80f0-85fa-d11928c72b91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 245(a):</strong> Authorizes FHA-insured <strong>graduated-payment mortgages (GPMs)</strong> for single-family dwellings. These feature low initial payments that cause negative amortization, targeted at young first-time buyers whose incomes are expected to rise.</li></ul><ul id="4138ac6a-aab1-8096-b3ae-f2ce780438a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 251 (FHA ARMs):</strong> Insures adjustable-rate mortgages for 1- to 4-family units with the same down payment and qualification standards as standard 203(b) loans:<ul id="4138ac6a-aab1-80dc-9fab-ea6282de5b67" class="bulleted-list" dir="auto"><li style="list-style-type:square">Available in a standard 1-year ARM and hybrid ARMs fixed for 3, 5, 7, or 10 years (adjusting annually thereafter).</li></ul><ul id="4138ac6a-aab1-804a-94d5-edbde3df256f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rate Caps:</strong> 1- and 3-year ARMs carry <strong>1% annual caps and 5% lifetime caps</strong>. 5-, 7-, and 10-year hybrid ARMs carry <strong>2% annual caps and 6% lifetime caps</strong>.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-8029-b440-e696690e137c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Loan Processing &amp; Application Workflow</strong><ul id="4138ac6a-aab1-8044-9981-f4e8c28c8b38" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Pre-Qualification:</strong> The lender collects basic information regarding the borrower&#x27;s income and debt to calculate debt-to-income (DTI) ratios and estimate borrowing power, often running an initial credit check to catch any surprises.</li></ul><ul id="4138ac6a-aab1-80c5-9667-eb5ff1616268" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Formal Application:</strong> The borrower completes a formal loan application detailing current employment, job tenure, Social Security numbers, residential history, and personal financial data.</li></ul><ul id="4138ac6a-aab1-80e8-bdc3-dc41bb38b7c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3: Underwriting Verification:</strong> The lender rigorously verifies all submitted data to confirm the borrower&#x27;s true ability to repay the mortgage debt before issuing final loan approval.</li></ul></li></ul><ul id="4138ac6a-aab1-803b-aebb-d9e82662baab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Appraisal Requirements &amp; Mechanics</strong><ul id="4138ac6a-aab1-8092-a276-c855f8c70c81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Requirement:</strong> Every FHA loan requires an official appraisal conducted by an FHA-approved appraiser (typically costing around $375 for a ~2,000 sq. ft. home).</li></ul><ul id="4138ac6a-aab1-8057-a2f6-d4ea35fb71cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal vs. Inspection:</strong> FHA appraisals are not home inspections; buyers should always hire a separate independent home inspector. The FHA appraiser checks the property against local building codes and <strong>17 specific FHA structural provisions</strong>, including the requirement that the property must be adjacent to a publicly maintained street.</li></ul><ul id="4138ac6a-aab1-8074-acfb-feff8db35a64" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Valuation &amp; Maximum Loan Limits:</strong> The FHA does not forbid a buyer from paying <em>more</em> than the appraised value. However, the <strong>maximum insurable loan amount</strong> is strictly calculated based on the <strong>lesser of the sales price or the FHA appraised value</strong>. Any gap between the actual sales price and the maximum loan amount must be paid entirely in cash by the borrower as an additional down payment.</li></ul><ul id="4138ac6a-aab1-80d1-afa0-e07f8c658d6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Amendatory Clause:</strong> Before the appraisal is performed, all parties must sign a <strong>Conditional Commitment and Amendatory Clause</strong>. This vital consumer protection states that if the appraisal comes in lower than the contract sales price, the buyer is legally allowed to walk away without being forced by the seller to purchase the home.</li></ul><ul id="4138ac6a-aab1-8001-b941-f535e211fe18" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>VA Appraisal Reciprocity:</strong> The FHA will accept a VA appraisal under certain restrictions, provided the appraisal is less than 90 days old.</li></ul></li></ul><ul id="4138ac6a-aab1-809a-b512-cbf1cad0cf93" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pros and Cons of FHA Loans</strong><ul id="4138ac6a-aab1-8052-95b7-fd47bebd63d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Advantages:</strong><ul id="4138ac6a-aab1-8071-a9ef-ef6b0d8cd520" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accessible Qualification:</strong> Provides a viable pathway to homeownership for buyers who cannot qualify for strict conventional loans.</li></ul><ul id="4138ac6a-aab1-802a-a19b-fe68b9ec9f6e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Flexible Payment Structures:</strong> Can be structured as graduated-payment mortgages (GPMs) with low initial payments that increase over time.</li></ul><ul id="4138ac6a-aab1-802d-b960-c28b04a32805" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Prepayment Penalties:</strong> FHA loans are strictly prohibited from carrying prepayment penalties, allowing borrowers to pay off or refinance early without fee penalties.</li></ul><ul id="4138ac6a-aab1-8032-b1c8-cc6df95e2916" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loan Assumptivity:</strong> FHA loans can be assumed by future buyers (though since 1986, the assumptor must pass full underwriting creditworthiness checks).</li></ul></li></ul><ul id="4138ac6a-aab1-80ae-9a20-c2e51aa24b4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disadvantages:</strong><ul id="4138ac6a-aab1-8073-8b58-d5a01e6a214a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loan Limits:</strong> Subject to strict county-by-county maximum loan amounts.</li></ul><ul id="4138ac6a-aab1-8010-98a7-f7b713cd69e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mandatory Mortgage Insurance:</strong> Requires both an upfront premium (UFMIP) and an ongoing monthly premium (MIP) because FHA underwriting standards are more flexible.</li></ul><ul id="4138ac6a-aab1-804e-92fc-e57103495835" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Owner-Occupancy Only:</strong> Strictly limited to owner-occupied residences (no investment or rental properties).</li></ul><ul id="4138ac6a-aab1-80ce-b2fb-d7771c3c7059" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property Standards &amp; Condition Checks:</strong> The property must satisfy rigid FHA property condition guidelines and pass an FHA-specific appraisal.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-8052-b95a-d7c9aaaf90e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Department of Veterans Affairs (VA) Loans </strong><ul id="4138ac6a-aab1-80e1-a8a5-d8dc0905cc51" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A government-guaranteed loan program established under the Servicemen&#x27;s Readjustment Act of 1944 to help eligible veterans, active-duty service members, and qualified surviving spouses purchase, construct, or repair homes. In 1992, eligibility was expanded to honorably serving Reservists and National Guard personnel (who serve at least 6 years).</li></ul><ul id="4138ac6a-aab1-80f7-a01e-c64031bc9858" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Role (Guarantor, Not Lender):</strong> Like the FHA, the VA does not lend money directly. Instead, it acts as a <strong>guarantor</strong> for loans originated by approved private lending institutions.</li></ul><ul id="4138ac6a-aab1-80d2-a9ac-c04e04832555" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Qualifications:</strong> Loans are strictly limited to <strong>owner-occupied residences</strong> (single-family homes, multi-family up to 4 units, condos, manufactured homes, farms). Investment properties are strictly excluded. Borrowers qualify based on a maximum <strong>Debt-to-Income (DTI) ratio of 41%</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-8059-8a2e-d10292630b22" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Benefits &amp; Financial Structure</strong><ul id="4138ac6a-aab1-808b-bb89-db7d05bd6016" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Down Payment:</strong> Eligible veterans can secure 100% financing with <strong>zero down payment</strong>, making homeownership significantly more accessible.</li></ul><ul id="4138ac6a-aab1-805c-bb24-c112d6fc8bf0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No PMI:</strong> Because the loan is backed by the government, private mortgage insurance (PMI) is <strong>not required</strong>.</li></ul><ul id="4138ac6a-aab1-8095-b6cd-f93887b56869" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Prepayment Penalties:</strong> Just like FHA loans, VA loans carry <strong>no prepayment penalties</strong>, allowing borrowers to pay off or refinance early without fee penalties.</li></ul></li></ul><ul id="4138ac6a-aab1-8072-8b70-d1a48cffb852" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Appraisals, CRVs, and the Option Clause</strong><ul id="4138ac6a-aab1-8052-a991-f1747c0b6dd7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Certificate of Reasonable Value (CRV):</strong> After an inspection by a VA-approved appraiser, the VA issues a CRV establishing the official market value of the property. The CRV sets a ceiling on the loan amount the VA will support.</li></ul><ul id="4138ac6a-aab1-8032-b644-c911662d1ee3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The VA Option Clause:</strong> A mandatory protective clause that must be included in the sales contract. If the purchase price exceeds the CRV valuation, the veteran has the legal right to walk away from the contract without penalty and get their earnest money refunded, or choose to pay the cash difference at closing.</li></ul></li></ul><ul id="4138ac6a-aab1-8043-a913-f07a0716a06a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Guaranty &amp; Entitlement Mechanics</strong><ul id="4138ac6a-aab1-808b-92ae-dc0324563e35" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 25% Guaranty:</strong> To protect lenders and make zero-down financing viable, the VA guarantees the <strong>first 25% of the loan amount</strong>, matching the lender risk profile of a conventional 75% LTV loan.</li></ul><ul id="4138ac6a-aab1-80c3-ab51-c2f4f488f55d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Basic Entitlement:</strong> Every eligible veteran receives at least <strong>$36,000 of basic home loan entitlement</strong> (with maximum entitlement limits reaching <strong>$113,275</strong> depending on regional conforming loan limits).</li></ul><ul id="4138ac6a-aab1-80a5-8179-e65e8071f4e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 4x Lending Rule:</strong> Lenders are typically willing to lend up to <strong>four times</strong> a veteran&#x27;s available entitlement (combined with any cash down payment) without requiring private mortgage insurance.</li></ul><ul id="4138ac6a-aab1-80e9-8d0c-e726af5832b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remaining Entitlement:</strong> Veterans who have utilized a prior VA loan can use their &quot;remaining entitlement&quot; (the difference between their maximum entitlement and the amount previously used) to purchase another home, provided the total guaranty meets the lender&#x27;s 25% coverage threshold.</li></ul></li></ul><ul id="4138ac6a-aab1-8073-ab4e-f7db1481946b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Entitlement Math &amp; Guaranty Limits </strong><ul id="4138ac6a-aab1-80e3-8c36-e8b4c82998c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Basic Entitlement Misconception:</strong> While every eligible veteran receives a basic entitlement of <strong>$36,000</strong>, and the VA guarantees 25% of a loan, this does <em>not</em> restrict a veteran to a maximum loan amount of $144,000 (<code>$36,000 / 0.25</code>).</li></ul><ul id="4138ac6a-aab1-809d-b108-d307ff205136" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Linking to Conforming Limits:</strong> To reflect modern housing prices across the United States, the VA links its maximum guaranty limits to the Federal Housing Finance Agency (FHFA) conforming loan limits (traditionally benchmarked around $548,250, though dynamic by county).</li></ul><ul id="4138ac6a-aab1-8021-b12b-dfa2d116b611" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Maximum Guaranty Amount:</strong> Using a baseline conforming limit of $548,250, 25% of that limit equals <strong>$137,062.50</strong>, which establishes the maximum VA guaranty amount.</li></ul><ul id="4138ac6a-aab1-8043-9a1d-cc6697cb4dfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Secondary Entitlement:</strong> To bridge the gap between the basic entitlement and the maximum guaranty, the VA utilizes a <strong>secondary entitlement amount</strong>: $137.062.50 - $36,000 = $101,062.50</li></ul><ul id="4138ac6a-aab1-807e-ab76-c3e59f5e31af" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Rule:</strong> The actual VA guaranty limit for any given loan will always be the <strong>lesser of</strong>:<ol type="1" id="4138ac6a-aab1-80a5-b844-e814927830b7" class="numbered-list" start="1" dir="auto"><li>25% of the actual mortgage loan amount, or</li></ol><ol type="1" id="4138ac6a-aab1-801c-bf0f-fd22a7edd0db" class="numbered-list" start="2" dir="auto"><li>25% of the FHFA conforming loan limit for that specific county.</li></ol></li></ul></li></ul><ul id="4138ac6a-aab1-80b6-8f9c-f5532601909d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Susan&#x27;s Entitlement Calculation</strong><ul id="4138ac6a-aab1-8061-9db7-cf1825563769" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Setup:</strong> Susan is an eligible veteran with full entitlement available. She is purchasing a home for <strong>$300,000</strong> in a county where the conforming loan limit is <strong>$548,250</strong>.</li></ul><ul id="4138ac6a-aab1-80cd-9657-ffb19057f931" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Two Guaranty Calculations:</strong><ul id="4138ac6a-aab1-8005-b51b-e8e57abf84d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">County Limit Test: <span data-notion-inline-equation="\$548,250 \times 0.25 = \$137,062.50" class="notion-text-equation-token" contenteditable="false"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">$548</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">250</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.25</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">$137</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">062.50</span></span></span></span></span> (Maximum possible guaranty)</li></ul><ul id="4138ac6a-aab1-8048-8752-db4cb4251b5e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan Amount Test: <span data-notion-inline-equation="\$300,000 \times 0.25 = \$75,000" class="notion-text-equation-token" contenteditable="false"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">$300</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.25</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9444em;vertical-align:-0.1944em;"></span><span class="mord">$75</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">000</span></span></span></span></span> (Actual loan guaranty requirement)</li></ul></li></ul><ul id="4138ac6a-aab1-80fc-b218-d93fa80f4f48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Outcome:</strong> Because the VA restricts its guaranty to the lesser of the two amounts, the VA will guarantee <strong>$75,000</strong> on Susan&#x27;s $300,000 loan. Because this covers the required 25% lender protection threshold, Susan can secure the home with <strong>zero down payment</strong> ($0 down).</li></ul></li></ul><ul id="4138ac6a-aab1-803b-b417-eb99cec7cf56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Loan Funding Fees </strong><ul id="4138ac6a-aab1-80e2-861b-cf749c63109b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> All VA loans require a one-time <strong>VA funding fee</strong>, which is entirely separate from the private lender&#x27;s origination fee.</li></ul><ul id="4138ac6a-aab1-8090-b292-c8dc81d37672" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financing Option:</strong> Unlike origination fees, the VA funding fee can be legally financed directly into the total loan amount, so the veteran does not have to pay it out of pocket at closing.</li></ul><ul id="4138ac6a-aab1-8065-b3db-ee44be2cac20" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> The proceeds from these fees go directly toward funding and sustaining the VA loan guarantee program.</li></ul></li></ul><ul id="4138ac6a-aab1-80dd-adbc-e50c94d7de35" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Funding Fee Exemptions</strong><ul id="4138ac6a-aab1-801e-ad0e-e94caf83f6ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The funding fee is <strong>100% waived</strong> for:<ul id="4138ac6a-aab1-801f-8bea-ce51df348ca8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Veterans with service-connected disabilities.</li></ul><ul id="4138ac6a-aab1-80c8-84b8-d025236df502" class="bulleted-list" dir="auto"><li style="list-style-type:square">Surviving spouses of veterans who died in action or were classified as prisoners of war (POWs) / missing in action (MIA).</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80c8-913c-e1f61b7e77e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fee Tiers &amp; Percentage Rates</strong><ul id="4138ac6a-aab1-804a-a8f9-fff6be4c2f45" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For non-exempt borrowers, the fee percentage varies based on down payment size, military branch, and whether it is a first-time or subsequent use:<ul id="4138ac6a-aab1-80b8-a4a7-c5932ee93cbc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>First-Time Use:</strong> <strong>2.15%</strong> for a zero-down payment loan (the fee percentage decreases if the veteran puts down a larger cash down payment).</li></ul><ul id="4138ac6a-aab1-80ec-8f89-dbda9480ad32" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subsequent Use:</strong> <strong>3.3%</strong> for second or subsequent VA loans with no down payment.</li></ul><ul id="4138ac6a-aab1-80e3-a9c2-e73c5c6cd4e8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>National Guard &amp; Reservists:</strong> National Guard members and special reservists pay a slightly higher funding fee percentage compared to regular active-duty armed services veterans to account for program risk.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-8030-9602-ef1fcf226521" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agriculture and Real Estate Lending Overview</strong><ul id="4138ac6a-aab1-80e1-9915-dabd5f161260" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Cyclical Nature of Farming:</strong> Agriculture is inherently cyclical, meaning borrowers may not require capital or generate steady cash flow year-round. Agricultural lenders must structure creative financing solutions that accommodate seasonal income fluctuations and irregular repayment schedules.</li></ul><ul id="4138ac6a-aab1-80af-8ec6-db3c634b5fe7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Professional Training:</strong> To enter or specialize in agricultural lending, bankers are required to complete specialized coursework designated by <strong>The American Banker&#x27;s Association</strong> to understand modern industry challenges and rural financial services.</li></ul></li></ul><ul id="4138ac6a-aab1-80e1-8f05-ca6c29c97666" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agricultural Bank Credit Fundamentals</strong><ul id="4138ac6a-aab1-80b6-8941-e24651dea820" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Rural Economy:</strong> Agricultural lending is a critical business line for rural banks. The vast majority of U.S. farms remain family-owned, and bank credit is essential for daily operations, technology adoption, and modernization.</li></ul><ul id="4138ac6a-aab1-8005-b761-f290677d7287" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Purposes:</strong> Financing is utilized for two primary horizons:<ol type="1" id="4138ac6a-aab1-80d0-bdf3-e1fc4a8e24f6" class="numbered-list" start="1" dir="auto"><li><strong>Seasonal production loans</strong> (seed, fertilizer, short-term operating costs).</li></ol><ol type="1" id="4138ac6a-aab1-8091-b29e-e2ca319e95bc" class="numbered-list" start="2" dir="auto"><li><strong>Long-term capital investments</strong> (land purchases, barns, heavy machinery, and breeding stock).</li></ol></li></ul><ul id="4138ac6a-aab1-80e3-a838-eb836639232f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sources of Repayment:</strong> Unlike residential mortgages where wages guarantee repayment, agricultural loan repayment relies primarily on <strong>successful crop/livestock production and market pricing</strong>, and secondarily on real estate or equipment collateral.</li></ul><ul id="4138ac6a-aab1-8058-bade-e625a1f2b238" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Off-Farm Income:</strong> Many farm operators rely on supplemental off-farm or non-farm income. However, this secondary income is typically dedicated to family living expenses and serves only as a minor buffer for loan repayment.</li></ul></li></ul><ul id="4138ac6a-aab1-805e-b36c-e0503d77c216" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Risk Management in Agricultural Lending</strong><ul id="4138ac6a-aab1-8021-a137-fb7c22bd654b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inherent Volatility:</strong> Lenders cannot control external market factors like commodity prices or unpredictable weather patterns (droughts, floods).</li></ul><ul id="4138ac6a-aab1-80bd-87ad-c45327b71cd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prudent Underwriting:</strong> To prevent severe losses during agricultural downturns, banks must enforce diligent lending practices and adhere strictly to regulatory guidance.</li></ul></li></ul><ul id="4138ac6a-aab1-80c1-b6cb-e75aac35b956" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>USDA Rural Development Guaranteed Housing Loan Program </strong><ul id="4138ac6a-aab1-804e-b509-ef9a5069b794" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mission:</strong> The Rural Development Guaranteed Housing Loan Program (commonly known as a <strong>USDA loan</strong> or <strong>Section 502 Loan</strong>, originating from Section 502(h) of the Housing Act of 1949 and overseen by the Rural Housing Service) assists approved lenders in providing low- and moderate-income households with affordable, safe, and sanitary housing in eligible areas.</li></ul><ul id="4138ac6a-aab1-80d3-9ab5-e60e2885089d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Lender Guarantee:</strong> The USDA provides a <strong>90% loan note guarantee</strong> to approved private lenders. This governmental backing minimizes lender risk, empowering them to extend <strong>100% financing (no down payment)</strong> to qualified buyers.</li></ul><ul id="4138ac6a-aab1-80fc-991d-caabb20192cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Geographic Misconception:</strong> Despite being called a &quot;rural&quot; program, roughly <strong>97% of the landmass in the United States</strong> geographically qualifies, including many suburban outskirts. Borrowers can verify property eligibility directly via the online USDA eligibility map.</li></ul></li></ul><ul id="4138ac6a-aab1-8032-8350-c5b7aebd178f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>USDA Loan Fee Structure (Mortgage Insurance Premiums)</strong><ul id="4138ac6a-aab1-80a5-bc4e-e3b1404f3172" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To sustain the program, the USDA assesses mortgage insurance (MI) fees on all loans:<ul id="4138ac6a-aab1-8053-b81c-c6706855c3c8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Upfront Fee:</strong> <strong>1%</strong> of the loan amount, assessed at closing (which is typically financed directly into the total loan balance rather than paid out of pocket as cash). Applies to both home purchases and refinances.</li></ul><ul id="4138ac6a-aab1-8071-9c9a-c6404c1c655e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Annual Fee:</strong> <strong>0.35%</strong> annual fee calculated based on the remaining principal balance and paid on a monthly basis.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-800d-94ac-fac396dcd04b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>RD Loan Terms &amp; Qualifications</strong><ul id="4138ac6a-aab1-80f4-8a74-c71dfb7feb4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fixed-Rate Terms Only:</strong> USDA Rural Development loans are strictly restricted to <strong>15-year or 30-year fixed-rate terms</strong>. Adjustable-rate mortgages (ARMs) and balloon payments are <strong>not permitted</strong>.</li></ul><ul id="4138ac6a-aab1-8045-80a5-e6b4ee18f3bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Down Payment / No Maximum Limit:</strong> Offers 100% financing with zero down payment required for first-time or repeat buyers. There is no hard cap on the maximum loan amount; instead, borrower purchasing power is strictly limited by their <strong>Debt-to-Income (DTI) ratio</strong>, which is typically capped at <strong>41%</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-804c-8bdb-f8d6bdffe3f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>USDA Farm Service Agency (FSA) Loans Overview</strong><ul id="4138ac6a-aab1-80c3-81c7-c681b4fea81f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mission:</strong> The Farm Service Agency (FSA)—a key department within the USDA—acts as a temporary financial stepping stone for farmers and ranchers who cannot qualify for traditional commercial credit.</li></ul><ul id="4138ac6a-aab1-807d-be57-fca59c6ba48e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Ultimate Goal:</strong> FSA loans are designed to provide temporary assistance to help agricultural operators successfully build and transition into sustainable, independent commercial credit.</li></ul></li></ul><ul id="4138ac6a-aab1-80c5-9c3c-fa7c77326e6e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comprehensive Types of FSA Loans</strong><ul id="4138ac6a-aab1-8047-84f7-d2cc1e2a49d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Direct Operating Loans:</strong> Designed for day-to-day farming needs, including purchasing livestock, feed, fuel, fertilizer, seed, farm chemicals, and insurance, as well as covering family living expenses and minor structural or fencing repairs.</li></ul><ul id="4138ac6a-aab1-8071-8c84-dbe5481801e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Microloans:</strong> Streamlined operating loans tailored for small, beginning, specialty crop, or niche-market farmers with simplified paperwork and relaxed qualification requirements.</li></ul><ul id="4138ac6a-aab1-805f-a219-f527e58bdfd3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Direct Farm Ownership Loans:</strong> Used for major long-term capital investments such as buying or expanding a farm or ranch, constructing or improving agricultural buildings, and funding soil and water conservation projects.</li></ul><ul id="4138ac6a-aab1-805f-9503-d95c16031303" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Guaranteed Loans:</strong> Backed by the FSA to encourage private lenders to extend credit with reasonable terms to family farmers who miss the mark for standard commercial underwriting, while protecting lenders from default losses and providing servicing fees.</li></ul><ul id="4138ac6a-aab1-8074-879c-ec956f7486c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Youth Loans:</strong> Specialized financing for young members of organizations like <strong>4-H clubs or FFA</strong> to fund educational, income-producing agricultural projects.</li></ul><ul id="4138ac6a-aab1-8089-8e71-de5957ffa35b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Minority and Women Farmers and Ranchers Loans:</strong> Targeted funding pools specifically set aside to encourage full participation and ownership opportunities for minority and women family farmers.</li></ul><ul id="4138ac6a-aab1-801d-bfb9-e723f7fef998" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Beginning Farmers and Ranchers Loans:</strong> Dedicated credit opportunities reserved for eligible family farm and ranch operators who have been actively in business for <strong>less than 10 years</strong>.</li></ul><ul id="4138ac6a-aab1-809a-9604-e53aca511dcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Emergency Loans:</strong> Disaster-relief loans designed to assist agricultural operators in recovering from production or physical losses caused by droughts, severe floods, natural disasters, or quarantines.</li></ul><ul id="4138ac6a-aab1-804b-bf20-c0c1e5d1880f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Native American Tribal Loans:</strong> Specialized financial resources enabling Native American Tribes to acquire land interests within reservations or Alaskan communities, expand farming operations, boost agricultural productivity, and preserve cultural farmland.</li></ul></li></ul><ul id="4138ac6a-aab1-8049-8358-ccceb283381c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Government Loans</strong><figure id="4138ac6a-aab1-80c0-ab31-c11266db4736" class="image" data-notion-image="Chapter%203%20-%20Government-Backed%20Loans/image.png" dir="ltr"><a href="Chapter%203%20-%20Government-Backed%20Loans/image.png"><img style="width:432px" src="Chapter%203%20-%20Government-Backed%20Loans/image.png"/></a></figure></li></ul><ul id="4138ac6a-aab1-80ef-9552-d03b9e6e63e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tennessee Housing Development Agency (THDA) Overview</strong><ul id="4138ac6a-aab1-80e9-8345-ffa5807b585b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mission:</strong> A state-level housing agency in Tennessee designed to promote the creation of new affordable housing units and preserve existing affordable housing for low- to moderate-income, first-time homebuyers.</li></ul><ul id="4138ac6a-aab1-80ad-99f1-fdb43e259404" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Offering:</strong> Provides subsidized, fixed-rate mortgage programs tailored to help everyday working families achieve homeownership.</li></ul></li></ul><ul id="4138ac6a-aab1-80bc-af66-fe8339941c1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Great Choice Loan Program</strong><ul id="4138ac6a-aab1-80b9-8030-eed674bcb105" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Great Choice Program:</strong> Offers stable, <strong>30-year fixed-rate mortgages</strong> paired with financial assistance for down payments and closing costs of up to <strong>$7,500</strong>.</li></ul><ul id="4138ac6a-aab1-80f3-89d1-f5ffd1a36f90" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Great Choice Plus (Second Mortgage):</strong> A companion second mortgage loan structured with a <strong>15-year term</strong> and an interest rate that exactly matches the underlying first mortgage.</li></ul><ul id="4138ac6a-aab1-809b-b764-ea7d8bd82568" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Official Resource:</strong> Borrowers and agents can review full program guidelines and lender lists directly at <code>thda.org</code>.</li></ul></li></ul><ul id="4138ac6a-aab1-80c7-bdfd-cb449b767bd1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Homeownership for the Brave</strong><ul id="4138ac6a-aab1-80ba-99d8-eed538de7c03" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Military Specialization:</strong> A dedicated initiative designed specifically for active-duty military personnel, veterans, and retired service members.</li></ul><ul id="4138ac6a-aab1-80c1-9fa4-ddd066eba121" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Benefit:</strong> Provides an automatic <strong>0.5% interest rate reduction</strong> on THDA&#x27;s standard Great Choice first mortgage loan as a token of gratitude for their service.</li></ul></li></ul></div><div id="4138ac6a-aab1-801a-83f3-c61986039919" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4138ac6a-aab1-8098-b520-daffb7079950" class="" dir="auto"><strong>Key Term</strong></p><ul id="4138ac6a-aab1-80d5-888e-fea2136eafe3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">VA entitlement - the amount of money guaranteed in a VA loan</li></ul><p id="4138ac6a-aab1-8038-b427-ce421a8728f5" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4138ac6a-aab1-8090-8355-c5d48161982e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advantages and Disadvantages of FHA Loans</strong><ul id="4138ac6a-aab1-80a4-b783-d33d9f335339" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Advantages:</strong><ul id="4138ac6a-aab1-8044-bd55-c59cd690656c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Minimum down payments are low compared to conventional loans.</li></ul><ul id="4138ac6a-aab1-8007-b7ec-d3d3c72812c1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Graduated payment schedules with low monthly mortgage payments that increase over time are available.</li></ul><ul id="4138ac6a-aab1-802e-9f5f-f07365f50b7e" class="bulleted-list" dir="auto"><li style="list-style-type:square">FHA-insured loans are not allowed to carry a prepayment penalty.</li></ul><ul id="4138ac6a-aab1-8076-b4a5-c1e5ef38bbc7" class="bulleted-list" dir="auto"><li style="list-style-type:square">FHA loans can be assumed by other borrowers.</li></ul></li></ul><ul id="4138ac6a-aab1-80a1-ab9e-f9ea58e42007" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disadvantages:</strong><ul id="4138ac6a-aab1-8045-a2a0-d87dfaacc98d" class="bulleted-list" dir="auto"><li style="list-style-type:square">There is a maximum loan amount on FHA loans.</li></ul><ul id="4138ac6a-aab1-804f-a91c-f4705c3754a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">The mortgage insurance premiums must either be paid upfront at closing or be financed.</li></ul><ul id="4138ac6a-aab1-803a-aeae-dca043e2879b" class="bulleted-list" dir="auto"><li style="list-style-type:square">The FHA loan program only insures loans to owner-occupants.</li></ul><ul id="4138ac6a-aab1-8044-8e70-d19ef32de292" class="bulleted-list" dir="auto"><li style="list-style-type:square">FHA loans require that the house meet certain conditions and must be appraised by an FHA-approved appraiser.</li></ul><ul id="4138ac6a-aab1-8095-b2f1-d604a09010ad" class="bulleted-list" dir="auto"><li style="list-style-type:square">FHA loans require two kinds of mortgage insurance premiums:<ul id="4138ac6a-aab1-807d-8a38-dce3b9e326e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>One is paid in full upfront (it can be financed into the mortgage).</strong></li></ul><ul id="4138ac6a-aab1-80a0-bc45-f8b8a6a51606" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The other is a monthly payment.</strong></li></ul></li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80e6-b04d-f769adf6e633" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Loan Characteristics</strong><ul id="4138ac6a-aab1-80aa-ba6f-fac629376cf5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Low down payments: </strong>FHA mortgages can be obtained with a down payment as low as 3.5%. The FHA also allows a borrower&#x27;s down payment to come from a family member or charitable organization in the form of a gift.</li></ul><ul id="4138ac6a-aab1-80e1-bc40-faf073ddc4bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Credit check: </strong>FHA loans for new purchase homes and some kinds of refinancing require a credit check and a determination of the borrower&#x27;s creditworthiness. However, the FHA looks for a history of reliable payments rather than using credit scores as the benchmark.</li></ul><ul id="4138ac6a-aab1-8015-a8f7-e460a20eda07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Only participating lenders: </strong>The FHA and HUD work together with lenders to ensure quality, regulatory compliance, and fairness in the lending process.</li></ul><ul id="4138ac6a-aab1-80dc-94f3-c46d73582ac3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Income ratios: </strong>For FHA loans, there are minimum required housing-to-income ratios and total debt ratios set by HUD, and these ratios can differ based on the applicant&#x27;s credit score.</li></ul><ul id="4138ac6a-aab1-8010-b889-f71cb9e32be4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA loan limits: </strong>The maximum allowable amount for an FHA loan varies by location. Loan limits vary in certain areas because of differences in property costs.</li></ul><ul id="4138ac6a-aab1-80ec-942e-f91dfa5d94f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage-insurance premium (MIP): </strong>When a borrower takes out an FHA loan, they will be required to pay a mortgage insurance premium. First, there is an upfront premium of 1.75% of the loan total. The second is the annual premium, which is paid monthly.</li></ul><ul id="4138ac6a-aab1-80b9-a17a-f9ac71759117" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No prepayment penalty clause:</strong> FHA-insured loans are not allowed to carry a prepayment<strong> </strong>penalty. That means a lender cannot charge a borrower for paying off their loan early.</li></ul></li></ul><ul id="4138ac6a-aab1-80a8-9b71-d3e32d8ed011" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Loan Basics</strong><ul id="4138ac6a-aab1-8079-924a-df221061fc7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Owner-occupied dwellings: </strong>VA loans can be used for owner-occupied houses or condominiums, improvements, manufactured homes, land, farms, and refinancing or assuming VA loans. The loans cannot be used for purchasing an investment property.</li></ul><ul id="4138ac6a-aab1-80fc-bfe4-c16f88b292aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Generally zero down payment: </strong>Veterans qualify on the basis of their debt-to-income ratio, which must not exceed 41%.</li></ul><ul id="4138ac6a-aab1-80ad-8bab-e0e11a7fa000" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Time served = qualified: </strong>A veteran who meets the established time-in-service criteria is eligible for a VA loan. VA-guaranteed loans assist veterans in financing the purchase of homes with little or no down payments.</li></ul><ul id="4138ac6a-aab1-8006-bc74-ff62640a59c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Guarantees funds, does not lend:</strong> Like the FHA, the VA does not lend money – it guarantees loans made by approved, qualified lending institutions approved by the agency. Therefore, the term <em>VA loan </em>refers to a loan that is not made by the agency but guaranteed by it.</li></ul><ul id="4138ac6a-aab1-8052-b713-dfc75fa7dbf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Secondary entitlement:</strong> In some areas of the country, properties cost more. In places where this is the case, the VA guaranty limits have been raised. The VA guaranty limits will be the lesser of:<ul id="4138ac6a-aab1-80b2-805f-e8ef123d1ecd" class="bulleted-list" dir="auto"><li style="list-style-type:square">25% of the borrower&#x27;s mortgage loan amount, or</li></ul><ul id="4138ac6a-aab1-80f4-8595-fa3714be6cc0" class="bulleted-list" dir="auto"><li style="list-style-type:square">25% of the VA loan limit (the FHA conforming loan limit) for that county</li></ul></li></ul><ul id="4138ac6a-aab1-8022-bc59-d781bc78bf99" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Funding fee: </strong>All VA loans require a funding fee, which is different from the lender’s origination fee. Unlike the origination fee, the funding fee can be financed into the loan amount. These fees pay for the cost of the VA loan guarantee program.<figure id="4138ac6a-aab1-80f5-ba66-d48f7bfe184c" class="image" data-notion-image="Chapter%203%20-%20Government-Backed%20Loans/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Government-Backed%20Loans/image%201.png"><img style="width:1200px" src="Chapter%203%20-%20Government-Backed%20Loans/image%201.png"/></a></figure></li></ul><p id="4138ac6a-aab1-80ac-bcf5-dc12dd5f3821" class="" dir="auto">
+</p></li></ul></div></div><p id="4138ac6a-aab1-8088-8041-dd5edb48af22" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

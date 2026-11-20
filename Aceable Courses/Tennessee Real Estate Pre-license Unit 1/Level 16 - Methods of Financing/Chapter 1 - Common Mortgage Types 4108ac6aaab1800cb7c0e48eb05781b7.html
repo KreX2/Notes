@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Common Mortgage Types</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-800c-b7c0-e48eb05781b7" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Common Mortgage Types</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4138ac6a-aab1-80f0-aaea-cb22c9b83f72" class="column-list" data-notion-column-list="" dir="auto"><div id="4138ac6a-aab1-8040-b558-edf0a5002bd8" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4138ac6a-aab1-8076-9783-cc5808f316f9" class="" dir="auto"><strong>Mortgage Types</strong></p><ul id="4138ac6a-aab1-8064-9d93-fe4e9b51478d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conventional Loans</strong><ul id="4138ac6a-aab1-8088-a85d-ef88783ae12c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Definition:</strong> A conventional loan is any mortgage that is <strong>neither insured nor guaranteed by the government</strong>.</li></ul><ul id="4138ac6a-aab1-80cf-9b00-c2efe50b4e8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Funding Source:</strong> The capital for conventional loans comes directly from private lenders, such as commercial banks, savings and loans associations, credit unions, or private individuals.</li></ul><ul id="4138ac6a-aab1-8052-bc29-fc217686e4e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Down Payments &amp; Risk:</strong> Because lenders lack the safety net of government backing, conventional loans represent a higher risk to the lender. Consequently, lenders typically require a <strong>20% down payment</strong>.</li></ul><ul id="4138ac6a-aab1-80b3-8ae8-c1d3308d1961" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Private Mortgage Insurance (PMI):</strong> If a borrower cannot afford the full 20% down payment, the lender will still approve the conventional loan but will require the borrower to purchase PMI to offset the lender&#x27;s risk.</li></ul><ul id="4138ac6a-aab1-8098-ae54-e998b969e105" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Categories:</strong> Conventional loans are divided into two main sub-categories: conforming and non-conforming.</li></ul><ul id="4138ac6a-aab1-803c-b6bd-c640340cf4f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional Loan Qualification</strong><ul id="4138ac6a-aab1-80e2-aba2-c1fc04051d9b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Primary Security &amp; Borrower Evaluation:</strong> Lenders heavily rely on the property appraisal as the primary security for the loan. To gauge credit reliability, they also scrutinize the buyer&#x27;s credit report, steady income sources, and available cash for down payments and closing costs.</li></ul><ul id="4138ac6a-aab1-8063-bfcb-f21b67c676fb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Underwriting Stringency:</strong> Conventional loans generally enforce much stricter credit and income requirements compared to government-backed loans.</li></ul><ul id="4138ac6a-aab1-802d-ab36-cff6710022ac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Qualifying Factors:</strong> To approve a conventional loan, lenders will closely analyze the borrower&#x27;s:<ul id="4138ac6a-aab1-80ed-b42b-fe6d77de71e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total monthly expenses</li></ul><ul id="4138ac6a-aab1-80a1-aa7b-f48d55c3fb45" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Total gross income per month</li></ul><ul id="4138ac6a-aab1-803d-9a6a-dd05e5d9fc60" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Employment history</li></ul><ul id="4138ac6a-aab1-803f-890c-ffe62d568b73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Credit score and payment history</li></ul><ul id="4138ac6a-aab1-80c1-8b94-e6018b34e294" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Available assets (checking, savings, and retirement accounts)</li></ul></li></ul><ul id="4138ac6a-aab1-808a-8d3a-e38d2a5e4522" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Advantages of Conventional Loans:</strong> Despite stricter financial requirements, conventional loans offer distinct benefits, including faster approval processing, fewer overall eligibility restrictions, the potential to avoid mortgage insurance entirely, and often lower interest rates than government-backed alternatives.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-8036-9f7b-dbab434be0a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conforming Loans</strong><ul id="4138ac6a-aab1-8089-bb1b-d24370292612" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Conventional loans that strictly adhere to the standardized underwriting guidelines set by Fannie Mae and Freddie Mac.</li></ul><ul id="4138ac6a-aab1-808d-b20e-fd0b9c4767a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Secondary Market Eligibility:</strong> Because they meet these strict standards, conforming loans can be easily packaged and sold on the secondary mortgage market to Government-Sponsored Enterprises (GSEs).</li></ul><ul id="4138ac6a-aab1-8031-bacd-ca9750929a7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standardized Paperwork:</strong> These loans are originated using the Uniform Residential Loan Application (Fannie Mae Form 1003 or Freddie Mac Form 65).</li></ul><ul id="4138ac6a-aab1-80fb-9c93-ef5891812223" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHFA Loan Limits:</strong> The Federal Housing Finance Agency (FHFA) dictates the maximum dollar amount for a conforming loan. These limits vary geographically (e.g., standard counties versus designated high-cost areas) and are updated annually.</li></ul></li></ul><ul id="4138ac6a-aab1-800e-8cde-f483b8d196cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Non-Conforming Loans</strong><ul id="4138ac6a-aab1-806d-bab6-ebd112f3f24b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Conventional loans that fail to meet Fannie Mae and Freddie Mac guidelines. They will not be purchased by GSEs, though private investors or hedge funds may buy them on the secondary market.</li></ul><ul id="4138ac6a-aab1-80e3-82cd-c5b8ababf32d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reasons for Non-Conformity:</strong> A loan may be non-conforming due to a low down payment (high Loan-to-Value ratio), a high Debt-to-Income (DTI) ratio, or a poor credit history.</li></ul><ul id="4138ac6a-aab1-809e-8576-d70a01b6d92f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jumbo Loans:</strong> The most common type of non-conforming loan. A jumbo loan is required when a buyer needs to borrow an amount that <strong>exceeds the FHFA maximum loan limit</strong> for their county.</li></ul><ul id="4138ac6a-aab1-805e-8d93-e120367aabc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jumbo Loan Risk:</strong> While still classified as conventional (not government-backed), jumbo loans usually carry slightly higher interest rates because the lender takes on a massive, un-securitizable financial risk if the borrower defaults.</li></ul></li></ul><ul id="4138ac6a-aab1-801d-b209-d048eb655470" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Government-Backed Loans </strong><ul id="4138ac6a-aab1-8006-a1a0-cfb9cd91aafe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Definition:</strong> Mortgages where the federal government guarantees or insures the loan, significantly reducing the financial risk to the lender if the borrower defaults.</li></ul><ul id="4138ac6a-aab1-80e5-a0b2-df7bc22a36c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Types:</strong> FHA loans, VA loans, and USDA loans.</li></ul><ul id="4138ac6a-aab1-806a-8ea6-e3f171959d96" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA Loans (Federal Housing Administration)</strong><ul id="4138ac6a-aab1-8052-9db0-d319b5db5bcb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mechanism:</strong> The FHA does <strong>not</strong> lend money directly; it strictly <strong>insures</strong> loans originated by FHA-approved lenders.</li></ul><ul id="4138ac6a-aab1-80bb-a5a4-ddab24dd7be8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgage Insurance Premium (MIP):</strong> Because the FHA takes on the risk, borrowers must pay an MIP. Interestingly, the entire FHA program is funded exclusively by these MIP payments, utilizing zero taxpayer dollars.</li></ul><ul id="4138ac6a-aab1-80cc-8d05-dcffb0bd661b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assumption Feature:</strong> FHA loans are generally assumable, meaning the mortgage can be officially transferred to another qualified borrower.</li></ul><ul id="4138ac6a-aab1-80ff-8dbd-e2e964a3923e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>FHA Loan Qualifications &amp; Requirements</strong><ul id="4138ac6a-aab1-8021-bc37-dbe6114bdc98" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Employment &amp; Income Stability:</strong> Borrowers typically need two years of steady employment (preferably with the same employer), and their income over the last two years should be either stable or increasing.</li></ul><ul id="4138ac6a-aab1-8037-ac1a-d348bd724e4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credit Standards:</strong> A borrower must have a credit score of at least <strong>580</strong> to qualify for the minimum 3.5% down payment. If their score is between <strong>500 and 579</strong>, the FHA requires a minimum 10% down payment. (Their credit report should generally show fewer than two 30-day late payments in the last two years).</li></ul><ul id="4138ac6a-aab1-804f-981c-e5a83d463b6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lender Overlays:</strong> Many individual mortgage companies enforce &quot;overlays&quot;—internal policies that are stricter than baseline FHA standards (e.g., requiring a minimum 620 or 640 credit score to reduce the lender&#x27;s risk).</li></ul><ul id="4138ac6a-aab1-8049-8f3c-e2450cda9502" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income Limits (DTI):</strong> There is no hard minimum income threshold; instead, approval is based on the Debt-to-Income (DTI) ratio. Lenders typically look for a DTI maximum of <strong>45%</strong>, though strong credit profiles can sometimes stretch this limit to 56%.</li></ul></li></ul><ul id="4138ac6a-aab1-80e0-bc0c-f5907609ace2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Required Documentation</strong><ul id="4138ac6a-aab1-80de-8298-fe7b7c2f90aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>W-2 Employees:</strong> Last two years of W-2 forms and the most recent one month of pay stubs to verify income.</li></ul><ul id="4138ac6a-aab1-8047-8693-e3922d57c382" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Self-Employed:</strong> The last two years of full tax returns.</li></ul><ul id="4138ac6a-aab1-8086-9d4a-d670038d47a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Processing Time:</strong> Verifying and underwriting these documents is extensive and can take up to 21 days.</li></ul></li></ul><ul id="4138ac6a-aab1-8049-8c97-c3b45ec9c0eb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Acceptable Property Types for FHA (GSE Guidelines)</strong><ul id="4138ac6a-aab1-8055-a397-ed061acaf2ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Residence:</strong> A 1- to 4-family property that is the primary residence of at least one borrower (who must occupy the property, take title, and sign the note).</li></ul><ul id="4138ac6a-aab1-8008-a334-ce285142a3e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Second Home:</strong> A single-family property occupied in addition to the primary residence. <em>Note: Rental income from a second home cannot be used to qualify the borrower for the loan.</em></li></ul><ul id="4138ac6a-aab1-80cf-b90d-d721500c6f42" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Investment Property:</strong> A 1- to 4-family property not occupied by the borrower (regardless of whether it actively produces rental income).</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80db-ba97-c41ebd1fe20c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>VA Loans (Department of Veterans Affairs)</strong><ul id="4138ac6a-aab1-806d-9367-ef55baa100f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mechanism:</strong> The VA does <strong>not</strong> lend money directly; it <strong>guarantees</strong> loans originated by approved lenders for qualified veterans and military members.</li></ul><ul id="4138ac6a-aab1-8054-978a-c25120919d97" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fee Structure:</strong> Because the VA guarantees the loan, borrowers do not pay an MIP. Instead, they pay a one-time <strong>VA funding fee</strong> at closing.</li></ul><ul id="4138ac6a-aab1-8093-be1a-d1163e34fa59" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Qualifying for a VA Loan</strong><ul id="4138ac6a-aab1-8092-a1ba-f680b10bc469" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Certificate of Eligibility (COE):</strong> The first step in securing a VA loan is applying for a COE. This document officially verifies a veteran&#x27;s legal entitlement to VA home loan benefits based on their specific military service history.</li></ul><ul id="4138ac6a-aab1-80bf-b755-d2bd40e2ebd9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Important Distinction:</strong> A Certificate of Eligibility proves <em>entitlement</em>, but it does not guarantee loan approval. The veteran must still financially qualify for the mortgage through a lender.</li></ul></li></ul><ul id="4138ac6a-aab1-8010-9940-c7fd2d40a028" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>VA Financial Qualification Methods</strong><ul id="4138ac6a-aab1-80ae-9072-e01f1ba21b45" class="bulleted-list" dir="auto"><li style="list-style-type:disc">To determine a veteran&#x27;s financial ability to repay the loan, the VA evaluates two primary metrics: <strong>(1) Debt-to-Income Ratio</strong> and <strong>(2) Residual Income</strong>.</li></ul><ol type="1" id="4138ac6a-aab1-80a1-aa4c-fd946b67d51b" class="numbered-list" start="1" dir="auto"><li><strong>Debt-to-Income (DTI) Ratio</strong><ul id="4138ac6a-aab1-808b-910a-eb493351cc00" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Rule:</strong> Unlike conventional and FHA loans, the VA does not use a front-end housing expense ratio. They only look at the total &quot;back-end&quot; DTI. The combined total of all monthly debts cannot exceed <strong>41%</strong> of the veteran&#x27;s gross monthly income.</li></ul><ul id="4138ac6a-aab1-80ca-8a01-d28b1ad027f9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Included Debts:</strong> This 41% limit must encompass the proposed house payment, all installment loans (auto, student), all revolving accounts (credit cards, including minimums on paid-out accounts), court-ordered child support, and monthly child care expenses.</li></ul></li></ol><ol type="1" id="4138ac6a-aab1-8070-8294-dc416d4fb309" class="numbered-list" start="2" dir="auto"><li><strong>Residual Income</strong><ul id="4138ac6a-aab1-805e-9f39-e7575807cef6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Definition:</strong> Residual income is the actual cash a veteran has left over each month <em>after</em> all major debts and obligations are deducted from their gross income.</li></ul><ul id="4138ac6a-aab1-807a-a63e-ff149ab7665f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deducted Obligations:</strong> The residual income calculation removes income tax, social security tax, and estimated property maintenance and utility costs.</li></ul><ul id="4138ac6a-aab1-80d6-867c-c4fb38f7fabc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Requirement:</strong> The VA requires a specific minimum amount of residual income to ensure the veteran can comfortably afford basic living expenses (like food and gas). The required minimum varies based on geographic region, family size, and the total loan amount (charts are available from local lenders).<figure id="4138ac6a-aab1-8043-bf74-e2eef87a6144" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image.png"><img style="width:384px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image.png"/></a></figure></li></ul></li></ol></li></ul></li></ul><ul id="4138ac6a-aab1-804d-8ff8-f897b5b2735f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>USDA Loans (U.S. Department of Agriculture / Rural Housing Service)</strong><ul id="4138ac6a-aab1-808c-b538-e8fcb0fc4e91" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mechanism (Direct &amp; Guaranteed):</strong> The USDA&#x27;s Rural Housing Service actually operates in both capacities—it <strong>guarantees</strong> loans made by approved lenders AND, uniquely, it <strong>makes direct loans</strong> to low-income buyers.</li></ul><ul id="4138ac6a-aab1-8047-ba1a-ddcfa07d03c7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Target Demographic &amp; Terms:</strong> Designed for buyers purchasing or building homes in designated rural areas. Qualified borrowers can secure financing for <strong>100% of the purchase price</strong> (requiring zero down payment)</li></ul><ul id="4138ac6a-aab1-8059-bed3-ec2394d2c442" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Qualifying for a USDA Loan</strong><ul id="4138ac6a-aab1-80ab-8305-dd9c1f8ad0b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>100% Financing:</strong> USDA loans offer full financing, meaning no down payment is required.</li></ul><ul id="4138ac6a-aab1-80b9-afc9-d77a9ad63782" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credit Score:</strong> Borrowers must have a minimum credit score of <strong>620</strong>.</li></ul><ul id="4138ac6a-aab1-80ef-a0a6-d474db53b236" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Housing Debt-to-Income (DTI) Ratio:</strong> The housing expense ratio is capped at <strong>29%</strong>.</li></ul><ul id="4138ac6a-aab1-80cd-a0a1-cf93e339c2e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Monthly Mortgage Insurance:</strong> The monthly mortgage insurance cost is extremely low, calculated as less than <code>0.005 / 12</code> of the total loan amount.</li></ul><ul id="4138ac6a-aab1-8019-85b8-d4868e8a5b6e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Contributions:</strong> Sellers are permitted to contribute up to <strong>6%</strong> of the sales price toward the buyer&#x27;s closing costs.</li></ul><ul id="4138ac6a-aab1-808c-b119-cbf823ee87cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bankruptcy or Foreclosure Recovery:</strong> Borrowers become eligible for a USDA home loan <strong>three years</strong> after a bankruptcy or foreclosure discharge.</li></ul></li></ul><figure id="4138ac6a-aab1-8048-abea-fc95a7b660c9" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image%201.png"><img style="width:336px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image%201.png"/></a></figure></li></ul></li></ul><ul id="4138ac6a-aab1-80f0-84af-e1b5126e9990" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Amortization Structures</strong><ul id="4138ac6a-aab1-80a7-b5f5-eb303e60d5cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Beyond being categorized as conventional or government-backed, loans are also classified by their amortization structure (how the principal debt is reduced or &quot;killed off&quot; over time).</li></ul></li></ul><ul id="4138ac6a-aab1-803a-acea-f54eac38843a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fully Amortized Loans</strong><ul id="4138ac6a-aab1-801d-b9fa-c98095265d59" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> The borrower makes equal, fixed monthly payments that are large enough to cover the interest due <em>and</em> pay down a portion of the principal.</li></ul><ul id="4138ac6a-aab1-80ce-965a-f2b0b96fd225" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Outcome:</strong> Because the payments are precisely calculated based on the loan term, the entire debt (principal and interest) will be completely paid off (killed) by the final scheduled payment.</li></ul><ul id="4138ac6a-aab1-80ec-971c-c5bb8a982178" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Trade-off:</strong> Fully amortized loans offer stability and predictability, but they require a higher monthly payment compared to interest-only or partially amortized structures.</li></ul></li></ul><ul id="4138ac6a-aab1-800f-8af1-c54abe206c8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Partially Amortized Loans (Balloon Loans)</strong><ul id="4138ac6a-aab1-80b3-b9e9-e231b1fb97c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> The borrower makes equal monthly payments that cover interest and <em>some</em> principal, but these payments are not large enough to fully pay off the loan by the end of the term.</li></ul><ul id="4138ac6a-aab1-8020-97c8-f1931787bbe6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Outcome:</strong> Because the loan is only partially amortized, the borrower will face a massive <strong>balloon payment</strong> at the end of the term. This final, lump-sum payment is required to clear the remaining unpaid principal balance.</li></ul></li></ul><ul id="4138ac6a-aab1-80c6-bbce-f904bbb341be" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Negative Amortization (Deferred Interest)</strong><ul id="4138ac6a-aab1-8030-94e3-c4b6b17bb7a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> Mortgages are paid in arrears (you pay for the money you used during the previous month). In a negative amortization scenario, the borrower&#x27;s monthly payment is actually <em>too small</em> to cover the interest charge for that month.</li></ul><ul id="4138ac6a-aab1-80a5-9bda-e32f12979986" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Outcome (The Danger Zone):</strong> Because the payment doesn&#x27;t even cover the interest, the unpaid interest is tacked onto the original loan principal. Instead of the debt shrinking, the principal balance actually grows larger every month. This is a highly disadvantageous and risky position for a borrower.</li></ul></li></ul><ul id="4138ac6a-aab1-80b6-bb96-f057ec369814" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fixed-Rate, Fully Amortized Loans</strong><ul id="4138ac6a-aab1-802d-858b-fb30610c5608" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> In a fixed-rate, fully amortized loan, the interest rate never changes, and the total monthly payment amount never changes for the entire life of the loan. The only variable is the internal ratio of how much of that payment goes toward interest versus principal, which follows a strict, predetermined amortization schedule.</li></ul></li></ul><ul id="4138ac6a-aab1-800c-a5c7-c03d900c7303" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advantages of Fixed-Rate Mortgages</strong><ul id="4138ac6a-aab1-802a-9bba-f9e2fc682e33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Stability:</strong> Because the monthly PI (Principal and Interest) payment is permanently locked in, the borrower is completely protected against future inflation or rising market interest rates.</li></ul><ul id="4138ac6a-aab1-803a-a0ec-ce108f6eef1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Budget Predictability:</strong> These are often referred to as &quot;budget mortgages&quot; because the fixed payment allows the borrower to reliably plan their long-term monthly household budget without fear of sudden payment spikes.</li></ul></li></ul><ul id="4138ac6a-aab1-80fd-abc4-e362f35bcdb3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disadvantages of Fixed-Rate Mortgages</strong><ul id="4138ac6a-aab1-80e2-a92d-f89844866205" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Locked into High Rates:</strong> If a borrower originates their loan during a period of high national interest rates, they are permanently stuck with that expensive rate for the life of the loan.</li></ul><ul id="4138ac6a-aab1-805a-b9db-fd99983adae1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Missing Market Drops:</strong> If national interest rates plummet, a fixed-rate borrower cannot automatically take advantage of the cheaper rates. Their only option to lower their payment is to undergo the expensive and time-consuming process of refinancing the entire loan.</li></ul></li></ul><ul id="4138ac6a-aab1-80c8-b286-e6659433d566" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Refinancing</strong><ul id="4138ac6a-aab1-80d9-b960-e595a00242da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Refinancing is the process of replacing an existing mortgage with a new one to secure more favorable terms. This is typically done once a borrower has built up decent <strong>equity</strong> in their property (the difference between the home&#x27;s market value and the remaining mortgage balance).</li></ul><ul id="4138ac6a-aab1-80b6-a4a1-d8d0baa531b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Reasons to Refinance:</strong> Borrowers refinance to secure a lower monthly payment, shorten the lifespan of their loan, switch from an unpredictable Adjustable Rate Mortgage (ARM) to a fixed-rate mortgage, avoid looming balloon payments, eliminate Private Mortgage Insurance (PMI), or pull cash out of their equity to consolidate other debts.</li></ul><ul id="4138ac6a-aab1-801b-856b-fe352eebde07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Weighing the Costs:</strong> Refinancing is not free; it comes with closing costs. A borrower must calculate whether they will live in the home long enough for their monthly payment savings to offset the upfront cost of the new loan.</li></ul></li></ul><ul id="4138ac6a-aab1-80cc-9883-ee1657b59487" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Break-Even Point</strong><ul id="4138ac6a-aab1-80b0-96b1-f903bcec9a9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> To determine if refinancing is financially sensible, you must calculate the break-even point—the exact number of months it will take for the monthly savings to pay off the closing costs.</li></ul><ul id="4138ac6a-aab1-8003-9bd8-eee9c1f1a75f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Refinancing cost / Monthly savings = Break-even point (in months)</code></li></ul></li></ul><ul id="4138ac6a-aab1-8068-8859-c749ea8626e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Break-Even Example (Tom&#x27;s Refinance)</strong><ul id="4138ac6a-aab1-8005-9d87-f6027705ac18" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Tom&#x27;s current principal and interest (PI) payment is $1,153.37 at an 8.5% interest rate. He owes a remaining balance of $120,836. He qualifies to refinance to a 3.75% interest rate, which will drop his new PI payment to $878.75. The closing costs for the new loan are $2,000, which will be rolled into his new balance.</li></ul><ul id="4138ac6a-aab1-80de-a3a9-cb79c9d84e33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 (Find Monthly Savings):</strong> Subtract the new payment from the old payment: <code>$1,153.37 - $878.75 = $274.62</code> in monthly savings.</li></ul><ul id="4138ac6a-aab1-8067-a64b-c9edea6a82ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 (Find the Break-Even Point):</strong> Divide the total cost of refinancing by the monthly savings: <code>$2,000 / $274.62 = 7.28</code>.</li></ul><ul id="4138ac6a-aab1-8025-8321-e04a80c63d0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Takeaway:</strong> It will take Tom just over 7 months (7.28 months) to recover his $2,000 in closing costs. As long as he plans to stay in the home longer than 7 months, refinancing is a highly profitable decision that will also save him thousands of dollars in lifetime interest.</li></ul></li></ul><ul id="4138ac6a-aab1-8033-abf2-c0f2c9607342" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Loan-to-Value (LTV) Ratio</strong><ul id="4138ac6a-aab1-8060-b033-efeebe23ff72" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> The Loan-to-Value (LTV) ratio measures the amount of money being borrowed compared to the total value (or purchase price) of the property.</li></ul><ul id="4138ac6a-aab1-80cb-8562-e7750873c542" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Risk Factor:</strong> There is an inverse relationship between the down payment and the LTV. A low down payment directly results in a high LTV. Lenders view a high LTV as a significantly riskier loan because they are financing a much larger percentage of the property&#x27;s total value.</li></ul><ul id="4138ac6a-aab1-8065-ac9f-e776d114e32e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong> Formula:</strong> <code>Loan amount / Purchase price = Loan-to-value ratio</code></li></ul></li></ul><ul id="4138ac6a-aab1-80d5-9ebb-fea9126ef86f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step LTV Example</strong><ul id="4138ac6a-aab1-8062-a774-cd701ef7d98c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> A buyer is purchasing a home with a sales price of $200,000 and is taking out a mortgage for $194,000. What is the LTV?</li></ul><ul id="4138ac6a-aab1-80ad-81d6-ea4225551d98" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Calculation:</strong> Insert the known variables into the formula by dividing the loan amount by the total purchase price: <code>$194,000 / $200,000 = 0.97</code></li></ul><ul id="4138ac6a-aab1-8059-b179-cd5c7c3465e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> By moving the decimal two places to the right to convert it to a percentage, the Loan-to-Value ratio is exactly <strong>97%</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-8057-bef4-e2e4603dde2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Private Mortgage Insurance (PMI)</strong><ul id="4138ac6a-aab1-80be-a01f-f2cfcf72f56e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Purpose:</strong> Private Mortgage Insurance (PMI) is a monthly fee paid to a private insurance company by a borrower. Crucially, <strong>PMI does not protect the borrower</strong>; its sole purpose is to protect the lender from financial loss if the borrower defaults on the loan.</li></ul><ul id="4138ac6a-aab1-8028-bd46-ff66528c855f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When is PMI Required?</strong> PMI is mandatory on a conventional loan anytime the Loan-to-Value (LTV) ratio exceeds 80%.</li></ul><ul id="4138ac6a-aab1-8085-9877-d0b3e441d45b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How to Avoid PMI:</strong> To completely avoid paying PMI, the borrower must make a down payment of at least <strong>20%</strong> of the property&#x27;s purchase price.</li></ul><ul id="4138ac6a-aab1-8048-86ef-d9b2a94a1a5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Benefit to the Borrower:</strong> While PMI is an added expense, it exists to help borrowers with limited cash savings qualify for a mortgage and purchase a home without having to save up a massive 20% down payment.</li></ul><ul id="4138ac6a-aab1-8032-aed1-de2ab5ede51a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Structures:</strong> Depending on market conditions and the borrower&#x27;s credit score, some lenders may offer a &quot;lender-paid&quot; mortgage insurance option. In this scenario, the borrower does not pay a separate monthly PMI fee but instead accepts a permanently higher interest rate on the loan itself.</li></ul></li></ul><ul id="4138ac6a-aab1-8048-94d2-c027c3558445" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Insurance Premium (MIP) </strong><ul id="4138ac6a-aab1-80fc-b121-d534134cc126" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> MIP is the FHA&#x27;s exact equivalent of Private Mortgage Insurance (PMI). It is a borrower-paid fee required on all FHA loans designed exclusively to insure the lender against borrower default or foreclosure.</li></ul><ul id="4138ac6a-aab1-806d-a42d-d932e6549995" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Funding Source:</strong> MIP payments are the sole funding source for the entire FHA insurance program.</li></ul><ul id="4138ac6a-aab1-804f-b820-c2e6866109ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> Every single FHA borrower is required to purchase this insurance, which is divided into two mandatory components: an upfront premium and an annual premium.</li></ul><ol type="1" id="4138ac6a-aab1-80dd-9ea4-f2f22c87b6c1" class="numbered-list" start="1" dir="auto"><li><strong> Upfront Mortgage Insurance Premium (UFMIP)</strong><ul id="4138ac6a-aab1-80fe-8bfd-c3af4720e40f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Cost:</strong> A one-time fee equal to exactly <strong>1.75%</strong> of the base loan amount.</li></ul><ul id="4138ac6a-aab1-80b1-8440-dd4095bb227e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payment Options:</strong> All FHA borrowers pay this premium. They have the option to pay it out-of-pocket in cash at closing, or they can roll it into the loan balance and finance it over the life of the mortgage.</li></ul></li></ol><ol type="1" id="4138ac6a-aab1-805b-8c36-cd0bbaa9b88d" class="numbered-list" start="2" dir="auto"><li><strong> Annual Mortgage Insurance Premium (Paid Monthly)</strong><ul id="4138ac6a-aab1-8014-b834-e0639c7769e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Cost:</strong> An ongoing annual fee that ranges from <strong>0.45% to 1.05%</strong> of the loan amount. This total is divided by 12 and added to the borrower&#x27;s monthly PITI payment.</li></ul><ul id="4138ac6a-aab1-80ef-8dd7-c80347be7ce1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strict Cancellation Rules:</strong> Unlike conventional PMI (which typically cancels once the borrower hits 20% equity), FHA MIP cancellation is dictated entirely by the original down payment size:<ul id="4138ac6a-aab1-80cd-ab9f-c3d30056bd6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Down payment less than 10%:</strong> The borrower is required to pay monthly MIP for the <strong>entire life of the loan</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-800f-8193-c0f34537e3b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Down payment of 10% or more:</strong> The MIP can be officially cancelled after <strong>11 years</strong>.</li></ul></li></ol></li></ul><ul id="4138ac6a-aab1-80ae-90ae-cffdc85bba56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>MIP Refund Eligibility</strong><ul id="4138ac6a-aab1-805e-932c-c431f05b4088" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A borrower may be eligible for a partial refund on their upfront mortgage insurance (calculated by the FHA commissioner based on the number of months insured) if they meet <strong>all</strong> of the following requirements:<ul id="4138ac6a-aab1-80a4-afaa-da2abeb2fe3c" class="bulleted-list" dir="auto"><li style="list-style-type:square">The loan was acquired after September 1, 1983.</li></ul><ul id="4138ac6a-aab1-805c-a633-d8dc0eb5886a" class="bulleted-list" dir="auto"><li style="list-style-type:square">An upfront premium was paid at closing.</li></ul><ul id="4138ac6a-aab1-8039-9020-dd3dabe4ed4b" class="bulleted-list" dir="auto"><li style="list-style-type:square">The borrower did not default on the loan.</li></ul><ul id="4138ac6a-aab1-8051-986b-c0d6a2db9981" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Origination Timelines:</strong> If the loan was originated <em>before</em> January 1, 2001, it must be terminated before its seventh year. If the loan was originated <em>on or after</em> January 1, 2001, it must be terminated before its fifth year.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80b3-a9cb-ea4ffea7046f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>PMI vs. MIP</strong><figure id="4138ac6a-aab1-8045-8ed0-d0b5bca04902" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image%202.png"><img style="width:528px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image%202.png"/></a></figure></li></ul><ul id="4138ac6a-aab1-8006-8bdd-e942ea65083d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Eliminating PMI via Reappraisal</strong><ul id="4138ac6a-aab1-80b3-ae65-dabc423c102b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A borrower can shed their Private Mortgage Insurance (PMI) requirement early if their home&#x27;s market value increases enough to boost their overall equity.</li></ul><ul id="4138ac6a-aab1-80ba-a369-f194a078b428" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Process:</strong> The borrower hires a lender-approved appraiser. Any newly appraised value above the original purchase price is credited directly to the borrower&#x27;s equity. This value increase can happen passively through real estate market appreciation or actively through major home renovations and improvements.</li></ul><ul id="4138ac6a-aab1-80a6-9464-f703dfcf2d06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cancellation Thresholds:</strong> Once the new appraisal confirms the borrower has reached <strong>20% equity</strong>, they can formally request that the lender cancel the PMI. Once equity hits <strong>22%</strong>, the loan servicer is legally required to eliminate the PMI automatically.</li></ul><ul id="4138ac6a-aab1-801d-9e4a-cbc93e048dc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The FHA Exception:</strong> The reappraisal strategy only works for conventional loans. FHA Mortgage Insurance Premiums (MIP) cannot be cancelled via reappraisal; the borrower&#x27;s only option is to refinance into a completely non-FHA loan.</li></ul></li></ul><ul id="4138ac6a-aab1-80a8-a7eb-e067d19dbd35" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Avoiding PMI via Piggyback Loans (80-10-10 Loans)</strong><ul id="4138ac6a-aab1-809d-9c71-df91a9db6181" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A financing strategy used at the time of purchase to bypass PMI without having a full 20% down payment. It involves taking out a primary senior mortgage and a subordinate second mortgage simultaneously.</li></ul><ul id="4138ac6a-aab1-8037-a01f-dc8b1fb6d952" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 80-10-10 Structure:</strong><ul id="4138ac6a-aab1-80eb-84d1-cb07958ca01a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>80%:</strong> The primary mortgage covering 80% of the purchase price, locked in at the current market interest rate.</li></ul><ul id="4138ac6a-aab1-8036-8e7f-f2d6009ac9ff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>10%:</strong> The secondary mortgage covering 10% of the purchase price, usually carrying a higher interest rate.</li></ul><ul id="4138ac6a-aab1-8019-b1c5-e2c1da8fd5bc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>10%:</strong> The borrower&#x27;s out-of-pocket cash down payment.</li></ul></li></ul><ul id="4138ac6a-aab1-8077-813b-d6dbd253900e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Example:</strong> For a $150,000 home, the borrower makes a $15,000 down payment (10%). They take out a primary loan for $120,000 (80%) at a 5% interest rate, and a secondary loan for $15,000 (10%) at a 7% interest rate.</li></ul><ul id="4138ac6a-aab1-807a-95f7-cf4e6f93f4f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strategic Advantages:</strong> Because the primary loan is exactly 80% Loan-to-Value (LTV), PMI is not required. Additionally, the interest paid on the secondary mortgage is tax-deductible, whereas PMI payments are not.</li></ul><ul id="4138ac6a-aab1-80a5-ae17-effc1a29c7cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Trade-Off:</strong> While an 80-10-10 loan offers immediate monthly payment relief and tax benefits, a standard single loan with PMI might actually be cheaper in the long run for a borrower planning to aggressively pay down their principal and build equity fast.</li></ul></li></ul><ul id="4138ac6a-aab1-803c-b185-fae0e3975496" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adjustable-Rate Mortgages (ARMs)</strong><ul id="4138ac6a-aab1-8099-8e68-ca9e36fa4f28" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Unlike a fixed-rate loan, an Adjustable-Rate Mortgage (ARM) features an interest rate that fluctuates periodically over the life of the loan.</li></ul><ul id="4138ac6a-aab1-8000-a7b9-fbc2d42475c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Initial Rate Period:</strong> ARMs typically begin with a locked introductory interest rate that is noticeably lower than the prevailing market rate for a set period (e.g., 5 or 7 years). Once this period ends, the interest rate begins adjusting.</li></ul></li></ul><ul id="4138ac6a-aab1-8000-a125-e7e9504df464" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key ARM Components</strong><ul id="4138ac6a-aab1-80ec-96f0-f26bcd7a0f97" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Index Rate:</strong> The shifting, variable component of the ARM. It is tied to a specific financial market benchmark index. When the index moves up or down in the wider economy, the borrower&#x27;s loan rate adjusts accordingly at scheduled intervals.</li></ul><ul id="4138ac6a-aab1-8011-8fb4-f9763059cc49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Margin (The Spread):</strong> The permanent, fixed component of the ARM. It is a set percentage added on top of the index rate. While the index fluctuates constantly, the margin remains locked for the entire life of the loan. <em>Note: Borrowers can often negotiate the margin size with the lender prior to closing.</em></li></ul><ul id="4138ac6a-aab1-80d0-9989-d6dad29984f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balance:</strong> Typically, an ARM tied to a highly stable, low-volatility index will carry a higher fixed margin, and vice versa.</li></ul></li></ul><ul id="4138ac6a-aab1-8023-b735-d1dc06b094cf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Fully Indexed Rate</strong><ul id="4138ac6a-aab1-803d-9aff-ffe56544d74e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Formula:</strong> To find the actual interest rate the borrower pays at any given time, you simply add the current index rate to the fixed margin.</li></ul><ul id="4138ac6a-aab1-80ac-b43f-c0fc8761edb1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong> Formula:</strong> <code>Margin + Index rate = Fully indexed interest rate</code></li></ul></li></ul><ul id="4138ac6a-aab1-8083-b269-dea741b92896" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step ARM Example</strong><ul id="4138ac6a-aab1-80b2-a654-f0a889a09b0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> A borrower has an ARM with a fixed margin of 3%.</li></ul><ul id="4138ac6a-aab1-80ef-8044-fd94ffec21fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustment 1:</strong> If the current market index rate is 5%, the borrower&#x27;s total interest rate is <code>3% + 5% = 8%</code>.</li></ul><ul id="4138ac6a-aab1-8009-a506-d987e097cec6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustment 2:</strong> If the market index rate drops to 3% at the next scheduled reset period, the borrower&#x27;s total interest rate drops to <code>3% + 3% = 6%</code></li></ul></li></ul><ul id="4138ac6a-aab1-8003-b64e-e3f984df565f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding ARM Notation (e.g., 2/28, 4/1)</strong><ul id="4138ac6a-aab1-8033-b99c-c885a6d5f49c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Adjustable-Rate Mortgages use a unique, fraction-like shorthand to describe the structure of their fixed and adjustable periods.</li></ul></li></ul><ul id="4138ac6a-aab1-8051-a097-d0c57582e284" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The First Number (The Fixed Period)</strong><ul id="4138ac6a-aab1-8037-9ee9-c2e305d519d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Rule:</strong> The first number always indicates the exact number of years the initial introductory interest rate remains permanently fixed. For example, a 4/1 ARM has a locked interest rate for exactly 4 years.</li></ul></li></ul><ul id="4138ac6a-aab1-80f1-a2eb-cf7a7549a51d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Second Number (The Variable Component)</strong><ul id="4138ac6a-aab1-80f3-970f-fd203af3a3d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Context:</strong> The meaning of the second number changes depending on the specific loan structure. It generally dictates one of two things:</li></ul><ul id="4138ac6a-aab1-8062-a745-e837c93d0017" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustment Frequency:</strong> In a 4/1 ARM, the &quot;1&quot; typically means the interest rate will adjust every 1 year after the fixed period ends. If the notation is 4/6, the &quot;6&quot; likely means the rate adjusts every 6 months.</li></ul><ul id="4138ac6a-aab1-8087-a5e4-d201762db81f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remaining Floating Term:</strong> In a 2/28 or 3/27 ARM, the large second number represents the remaining number of years the rate will float (which combine with the fixed years to equal a standard 30-year term).</li></ul></li></ul><ul id="4138ac6a-aab1-802d-9c06-f3d1523ca493" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Verification Over Assumption</strong><ul id="4138ac6a-aab1-80ac-8a61-c1f3c63621eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Takeaway:</strong> While deductive reasoning helps interpret these numbers (e.g., an interest rate obviously won&#x27;t adjust only once every 28 years), relying on assumptions can be financially dangerous. Always ensure the buyer explicitly verifies the exact adjustment frequency and timeline directly with their lender.</li></ul></li></ul><ul id="4138ac6a-aab1-809c-92d0-fef5b44cbef1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adjustable-Rate Mortgage (ARM) Rate Caps</strong><ul id="4138ac6a-aab1-8098-9a64-c738916d17e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A rate cap is a built-in safety net that prevents an ARM&#x27;s interest rate from endlessly skyrocketing if the market index spikes. It limits exactly how high the interest rate can climb, protecting the borrower from sudden, devastating payment shock.</li></ul><ul id="4138ac6a-aab1-80de-97d1-d4468d0c47c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Average Cap:</strong> Standard rate caps are typically 1% or 2% per adjustment period. (However, if an ARM had a long initial fixed period—like 5 or 7 years—the very first adjustment cap might be uniquely higher, such as 5%, before dropping to the standard 1% or 2% for all subsequent adjustments).</li></ul></li></ul><ul id="4138ac6a-aab1-8039-a04e-d1ed6da7a1ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of ARM Caps</strong><ul id="4138ac6a-aab1-80ca-babb-ea875ba56b04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Periodic Rate Cap:</strong> Limits the maximum amount the interest rate can increase (or decrease) during a <em>single</em> adjustment period.</li></ul><ul id="4138ac6a-aab1-8015-bb3d-d71860ea7c4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lifetime Cap (The Ceiling):</strong> The absolute maximum interest rate the borrower can ever be charged over the entire life of the loan, regardless of how high the market index climbs.</li></ul><ul id="4138ac6a-aab1-8095-8a85-efe97c6a3110" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Cap:</strong> Unlike rate caps (which are based on percentage points), a payment cap restricts the maximum <em>dollar amount</em> the borrower&#x27;s monthly payment can increase during an adjustment period.<figure id="4138ac6a-aab1-80cd-864e-d0950be0653f" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image%203.png"><img style="width:528px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image%203.png"/></a></figure></li></ul></li></ul><ul id="4138ac6a-aab1-8092-be3e-fde38132a689" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advantages of Adjustable-Rate Mortgages (ARMs)</strong><ul id="4138ac6a-aab1-808e-a3c1-f325759b91b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lower Initial Rates:</strong> The primary appeal of an ARM is the discounted introductory interest rate, which is almost always lower than the rate offered on a comparable fixed-rate mortgage.</li></ul><ul id="4138ac6a-aab1-8054-83cc-de965f785b40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Automatic Market Adjustments:</strong> If national interest rates drop, the ARM borrower&#x27;s rate will automatically adjust downward at the next scheduled reset, allowing them to capitalize on the lower rates without the hassle or expense of refinancing.</li></ul><ul id="4138ac6a-aab1-80a4-a2a8-f88e149d4280" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Short-Term Ownership Savings:</strong> If a borrower plans to sell the property or refinance before the fixed introductory period expires, they can enjoy the heavily discounted rate with zero risk of payment increases.</li></ul></li></ul><ul id="4138ac6a-aab1-80b6-887e-cf8e6f4a3a55" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disadvantages of Adjustable-Rate Mortgages (ARMs)</strong><ul id="4138ac6a-aab1-80df-8282-fac8b2a1ed43" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unpredictability &amp; Payment Shock:</strong> ARMs are inherently risky. If market index rates surge, the borrower&#x27;s monthly payment will increase significantly once the adjustment period begins. If the new payment exceeds their budget, they risk default and foreclosure.</li></ul><ul id="4138ac6a-aab1-800e-8257-e50643ddd762" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>First-Adjustment Vulnerability:</strong> Borrowers must read the fine print carefully—sometimes the standard, low rate caps (like a 2% limit) do not apply to the very <em>first</em> adjustment, meaning the rate could immediately jump to the lifetime ceiling.</li></ul><ul id="4138ac6a-aab1-80ed-ad1d-e79684c53c4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Complexity &amp; Negotiation Risk:</strong> ARMs involve complex moving parts (indexes, margins, various caps, and adjustment frequencies). A borrower who lacks a deep understanding of these mechanics is at a severe disadvantage and could easily agree to unfavorable terms heavily weighted toward the lender.</li></ul></li></ul><ul id="4138ac6a-aab1-801f-a5f3-d81588a660e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advising Clients: Key Factors in Choosing a Mortgage</strong><ul id="4138ac6a-aab1-801e-999c-d8be0400d8a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Current Interest Rate Environment:</strong> Assess the current market rates. If national rates are historically high, an ARM&#x27;s discounted introductory rate can be highly beneficial. If rates are currently low but expected to rise, it is mathematically safer to lock in that low rate for the long term with a fixed-rate mortgage.</li></ul><ul id="4138ac6a-aab1-8018-8c9c-e9f87a40207a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Time Horizon (Length of Stay):</strong> Determine how long the buyer plans to own the home. For short-term ownership, taking advantage of an ARM&#x27;s low introductory rate is a smart financial strategy. However, the buyer must acknowledge the risk of being unable to sell or refinance before the volatile adjustment period begins.</li></ul><ul id="4138ac6a-aab1-80e0-a0de-defaa18813ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affordability &amp; Budget Limits:</strong> Evaluate the borrower&#x27;s budget against the ARM&#x27;s worst-case scenario. If the initial, heavily discounted ARM payment already pushes the borrower to the absolute top of their monthly budget, an ARM is too dangerous. They must opt for a fixed-rate mortgage to prevent future payment shock and default.</li></ul><ul id="4138ac6a-aab1-80a8-b743-f4e1fd07d5a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustment Frequency:</strong> Review exactly how often the ARM&#x27;s interest rate will fluctuate after the fixed period ends (e.g., annually, every six months, or even monthly). Borrowers who prioritize long-term payment stability and predictability should avoid ARMs entirely and stick with a fixed-rate loan.</li></ul></li></ul><p id="4138ac6a-aab1-80d3-a878-e3843b1daaa5" class="" dir="auto">
+</p></div><div id="4138ac6a-aab1-803c-8603-da3e79e9849e" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4138ac6a-aab1-8076-b5a7-c087ad8fa1ea" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4138ac6a-aab1-8006-8a5d-c29b6dc8cce1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">adjustable-rate mortgage (ARM) - a mortgage with an interest rate that can be adjusted based on fluctuations in the cost of money</li></ul><ul id="4138ac6a-aab1-80c6-9f78-fe59474c022b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">conventional loan - any loan that is neither insured by the government nor guaranteed by the government</li></ul><ul id="4138ac6a-aab1-80cb-8001-f64f97046e64" class="bulleted-list" dir="auto"><li style="list-style-type:disc">mortgage insurance premium (MIP) - borrower-paid insurance required for FHA loans; insures lender in case of borrower default/foreclosure</li></ul><ul id="4138ac6a-aab1-8029-8964-c9c78722aff1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">negative amortization - when a borrower&#x27;s payment is not large enough to cover the interest due on a loan, the unpaid interest is added to the principal balance</li></ul><ul id="4138ac6a-aab1-8001-b5ba-f1c6335b090e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">private mortgage insurance (PMI) - insurance that protects the lender if a borrower defaults on a conventional loan; usually required when the borrower has less than 20% equity</li></ul><ul id="4138ac6a-aab1-800a-9ed9-d772341124c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">refinancing - the process of obtaining a new mortgage in an effort to reduce monthly payments, lower interest rates, take cash out of a home for large purchases, or change mortgage companies</li></ul><ul id="4138ac6a-aab1-801a-9dc5-f238f58b5459" class="bulleted-list" dir="auto"><li style="list-style-type:disc">second mortgage - a mortgage loan whose lien priority is subordinate to a senior, or first, mortgage</li></ul><p id="4138ac6a-aab1-80c9-ada0-eb4153b21c75" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4138ac6a-aab1-8057-8e09-f8524079d117" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conventional Loans </strong><ul id="4138ac6a-aab1-806a-972b-d0367499ee68" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A conventional loan is originated by a private lender and is completely detached from the government—it is neither insured nor guaranteed by any federal agency.</li></ul><ul id="4138ac6a-aab1-8047-9e4b-d7c68433366e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Risk &amp; PMI:</strong> Because there is no government backing to protect the lender, conventional loans are inherently riskier for the bank. Lenders strongly prefer a 20% down payment. If the borrower puts down less than 20%, the lender mitigates their risk by requiring the borrower to purchase Private Mortgage Insurance (PMI).</li></ul><ul id="4138ac6a-aab1-800e-bbb2-f6203b1a94ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Approval Standards:</strong> Conventional loans typically require higher credit scores and stricter income verification than government-backed loans. However, they are often faster to process, have fewer bureaucratic property restrictions, and can offer lower interest rates.</li></ul></li></ul><ul id="4138ac6a-aab1-80e9-85cc-eb92bd20a993" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conforming vs. Non-Conforming Loans</strong><ul id="4138ac6a-aab1-809e-be1d-d6269dd3523c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conforming Loans:</strong> These loans perfectly match the strict underwriting guidelines (such as maximum loan limits and DTI ratios) established by Fannie Mae and Freddie Mac. Because they conform, they can easily be sold to these GSEs on the secondary mortgage market.</li></ul><ul id="4138ac6a-aab1-80aa-b5e5-dbb2f3eb4cac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Conforming Loans:</strong> These loans do not meet Fannie Mae or Freddie Mac standards (often because the loan amount is too large, known as a &quot;jumbo loan&quot;). While Fannie and Freddie will not buy them, private investors on the secondary market still might.</li></ul></li></ul><ul id="4138ac6a-aab1-8059-910b-c7b8bbc71b4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-to-Value (LTV) Ratio</strong><ul id="4138ac6a-aab1-80c1-9a3f-cbf88dab6542" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> LTV measures the percentage of the property&#x27;s purchase price that is financed by the loan. A low down payment equals a high LTV, which represents a high-risk loan for the lender.</li></ul><ul id="4138ac6a-aab1-80be-b758-e9a2e07f86fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong> Formula:</strong> <code>Loan amount / Purchase price = Loan-to-value ratio</code><figure id="4138ac6a-aab1-809c-a7a0-f8d20d6260aa" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image%204.png"><img style="width:375.796875px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image%204.png"/></a></figure></li></ul></li></ul><ul id="4138ac6a-aab1-808c-a312-cc667d700087" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Insurance (PMI vs. MIP)</strong><ul id="4138ac6a-aab1-8092-8792-f18efc1ff244" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional PMI (Private Mortgage Insurance):</strong> Required on conventional loans when the borrower puts down less than 20% (LTV &gt; 80%). It is provided by private companies and protects the lender, not the borrower. It can usually be cancelled once the borrower reaches 20% equity.</li></ul><ul id="4138ac6a-aab1-80f7-b0c0-fc58fa2c5df6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA MIP (Mortgage Insurance Premium):</strong> The FHA&#x27;s mandatory version of mortgage insurance. It consists of an upfront fee (UFMIP) and an ongoing monthly premium. If the FHA borrower puts down less than 10%, they must pay the monthly MIP for the entire life of the loan.<figure id="4138ac6a-aab1-80fb-b56b-fa2aa6f478c2" class="image" data-notion-image="Chapter%201%20-%20Common%20Mortgage%20Types/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Common%20Mortgage%20Types/image%205.png"><img style="width:1200px" src="Chapter%201%20-%20Common%20Mortgage%20Types/image%205.png"/></a></figure></li></ul></li></ul><ul id="4138ac6a-aab1-806a-9052-e559b4213ce5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Amortization Structures</strong><ul id="4138ac6a-aab1-80aa-b5be-f493b5dd1ed0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fully Amortized:</strong> Fixed monthly PI payments that systematically kill off the debt. If all payments are made, the balance is exactly $0 at the end of the term.</li></ul><ul id="4138ac6a-aab1-8068-88c8-fea6c31b999a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Partially Amortized:</strong> Fixed monthly payments calculated over a long schedule, but the loan term ends early, requiring a massive lump-sum &quot;balloon payment&quot; to clear the remaining balance.</li></ul><ul id="4138ac6a-aab1-8069-b7ae-c2c19be71279" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negative Amortization:</strong> The monthly payment is set too low to cover the interest owed. The unpaid interest is capitalized, causing the total principal balance to grow larger every month.</li></ul></li></ul><ul id="4138ac6a-aab1-80b3-b184-d7fb97265274" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Interest Rate Structures</strong><ul id="4138ac6a-aab1-80a1-9908-ed96df37680a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fixed-Rate Mortgages:</strong> The interest rate and the total monthly payment amount never change for the entire lifespan of the loan.</li></ul><ul id="4138ac6a-aab1-803a-96bd-ea4f2f63b735" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustable-Rate Mortgages (ARMs):</strong> The interest rate fluctuates over time based on a financial market index. They typically feature a discounted, fixed introductory rate before entering the volatile adjustment period.</li></ul><p id="4138ac6a-aab1-8069-8d0d-c03d619ad621" class="" dir="auto">
+</p></li></ul></div></div><p id="4138ac6a-aab1-8091-9bb7-ce377f07fe5b" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

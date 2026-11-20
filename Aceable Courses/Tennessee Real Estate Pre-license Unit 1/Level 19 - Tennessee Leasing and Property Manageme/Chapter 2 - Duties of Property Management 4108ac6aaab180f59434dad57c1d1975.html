@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Duties of Property Management</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80f5-9434-dad57c1d1975" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Duties of Property Management</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4168ac6a-aab1-803f-ab2c-ef7ee4d6813a" class="column-list" data-notion-column-list="" dir="auto"><div id="4168ac6a-aab1-80b3-87c6-f8fb298c99db" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4168ac6a-aab1-8099-94c3-e07869ae1421" class="" dir="auto"><strong>Leasing Roles &amp; Tenant Relationships</strong></p><ul id="4168ac6a-aab1-8007-ab41-f36cd176646b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lessor vs. Lessee:</strong> The property owner (or the property manager acting on their behalf) is the <strong>lessor</strong> (landlord) who grants the lease, while the tenant renting the property is the <strong>lessee</strong>.</li></ul><ul id="4168ac6a-aab1-80f7-8519-c421705f828f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Retention &amp; Profitability:</strong> A rental property&#x27;s profitability depends directly on acquiring qualified tenants and retaining them. High turnover erodes net income through lost rent during vacancies and increased marketing/turnover costs. While property managers cannot change a building&#x27;s physical location, they directly control policies, communication, and living conditions to keep tenants satisfied before they choose to vacate at lease expiration.</li></ul><ul id="4168ac6a-aab1-8081-85d8-ec2bd895b8b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Property Marketing Plans</strong><ul id="4168ac6a-aab1-80ec-bb87-f67ae471d00a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To minimize vacancies and attract ideal tenants, property managers develop a structured marketing plan containing:<ul id="4168ac6a-aab1-802b-a4f6-d0e04cd3cb2b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Market Analysis:</strong> Evaluates the subject property alongside regional and neighborhood characteristics (transportation access, zoning regulations, population demographics, comparable properties, and local vacancy/demand rates) to set competitive, profitable rental rates.</li></ul><ul id="4168ac6a-aab1-8056-a4d3-fad7797f3b72" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Marketing Budget:</strong> Allocates financial resources across specific advertising channels based on current vacancy levels.</li></ul><ul id="4168ac6a-aab1-8029-8510-de6ba111175d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Target Market, Goals &amp; Mission Statement:</strong> Defines the ideal tenant profile and establishes clear occupancy objectives.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80e7-9c1c-d6f7346e56d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing &amp; Legal Marketing Compliance</strong><ul id="4168ac6a-aab1-8070-813d-c8cbd01e6b4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Anti-Discrimination Laws:</strong> All property marketing and tenant selection practices must strictly comply with federal, state, and local fair housing and civil rights laws—prohibiting discrimination based on protected characteristics (such as race, color, religion, sex, disability, familial status, or national origin).</li></ul><ul id="4168ac6a-aab1-804c-a367-e64b86fbdaf6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equal Housing Opportunity:</strong> Marketing graphics and advertisements should display the <strong>Equal Housing Opportunity logo</strong> to affirm compliance with fair housing guidelines.</li></ul></li></ul><ul id="4168ac6a-aab1-800a-aba0-d76682688059" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Marketing Channels &amp; Strategies</strong><ul id="4168ac6a-aab1-80bd-8c7d-c06a5c24f90b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property managers utilize multiple channels to reach prospective tenants, tailoring tactics to the property type and target audience:<ul id="4168ac6a-aab1-80d5-863e-d3647acbdd8a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Print &amp; Social Media Ads:</strong> Local newspapers and targeted digital platforms (such as Facebook) to reach specific demographics.</li></ul><ul id="4168ac6a-aab1-8072-8924-cc862d3050f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Word of Mouth &amp; Referral Programs:</strong> Leveraging reputation and incentivizing existing tenants (e.g., offering a $50 rent credit) for successful tenant referrals.</li></ul><ul id="4168ac6a-aab1-80f9-bf0d-cee1911c3d54" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>On-Site Signage:</strong> High-visibility signs displaying clear contact information.</li></ul><ul id="4168ac6a-aab1-8077-9b7f-cd88ac7c12f7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Brochures &amp; Direct Mail:</strong> Concise, visually appealing flyers distributed locally.</li></ul><ul id="4168ac6a-aab1-80ee-9a03-ee6723565553" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property Websites:</strong> User-friendly sites featuring high-quality property photos and clear contact details.</li></ul><ul id="4168ac6a-aab1-803b-ae20-eaa8d4ff60a7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Press Releases:</strong> Media announcements highlighting major upgrades, new amenities, or notable property features.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8048-804a-d50a8f9f005e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evaluating Marketing Effectiveness: Cost Per Prospect</strong><ul id="4168ac6a-aab1-8007-9288-d30b13741bf0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Property managers must continually track lead sources and weigh marketing expenditures against actual prospect generation to maximize return on advertising spend and adjust the marketing plan accordingly.</li></ul><ul id="4168ac6a-aab1-8042-8e77-d6dd7565c870" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Formula </strong><code>Cost of advertisement ÷ Number of prospects = Cost per prospect</code></li></ul></li></ul><ul id="4168ac6a-aab1-80f2-a950-e6b016bf13d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Examples &amp; Campaign Comparison</strong><table id="4168ac6a-aab1-8074-b074-c1a176a86647" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8062-b323-d39b1fe006e3" dir="ltr"><td id="Y\oL" class=""><strong>Marketing Channel</strong></td><td id=":T}?" class=""><strong>Total Ad Cost</strong></td><td id="^eQO" class=""><strong>Prospects Generated</strong></td><td id="m]hr" class=""><strong>Calculation</strong></td><td id="m?G{" class=""><strong>Cost Per Prospect</strong></td><td id="z_HI" class=""><strong>Effectiveness Assessment</strong></td></tr><tr id="4168ac6a-aab1-804a-ba34-f116e0645f5f" dir="ltr"><td id="Y\oL" class=""><strong>12-Foot Billboard (Chattanooga)</strong></td><td id=":T}?" class="">$900</td><td id="^eQO" class="">9</td><td id="m]hr" class=""><code>$900 ÷ 9</code></td><td id="m?G{" class=""><strong>$100.00</strong></td><td id="z_HI" class="">High acquisition cost; low efficiency</td></tr><tr id="4168ac6a-aab1-80e0-a66f-e1ca9d633640" dir="ltr"><td id="Y\oL" class=""><strong>Facebook Advertisement</strong></td><td id=":T}?" class="">$300</td><td id="^eQO" class="">33</td><td id="m]hr" class=""><code>$300 ÷ 33</code></td><td id="m?G{" class=""><strong>$9.09</strong></td><td id="z_HI" class="">Highly cost-effective; merits increased budget allocation</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8048-b2bb-fa7d0b74fcf4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Takeaway:</strong> Documenting cost-per-prospect metrics within the marketing plan allows the property manager to cut underperforming channels (such as expensive brochures or billboards yielding low leads) and reallocate funds toward high-converting platforms to meet the owner&#x27;s occupancy goals.<figure id="4168ac6a-aab1-8095-a014-ec38cbb573e2" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image.png"><img style="width:432px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-8076-b143-f8632ce1881f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evaluating Prospective Tenants (Tenant Screening)</strong><ul id="4168ac6a-aab1-8029-bc8e-f708f206c67d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Objective Evaluation via Standard Lease Applications:</strong> Property managers screen applicants consistently using a standardized lease application to assess financial qualification and property fit without bias.</li></ul><ul id="4168ac6a-aab1-8045-8434-e032eeb9aa20" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Information Collected on the Application:</strong><ul id="4168ac6a-aab1-803a-a977-c9f113bfbcf3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Basic Identification:</strong> Full name, contact details, government ID number, and date of birth.</li></ul><ul id="4168ac6a-aab1-8015-a46c-cfb0b8370fe3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financial &amp; Background Verification:</strong> Employment status, income verification, credit history, personal/landlord references, and pet ownership.</li></ul><ul id="4168ac6a-aab1-8073-bfef-ec7b098fda34" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Risk &amp; Safety Screening:</strong> Permitted checks on criminal background, bankruptcy history, and prior evictions to ensure community safety and financial reliability.</li></ul></li></ul><ul id="4168ac6a-aab1-804a-80da-eff17a76ed7d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Compliance:</strong> Screening criteria must strictly avoid protected classes (race, gender, religion, national origin, disability, familial status, etc.) in compliance with federal and state fair housing laws.</li></ul></li></ul><ul id="4168ac6a-aab1-80bd-8ebd-df0d9fe16b72" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Executing Lease Agreements</strong><ul id="4168ac6a-aab1-80cc-b36f-ec367173e6b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once qualified applicants are selected, the property manager (acting as <strong>lessor</strong> on the owner&#x27;s behalf) executes a written lease agreement with each tenant (<strong>lessee</strong>).</li></ul><ul id="4168ac6a-aab1-8039-8e77-f710dff77b40" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The lease establishes property rules and regulations, mutual expectations, payment obligations, and legal remedies (and may involve negotiated terms depending on the tenancy).</li></ul></li></ul><ul id="4168ac6a-aab1-80cf-92b3-c56fbdb4b91b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Setting Competitive Rental Rates</strong><ul id="4168ac6a-aab1-80eb-8d60-e24cc53c1199" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financial &amp; Market Alignment:</strong> Establishing rent requires balancing the property&#x27;s financial requirements against local market conditions to achieve maximum occupancy and return on investment (ROI).</li></ul><ul id="4168ac6a-aab1-80a5-90fe-fd832d980d39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Factors in Rate Determination:</strong><ul id="4168ac6a-aab1-8034-aef0-e63dd96dffb3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Operating Budget Coverage:</strong> Rental income must cover ongoing operating expenses, pay fixed charges (such as property taxes, insurance, and debt service), and yield a fair profit for the owner.</li></ul><ul id="4168ac6a-aab1-8036-9437-cc061f0a10ff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Competitive Market Research (&quot;Sleuthing&quot;):</strong> Analyzing comparable local properties—comparing asking rents, interior quality, offered amenities, and move-in concessions.</li></ul><ul id="4168ac6a-aab1-8024-99e3-edf042973ace" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Annual Adjustments:</strong> Reviewing and adjusting rates annually to reflect shifting market demand and expense inflation.</li></ul></li></ul><ul id="4168ac6a-aab1-80b8-9ef2-cddfeead28b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Finding the Optimal Pricing Balance:</strong><table id="4168ac6a-aab1-8011-affd-f84774f3e99f" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8091-bc46-f55daea2e239" dir="ltr"><td id="TIlE" class=""><strong>Pricing Strategy</strong></td><td id="FcxS" class=""><strong>Consequence</strong></td><td id="kC;=" class=""><strong>Financial Impact</strong></td></tr><tr id="4168ac6a-aab1-8038-9ebb-d89ed09fdf42" dir="ltr"><td id="TIlE" class=""><strong>Rent Set Too High</strong></td><td id="FcxS" class="">Extended vacancies and slow lease-up</td><td id="kC;=" class="">Lost rental income and lower overall profitability</td></tr><tr id="4168ac6a-aab1-80a6-8b3e-fc49383ebe04" dir="ltr"><td id="TIlE" class=""><strong>Rent Set Too Low</strong></td><td id="FcxS" class="">Rapid occupancy, but revenue falls short</td><td id="kC;=" class="">Fails to cover operating costs and reduces owner ROI</td></tr><tr id="4168ac6a-aab1-8035-bc7d-e8f0631e379a" dir="ltr"><td id="TIlE" class=""><strong>Balanced Market Rate</strong></td><td id="FcxS" class="">Competitive with area comps while covering expenses</td><td id="kC;=" class="">Maximizes occupancy, covers fixed/operating costs, and optimizes ROI</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-801b-bc55-fc1dffb6c8c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Rent Roll</strong><ul id="4168ac6a-aab1-80a7-ad9e-e7ab8fc4d835" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A comprehensive management report acting as a master roster of a property&#x27;s rental units, tenants, and financial standing.</li></ul><ul id="4168ac6a-aab1-805d-ad1b-e77688d98c40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Information Included on a Rent Roll:</strong><ul id="4168ac6a-aab1-80b5-9fb1-eb1cfa8617d2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total number of units in the property (including occupied vs. vacant units).</li></ul><ul id="4168ac6a-aab1-80f4-b530-c1fae4ce14c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identities of current tenants occupying each unit.</li></ul><ul id="4168ac6a-aab1-80ae-b207-c29dc6083712" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lease terms (exact start and expiration dates of each lease).</li></ul><ul id="4168ac6a-aab1-8069-86ca-c175714c6613" class="bulleted-list" dir="auto"><li style="list-style-type:square">Monthly rental income generated by each unit.</li></ul><ul id="4168ac6a-aab1-80f0-891f-d913fb544bca" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any outstanding or past-due balances owed by tenants.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80b5-a627-fc98a5d25aa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rent Collection &amp; Delinquency Management</strong><ul id="4168ac6a-aab1-80ea-ad5d-d818dfbbeb28" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Proactive Rent Collection:</strong> Because a property manager&#x27;s primary fiduciary duty is to generate and protect income for the property owner, managers must actively monitor past-due accounts on the rent roll and promptly execute structured collection plans when tenants fail to pay on time.</li></ul><ul id="4168ac6a-aab1-804d-a17c-e1ec9aa5168a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Early Warning Indicators:</strong> Late or partial payments frequently signal deeper financial distress and future collection challenges, requiring immediate, consistent follow-up.</li></ul></li></ul><ul id="4168ac6a-aab1-800c-b4a8-fb44db0b097c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Delinquent Account Report</strong><ul id="4168ac6a-aab1-8065-9351-fa435f1bee77" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> A specialized financial report submitted to the property owner detailing all tenant accounts that have fallen into delinquency (past-due status) and the exact amounts owed.</li></ul><ul id="4168ac6a-aab1-801d-abd9-ebc0065f6115" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Additional Financial Disclosures:</strong> Beyond overdue rent balances, the delinquent account report typically documents any ongoing legal proceedings (such as eviction filings, collection lawsuits, or tenant disputes) that may impact the property&#x27;s cash flow and financial performance.<figure id="4168ac6a-aab1-8003-955f-cb129262c333" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%201.png"><img style="width:528px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%201.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-80a9-81bc-f64969c45d91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Summary of Property Management Rent &amp; Delinquency Reports<table id="4168ac6a-aab1-80a2-b943-e5bbaab1b8b4" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8018-a894-dce0428ecb95" dir="ltr"><td id="z=eh" class=""><strong>Report Type</strong></td><td id="ktHW" class=""><strong>Primary Purpose</strong></td><td id="`p@?" class=""><strong>Key Data Tracked</strong></td></tr><tr id="4168ac6a-aab1-800c-b0fd-f8a701a1298b" dir="ltr"><td id="z=eh" class=""><strong>Rent Roll</strong></td><td id="ktHW" class="">Master operational and revenue snapshot of all units</td><td id="`p@?" class="">Unit count, tenant names, lease start/end dates, monthly rent rates, and current balances</td></tr><tr id="4168ac6a-aab1-80ce-9463-f46d37840b51" dir="ltr"><td id="z=eh" class=""><strong>Delinquent Account Report</strong></td><td id="ktHW" class="">Tracks overdue receivables and legal risks for owner awareness</td><td id="`p@?" class="">Past-due tenant accounts, delinquent dollar amounts, collection status, and active legal proceedings</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8038-8b71-e2cecd11e9cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Accommodating Unique Tenants: Construction &amp; Alterations</strong><ul id="4168ac6a-aab1-8026-b66a-e40fa780615e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Because individual tenants have distinct operational and physical requirements, property managers frequently coordinate structural modifications, updates, or safety improvements to rental units.</li></ul><ul id="4168ac6a-aab1-8069-b7cd-da24f776a780" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Execution &amp; Oversight:</strong> Depending on the scale of work and property size, alterations may be completed by on-site maintenance staff or outsourced to third-party contractors—in all cases, the property manager should actively supervise the work to ensure quality, budget compliance, and safety.</li></ul></li></ul><ul id="4168ac6a-aab1-80e9-9a2b-f9d1004b5d54" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Categories of Property Alterations</strong><table id="4168ac6a-aab1-80fd-a6d2-dd7e420a3b95" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80d4-acf6-c6653765abbe" dir="ltr"><td id="v:?X" class=""><strong>Alteration Type</strong></td><td id=";&gt;Po" class=""><strong>Definition &amp; Purpose</strong></td><td id="JP\?" class=""><strong>Strategic &amp; Financial Considerations</strong></td></tr><tr id="4168ac6a-aab1-8033-a492-f38747d9b532" dir="ltr"><td id="v:?X" class=""><strong>Build-Outs (Tenant Improvements)</strong></td><td id=";&gt;Po" class="">Custom modifications made to tailor a unit to a specific tenant&#x27;s operational desires</td><td id="JP\?" class="">Most common in newly constructed commercial or retail shells left unfinished until a tenant signs a lease</td></tr><tr id="4168ac6a-aab1-80f8-acaa-dab7b052dca4" dir="ltr"><td id="v:?X" class=""><strong>Renovations</strong></td><td id=";&gt;Po" class="">Updating and restoring an existing unit to modern, high-functioning condition</td><td id="JP\?" class="">Attracts quality tenants, lowers ongoing maintenance expenses, and supports competitive rental rates; <strong>must yield a positive ROI</strong> (avoid over-improving beyond financial return)</td></tr><tr id="4168ac6a-aab1-80ee-bc0e-e43ad770a29d" dir="ltr"><td id="v:?X" class=""><strong>Environmental Remediation</strong></td><td id=";&gt;Po" class="">Structural or containment measures to eliminate or mitigate environmental hazards</td><td id="JP\?" class="">Addresses risks such as <strong>asbestos, radon, and mold</strong> to protect tenant health and prevent owner liability</td></tr><tr id="4168ac6a-aab1-8084-8e55-d37a06495e7d" dir="ltr"><td id="v:?X" class=""><strong>Legal Stipulations</strong></td><td id=";&gt;Po" class="">Modifications required to satisfy statutory mandates and building codes</td><td id="JP\?" class="">Includes accessibility compliance (e.g., ADA accommodations) and municipal health/safety ordinances</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-809a-99d4-e219f45cf5d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maintenance Reports &amp; Budgeting</strong><ul id="4168ac6a-aab1-80d5-af0f-d81253286c0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Periodic maintenance reports track ongoing physical upkeep, repairs, and vendor expenses, helping the property owner anticipate costs and establish an accurate maintenance budget while keeping the facility operational and tenants satisfied.</li></ul></li></ul><ul id="4168ac6a-aab1-8067-a1d7-ca5747aebcde" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Categories of Property Maintenance</strong><table id="4168ac6a-aab1-80f5-b3ff-ea5a28cbd200" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8072-acf1-cbffefc8b1ad" dir="ltr"><td id="=]Yy" class=""><strong>Maintenance Category</strong></td><td id="g~jb" class=""><strong>Definition &amp; Goal</strong></td><td id="exTp" class=""><strong>Key Examples &amp; Inspection Schedules</strong></td></tr><tr id="4168ac6a-aab1-8014-9a82-dca9796db4f9" dir="ltr"><td id="=]Yy" class=""><strong>Routine Maintenance</strong></td><td id="g~jb" class="">Regular, day-to-day monitoring, housekeeping, and basic upkeep of essential facility features to minimize future breakdowns</td><td id="exTp" class="">Routine inspections, basic HVAC filter checks, common-area housekeeping, minor repairs, light fixture upkeep, and landscaping</td></tr><tr id="4168ac6a-aab1-8027-9d88-fdfc34531ee6" dir="ltr"><td id="=]Yy" class=""><strong>Preventative Maintenance</strong></td><td id="g~jb" class="">In-depth, scheduled periodic inspections designed to catch minor defects early before they escalate into costly major system failures</td><td id="exTp" class="">• <strong>HVAC system:</strong> Annually<br/><br/>• <strong>Pipes:</strong> Annually (prior to winter months)<br/><br/>• <strong>Roof:</strong> Semi-annually<br/><br/>• <strong>Lawn sprinklers:</strong> Weekly</td></tr><tr id="4168ac6a-aab1-8037-b69f-e004bc4caa86" dir="ltr"><td id="=]Yy" class=""><strong>Corrective Maintenance</strong></td><td id="g~jb" class="">Reactive, urgent repairs performed <em>after</em> a system or piece of equipment has already failed or broken down</td><td id="exTp" class="">Emergency A/C repair during peak summer heat, fixing a leaking water heater, or repairing burst plumbing</td></tr><tr id="4168ac6a-aab1-80ef-ae43-c425bb2a0e16" dir="ltr"><td id="=]Yy" class=""><strong>Cosmetic Maintenance</strong></td><td id="g~jb" class="">Non-essential aesthetic upkeep that preserves visual appeal and supports tenant attraction/retention</td><td id="exTp" class="">Interior/exterior painting, carpet cleaning, fixture upgrades, and decorative enhancements</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8064-8dc8-de92fbeab776" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Capital Improvements </strong><ul id="4168ac6a-aab1-8063-a34c-cfbf5faa7e23" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Structural upgrades, additions, or replacements that fall outside the scope of normal repairs and routine maintenance, typically undertaken to substantially increase the property&#x27;s value, prolong its useful life, or adapt it to new uses.</li></ul><ul id="4168ac6a-aab1-80f6-870a-c3d4ee6e8228" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Examples:</strong><ul id="4168ac6a-aab1-80a6-884c-c18630dbeb6a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Adding a new bedroom or bathroom to a unit</li></ul><ul id="4168ac6a-aab1-801f-95f5-e3abd9dc7dec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Constructing a new backyard deck</li></ul><ul id="4168ac6a-aab1-8017-8184-ff938daf527d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Finishing an unfinished basement</li></ul><ul id="4168ac6a-aab1-806f-b2f2-f0551310348e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Replacing an entire roof (as opposed to patching a leak)</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-804d-990f-c8eadac78b48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Repairs vs. Capital Improvements </strong><ul id="4168ac6a-aab1-8050-960c-daa7041087cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why the Distinction Matters:</strong> Standard repairs and capital improvements receive completely different tax treatments for the property owner.<table id="4168ac6a-aab1-80af-9960-e86b445c54d3" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-809b-8b4c-ca9a670f8e76" dir="ltr"><td id="BZUJ" class=""><strong>Feature</strong></td><td id="~&lt;PX" class=""><strong>Standard Repair (Corrective Maintenance)</strong></td><td id="g&lt;dN" class=""><strong>Capital Improvement</strong></td></tr><tr id="4168ac6a-aab1-808c-b74f-c942594e5e57" dir="ltr"><td id="BZUJ" class=""><strong>Primary Purpose</strong></td><td id="~&lt;PX" class="">Restores the property to its existing working condition</td><td id="g&lt;dN" class="">Increases property value, extends useful life, or adds new features</td></tr><tr id="4168ac6a-aab1-8035-8936-d4c128d9cf38" dir="ltr"><td id="BZUJ" class=""><strong>Roof Example</strong></td><td id="~&lt;PX" class="">Patching a leak or replacing damaged shingles</td><td id="g&lt;dN" class="">Replacing the entire roof structure</td></tr><tr id="4168ac6a-aab1-8000-8821-efd4ad91c6e0" dir="ltr"><td id="BZUJ" class=""><strong>Tax Treatment &amp; Timing</strong></td><td id="~&lt;PX" class="">Treated as a current-year operating expense deduction</td><td id="g&lt;dN" class="">Added to the property&#x27;s <strong>cost basis</strong>; reduces taxable profit (<strong>long-term capital gains tax</strong>) <em>only when the owner sells the property</em></td></tr></tbody></table><figure id="4168ac6a-aab1-80e5-bb57-c9bff8442dac" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%202.png"><img style="width:432px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%202.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-8083-a3be-d6a9fead5876" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Financial Objectives of a Property Manager</strong><ul id="4168ac6a-aab1-806b-8e5c-dfd6053767ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property managers are tasked with achieving and documenting five primary financial goals for the owner:<ol type="1" id="4168ac6a-aab1-80c6-a393-f039520250d8" class="numbered-list" start="1" dir="auto"><li>Preserving the physical and market value of the property.</li></ol><ol type="1" id="4168ac6a-aab1-808f-a296-d4631b2b6419" class="numbered-list" start="2" dir="auto"><li>Controlling and minimizing operating expenses.</li></ol><ol type="1" id="4168ac6a-aab1-808f-b67e-c2f6a0af1aef" class="numbered-list" start="3" dir="auto"><li>Generating consistent primary income through rent collection.</li></ol><ol type="1" id="4168ac6a-aab1-80b7-8557-eccd1c0f3381" class="numbered-list" start="4" dir="auto"><li>Maximizing ancillary income beyond rent (e.g., laundry facilities, parking fees, vending, pet fees).</li></ol><ol type="1" id="4168ac6a-aab1-80ea-a264-efc3b8eb6d26" class="numbered-list" start="5" dir="auto"><li>Fulfilling any specialized financial stipulations outlined in the property management agreement.</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-809b-a434-e718615d0e45" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Financial Reporting &amp; The Property Management Report</strong><ul id="4168ac6a-aab1-8022-8ad8-d683106582b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Reporting Metrics:</strong> Financial reports are prepared at regular intervals specified in the management agreement to communicate profit, loss, revenue, expenditures, and tax data.</li></ul><ul id="4168ac6a-aab1-8085-aeb5-e232cf163622" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Property Management Report:</strong> A comprehensive monthly report prepared by the property manager for the owner detailing all property income, operating expenses, and disbursements. It ensures accurate accounting and guides rent-setting decisions so rental revenue adequately covers property costs.</li></ul></li></ul><ul id="4168ac6a-aab1-80f7-9b70-e0498a35e41a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foundational Financial Accounting Concepts</strong><ul id="4168ac6a-aab1-809f-a248-d10a33f1f086" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Before generating detailed financial reports, property managers must track four core financial building blocks:<ul id="4168ac6a-aab1-80db-bd17-d96c18d287fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Income:</strong> Funds received by the property (categorized into Gross Income and Net Operating Income).</li></ul><ul id="4168ac6a-aab1-8085-b544-de209a97282d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expenses:</strong> Ongoing costs required to operate and maintain the property.</li></ul><ul id="4168ac6a-aab1-80c0-a78e-dffd88b7629b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Expenditures (CapEx):</strong> Major long-term structural investments or upgrades that add value or extend the property&#x27;s useful life.</li></ul><ul id="4168ac6a-aab1-807c-ab5f-ed040a943d74" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cash Reserve:</strong> Dedicated funds set aside from property revenue to cover unexpected repairs, emergencies, or future capital expenditures.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8015-99f5-d2a0c94b8277" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Categories of Property Income</strong><ul id="4168ac6a-aab1-80b9-a62a-d7d7ce90f26d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property income is broken down into two primary tiers:<ol type="1" id="4168ac6a-aab1-804b-9b1e-f1c14bbd8a85" class="numbered-list" start="1" dir="auto"><li><strong>Gross Income:</strong><ul id="4168ac6a-aab1-807f-b53d-dee952a83f0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Potential Gross Income (PGI):</strong> The maximum total rental revenue a property could generate if 100% of units were occupied at full market rent with zero collection losses.</li></ul><ul id="4168ac6a-aab1-80dc-8b75-e0873276b260" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Effective Gross Income (EGI):</strong> The actual gross revenue realized after subtracting vacancy losses and bad-debt/collection losses from Potential Gross Income, plus any non-rental ancillary income.</li></ul></li></ol><ol type="1" id="4168ac6a-aab1-8004-94a1-d971908a092e" class="numbered-list" start="2" dir="auto"><li><strong>Net Operating Income (NOI):</strong> The net cash flow remaining after deducting all operating expenses from Effective Gross Income (calculated prior to mortgage debt service and income taxes).</li></ol></li></ul><ul id="4168ac6a-aab1-804a-8e96-ecd27dea034d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Potential Gross Income (PGI) vs. Effective Gross Income (EGI)</strong><ul id="4168ac6a-aab1-804e-a66d-da8eed6f7f6c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Income:</strong> The total top-line revenue generated by an income-producing property, broken down into theoretical maximum capacity (PGI) and actual realized revenue (EGI).</li></ul><ul id="4168ac6a-aab1-8048-a53e-c5db0f8b0714" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Potential Gross Income (PGI / Gross Potential Income):</strong> The maximum rental revenue a property could generate if <strong>100% of its units were leased at full market rate</strong> with zero vacancies or collection losses.<figure id="4168ac6a-aab1-80a2-b99d-c4864a312e80" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%203.png"><img style="width:480px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%203.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-8068-86bb-ed58240f22cc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Effective Gross Income (EGI):</strong> The actual gross revenue a property realizes after subtracting vacancy and collection losses from PGI, and adding any ancillary non-rental income (e.g., laundry, parking, vending, or late fees).<figure id="4168ac6a-aab1-8056-a608-ea6dc14dd52f" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%204.png"><img style="width:480px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%204.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-80fd-a74e-d0504f1c7c26" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formulas </strong><ul id="4168ac6a-aab1-802e-aa50-fc0e453a8874" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Total units × Market rent per unit = Potential Gross Income</code></li></ul><ul id="4168ac6a-aab1-8019-945f-cc31f9d9dd0d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Potential Gross Income - Vacancy and collection losses + Ancillary income = Effective Gross Income</code></li></ul></li></ul><ul id="4168ac6a-aab1-80cf-bde6-ed0534178254" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Scenario Comparison (20-Unit Apartment Building at $600/Unit)</strong><table id="4168ac6a-aab1-8000-a69f-e13594eef3c2" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80ec-8757-e15a203e3c44" dir="ltr"><td id="PB?[" class=""><strong>Income Metric</strong></td><td id="~Apw" class=""><strong>Occupancy Status</strong></td><td id="wi{l" class=""><strong>Math Calculation</strong></td><td id="v~PS" class=""><strong>Resulting Income</strong></td></tr><tr id="4168ac6a-aab1-80c1-99f7-dd0d1a3f46e9" dir="ltr"><td id="PB?[" class=""><strong>Potential Gross Income (PGI)</strong></td><td id="~Apw" class=""><strong>100% Occupied</strong> (20 of 20 units leased; 0% vacancy)</td><td id="wi{l" class=""><code>20 units × $600 = $12,000</code></td><td id="v~PS" class=""><strong>$12,000</strong></td></tr><tr id="4168ac6a-aab1-80a0-a1ab-dd2ae2199f34" dir="ltr"><td id="PB?[" class=""><strong>Effective Gross Income (EGI)</strong></td><td id="~Apw" class=""><strong>50% Occupied</strong> (10 of 20 units leased; 50% vacancy)</td><td id="wi{l" class=""><code>$12,000 - $6,000 vacancy loss = $6,000</code> (or <code>10 units × $600 = $6,000</code>)</td><td id="v~PS" class=""><strong>$6,000</strong></td></tr></tbody></table><figure id="4168ac6a-aab1-8036-b1db-ee2843d5b0d4" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%205.png"><img style="width:816px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%205.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-803b-8e04-e6a144e898b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Operating Income (NOI) &amp; Cash Flow</strong><ul id="4168ac6a-aab1-80f2-bb29-ea1983ee9450" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net Operating Income (NOI):</strong> Measures a property&#x27;s actual profitability from operations by subtracting all necessary operating expenses from effective gross income (prior to mortgage debt service and income taxes).</li></ul><ul id="4168ac6a-aab1-80d1-ad48-dd07ae796f3e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>NOI Formula (Plaintext Formatting):</strong><code>Effective gross income - Operating expenses = Net operating income</code></li></ul><ul id="4168ac6a-aab1-8042-aec7-ebd4a8c98e9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cash Flow:</strong> Measures the total net movement of money flowing into and out of a property over a given period, tracked via periodic cash flow reports issued to the owner:<ul id="4168ac6a-aab1-802c-9fe4-d1a1b1a92236" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Positive Cash Flow (+):</strong> Indicates the property is generating net profit after all expenses and debt obligations.</li></ul><ul id="4168ac6a-aab1-80cd-96a8-d77c19fd3f19" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Negative Cash Flow (-):</strong> Indicates the property is losing money.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8078-bf57-c0ec2a2342f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Operating Cash</strong><ul id="4168ac6a-aab1-8047-ba1a-ce2dc1edaeb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Cash generated from the property&#x27;s core operations after covering both operating expenses and debt service (principal and interest payments on property loans).</li></ul><ul id="4168ac6a-aab1-809e-849c-de798f79da19" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Operating Cash Formula (Plaintext Formatting):</strong><code>Income - Expenses - Debt service = Operating cash</code></li></ul><ul id="4168ac6a-aab1-80e3-b46a-e4c6fe97979b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Example:</strong><ul id="4168ac6a-aab1-803b-8523-df7c9cc136f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Given Variables:</strong> Annual Income = <strong>$864,000</strong> | Operating Expenses = <strong>$500,000</strong> | Annual Debt Service = <strong>$15,000</strong></li></ul><ul id="4168ac6a-aab1-8031-ba01-c24d1b919d9b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step-by-Step Calculation:</strong> <code>$864,000 - $500,000 - $15,000 = $349,000</code></li></ul><ul id="4168ac6a-aab1-80b1-b64d-fa6b3acc9441" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Result:</strong> The property generates <strong>$349,000</strong> in operating cash.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80f9-97ce-d3498ee98c55" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Expenditures &amp; Cash Reserves</strong><table id="4168ac6a-aab1-8010-98ed-eb8b3d253cb5" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8075-9878-f454dd66a273" dir="ltr"><td id="b=[v" class=""><strong>Expenditure / Fund Type</strong></td><td id="lqtK" class=""><strong>Definition &amp; Nature</strong></td><td id="wX}]" class=""><strong>Key Examples &amp; Financial Management</strong></td></tr><tr id="4168ac6a-aab1-80dc-b0af-c50dd8bf562b" dir="ltr"><td id="b=[v" class=""><strong>Operating Expenses (Fixed / Essential)</strong></td><td id="lqtK" class="">Mandatory, ongoing costs required simply to keep the property running and operational</td><td id="wX}]" class="">Utility fees, routine maintenance, property taxes, insurance, and administrative/overhead costs (salaries, office supplies)</td></tr><tr id="4168ac6a-aab1-8046-a6c7-cd90faae4a0b" dir="ltr"><td id="b=[v" class=""><strong>Capital Expenditures (CapEx / Variable)</strong></td><td id="lqtK" class="">Non-uniform, irregular outlays spent to improve the property, extend its useful life, or handle major structural replacements</td><td id="wX}]" class="">Replacing an entire roof, remodeling kitchens, or major system overhauls (can be planned upgrades or sudden surprises)</td></tr><tr id="4168ac6a-aab1-80f7-9feb-d820cf57137d" dir="ltr"><td id="b=[v" class=""><strong>Cash Reserve / Reserve Allowance</strong></td><td id="lqtK" class="">Dedicated funds set aside from property income (also called a <strong>replacement reserve</strong>) to cover irregular variable expenses and major repairs</td><td id="wX}]" class="">Cushions the owner against unexpected emergencies (e.g., sudden roof leaks) or planned capital renovations (e.g., lobby remodels)</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-8081-8a6d-c87f86a50e15" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Property Management Financial Reports</strong><ul id="4168ac6a-aab1-80a1-a7e2-eb38b22a7aea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property managers regularly generate two primary categories of financial reporting to track performance and guide owner decision-making:<ol type="1" id="4168ac6a-aab1-80ba-8787-fa3d48f02338" class="numbered-list" start="1" dir="auto"><li><strong>Profit and Loss (P&amp;L) Statement</strong></li></ol><ol type="1" id="4168ac6a-aab1-804a-a668-cc6776f67875" class="numbered-list" start="2" dir="auto"><li><strong>Property Budgets</strong> (Operating budget, Stabilized budget, Capital reserve budget, and Budget comparison statement)</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-80f1-9254-e24184716818" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Profit and Loss (P&amp;L) Statement</strong><ul id="4168ac6a-aab1-8028-852a-c1d022bd1e8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Compares a property&#x27;s total revenue against its total expenditures over a specific reporting period to determine bottom-line profitability.</li></ul><ul id="4168ac6a-aab1-80fa-9431-c63f6de5654f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The P&amp;L Formula :</strong><code>Gross receipts - Operating expenses - Total mortgage payment = Net profit</code></li></ul><ul id="4168ac6a-aab1-80da-bd84-c9d34b290457" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Component Breakdown:</strong><ul id="4168ac6a-aab1-80bc-ae2f-d3e0bd46c304" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gross Receipts:</strong> Total funds collected by the property before subtracting any costs (includes rent plus ancillary revenue such as on-site cafe sales, parking, or laundry).</li></ul><ul id="4168ac6a-aab1-80dd-a61d-e1f7667200e2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Operating Expenses:</strong> Recurring day-to-day costs required to run and maintain the property (taxes, insurance, utilities, maintenance, management fees). <em>Note:</em> Investment properties generally itemize property taxes and insurance separately, though smaller properties may occasionally group them.</li></ul><ul id="4168ac6a-aab1-8097-90d6-cd30a33ba2fc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Total Mortgage Payment:</strong> Full debt service obligations (principal and interest) paid during the period.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-809d-8ae2-e65d5c6831e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Example: Six-Month Profit and Loss Calculation</strong><ul id="4168ac6a-aab1-80dd-9dd9-de6e10586110" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables (Six-Month Period):</strong><ul id="4168ac6a-aab1-8034-bd8b-edcd96a31774" class="bulleted-list" dir="auto"><li style="list-style-type:square">Gross Receipts (Rent + Cafe Sales): <strong>$825,000</strong></li></ul><ul id="4168ac6a-aab1-8068-8af3-c660d8532939" class="bulleted-list" dir="auto"><li style="list-style-type:square">Operating Expenses: <strong>$270,000</strong></li></ul><ul id="4168ac6a-aab1-80c3-b911-c5365d565c4b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total Mortgage Payment: <strong>$500,000</strong></li></ul></li></ul><ul id="4168ac6a-aab1-8069-8c23-e4194e85560b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="4168ac6a-aab1-80e2-93d0-d328955027a6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$825,000 - $270,000 - $500,000 = Net profit</code></li></ul><ul id="4168ac6a-aab1-8051-b6d6-e2e378a18dd6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$825,000 - $270,000 - $500,000 = $55,000</code></li></ul></li></ul><ul id="4168ac6a-aab1-8021-97bb-c471c29ce8dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Result:</strong> The property generated a <strong>net profit of $55,000</strong> over the six-month period.</li></ul></li></ul><ul id="4168ac6a-aab1-80bd-a76f-faffa0640caa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Management Budgeting Fundamentals</strong><ul id="4168ac6a-aab1-80c6-82df-d1730a8c7cf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Establishes financial discipline and forecasts expected cash flows tailored to the specific property asset type.</li></ul><ul id="4168ac6a-aab1-800a-bc00-eea893de8497" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Essential Components of a Property Budget:</strong><ul id="4168ac6a-aab1-80f8-9866-c8c0827b8b9a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Specific Dates &amp; Timeframes:</strong> Clear start/end dates and monetary totals corresponding to each period.</li></ul><ul id="4168ac6a-aab1-801f-8b3b-c439ebe27bf3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Revenue Specifications &amp; Totals:</strong> Itemized projections from residential/commercial rents and ancillary operating incomes.</li></ul><ul id="4168ac6a-aab1-8091-858e-ed5be506ba10" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expenditure Specifications &amp; Totals:</strong> Line-item allocations for recurring operating expenses (insurance, security, routine maintenance, utilities, taxes) and reserves.</li></ul></li></ul><ul id="4168ac6a-aab1-8055-9cae-cad5df5a3169" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Types of Property Budgets:</strong><ul id="4168ac6a-aab1-80e6-b1bd-f152d3ca62d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Operating Budget:</strong> Forecasts day-to-day recurring revenues and operating expenses over a set period (typically one year).</li></ul><ul id="4168ac6a-aab1-8076-9b66-ffdb545a7131" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Stabilized Budget:</strong> Projects long-term income and expenses assuming the property has achieved normal, steady occupancy and operational stability.</li></ul><ul id="4168ac6a-aab1-8006-a0be-cefe2f11b226" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Reserve Budget:</strong> Allocates funds into a replacement reserve for major non-recurring capital expenditures (CapEx) like roof replacements or HVAC overhauls.</li></ul><ul id="4168ac6a-aab1-80ca-9ab3-d603a1832953" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Budget Comparison Statement:</strong> Compares budgeted projections against actual financial performance to identify variances and adjust operations.<figure id="4168ac6a-aab1-80c0-90e4-d276a3c16710" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%206.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%206.png"><img style="width:624px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%206.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-800a-8c4b-df80058bff87" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Management Budget Types </strong><ul id="4168ac6a-aab1-8097-a167-fbbb72a71ae7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property managers prepare distinct budgets tailored to different planning horizons, cash-flow variability, and operational needs.</li></ul></li></ul><ul id="4168ac6a-aab1-8039-aa45-f315662b21ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Core Property Management Budgets</strong><table id="4168ac6a-aab1-800c-9902-f96cd7182a46" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80f1-a35f-eb68efe91187" dir="ltr"><td id="Z|{J" class=""><strong>Budget Type</strong></td><td id="pC|~" class=""><strong>Time Horizon</strong></td><td id="t:}s" class=""><strong>Primary Purpose &amp; Focus</strong></td><td id="\;PP" class=""><strong>Key Planning Considerations</strong></td></tr><tr id="4168ac6a-aab1-807a-aa6f-dcc363cb1f36" dir="ltr"><td id="Z|{J" class=""><strong>Operating Budget</strong></td><td id="pC|~" class=""><strong>1 Year</strong> (Short-term / Forward-looking)</td><td id="t:}s" class="">Itemizes anticipated revenues and recurring operating expenses for the upcoming year</td><td id="\;PP" class="">Relies on historical operating statements from prior periods to accurately project and allocate future costs</td></tr><tr id="4168ac6a-aab1-80eb-93ca-c3c2970057f1" dir="ltr"><td id="Z|{J" class=""><strong>Stabilized Budget</strong></td><td id="pC|~" class=""><strong>5 Years</strong> (Medium-to-Long-term)</td><td id="t:}s" class="">Averages a property&#x27;s income and expenses over a 5-year period to reflect normal, steady operations</td><td id="\;PP" class="">Created <em>after</em> establishing baseline budgets and completing a comprehensive market analysis</td></tr><tr id="4168ac6a-aab1-80a9-930c-e80348ce4a40" dir="ltr"><td id="Z|{J" class=""><strong>Capital Reserve Budget</strong></td><td id="pC|~" class="">Variable / Seasonal &amp; Long-term Reserve</td><td id="t:}s" class="">Accounts for irregular, fluctuating, or seasonal variable expenses</td><td id="\;PP" class="">Forecasts spikes in operational demand (e.g., peak January heating costs assuming 100% occupancy) and sets aside dedicated reserve funds</td></tr></tbody></table><figure id="4168ac6a-aab1-80b6-ae92-dba159e9f835" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%207.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%207.png"><img style="width:384px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%207.png"/></a></figure></li></ul></li></ul><ul id="4168ac6a-aab1-80c5-888d-da6b11dc0aa8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Operating Statement vs. Operating Budget</strong><ul id="4168ac6a-aab1-805f-afb2-e7896303e7f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Distinction:</strong> In property finance, a <strong>budget is a forward-looking plan</strong>, whereas a <strong>statement is a historical record</strong>.</li></ul><ul id="4168ac6a-aab1-80a3-b4cd-d9a7eeb9d58d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Operating Statement:</strong> A retrospective financial record that itemizes every actual revenue and expense over the previous year (or broken down month-by-month) to measure past property performance.<ul id="4168ac6a-aab1-803c-b54f-cb00ee9b66f3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Metrics Listed:</strong><ul id="4168ac6a-aab1-80e5-a6cf-fb10b96b7781" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Total Income:</strong> Gross rental income plus ancillary non-rental income.</li></ul><ul id="4168ac6a-aab1-8073-8095-e9a51bef7b56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Operating Expenses:</strong> Itemized historical costs incurred to operate and maintain the property.</li></ul><ul id="4168ac6a-aab1-8048-b4c1-d21b9b1daf1a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Operating Income (NOI):</strong> <code>Total income - Operating expenses = Net operating income</code> (plaintext formatting).</li></ul></li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8025-a6a9-e8a5b1bb7424" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Budget Comparison Statements</strong><ul id="4168ac6a-aab1-80cf-8746-c55275bf6b5f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Evaluates actual financial results against the projected budget created prior to the start of the year, allowing the property manager to measure variances, analyze cash flow, and verify whether operations align with the owner&#x27;s goals.</li></ul><ul id="4168ac6a-aab1-807a-8e9a-c5fd81b426e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strategic Value:</strong> Helps correct overly optimistic or aggressive forecasts by benchmarking projected figures against actual performance so future budgets align with financial reality.</li></ul><ul id="4168ac6a-aab1-80c0-92af-f30b6d6b4a93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Example (Budget Variance):</strong><ul id="4168ac6a-aab1-800d-bb40-cee48acad0bc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Planned Annual Budget:</strong> <strong>$175,000</strong></li></ul><ul id="4168ac6a-aab1-80dc-a5b0-e4e3631093c0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Actual Annual Spending:</strong> <strong>$225,000</strong></li></ul><ul id="4168ac6a-aab1-809d-a3fe-c73107225a21" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Budget Variance:</strong> <code>$225,000 - $175,000 = $50,000 over budget</code></li></ul><ul id="4168ac6a-aab1-80ad-bc23-d1172d522e1c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Management Action:</strong> Because sustained overspending undermines the owner&#x27;s long-term return on investment, the property manager must investigate cost overruns and recalibrate future budgets and expense controls.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80ab-815f-e6bc1149c555" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Summary of Operating Reports &amp; Statements<table id="4168ac6a-aab1-80a4-ac02-eb83e2f01fe2" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8031-b7bf-d9698f21ca50" dir="ltr"><td id="JjPW" class=""><strong>Financial Document</strong></td><td id="dO:e" class=""><strong>Time Orientation</strong></td><td id="R;Rf" class=""><strong>Primary Function</strong></td><td id="vMsS" class=""><strong>Key Focus</strong></td></tr><tr id="4168ac6a-aab1-80a3-9e42-cbf8495bc0b1" dir="ltr"><td id="JjPW" class=""><strong>Operating Budget</strong></td><td id="dO:e" class=""><strong>Future (Plan)</strong></td><td id="R;Rf" class="">Forecasts anticipated revenues and expenses for the upcoming year</td><td id="vMsS" class="">Proactive cost allocation and financial planning</td></tr><tr id="4168ac6a-aab1-80af-9a9f-f42334ecc580" dir="ltr"><td id="JjPW" class=""><strong>Operating Statement</strong></td><td id="dO:e" class=""><strong>Past (Record)</strong></td><td id="R;Rf" class="">Itemizes actual gross income, operating expenses, and NOI from the previous year</td><td id="vMsS" class="">Historical financial accounting and performance tracking</td></tr><tr id="4168ac6a-aab1-8097-8971-dd23aeb4a40c" dir="ltr"><td id="JjPW" class=""><strong>Budget Comparison Statement</strong></td><td id="dO:e" class=""><strong>Past vs. Plan</strong></td><td id="R;Rf" class="">Compares projected budget targets against actual historical expenditures</td><td id="vMsS" class="">Identifying variances, diagnosing overspending, and adjusting future goals</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-804b-96da-d904f4dad1ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Major Federal Laws Governing Landlords and Property Managers</strong><ul id="4168ac6a-aab1-807f-9ffc-e7f03d0676ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property managers and landlords must strictly comply with federal civil rights and accessibility statutes in both employment and leasing operations.</li></ul></li></ul><ul id="4168ac6a-aab1-80d5-8077-d9f6673bf1b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Americans with Disabilities Act (ADA) of 1990</strong><ul id="4168ac6a-aab1-8094-a9a1-e56cd88c7207" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Prohibits discrimination against individuals with disabilities and mandates equal access to employment and public spaces.</li></ul><ul id="4168ac6a-aab1-80d4-b653-c18456f21afb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Key Titles Relevant to Property Management:</strong><ul id="4168ac6a-aab1-805d-b9f9-e93086913e05" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Title I (Employment):</strong> Prohibits employers from discriminating against qualified job applicants and employees with disabilities, requiring equal employment opportunities and reasonable workplace accommodations.</li></ul><ul id="4168ac6a-aab1-808c-ab79-e0913c4203e4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Title III (Public Accommodations &amp; Commercial Facilities):</strong> Requires all public accommodations and commercial facilities to be accessible and usable by individuals with disabilities (e.g., providing accessible leasing offices, widening doorways for wheelchairs, or offering accommodations for applicants with visual impairments).</li></ul></li></ul><ul id="4168ac6a-aab1-8047-9411-fae200145f8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Manager Responsibility:</strong> Property managers must evaluate how existing facilities and operational procedures measure up against ADA standards and consult with the property owner to implement required modifications.</li></ul></li></ul><ul id="4168ac6a-aab1-80e9-b5d1-fa3d821203a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Federal Fair Housing Act</strong><ul id="4168ac6a-aab1-8016-81cb-d30cc5a2e76e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Prohibits discrimination in housing-related transactions (renting, leasing, advertising, setting terms, or providing services) and requires all applicants to be treated equally.</li></ul><ul id="4168ac6a-aab1-80df-9d94-d76d0f73a818" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcement:</strong> Enforced by the <strong>U.S. Department of Housing and Urban Development (HUD)</strong>, which regularly conducts fair housing testing to detect unlawful practices. Violations carry severe legal and financial penalties, including the <strong>revocation of a real estate license</strong>.</li></ul><ul id="4168ac6a-aab1-8003-a410-fca26a115f6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Seven Federal Protected Classes:</strong><ol type="1" id="4168ac6a-aab1-80e4-bf76-fe8aa97c3f3b" class="numbered-list" start="1" dir="auto"><li><strong>Religion</strong></li></ol><ol type="1" id="4168ac6a-aab1-8004-a01c-c4495857ebbb" class="numbered-list" start="2" dir="auto"><li><strong>Race</strong></li></ol><ol type="1" id="4168ac6a-aab1-8068-8c99-dec549ec0516" class="numbered-list" start="3" dir="auto"><li><strong>Color</strong></li></ol><ol type="1" id="4168ac6a-aab1-8003-8495-c160092c560a" class="numbered-list" start="4" dir="auto"><li><strong>National origin</strong></li></ol><ol type="1" id="4168ac6a-aab1-80cd-80f3-e53e9705368d" class="numbered-list" start="5" dir="auto"><li><strong>Sex</strong> (including gender identity and sexual orientation)</li></ol><ol type="1" id="4168ac6a-aab1-80ae-ac7f-f81db1f6c9ed" class="numbered-list" start="6" dir="auto"><li><strong>Disability</strong></li></ol><ol type="1" id="4168ac6a-aab1-807f-a1a0-e76d7fae5e76" class="numbered-list" start="7" dir="auto"><li><strong>Familial status</strong> (families with children under 18, pregnant individuals, or persons securing custody)</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-80f9-91c4-dded4daa67bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Permissible vs. Prohibited Tenant Screening Criteria</strong><ul id="4168ac6a-aab1-8099-9bbc-e8146ccd20b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Landlords and property managers may legally screen and select tenants using objective, financial, and behavioral criteria—provided those standards are <strong>applied uniformly to every applicant</strong>.<table id="4168ac6a-aab1-80b0-8723-ddd736d40f23" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-8008-9194-c95dc6658f47" dir="ltr"><td id="vGgj" class=""><strong>Permitted Screening Criteria (Must Be Applied Uniformly)</strong></td><td id="`Tss" class=""><strong>Prohibited Criteria (Federal Protected Classes)</strong></td></tr><tr id="4168ac6a-aab1-8066-9cd0-f071a0b2c427" dir="ltr"><td id="vGgj" class="">Credit score and credit history</td><td id="`Tss" class="">Race or color</td></tr><tr id="4168ac6a-aab1-80e3-99b5-dbf3c7c2277b" dir="ltr"><td id="vGgj" class="">Income level and rent-to-income ratio</td><td id="`Tss" class="">Religion</td></tr><tr id="4168ac6a-aab1-8027-8b3b-f66974ee0b4e" dir="ltr"><td id="vGgj" class="">Proof of employment</td><td id="`Tss" class="">National origin</td></tr><tr id="4168ac6a-aab1-801e-90ea-f107da091326" dir="ltr"><td id="vGgj" class="">Prior eviction or bankruptcy history</td><td id="`Tss" class="">Sex, gender identity, or sexual orientation</td></tr><tr id="4168ac6a-aab1-805a-98c8-cdd738231c87" dir="ltr"><td id="vGgj" class="">Landlord and personal references</td><td id="`Tss" class="">Disability or familial status</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-805f-b4e7-ec5280ed5a93" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4168ac6a-aab1-80d8-996b-e751b8c67573" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Uniform Residential Landlord and Tenant Act (URLTA)</strong><ul id="4168ac6a-aab1-8064-88e5-eac1e0e8f1d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origin &amp; Purpose:</strong> Drafted in <strong>1972</strong> by the National Conference of Commissioners on Uniform State Laws (now known as the Uniform Law Commission), URLTA is a model law designed to standardize, clarify, and modernize the legal rights and obligations of landlords and tenants in residential housing.</li></ul><ul id="4168ac6a-aab1-8015-ac46-c69778ef17d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope &amp; Adoption:</strong> URLTA applies exclusively to <strong>residential leases</strong> (not commercial, industrial, or agricultural properties). Because it is a model act, states choose whether to adopt it in whole or in part into their state statutes—including Tennessee, which modeled its own Residential Landlord and Tenant Act on URLTA.</li></ul><ul id="4168ac6a-aab1-80b7-b25b-e61603f26629" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Relevance to Property Managers:</strong> Because property managers act in a landlord capacity on behalf of property owners, they are legally bound to uphold URLTA&#x27;s statutory standards in daily leasing and operations.</li></ul></li></ul><ul id="4168ac6a-aab1-8043-94f7-dafad9b5366c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Mutual Obligations Under URLTA</strong><ul id="4168ac6a-aab1-80bd-aefb-f65a4e1d082f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">URLTA treats a residential lease as a bilateral contract with interdependent duties—meaning a landlord&#x27;s right to collect rent is tied to their obligation to maintain habitable housing.<table id="4168ac6a-aab1-806d-8c56-c3b16278bb8d" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80fe-b387-fc443e29f8ca" dir="ltr"><td id="X[It" class=""><strong>Party</strong></td><td id="fqQw" class=""><strong>Statutory Obligations Under URLTA</strong></td><td id="w\yp" class=""><strong>Key Practical Standards</strong></td></tr><tr id="4168ac6a-aab1-805f-a51c-faf690e413a4" dir="ltr"><td id="X[It" class=""><strong>Landlord / Property Manager</strong></td><td id="fqQw" class="">• Comply with applicable building and housing codes affecting health and safety<br/><br/>• Make all repairs necessary to keep the premises in a fit and habitable condition<br/><br/>• Supply running water, reasonable amounts of <strong>hot water</strong>, and heat<br/><br/>• Keep common areas clean and safe<br/><br/>• Maintain electrical, plumbing, sanitary, HVAC, and supplied appliances in safe working order<br/><br/>• Provide proper waste receptacles and arrange for garbage removal</td><td id="w\yp" class="">Prohibited from using lease clauses that waive tenant statutory rights, limit landlord liability, or allow rent collection free of maintenance obligations; must also respect tenant privacy (giving advance notice before non-emergency entry) and prohibit retaliatory conduct.</td></tr><tr id="4168ac6a-aab1-8019-98a8-f1bec67f5383" dir="ltr"><td id="X[It" class=""><strong>Tenant (Lessee)</strong></td><td id="fqQw" class="">• Refrain from deliberately or negligently destroying, defacing, or damaging any part of the premises<br/><br/>• Dispose of all garbage and waste from the dwelling unit in a clean and safe manner<br/><br/>• Respect neighbors&#x27; right to <strong>quiet enjoyment</strong> of the property<br/><br/>• Keep the occupied unit as clean and safe as conditions permit<br/><br/>• Comply with applicable health/safety building codes and use facilities/appliances reasonably</td><td id="w\yp" class="">Tenants cannot willfully damage property or permit guests to do so, and must adhere to fair, disclosed building rules and regulations.</td></tr></tbody></table></li></ul></li></ul><ul id="4168ac6a-aab1-80a3-aa14-c38999c94cf9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4168ac6a-aab1-8049-be08-ca39d3fef6e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Uniform Residential Landlord and Tenant Act (URLTA) Overview</strong><ul id="4168ac6a-aab1-80d4-89db-fbb209dc58eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Purpose (T.C.A. Title 66, Chapter 28):</strong> Establishes uniform landlord-tenant law in Tennessee, defines mutual obligations of landlords and tenants, promotes equal protection for all parties to a rental agreement, and ensures safe, habitable, and well-maintained residential housing.</li></ul><ul id="4168ac6a-aab1-802f-85cc-f27c0e61caf4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Geographic &amp; Property Applicability:</strong><ul id="4168ac6a-aab1-80a7-aac0-f80128e7868c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Applies to the rental of residential dwelling units exclusively in Tennessee counties with a population of <strong>more than 75,000 residents</strong>. (In counties with 75,000 or fewer residents, general Tennessee common law and Title 66, Chapter 7 govern unless otherwise opted in).</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-8072-ac26-c6be8e61ce82" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statutory Exclusions from the Act</strong><ul id="4168ac6a-aab1-80b2-bd9b-e9805ed1abb1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Tennessee Residential Landlord and Tenant Act does <strong>not</strong> apply to the following living arrangements:<ol type="1" id="4168ac6a-aab1-801f-8080-c1ee3107a807" class="numbered-list" start="1" dir="auto"><li><strong>Institutional Residence:</strong> Public or private institutional housing incidental to detention or the provision of medical, geriatric, educational, counseling, religious, or similar services (e.g., dormitories, hospitals, nursing facilities).</li></ol><ol type="1" id="4168ac6a-aab1-800a-8de4-e800a39ff7eb" class="numbered-list" start="2" dir="auto"><li><strong>Occupancy Under a Contract of Sale:</strong> Occupancy by a buyer (or successor in interest) under an active contract to purchase the dwelling unit or property.</li></ol><ol type="1" id="4168ac6a-aab1-8047-a419-e448eede3d09" class="numbered-list" start="3" dir="auto"><li><strong>Transient Occupancy:</strong> Short-term stays in hotels, motels, or transient lodgings subject to state/local room occupancy taxes under the Excise Tax Act.</li></ol><ol type="1" id="4168ac6a-aab1-804c-a593-dffa41730a27" class="numbered-list" start="4" dir="auto"><li><strong>Condominium &amp; Cooperative Owners:</strong> Occupancy by the owner of a condominium unit or the holder of a proprietary lease in a cooperative.</li></ol><ol type="1" id="4168ac6a-aab1-8062-ad19-c5168bae0e35" class="numbered-list" start="5" dir="auto"><li><strong>Agricultural Premises:</strong> Rental agreements covering premises used primarily for agricultural purposes.</li></ol><ol type="1" id="4168ac6a-aab1-804b-b10d-db5405abf330" class="numbered-list" start="6" dir="auto"><li><strong>Government &amp; Non-Profit Housing:</strong> Housing owned by a government entity or non-profit corporation regulated directly by the U.S. Department of Housing and Urban Development (HUD).</li></ol></li></ul></li></ul><ul id="4168ac6a-aab1-803b-b312-e03889d97361" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Landlord Obligations: Security Deposits &amp; Fit Premises (T.C.A. § 66-28-301)</strong><div id="4168ac6a-aab1-806d-a05a-faf163a69504" class="column-list" data-notion-column-list="" dir="auto"><div id="4168ac6a-aab1-8016-8ad0-c5e6e28317c9" style="width:56.25%" class="column" data-notion-column-ratio="0.5625" dir="auto"><table id="4168ac6a-aab1-80b2-bee1-cc563b566824" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80fa-a994-f132d6c27275" dir="ltr"><td id="YWzy" class=""><strong>Compliance Area</strong></td><td id="r;\P" class=""><strong>Statutory Rules &amp; Requirements in Tennessee</strong></td></tr><tr id="4168ac6a-aab1-8013-af9e-e04260b09af1" dir="ltr"><td id="YWzy" class=""><strong>Deposit Amount &amp; Refundability</strong></td><td id="r;\P" class="">• <strong>No statutory cap</strong> on the deposit amount (most landlords charge the equivalent of one month&#x27;s rent).<br/><br/>• Any deposit is <strong>presumed refundable</strong> unless explicitly designated as <strong>&quot;non-refundable&quot; in writing</strong> at lease signing.</td></tr><tr id="4168ac6a-aab1-80a6-8da4-f97c825317b5" dir="ltr"><td id="YWzy" class=""><strong>Mandatory Written Disclosures</strong></td><td id="r;\P" class="">Before or upon collecting a security deposit, the landlord must provide in writing:<br/><br/>• A <strong>written rental agreement</strong> (except for month-to-month tenancies)<br/><br/>• A <strong>move-in condition checklist/statement</strong> signed by both the landlord and tenant<br/><br/>• The <strong>name and address of the bank or escrow institution</strong> holding the deposit in a dedicated separate account</td></tr><tr id="4168ac6a-aab1-80fa-bd52-e1992574f20d" dir="ltr"><td id="YWzy" class=""><strong>Return Timeline &amp; Deductions</strong></td><td id="r;\P" class="">• Must return the security deposit within <strong>30 days</strong> after lease termination/move-out (mailed to the tenant&#x27;s last known address).<br/><br/>• Must include a <strong>written, itemized statement</strong> of any deductions.<br/><br/>• Deductions are permitted for unpaid rent and physical damage or excessive mess <strong>beyond normal wear and tear</strong>. <em>(If the tenant does not claim the remaining refund within 60 days of notice, the landlord may retain the unclaimed funds).</em></td></tr><tr id="4168ac6a-aab1-8044-a8d4-ef79800c40dd" dir="ltr"><td id="YWzy" class=""><strong>Maintain Fit Premises</strong></td><td id="r;\P" class="">Landlords must uphold habitability and building codes through ongoing <strong>preventative, routine, and corrective maintenance</strong>.</td></tr></tbody></table></div><div id="4168ac6a-aab1-80b4-b40e-de41860367ce" style="width:43.75%" class="column" data-notion-column-ratio="0.4375" dir="auto"><figure id="4168ac6a-aab1-807b-bab1-dd27e679ceb5" class="image" data-notion-image="Chapter%202%20-%20Duties%20of%20Property%20Management/image%208.png" dir="ltr"><a href="Chapter%202%20-%20Duties%20of%20Property%20Management/image%208.png"><img style="width:480px" src="Chapter%202%20-%20Duties%20of%20Property%20Management/image%208.png"/></a></figure><p id="4168ac6a-aab1-8068-a3d4-c35fc667ee62" class="" dir="auto">
+</p></div></div></li></ul><ul id="4168ac6a-aab1-8048-b7da-c54aacab11ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4168ac6a-aab1-8008-9da7-e2330e8d2213" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Landlord Right of Entry &amp; Tenant Quiet Enjoyment</strong><ul id="4168ac6a-aab1-8072-8b76-c3eb4b119162" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Balancing Rights:</strong> While tenants have a legal right to <strong>quiet enjoyment</strong> and privacy within their rented living space, landlords and property managers retain statutory rights to access the premises for specific legitimate purposes—and tenants cannot unreasonably bar entry when those conditions are met.</li></ul></li></ul><ul id="4168ac6a-aab1-801f-915e-f4a9b387fbae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Permissible Grounds &amp; Notice Rules for Landlord Access</strong><table id="4168ac6a-aab1-8000-a031-c338a7d8986d" class="simple-table" dir="ltr"><tbody><tr id="4168ac6a-aab1-80a6-ab11-e4c33b51c606" dir="ltr"><td id="jfEq" class=""><strong>Reason for Access</strong></td><td id="gDth" class=""><strong>Permission &amp; Notice Requirements</strong></td><td id="Zj=:" class=""><strong>Operational Standards &amp; Notes</strong></td></tr><tr id="4168ac6a-aab1-80e8-b246-db886193a775" dir="ltr"><td id="jfEq" class=""><strong>Maintenance &amp; Repairs</strong></td><td id="gDth" class="">• <strong>Tenant-requested repairs:</strong> Submitting a maintenance request grants implied permission to enter, though the landlord must notify the tenant of when entry will occur.<br/><br/>• <strong>Landlord-scheduled repairs:</strong> Requires <strong>at least 24 hours&#x27; notice</strong> prior to entry.</td><td id="Zj=:" class="">Entry by the landlord, handyman, or contractor must take place during reasonable, acceptable hours.</td></tr><tr id="4168ac6a-aab1-805c-9c15-c87b573e084f" dir="ltr"><td id="jfEq" class=""><strong>Showing the Unit</strong></td><td id="gDth" class="">• Requires <strong>at least 24 hours&#x27; notice</strong> to the current tenant prior to entry.</td><td id="Zj=:" class="">Applies when a tenant is scheduled to move out (under Tennessee Code Ann. § 66-28-403(e)(5), within the final 30 days of the lease if authorized in the rental agreement) to show the unit to prospective renters.</td></tr><tr id="4168ac6a-aab1-80ef-8ec9-c85db9925b44" dir="ltr"><td id="jfEq" class=""><strong>Emergencies</strong></td><td id="gDth" class="">• <strong>No prior notice or tenant consent required.</strong></td><td id="Zj=:" class="">Permitted whenever there is a sudden emergency threatening property damage or destruction (e.g., active fire, burst pipe/flooding).</td></tr></tbody></table></li></ul><ul id="4168ac6a-aab1-80c6-a385-d2a727b1c504" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Statutory Safeguards (T.C.A. § 66-28-403)</strong><ul id="4168ac6a-aab1-802d-ad8f-d012f4acf8fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibition on Harassment:</strong> Landlords may not abuse their right of access or use entry to harass a tenant.</li></ul><ul id="4168ac6a-aab1-8021-9df9-e354d85fa978" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Other Permitted Entry Situations:</strong> Under Tennessee URLTA rules, a landlord may also lawfully enter by court order, if utilities are shut off through no fault of the landlord (to inspect/prevent damage), or if the tenant has abandoned, surrendered, or is deceased, incapacitated, or incarcerated.</li></ul></li></ul><p id="4168ac6a-aab1-801d-872b-f5a8002275e7" class="" dir="auto">
+</p></div><div id="4168ac6a-aab1-808d-9d6a-c317598d7d21" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4168ac6a-aab1-8002-a9ec-e5fed30e2d45" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4168ac6a-aab1-8066-811c-e6eb6efd4d66" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>capital expenditure (CapEx)</strong> - an expense paid in order to improve a property</li></ul><ul id="4168ac6a-aab1-80ad-8bd1-d5e924b6d7a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>capital improvement</strong> - upgrades or improvements to a property that fall outside the scope of normal repair and maintenance, usually with the intention of increasing value</li></ul><ul id="4168ac6a-aab1-805b-bdb1-d1e168434e9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>cash flow</strong> - measures the amount of cash flowing in and out of a business</li></ul><ul id="4168ac6a-aab1-80d0-93db-fdea2f22fa6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>corrective maintenance</strong> - the repair of equipment after it has broken</li></ul><ul id="4168ac6a-aab1-80dd-9f51-fd773b195a17" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>preventative maintenance</strong> - conducting periodic inspections to catch minor issues before they become major failures</li></ul><ul id="4168ac6a-aab1-804a-89c9-d40bc07d7d85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>routine maintenance</strong> - monitoring, assessing, and attending to the needs of a facility&#x27;s most necessary features</li></ul><p id="4168ac6a-aab1-8000-bda4-ecca4d98231d" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4168ac6a-aab1-8044-a4b3-fa6d772261e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Marketing Rental Property</strong><ul id="4168ac6a-aab1-800a-9fac-c4f262901130" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depending on a property&#x27;s <strong>vacancy rate</strong>, property managers may have to do a lot of marketing, or maybe just a little. Whatever their situation, they should create a marketing plan that includes:<ul id="4168ac6a-aab1-8083-9e9a-f55f05924364" class="bulleted-list" dir="auto"><li style="list-style-type:square">A market analysis</li></ul><ul id="4168ac6a-aab1-80f4-b9e8-ce218778e1a7" class="bulleted-list" dir="auto"><li style="list-style-type:square">A budget</li></ul><ul id="4168ac6a-aab1-80f4-832f-c5e67436b37b" class="bulleted-list" dir="auto"><li style="list-style-type:square">An outline of their marketing tactics (i.e., a budget for how much money will be spent on each marketing strategy)</li></ul><ul id="4168ac6a-aab1-80b8-a138-e74dcf1a6da6" class="bulleted-list" dir="auto"><li style="list-style-type:square">The marketing plan will also outline things like the property&#x27;s target market, goals, and mission statement.</li></ul></li></ul></li></ul><ul id="4168ac6a-aab1-80cd-9aef-c265875397a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Cost per Prospect</strong><ul id="4168ac6a-aab1-801a-b3fc-f7525a7966b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Always weigh the cost of advertising and marketing against its own usefulness. A good way to do this is by using the following formula to find the cost per prospect.</li></ul><ul id="4168ac6a-aab1-806d-8221-d72fe222cb4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Cost of advertisement ÷ Number of prospects = Cost per prospect</em></li></ul></li></ul><ul id="4168ac6a-aab1-80d1-ac9d-fb96782ae2ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rent Roll</strong><ul id="4168ac6a-aab1-807a-a836-ec32052e0309" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A property manager will be responsible for a report known as a <strong>rent roll</strong>. A rent roll is a report that lists:<ul id="4168ac6a-aab1-800a-962e-d922060fabf7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Number of units in a property</li></ul><ul id="4168ac6a-aab1-80cc-9cd1-e4353055ecc5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identities of tenants</li></ul><ul id="4168ac6a-aab1-8026-9fc7-ffda48d395f5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lease terms (the start and end date of each lease)</li></ul><ul id="4168ac6a-aab1-8008-8bd7-c631fb4c2e55" class="bulleted-list" dir="auto"><li style="list-style-type:square">Monthly rental income from each unit</li></ul><ul id="4168ac6a-aab1-804e-8474-d21aaf52ec43" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any outstanding balances owed by tenants</li></ul></li></ul><figure id="4168ac6a-aab1-8060-8915-d6f45f08ef5a" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/WAREPL_RentRollExample_InfoTable1_18892.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/WAREPL_RentRollExample_InfoTable1_18892.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/WAREPL_RentRollExample_InfoTable1_18892.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-805b-a57b-e6d61d790a43" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maintenance</strong><ul id="4168ac6a-aab1-80f4-af95-f9e8cbb8e9ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maintenance generally falls into three categories:<ul id="4168ac6a-aab1-8062-8b78-e85f832e7275" class="bulleted-list" dir="auto"><li style="list-style-type:square">Routine maintenance</li></ul><ul id="4168ac6a-aab1-808b-867f-e26d8671c4e2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Corrective maintenance</li></ul><ul id="4168ac6a-aab1-8097-8a35-e7ae264610af" class="bulleted-list" dir="auto"><li style="list-style-type:square">Preventative maintenance</li></ul></li></ul><figure id="4168ac6a-aab1-8043-add3-d43126fb5f5d" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_TypesofMaintenance_15431.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_TypesofMaintenance_15431.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_TypesofMaintenance_15431.png"/></a></figure></li></ul><ul id="4168ac6a-aab1-80ba-ab01-c0d6d11f523c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income</strong><ul id="4168ac6a-aab1-8045-b844-cf0899b96a86" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In a broad sense, gross income is the total amount of revenue produced by a property.</li></ul><ul id="4168ac6a-aab1-802c-91db-ed92f0acbf85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Potential gross income</strong> is the revenue a property could generate if 100% of the units in the building were leased at market rate. This means that all units are occupied by tenants and there are no vacancies. (This number may also be called &quot;gross potential income&quot; or &quot;GPI.&quot;)</li></ul><ul id="4168ac6a-aab1-808f-a997-e5b6a5870b8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effective gross income</strong> is the amount of money a property generates after taking into account other factors such as vacancy losses and additional revenue from sources other than rent.</li></ul><ul id="4168ac6a-aab1-8018-aaa0-d698cd6cd8a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net operating income</strong> is the measurement of revenue (in other words, effective gross income) from the property minus all necessary operating expenses.</li></ul><figure id="4168ac6a-aab1-80b7-8d17-dc4480ff830b" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/GrossIncomeComparison.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/GrossIncomeComparison.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/GrossIncomeComparison.jpg"/></a></figure></li></ul><ul id="4168ac6a-aab1-80cb-acbb-cfb6e6d15372" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Residential Landlord and Tenant Act</strong><ul id="4168ac6a-aab1-8028-a9e9-f4a87d920376" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under the Landlord &amp; Tenant Act, landlords and tenants each have specific obligations they must follow. In Tennessee, landlords are obligated to:</li></ul><ul id="4168ac6a-aab1-80e2-989d-f77271e22ab3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Properly handle security deposits</li></ul><ul id="4168ac6a-aab1-8076-9c61-ee352fbbdc6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maintain fit premises</li></ul><ul id="4168ac6a-aab1-80e9-9805-ed493e669089" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Provide a written rental agreement (unless the tenancy is month-to-month)</li></ul><p id="4168ac6a-aab1-80aa-a4f5-f11ab0a0b5e8" class="" dir="auto">
+</p></li></ul></div></div><p id="4168ac6a-aab1-80c1-95b8-f1f70f05bcb6" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

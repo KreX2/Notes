@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Math Concepts &amp; Calculating Interest</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-801a-aee1-c95793ecb0d1" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Math Concepts &amp; Calculating Interest</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4108ac6a-aab1-80c1-b499-eab63f27bacf" class="column-list" data-notion-column-list="" dir="auto"><div id="4108ac6a-aab1-8071-90ba-f995e42ba19a" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4108ac6a-aab1-8081-b2e4-f992ea57e415" class="" dir="auto"><strong>Steps to Solving Real Estate Word Problems</strong></p><ul id="4108ac6a-aab1-8031-9b09-dc10a6dbb3a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step 1: Get the Big Picture:</strong> Read through the entire problem first to understand the context and filter out unneeded data without rushing.</li></ul><ul id="4108ac6a-aab1-8073-a0c6-f3b6dad61aaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step 2: Identify Knowns and Unknowns:</strong> Catalog every piece of data given and determine exactly what value needs to be solved for.</li></ul><ul id="4108ac6a-aab1-803a-8ab8-d93d2920c16b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step 3: Hunt for Math Clues:</strong> Look out for keywords and phrases (like total, less, more, difference, or percent) that dictate the required mathematical operations.</li></ul><ul id="4108ac6a-aab1-809f-8f5d-d1ea195af50b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step 4: Identify the Formula or Equation:</strong> Select the proper formula, plug in your knowns, and isolate the unknown to calculate the solution.</li></ul><ul id="4108ac6a-aab1-8062-81dd-f1557f93e28c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step 5: Evaluate Your Answer:</strong> Review your work for logical reasonableness, verify your decimal/percentage conversions, and ensure you answered the specific question asked.</li></ul><ul id="4108ac6a-aab1-800a-ab45-d4011203ae9a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pro-tips:</strong> Breathe to avoid tunnel vision, draw or scribble diagrams to organize your thoughts, and treat the problems like math challenges or games to conquer.</li></ul><ul id="4108ac6a-aab1-8093-aab3-efb00c496686" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Percentage Conversion Rules</strong><ul id="4108ac6a-aab1-8015-aa6f-e92dc174e8c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Rule:</strong> A percentage (which means &quot;per hundred&quot;) must always be converted into decimal form before you can perform any mathematical calculations.</li></ul><ul id="4108ac6a-aab1-80b3-8f62-e93ad828aefa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Decimal Form = Percentage Value / 100</code></li></ul><ul id="4108ac6a-aab1-8075-bd8c-cf83b91a4f33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The &quot;Why&quot;:</strong> The decimal moves exactly two places to the left because you are dividing by 100 (which has two powers of 10 in our base-10 number system).</li></ul><ul id="4108ac6a-aab1-8072-9d7c-d86e1192bff3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Double-Digit Conversion (e.g., 35%):</strong> Drop the percent sign to get 35, and move the decimal point two places to the left to arrive at <code>0.35</code>.</li></ul><ul id="4108ac6a-aab1-80c9-8649-c03a6bc4a7b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Single-Digit Conversion (e.g., 7%):</strong> Drop the percent sign to get 7, move the decimal point two places to the left, and insert a placeholder zero in the empty space to arrive at <code>0.07</code>.</li></ul></li></ul><ul id="4108ac6a-aab1-8025-8d14-c35dc1c85a3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Components of a Percentage Problem</strong><ul id="4108ac6a-aab1-803b-93b1-c1675fcab8c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Total:</strong> The full mathematical amount in the scenario (e.g., the total sales price or the total loan amount).</li></ul><ul id="4108ac6a-aab1-80b4-9459-fa2c1315d0e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Percentage:</strong> The rate applied to the total (e.g., a commission rate or an interest rate). <em>Note: The interest rate is the percentage of a loan amount that a borrower must pay a lender annually, such as 3.8%.</em></li></ul><ul id="4108ac6a-aab1-8075-8ede-febd5b77ad30" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Part:</strong> The specific portion of the total amount (e.g., the actual dollar amount of commission paid or the annual interest paid).</li></ul></li></ul><ul id="4108ac6a-aab1-8061-b1f5-c9f48e8ea509" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Percentage Formula Configurations</strong><ul id="4108ac6a-aab1-8018-af08-deb0e93c06c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A formula is a mathematical expression that can be reconfigured depending on which piece of information is missing—similar to rearranging the tools on a Swiss army knife. You simply choose the configuration that isolates your unknown variable on one side of the equal sign.</li></ul><ul id="4108ac6a-aab1-802b-a484-fa6bea10fb29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Reminder: The percentage must always be converted to a decimal before calculating.</em></li></ul><ul id="4108ac6a-aab1-80e1-b42b-d43e5c490096" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To solve for the Part: <code>Total * Percentage = Part</code></li></ul><ul id="4108ac6a-aab1-8069-a793-ef4f2ca3d6bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To solve for the Total: <code>Part / Percentage = Total</code></li></ul><ul id="4108ac6a-aab1-802e-a5fd-c916057823e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To solve for the Percentage: <code>Part / Total = Percentage</code></li></ul></li></ul><ul id="4108ac6a-aab1-8031-b278-d9553ca11ced" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exam Preparation Tip</strong><ul id="4108ac6a-aab1-8076-b409-fb747b19f0ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because you will not be provided with a formula cheat sheet on your state licensing exam or your course final, you must commit these formula configurations to memory as you learn them.</li></ul></li></ul><ul id="4108ac6a-aab1-806f-8482-c590bfa8cb3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Non-Amortized Loans (Straight Loans)</strong><ul id="4108ac6a-aab1-801c-b9a4-f5d3a726470e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Structure:</strong> In a non-amortized loan, the borrower&#x27;s payments cover <em>only</em> the interest accrued. The original principal balance remains unchanged throughout the life of the loan.</li></ul><ul id="4108ac6a-aab1-805d-8c1c-ceb3a4cd66e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balloon Payment:</strong> Because the regular payments do not reduce the principal, the entire loan amount becomes due all at once at the very end of the loan term as a large <strong>balloon payment</strong>.</li></ul><ul id="4108ac6a-aab1-8054-9814-e8a277e6e402" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application:</strong> These interest-only &quot;straight loans&quot; are primarily used in commercial and investment real estate. By contrast, residential buyers typically use amortized loans (where each payment incrementally pays down both principal and interest).</li></ul></li></ul><ul id="4108ac6a-aab1-8018-85c8-ce0c2197f518" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculation Scope: Focusing on PI (Principal and Interest)</strong><ul id="4108ac6a-aab1-80c0-be0b-e930ae346afe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Excluding PITI:</strong> To simplify the upcoming real estate math problems, the full <strong>PITI</strong> payment structure (Principal, Interest, Taxes, Insurance) will be stripped down.</li></ul><ul id="4108ac6a-aab1-80de-8b62-c48280d21ee1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>PI Only:</strong> The calculations will focus strictly on the <strong>PI</strong> components (Principal and Interest), intentionally ignoring the tax and insurance escrow portions to isolate the core loan mechanics.</li></ul></li></ul><ul id="4108ac6a-aab1-80dd-86d3-caef5abf81f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Annual Interest (Non-Amortized Loans)</strong><ul id="4108ac6a-aab1-803d-8f78-dd5718c8fb9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Formula:</strong> To find the annual interest, map the standard percentage formula (<code>Total * Percentage = Part</code>) to the specific loan components.</li></ul><ul id="4108ac6a-aab1-80ee-aeb8-e65a2a63a96d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Principal * Interest rate = Annual interest</code></li></ul><ul id="4108ac6a-aab1-8096-8bdc-f314e445466d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Constraint:</strong> This formula only works for <strong>non-amortized (straight) loans</strong> because the principal balance remains unchanged throughout the life of the loan. In an amortized loan, the principal decreases monthly, which changes the interest calculation.</li></ul></li></ul><ul id="4108ac6a-aab1-8046-8446-f0d49419eb6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Annual Interest Example</strong><ul id="4108ac6a-aab1-8016-9321-dff165668cbe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Jamie took out a straight loan for $200,000 with a 4.5% interest rate. How much will Jamie pay in annual interest?</li></ul><ul id="4108ac6a-aab1-80ec-89bd-d56cb5dfbef3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Insert Known Variables:</strong> Identify the Principal ($200,000) and the Interest Rate (4.5%), and set up the equation: <code>$200,000 * 4.5% = Annual interest</code></li></ul><ul id="4108ac6a-aab1-8080-bbcb-fffe5ecd9889" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Convert and Multiply:</strong> Convert the 4.5% interest rate into a decimal by dropping the percent sign and moving the decimal two spaces left to get 0.045. Then, multiply the principal by the decimal: <code>$200,000 * 0.045 = $9,000</code></li></ul><ul id="4108ac6a-aab1-80bd-95fe-d6bb1d7131a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> Jamie will pay exactly <strong>$9,000</strong> in annual interest.</li></ul></li></ul><ul id="4108ac6a-aab1-80b3-9cec-ff0055ff17c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Monthly Interest</strong><ul id="4108ac6a-aab1-80a9-9fd1-d5a98b7bf24f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Formula:</strong> To determine the interest owed for a single month, first calculate the annual interest, then divide that number by 12 (the number of months in a year).</li></ul><ul id="4108ac6a-aab1-808c-ba85-e8536b22468f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Annual interest / 12 = Monthly interest</code></li></ul><ul id="4108ac6a-aab1-800d-bf07-d9596c1385a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Constraint:</strong> This formula identifies the interest owed for a single payment. For a non-amortized loan, this number stays the same every month. For an amortized loan, this formula only solves for <em>one specific month&#x27;s payment</em>, because the interest amount will change on the following payment once the principal is reduced.</li></ul></li></ul><ul id="4108ac6a-aab1-80bd-8da8-e69d5911cab5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Monthly Interest Example</strong><ul id="4108ac6a-aab1-8039-9a51-e7e1558e22e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Lauren has a remaining loan balance of $300,000 and an interest rate of 4.15%. How much interest does she owe for her next mortgage payment?</li></ul><ul id="4108ac6a-aab1-8002-aec8-f801f6836022" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 &amp; 2: Find the Annual Interest:</strong> Identify the principal ($300,000) and convert the interest rate to a decimal (0.0415). Multiply them together to get the annual interest: <code>$300,000 * 0.0415 = $12,450</code></li></ul><ul id="4108ac6a-aab1-8085-a825-d79f7d0f866f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3: Divide by 12 Months:</strong> Take the total annual interest and divide it by 12 to isolate a single month&#x27;s interest payment: <code>$12,450 / 12 = $1,037.50</code></li></ul><ul id="4108ac6a-aab1-803d-a894-dd17c869b3c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> Lauren will owe exactly <strong>$1,037.50</strong> in interest for her next monthly payment.</li></ul></li></ul><ul id="4108ac6a-aab1-800a-bdf6-e649ed54646c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Quarterly Interest</strong><ul id="4108ac6a-aab1-806e-99df-deab6e6aa144" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Formula:</strong> To find the interest owed for a single quarter, take the total annual interest and divide it by 4 (since there are four quarters in a year).</li></ul><ul id="4108ac6a-aab1-8058-8294-e7378f5549f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Annual interest / 4 = Quarterly interest</code></li></ul><ul id="4108ac6a-aab1-8026-b71f-e85b7741ca78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Quarterly Example:</strong> Using the previous scenario where the annual interest was $12,450, simply divide that total by 4: <code>$12,450 / 4 = $3,112.50</code>. The quarterly interest payment is <strong>$3,112.50</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-80ae-bd5f-d5f321b55b03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Interest for Custom Timeframes (e.g., 15 Months)</strong><ul id="4108ac6a-aab1-8036-b6b7-d80d4a4e90cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Occasionally, you may need to calculate interest for irregular periods (like a single-payment loan covering 15 months). You can solve this using one of two methods.</li></ul><ul id="4108ac6a-aab1-80b5-a9e2-eab35ff692b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Method 1 (Additive):</strong> Break the total timeframe down into full years and remaining months. For a 15-month period, you add the annual interest (12 months) to three times the monthly interest.</li></ul><ul id="4108ac6a-aab1-80c8-91d3-d65b43c0afe0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>(Monthly interest * 3) + Annual interest = 15 month interest</code></li></ul><ul id="4108ac6a-aab1-80a4-9933-cd85103341e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Method 2 (Multiplicative):</strong> Calculate the base monthly interest first, and then multiply that single month&#x27;s interest by the total number of months required.</li></ul><ul id="4108ac6a-aab1-80c3-94cf-f46af9bdd4b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Monthly interest * 15 = 15 month interest</code></li></ul></li></ul><ul id="4108ac6a-aab1-8000-b03e-fc50786df17d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Principal (The Total)</strong><ul id="4108ac6a-aab1-8072-8cc8-d1de6cb8c85f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> If you know the annual interest paid (the part) and the interest rate (the percentage), you can reconfigure the standard percentage formula to work backward and solve for the original loan principal (the total).</li></ul><ul id="4108ac6a-aab1-8075-8e13-edd533b3e23c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Annual interest / Interest rate = Principal</code></li></ul></li></ul><ul id="4108ac6a-aab1-80fe-9012-fe8239d4b051" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Principal Example</strong><ul id="4108ac6a-aab1-80d3-8798-ec43b9fd9f24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Jeremy pays $7,500 in annual interest on a loan with a 3% interest rate. What is his loan principal?</li></ul><ul id="4108ac6a-aab1-80df-80f6-e690caf838b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Insert Known Variables:</strong> Identify the annual interest ($7,500) and the interest rate (3%), and set up the equation: <code>$7,500 / 3% = Principal</code></li></ul><ul id="4108ac6a-aab1-806f-8afe-da9b2d66110a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Convert and Divide:</strong> Convert the 3% interest rate into a decimal by dropping the percent sign and moving the decimal two places to the left to get 0.03. Then, divide the annual interest by that decimal: <code>$7,500 / 0.03 = $250,000</code></li></ul><ul id="4108ac6a-aab1-8035-bf4c-d50a843ee265" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> Jeremy&#x27;s original loan principal is exactly <strong>$250,000</strong>.</li></ul></li></ul><ul id="4108ac6a-aab1-803c-8977-dd6e2f902974" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating the Interest Rate (The Percentage)</strong><ul id="4108ac6a-aab1-80b9-a629-d7aab0381178" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> If you know the annual interest paid (the part) and the original loan principal (the total), you can use the third configuration of the standard percentage formula to solve for the interest rate (the percentage).</li></ul><ul id="4108ac6a-aab1-80e8-8ccd-dbfbb294162b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formula:</strong> <code>Annual interest / Principal = Interest rate</code></li></ul></li></ul><ul id="4108ac6a-aab1-80b5-984a-c3e1960517d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Interest Rate Example</strong><ul id="4108ac6a-aab1-800c-9c9b-f3ed5eeee957" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scenario:</strong> Andie took out a loan for $340,000 and paid $10,200 in annual interest over the course of the year. What is her interest rate?</li></ul><ul id="4108ac6a-aab1-8082-b0e8-ef46d55632a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Insert Known Variables:</strong> Identify the annual interest ($10,200) and the loan principal ($340,000), and set up the equation: <code>$10,200 / $340,000 = Interest rate</code></li></ul><ul id="4108ac6a-aab1-8085-ac53-c2bb95478f02" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Divide and Convert:</strong> Divide the annual interest (the part) by the principal (the total) to find the raw decimal value: <code>$10,200 / $340,000 = 0.03</code>. To finalize the answer, reverse the decimal conversion rule by moving the decimal point two places to the right and adding the percent sign.</li></ul><ul id="4108ac6a-aab1-80a2-ac36-c631db680b93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Answer:</strong> Andie&#x27;s loan has exactly a <strong>3%</strong> interest rate.</li></ul></li></ul></div><div id="4108ac6a-aab1-80c3-847e-e890c4d1b740" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4108ac6a-aab1-808d-bda4-d370fca06b8e" class="" dir="auto"><strong>Key Term</strong></p><ul id="4108ac6a-aab1-8029-8b32-fd54aecb0238" class="bulleted-list" dir="auto"><li style="list-style-type:disc">interest rate - the percentage of a loan amount that a borrower must pay a lender annually</li></ul><p id="4108ac6a-aab1-805d-bb66-ccafdaeab458" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4108ac6a-aab1-8033-935e-feb012a81427" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Converting Percentages to Decimal Form</strong><ul id="4108ac6a-aab1-80df-b1d9-c5310bf3e446" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: Eliminate the percent sign</strong>.</li></ul><ul id="4108ac6a-aab1-8005-bc69-cbd9f04bd1d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: Insert and move the decimal two spaces to the left</strong>.</li></ul><figure id="4108ac6a-aab1-80c0-b595-fc447797aa1a" class="image" data-notion-image="Chapter%203%20-%20Math%20Concepts%20&amp;%20Calculating%20Interest/image.png" dir="ltr"><a href="Chapter%203%20-%20Math%20Concepts%20&amp;%20Calculating%20Interest/image.png"><img style="width:413.796875px" src="Chapter%203%20-%20Math%20Concepts%20&amp;%20Calculating%20Interest/image.png"/></a></figure></li></ul><ul id="4108ac6a-aab1-80ac-b995-e1fb79291889" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solving for Annual Interest</strong><ul id="4108ac6a-aab1-806f-a28e-c222fa243251" class="bulleted-list" dir="auto"><li style="list-style-type:circle">You can find a loan&#x27;s annual interest amount by using the following formula:</li></ul><ul id="4108ac6a-aab1-80f0-ab29-ca92f2d85136" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Total x Percentage = PartPrincipal x Interest rate = Annual interest</em></li></ul><ul id="4108ac6a-aab1-80d0-871e-e3436845b0cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once you know the annual interest, you can then find semi-annual interest by dividing by 2, quarterly interest by dividing by 4, and monthly interest by dividing by 12. Simple!</li></ul></li></ul><ul id="4108ac6a-aab1-8033-ad06-c7f6b459e1d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Solving for Percentage</strong><ul id="4108ac6a-aab1-8052-a125-cc9d279b17b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If you want to find the total (the principal), you can do so using this formula:</li></ul><ul id="4108ac6a-aab1-8064-af21-f7e5824ae138" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Part ÷ Percentage = TotalAnnual interest ÷ Rate = Principal</em></li></ul></li></ul><ul id="4108ac6a-aab1-80dd-ae2c-d45a17e6923f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Finding the Rate</strong><ul id="4108ac6a-aab1-8073-99d3-e34173e1b60d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once you know the part (interest) and total (principal), you can solve for the percentage (rate). Here is the formula you need:</li></ul><ul id="4108ac6a-aab1-8018-8772-fb97f9381c7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Part ÷ Total = PercentageAnnual interest ÷ Principal = Rate</em></li></ul><p id="4108ac6a-aab1-803e-afcd-d82c7f83621a" class="" dir="auto">
+</p></li></ul></div></div><p id="4108ac6a-aab1-8059-af08-f186781a5433" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Other Types of Loans</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-802c-999b-d000890b020d" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Other Types of Loans</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4138ac6a-aab1-804b-be2e-ede16fedc043" class="column-list" data-notion-column-list="" dir="auto"><div id="4138ac6a-aab1-80b1-9613-d6b9e329e972" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><ul id="4138ac6a-aab1-80ed-ba91-eafa2c093375" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Fundamentals &amp; Common Loan Types</strong><ul id="4138ac6a-aab1-8000-89a1-e32f9431b223" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mortgage Definition:</strong> A specific type of loan used to purchase real estate where the property itself serves as the secured collateral. (All mortgages are loans, but not all loans are mortgages).</li></ul><ul id="4138ac6a-aab1-80b7-b12e-e43218d61cc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fixed-Rate Mortgages:</strong> The interest rate remains permanently locked for the entire loan term (typically 15 or 30 years).</li></ul><ul id="4138ac6a-aab1-80ab-9969-cd4ff4a4d88c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustable-Rate Mortgages (ARMs):</strong> Features a fixed introductory &quot;teaser&quot; rate for a set period, after which the rate adjusts periodically based on market indexes.</li></ul><ul id="4138ac6a-aab1-8039-942a-fae9981f75ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Government-Backed Loans (FHA, VA, USDA):</strong> Loans insured or guaranteed by the federal government, designed to help specific borrowers who might not qualify for standard conventional loans.</li></ul><ul id="4138ac6a-aab1-8095-a01c-fe0f31b65d95" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jumbo Loans:</strong> Non-conforming conventional loans designed for highly expensive properties that exceed standard conforming loan size limits.</li></ul></li></ul><ul id="4138ac6a-aab1-8058-a81b-f14682ecc086" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Balloon-Payment Mortgages (Partially Amortized)</strong><ul id="4138ac6a-aab1-803f-b438-c654d056ca2a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> A loan featuring a short lifespan (typically 5 to 7 years) but with monthly payments calculated on a much longer amortization schedule (such as 30 years).</li></ul><ul id="4138ac6a-aab1-804d-afe4-c461a78a4621" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balloon Payment:</strong> Because the regular monthly payments do not fully pay down the principal, the borrower is required to pay the massive remaining balance as a single lump-sum &quot;balloon payment&quot; at the exact end of the 5- or 7-year term.</li></ul><ul id="4138ac6a-aab1-80be-a942-e8e9dc769626" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Inherent Risks:</strong> If the property fails to appreciate in value, or if the borrower&#x27;s financial situation worsens, they may not have the cash or the ability to refinance to cover the final balloon payment, leaving them vulnerable to default.</li></ul><ul id="4138ac6a-aab1-8052-96c7-eb710e7251eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conversion Options:</strong> Some balloon mortgages feature a conditional conversion clause, allowing the borrower to roll the remaining balloon balance into a standard 23- or 25-year fixed-rate mortgage (though often at a slightly higher interest rate). A common example is the 7-year Fannie Mae Balloon.</li></ul></li></ul><ul id="4138ac6a-aab1-802e-ae69-fc3de6b7b85b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Advantages of Balloon Mortgages</strong><ul id="4138ac6a-aab1-8040-a1eb-eca59b05145f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lower Interest Rates:</strong> They typically offer interest rates <code>0.25%</code> to <code>0.5%</code> lower than comparable 30-year fixed-rate mortgages.</li></ul><ul id="4138ac6a-aab1-80f3-82d5-e7b8f2ecd921" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Short-Term Ownership Savings:</strong> They are mathematically advantageous for buyers who explicitly plan to sell the home or refinance the loan before the 5- or 7-year term expires.</li></ul><ul id="4138ac6a-aab1-8006-a3f3-fc27c27d1275" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Increased Purchasing Power:</strong> Because the lower interest rate drops the monthly housing expense, the borrower&#x27;s Debt-to-Income (DTI) ratio improves, allowing them to qualify for a larger loan and purchase a more expensive home.</li></ul></li></ul><ul id="4138ac6a-aab1-805c-9c79-ce8d54ad8372" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Fundamentals &amp; Common Loan Types</strong><ul id="4138ac6a-aab1-80b2-bb03-dea430067eb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mortgage Definition:</strong> A specific type of loan used to purchase real estate where the property itself serves as the secured collateral. (All mortgages are loans, but not all loans are mortgages).</li></ul><ul id="4138ac6a-aab1-8025-b8b3-d46e4ba941e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fixed-Rate Mortgages:</strong> The interest rate remains permanently locked for the entire loan term (typically 15 or 30 years).</li></ul><ul id="4138ac6a-aab1-80a6-b747-cf5a5e4a50f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjustable-Rate Mortgages (ARMs):</strong> Features a fixed introductory &quot;teaser&quot; rate for a set period, after which the rate adjusts periodically based on market indexes.</li></ul><ul id="4138ac6a-aab1-8055-8924-ffa5e755bf8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Government-Backed Loans (FHA, VA, USDA):</strong> Loans insured or guaranteed by the federal government, designed to help specific borrowers who might not qualify for standard conventional loans.</li></ul><ul id="4138ac6a-aab1-809c-b5f2-c98047d89a1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Jumbo Loans:</strong> Non-conforming conventional loans designed for highly expensive properties that exceed standard conforming loan size limits.</li></ul></li></ul><ul id="4138ac6a-aab1-80a1-a6aa-d6a5876d33c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Balloon-Payment Mortgages (Partially Amortized)</strong><ul id="4138ac6a-aab1-801e-8156-cdd314571a6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> A loan featuring a short lifespan (typically 5 to 7 years) but with monthly payments calculated on a much longer amortization schedule (such as 30 years).</li></ul><ul id="4138ac6a-aab1-80a7-aaea-d324118782a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balloon Payment:</strong> Because the regular monthly payments do not fully pay down the principal, the borrower is required to pay the massive remaining balance as a single lump-sum &quot;balloon payment&quot; at the exact end of the 5- or 7-year term.</li></ul><ul id="4138ac6a-aab1-806f-ba76-c38cd487b5a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Inherent Risks:</strong> If the property fails to appreciate in value, or if the borrower&#x27;s financial situation worsens, they may not have the cash or the ability to refinance to cover the final balloon payment, leaving them vulnerable to default.</li></ul><ul id="4138ac6a-aab1-80e1-b72b-ca40d37308a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conversion Options:</strong> Some balloon mortgages feature a conditional conversion clause, allowing the borrower to roll the remaining balloon balance into a standard 23- or 25-year fixed-rate mortgage (though often at a slightly higher interest rate). A common example is the 7-year Fannie Mae Balloon.</li></ul></li></ul><ul id="4138ac6a-aab1-8009-abc4-e236fefbe4ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Advantages of Balloon Mortgages</strong><ul id="4138ac6a-aab1-8086-938d-efabc692898a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lower Interest Rates:</strong> They typically offer interest rates <code>0.25%</code> to <code>0.5%</code> lower than comparable 30-year fixed-rate mortgages.</li></ul><ul id="4138ac6a-aab1-80ef-8683-c64d141e584f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Short-Term Ownership Savings:</strong> They are mathematically advantageous for buyers who explicitly plan to sell the home or refinance the loan before the 5- or 7-year term expires.</li></ul><ul id="4138ac6a-aab1-8033-9b9a-c3190fc437d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Increased Purchasing Power:</strong> Because the lower interest rate drops the monthly housing expense, the borrower&#x27;s Debt-to-Income (DTI) ratio improves, allowing them to qualify for a larger loan and purchase a more expensive home.</li></ul></li></ul><ul id="4138ac6a-aab1-80d2-a1a6-d9d3830497b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Straight Loans (Interest-Only Loans)</strong><ul id="4138ac6a-aab1-8092-ab93-f8ee5fb76b7d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Also referred to as a &quot;term loan,&quot; this is a high-risk, non-amortizing balloon-payment mortgage.</li></ul><ul id="4138ac6a-aab1-8030-a88b-fda636f0240f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> The borrower&#x27;s monthly payments are applied <em>only</em> to the accrued interest. Absolutely zero money goes toward paying down the principal debt during the loan term.</li></ul><ul id="4138ac6a-aab1-80dd-8e11-c5b81d9b946b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Balloon Payment:</strong> Because the principal is never reduced, the entire original loan amount comes due all at once as a massive balloon payment at the very end of the term.</li></ul></li></ul><ul id="4138ac6a-aab1-8078-895c-d096ea7a5da9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Who Uses Straight Loans?</strong><ul id="4138ac6a-aab1-8085-963e-e7095292cbfa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Users:</strong> They are rarely used for first residential mortgages. They are most commonly utilized by investors (such as house flippers), or for short-term home improvement loans and second mortgages.</li></ul><ul id="4138ac6a-aab1-80ee-8989-ffe3ea29e9e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Residential Risk/Reward:</strong> A residential homebuyer might use a straight loan if they intend to own the home for a very short period in a rapidly appreciating, &quot;hot&quot; real estate market.<ul id="4138ac6a-aab1-8014-a00d-e21b8db459ca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Strategy:</strong> Pay the absolute minimum monthly payment (interest only), sell the house quickly for a much higher price, pay off the original principal with the sale proceeds, and pocket the equity from the appreciation.</li></ul><ul id="4138ac6a-aab1-800e-84dd-c5239fe8f461" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Danger:</strong> If the housing market cools and the property fails to appreciate, the borrower will owe a massive lump-sum principal payment with no equity to cover it, often forcing them to take a severe financial loss.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80ba-aad8-d2d9fba02658" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fannie Mae Guidelines</strong><ul id="4138ac6a-aab1-8011-a38f-c28b079abf0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To mitigate the extreme risk of interest-only loans, Fannie Mae requires strict borrower qualifications: a minimum <strong>30% down payment</strong>, a credit score of at least <strong>720</strong>, and a verified cash reserve cushion equivalent to <strong>24 months</strong> of mortgage payments.</li></ul></li></ul><ul id="4138ac6a-aab1-80aa-afaf-eac03fdd2bd8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Graduated-Payment Mortgages (GPMs)</strong><ul id="4138ac6a-aab1-8085-8ad0-c5146ed112b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A GPM is a loan designed for first-time homebuyers who anticipate their income will steadily increase over time.</li></ul><ul id="4138ac6a-aab1-80ca-9510-d480ec7c2bd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> The loan begins with intentionally low monthly payments. At predetermined intervals, the payments automatically increase (or &quot;graduate&quot;), typically by 7.5% to 12.5% annually. This graduation period usually lasts for the first 5 to 10 years until the payment reaches a much higher, permanently fixed amount for the remainder of the loan term.</li></ul><ul id="4138ac6a-aab1-80c4-bfe8-e828fd21d288" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Lender&#x27;s Perspective:</strong> While GPMs allow borrowers to qualify based on the lower initial payments, they have largely fallen out of favor with lenders due to complex underwriting and a significantly higher rate of default. Consequently, lenders who still offer them typically charge interest rates <code>0.5%</code> to <code>0.75%</code> higher than standard fixed-rate loans.</li></ul><ul id="4138ac6a-aab1-80a5-8501-f1726102d8e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negative Amortization Risk:</strong> In many GPMs, the initial discounted payments are so low they fail to cover the accrued interest. This triggers negative amortization, where the unpaid interest is added to the principal balance. Some GPMs avoid this by structuring the initial low payments as strictly &quot;interest-only&quot; before graduating to full principal and interest payments.</li></ul></li></ul><ul id="4138ac6a-aab1-8051-bc63-cd46834b5b3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bridge Loans</strong><ul id="4138ac6a-aab1-80e9-8f93-cdee873bbf9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A short-term financing tool (typically spanning two weeks to three years) designed to cover an immediate financial gap while a borrower waits to secure their permanent, long-term financing.</li></ul><ul id="4138ac6a-aab1-80c0-81cf-c5636371f351" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Structure:</strong> Bridge loans often do not require any monthly payments for the first few months, intentionally giving the borrower time to finalize their primary transaction.</li></ul></li></ul><ul id="4138ac6a-aab1-80a6-bcae-e302679590eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Bridge Loan Scenarios</strong><ul id="4138ac6a-aab1-80a9-9878-c1ff8117716c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Construction Bridge:</strong> Used to finance the early stages of a construction project (such as waiting for permits to be approved). Because the project&#x27;s future is not yet guaranteed, this bridge loan carries high interest rates from specialized, risk-tolerant lenders. Once the permits are approved, the bridge loan is replaced by a standard, lower-rate construction loan to finish the build.</li></ul><ul id="4138ac6a-aab1-805b-a559-dec7a1217717" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Homebuyer Bridge:</strong> Used when a buyer wants to purchase a new home before they have successfully sold their current home. The bridge loan provides the cash needed for the down payment on the new property. The borrower uses the equity from the sale of their old home to immediately pay off the bridge loan once the sale finalizes.</li></ul><ul id="4138ac6a-aab1-80d1-bbb2-f23262da20ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Contingency Benefit:</strong> A homebuyer bridge loan allows a buyer to make a highly competitive, non-contingent offer on a new home without having to add a &quot;subject to the sale of my current property&quot; contingency clause.</li></ul></li></ul><ul id="4138ac6a-aab1-807f-b243-de3d818566bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Less Common Mortgages </strong><ul id="4138ac6a-aab1-8002-81c0-da09be3243e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Beyond standard fixed, adjustable, and government-backed loans, specialized mortgage products exist to meet unique financing needs for home furnishings, construction, land development, and debt consolidation.</li></ul></li></ul><ul id="4138ac6a-aab1-8030-b975-ffb45de21a58" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Open-End Mortgages</strong><ul id="4138ac6a-aab1-800a-82d9-d8432bd55224" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> A flexible mortgage that allows the borrower to secure additional funds from the lender at a later date under the original security instrument, <strong>without needing to refinance</strong>.</li></ul><ul id="4138ac6a-aab1-80be-9d11-d3725f87b7e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Uses:</strong> Typically utilized by new homebuyers who want to finance major personal property purchases (such as furniture, refrigerators, or washers and dryers) shortly after buying the home.</li></ul><ul id="4138ac6a-aab1-8079-a289-e73ce1597058" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Adjustments:</strong> To absorb the new debt, the lender will typically increase the monthly payment amount, extend the loan term, or adjust the interest rate. <em>(Contrast this with an ARM, where the interest rate floats but the principal balance is not intentionally expanded for new cash).</em></li></ul></li></ul><ul id="4138ac6a-aab1-801e-8c70-cc05b8a4c5ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Package Mortgage</strong><ul id="4138ac6a-aab1-8060-b9d3-d9938c69cd42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> A single mortgage loan that covers both the real property (the land and structure) and all personal property and appliances located on or installed in the premises.</li></ul><ul id="4138ac6a-aab1-8043-9fe8-d487a0a5108c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Uses:</strong> Extensively used for purchasing fully furnished condominium units or turnkey properties. The loan structure folds items like refrigerators, drapes, furniture, and kitchen appliances directly into the total sales price and acts as a security agreement over both the real and personal property.</li></ul></li></ul><ul id="4138ac6a-aab1-806d-8688-f9dc76ce4638" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Construction Loans</strong><ul id="4138ac6a-aab1-805a-9069-cd9adde80a3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A specific type of short-term, open-end mortgage designed strictly to finance the physical building of a structure.</li></ul><ul id="4138ac6a-aab1-8065-b651-d7e3db25cbff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Draw Schedule:</strong> Instead of handing over the full loan amount at closing, the lender disburses funds in periodic installments called <strong>draws</strong> as specific construction milestones are completed. Total disbursements typically cap out around <strong>75%</strong> of the property&#x27;s projected finished value.</li></ul><ul id="4138ac6a-aab1-8038-a5f1-e4849a3f20da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Maturity &amp; Payoff:</strong> At the end of construction, the entire accrued loan balance and interest become immediately due. This temporary loan is almost always paid off and replaced by a permanent, long-term mortgage (known as &quot;take-out financing&quot;) arranged in advance.</li></ul></li></ul><ul id="4138ac6a-aab1-80a5-a9a5-e0dec033d187" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Blanket Mortgages</strong><ul id="4138ac6a-aab1-805e-bd6c-c82fe2f64be8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A single mortgage loan that utilizes <strong>multiple collateral properties</strong> to secure the debt.</li></ul><ul id="4138ac6a-aab1-80f7-98a0-c87f827bb454" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Users:</strong> Predominantly used by land developers and commercial investors to finance large tracts of land or multiple lots under one single lien.</li></ul><ul id="4138ac6a-aab1-809f-8c1b-fb2065894d49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Partial Release Clause:</strong> As the developer pays down specific portions of the blanket loan, they can obtain a partial release, freeing individual lots from the overall encumbrance so they can be sold to retail buyers.</li></ul><ul id="4138ac6a-aab1-80bd-a499-f54fd21a975e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Default Risk:</strong> If the developer defaults on the blanket mortgage, the lender retains the legal right to foreclose on <em>all</em> encumbered properties. This poses a major hazard for retail buyers who purchased individual lots, as their newly built homes could still be seized if the developer&#x27;s blanket loan is not properly released.</li></ul></li></ul><ul id="4138ac6a-aab1-80da-965e-d3fd3afd3df6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prime vs. Subprime Lending </strong><ul id="4138ac6a-aab1-80bc-aa56-ec97b2cf61a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prime Lending:</strong> Reserved for borrowers with strong credit ratings. The baseline <strong>prime rate</strong> is typically calculated as <code>Federal funds rate + 3%</code> (where the federal funds rate is the overnight lending rate charged between banks).</li></ul><ul id="4138ac6a-aab1-80c9-8a1f-e7cf774efc12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subprime Lending:</strong> Designed for borrowers with lower credit scores or blemishes on their credit history whom lenders view as carrying a higher-than-average risk of default. Subprime loans carry interest rates that are higher than the standard prime rate.</li></ul></li></ul><ul id="4138ac6a-aab1-8004-adf3-c0cc1129d321" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underwriting Criteria for Subprime Loans</strong><ul id="4138ac6a-aab1-80f9-b0d2-f2bca4392dcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When evaluating whether a borrower qualifies for a prime loan or gets pushed into the subprime category, lenders rigorously review specific factors <strong>in this exact order of priority</strong>:<ol type="1" id="4138ac6a-aab1-8061-a80d-d56c5e9cc91b" class="numbered-list" start="1" dir="auto"><li>Credit score</li></ol><ol type="1" id="4138ac6a-aab1-808f-adc5-d3d64ab0e563" class="numbered-list" start="2" dir="auto"><li>Size of the down payment</li></ol><ol type="1" id="4138ac6a-aab1-80d6-ae95-d27e69c36e08" class="numbered-list" start="3" dir="auto"><li>Number of delinquencies on the credit report</li></ol><ol type="1" id="4138ac6a-aab1-80c7-bff6-ed5ad629d680" class="numbered-list" start="4" dir="auto"><li>Types of delinquencies</li></ol></li></ul><ul id="4138ac6a-aab1-8076-b3fa-c2370bb1bee8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>The Strict Standard:</em> Even if a borrower boasts high income and substantial assets, falling short in just one of these areas (such as a low credit score) can disqualify them from a prime loan.</li></ul></li></ul><ul id="4138ac6a-aab1-8045-89b0-dccd26842344" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Higher Rates, Fees, and Predatory Lending Risks</strong><ul id="4138ac6a-aab1-8069-b136-f37ed8d5cfdc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost:</strong> Because lenders take on elevated default risk, subprime mortgages feature significantly higher interest rates and upfront closing fees compared to prime loans.</li></ul><ul id="4138ac6a-aab1-8080-9534-cbcc9d208072" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Predatory Lending Vulnerability:</strong> Subprime borrowers often lack advanced financial literacy, making them prime targets for unscrupulous, predatory lenders offering abusive terms.</li></ul><ul id="4138ac6a-aab1-8076-84cb-ecb01e3771d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Safeguard:</strong> It is critical for prospective homebuyers with imperfect credit to actively shop around across multiple lenders. Comparing different rate sheets ensures they secure the most competitive terms available and avoid predatory traps.</li></ul></li></ul><ul id="4138ac6a-aab1-8076-95d0-e3135a717b74" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase-Money Mortgages (Seller Financing)</strong><ul id="4138ac6a-aab1-80b5-a0c3-c79ef4362e81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A purchase-money mortgage is a form of private lending where the seller acts as the lender and &quot;takes back&quot; a note for a portion (or all) of the purchase price. This is frequently used when a buyer cannot qualify for a full bank loan and needs the seller to finance a secondary mortgage.</li></ul><ul id="4138ac6a-aab1-8002-8685-d1f8a1bf40c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Licensing Exemptions:</strong> Sellers who are not registered loan originators can legally finance a purchase if they meet strict criteria under one of two exemptions:<ul id="4138ac6a-aab1-8025-9f9a-e92f1c3127fb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemption 1:</strong> Originates financing for only <strong>1 property in a 12-month period</strong>; seller is a person, state, or trust; did not construct the residence; no negative amortization; financing is fixed-rate or does not adjust for the first 5 years.</li></ul><ul id="4138ac6a-aab1-8046-876a-f954d9a26015" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemption 2:</strong> Originates financing for no more than <strong>3 properties in a 12-month period</strong>; seller is an individual or organization; did not construct the residence; loan is <strong>fully amortizing</strong>; fixed-rate or does not adjust for the first 5 years; and the seller verifies the buyer&#x27;s <strong>ability to repay</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-809d-9c70-d3fcaecc7baa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Example (Jesse and Walter):</strong><ul id="4138ac6a-aab1-8000-b420-e8e9873e44cb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Purchase price: $200,000.</li></ul><ul id="4138ac6a-aab1-80d7-aa3c-f86109bef3c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Buyer&#x27;s down payment: $40,000.</li></ul><ul id="4138ac6a-aab1-8082-83dd-c1be4381af09" class="bulleted-list" dir="auto"><li style="list-style-type:square">Existing bank mortgage assumed: $100,000.</li></ul><ul id="4138ac6a-aab1-80d9-9454-e3865dc642e3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seller (Walter) takes back a purchase-money second mortgage: $60,000.</li></ul><ul id="4138ac6a-aab1-803c-9418-e19fa92be680" class="bulleted-list" dir="auto"><li style="list-style-type:square">At closing, Jesse executes a note and deed of trust to Walter, title is transferred, and Jesse now owes the bank $100,000 and Walter $60,000.</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80bc-8b91-ed7f64f07c69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contracts for Deed (Land Contracts / Installment Sales)</strong><ul id="4138ac6a-aab1-8013-87bd-fb80dabb0922" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Structure:</strong> Also known as a land contract or installment sale, this is an agreement where the buyer makes regular installment payments directly to the seller over time. <strong>Legal title remains with the seller</strong> throughout the contract period; the buyer only receives the actual deed after paying the very final installment.</li></ul><ul id="4138ac6a-aab1-801d-836e-e91f66b2ee6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Uses:</strong> Frequently used for conveying raw land or when conventional institutional financing is unavailable or too expensive.</li></ul><ul id="4138ac6a-aab1-80a3-b04d-d02ed14fc3d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Benefits for Buyers:</strong> Provides a pathway to homeownership for buyers who cannot currently qualify for a bank loan but expect their financial situation to improve, giving them time to save or qualify for future refinancing.</li></ul><ul id="4138ac6a-aab1-801c-801f-ecac125b591d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Benefits for Sellers:</strong> Enables the sale of hard-to-move properties and provides a major tax advantage—<strong>capital gains tax is deferred</strong> and only paid as installments are received over time rather than all at once in the year of sale.</li></ul></li></ul><ul id="4138ac6a-aab1-80fc-aeda-c195a0744f14" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Wraparound Mortgages (The &quot;Wrap&quot;) </strong><ul id="4138ac6a-aab1-807b-9f4d-dbb236be5709" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A wraparound mortgage is a form of secondary financing where a buyer obtains a new, larger loan from a second lender (commonly the seller) that &quot;wraps&quot; around an existing, older first mortgage without paying it off.</li></ul><ul id="4138ac6a-aab1-8015-892d-cf8165c81b2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Payment Flow:</strong> The buyer makes a single, larger monthly payment to the new wraparound lender (the seller). The seller then uses a portion of those funds to continue making the monthly payments on the original, underlying first mortgage, pocketing the remaining margin as profit.</li></ul><ul id="4138ac6a-aab1-80b4-8bb7-f25065b52d06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protective Clauses:</strong> Because the buyer&#x27;s financial security depends on the seller continuing to pay the original loan, the buyer should always include a protective clause in the loan documents granting them the legal right to <strong>make payments directly to the original lender</strong> if the seller defaults.</li></ul></li></ul><ul id="4138ac6a-aab1-801f-b0f4-e6ef87019b69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step Example (Jim and Daisy)</strong><ul id="4138ac6a-aab1-805d-9e7f-c86800a9daf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Baseline:</strong> Jim owns a home with an existing $100,000 mortgage balance at a 5% interest rate, requiring a $900 monthly payment.</li></ul><ul id="4138ac6a-aab1-8006-82ef-d6440cf7f770" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Wrap Arrangement:</strong> Daisy has poor credit and cannot qualify for a standard prime bank loan. Instead of walking away, Jim and Daisy agree to a wraparound loan:<ul id="4138ac6a-aab1-804b-abd2-e6e1327e5cfe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Daisy pays Jim a $20,000 down payment.</li></ul><ul id="4138ac6a-aab1-801b-8a80-f643f2ece838" class="bulleted-list" dir="auto"><li style="list-style-type:square">Daisy signs a $60,000 wraparound note with Jim at a 7% interest rate.</li></ul><ul id="4138ac6a-aab1-8074-b20f-cc2c877a644c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Daisy pays Jim a total monthly payment of $1,200.</li></ul></li></ul><ul id="4138ac6a-aab1-804c-aca9-d862e77c1c9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Net Spread:</strong> Jim continues paying his bank $900 per month while receiving $1,200 from Daisy, netting a steady cash flow of <strong>$300 per month</strong> (<code>$1,200 - $900</code>).</li></ul></li></ul><ul id="4138ac6a-aab1-80a3-a59a-d305cbded908" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Danger of Alienation / Due-On-Sale Clauses</strong><ul id="4138ac6a-aab1-8026-8ae5-d89ebcbbea33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Bank&#x27;s Perspective:</strong> Lenders generally dislike wraparound mortgages because the property changes hands without the original loan being paid off.</li></ul><ul id="4138ac6a-aab1-80b8-a40c-ec8a8ddf49e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acceleration Risk:</strong> Most mortgages contain an <strong>alienation clause</strong> (or <strong>due-on-sale clause</strong>), which gives the lender the legal right to demand the immediate payoff of the entire remaining loan balance if the property is sold or transferred.</li></ul><ul id="4138ac6a-aab1-8059-886d-c69d7a30dbba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Liability &amp; Foreclosure Hazard:</strong> If the original lender discovers the wrap and accelerates the loan, Jim would instantly owe the full balance. If Jim defaults, both Jim and Daisy could face foreclosure.</li></ul><ul id="4138ac6a-aab1-804a-a891-d75c35b82080" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Assumption:</strong> If a buyer formally <em>assumes</em> the loan, they take on legal responsibility for the debt. In a wraparound mortgage where the buyer does <strong>not</strong> formally assume the primary loan, the original borrower (the seller) remains 100% personally liable for the debt.</li></ul></li></ul><ul id="4138ac6a-aab1-80ef-82ff-fc9e8d4af947" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Benefits of Wraparound Mortgages</strong><ul id="4138ac6a-aab1-8012-98c7-e2991e8ba17b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>For Buyers:</strong> Provides a pathway to homeownership for buyers with poor credit who would otherwise be forced into high-rate subprime loans. It bypasses institutional qualification hurdles and eliminates expensive closing fees (such as lender origination, appraisal, and credit report fees).</li></ul><ul id="4138ac6a-aab1-80db-b856-ff941e1a4548" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>For Sellers:</strong> Enables the sale of a property to a broader pool of buyers, provides a steady monthly income stream via the interest rate spread, and allows the seller to act as their own bank.<figure id="4138ac6a-aab1-80db-a9a4-e14710f471dd" class="image" data-notion-image="Chapter%202%20-%20Other%20Types%20of%20Loans/image.png" dir="ltr"><a href="Chapter%202%20-%20Other%20Types%20of%20Loans/image.png"><img style="width:480px" src="Chapter%202%20-%20Other%20Types%20of%20Loans/image.png"/></a></figure></li></ul></li></ul><ul id="4138ac6a-aab1-80bb-8965-e82a8ca3e303" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reverse Mortgages (Reverse Annuity Mortgages / RAMs) </strong><ul id="4138ac6a-aab1-80f4-9e6e-fccc34e8237b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A specialized loan designed exclusively for homeowners aged <strong>62 or older</strong>, allowing them to convert a portion of their home&#x27;s accumulated equity into cash to supplement living expenses (such as medicine, food, or general bills).</li></ul></li></ul><ul id="4138ac6a-aab1-8015-9dc7-f15e91af2f47" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Mechanics &amp; Characteristics</strong><ul id="4138ac6a-aab1-80af-8ca2-fd171fea1a7e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Income/Credit Qualification:</strong> Borrowers do not need to qualify based on income or credit scores because the lender&#x27;s security relies entirely on the value of the property.</li></ul><ul id="4138ac6a-aab1-80e1-b89c-fd92f851c57f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Continued Ownership:</strong> The borrower retains legal ownership of the home throughout the loan. The lender merely places a lien on the property, just like a traditional mortgage.</li></ul><ul id="4138ac6a-aab1-80f6-a22b-d46f790f7974" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zero Monthly Payments &amp; Negative Amortization:</strong> Because the borrower makes no monthly mortgage payments, interest is added to the loan balance every month. This causes <strong>negative amortization</strong>, meaning the loan balance constantly grows larger over time. If the borrower lives in the home for many years, the total balance can eventually exceed the market value of the property.</li></ul><ul id="4138ac6a-aab1-807f-a989-c9dc9ef8ce21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Recourse Protection:</strong> Reverse mortgages are strictly <strong>no-recourse loans</strong>, meaning there is <strong>no personal liability</strong>. If the loan balance grows larger than the home&#x27;s selling price, neither the borrower nor their heirs can be forced to pay out-of-pocket for the deficit. The lender absorbs the loss.</li></ul></li></ul><ul id="4138ac6a-aab1-8026-9df4-fbc4706ed122" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Inheritance &amp; Heirs</strong><ul id="4138ac6a-aab1-8012-9a91-f2527a77540a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Upon the borrower&#x27;s passing, the home&#x27;s title passes to the heirs along with the estate.</li></ul><ul id="4138ac6a-aab1-80c1-a7f3-d32dc66aad85" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If any equity remains after selling the property to pay off the loan, that cash belongs entirely to the heirs.</li></ul><ul id="4138ac6a-aab1-802e-8436-eeac954e1543" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the loan balance exceeds the home&#x27;s value, heirs can choose to walk away and let the lender foreclose, with zero personal debt obligation.</li></ul></li></ul><ul id="4138ac6a-aab1-8019-a527-dca48856b5ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Drawbacks (&quot;The Bad and the Ugly&quot;)</strong><ul id="4138ac6a-aab1-80d7-88c5-eeb55e702751" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>High Upfront Costs:</strong> Origination fees, closing costs, and mortgage insurance premiums can be quite expensive. These fees are frequently rolled directly into the beginning loan balance, instantly eating away at the borrower&#x27;s home equity.</li></ul><ul id="4138ac6a-aab1-80d0-9e70-ce2f2b98a0eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strategic Timing:</strong> Because upfront costs erode equity so quickly, financial advisors generally recommend securing a reverse mortgage while the borrower is relatively young and expects to remain in the home for many years to spread out those costs.</li></ul></li></ul><ul id="4138ac6a-aab1-806c-baf0-f72f823311e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Long-Term Occupancy Requirements for Reverse Mortgages</strong><ul id="4138ac6a-aab1-8055-974c-ef1a2c75d3f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Primary Rule:</strong> The borrower <em>must</em> continue using the property as their primary residence. If they plan to move or sell in the near future, a reverse mortgage is entirely inappropriate.</li></ul><ul id="4138ac6a-aab1-8081-8dbc-dd66d717a93c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Temporary Absences vs. Permanent Departure:</strong> Most reverse mortgage agreements permit temporary absences (such as extended hospital stays or vacations), provided the borrower intends to return. However, if the last surviving homeowner leaves the home permanently or passes away, the loan becomes immediately due and payable in full.</li></ul><ul id="4138ac6a-aab1-80c1-acb6-cb40f2336d44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foreclosure Risk:</strong> If the borrower violates occupancy rules or fails to meet ongoing property obligations (such as paying property taxes, hazard insurance, or maintaining home repairs), the lender holds the legal power of foreclosure.</li></ul><ul id="4138ac6a-aab1-800e-b1e5-de111fb4ea83" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Disclosures:</strong> Because reverse mortgages involve complex compounding interest and equity erosion, lenders are legally required to go to great extremes through mandatory counseling to ensure the borrower fully understands the mechanics before signing.</li></ul></li></ul><ul id="4138ac6a-aab1-80f4-8d8d-d2292c47bfa1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Sherry&#x27;s Social Security &amp; Reverse Mortgage</strong><ul id="4138ac6a-aab1-80c8-b65e-cd0109f55b32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Setup:</strong> Sherry is 75 years old and owns her home completely free and clear. Finding her Social Security checks insufficient to comfortably maintain her lifestyle, she opts for a reverse mortgage.</li></ul><ul id="4138ac6a-aab1-807e-a638-f5aec5cef717" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Numbers:</strong> Her home is appraised at <strong>$225,000</strong>, and she draws down <strong>$50,000</strong> worth of her accumulated equity.</li></ul><ul id="4138ac6a-aab1-8048-ba15-f2562bace5ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Cash Flow:</strong> Under her loan terms, Sherry receives a steady monthly payout of <strong>$415</strong>, perfectly supplementing her income.</li></ul><ul id="4138ac6a-aab1-8025-ac04-de174a067322" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Compounding Trade-Off:</strong> Because no monthly mortgage payments are made, the interest on the borrowed funds is capitalized and added to the loan balance every month (negative amortization). Consequently, the total debt on the $50,000 loan grows over time. When Sherry eventually sells the home or passes away, her remaining equity will be reduced by the full accumulated loan balance.</li></ul></li></ul><ul id="4138ac6a-aab1-8088-a037-ca037cc083fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Home Equity Loans</strong><ul id="4138ac6a-aab1-80d5-b69b-ef6174d00e7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A home equity loan allows a homeowner to borrow money using their accumulated property equity as collateral. The borrowed funds can be used for any purpose, such as home remodeling or college tuition.</li></ul><ul id="4138ac6a-aab1-80c0-8307-d0a0a802c169" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lending Limits (The 80% Rule):</strong> Equity loans are typically capped at <strong>80% of the property&#x27;s total appraised value</strong>.<ul id="4138ac6a-aab1-80f1-978a-f230758db2cf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Example Calculation:</em> If a home is valued at <strong>$215,000</strong>, the maximum total debt allowed (including any existing first mortgage balance) is <strong>$172,000</strong> (<code>$215,000 * 0.80</code>). If the owner still owes <strong>$50,000</strong> on their original mortgage, the maximum net cash-out amount they can receive from a home equity loan is <strong>$122,000</strong> (<code>$172,000 - $50,000</code>).</li></ul></li></ul></li></ul><ul id="4138ac6a-aab1-80d1-99c2-e1e75b9ceb85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt Consolidation Strategy</strong><ul id="4138ac6a-aab1-80b2-a80c-ecd34da4344b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Appeal:</strong> Borrowers often use home equity loans to pay off high-interest unsecured debt, such as credit cards carrying rates of 20% or higher, by replacing them with a single home equity loan in the single digits (e.g., 5% to 10%).</li></ul><ul id="4138ac6a-aab1-8024-a8ea-c8413e5abab5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Benefit:</strong> This lowers monthly interest costs and simplifies multiple obligations into a <strong>single consolidated monthly payment</strong>.</li></ul></li></ul><ul id="4138ac6a-aab1-8042-b2d2-c2aed74f19ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Risks of Home Equity Loans</strong><ul id="4138ac6a-aab1-8038-82e9-d8add956e98f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Collateral Danger:</strong> Because the home secures the debt, defaulting on the loan means the borrower faces <strong>foreclosure and the loss of their home</strong>.</li></ul><ul id="4138ac6a-aab1-80ed-bee5-e801c32ccc1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Predatory Pitfalls:</strong> While not predatory by nature, unscrupulous lenders are attracted to collateralized loans. Borrowers must watch out for dangerous terms like large hidden balloon payments or volatile variable rates. Unsecured debt consolidation alternatives also exist for those wishing to avoid risking their home.</li></ul></li></ul><ul id="4138ac6a-aab1-803c-ae2f-c883a82e95c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Personal Lines of Credit</strong><ul id="4138ac6a-aab1-80f5-9925-cb6ed4bfe651" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> An open-ended revolving credit line (typically ranging from <strong>$1,000 to $100,000</strong>) that functions similarly to a credit card, allowing borrowers to withdraw and repay funds as needed.</li></ul><ul id="4138ac6a-aab1-801f-a9c0-d8081ff36367" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Traits:</strong> Not tied to real estate, but often carries higher variable interest rates, annual fees, and monthly fees. Best used as a temporary funding solution rather than a long-term financial fix.</li></ul></li></ul><ul id="4138ac6a-aab1-809a-bf18-c56101c43b37" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Home Equity Lines of Credit (HELOCs)</strong><ul id="4138ac6a-aab1-80ff-ba6a-c190e7a7501b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Hybrid Structure:</strong> A HELOC combines features of a home equity loan, a personal line of credit, and a credit card.</li></ul><ul id="4138ac6a-aab1-807d-b357-d12c6e5a642f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How It Works:</strong> Like a home equity loan, it uses the homeowner&#x27;s equity as collateral. However, like a credit card or personal line of credit, it provides a revolving credit limit where the borrower can <strong>draw funds as needed</strong> over time rather than receiving a single lump-sum check.</li></ul></li></ul><ul id="4138ac6a-aab1-8023-9624-d5ce145934e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Real Estate Financing Overview</strong><ul id="4138ac6a-aab1-8060-b228-ff7999b34206" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Unlike residential mortgages, commercial real estate financing is predominantly handled through conventional loans issued by banks and private lenders. These loans fund income-generating business properties such as apartment complexes, office buildings, retail centers, and subdivisions.</li></ul><ul id="4138ac6a-aab1-8057-983b-fae85ffb4fc4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Shorter Terms:</strong> Commercial loans typically feature much shorter loan terms than residential mortgages, commonly ranging from <strong>5 to 10 years</strong>.</li></ul><ul id="4138ac6a-aab1-809e-b894-efdf2655aee8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Underwriting Focus:</strong> Banks evaluate both the individual investor and the income-producing potential of the asset. Lenders require personal and business balance sheets covering the past 3 to 5 years, personal credit history, solid business income, and a detailed business plan.</li></ul></li></ul><ul id="4138ac6a-aab1-8048-926d-c60f861e8052" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Recourse vs. Non-Recourse Financing</strong><ul id="4138ac6a-aab1-807e-9b46-fec71a0251b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Personal Guarantee (Recourse):</strong> Lenders frequently require a personal guarantee, meaning one or more principals of the business pledge personal liability to repay the debt if the business fails or stops operating.</li></ul><ul id="4138ac6a-aab1-80b0-b9c5-c88c0b755b99" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Recourse Financing:</strong> A commercial loan structured <em>without</em> a personal guarantee, meaning the lender&#x27;s recovery in default is strictly limited to the underlying real estate asset.</li></ul></li></ul><ul id="4138ac6a-aab1-80fc-85e4-c8cd020c2081" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Financial Metrics &amp; Requirements</strong><ul id="4138ac6a-aab1-803a-ad9b-c24030db089f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Debt Service Coverage Ratio (DSCR):</strong> A vital metric measuring the cash flow available to service the debt. Lenders typically look for a Net Operating Income (NOI) that covers the annual debt service by <strong>115% to 150%</strong> (a DSCR of 1.15 to 1.50).</li></ul><ul id="4138ac6a-aab1-80ff-8ed4-f8d0ed488d9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Larger Down Payments:</strong> Commercial properties require significantly larger down payments than residential properties, scaling with the asset class, property size, and investor strength.</li></ul></li></ul><ul id="4138ac6a-aab1-80b0-907b-dd1b2efccf65" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Basis Points</strong><ul id="4138ac6a-aab1-801c-a2e1-d0d12c101426" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Commercial lenders calculate and quote interest rates and fees using <strong>basis points</strong>.</li></ul><ul id="4138ac6a-aab1-809a-aeda-da2dc2759cb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Math:</strong> One basis point equals 1/100th of a percentage point (<code>0.01%</code>). Therefore, <code>100 basis points = 1%</code>. Because commercial loans involve massive sums of money, even a small shift of a few basis points results in a substantial financial impact over the life of the loan.</li></ul></li></ul><ul id="4138ac6a-aab1-8052-9938-ed2c873ddd5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Financing Alternatives Overview</strong><ul id="4138ac6a-aab1-8041-838b-ecf5e5973f0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While conventional bank loans dominate commercial real estate financing, specialized alternative options exist to provide flexibility for buyers and sellers alike.</li></ul></li></ul><ul id="4138ac6a-aab1-80e3-8eb9-ff713bfd5c98" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Financing in Commercial Transactions</strong><ul id="4138ac6a-aab1-8017-874a-c144c7342e2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanism:</strong> Just like in residential real estate, the seller acts as the lender, taking back a note for all or part of the purchase price.</li></ul><ul id="4138ac6a-aab1-8016-a551-cccef185802a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Benefits:</strong> Provides a steady income stream to fund future business ventures and helps optimize debt across their overall business portfolio. It can also bridge the funding gap when a buyer cannot secure 100% conventional financing.</li></ul></li></ul><ul id="4138ac6a-aab1-80bf-81d2-ffc701f0417a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sale-Leaseback Transactions</strong><ul id="4138ac6a-aab1-807b-8e1a-f79a23fc2e0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanics:</strong> A commercial property owner sells their building to an investor, and simultaneously enters into a long-term lease agreement to stay in the building as a tenant.</li></ul><ul id="4138ac6a-aab1-8087-a33f-ca6b1842ac44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Benefits:</strong><ul id="4138ac6a-aab1-8027-8bdd-d4724a378d08" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Release:</strong> Unlocks and frees up substantial cash equity previously trapped in the real property to reinvest into core business operations.</li></ul><ul id="4138ac6a-aab1-80dc-a9e8-f30db915e598" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tax Advantages:</strong> The monthly rent payments made by the business are generally fully tax-deductible as business operating expenses.</li></ul></li></ul><ul id="4138ac6a-aab1-80f9-b970-dd5f4ec967e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>(Note: While prominent in commercial real estate, sale-leasebacks can theoretically occur in residential transactions as well).</em></li></ul></li></ul><ul id="4138ac6a-aab1-80ad-a0a0-c549c4e160a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Small Business Administration (SBA) Loans</strong><ul id="4138ac6a-aab1-804c-b0ab-c5c00914085a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Government Backing:</strong> While residential programs like FHA and VA loans do not apply to commercial real estate, the U.S. Small Business Administration (SBA) steps in to support small business owners.</li></ul><ul id="4138ac6a-aab1-8046-a99c-e1ad7aebfbda" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>SBA 504 Loans:</strong> Specifically designed to promote business growth and job creation, these loans are available to service, retail, manufacturing, and wholesale businesses.</li></ul><ul id="4138ac6a-aab1-80e3-a3fe-e0949782e3f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eligibility Thresholds:</strong> Businesses generally qualify if they have a net worth of <strong>less than $7 million</strong> and average after-tax net profits of <strong>less than $2.5 million</strong>.</li></ul><ul id="4138ac6a-aab1-807e-99e1-ec4e64c814c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eligible Uses:</strong> SBA 504 funds can finance commercial real estate, land acquisition, building improvements, and modernization, as well as heavy machinery, equipment, and essential operational business expenses (such as professional fees, utilities, and landscaping).</li></ul></li></ul><p id="4138ac6a-aab1-8026-81ff-dce95d8d3ac3" class="" dir="auto">
+</p></div><div id="4138ac6a-aab1-8037-9149-c3eb5891b022" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4138ac6a-aab1-806a-8b33-d6c183176e89" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4138ac6a-aab1-8013-b267-ef46fe8c4626" class="bulleted-list" dir="auto"><li style="list-style-type:disc">assumption - the process of transferring the obligation of the mortgagor to another party who takes over the responsibility to pay the note</li></ul><ul id="4138ac6a-aab1-80cd-918c-ef4302c1835b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">balloon payment - a payment at the end of a loan period which includes the total outstanding balance of the loan</li></ul><ul id="4138ac6a-aab1-80a9-a394-c8a27003c82c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">bridge loan - a<strong> </strong>short-term loan used to transition from one loan to another; can connect borrower from construction loan to eventual mortgage loan (or current home to their new home)</li></ul><ul id="4138ac6a-aab1-800a-96f7-c72e32e29d42" class="bulleted-list" dir="auto"><li style="list-style-type:disc">home equity loan - a loan in which funds are borrowed using the homeowner’s equity for collateral; the funds can be used for any purpose</li></ul><ul id="4138ac6a-aab1-8074-9ea8-eca3f27cd926" class="bulleted-list" dir="auto"><li style="list-style-type:disc">purchase money mortgage - instrument given by the purchaser to a seller who “takes back” a note for part or all of the purchase price</li></ul><ul id="4138ac6a-aab1-803f-8b92-d52e63137b17" class="bulleted-list" dir="auto"><li style="list-style-type:disc">reverse mortgage - a financial arrangement where a homeowner pledges equity to a lender in exchange for periodic payments of the pledged equity; essentially selling off equity in their home in exchange for monthly payments</li></ul><p id="4138ac6a-aab1-80df-bc2d-e8fd74f2ffe7" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4138ac6a-aab1-80ab-a6a0-ec910f0983e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Loans</strong><figure id="4138ac6a-aab1-80fb-95e3-f91492368736" class="image" data-notion-image="Chapter%202%20-%20Other%20Types%20of%20Loans/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Other%20Types%20of%20Loans/image%201.png"><img style="width:384px" src="Chapter%202%20-%20Other%20Types%20of%20Loans/image%201.png"/></a></figure></li></ul><ul id="4138ac6a-aab1-80fb-b24a-cb5b167957fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>More Types of Loans!</strong><ul id="4138ac6a-aab1-80b6-8749-fc3bf28890fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commercial Loans - </strong>Commercial loans usually have shorter terms than residential loans (5-10 years is typical) and are reserved for business properties such as subdivisions, retail centers, apartment complexes, office buildings, and other income-driven developments.</li></ul><ul id="4138ac6a-aab1-80ce-a5bf-ebe8665379d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Financing - </strong>The seller provides a loan to the purchaser of the property.</li></ul><ul id="4138ac6a-aab1-8002-8e62-e1ab78b4fbbb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sale-leaseback - </strong>The owner of a commercial property sells the property to an investor and then leases it back and continues to stay in the property.</li></ul><ul id="4138ac6a-aab1-8039-8468-cefc45f612c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Personal Line of Credit - </strong>A personal line of credit is a kind of open-ended loan where the borrower can withdraw money, like a credit card.</li></ul><ul id="4138ac6a-aab1-80cf-843b-d35d4d2ed6e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Home Equity Line of Credit (HELOC) - </strong>A HELOC allows the borrower to open a line of credit using their equity and draw on money as needed. Similar to a personal line of credit or credit card, a HELOC has a credit limit and monthly payments.</li></ul><p id="4138ac6a-aab1-801e-a4a0-c74dd1c58e66" class="" dir="auto">
+</p></li></ul></div></div><p id="4138ac6a-aab1-807d-953e-d87148b1d95d" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

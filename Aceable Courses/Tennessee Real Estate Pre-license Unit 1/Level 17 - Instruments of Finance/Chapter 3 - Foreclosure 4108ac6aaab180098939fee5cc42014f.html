@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Foreclosure</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-8009-8939-fee5cc42014f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Foreclosure</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4148ac6a-aab1-8079-9bf8-ff384381c464" class="column-list" data-notion-column-list="" dir="auto"><div id="4148ac6a-aab1-80b7-9287-dc6ad567b3d3" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4148ac6a-aab1-80d0-8763-ebb700733115" class="" dir="auto"><strong>Default: The Trigger for Foreclosure </strong></p><ul id="4148ac6a-aab1-8045-8422-ebcf0781a588" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Concept:</strong> Foreclosure is triggered when the mortgagor (borrower) breaches any of the duties or obligations outlined in the security instrument (mortgage or deed of trust).</li></ul><ul id="4148ac6a-aab1-8061-8460-dd52f981d26f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Triggers:</strong><ul id="4148ac6a-aab1-800a-9def-f7b3abaabf18" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Falling behind on monthly mortgage payments.</li></ul><ul id="4148ac6a-aab1-80fc-953e-e99e3abce49f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to maintain the property in good repair (violating the covenant of good repair).</li></ul><ul id="4148ac6a-aab1-801f-9816-dee778af488b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to pay hazard or homeowner&#x27;s insurance (violating the covenant to pay insurance).</li></ul><ul id="4148ac6a-aab1-8071-b46b-cb87b6798bb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Failing to pay local property taxes or special assessments (violating the covenant to pay taxes).</li></ul></li></ul><ul id="4148ac6a-aab1-80ec-8550-e16f642c01b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role of Private Mortgage Insurance (PMI)</strong><ul id="4148ac6a-aab1-80be-a681-d8bb5c258b29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protection Against Default:</strong> For conventional loans with a down payment under 20%, lenders typically require Private Mortgage Insurance (PMI) specifically to protect against borrower default.</li></ul><ul id="4148ac6a-aab1-8070-9e24-e4b8f468dda6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reimbursement:</strong> In the event of a foreclosure, the lender&#x27;s financial losses are at least partially reimbursed through PMI claim payouts.</li></ul></li></ul><ul id="4148ac6a-aab1-80fd-9792-cea39c8e1f5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foreclosure as an Involuntary Transfer</strong><ul id="4148ac6a-aab1-808c-9ecb-efcbb7308e93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loss of Ownership Rights:</strong> When a borrower defaults, they forfeit their primary right to maintain ownership of the property.</li></ul><ul id="4148ac6a-aab1-808d-ae7a-c0ac6082f81a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Involuntary Nature:</strong> The lender has the legal right to initiate and execute foreclosure without the borrower&#x27;s consent—making foreclosure a classic form of <strong>involuntary alienation (transfer).</strong><figure id="4148ac6a-aab1-80fb-8f34-df1c8d6a1bd4" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DutiesOfAMortgagor_Checklist_21060.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DutiesOfAMortgagor_Checklist_21060.png"><img style="width:336px" src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DutiesOfAMortgagor_Checklist_21060.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80cf-b650-fda4c05e8ea4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foreclosure Paths </strong><ul id="4148ac6a-aab1-80f9-94e5-d3b506c66c60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> When a borrower defaults on a mortgage loan, lenders pursue legal recovery paths governed primarily by state property theory, the security instrument used, and local statutes.</li></ul><ul id="4148ac6a-aab1-80cf-827f-c12b15e1ed8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Major Categories:</strong> All foreclosure mechanisms fall into one of two primary categories:<ol type="1" id="4148ac6a-aab1-80b8-9d11-dfc6a5354a5d" class="numbered-list" start="1" dir="auto"><li><strong>Nonjudicial Foreclosure</strong></li></ol><ol type="1" id="4148ac6a-aab1-8083-b96a-ca5721523e57" class="numbered-list" start="2" dir="auto"><li><strong>Judicial Foreclosure</strong></li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-804b-b67b-f7efec807beb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nonjudicial Foreclosure</strong><ul id="4148ac6a-aab1-807f-814e-d8cee417f0ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Association:</strong> Typically utilized in <strong>title theory states</strong>, including <strong>Tennessee</strong>.</li></ul><ul id="4148ac6a-aab1-804d-9c17-fbfa25b5dd65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanism:</strong> Because a deed of trust conveys legal title to a third-party trustee from the start, the lender or trustee already holds legal title and does not need to file a lawsuit to wrest control from the borrower.</li></ul><ul id="4148ac6a-aab1-80e6-8c92-efa1426d50c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> Faster, less complex, and significantly less expensive. It relies on a <strong>power-of-sale clause</strong> embedded in the deed of trust where the borrower waives the right to a court hearing.</li></ul><ul id="4148ac6a-aab1-8082-8a42-fb0573b8d39b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contested Caveat:</strong> If a nonjudicial foreclosure is legally challenged or contested by the borrower, it can quickly morph into a judicial proceeding requiring court intervention.</li></ul><ul id="4148ac6a-aab1-805e-983f-d9ffcda83f62" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Also known as <em>power of sale</em> or <em>sale by advertisement</em>, nonjudicial foreclosure requires a <strong>power of sale clause</strong> embedded in the security instrument (typically a deed of trust) at signing.</li></ul><ul id="4148ac6a-aab1-8031-b3a4-f9d486be4b9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Pre-authorizes the trustee or lender to foreclose and sell the property publicly without court oversight or filing a formal lawsuit, because legal title is already held by the trustee on behalf of the lender</li></ul><ul id="4148ac6a-aab1-80ec-b10b-e7f3ef619837" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Nonjudicial Foreclosure Lifecycle</strong><ol type="1" id="4148ac6a-aab1-80e0-a264-c60eac5b61b3" class="numbered-list" start="1" dir="auto"><li><strong> Preforeclosure Period:</strong><ul id="4148ac6a-aab1-80b0-ab1f-d02fad81a98d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Occurs when payments are missed but before formal foreclosure begins. Late fees accrue, and lenders may inspect the property at the borrower&#x27;s expense.</li></ul><ul id="4148ac6a-aab1-80de-a09d-e4c9b9e553f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Breach Letter:</strong> The lender issues a demand/breach letter threatening loan acceleration, detailing overdue amounts, and explaining how the borrower can cure the default and reinstate the loan.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80b2-b658-faf14e5658a8" class="numbered-list" start="2" dir="auto"><li><strong> Notice of Sale (Publication &amp; Mailing):</strong><ul id="4148ac6a-aab1-8069-a53b-d34136d33ba9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In <strong>Tennessee</strong>, notice of the foreclosure sale must be published in a local county newspaper <strong>at least 20 days</strong> before the sale (or posted in several public places for <strong>at least 30 days</strong> if no newspaper exists).</li></ul><ul id="4148ac6a-aab1-80eb-995d-fa9eccbf9fc8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The lender must mail a copy of the sale notice to the borrower on or before the date it is first published.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-8029-9afd-c6095fe16db8" class="numbered-list" start="3" dir="auto"><li><strong> The Public Auction:</strong><ul id="4148ac6a-aab1-80cf-9974-e09389f7df02" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The property is sold via public auction.</li></ul><ul id="4148ac6a-aab1-80e5-8bf0-dc422a4225ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lender Bidding:</strong> Lenders frequently bid on the property to protect their financial stake; if they win, they receive a credit against the debt rather than paying cash.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80b3-b18c-fe8ff76acf46" class="numbered-list" start="4" dir="auto"><li><strong> Deficiency Judgments &amp; Surplus Proceeds:</strong><ul id="4148ac6a-aab1-80ce-86bf-d23cd73c8b3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deficiency Judgment:</strong> If the winning bid fails to cover the total debt and fees, the lender can pursue a personal judgment against the borrower for the deficiency (which, in a nonjudicial foreclosure, requires filing a separate lawsuit).</li></ul><ul id="4148ac6a-aab1-80fe-815e-e5b58e6830fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Market Value Protection:</strong> If the foreclosure purchase price is <em>materially less</em> than the property&#x27;s fair market value, the borrower can reduce their deficiency liability by that difference.</li></ul><ul id="4148ac6a-aab1-80bc-9435-deb08f9c61ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Surplus Proceeds:</strong> If the property sells for <em>more</em> than the total debt owed, any excess funds belong to the borrower.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-806d-abe1-cd2782b37316" class="numbered-list" start="5" dir="auto"><li><strong> Real Estate Owned (REO):</strong><ul id="4148ac6a-aab1-8008-90cb-c8d7ccfeff82" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If no third-party bidder outbids the lender, the bank takes title, converting the asset into <strong>REO (Real Estate Owned)</strong> status to be resold on the open market.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80d3-bcae-e3b48420c511" class="numbered-list" start="6" dir="auto"><li><strong> Eviction:</strong><ul id="4148ac6a-aab1-8010-a32a-fa15aa3e6aee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The new owner has the legal right to evict the previous occupant, though existing tenants are granted special legal protections allowing them to fulfill their lease terms.</li></ul></li></ol></li></ul><ul id="4148ac6a-aab1-80da-aea5-f41952f8d57d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stopping a Foreclosure</strong><ul id="4148ac6a-aab1-80e5-a0cc-fb58ced18ebd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Borrowers can halt or prevent a foreclosure sale through three primary avenues:<ol type="1" id="4148ac6a-aab1-80e7-bd66-d73b545953d7" class="numbered-list" start="1" dir="auto"><li><strong>Reinstatement:</strong> Exercising the &quot;right to reinstate&quot; clause by paying all delinquent amounts, late fees, and lender expenses to restore the original loan terms.</li></ol><ol type="1" id="4148ac6a-aab1-80c6-9686-d5f845337154" class="numbered-list" start="2" dir="auto"><li><strong>Equitable Redemption (Equity of Redemption):</strong> Exercising the common law right to pay off the entire loan debt in full (including interest, fees, and costs) before the foreclosure sale is finalized.</li></ol><ol type="1" id="4148ac6a-aab1-8042-8ecf-c5bb56387d5c" class="numbered-list" start="3" dir="auto"><li><strong>Filing for Bankruptcy:</strong> Automatically triggers an emergency stay of proceedings that halts foreclosure actions.</li></ol></li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8057-b699-f219a39893ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Judicial Foreclosure</strong><ul id="4148ac6a-aab1-80ae-b6a5-c0c6c0825fe9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Association:</strong> The predominant form of foreclosure utilized in <strong>lien theory states</strong>.</li></ul><ul id="4148ac6a-aab1-8010-8fec-e246ae699903" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanism:</strong> Because the borrower retains legal and equitable title under a mortgage, the lender must initiate a formal lawsuit through the court system to foreclose and cut off the borrower&#x27;s title.</li></ul><ul id="4148ac6a-aab1-8038-8c8f-d1f0e8bb1c92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> Generally more complex, drawn-out, and expensive, but offers court validation (&quot;blessed by the courts&quot;) and often grants the lender the legal right to pursue a <strong>deficiency judgment</strong> against the borrower if the foreclosure sale proceeds fall short of the total debt owed.</li></ul><ul id="4148ac6a-aab1-80fa-9b1e-f2c486fc266c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While nonjudicial foreclosure is standard in title theory states like Tennessee, judicial foreclosure is the predominant path in lien theory states. It requires the lender to file a formal lawsuit through the court system to cut off the borrower&#x27;s title.</li></ul><ul id="4148ac6a-aab1-8074-9f47-f4455f848cf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Catalyst:</strong> Triggered by borrower default, resulting in the lender invoking the acceleration clause to demand full repayment of the entire loan balance.</li></ul><ul id="4148ac6a-aab1-80b3-acc3-ee877ec7d18e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Judicial Foreclosure Lifecycle</strong><ol type="1" id="4148ac6a-aab1-8079-b160-f07627914004" class="numbered-list" start="1" dir="auto"><li><strong> Preforeclosure &amp; Lis Pendens:</strong><ul id="4148ac6a-aab1-807f-a363-f056dc0aa4c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Operates similarly to nonjudicial foreclosure.</li></ul><ul id="4148ac6a-aab1-80a6-ae87-ff26caae6fe3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Filing a </strong><em><strong>Lis Pendens</strong></em><strong>:</strong> The lender conducts a title search to identify all interested parties (borrower and junior lienholders) and files a <em>lis pendens</em>—a written public notice of pending legal action—naming all parties as defendants in the lawsuit.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80a2-81de-c20003753325" class="numbered-list" start="2" dir="auto"><li><strong> Judicial Proceedings &amp; Judgment:</strong><ul id="4148ac6a-aab1-8088-a7a2-ef78cfde8983" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Default Judgment:</strong> Granted if the borrower fails to respond to the lawsuit.</li></ul><ul id="4148ac6a-aab1-8020-9a26-e2dd4babeb96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Summary Judgment:</strong> Requested by the lender and granted by the court if the facts of default are undisputed and the borrower lacks a valid legal defense.</li></ul><ul id="4148ac6a-aab1-804e-8ad3-f1da90f23103" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Writ of Execution:</strong> Upon judgment, the court issues a writ of execution instructing the county sheriff to schedule a foreclosure auction.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-8072-ac9a-e0ec910c0308" class="numbered-list" start="3" dir="auto"><li><strong> Equitable Redemption Window:</strong><ul id="4148ac6a-aab1-8026-8b4c-f9e07ef3cb6e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The borrower retains the common law right of <strong>equitable redemption</strong> right up until the date of the sheriff&#x27;s sale, allowing them to stop proceedings by paying the total debt, interest, and foreclosure costs in full.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-805b-8635-e7a959fb6a80" class="numbered-list" start="4" dir="auto"><li><strong> Sheriff&#x27;s Sale (Auction):</strong><ul id="4148ac6a-aab1-8028-83ff-ec0d9be506a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A public auction held at the county courthouse (open to the public, excluding the defaulting borrower).</li></ul><ul id="4148ac6a-aab1-80ab-8c69-c8583d7a32e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payout Waterfall:</strong> Proceeds cover auction costs first, followed by senior liens (taxes and the foreclosing mortgage), and subsequently junior liens. Any excess surplus funds are returned to the borrower.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-8085-87af-f88bb597426a" class="numbered-list" start="5" dir="auto"><li><strong> Deficiency Judgments:</strong><ul id="4148ac6a-aab1-80fb-895a-fa676c138940" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If the auction proceeds fall short of the total debt, the lender may seek a deficiency judgment.</li></ul><ul id="4148ac6a-aab1-806d-92a3-fd4a5e696f9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Judicial Calculation:</strong> In a judicial foreclosure, the deficiency amount is calculated as the difference between the <strong>sale amount and the total foreclosure judgment award</strong> (unlike nonjudicial foreclosures, which calculate the deficiency based on fair market value vs. sale price).</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80ed-bb5c-c9727eb807de" class="numbered-list" start="6" dir="auto"><li><strong> Eviction &amp; Writ of Assistance:</strong><ul id="4148ac6a-aab1-809c-8424-efcf01490866" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Once the sale is finalized, the property is conveyed to the new buyer. The purchaser can request a <strong>writ of assistance</strong> from the court to legally evict the former occupant.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-8049-a071-c94e121a6f7f" class="numbered-list" start="7" dir="auto"><li><strong> Statutory Right of Redemption (Tennessee Nuance):</strong><ul id="4148ac6a-aab1-80c8-b75e-ed1620e66323" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Tennessee, judicial foreclosures provide the defaulting borrower a <strong>statutory right of redemption</strong> allowing them to reclaim the property by paying the full redemption amount (loan balance plus fees) within <strong>two years</strong> following the sale.</li></ul><ul id="4148ac6a-aab1-8057-ab8e-f97f9fc571cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Practical Reality:</em> This right is extremely rare in Tennessee because most loans utilize deeds of trust with a power of sale clause or feature a formal waiver of the statutory redemption right in the original mortgage contract.</li></ul></li></ol><figure id="4148ac6a-aab1-8036-9cf0-e6212bb2d77a" class="image" data-notion-image="Chapter%203%20-%20Foreclosure/image.png" dir="ltr"><a href="Chapter%203%20-%20Foreclosure/image.png"><img style="width:432px" src="Chapter%203%20-%20Foreclosure/image.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80d9-96e5-de66577f3d8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strict Foreclosure </strong><ul id="4148ac6a-aab1-8016-8a21-d5c9a5dd94f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Controversy:</strong> While some real estate authorities classify strict foreclosure as a distinct third category alongside judicial and nonjudicial foreclosure, it is best understood as a streamlined, specialized type of <strong>judicial foreclosure</strong> because it requires formal court involvement and a lawsuit filed by the lender.</li></ul><ul id="4148ac6a-aab1-80e5-94f4-e7ad2b93f989" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Foreclosure Sale:</strong> The defining characteristic of strict foreclosure is that <strong>it does not involve a public auction or foreclosure sale</strong>.</li></ul></li></ul><ul id="4148ac6a-aab1-8075-9570-c1f36ee97ed5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Strict Foreclosure Mechanism</strong><ul id="4148ac6a-aab1-8050-a1c1-f85b61de6690" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Lawsuit &amp; Acceleration:</strong> Upon borrower default, the lender files a lawsuit and invokes the acceleration clause.</li></ul><ul id="4148ac6a-aab1-80f2-a7ce-d9576257284c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Court-Ordered Redemption Period:</strong> Instead of ordering a sheriff&#x27;s sale, the court establishes a strict timeframe during which the borrower must satisfy the debt in full via their equitable right of redemption.</li></ul><ul id="4148ac6a-aab1-802e-9797-dd4e499d10f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Conveyance of Title:</strong> If the borrower fails to pay within the court&#x27;s deadline, <strong>legal title is conveyed directly to the lender</strong>, extinguishing the borrower&#x27;s ownership rights without a public auction.</li></ul></li></ul><ul id="4148ac6a-aab1-80de-890e-c883eb8642b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Rationale &amp; Use Cases</strong><ul id="4148ac6a-aab1-8046-abf1-c12588bd8b29" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Underwater Properties:</strong> Strict foreclosure is typically utilized when a property is severely &quot;underwater&quot;—meaning the outstanding mortgage debt far exceeds the fair market value of the property.</li></ul><ul id="4148ac6a-aab1-80e2-85b9-ef6ebba53a6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Avoiding Useless Expense:</strong> In such cases, holding a public auction serves little purpose because the lender would simply place a credit bid for the total loan balance, win the auction, and take title anyway. Strict foreclosure bypasses the unnecessary cost, time, and administrative hassle of a sale.</li></ul></li></ul><ul id="4148ac6a-aab1-80af-8742-d62e8046cbc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Effects &amp; Availability</strong><ul id="4148ac6a-aab1-80de-b85d-e44094dd2b35" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deficiency Judgments:</strong> The use of strict foreclosure does <strong>not</strong> preclude the lender from pursuing a deficiency judgment against the borrower.</li></ul><ul id="4148ac6a-aab1-80f4-9d88-c509143a13c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Redemption Rights Cut Off:</strong> Once the court-mandated redemption window expires, both the equitable right of redemption and any statutory right of redemption are permanently barred.</li></ul><ul id="4148ac6a-aab1-8072-952e-d1d388c0401c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Geographic Scope:</strong> Today, strict foreclosure is rarely used and is restricted to only a few Northeastern states (primarily <strong>Connecticut, Vermont, and New York</strong>).</li></ul></li></ul><ul id="4148ac6a-aab1-80cf-90be-f544b81aadc7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Foreclosure by Entry and Possession </strong><ul id="4148ac6a-aab1-80c6-b8c6-f47abe341bc4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A rare, highly localized form of foreclosure used as the primary path in <strong>Massachusetts</strong> (and to a lesser degree in a few neighboring New England states). It is so uncommon that it is humorously likened to &quot;the Pluto of foreclosure paths.&quot;</li></ul><ul id="4148ac6a-aab1-80b3-ae0a-fe66f73d23c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Hybrid Nature:</strong> It begins as a nonjudicial process, but if contested by the borrower at any point before the statutory waiting period expires, the lender must switch over to a judicial foreclosure process.</li></ul></li></ul><ul id="4148ac6a-aab1-80fb-b3f6-f25eaac32c23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Entry and Possession Process</strong><ol type="1" id="4148ac6a-aab1-80d5-8e8d-e939360b6d70" class="numbered-list" start="1" dir="auto"><li><strong> Peaceful Default Takeover:</strong> Upon default, the lender notifies the borrower and takes physical, peaceable entry/possession of the property with the borrower&#x27;s (tacit or explicit) acquiescence.</li></ol><ol type="1" id="4148ac6a-aab1-805b-8e2c-f7d29d667b3c" class="numbered-list" start="2" dir="auto"><li><strong> Witnessing &amp; Documentation:</strong> The repossession must be formally witnessed, documented, and publicly recorded/published in accordance with strict state statutory requirements.</li></ol><ol type="1" id="4148ac6a-aab1-80e8-9e68-f3c6d9af1bac" class="numbered-list" start="3" dir="auto"><li><strong> The Waiting Period:</strong> The lender holds and possesses the property for a mandated statutory timeframe.</li></ol><ol type="1" id="4148ac6a-aab1-8005-82a3-d329c6e73c89" class="numbered-list" start="4" dir="auto"><li><strong> Extinguishment of Rights:</strong> If the process is completed peacefully and without contest, the borrower&#x27;s redemption rights expire at the end of the waiting period, and legal ownership of the property vests fully in the lender.</li></ol></li></ul><ul id="4148ac6a-aab1-8042-8256-d9608616fa20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Foreclosures </strong><ul id="4148ac6a-aab1-80cc-83fb-f028b0d5c4a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While FHA loans generally follow standard state-level foreclosure paths (judicial or nonjudicial), they introduce mandatory federal servicing obligations, strict loss mitigation requirements, and government-backed insurance safeguards.</li></ul><ul id="4148ac6a-aab1-8022-a1fc-d4535eab8fd1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Purpose of FHA Loans:</strong> Created to expand homeownership opportunities for borrowers who might not meet conventional underwriting standards. Lenders are incentivized to offer these loans because the Federal Housing Administration (FHA) insures them against borrower default.</li></ul><ul id="4148ac6a-aab1-8089-afd8-c16b96d29c17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Quid Pro Quo:</strong> In exchange for government insurance protection, lenders are contractually and legally obligated to make proactive, good-faith efforts to help borrowers avoid foreclosure. Lenders must notify the FHA of a default within <strong>60 days</strong> of its occurrence.</li></ul></li></ul><ul id="4148ac6a-aab1-8031-88d4-d9c31eb6afc9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Loss Mitigation Programs</strong><ul id="4148ac6a-aab1-8032-8ea5-e4706dd09cc9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Before initiating formal foreclosure, lenders and borrowers must evaluate and pursue appropriate loss mitigation options:<ul id="4148ac6a-aab1-8083-9295-f199ec0b1c6e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Forbearance:</strong> A formal agreement to temporarily suspend or reduce monthly mortgage payments with the expectation that the borrower will resume full payments and cure the delinquency later.</li></ul><ul id="4148ac6a-aab1-8074-b041-d173dd6451e4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Repayment Plan:</strong> A structured schedule to catch up on missed, delinquent payments over a set timeframe alongside regular monthly payments.</li></ul><ul id="4148ac6a-aab1-8063-a61d-e360951d57b9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loan Modification:</strong> A permanent restructuring of the original loan terms (such as lowering the interest rate, extending the loan term, or capitalizing arrears) to create a sustainable monthly payment.</li></ul><ul id="4148ac6a-aab1-80d0-8f69-f42d745d13ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Partial Claim (FHA Home Affordable Modification Program):</strong> A one-time, interest-free, subordinate loan from the FHA granted to cover delinquent amounts, permanently reducing or buying down the monthly obligation. This secondary lien must eventually be paid off when the primary mortgage is satisfied, refinanced, or the property is sold.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-800a-bf45-ee4f024a7dd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The 120-Day Rule &amp; Foreclosure Timeline</strong><ul id="4148ac6a-aab1-800e-a0e8-d0fd7a304c0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">FHA loans are fully subject to federal protections granting homeowners a <strong>120-day pre-foreclosure review period</strong> (evaluating loss mitigation options) before a lender can legally file for foreclosure or conduct a foreclosure sale.</li></ul></li></ul><ul id="4148ac6a-aab1-808d-9948-f4978b9eab83" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA Insurance Claims &amp; Mortgage Insurance Premium (MIP)</strong><ul id="4148ac6a-aab1-80b9-9195-e378a5c041c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reimbursement:</strong> If loss mitigation fails and foreclosure proceeds, the lender submits an insurance claim to the FHA to recover its financial losses.</li></ul><ul id="4148ac6a-aab1-80fc-b622-e3cad27358b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Insurance Premium (MIP):</strong> FHA insurance claim payouts are funded directly through <strong>Mortgage Insurance Premiums (MIP)</strong>, which are paid by borrowers on FHA loans (required for down payments under 20% throughout the life of the loan or applicable term).</li></ul></li></ul><ul id="4148ac6a-aab1-803d-83be-e32f61113423" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Foreclosures </strong><ul id="4148ac6a-aab1-806a-ad89-c712920bfdfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Guarantee vs. Insurance:</strong> Unlike FHA loans (which are <em>insured</em>), VA loans are <em>partially guaranteed</em> by the Department of Veterans Affairs. This guarantee enables lenders to offer favorable terms (often zero-down) to eligible military service members, veterans, and surviving spouses.</li></ul><ul id="4148ac6a-aab1-804b-91b4-eabe3d69b125" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Funding Fee:</strong> The VA funds its guarantee program through a one-time <strong>VA funding fee</strong> paid by borrowers (the amount varies based on military category, down payment, disability status, loan type, and prior VA loan usage).</li></ul></li></ul><ul id="4148ac6a-aab1-800e-9a60-cf25664e0382" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Loss Mitigation &amp; Default Procedures</strong><ul id="4148ac6a-aab1-80e9-bf63-ce483a75157c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Notice Timelines:</strong> Lenders must notify the borrower of a default within <strong>30 days</strong> (by phone or mail) and are required to notify the VA within <strong>three months</strong>.</li></ul><ul id="4148ac6a-aab1-808a-9ccd-f044502ac9b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 120-Day Rule:</strong> VA loans are fully protected by the federal <strong>120-day pre-foreclosure review period</strong>, giving homeowners a mandatory window to pursue loss mitigation options.</li></ul><ul id="4148ac6a-aab1-80c7-858c-f2c16f952fe6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mitigation Options:</strong> Lenders must actively pursue loss mitigation strategies similar to FHA guidelines (forbearance, repayment plans, and loan modifications).</li></ul><ul id="4148ac6a-aab1-80b1-9e1f-e5832ee66155" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right of Reinstatement:</strong> VA guidelines generally preserve the borrower&#x27;s right to reinstate the loan by curing all delinquencies, late fees, and accrued foreclosure expenses.</li></ul></li></ul><ul id="4148ac6a-aab1-806f-8c7b-c06c13db633e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>VA Intervention &amp; Claim Settlement</strong><ul id="4148ac6a-aab1-80b4-9f85-c339cdb57860" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>VA Advance Funds:</strong> The VA has the authority to step in and bring a delinquent loan current on behalf of the borrower. If it does, the VA assumes senior debt priority over the lender for the amount of the advance funds paid out, working directly with the veteran on a separate repayment schedule.</li></ul><ul id="4148ac6a-aab1-809c-991d-cee449d9f1bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foreclosure Claims &amp; Options:</strong> If foreclosure occurs, the lender submits its loss claim to the VA. The VA can elect to:<ol type="1" id="4148ac6a-aab1-8094-ab20-f7ffc2d85c5c" class="numbered-list" start="1" dir="auto"><li>Pay the lender&#x27;s full claim and take title to the property.</li></ol><ol type="1" id="4148ac6a-aab1-804e-99fb-d7ba8f0259e5" class="numbered-list" start="2" dir="auto"><li>Leave title with the lender and pay only the deficiency between the property&#x27;s appraised value and the outstanding loan balance.</li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-805a-ad7d-d5a16e13f5e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt Priority (Lien Priority) Mechanics</strong><ul id="4148ac6a-aab1-8063-90e9-d418658da676" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Debt priority determines the precise order in which competing lienholders are paid out from the proceeds of a foreclosure sale.</li></ul><ul id="4148ac6a-aab1-808d-827b-cd78f153a474" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The General Rule (&quot;First in Time, First in Right&quot;):</strong> Priority is established primarily by the <strong>chronological order of recordation</strong>.</li></ul><ul id="4148ac6a-aab1-80db-9ff8-fbfbdbaef75b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Senior vs. Junior Mortgages:</strong><ul id="4148ac6a-aab1-80ab-8bce-d39d6dafb54e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Senior Mortgage (First Mortgage):</strong> The initial loan recorded against the property, which takes top priority.</li></ul><ul id="4148ac6a-aab1-8022-b690-f7803456be51" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Junior Mortgages:</strong> Subsequent loans recorded against the property (such as home equity loans, HELOCs, or second mortgages) that line up behind the senior lien in order of their recording dates.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-805f-ab2f-fbabdbf6dd4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exceptions to Chronological Recordation Priority</strong><ul id="4148ac6a-aab1-8042-b520-db65e948b1ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Certain liens and legal instruments bypass standard recordation priority:<ul id="4148ac6a-aab1-80a1-8e3f-e2fc5214cf54" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Property Taxes &amp; Special Assessments:</strong> <strong>Always take absolute first priority</strong>, ranking ahead of even the senior mortgage.</li></ul><ul id="4148ac6a-aab1-8051-9fee-cf4bb7c28f68" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mechanic&#x27;s Liens:</strong> Can sometimes achieve priority depending on state statute and when work commenced.</li></ul><ul id="4148ac6a-aab1-8092-bc13-d1b6fdb9d951" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subordination Agreements:</strong> Occur when a senior lienholder voluntarily agrees via a subordination clause to step back in priority behind a newer lien (such as a first-mortgage lender subordinating to a construction loan because the resulting improvements increase the overall value of the collateralized property).</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80a0-a97b-f28fd5a985e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CFPB &amp; Loss Mitigation </strong><ul id="4148ac6a-aab1-8076-bceb-f7c4937d4b07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Agency&#x27;s Role:</strong> The Consumer Financial Protection Bureau (CFPB) establishes strict federal guidelines and timelines designed to protect distressed homeowners facing foreclosure, ensuring fair treatment and encouraging viable alternatives to losing a home.</li></ul><ul id="4148ac6a-aab1-8050-9b67-dca30c4768cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The 120-Day Rule:</strong> Under CFPB regulations (specifically 12 CFR §1024.41), lenders and loan servicers are generally prohibited from making the first official notice or filing for foreclosure until a <strong>120-day pre-foreclosure review period</strong> has elapsed, giving borrowers time to explore loss mitigation.</li></ul></li></ul><ul id="4148ac6a-aab1-8045-bffb-d631a215c585" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Servicer Duties: Contact &amp; Delinquency Notices</strong><ul id="4148ac6a-aab1-8068-81c7-c71b6e59c74c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Live Contact (Day 36):</strong> Loan servicers must make a good-faith effort to establish live contact (in person or by phone) with a delinquent borrower no later than <strong>36 days</strong> after a missed payment.</li></ul><ul id="4148ac6a-aab1-804a-b1fc-c5beed13f416" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Notice of Delinquency (Day 45):</strong> Servicers must send a formal written notice no later than <strong>45 days</strong> past due. This notice serves to:<ul id="4148ac6a-aab1-8063-9397-f9d7e8f8cae7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Provide accurate loan status details.</li></ul><ul id="4148ac6a-aab1-8076-bb0e-e6d713e7ed2a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Encourage direct communication with servicing representatives to discuss loss mitigation.</li></ul><ul id="4148ac6a-aab1-802e-a146-e8f6651d08b8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Direct the borrower to HUD-approved housing counselors for professional assistance.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8060-af16-dfbaae4703fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Loss Mitigation Application &amp; Process</strong><ul id="4148ac6a-aab1-809b-bc3b-c489bcd12cfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Window:</strong> Receiving the 45-day delinquency notice triggers the window for the borrower to complete and submit a formal loss mitigation application.</li></ul><ul id="4148ac6a-aab1-8010-9f5e-fc7172074c59" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Servicer Obligations:</strong> While federal rules (§1024.41) do not legally force servicers to offer a <em>specific</em> loss mitigation option, economic incentives heavily favor workouts over costly foreclosures, meaning most lenders maintain robust relief programs subject to underwriting qualification.</li></ul></li></ul><ul id="4148ac6a-aab1-802a-8ae6-fd2eb959634a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alternatives to Foreclosure </strong><ul id="4148ac6a-aab1-8085-b62b-f49772446ab4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Two Main Categories:</strong> When default occurs, loss mitigation and workout alternatives are classified based on whether the borrower <strong>retains possession</strong> of the property or ultimately <strong>relinquishes possession</strong>.</li></ul><ul id="4148ac6a-aab1-8084-a23a-df96f195ad16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Incentive:</strong> Because foreclosures are costly and inefficient, lenders actively evaluate and pursue viable alternatives before initiating formal foreclosure proceedings.</li></ul></li></ul><ul id="4148ac6a-aab1-8058-b892-c014f57630b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alternatives Where the Borrower Retains Possession</strong><ul id="4148ac6a-aab1-800b-beeb-db7fc30146c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special Forbearance:</strong><ul id="4148ac6a-aab1-80ca-80d4-cbf947933189" class="bulleted-list" dir="auto"><li style="list-style-type:square">A temporary suspension or reduction of scheduled mortgage payments to give the borrower time to recover from a short-term financial setback (such as medical disability or temporary job loss).</li></ul><ul id="4148ac6a-aab1-801d-a5d1-c9924617fa8c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Past-due amounts are typically spread out over future months to bring the loan current.</li></ul></li></ul><ul id="4148ac6a-aab1-8029-bf4c-fa466810c6f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Modification:</strong><ul id="4148ac6a-aab1-8036-9ace-ebdee4b12f1c" class="bulleted-list" dir="auto"><li style="list-style-type:square">A permanent restructuring of the existing loan agreement (e.g., lowering the interest rate, extending the loan term, or capitalizing arrears) to reduce monthly payments to an affordable level.</li></ul><ul id="4148ac6a-aab1-8098-97dd-f4fc1946a09a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Trade-off:</em> While it keeps the borrower in the home, lengthening the loan term increases the total interest paid over the life of the loan.</li></ul></li></ul><ul id="4148ac6a-aab1-8059-ad15-f8a789dfa888" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Refinance of Loan:</strong><ul id="4148ac6a-aab1-80b8-aae5-f107c071dbcb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Replacing the existing delinquent loan with a brand-new mortgage (often feasible if the borrower has accumulated sufficient home equity). Delinquent amounts are rolled into the new loan balance and amortized over a fresh term.</li></ul></li></ul><ul id="4148ac6a-aab1-809d-8af2-d5a2a8dabf1a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Partial Claim (FHA Specific):</strong><ul id="4148ac6a-aab1-80e9-a05c-f71154f1979c" class="bulleted-list" dir="auto"><li style="list-style-type:square">A one-time, interest-free subordinate loan provided from the FHA Insurance Fund to cover the delinquent balance, bringing the primary FHA loan current. This secondary lien must eventually be paid off when the primary mortgage is satisfied or the property is sold.</li></ul></li></ul><ul id="4148ac6a-aab1-8048-a328-db26c63ea193" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment Forgiveness:</strong><ul id="4148ac6a-aab1-8008-acf7-f51a3841d310" class="bulleted-list" dir="auto"><li style="list-style-type:square">A rare concession where the lender forgives one or more missed payments, provided the borrower commits to resuming full, timely payments going forward.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80fb-8d11-d83bc177c5cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alternatives Where the Borrower Relinquishes Possession</strong><ul id="4148ac6a-aab1-8017-bb95-f5e12610d008" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If retaining the home is impossible, borrowers and lenders may pursue alternative exit strategies that avoid the severity of formal foreclosure:<ol type="1" id="4148ac6a-aab1-801f-9b48-fb08948ed7f1" class="numbered-list" start="1" dir="auto"><li><strong>Deed in Lieu of Foreclosure:</strong> Voluntary conveyance of the property title back to the lender in exchange for releasing the borrower from the mortgage debt.</li></ol><ol type="1" id="4148ac6a-aab1-8054-a993-c00bf3db56d7" class="numbered-list" start="2" dir="auto"><li><strong>Short Sale:</strong> Selling the property for less than the total outstanding loan balance, with lender approval, to satisfy the debt and avoid foreclosure proceedings.</li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-80c5-8219-d94e0a3d6240" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deed in Lieu of Foreclosure </strong><ul id="4148ac6a-aab1-805f-9741-d4b48a5c1b0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Often called a &quot;friendly foreclosure,&quot; a deed in lieu of foreclosure is an alternative where the borrower voluntarily deeds the property title directly to the lender in exchange for a complete cancellation of the mortgage debt.</li></ul><ul id="4148ac6a-aab1-8034-9321-e18ffe50c8e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Typical Steps:</strong><ol type="1" id="4148ac6a-aab1-8094-874d-e9a4ab4f5031" class="numbered-list" start="1" dir="auto"><li>Borrower deeds the property to the lender.</li></ol><ol type="1" id="4148ac6a-aab1-8008-84a9-e224fcc2e87a" class="numbered-list" start="2" dir="auto"><li>Lender cancels the borrower&#x27;s debt.</li></ol><ol type="1" id="4148ac6a-aab1-80c3-af70-ec8188921c57" class="numbered-list" start="3" dir="auto"><li>The deed is conveyed and lien satisfaction is recorded.</li></ol><ol type="1" id="4148ac6a-aab1-804d-8052-ee45d8615585" class="numbered-list" start="4" dir="auto"><li>Lender takes physical possession of the property.</li></ol></li></ul></li></ul><ul id="4148ac6a-aab1-80e4-b366-fafbdf094d0d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Considerations for the Lender</strong><ul id="4148ac6a-aab1-8019-971c-d6d587ae815c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost &amp; Time Savings:</strong> Avoids the legal expenses and extended timelines associated with formal judicial or nonjudicial foreclosures.</li></ul><ul id="4148ac6a-aab1-8091-a23b-cce60ee8396f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Junior Lien Hurdle:</strong> Junior mortgage holders retain their rights to payment. If junior liens exist, a lender may refuse a deed in lieu or require those liens to be resolved or released first. In states with quick, inexpensive nonjudicial processes, junior liens frequently derail deed in lieu discussions altogether.</li></ul><ul id="4148ac6a-aab1-80b9-a8af-fbc680444243" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Judicial Scrutiny &amp; Fair Valuation:</strong> Courts heavily scrutinize these transactions to protect distressed borrowers from predatory lender pressure. To ensure fairness, lenders typically obtain a current <strong>property appraisal</strong> before proceeding. If the property&#x27;s market value exceeds the remaining loan balance, a deed in lieu is legally and ethically problematic because the borrower would be better served selling the property on the open market.</li></ul></li></ul><ul id="4148ac6a-aab1-801d-b20b-cf0e57d7fd52" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Considerations for the Borrower</strong><ul id="4148ac6a-aab1-80fa-804c-c497dd8b34f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Taxable Cancellation of Debt (COD):</strong> If a lender forgives a deficiency or waives debt during a deed in lieu, it may be treated as taxable income by the IRS. If the forgiven amount exceeds $600, the lender is required to report it on Form 1099-C.</li></ul><ul id="4148ac6a-aab1-803b-8bdf-f3eb7c3f7908" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protecting Equity:</strong> If the home&#x27;s market value exceeds the outstanding loan balance, a deed in lieu is a poor choice; the borrower should instead sell the property conventionally, pay off the debt, and pocket the remaining equity (just as Thadeus did by selling his condo instead of executing a deed in lieu).</li></ul></li></ul><ul id="4148ac6a-aab1-8006-b70d-fbf7638e9984" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Short Sale </strong><ul id="4148ac6a-aab1-805d-9599-f741e3524322" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A mutually agreed-upon alternative to foreclosure where the lender approves the sale of the property to an external buyer for an amount <strong>less than the total outstanding loan balance</strong> (short payoff).</li></ul><ul id="4148ac6a-aab1-8024-af6d-f9cfe48771f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Considerations:</strong><ul id="4148ac6a-aab1-80d3-b243-ca2977630cee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Junior Lienholders:</strong> Just as with a deed in lieu, junior lienholders must cooperate and agree to release their liens for the short sale to proceed.</li></ul><ul id="4148ac6a-aab1-808c-94fa-c7b7d912ac93" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Deficiency &amp; Tax Liabilities:</strong> Borrowers must negotiate a written waiver of deficiency judgments with the lender beforehand. Note that any forgiven debt resulting from a short sale can constitute taxable cancellation of debt (COD) income.</li></ul><ul id="4148ac6a-aab1-80f2-b10c-efe2aa1e8d51" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Institutional Guidelines:</strong> Major entities like Fannie Mae and Freddie Mac maintain formal short sale guidelines, typically requiring a formal hardship letter and supporting financial documentation from the borrower.</li></ul><ul id="4148ac6a-aab1-80e3-b227-ce3fc91b119d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Volatility:</strong> The short sale process remains vulnerable until final closing and can be disrupted at any point by lender foreclosure actions or borrower bankruptcy filings.</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-8021-ad08-fbc275a95ef6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bankruptcy as an Alternative to Foreclosure</strong><ul id="4148ac6a-aab1-8016-830e-da70d3cb07ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disclaimer:</strong> For educational purposes only; clients considering bankruptcy must consult competent legal counsel.</li></ul><ul id="4148ac6a-aab1-80a1-8430-c780fd9d6bf5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Nature:</strong> Unlike other loss mitigation options, bankruptcy can be utilized either to <strong>retain possession</strong> of the property or to <strong>relinquish</strong> it, depending on the chapter filed.</li></ul></li></ul><ul id="4148ac6a-aab1-80ff-a682-ff3424d6260a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Main Bankruptcy Chapters</strong><ol type="1" id="4148ac6a-aab1-80f7-87a9-c2b1cb53fc26" class="numbered-list" start="1" dir="auto"><li><strong> Chapter 13 (Wage Earner&#x27;s / Reorganization Plan):</strong><ul id="4148ac6a-aab1-8030-8317-e1f48d863a41" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Primary Goal:</em> Often utilized when the homeowner&#x27;s intent is to <strong>retain possession</strong> of their property.</li></ul><ul id="4148ac6a-aab1-8044-a24c-dbefb7671208" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>The Mechanism:</em> Establishes a court-supervised 3-to-5-year repayment plan for creditors (including mortgage arrears). Monthly payments are made to a court trustee. At the plan&#x27;s conclusion, remaining unsecured debts are discharged.</li></ul><ul id="4148ac6a-aab1-80b2-9431-f5ed1647f42a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Automatic Stay:</em> Instantly halts collection actions and foreclosure proceedings. However, the borrower must maintain current ongoing mortgage payments while funding the repayment plan.</li></ul><ul id="4148ac6a-aab1-8005-af9e-d051b3579684" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Suitability:</em> Best for borrowers with regular income who can handle ongoing housing costs while catching up on past delinquencies and unsecured debts.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-80b6-ae86-db50e662b8e3" class="numbered-list" start="2" dir="auto"><li><strong> Chapter 7 (Liquidation):</strong><ul id="4148ac6a-aab1-8068-8ab2-dfdce5761d27" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Primary Goal:</em> The most common form of bankruptcy, providing rapid elimination of most unsecured debts through the liquidation of non-exempt assets.</li></ul><ul id="4148ac6a-aab1-80d2-993e-cb1f0738189f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Impact on Housing:</em> A borrower can potentially keep their home under Chapter 7 <strong>only if they are currently up to date on mortgage payments</strong> (or can become current quickly); otherwise, the property is surrendered. By wiping out unsecured debts (credit cards, medical bills), Chapter 7 frees up monthly cash flow for future housing obligations.</li></ul></li></ol><ol type="1" id="4148ac6a-aab1-802a-b532-feb8bf54142b" class="numbered-list" start="3" dir="auto"><li><strong> Chapter 11 (Business Reorganization):</strong><ul id="4148ac6a-aab1-8011-b9b5-d6b4637cb158" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Primary Goal:</em> Designed primarily for <strong>businesses</strong> (though available to individuals) to reorganize operations and negotiate favorable debt repayment terms with creditors <strong>without liquidating assets</strong>.</li></ul><ul id="4148ac6a-aab1-8081-b754-f3b15fbf1d19" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Suitability:</em> Unlike Chapter 13, Chapter 11 carries no strict debt limits or income caps, making it ideal for complex corporate restructuring.</li></ul></li></ol></li></ul><ul id="4148ac6a-aab1-80a4-aaf8-deafe52bc524" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Life After Foreclosure </strong><ul id="4148ac6a-aab1-806a-9f9e-f49683711638" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Scale of Impact:</strong> Between 2006 and 2014, nearly 10 million Americans lost their homes to foreclosure during the subprime mortgage crisis. Subsequent economic shocks (such as pandemic-era financial distress) continue to highlight the persistent threat of mortgage default and housing displacement.</li></ul><ul id="4148ac6a-aab1-808f-8f87-d34e2296970f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Real Estate Professionals Care:</strong> Beyond being a humanitarian concern, understanding life after foreclosure equips real estate professionals to serve as empathetic, knowledgeable guides for clients navigating post-foreclosure recovery, financial rehabilitation, and the path back to homeownership.</li></ul><ul id="4148ac6a-aab1-8075-837a-eaeb28cb83ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exam Note:</strong> While this topic carries immense practical, real-world importance for client advocacy, it is typically excluded from state licensing exams.</li></ul></li></ul><ul id="4148ac6a-aab1-80fa-9881-c1b66494d720" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Post-Foreclosure Realities &amp; Client Guidance</strong><ul id="4148ac6a-aab1-807f-853e-e099e30009d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Credit Score Impact:</strong> A foreclosure severely damages a borrower’s credit score, often dropping it by 100 to 200+ points, and remains on credit reports for up to <strong>7 years</strong>.</li></ul><ul id="4148ac6a-aab1-8012-a919-e50372778f4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Waiting Periods to Buy Again:</strong> Borrowers face mandatory waiting periods before qualifying for new government-backed or conventional financing:<ul id="4148ac6a-aab1-80a6-b9ab-f5db257cf8b3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conventional (Fannie Mae/Freddie Mac):</strong> Typically 7 years (though can be reduced to 3 years under extenuating circumstances).</li></ul><ul id="4148ac6a-aab1-807a-abbb-e522e5023cd5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>FHA Loans:</strong> Typically 3 years (can be reduced to 1 year with documented extenuating circumstances).</li></ul><ul id="4148ac6a-aab1-80b4-9f5d-ee490b0c7562" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>VA Loans:</strong> Typically 2 years.</li></ul></li></ul><ul id="4148ac6a-aab1-806e-b9be-fbfaa6b2a126" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rebuilding Financial Health:</strong> Assisting clients post-foreclosure involves encouraging secured credit cards, timely utility/rent payments, budgeting discipline, and consulting HUD-approved housing counseling agencies to restore financial stability.</li></ul></li></ul></div><div id="4148ac6a-aab1-80ee-94e9-d3a734a6464e" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4148ac6a-aab1-8014-98d2-ebe1fd6c2e7c" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4148ac6a-aab1-80f7-ac1a-fe9bc331e848" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Theory = Foreclosure Type</strong><ul id="4148ac6a-aab1-809a-b04a-d2e0cf272f76" class="bulleted-list" dir="auto"><li style="list-style-type:circle">More than anything else, a state&#x27;s theory, along with its choice of security instrument,<strong> </strong>is reflective of that state&#x27;s attitude about foreclosure.</li></ul><ul id="4148ac6a-aab1-8084-929a-c1831d1235e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">With <strong>a deed of trust</strong>, the title is either in the hands of the lender or a trustee from the beginning. No judicial help is needed to wrest it from the borrower. So, a nonjudicial foreclosure path makes sense.</li></ul><ul id="4148ac6a-aab1-80db-ab90-c0409e77329e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">But with a <strong>mortgage</strong>, the title is in the borrower&#x27;s name. So, part of the effort to protect the lender (in the event of default) is to take the legal action necessary to cut off the borrower from the title of the mortgaged property. And that requires judicial involvement.</li></ul></li></ul><ul id="4148ac6a-aab1-8023-8102-c6aeab170b25" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Foreclosure</strong><figure id="4148ac6a-aab1-8041-94ea-db9a5296e8cd" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_StateTheoryToForeclosure_Flowcharts_21102.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_StateTheoryToForeclosure_Flowcharts_21102.png"><img style="width:384px" src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_StateTheoryToForeclosure_Flowcharts_21102.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-80cc-b4fa-de2e46c6a215" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nonjudicial Foreclosure</strong><ul id="4148ac6a-aab1-8030-97d5-e69c6026508c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Nonjudicial foreclosure is typically <strong>the foreclosure path employed in title theory states, including Tennessee</strong>.</li></ul><ul id="4148ac6a-aab1-8026-935d-e52780f9cc25" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The nonjudicial path is usually less expensive, less complex, and faster. It is suitable for situations where there are not many competing interests and the facts of the case are pretty straightforward and not likely to be contested.</li></ul></li></ul><ul id="4148ac6a-aab1-8086-a305-e2ff0f84eda7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Judicial Foreclosure</strong><ul id="4148ac6a-aab1-808e-bae4-c1fac7e3b853" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Judicial foreclosure is the <strong>predominant form of foreclosure in most lien-theory states</strong>.</li></ul><ul id="4148ac6a-aab1-80b7-aacc-dd09ec5280ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The judicial path is generally <strong>more expensive, more complex, and more drawn out</strong>. But it has the benefit of being &quot;blessed&quot; by the courts and will sometimes also grant the lender the right to pursue a deficiency judgment against the borrower if the foreclosure sale does not cover the outstanding debt.</li></ul></li></ul><ul id="4148ac6a-aab1-80b2-ba5b-d3d7f4210933" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deficiency Judgment</strong><ul id="4148ac6a-aab1-8014-8707-c8fed074c42d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a foreclosure sale takes place, and the funds from the sale do not cover the loan amount (balance), the resulting shortfall is known as a <em>deficiency</em>.</li></ul><ul id="4148ac6a-aab1-80f6-a610-f5ec9ee88b06" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A deficiency judgment, then, is <strong>the right of a foreclosing party to pursue a personal judgment against a borrower</strong> for the amount of the deficiency.</li></ul></li></ul><ul id="4148ac6a-aab1-805d-9492-fb65d74a26dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equity of Redemption</strong><ul id="4148ac6a-aab1-8024-8ac7-c08a706374a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Equity of redemption or <em>equitable redemption</em> refers to a borrower&#x27;s <strong>common law right to redeem a loan in default by paying the debt in full</strong>, including interest, fees, and expenses.</li></ul></li></ul><ul id="4148ac6a-aab1-8042-97b9-df508444ef79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Right to Reinstate</strong><ul id="4148ac6a-aab1-805d-af33-d9910b9ea8f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Whereas a right of equitable redemption requires that the accelerated loan be paid in full, a <strong>right to reinstate</strong> grants the borrower <strong>the opportunity to bring current the delinquent loan</strong> – including interest, fees, and expenses – in one payment in order to resume paying on the loan going forward. It puts everything back to how it was in the loan&#x27;s pre-accelerated form.</li></ul></li></ul><ul id="4148ac6a-aab1-8044-b6f8-f6e314dd95f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statutory Redemption</strong><ul id="4148ac6a-aab1-80a0-ade5-fe42274a5758" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory redemption</strong> refers to <strong>the right</strong> that some states give borrowers <strong>to redeem </strong>a property within a certain timeframe<strong> AFTER a foreclosure sale</strong> has taken place.</li></ul><ul id="4148ac6a-aab1-804d-a45e-efa72c52db4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>For judicial foreclosure only, Tennessee provides a statutory right of redemption</strong> for two years after a foreclosure sale. This rarely happens, though.</li></ul></li></ul><ul id="4148ac6a-aab1-8073-8adc-c8071aa7b686" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FHA and VA Foreclosures</strong><ul id="4148ac6a-aab1-808a-8cfe-d084cf63fc21" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Foreclosure of loans obtained through these agencies does not vary from typical judicial and nonjudicial foreclosure paths other than they provide certain protections/guarantees to the lenders involved and encourage the use of loss mitigation efforts by both lenders and borrowers.</li></ul></li></ul><ul id="4148ac6a-aab1-8062-b672-d105ec3a90ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alternatives to Foreclosure</strong><ul id="4148ac6a-aab1-80cc-bbb9-f683ad8ee7b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The two main categories of alternatives to foreclosure include those that allow the borrower to <strong>retain possession of the property</strong> and those that involve <strong>relinquishing the property.</strong></li></ul></li></ul><ul id="4148ac6a-aab1-80f7-8b69-fc9d774be076" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Retaining Possession</strong><ul id="4148ac6a-aab1-8043-a814-fbb3dff742b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The alternatives to foreclosure that allow a borrower to retain possession of their home are those loss mitigation options a lender might offer to the borrower in default. They include:<ul id="4148ac6a-aab1-8036-bce8-c276c2c7f3fa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Special forbearance</li></ul><ul id="4148ac6a-aab1-806d-b4b7-e7cdcef55b67" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan modification</li></ul><ul id="4148ac6a-aab1-8000-aab2-ce891504d3fa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Refinance</li></ul><ul id="4148ac6a-aab1-8066-bc36-d2d06fa4777d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Partial claim</li></ul><ul id="4148ac6a-aab1-8053-9142-c075d85c5280" class="bulleted-list" dir="auto"><li style="list-style-type:square">Payment forgiveness</li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80c7-9953-f461bae3199e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Relinquishing Possession</strong><ul id="4148ac6a-aab1-80ba-b214-e4c9f754100f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The alternatives to foreclosure that involve a borrower relinquishing possession of their home include:</li></ul><ul id="4148ac6a-aab1-80ef-9e8f-ce0333d8b96b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Deed in lieu of foreclosure</li></ul><ul id="4148ac6a-aab1-8069-9952-d6c2ad33f9f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Short sale</li></ul></li></ul><ul id="4148ac6a-aab1-80b4-8789-fd743a88d34c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bankruptcy</strong><ul id="4148ac6a-aab1-80c0-8842-ee4b502690fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>three forms of bankruptcy</strong> one might consider in lieu of foreclosure include:<ul id="4148ac6a-aab1-80fb-a008-f3a20df5adeb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Chapter 13:</strong> a financial restructuring of debt through the creation of a three-to-five-year repayment plan of debt owed to creditors — including the mortgagee</li></ul><ul id="4148ac6a-aab1-807c-8a1d-c1ec7371d8fc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Chapter 7: </strong>the quick elimination of most unsecured debts through the surrender and liquidation of assets</li></ul><ul id="4148ac6a-aab1-80c8-805c-d5213a2dc5f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Chapter 11: </strong>a form of bankruptcy used more often by businesses than people to reorganize and negotiate with creditors for more friendly repayment terms without having to sell the business&#x27;s assets</li></ul></li></ul></li></ul><p id="4148ac6a-aab1-8047-805c-c71b4fe8931a" class="" dir="auto">
+</p></div></div><p id="4148ac6a-aab1-80e2-9806-cafe980eacbd" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

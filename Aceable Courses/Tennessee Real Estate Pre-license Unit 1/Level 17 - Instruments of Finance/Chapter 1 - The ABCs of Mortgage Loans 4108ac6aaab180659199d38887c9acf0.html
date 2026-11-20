@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - The ABCs of Mortgage Loans</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-8065-9199-d38887c9acf0" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>The ABCs of Mortgage Loans</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4148ac6a-aab1-80e1-b96f-f61f9df7e19e" class="column-list" data-notion-column-list="" dir="auto"><div id="4148ac6a-aab1-8039-9fc5-d5e420706b5e" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4148ac6a-aab1-802a-902e-e43050ec6401" class="" dir="auto"><strong>Hypothecation </strong></p><ul id="4148ac6a-aab1-80f9-af2b-ed86fb8482dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Concept:</strong> Hypothecation is the legal process of pledging an asset as collateral to secure a loan for the purchase of that very same asset.</li></ul><ul id="4148ac6a-aab1-80d8-b981-f1735dd4f27f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ownership Benefits:</strong> While the asset serves as collateral, the purchaser retains full possession and enjoys all the benefits of ownership while working to pay off the debt over time.</li></ul><ul id="4148ac6a-aab1-8032-98bf-e7bb60625b78" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Financial Benefit:</strong> Because the lender holds a secured interest in the asset (such as in a home or auto loan), they can extend financing at significantly lower interest rates than would be available for unsecured loans. <em>(Hip! Hip! Hypo! Hooray for hypothecation!)</em></li></ul><ul id="4148ac6a-aab1-80b2-bdde-fae45fe5e82f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dissecting a Mortgage Loan (The Two Essential Documents)</strong><ul id="4148ac6a-aab1-80e8-a574-d3f6b3a50bcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While laypeople refer to a &quot;mortgage loan&quot; as a single entity, a complete real estate financing agreement relies on <strong>two separate legal documents</strong> combined:<ol type="1" id="4148ac6a-aab1-801a-961b-dd24efa5ff63" class="numbered-list" start="1" dir="auto"><li><strong>The Promissory Note:</strong> The borrower&#x27;s formal, unconditional promise to repay the debt, establishing the loan amount, interest rate, repayment terms, and personal liability.</li></ol><ol type="1" id="4148ac6a-aab1-8075-94a5-ff99a2f157a1" class="numbered-list" start="2" dir="auto"><li><strong>The Security Instrument:</strong> The legal document (such as a mortgage or deed of trust) that pledges the real estate as collateral, granting the lender a lien and outlining default remedies.</li></ol></li></ul><ul id="4148ac6a-aab1-80c6-b0f7-f7f4ef085ff2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Combined Purposes:</strong> Together, these two documents govern the borrower&#x27;s debt acknowledgment, collateral designation, repayment terms, default consequences, and borrower obligations to protect the lender&#x27;s interest.</li></ul></li></ul><ul id="4148ac6a-aab1-80c9-92ec-ff7138addfda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Controlling Document Rule</strong><ul id="4148ac6a-aab1-8082-8012-e3a704858802" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Promissory Note Wins:</strong> In the event of a conflict or discrepancy between the terms written in the promissory note and the terms in the security instrument, <strong>the promissory note is always the controlling document</strong>.</li></ul></li></ul><ul id="4148ac6a-aab1-8040-bda5-f67566733e04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Promissory Note </strong><ul id="4148ac6a-aab1-8052-a5ef-c8401fd5ce1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> The promissory note is the absolute keystone of real estate financing. It serves as formal, written evidence of a debt and an unconditional promise by the borrower to repay that debt according to specific agreed-upon terms.</li></ul><ul id="4148ac6a-aab1-800f-b0bc-e77645e04266" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contractual Nature:</strong> It is a standalone, legally binding contract between the borrower and the lender that details the exact terms, repayment schedule, and interest rate. While a mortgage loan combines a promissory note with a security instrument (like a mortgage or deed of trust pledging collateral), the promissory note remains the primary governing document.</li></ul></li></ul><ul id="4148ac6a-aab1-806e-8c90-e5b24cb144b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Negotiability &amp; Transferability</strong><ul id="4148ac6a-aab1-803d-ad86-d50a08889b72" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negotiable Instrument:</strong> A promissory note is a negotiable financial instrument, meaning it is legally <strong>transferable and assignable</strong>.</li></ul><ul id="4148ac6a-aab1-808e-ad7e-c04e3e78ccff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Holder in Due Course:</strong> The original lender has the full legal right to sell or assign the note to a third party (such as in the secondary mortgage market). The new owner becomes the &quot;holder in due course&quot; and acquires full legal title to the note.</li></ul><ul id="4148ac6a-aab1-80e3-8a2b-ea3e6e7e69ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcing Terms:</strong> While the holder in due course is fully entitled to demand payment and enforce the exact terms of repayment, they <strong>cannot change or alter</strong> the original terms established between the borrower and the original lender.</li></ul><ul id="4148ac6a-aab1-809a-a0d8-c7874e1441ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Experience:</strong> Homeowners frequently experience this when their mortgage loan is sold or transferred to a new loan servicer or investor shortly after closing.</li></ul></li></ul><ul id="4148ac6a-aab1-80c6-8566-d57683e4b994" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Anatomy of a Promissory Note</strong><ul id="4148ac6a-aab1-8027-8d43-c41076a0af85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While content and layout can vary between lenders, standard promissory notes share a highly consistent structure. Because notes are negotiable instruments, they can be legally transferred multiple times throughout the life of the loan.</li></ul><ul id="4148ac6a-aab1-80dd-a479-f085758f9d5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Terminology Guide:</strong> Different terms are often used interchangeably for the parties involved:<ul id="4148ac6a-aab1-80a0-b3e4-f3a58d8cd71c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Borrower:</strong> Commonly referred to as the <strong>&quot;maker.&quot;</strong></li></ul><ul id="4148ac6a-aab1-8089-bc41-c8301d826d93" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lender:</strong> Commonly referred to as the <strong>&quot;payee&quot;</strong> or <strong>&quot;creditor.&quot;</strong> <em>(Tomato, tomahto!)</em></li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-804b-83c2-de1561398a11" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Elements Contained in a Promissory Note</strong><ul id="4148ac6a-aab1-8055-b009-f69403a5fd4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Terms of the Note:</strong> The foundational financial details, including the total principal sum borrowed, the agreed-upon interest rate, the installment payment schedule, and the final payment-in-full maturity date.</li></ul><ul id="4148ac6a-aab1-801f-8976-cbdf03b132bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Default Provisions:</strong> Clear definitions of what constitutes a default (on a single installment or the entire loan) and the legal consequences that follow.</li></ul><ul id="4148ac6a-aab1-80ee-a9b7-f0c2a494fd58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Priority of Fund Distribution:</strong> Specifies the exact waterfall order in which incoming borrower payments are applied by the lender:<ol type="1" id="4148ac6a-aab1-8058-934f-fb7b9bcd35ce" class="numbered-list" start="1" dir="auto"><li>Outstanding late fees</li></ol><ol type="1" id="4148ac6a-aab1-80e1-87f6-f2fb281f96e5" class="numbered-list" start="2" dir="auto"><li>Accrued interest (including any elevated default interest rates)</li></ol><ol type="1" id="4148ac6a-aab1-8073-a1e2-f57abb307456" class="numbered-list" start="3" dir="auto"><li>Remaining principal reduction</li></ol></li></ul><ul id="4148ac6a-aab1-8043-b94c-cfcdb2756cd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prepayment Terms:</strong> Explicit disclosures detailing whether a prepayment penalty or associated costs apply if the loan is paid off early.</li></ul><ul id="4148ac6a-aab1-8014-8efa-db18704b0e82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Security Instrument Reference:</strong> A formal clause linking the promissory note to its corresponding security instrument (such as a mortgage or deed of trust) confirming that the debt is secured by the property.</li></ul></li></ul><ul id="4148ac6a-aab1-80a8-a46f-f1228eaded89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Requirement for Signatures (&quot;Get Those Sigs!&quot;)</strong><ul id="4148ac6a-aab1-80dc-a914-f7ff1143981c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because a promissory note is a legally binding standalone contract, <strong>signatures of all borrowing parties are strictly required</strong> to validate and execute the agreement.<figure id="4148ac6a-aab1-80cb-b2ae-df804addb60e" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image.png"><img style="width:384px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-808c-9a32-ee311b747d56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Security Instruments </strong><ul id="4148ac6a-aab1-80e0-8949-d996cab83e16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A security instrument is a legally binding contract that identifies and pledges the real estate property as collateral to secure the accompanying promissory note.</li></ul><ul id="4148ac6a-aab1-80c5-b31d-cc0af6e98647" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Power to Foreclose:</strong> If the borrower defaults on their payments, the security instrument grants the lender the legal right to foreclose on the property.</li></ul><ul id="4148ac6a-aab1-808b-be11-fc94aaa97eff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lowering Interest Rates:</strong> Because the debt is secured by real estate collateral, the lender&#x27;s risk is drastically reduced, allowing them to offer a much lower interest rate compared to an unsecured loan.</li></ul></li></ul><ul id="4148ac6a-aab1-80a4-a8a7-d5ca3e0307c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Perspectives on Loan Financing</strong><ul id="4148ac6a-aab1-804a-b4f3-dfb08f5e6ea7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Borrower&#x27;s Perspective:</strong> Wants to acquire a property that exceeds their immediate cash purchasing power, choosing to finance the asset over time while accepting the cost of borrowing.</li></ul><ul id="4148ac6a-aab1-8062-bac0-eb8dca087221" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Lender&#x27;s Perspective:</strong> Focuses on two primary goals: making a profit and managing risk. Lenders rely heavily on collateral to evaluate risk and set interest rates. Unsecured mortgages are virtually non-existent in the real world, and anyone able to secure one without collateral would face prohibitively high interest rates.</li></ul></li></ul><ul id="4148ac6a-aab1-800a-89f4-dc58923d1763" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Anti-Predatory Lending Regulations</strong><ul id="4148ac6a-aab1-80f2-af2a-fe558c0fe153" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOEPA (Home Ownership and Equity Protection Act):</strong> Enacted in 1994 as an amendment to the Truth in Lending Act (TILA) to combat abusive and predatory lending. It establishes strict restrictions on <strong>&quot;high-cost loans&quot;</strong> (loans with APRs exceeding comparable benchmark rates by more than 6.5%) and bans predatory practices.</li></ul><ul id="4148ac6a-aab1-805f-ad1e-ff197a44e00a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Usury Laws:</strong> State-level laws that cap the maximum legal interest rate a lender can charge to prevent unreasonably high, exploitative lending rates.<ul id="4148ac6a-aab1-809f-a79a-dcd3c92ed86b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Tennessee Standard:</em> Pursuant to <strong>T.C.A. 47-15-103</strong>, Tennessee usury laws establish specific maximum statutory interest rate caps.</li></ul></li></ul><ul id="4148ac6a-aab1-80c8-bcf8-f91bec52248a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Best Practice:</strong> If a client encounters predatory loan terms, advise them to walk away immediately. Backing out before closing is infinitely better than facing future foreclosure and long-term financial ruin.</li></ul></li></ul><ul id="4148ac6a-aab1-80ed-b6be-dd9781d22b4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>State Theories Regarding Mortgaged Properties Overview</strong><ul id="4148ac6a-aab1-8089-a8bd-e6272ff4774a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> States fall into different legal classifications regarding how they treat mortgaged properties—predominantly <strong>lien theory</strong> or <strong>title theory</strong> (with some states utilizing hybrid variations).</li></ul><ul id="4148ac6a-aab1-80d2-8a57-ca4a669fd11d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Differences:</strong> These theories dictate who holds legal title during the life of the loan, the balance of power in default, the cost and speed of foreclosure, and the degree of judicial oversight required.</li></ul></li></ul><ul id="4148ac6a-aab1-8095-8b55-e87ae14a770a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title Theory States (Tennessee&#x27;s Approach)</strong><ul id="4148ac6a-aab1-8069-882c-df021110ff88" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Legal Mechanism:</strong> In title theory states like Tennessee, legal title is conveyed away from the borrower at the inception of the loan. Instead of holding full legal title, the borrower holds equitable title while legal title is transferred to the <strong>lender</strong> or, more commonly, to a <strong>third-party trustee</strong> who holds it on behalf of the lender until the debt is paid in full.</li></ul><ul id="4148ac6a-aab1-80d9-a61c-d8f9e40a0f91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Naked Title:</strong> The third-party trustee holds what is known as a <strong>&quot;naked title&quot;</strong>—a bare legal title granting only the specific rights and powers needed to execute the terms of the trust (such as initiating foreclosure upon default).</li></ul><ul id="4148ac6a-aab1-80cf-952a-f1f51a66fff8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Three Parties in a Title Theory Agreement:</strong><ol type="1" id="4148ac6a-aab1-80fc-a525-f7eda9706fde" class="numbered-list" start="1" dir="auto"><li><strong>The Borrower (Trustor):</strong> The property purchaser who signs the deed of trust.</li></ol><ol type="1" id="4148ac6a-aab1-80d1-b58a-e777e4f81dd4" class="numbered-list" start="2" dir="auto"><li><strong>The Lender (Beneficiary):</strong> The financial institution extending the loan.</li></ol><ol type="1" id="4148ac6a-aab1-80bb-ad0a-fef38628f973" class="numbered-list" start="3" dir="auto"><li><strong>The Trustee:</strong> The neutral third party holding naked title on behalf of the lender.</li></ol></li></ul><ul id="4148ac6a-aab1-8047-9c4a-d6c4ce791241" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nonjudicial Foreclosure Pathway:</strong> Because the lender or trustee already holds legal title, title theory states typically permit <strong>nonjudicial foreclosure</strong>. By signing the deed of trust containing a power-of-sale clause, the borrower effectively waives their right to a mandatory court hearing, making the foreclosure process significantly faster, less complicated, and less costly for the lender.<figure id="4148ac6a-aab1-8029-acf7-f071ec395360" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%201.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%201.png"><img style="width:432px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%201.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80c2-8c52-ff9750da74b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lien Theory States </strong><ul id="4148ac6a-aab1-80b0-b119-f1824c215e94" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> In lien theory states, the borrower retains both legal and equitable title to the property from the inception of the loan. The lender simply places a mortgage lien on the property as a security interest to secure the debt.</li></ul><ul id="4148ac6a-aab1-803b-87a9-cf606a2bb907" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Two Parties in a Lien Theory Agreement:</strong><ol type="1" id="4148ac6a-aab1-80f8-805e-f22f4f0bb6df" class="numbered-list" start="1" dir="auto"><li><strong>The Borrower (Mortgagor):</strong> Holds legal title and full ownership rights throughout the life of the loan.</li></ol><ol type="1" id="4148ac6a-aab1-8093-b668-d3c49580bd99" class="numbered-list" start="2" dir="auto"><li><strong>The Lender (Mortgagee):</strong> Holds a security lien against the property.</li></ol></li></ul><ul id="4148ac6a-aab1-801c-8b9e-f4a2659ef354" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Judicial Foreclosure Requirement:</strong> Because the lender does not hold legal title during the life of the loan, recovering the property in the event of default requires more legal effort. Lenders must go through a <strong>judicial foreclosure</strong> process (involving a court lawsuit and judge&#x27;s order) to foreclose and take possession of the property.<figure id="4148ac6a-aab1-8083-bcc4-f5ee47dcbe37" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%202.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%202.png"><img style="width:432px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%202.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-801d-9b28-f6294afcf053" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Influence of a State&#x27;s Theory on Security Instruments Overview</strong><ul id="4148ac6a-aab1-8004-a603-ded152cf7589" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Direct Connection:</strong> A state&#x27;s legal classification (lien theory vs. title theory) directly determines the type of security instrument used in real estate financing transactions.</li></ul><ul id="4148ac6a-aab1-80e5-8f95-df0359304268" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lien Theory Alignment:</strong> Lien theory states prefer using a traditional <strong>mortgage</strong>, where the borrower retains legal and equitable title while the lender places a security lien against the property (which is released upon full repayment or executed via judicial foreclosure upon default).</li></ul><ul id="4148ac6a-aab1-80c7-bcad-d22ff358cb47" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title Theory Alignment:</strong> Title theory states rely primarily on a <strong>trust deed (deed of trust)</strong>, conveying legal title to a third-party trustee who holds it on behalf of the lender (the beneficiary) until the debt is fully satisfied, at which point the trustee reconveys title back to the borrower.</li></ul></li></ul><ul id="4148ac6a-aab1-804d-bc3c-e02a83b1c115" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Recap</strong><ul id="4148ac6a-aab1-80a3-91c0-ca8329590818" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lien theory states tend to favor <strong>mortgages</strong>.</li></ul><ul id="4148ac6a-aab1-809a-823c-c3d734c27a6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Title theory states tend to favor <strong>trust deeds (deeds of trust)</strong>.</li></ul><ul id="4148ac6a-aab1-8097-a3b4-fdb1c7091233" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee is a title theory state.</strong><figure id="4148ac6a-aab1-805d-b432-c29a937acd2b" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%203.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%203.png"><img style="width:432px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%203.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-8055-b362-f5fc2c13ea2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparing Security Instruments Overview</strong><ul id="4148ac6a-aab1-8094-a9fb-cbbdc5e44241" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Context:</strong> While both security instruments serve the foundational purpose of securing a real estate debt, their legal structures and execution mechanisms differ significantly based on whether a state operates under lien theory or title theory.</li></ul><ul id="4148ac6a-aab1-807a-9247-d9be99cb1225" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Similarities Between Mortgages and Trust Deeds</strong><ul id="4148ac6a-aab1-80c5-ab43-f5e88e4361d0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pledge of Collateral:</strong> Both instruments formally pledge the real property as collateral to secure the underlying promissory note.</li></ul><ul id="4148ac6a-aab1-80bd-a63d-dcff6d8f9556" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Default Remedies:</strong> Both outline clear legal provisions and remedies for the lender in the event of borrower default.</li></ul><ul id="4148ac6a-aab1-8093-bd7e-daa21d80a6ee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Public Recording:</strong> Both are recorded in local public land records to establish and protect the lender&#x27;s priority lien interest in the property.</li></ul></li></ul><ul id="4148ac6a-aab1-809a-8607-f9e2a2621be6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Differences Between Mortgages and Trust Deeds</strong><ul id="4148ac6a-aab1-8097-8f44-c186d0fc2699" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Title Holding During the Loan:</strong><ul id="4148ac6a-aab1-8060-a431-c590c8ed921d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage:</strong> The borrower retains both legal and equitable title while the lender holds a lien (Lien Theory).</li></ul><ul id="4148ac6a-aab1-80a6-bebe-ee2f8e05e996" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trust Deed (Deed of Trust):</strong> Legal title is conveyed to a neutral third-party trustee who holds a naked title on behalf of the lender until the debt is fully paid (Title Theory).</li></ul></li></ul><ul id="4148ac6a-aab1-8057-b88b-ef4a8c629a55" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Number of Parties Involved:</strong><ul id="4148ac6a-aab1-801d-b8b9-f20b699340e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage:</strong> Involves <strong>two parties</strong>—the borrower (mortgagor) and the lender (mortgagee).</li></ul><ul id="4148ac6a-aab1-8019-a8d1-d0d53d9f4f6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trust Deed:</strong> Involves <strong>three parties</strong>—the borrower (trustor), the lender (beneficiary), and the third-party trustee.</li></ul></li></ul><ul id="4148ac6a-aab1-80ea-85a9-d9844ba191e4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ease, Speed, and Expense of Foreclosure:</strong><ul id="4148ac6a-aab1-80a8-a94f-e6ecb09f9d8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage:</strong> Typically requires a more costly and time-consuming <strong>judicial foreclosure</strong> through the court system (common in lien theory states).</li></ul><ul id="4148ac6a-aab1-80a4-b4b4-cf1b476625bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Trust Deed:</strong> Permits a faster, less expensive <strong>nonjudicial foreclosure</strong> via a power-of-sale clause executed by the trustee, bypassing the court system (common in title theory states like Tennessee).</li></ul></li></ul></li></ul></li></ul><ul id="4148ac6a-aab1-80fd-a470-cbf6ceeef127" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Security Instrument Comparison Chart</strong><figure id="4148ac6a-aab1-805a-9077-e77322c2b385" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%204.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%204.png"><img style="width:432px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%204.png"/></a></figure></li></ul><ul id="4148ac6a-aab1-807e-9c1f-ea6805be2a78" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Satisfaction and Full Payoff Overview</strong><ul id="4148ac6a-aab1-809b-b090-d92ea0074666" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> While foreclosure represents the ultimate default scenario, paying off a mortgage loan in full is the ultimate &quot;happy event&quot; that releases the property from encumbrance and clears the title.</li></ul><ul id="4148ac6a-aab1-801a-8fff-d75ca6ad0444" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Difference by Security Instrument:</strong> Because mortgages and deeds of trust operate under distinct legal frameworks (lien theory vs. title theory), the formal mechanism for releasing the lien upon full payoff differs accordingly.</li></ul></li></ul><ul id="4148ac6a-aab1-8025-9ebf-eaaafbc1b080" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>When a Mortgage Is Paid in Full (Lien Theory)</strong><ul id="4148ac6a-aab1-8049-b228-d74f6276e637" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Satisfaction:</strong> When a traditional mortgage is fully satisfied, the lender issues and records a <strong>mortgage satisfaction</strong> (also known as a satisfaction of mortgage or mortgage release).</li></ul><ul id="4148ac6a-aab1-8098-8098-d29d3e703714" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clearing the Title:</strong> Recording this document in the public land records legally removes the lender&#x27;s security lien, clearing the title and restoring unencumbered ownership rights to the borrower.</li></ul></li></ul><ul id="4148ac6a-aab1-8009-8b15-f9ad8d1ea64a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>When a Deed of Trust Is Paid in Full (Title Theory)</strong><ul id="4148ac6a-aab1-80a7-9d3b-f18c2c15f318" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deed of Reconveyance:</strong> When a deed of trust is used, legal title is held by the third-party trustee. Once the promissory note is paid in full, the lender (beneficiary) instructs the trustee to execute a <strong>deed of reconveyance</strong> (or deed of release).</li></ul><ul id="4148ac6a-aab1-806c-9bb2-d42c77c727eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Restoring Legal Title:</strong> This document legally transfers the legal title back from the trustee to the borrower (trustor), merging it with the equitable title they already held.</li></ul><ul id="4148ac6a-aab1-8013-833a-d2e4718255f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Recording:</strong> Just like a mortgage satisfaction, the deed of reconveyance <strong>must be recorded</strong> in the public land records to formally clear the title and reflect that the debt has been fully satisfied.<figure id="4148ac6a-aab1-80c9-8f59-dbd4dc5cb892" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%205.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%205.png"><img style="width:480px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%205.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80ef-9f3c-dbb853129aca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Recording a Mortgage </strong><ul id="4148ac6a-aab1-80ea-bc6a-ea98879a8130" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Closing Documentation:</strong> At closing, the borrower executes the two core financing documents: the <strong>promissory note</strong> (the promise to pay) and the <strong>security instrument</strong> (the collateral pledge).</li></ul><ul id="4148ac6a-aab1-801a-b7c1-d3724aabf713" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Recordation:</strong> Immediately following closing, the mortgage company records the security instrument with the county recorder where the property is located (following a pre-closing title search conducted by the title company to clear existing claims).</li></ul></li></ul><ul id="4148ac6a-aab1-80e0-b801-e4a38574f3eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Protecting the Lender&#x27;s Interest &amp; Debt Priority</strong><ul id="4148ac6a-aab1-8013-a171-fe5ef0f00634" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Senior Lien Status:</strong> Recording the security instrument establishes the lender&#x27;s lien as the <strong>senior mortgage (first lien position)</strong>.</li></ul><ul id="4148ac6a-aab1-8055-9e35-eae5bbc6c84e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foreclosure &amp; Sale Payout:</strong> In any future sale or foreclosure, the senior mortgage is satisfied first from the proceeds. Any subsequent liens—known as <strong>junior mortgages</strong>—must wait until the senior debt is paid in full.</li></ul><ul id="4148ac6a-aab1-800f-97a8-f8033cbdd9f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Order of Recordation:</strong> As a foundational rule, debt repayment priority is established primarily by the <strong>chronological order of recordation</strong> (the &quot;first in time, first in right&quot; principle).</li></ul></li></ul><ul id="4148ac6a-aab1-80fd-9e7d-e0fdf31adf9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Constructive Notice vs. Actual Notice</strong><ul id="4148ac6a-aab1-8009-914c-c6d280ab8c44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Constructive Notice (Legal Fiction):</strong><ul id="4148ac6a-aab1-805b-80f6-d7edbbefab12" class="bulleted-list" dir="auto"><li style="list-style-type:square">Information placed in the public land records is legally assumed to be known by anyone with a need or desire to know it.</li></ul><ul id="4148ac6a-aab1-8001-84e2-e5e9f7d192f0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Even if a party has not actually looked at the records, the courts treat them as having knowledge because the information is publicly available. Once recorded, the onus is on the public to inspect the records.</li></ul></li></ul><ul id="4148ac6a-aab1-80a7-a77a-d856f519c126" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Actual Notice:</strong><ul id="4148ac6a-aab1-80d1-9fe2-d65c0591beb5" class="bulleted-list" dir="auto"><li style="list-style-type:square">The literal, direct notice given explicitly to an individual (such as being formally served as a defendant in a lawsuit by a third party who can verify delivery).</li></ul></li></ul><ul id="4148ac6a-aab1-80fe-921c-c126c589440b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>State Law Governance:</strong> State statutes define the specific circumstances requiring constructive versus actual notice and dictate the legally compliant methods for fulfilling each type.<figure id="4148ac6a-aab1-8062-923a-d8facc86ba73" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%206.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%206.png"><img style="width:480px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%206.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-805b-a383-cdaa5cd2f27f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Provisions </strong><ul id="4148ac6a-aab1-800b-9358-c9ba382e4f06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broad Definition:</strong> In this context, &quot;mortgage&quot; refers comprehensively to the full loan agreement comprising both the promissory note and the security instrument.</li></ul><ul id="4148ac6a-aab1-80c8-ace7-f015790529a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Clauses:</strong> Loan agreements across different security instruments share several core clauses that dictate the rights, obligations, and remedies of borrowers and lenders.</li></ul></li></ul><ul id="4148ac6a-aab1-803f-88cc-c5090250a674" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Mortgage Clauses</strong><ul id="4148ac6a-aab1-80cd-8bfd-cbc0a5fcebf1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Granting Clause:</strong> Specifies the parties involved, contains words of conveyance, identifies the specific rights being transferred, and provides an exact legal description of the property (setting the stage for formal conveyance/pledge).</li></ul><ul id="4148ac6a-aab1-80a1-857e-c1c8567c5160" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Defeasance / Satisfaction Clause:</strong> Dictates what happens when the loan is paid in full. <strong>Defeasance</strong> is used in title theory states, while <strong>Satisfaction</strong> is used in lien theory states; both signal that the obligation is met and the title can be cleared free and clear.</li></ul><ul id="4148ac6a-aab1-8010-9b08-d1bf87836408" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acceleration Clause (Due-on-Default):</strong> Empowers the lender to demand the <strong>entire remaining loan balance due immediately</strong> if the borrower defaults on payments or violates any other term of the mortgage agreement.</li></ul><ul id="4148ac6a-aab1-80b2-8426-e59c0745dc69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right to Reinstate Clause:</strong> Acts as a borrower defense against acceleration, giving them a window to bring delinquent payments current, halt foreclosure, and resume the original monthly payment schedule.</li></ul><ul id="4148ac6a-aab1-8072-9c42-d4fefa32eeaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Due-on-Sale / Alienation Clause:</strong> Triggers the lender&#x27;s right to demand full repayment upon the sale or transfer of the property, preventing unauthorized loan assumptions.<ul id="4148ac6a-aab1-8087-8e85-ea4bf773093c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loan Assumptions &amp; Novation:</strong> If a lender permits assumption, a purchase contract addendum is executed. Through <strong>novation</strong>, the new buyer assumes liability, and the original borrower can be formally released.</li></ul><ul id="4148ac6a-aab1-800b-8c65-cbf06d794885" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>&quot;Subject To&quot; Purchases:</strong> When a property is bought &quot;subject to&quot; an existing loan, the new buyer makes payments while the original borrower remains legally liable for the debt (and potential deficiency judgments). Furthermore, a &quot;subject to&quot; sale on a loan with an alienation clause can trigger immediate acceleration.</li></ul><ul id="4148ac6a-aab1-80bf-82f2-ec28badb8b8c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>FHA &amp; VA Exception:</strong> FHA and VA loans <strong>do not permit alienation clauses</strong>, meaning their loans are assumable provided the incoming buyer passes strict underwriting and creditworthiness checks.</li></ul></li></ul><ul id="4148ac6a-aab1-8003-9a65-dd9cadfb1aed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Power of Sale Clause:</strong> A pre-authorization clause where the borrower grants the lender (or trustee) the right to sell the property via <strong>nonjudicial foreclosure</strong> in the event of default, applying the proceeds to the unpaid debt.</li></ul></li></ul><ul id="4148ac6a-aab1-8070-9676-ce8434a0195b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>More Common Mortgage Clauses </strong><ul id="4148ac6a-aab1-80dc-8b97-e4d9749db966" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Building on core mortgage provisions, loan agreements frequently incorporate specialized clauses that govern interest rate adjustments, prepayment privileges, eminent domain takings, borrower liabilities, and lien priorities.</li></ul></li></ul><ul id="4148ac6a-aab1-808d-8a74-cc374f76ac71" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Escalation Clause</strong><ul id="4148ac6a-aab1-80a7-b1bd-e9361e29a59c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A provision granting the lender the right to increase the interest rate under specific conditions.</li></ul><ul id="4148ac6a-aab1-80cd-81d1-dfbe22323557" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Applications:</strong> Most commonly associated with adjustable-rate mortgages (ARMs) tied to market index fluctuations, but can also appear in certain fixed-rate loans as a penalty for loan delinquency or unauthorized changes in property usage (e.g., converting a primary residence to an unapproved commercial or rental property).</li></ul></li></ul><ul id="4148ac6a-aab1-802e-bd45-e13bb6877ea2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prepayment Clauses &amp; Lock-In Clauses</strong><ul id="4148ac6a-aab1-800d-bb91-d31ae5a56bf4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prepayment Clause:</strong> Governs whether a borrower can pay off all or part of the loan early.<ul id="4148ac6a-aab1-800f-80ca-cd026b8000cf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No-Penalty Prepayment (Open Mortgage):</strong> Allows borrowers to reduce their principal early, shortening the loan term and lowering total interest paid to the lender. By default, mortgages allow prepayment without penalty unless an explicit penalty clause is present.</li></ul><ul id="4148ac6a-aab1-803a-bb82-f2a87e32af67" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Penalty-Carrying Clauses:</strong> Some loans penalize early payoff, but typically only during the earliest years of the loan term. (Note: <strong>FHA and VA loans strictly prohibit prepayment penalties</strong>).</li></ul></li></ul><ul id="4148ac6a-aab1-80f8-8a16-f72d4135e88c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lock-In Clause (Closed Mortgage):</strong> Prohibits early prepayment altogether, establishing a fixed termination date where the borrower must pay exactly the scheduled monthly amounts without variance.</li></ul></li></ul><ul id="4148ac6a-aab1-8035-98ca-ffa368153adf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condemnation Clause</strong><ul id="4148ac6a-aab1-80e2-800a-e9dd7fb48264" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Eminent Domain Protection:</strong> Protects the lender in the event that the government seizes the property through its power of eminent domain.</li></ul><ul id="4148ac6a-aab1-806f-b918-e12182bbd306" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Satisfaction:</strong> Mandates that any financial compensation or proceeds awarded from the forced government sale must be applied directly toward paying off the outstanding mortgage balance.</li></ul></li></ul><ul id="4148ac6a-aab1-809f-b9d7-ce95bddc9c4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exculpatory Clause</strong><ul id="4148ac6a-aab1-80b3-96cd-c2d79a0f9f25" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Borrower Protection:</strong> Protects the borrower in the event of default and foreclosure by stipulating that the mortgaged property is the sole security for the debt.</li></ul><ul id="4148ac6a-aab1-80c0-b06b-f738ec6610dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Deficiency Judgments:</strong> The legal effect of an exculpatory clause is that it <strong>bars the lender from pursuing a personal deficiency judgment</strong> against the borrower if the foreclosure sale proceeds fall short of the total debt owed.</li></ul></li></ul><ul id="4148ac6a-aab1-801d-837e-edb57ebc442e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subordination Clause</strong><ul id="4148ac6a-aab1-80fc-b561-ebdaedea2811" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjusting Debt Priority:</strong> Normally, liens are paid off in chronological order of recordation. However, a subordination clause allows an existing lender to voluntarily lower their lien&#x27;s priority behind a newer or anticipated lien.</li></ul><ul id="4148ac6a-aab1-8043-9066-cb19c33d0981" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Lender&#x27;s Motivation:</strong> Lenders agree to subordinate when doing so strengthens the overall likelihood of loan repayment or funds property improvements that increase the underlying value of the collateral.</li></ul></li></ul><ul id="4148ac6a-aab1-80fb-b081-e13a3652f43b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Borrower&#x27;s Covenants </strong><ul id="4148ac6a-aab1-807f-9c91-e3ef689ade0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Borrower&#x27;s covenants are contractual clauses embedded in the loan agreement that establish the borrower&#x27;s ongoing responsibilities to protect the lender&#x27;s security interest in the collateralized property throughout the life of the loan.</li></ul></li></ul><ul id="4148ac6a-aab1-8000-bafa-d833f21fb081" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Borrower&#x27;s Covenants</strong><ul id="4148ac6a-aab1-8053-a8a0-ef8cf7a22bf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Covenant to Pay Indebtedness:</strong> Formally reinforces the borrower&#x27;s underlying obligation to faithfully repay the debt in accordance with the terms of the promissory note.</li></ul><ul id="4148ac6a-aab1-8078-9d4f-f33ea2a00ced" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Covenant to Pay Taxes:</strong> Requires the borrower to stay current on all local property taxes and special assessments. Because tax liens outrank mortgage liens in debt priority, lenders typically require tax escrows to ensure these obligations are paid on time.</li></ul><ul id="4148ac6a-aab1-8072-ba68-f4dad8aee2b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Covenant to Pay Insurance:</strong> Mandates that the borrower maintain adequate hazard and property insurance to protect against physical damage or total loss. Lenders commonly collect hazard insurance payments through monthly escrows.</li></ul><ul id="4148ac6a-aab1-801d-9254-c884ee5e4e7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Covenant of Good Repair:</strong> Obligates the borrower to properly maintain, repair, and upkeep the property to preserve its structural integrity and market value.</li></ul><ul id="4148ac6a-aab1-8070-be10-d633055d7a80" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Covenant Against Removal:</strong> Protects the lender&#x27;s collateral value by explicitly prohibiting the borrower from removing structural fixtures, appliances, and permanent equipment (such as air conditioning units, built-in lighting, ceiling fans, water heaters, and garage door openers) from the property.</li></ul></li></ul><p id="4148ac6a-aab1-807c-8729-e0f2bf7a831a" class="" dir="auto">
+</p></div><div id="4148ac6a-aab1-8074-80ac-dc77172640ee" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4148ac6a-aab1-8023-9525-c51dc601d677" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4148ac6a-aab1-8016-a99b-f3690cacba49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">acceleration clause - a clause in a security instrument (mortgage/deed of trust) that makes the entire loan amount due immediately upon default</li></ul><ul id="4148ac6a-aab1-8014-96f3-d56041c07e75" class="bulleted-list" dir="auto"><li style="list-style-type:disc">alienation clause (due on sale) - a clause in the mortgage contract that triggers the right of the lender to demand payment in full of the loan upon the sale or conveyance of the property; aka <em>due on sale clause</em></li></ul><ul id="4148ac6a-aab1-8039-a233-d4dc86fe9bf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">defeasance - a clause in a security document that indicates that the loan has been satisfied and that either the title will be conveyed to the borrower or the lien on the borrower&#x27;s title will be removed</li></ul><ul id="4148ac6a-aab1-803d-b413-c1198cb07fa4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">due on sale clause - state that employs security instruments allowing the borrower to retain title while the lender places a lien on the property to secure the loan</li></ul><ul id="4148ac6a-aab1-8098-8e2c-cd86caf0a577" class="bulleted-list" dir="auto"><li style="list-style-type:disc">lien theory state - a note that is transferable and assignable</li></ul><ul id="4148ac6a-aab1-809e-bae7-d38e63601521" class="bulleted-list" dir="auto"><li style="list-style-type:disc">negotiable instrument</li></ul><ul id="4148ac6a-aab1-806e-843b-cc195ea26e69" class="bulleted-list" dir="auto"><li style="list-style-type:disc">promissory note - a negotiable financial instrument that is evidence of a debt and a promise to pay that debt; aka <em>note</em></li></ul><ul id="4148ac6a-aab1-8017-86d4-fed5a97eda31" class="bulleted-list" dir="auto"><li style="list-style-type:disc">title theory state - state that conveys the title to the lender or, more commonly, to a third-party trustee (operating on behalf of the lender) for the life of the loan</li></ul><ul id="4148ac6a-aab1-8024-b73e-cca8ce8c0971" class="bulleted-list" dir="auto"><li style="list-style-type:disc">usury - illegally lending money at unfair interest rates</li></ul><p id="4148ac6a-aab1-800e-89c2-d4d94507c415" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4148ac6a-aab1-80bc-a6a8-ed6864a32f8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Hypothecation</strong><ul id="4148ac6a-aab1-80bd-801e-dc35f22e3b41" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Hypothecation involves the pledging of an asset as collateral to secure a loan for the purchase of that same asset, allowing the purchaser of the asset to enjoy all the benefits of ownership as they work to pay off the loan.</li></ul><ul id="4148ac6a-aab1-8024-9390-c0d6c0b29355" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>One Mortgage Loan = Two Documents</strong></li></ul><ul id="4148ac6a-aab1-80a7-93ed-d6726a5dfd34" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A single mortgage loan or mortgage agreement hangs on two important documents:</li></ul><ul id="4148ac6a-aab1-8066-a7ab-d72c573e7b76" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>promissory note</strong></li></ul><ul id="4148ac6a-aab1-805c-93d2-dd8f401febde" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>security instrument</strong></li></ul></li></ul><ul id="4148ac6a-aab1-8063-82c4-eaaeca2aa86b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Promissory Note Defined</strong><ul id="4148ac6a-aab1-805b-aa2c-d10fae6df92a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A promissory note is <strong>a negotiable finance instrument</strong> used in a typical mortgage agreement.<strong> </strong>It is <strong>evidence of a debt </strong>and a promise to pay that debt. And, to be clear, it is <strong>a contract between the lender and the borrower</strong>.</li></ul><ul id="4148ac6a-aab1-8009-b5db-f6beb1a32f7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em>note</em>, as it is sometimes called, <strong>can be secured or not</strong>.</li></ul><ul id="4148ac6a-aab1-80d4-a980-e44e67ba46dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A promissory note is <strong>a negotiable instrument</strong>. That means that it is <strong>transferable and assignable</strong>.<figure id="4148ac6a-aab1-8002-8399-e7d3917d6796" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%207.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%207.png"><img style="width:1200px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%207.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80b0-bbb1-cdc57c3d7915" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Purpose of a Security Instrument</strong><ul id="4148ac6a-aab1-8062-b72c-fa712087a2e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A security instrument pledges the property as collateral, <strong>allowing lenders to lower interest rates</strong>, making mortgage loans more affordable.</li></ul></li></ul><ul id="4148ac6a-aab1-804d-b87f-cce174068776" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>State Theories Regarding Mortgaged Properties</strong><ul id="4148ac6a-aab1-801f-8c30-fe7b782e30ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A state&#x27;s theory regarding mortgage properties boils down to whom the state recognizes as the legal owner (and title holder) of the property during the life of the mortgage loan.</li></ul></li></ul><ul id="4148ac6a-aab1-8011-9bff-e666cb0849a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Title Theory States</strong><ul id="4148ac6a-aab1-80df-9b27-f7491592dd96" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Title theory states, <strong>like Tennessee</strong>, are those that <strong>convey the title to the lender </strong>or, more commonly, to <strong>a third-party trustee</strong> (operating on behalf of the lender), from inception of the loan up until full payment of the debt.<figure id="4148ac6a-aab1-80fe-b9a6-e4958f572811" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%208.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%208.png"><img style="width:1200px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%208.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-8020-95eb-fc976192f545" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lien Theory States</strong><ul id="4148ac6a-aab1-80aa-94f7-d5b336e8d1d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lien theory states are those that employ security instruments, allowing <strong>the borrower to take title</strong> while the lender places a lien on the property to secure the loan.<figure id="4148ac6a-aab1-8077-b5cf-d0d5231cdd97" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%209.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%209.png"><img style="width:1200px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%209.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-80d0-85af-f9617e6c5423" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Influence of a State&#x27;s Theory on Security Instruments</strong><ul id="4148ac6a-aab1-8025-8b75-c1e357739872" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In lien theory states, the preferred security instrument is usually a mortgage. In contrast, title theory states rely primarily on a trust deed.<figure id="4148ac6a-aab1-80f5-bc4b-e04fbddc78bf" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2010.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2010.png"><img style="width:1500px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2010.png"/></a></figure></li></ul></li></ul><ul id="4148ac6a-aab1-8074-994b-ec5c54ea6dfc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>When a Mortgage Is Paid in Full - </strong>When a mortgage is used to secure a note and the note is paid in full, a <strong>mortgage satisfaction</strong> is issued and recorded to clear the title of the lien.</li></ul><ul id="4148ac6a-aab1-8015-a4ba-f25dac16a26c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>When a Deed of Trust Is Paid in Full - </strong>When a deed of trust is used and the note is paid in full, the lender authorizes the trustee to execute what is known as a <strong>deed of reconveyance</strong> or <strong>deed of release</strong>.</li></ul><ul id="4148ac6a-aab1-80e9-af31-ef8a4b3c2733" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Protecting the Lender&#x27;s Interest - </strong>The recording of the security instrument protects the lender&#x27;s interest by establishing the lien as the <strong>senior mortgage</strong>.</li></ul><ul id="4148ac6a-aab1-8086-a6c9-d33f3c847306" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt Priority - </strong>Debt priority, determined by the order of recordation, is the primary way that priority of debt repayment is established.</li></ul><ul id="4148ac6a-aab1-80fa-b43b-e4423a502d6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Constructive vs. Actual Notice</strong><figure id="4148ac6a-aab1-80a8-9a9a-e1818a207cca" class="image" data-notion-image="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2011.png" dir="ltr"><a href="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2011.png"><img style="width:2084px" src="Chapter%201%20-%20The%20ABCs%20of%20Mortgage%20Loans/image%2011.png"/></a></figure><p id="4148ac6a-aab1-80f6-af5c-c8e04563343e" class="" dir="auto">
+</p></li></ul></div></div><p id="4148ac6a-aab1-8090-97f5-c2fb9d3da038" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

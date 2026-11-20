@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Approving the Borrower</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-803e-b174-c1df224be5e1" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Approving the Borrower</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4158ac6a-aab1-80e5-9bd0-d20265abc6ff" class="column-list" data-notion-column-list="" dir="auto"><div id="4158ac6a-aab1-808c-be9d-f8e3b0f971da" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><ul id="4158ac6a-aab1-80f3-a16d-e34c976955c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Byron the Borrower</strong><ul id="4158ac6a-aab1-8035-a193-e59c7c7703a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Premise:</strong> Byron is ready to move out of his mom&#x27;s &quot;she-shed&quot; (where the living situation has grown wonderfully tense) and buy his first home, with his mom&#x27;s enthusiastic, ASAP pre-approval for his departure.</li></ul><ul id="4158ac6a-aab1-80af-9860-c699cea11b12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Goal:</strong> To walk step-by-step through the loan origination and mortgage acquisition process from Byron&#x27;s perspective.</li></ul></li></ul><ul id="4158ac6a-aab1-803e-a0f5-e5162222b71c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong> The Loan Origination Process</strong><ul id="4158ac6a-aab1-804c-8de0-e3bbfb44c0ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The journey from deciding to buy a home to holding the keys involves a structured sequence of milestones:<ol type="1" id="4158ac6a-aab1-8079-bbc1-c140eb16aca6" class="numbered-list" start="1" dir="auto"><li><strong>Preparation &amp; Pre-Approval:</strong> Gathering financial documents, checking credit scores, and securing a pre-approval letter from a lender.</li></ol><ol type="1" id="4158ac6a-aab1-8033-9810-fa49b1c67b80" class="numbered-list" start="2" dir="auto"><li><strong>Shopping for a Home &amp; Loan:</strong> Working with a real estate professional to find a property and shopping lenders for the best rates and terms.</li></ol><ol type="1" id="4158ac6a-aab1-8089-b52b-da7d3bc62953" class="numbered-list" start="3" dir="auto"><li><strong>Application &amp; Disclosures:</strong> Submitting a formal loan application, triggering the lender&#x27;s delivery of the mandatory <strong>Loan Estimate (LE)</strong> within three business days.</li></ol><ol type="1" id="4158ac6a-aab1-8006-a59c-eb6e3cfb0c8c" class="numbered-list" start="4" dir="auto"><li><strong>Underwriting &amp; Processing:</strong> The lender&#x27;s underwriter evaluates Byron&#x27;s creditworthiness, property appraisal, and financial documentation.</li></ol><ol type="1" id="4158ac6a-aab1-80bf-80bf-d853f34273a6" class="numbered-list" start="5" dir="auto"><li><strong>Closing &amp; Funding:</strong> Receiving the <strong>Closing Disclosure (CD)</strong> at least three business days prior to closing, signing the final security instruments, and funding the loan.</li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-800b-b975-e41dd4da5f95" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan Origination </strong><ul id="4158ac6a-aab1-80b2-8f90-e465552c0178" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Loan origination is the comprehensive, multi-step process through which a prospective borrower applies for, qualifies for, and ultimately secures a mortgage loan from a financial institution.</li></ul></li></ul><ul id="4158ac6a-aab1-80e9-908e-c681e03b136e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Initial Steps of Loan Origination</strong><ol type="1" id="4158ac6a-aab1-8097-84fb-ffc0f0f4adb4" class="numbered-list" start="1" dir="auto"><li><strong> Mortgage Pre-qualification:</strong><ul id="4158ac6a-aab1-80fa-8711-f0bef6fb72d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Nature:</em> Very informal and preliminary.</li></ul><ul id="4158ac6a-aab1-8090-a950-ef94a2d47dc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Process:</em> The lender relies primarily on the prospective borrower&#x27;s self-reported financial information (income, debts, assets) to provide a rough, non-binding estimate of how much they might be able to borrow.</li></ul><ul id="4158ac6a-aab1-80b7-9cbd-eb6bf029c047" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Purpose:</em> Serves mainly to guide buyers toward properties within an affordable price range rather than providing formal financial assurance to sellers.</li></ul></li></ol><ol type="1" id="4158ac6a-aab1-8082-bb1c-e9cb9812c071" class="numbered-list" start="2" dir="auto"><li><strong> Mortgage Pre-approval:</strong><ul id="4158ac6a-aab1-8014-98a8-e02f3fe4561f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Nature:</em> Formal and verified.</li></ul><ul id="4158ac6a-aab1-80be-b0fb-f0a88cf7270f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Process:</em> The lender conducts a preliminary review of the borrower&#x27;s financial documentation and credit profile. If approved, the lender issues an official <strong>pre-approval letter</strong>.</li></ul><ul id="4158ac6a-aab1-8045-9293-feaeb3812ee5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Purpose:</em> Gives strong assurance to sellers and real estate agents that the buyer is a qualified, serious candidate with verified financing potential.</li></ul></li></ol><ol type="1" id="4158ac6a-aab1-80fb-b77f-c11fcefc0cc6" class="numbered-list" start="3" dir="auto"><li><strong> Underwriting &amp; Loan Commitment:</strong><ul id="4158ac6a-aab1-806e-8b32-d6f2cdc82710" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Nature:</em> Comprehensive and formal evaluation following a signed purchase and sale agreement.</li></ul><ul id="4158ac6a-aab1-80b8-9f15-d7282e8ffaab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Process:</em> The borrower completes a Uniform Residential Loan Application (URLA/Form 1003). The lender&#x27;s underwriter performs a deep analysis of the borrower&#x27;s creditworthiness alongside an evaluation of the property collateral.</li></ul><ul id="4158ac6a-aab1-80c9-b8eb-f033fa92e7b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Outcome:</em> If the risks are acceptable, the lender issues a formal <strong>loan commitment</strong>.</li></ul></li></ol></li></ul><ul id="4158ac6a-aab1-804c-b921-e26cd554c921" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Bankers vs. Mortgage Brokers </strong><ul id="4158ac6a-aab1-80d2-9100-fa71e0f669e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Bankers (Mortgage Loan Originators / MLOs):</strong> Companies, individuals, or financial institutions that <em>create</em> mortgages using their own funds or capital from a warehouse lender. While they can retain and service loans, their business model typically relies on packaging and selling loans on the secondary market while generating revenue from origination fees.</li></ul><ul id="4158ac6a-aab1-808a-bfdf-f9669d0ef4ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Brokers (Mortgage Loan Brokers / MLBs):</strong> Intermediaries who do not lend their own capital. Instead, they bridge the gap between borrowers and wholesale lenders, shopping multiple lenders to find the best terms for the client, and earning compensation via an origination or broker fee paid by the lender.</li></ul></li></ul><ul id="4158ac6a-aab1-80dd-a8dd-cff64e9be565" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Real Estate Professional&#x27;s Role</strong><ul id="4158ac6a-aab1-8016-a5bb-e357e9462319" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Clients will frequently look to agents for trusted referrals to reputable local mortgage bankers and brokers.</li></ul><ul id="4158ac6a-aab1-80cb-bfdf-d00fca51afe2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Building a reliable network of financing professionals (or utilizing brokerage-approved references when starting out) is a core part of delivering exceptional service, while clients retain the right and responsibility to independently verify these recommendations.</li></ul></li></ul><ul id="4158ac6a-aab1-8085-91f5-d0af25f04578" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Government Oversight &amp; Regulation</strong><ul id="4158ac6a-aab1-80a0-aa76-eab2e9a05ef3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Loan origination is heavily regulated at both federal and state levels to protect consumers and stamp out predatory lending practices.</li></ul><ul id="4158ac6a-aab1-8070-b5de-d75bede2ef14" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Level (FDIC &amp; CFPB):</strong> Enforces major consumer protection statutes, including Title XIV of the Dodd-Frank Act and the <strong>SAFE Act of 2008</strong>, ensuring rigorous licensing, national standards, background checks, and public NMLS tracking for all MLOs.</li></ul><ul id="4158ac6a-aab1-804f-87f6-fda11759d747" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>State Level (Tennessee Department of Financial Institutions / TDFI):</strong> Regulates state-chartered financial institutions, mortgage lenders, brokers, and loan originators to guarantee safety and soundness, investigating consumer complaints and enforcing disciplinary actions when violations occur.</li></ul><ul id="4158ac6a-aab1-804c-8956-fffceade8775" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Usury Laws:</strong> State-level laws that cap the maximum interest rates lenders can legally charge borrowers. In Tennessee, <strong>T.C.A. 47-15-103</strong> establishes statutory interest rate caps to protect consumers from predatory, excessively high loan rates.<figure id="4158ac6a-aab1-80f3-bff9-f611baf4ba6f" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/image.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/image.png"><img style="width:576px" src="Chapter%201%20-%20Approving%20the%20Borrower/image.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8094-b79e-dbb394d905d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Pre-qualification </strong><ul id="4158ac6a-aab1-80d8-86f5-cca9103b7ae8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Pre-qualification is the optional, informal first step in the loan origination process where a lender provides a loose estimate of the loan amount a borrower might qualify for based almost entirely on self-reported financial data.</li></ul><ul id="4158ac6a-aab1-8015-9c2e-c4a5a032a92d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> Requires no formal application or document verification, involves zero lender expense or application fees, and is conducted quickly over the phone or online. Because data is unverified, pre-qualification carries little weight with sellers and serves primarily as a preliminary budgeting guide for the buyer.</li></ul><ul id="4158ac6a-aab1-800f-ac46-f06f606f3192" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Byron&#x27;s Experience:</strong> Byron consulted an online lender, reporting his income as a professional quidditch coach, his debts (moped payment), and address. While none of his dream properties (the Fancy Street mansion, lakehouse, or the house next to the she-shed) fit his budget, he gained a realistic baseline of his purchasing power.</li></ul></li></ul><ul id="4158ac6a-aab1-8085-b6fc-ed0cec56f879" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Pre-approval </strong><ul id="4158ac6a-aab1-8050-b03a-e5b5353940a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> A formal, verified evaluation of a borrower&#x27;s creditworthiness and financial health conducted by a lender before making a formal commitment.</li></ul><ul id="4158ac6a-aab1-8036-b3ae-c50316522677" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Requirements:</strong> Borrowers must provide their Social Security number for a hard credit check, along with comprehensive documentation covering bank accounts, debts, assets, employment history, and income.</li></ul><ul id="4158ac6a-aab1-8036-a8a0-d6fe8815c48e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Pre-approval Letter:</strong> Valid typically for <strong>60 to 90 days</strong>, this official letter demonstrates to sellers that the buyer is financially vetted and likely to secure financing, making it a critical asset in competitive real estate markets.</li></ul><ul id="4158ac6a-aab1-80c1-992e-ee6b866a6006" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Byron&#x27;s Experience:</strong> Byron successfully completed the formal pre-approval process, secured his pre-approval letter, and used it to back an offer on a charming bungalow near a quidditch field (celebrating with a triumphant &quot;Brooms up!&quot;). The next step in Byron&#x27;s journey is completing the Uniform Residential Loan Application (URLA) to initiate formal underwriting.</li></ul></li></ul><ul id="4158ac6a-aab1-80e9-9223-ce8ad6eaa360" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Uniform Residential Loan Application (URLA) </strong><ul id="4158ac6a-aab1-8051-9868-d54db792f74e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Standard Form:</strong> The <strong>Uniform Residential Loan Application (URLA)</strong>—formally designated as <strong>Fannie Mae Form 1003</strong> or <strong>Freddie Mac Form 65</strong>—is the standard, industry-wide document lenders use to collect comprehensive financial and personal information from mortgage applicants.</li></ul><ul id="4158ac6a-aab1-8079-9f32-c2154f20fd5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Used for loans intended for sale on the secondary mortgage market (to Fannie Mae or Freddie Mac), the URLA standardizes underwriting criteria, ensures consistency, and helps lenders evaluate credit risk without bias.</li></ul><ul id="4158ac6a-aab1-801f-ab99-c2bff4828cd0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Guidance:</strong> While the URLA spans 9 detailed sections and can look intimidating to a first-time homebuyer like Byron, lenders assist borrowers directly in completing it. Real estate professionals should nevertheless understand its core categories.</li></ul></li></ul><ul id="4158ac6a-aab1-8074-9606-ee861bd03435" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Sections of the URLA</strong><br/>The URLA collects and organizes critical underwriting data across these primary areas:<ol type="1" id="4158ac6a-aab1-80ac-b6c2-efde0f238d39" class="numbered-list" start="1" dir="auto"><li><strong>Type of Mortgage &amp; Terms Sought:</strong> Details on loan type (conventional, FHA, VA), loan amount, interest rate, and amortization term.</li></ol><ol type="1" id="4158ac6a-aab1-802f-9718-dafbc478b1ac" class="numbered-list" start="2" dir="auto"><li><strong>Property Information:</strong> Street address, property type, intended occupancy (primary, secondary, investment), and legal description.</li></ol><ol type="1" id="4158ac6a-aab1-8071-8d32-f3bf98e564db" class="numbered-list" start="3" dir="auto"><li><strong>Borrower / Co-Borrower Information:</strong> Personal identification, Social Security numbers, contact info, housing history, and citizenship status.</li></ol><ol type="1" id="4158ac6a-aab1-80ef-94fa-e2813886f80c" class="numbered-list" start="4" dir="auto"><li><strong>Employment Information:</strong> Current and past employment history, employer details, and stability of income.</li></ol><ol type="1" id="4158ac6a-aab1-806a-93ed-dc8593fd7d25" class="numbered-list" start="5" dir="auto"><li><strong>Monthly Income &amp; Housing Expense Information:</strong> Gross monthly salary/wages, supplemental income sources, and current vs. projected housing costs (PITI: Principal, Interest, Taxes, Insurance).</li></ol><ol type="1" id="4158ac6a-aab1-80c6-b471-faa2b99f7ecc" class="numbered-list" start="6" dir="auto"><li><strong>Assets &amp; Liabilities:</strong> Bank accounts, retirement funds, stocks, real estate holdings, and existing liabilities (credit cards, auto loans, student loans, child support).</li></ol><ol type="1" id="4158ac6a-aab1-8096-97e7-c869609247da" class="numbered-list" start="7" dir="auto"><li><strong>Declarations:</strong> Background questions regarding bankruptcies, foreclosures, lawsuits, outstanding judgments, and citizenship/occupancy intentions.<figure id="4158ac6a-aab1-8083-8c98-cb45188b3b76" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/image%201.png"><img style="width:384px" src="Chapter%201%20-%20Approving%20the%20Borrower/image%201.png"/></a></figure></li></ol></li></ul><ul id="4158ac6a-aab1-8034-96df-dc030e447878" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underwriting </strong><ul id="4158ac6a-aab1-800c-949e-c53c0acb3a00" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Underwriting is the critical evaluation process conducted between the signing of a purchase contract and the scheduled closing date, where a trained underwriter or automated system determines whether the lender is satisfied with both the borrower and the property.</li></ul><ul id="4158ac6a-aab1-8043-8485-d95a77e4c0d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Objective:</strong> To assess the level of financial and default risk an applicant and their collateral represent before issuing a formal loan commitment.</li></ul></li></ul><ul id="4158ac6a-aab1-8068-a1e1-c88d16a70eb2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Computerized Loan Origination (CLO) &amp; RESPA Rules</strong><ul id="4158ac6a-aab1-80c7-87ee-f7d9ca67b0e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CLO Networks:</strong> Electronic systems that connect real estate brokers and borrowers with multiple participating lenders in real time to compare interest rates and terms.</li></ul><ul id="4158ac6a-aab1-8092-8fa3-d5ef4712e2d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>RESPA Compensation Rules:</strong> A broker utilizing a CLO network may charge an origination fee of up to <strong>one-half percent of the loan amount</strong>, which must be paid by the borrower (not the lender) to comply with RESPA regulations against kickbacks and unearned fees. Additionally, consumers must be explicitly informed that alternative lenders exist outside the CLO network.</li></ul></li></ul><ul id="4158ac6a-aab1-8044-abda-c2131cb56e1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Automated Underwriting vs. Manual Review</strong><ul id="4158ac6a-aab1-8008-8f6a-fd35c82ae010" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Automated Underwriting Systems (AUS):</strong> Software programs that rapidly evaluate borrower income, assets, liabilities, and debt-to-income (DTI) ratios, computing default risk and required documentation in under 72 hours. This automation lowers processing costs, expedites approvals, and expands homeownership access while promoting standardized, unbiased evaluation (as encouraged by HUD).</li></ul><ul id="4158ac6a-aab1-8078-b20e-e62d62f59729" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Manual Underwriting:</strong> If an applicant is rejected by automated software, the file is routed to a human underwriter for a manual review to identify extenuating circumstances or supplemental documentation that could justify approval.</li></ul></li></ul><ul id="4158ac6a-aab1-8055-b0f9-c6a6be3067a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Byron&#x27;s Offer Accepted &amp; Underwriting Begins</strong><ul id="4158ac6a-aab1-8054-986e-e08d97f189ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Milestone:</strong> Byron&#x27;s offer on the bungalow near the quidditch field has been formally accepted by the seller, and he has completed the Uniform Residential Loan Application (URLA/Form 1003) alongside all supporting financial documentation.</li></ul><ul id="4158ac6a-aab1-8084-90f8-cff52c1a6ab3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Waiting Game:</strong> Despite having a pre-approval letter, Byron must now wait out the rigorous <strong>underwriting process</strong>, where the lender conducts a comprehensive evaluation of both his personal financial risk profile and the collateral value of the property before issuing a final loan commitment.</li></ul><ul id="4158ac6a-aab1-80c6-965d-d3b8223a0ff6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Byron&#x27;s Reaction:</strong> Reflecting the emotional rollercoaster of home buying, Byron aptly compares the process to the ups and downs of riding a <em>Nimbus 2000</em>, while his mom eagerly eyes his newly vacated space in the &quot;she-shed&quot; for redecoration.</li></ul></li></ul><ul id="4158ac6a-aab1-80de-80c3-d5abbc54757f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income Underwriting </strong><ul id="4158ac6a-aab1-80b3-a49b-e9da3444e8f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Purpose:</strong> Underwriters examine an applicant&#x27;s income to verify that it is both sufficient and reliable enough to service the desired mortgage loan alongside all other recurring debts.</li></ul><ul id="4158ac6a-aab1-80cf-8041-cdd0b43d7b84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Two-Year Standard:</strong> Lenders generally look for a consistent <strong>two-year employment history</strong> to establish a dependable work pattern indicating future earnings stability.</li></ul><ul id="4158ac6a-aab1-803a-a861-d6ae1a1ca18b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Verification of Employment (VOE):</strong> Lenders send formal VOE forms to employers to confirm length of employment, gross salary, additional compensation (overtime, bonuses, royalties), and the likelihood of continued employment (frequently requiring written employee consent).</li></ul></li></ul><ul id="4158ac6a-aab1-8027-9924-d448301d5316" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Income Categories &amp; Documentation Rules</strong><ul id="4158ac6a-aab1-806b-a15e-e48417d46e91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commission Income:</strong><ul id="4158ac6a-aab1-80e7-8510-c2e9fe11b40b" class="bulleted-list" dir="auto"><li style="list-style-type:square">If 100% commission: Requires the previous <strong>two years of tax returns</strong>.</li></ul><ul id="4158ac6a-aab1-807f-9558-f3ec1be12e58" class="bulleted-list" dir="auto"><li style="list-style-type:square">If partial commission: Typically verified via <strong>two years of W-2 forms</strong> plus a completed VOE.</li></ul></li></ul><ul id="4158ac6a-aab1-803b-9df6-c114758c44c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Employment Gaps:</strong> Any gap in employment exceeding <strong>60 days</strong> must be formally explained and documented by the lender.</li></ul><ul id="4158ac6a-aab1-8098-bfd1-dbbab7ddf356" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alimony &amp; Child Support:</strong> Can be counted as qualifying income <em>only if</em> court-ordered and supported by a verifiable payment history, taking into account how long payments are expected to continue.<ul id="4158ac6a-aab1-80d5-81c4-d0f47d99c619" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>ECOA Protection Note:</em> Lenders are strictly prohibited from asking an applicant if they receive alimony or child support, though applicants may voluntarily disclose it to boost qualifying income.</li></ul></li></ul><ul id="4158ac6a-aab1-80dc-8cd5-dd7a9da3504b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Investment Property Income (Net Operating Income / NOI):</strong> Income generated from rental properties (calculated as Net Operating Income) is factored into the applicant&#x27;s overall financial profile as positive income (or treated as a debt liability if negative cash flow).</li></ul></li></ul><ul id="4158ac6a-aab1-8027-b749-ea31c741e799" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credit Reports vs. Credit Scores </strong><ul id="4158ac6a-aab1-80c8-b484-f4c915d34a3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Credit Report:</strong> A comprehensive record detailing an individual&#x27;s historical and current credit accounts, payment timeliness, public records, and inquiries.</li></ul><ul id="4158ac6a-aab1-809e-9850-c695b615f4ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Credit Score:</strong> A numerical representation (calculated via proprietary algorithms) that synthesizes the data found in a credit report to predict creditworthiness and default risk.</li></ul><ul id="4158ac6a-aab1-8076-b8f3-c488e9172795" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Big Three Credit Reporting Agencies (CRAs):</strong><ol type="1" id="4158ac6a-aab1-8000-8140-d16e7aab7888" class="numbered-list" start="1" dir="auto"><li><strong>Equifax</strong></li></ol><ol type="1" id="4158ac6a-aab1-806f-a6ed-d077a379417c" class="numbered-list" start="2" dir="auto"><li><strong>TransUnion</strong></li></ol><ol type="1" id="4158ac6a-aab1-80f7-865b-f5fdfe990ea3" class="numbered-list" start="3" dir="auto"><li><strong>Experian</strong></li></ol></li></ul><ul id="4158ac6a-aab1-801e-8032-db6fc756bc6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consumer Rights:</strong> Under federal law, consumers are entitled to receive one free credit report from each of the nationwide reporting companies once every 12 months (via <code>AnnualCreditReport.com</code>). Real estate professionals should encourage clients to review these reports and resolve any errors well before applying for a mortgage.</li></ul></li></ul><ul id="4158ac6a-aab1-80d3-bcb4-dcb874d0a0d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why Credit Scores Vary Across Sources</strong><ul id="4158ac6a-aab1-80aa-8c6d-faed9c9d87c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even with identical financial histories, an individual will often see different credit scores due to three primary variables:<ol type="1" id="4158ac6a-aab1-8022-ac1e-f905a9aa82dc" class="numbered-list" start="1" dir="auto"><li><strong>Data Differences:</strong> Each bureau receives slightly different reporting data from lenders.</li></ol><ol type="1" id="4158ac6a-aab1-80fb-83fd-c4ad2ebfc4e9" class="numbered-list" start="2" dir="auto"><li><strong>Timing Variations:</strong> Scores are calculated dynamically based on the bureau&#x27;s most recent data update.</li></ol><ol type="1" id="4158ac6a-aab1-80e9-a97a-e463271221a8" class="numbered-list" start="3" dir="auto"><li><strong>Scoring Models &amp; Formulas:</strong> Different bureaus and lenders utilize distinct scoring models (such as FICO versus VantageScore) and proprietary weightings.</li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-809b-9a64-e74da576ce6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FICO Scoring System &amp; Minimum Thresholds</strong><ul id="4158ac6a-aab1-8034-bb8b-f88ea44fac3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FICO Score Range:</strong> Standard FICO scores range from <strong>300 to 850</strong>, with higher scores indicating lower credit risk and securing more favorable loan terms and interest rates.</li></ul><ul id="4158ac6a-aab1-808f-a990-c83e6973b530" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA Minimum Requirements:</strong><ul id="4158ac6a-aab1-80e3-acc9-c45b63f66f90" class="bulleted-list" dir="auto"><li style="list-style-type:square">Minimum FICO score of <strong>580</strong> required for maximum financing (3.5% down payment).</li></ul><ul id="4158ac6a-aab1-8049-8355-fe36e14900d2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Borrowers with scores between 500 and 579 may still qualify under specific FHA guidelines but require a higher down payment (typically 10%).</li></ul><ul id="4158ac6a-aab1-80af-84c8-ccad5a2074fd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scores <strong>under 500</strong> make the borrower ineligible for FHA loans.</li></ul></li></ul><ul id="4158ac6a-aab1-808e-917b-f96822b186aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional Loan Requirements (Fannie Mae &amp; Freddie Mac):</strong><ul id="4158ac6a-aab1-800d-9ed6-c93dd4d73ad3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Generally look for a minimum FICO score of <strong>620</strong>.</li></ul><ul id="4158ac6a-aab1-8086-8d3a-c5c3fcb6984e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scores falling below <strong>660</strong> may trigger risk-based pricing adjustments, resulting in higher interest rates or higher down payment requirements.</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80c4-af97-ddc9d7904921" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credit Score Factors &amp; The Residential Mortgage Credit Report (RMCR)</strong><ul id="4158ac6a-aab1-80ad-a60b-e984498befaf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Major Factors Influencing Credit Scores:</strong> Payment history, current unpaid debt, length of credit history, percentage of available credit used (credit utilization), debt types and start dates, and new applications for additional credit.</li></ul><ul id="4158ac6a-aab1-808a-9719-d3bc0639b573" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Residential Mortgage Credit Report (RMCR):</strong> A specialized, comprehensive report generated specifically for mortgage lending by merging data from all three major bureaus (Equifax, Experian, and TransUnion). It displays the individual FICO score from each bureau, and <strong>lenders typically base their approval decisions on the middle score</strong> of the three. It details past 2-year credit activity, including late payments, delinquency dates, frequency, and duration (30-59, 60-89, or 90+ days past due).</li></ul></li></ul><ul id="4158ac6a-aab1-802f-be9f-d07702f36530" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Worth: Assets Minus Debts</strong><ul id="4158ac6a-aab1-8047-a768-f0d4b3a72b58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mathematical Formula:</strong> Assets - Debts = Net Worth (plaintext formatting).</li></ul><ul id="4158ac6a-aab1-8020-9684-c6cd7544672d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assets:</strong> Resources of value owned by the applicant, including bank accounts, stocks/bonds, retirement funds, life insurance cash value, real estate, vehicles, and personal property. Assets that convert quickly to cash without loss of value are considered <em>liquid assets</em>.</li></ul><ul id="4158ac6a-aab1-802a-a752-c83eed5871e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Debts (Liabilities):</strong> Financial obligations owed to others, categorized into:<ul id="4158ac6a-aab1-80cc-a595-d87ab7706187" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Short-term debts:</em> Concluded with one or a few payments (not ongoing).</li></ul><ul id="4158ac6a-aab1-80da-a3c4-d3bf82ea367b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Long-term debts:</em> Installment obligations paid over extended timeframes (e.g., mortgages, auto loans).</li></ul><ul id="4158ac6a-aab1-8028-a159-df5152a2b33c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Revolving debts:</em> Open-ended lines of credit (e.g., credit cards) where balances fluctuate dynamically.</li></ul></li></ul><ul id="4158ac6a-aab1-80c8-967f-f07ff6a06e11" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Note:</em> Underwriters evaluate long-term and revolving debts by offsetting them against steady income and revenue streams.</li></ul></li></ul><ul id="4158ac6a-aab1-8078-9e8a-c04a7e0fc043" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Qualifying Ratios </strong><ul id="4158ac6a-aab1-80b4-8fb1-da0a661b0101" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To determine whether an applicant can successfully service a mortgage alongside existing financial obligations, underwriters utilize two primary <strong>qualifying ratios</strong>:<ol type="1" id="4158ac6a-aab1-8099-9d6f-e153d1f9abdd" class="numbered-list" start="1" dir="auto"><li><strong>Payment-to-Income Ratio</strong> (Housing Expense Ratio / Housing Expense-to-Income Ratio).</li></ol><ol type="1" id="4158ac6a-aab1-804d-ba09-c42a8f067f44" class="numbered-list" start="2" dir="auto"><li><strong>Debt-to-Income Ratio</strong> (Total Debt Service-to-Income Ratio).</li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-8084-9cbd-eca55917a8c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payment-to-Income Ratio </strong><ul id="4158ac6a-aab1-8063-8dd4-e0e3ce33328a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Aliases:</strong> Also known as the <em>housing expense ratio</em>, <em>housing expense-to-income ratio</em>, or most commonly, the <strong>front-end ratio</strong>.</li></ul><ul id="4158ac6a-aab1-80b9-94bd-f6d530cdaca9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Compares a borrower&#x27;s proposed monthly housing payment (<strong>PITI</strong>) against their gross monthly income.</li></ul><ul id="4158ac6a-aab1-800c-806d-dd84d4c8cc80" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why &quot;Front-End&quot;?</strong> Because it can be calculated early using unverified self-reported income during the pre-qualification phase before formal credit reports and verification documents are pulled.</li></ul><ul id="4158ac6a-aab1-80e5-9970-c9c484e10a9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Determines whether an applicant&#x27;s gross monthly earnings are sufficient and reliable enough to support the desired housing debt.</li></ul></li></ul><ul id="4158ac6a-aab1-80f3-804b-e77ab63813e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-Specific Maximum Front-End Limits</strong><ul id="4158ac6a-aab1-806b-b358-cd8b4f22026e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional Loans:</strong> Monthly PITI payments generally cannot exceed <strong>28%</strong> of the borrower&#x27;s gross monthly income.</li></ul><ul id="4158ac6a-aab1-807f-93af-ca1195d59da4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA Loans:</strong> Monthly PITI payments generally cannot exceed <strong>31%</strong> of the borrower&#x27;s gross monthly income (subject to periodic updates published by HUD/FHA).<figure id="4158ac6a-aab1-80a4-a15c-e921682a8c76" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/image%202.png"><img style="width:432px" src="Chapter%201%20-%20Approving%20the%20Borrower/image%202.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8078-9643-ea72ef64fdde" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The PITI Components</strong><ul id="4158ac6a-aab1-80a4-bd7c-ed5f97435129" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>P</strong> — <strong>Principal:</strong> The portion of the monthly payment that reduces the remaining loan balance.</li></ul><ul id="4158ac6a-aab1-80a0-993e-c5830394a3a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>I</strong> — <strong>Interest:</strong> The lender&#x27;s charge for borrowing the money.</li></ul><ul id="4158ac6a-aab1-8017-b4d2-e3fb7d457a63" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>T</strong> — <strong>Taxes:</strong> One-twelfth of the annual local property taxes collected and held in escrow.</li></ul><ul id="4158ac6a-aab1-80ec-8372-d97ffb81306b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>I</strong> — <strong>Insurance:</strong> One-twelfth of the annual hazard/homeowner&#x27;s insurance (and PMI/MIP, if applicable) collected and held in escrow.<figure id="4158ac6a-aab1-80f7-a65c-ea915ef47471" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/TNREPL_PITI_Infographic_18258.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/TNREPL_PITI_Infographic_18258.png"><img style="width:432px" src="Chapter%201%20-%20Approving%20the%20Borrower/TNREPL_PITI_Infographic_18258.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-80ac-8445-c42dbdcfdaca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payment-to-Income Formula Variations</strong><ul id="4158ac6a-aab1-803d-bb39-da455850f9f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formulas:<ol type="1" id="4158ac6a-aab1-8028-bff4-d64150bca84f" class="numbered-list" start="1" dir="auto"><li><strong>Solving for Payment-to-Income Ratio:</strong><code>Monthly payment ÷ Monthly income = Payment-to-income ratio</code></li></ol><ol type="1" id="4158ac6a-aab1-80d5-b7a9-ddadfe933caf" class="numbered-list" start="2" dir="auto"><li><strong>Solving for Monthly Payment:</strong><code>Monthly income × Payment-to-income ratio = Monthly payment</code></li></ol><ol type="1" id="4158ac6a-aab1-8026-b308-f692e5fb5806" class="numbered-list" start="3" dir="auto"><li><strong>Solving for Monthly Income:</strong><code>Monthly payment ÷ Payment-to-income ratio = Monthly income</code></li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-80ec-84bb-f3d783869caf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt-to-Income (DTI) Ratio </strong><ul id="4158ac6a-aab1-80d1-80c9-d1ce6994ebe0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Also known as the <strong>back-end ratio</strong>, the DTI ratio compares a borrower&#x27;s <em>total</em> monthly debt obligations—including the proposed housing payment (<strong>PITI</strong>) plus all other recurring long-term and revolving debts (such as auto loans, student loans, credit card minimums, and child support)—against their gross monthly income.</li></ul><ul id="4158ac6a-aab1-808f-972d-e154c8dc5db6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why &quot;Back-End&quot;?</strong> Because calculating DTI requires the rigorous underwriting steps of pulling formal credit reports and verifying all financial obligations, unlike the preliminary front-end ratio.</li></ul></li></ul><ul id="4158ac6a-aab1-80ca-88cf-eb8a24416cf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maximum DTI Loan Requirements (Exam Critical)</strong><ul id="4158ac6a-aab1-80ab-b584-e233d5a0fb60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conventional Loans (Fannie Mae):</strong> Generally capped at <strong>36%</strong>, though automated underwriting or compensating factors can allow exceptions up to <strong>45%</strong>.</li></ul><ul id="4158ac6a-aab1-80c4-9592-e050a5b7b8f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FHA Loans:</strong> Generally capped at <strong>43%</strong> (with potential flexibility under specific automated underwriting approvals).</li></ul><ul id="4158ac6a-aab1-8001-a7f6-f21570459bd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Quick Reference Summary:</strong><ul id="4158ac6a-aab1-809b-95e6-cae9ef633052" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Payment-to-Income (Front-End) Ratios:</em> Conventional = <strong>28%</strong> | FHA = <strong>31%</strong></li></ul><ul id="4158ac6a-aab1-8094-a213-dd29c8ec7c30" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Debt-to-Income (Back-End) Ratios:</em> Conventional = <strong>36%</strong> | FHA = <strong>43%</strong></li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-806c-acd1-f5583c9831e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lender Risk Assessment Ranges for DTI</strong><ul id="4158ac6a-aab1-800f-8483-c417b89668b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>34% or less:</strong> <em>Favorable.</em> Considered manageable debt load; highly attractive to lenders.</li></ul><ul id="4158ac6a-aab1-8032-922e-c594f38c8e60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>36% to 49%:</strong> <em>Less favorable, but acceptable.</em> Borrowers can qualify, especially with strong credit or compensating factors, but have room to improve via debt reduction or income growth.</li></ul><ul id="4158ac6a-aab1-802a-942f-e1f000f12930" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>50% or more:</strong> <em>Unfavorable.</em> High risk; lenders are generally unwilling to extend financing when over half of gross income services debt.</li></ul></li></ul><ul id="4158ac6a-aab1-80ee-858c-dc0c4305ac05" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Down Payment Gifts &amp; Debt Calculations</strong><ul id="4158ac6a-aab1-8023-8556-efd91b4afcef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If a borrower uses gifted funds from family or friends for a down payment, lenders require a formal <strong>gift letter</strong> proving the funds are a true, non-repayable gift.</li></ul><ul id="4158ac6a-aab1-8086-b1c9-fe10cf020d18" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Without documentation proving no repayment is expected, the lender will treat the &quot;gift&quot; as a borrowed liability, adding it to the borrower&#x27;s debt calculations and potentially disqualifying them for the loan.<figure id="4158ac6a-aab1-80c6-84f3-ec69d29c410a" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/image%203.png"><img style="width:384px" src="Chapter%201%20-%20Approving%20the%20Borrower/image%203.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-80e0-b932-c81c5f2c2dfc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt-to-Income (DTI) Ratio Formula </strong><ul id="4158ac6a-aab1-805c-ba03-d03439aa7723" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Unlike front-end ratio calculations (which focus solely on housing expense), back-end DTI calculations incorporate <strong>four core variables</strong>:<ol type="1" id="4158ac6a-aab1-80a2-982a-cdb52f9ae2c8" class="numbered-list" start="1" dir="auto"><li>Monthly income</li></ol><ol type="1" id="4158ac6a-aab1-804e-9854-ec54bce3fa98" class="numbered-list" start="2" dir="auto"><li>Monthly housing payment (PITI)</li></ol><ol type="1" id="4158ac6a-aab1-8081-832c-edeee5430bb4" class="numbered-list" start="3" dir="auto"><li>Other recurring monthly debt</li></ol><ol type="1" id="4158ac6a-aab1-800c-8b5a-c76b6944fad0" class="numbered-list" start="4" dir="auto"><li>Debt-to-income ratio</li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-80da-a566-e41bd1238ebe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four DTI Formula Variations</strong><ul id="4158ac6a-aab1-8054-abaf-d5969a4ec0e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Formulas:<ol type="1" id="4158ac6a-aab1-8060-b8b6-c9d7665b0d6f" class="numbered-list" start="1" dir="auto"><li><strong>Solving for Debt-to-Income Ratio:</strong><code>(Monthly payment + Other debt) ÷ Monthly income = Debt-to-income ratio</code></li></ol><ol type="1" id="4158ac6a-aab1-804a-8c26-fe874e22a073" class="numbered-list" start="2" dir="auto"><li><strong>Solving for Monthly PITI Payment:</strong><code>Monthly income × Debt-to-income ratio - Other debt = Monthly payment</code></li></ol><ol type="1" id="4158ac6a-aab1-80f8-a2d3-d01572605063" class="numbered-list" start="3" dir="auto"><li><strong>Solving for Other Debt:</strong><code>Monthly income × Debt-to-income ratio - Monthly payment = Other debt</code></li></ol><ol type="1" id="4158ac6a-aab1-8014-ad06-dcdea007be42" class="numbered-list" start="4" dir="auto"><li><strong>Solving for Monthly Income:</strong><code>(Monthly payment + Other debt) ÷ Debt-to-income ratio = Monthly income</code></li></ol></li></ul></li></ul><ul id="4158ac6a-aab1-8064-a688-fc29bfac1dd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Rule of the Lesser PITI</strong><ul id="4158ac6a-aab1-80bd-b78b-df1039e749da" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When underwriters evaluate a borrower using both the <strong>front-end (payment-to-income) ratio</strong> and the <strong>back-end (debt-to-income) ratio</strong>, the calculations will almost always yield two different maximum monthly payment figures.</li></ul><ul id="4158ac6a-aab1-802a-ba2f-c944a62f1ecc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Determining Principle:</strong> The borrower must satisfy both ratios, but the lender will enforce <strong>whichever ratio produces the smaller PITI amount</strong>.</li></ul></li></ul><ul id="4158ac6a-aab1-8057-a0e4-ef57f448ad58" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Applying the Rule to Byron</strong><ul id="4158ac6a-aab1-8052-af28-fba87b562db5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Front-End (Payment-to-Income) Limit:</strong> <strong>$620</strong> (capped at 31% of his $2,000 monthly income).</li></ul><ul id="4158ac6a-aab1-8085-a461-e2478943fc88" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Back-End (Debt-to-Income) Limit:</strong> <strong>$660</strong> (accounting for his $2,000 income, 43% DTI ceiling, and $200 monthly moped payment).</li></ul><ul id="4158ac6a-aab1-8014-809c-efc41f169bbf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Outcome:</strong> Because his front-end limit is $40 lower than his back-end limit, <strong>Byron is approved for a maximum PITI payment of $620</strong> under his FHA loan application.<figure id="4158ac6a-aab1-808d-9632-c3fbedcd14a4" class="image" data-notion-image="Chapter%201%20-%20Approving%20the%20Borrower/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Approving%20the%20Borrower/image%204.png"><img style="width:528px" src="Chapter%201%20-%20Approving%20the%20Borrower/image%204.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8088-aab5-eb6539897fe0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consumer Protection in Lending </strong><ul id="4158ac6a-aab1-8035-9fb5-fb01863fe0d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Federal laws establish strict consumer protection standards to ensure transparency, fairness, and non-discrimination in mortgage lending and credit reporting.</li></ul></li></ul><ul id="4158ac6a-aab1-80da-8540-cc7c8efbeb2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Credit Reporting Act (FCRA)</strong><ul id="4158ac6a-aab1-80be-86b7-f35e7d4a09ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Enacted to promote accuracy, fairness, and privacy of consumer information in the files of consumer reporting agencies (CRAs like Equifax, Experian, and TransUnion) and protect against inaccurate reporting.</li></ul><ul id="4158ac6a-aab1-8090-9614-ebfd7bfa9f65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Consumer Rights:</strong><ul id="4158ac6a-aab1-803a-a938-cbb38d81f934" class="bulleted-list" dir="auto"><li style="list-style-type:square">Right to be informed if credit file information was used adversely against them (including the identity of the CRA).</li></ul><ul id="4158ac6a-aab1-8074-b4f3-ccaab3b0ab13" class="bulleted-list" dir="auto"><li style="list-style-type:square">Right to inspect their credit file and request credit scores.</li></ul><ul id="4158ac6a-aab1-80d5-a83f-cc21f349b60b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Right to dispute incomplete, inaccurate, or unverifiable information (which agencies must correct or delete).</li></ul><ul id="4158ac6a-aab1-80f6-ab57-ea98c25f717b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Restrictions on reporting outdated negative information and limiting file access.</li></ul><ul id="4158ac6a-aab1-8089-a87b-fba4e0c47d3b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Right to seek statutory damages from willful violators.</li></ul></li></ul><ul id="4158ac6a-aab1-80a5-9443-c4fd7bdbabfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FACTA Amendment:</strong> Requires the major CRAs to provide consumers with one free credit report every 12 months upon request.</li></ul></li></ul><ul id="4158ac6a-aab1-8096-b295-e36563d2f934" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equal Credit Opportunity Act (ECOA)</strong><ul id="4158ac6a-aab1-8013-b135-eb418eb69bf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Makes it unlawful for creditors to discriminate against any credit applicant in any aspect of a credit transaction based on protected characteristics (race, color, religion, national origin, sex, marital status, age, sexual orientation, or gender identity).</li></ul><ul id="4158ac6a-aab1-804e-afb1-d201cc4ae916" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Marital Status Inquiry Rule:</strong> Creditors may <em>only</em> ask whether an applicant is &quot;married&quot; or &quot;unmarried&quot; (or single); they are strictly prohibited from asking granular questions like whether someone is divorced or widowed.</li></ul><ul id="4158ac6a-aab1-80b6-b6c1-d6f9fcc7be69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Applicant Rights Under ECOA:</strong><ul id="4158ac6a-aab1-809b-af60-c7a755d10b86" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>30-Day Decision Notice:</strong> Right to be notified of loan approval or denial within <strong>30 days</strong> of filing a complete application.</li></ul><ul id="4158ac6a-aab1-80ec-afb4-f5dc11efa69e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Specific Reasons for Denial:</strong> Right to receive concrete, specific reasons for rejection (e.g., &quot;Your income is too low&quot;) rather than vague generalizations (e.g., &quot;You didn&#x27;t meet our standards&quot;).</li></ul><ul id="4158ac6a-aab1-80f1-ae53-d4ceb99c1a7e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Explanation for Less Favorable Terms:</strong> Right to learn why less favorable terms or higher interest rates were offered if the applicant declines the counteroffer.</li></ul><ul id="4158ac6a-aab1-803e-a8d4-e51f1c422267" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Notice of Account Closure:</strong> Right to know why an account was closed or altered to less favorable terms (unless inactive or delinquent).</li></ul></li></ul></li></ul></div><div id="4158ac6a-aab1-80a2-9adf-cc77a93931c7" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4158ac6a-aab1-8076-aa15-f424eaf1fd21" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4158ac6a-aab1-8046-8eb7-ec26959616bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>credit report </strong>- contains information regarding an individual&#x27;s credit history (loan payments, etc.) as well as the present credit status of all open credit accounts</li></ul><ul id="4158ac6a-aab1-80a7-993c-c40fe21403f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>debt-to-income ratio</strong> - used to measure a borrower&#x27;s creditworthiness; calculated by dividing all debt (monthly payment + other debt) by monthly income</li></ul><ul id="4158ac6a-aab1-80df-8e98-c1df37f715d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FICO score</strong> - a credit scoring system created by the Fair Isaac Corporation</li></ul><ul id="4158ac6a-aab1-80b8-b159-e7d9a13ff5c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">liquid assets - assets that can be quickly converted to cash without losing their value</li></ul><ul id="4158ac6a-aab1-806c-ac39-f5386ed3450c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>loan origination - the process through which a buyer obtains a mortgage loan from a lender</strong></li></ul><ul id="4158ac6a-aab1-805d-9480-cb72d7d769f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>long-term debt</strong> - financial obligations often paid as installments over a predetermined time frame, which can extend for years</li></ul><ul id="4158ac6a-aab1-8090-a5f2-df8cdb65380f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>payment-to-income ratio</strong> - used to measure a borrower&#x27;s creditworthiness; calculated by dividing monthly payment by monthly income</li></ul><ul id="4158ac6a-aab1-80bf-810b-ea1333c2c28a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>underwriting </strong>-the process of determining the level of risk a lender is willing to take in extending a loan to a borrower</li></ul><p id="4158ac6a-aab1-8067-bbac-ddbfb879b64d" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4158ac6a-aab1-800a-81f2-f75af0e5eab8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pre-qualification - </strong>A lender takes a prospective borrower at their word regarding the borrower&#x27;s financial and risk profile and then gives them a general estimate of the amount for which they could expect to be approved.</li></ul><ul id="4158ac6a-aab1-80fd-aa9c-d655ac0b0d13" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pre-approval - </strong>A lender reviews the borrower’s qualifications and, if the borrower is approved, offers a pre-approval letter indicating the borrower’s ability to obtain financing.<ul id="4158ac6a-aab1-809d-af6b-ec132a783336" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The borrower can use this form to give assurance to sellers of their ability to get financing.</li></ul></li></ul><ul id="4158ac6a-aab1-809a-b04a-ecc010e9e65c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underwriting - </strong>After a purchase offer contract has been entered into, the buyer fills out a Uniform Residential Loan Application. The lender makes a final analysis of the borrower’s creditworthiness and adds to that an evaluation of the property collateralizing the loan.<ul id="4158ac6a-aab1-80f1-9356-ebb2dd9dad04" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In order to determine a borrower&#x27;s financial qualifications, an underwriter will typically look at five aspects of the applicant&#x27;s financial profile:<ul id="4158ac6a-aab1-80de-8537-f87a1f1d0f16" class="bulleted-list" dir="auto"><li style="list-style-type:square">Income</li></ul><ul id="4158ac6a-aab1-80b5-9943-ef2b632d5e7b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Credit</li></ul><ul id="4158ac6a-aab1-802b-be98-e93283dbc182" class="bulleted-list" dir="auto"><li style="list-style-type:square">Assets</li></ul><ul id="4158ac6a-aab1-8025-a229-f8b595a6003f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Debts</li></ul><ul id="4158ac6a-aab1-80ee-8bd6-d556b20f48fa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Net worth</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-8045-a323-fab0930bf982" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Income</strong><ul id="4158ac6a-aab1-8024-90d1-d1966afafba4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Employers should be sent <em><strong>Verification of Employment</strong></em><strong> (VOE)</strong> forms, which can shed light on:</li></ul><ul id="4158ac6a-aab1-80aa-97f9-f9d60bf7cb50" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Length of the applicant’s employment</li></ul><ul id="4158ac6a-aab1-8087-a653-f5fb2602b84e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Gross salary</li></ul><ul id="4158ac6a-aab1-803d-a85f-c1e8f394fbb8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Additional income (such as overtime, bonuses, and royalties)</li></ul><ul id="4158ac6a-aab1-80d0-9b90-ca1a37fcbeb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Likelihood of continued employment</li></ul></li></ul><ul id="4158ac6a-aab1-808e-b939-db2a89b658b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credit</strong><ul id="4158ac6a-aab1-8086-96eb-f6cfac1cf25e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reports and Scores</strong></li></ul><ul id="4158ac6a-aab1-8032-be64-d91f1f7013bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A credit report contains information regarding an individual&#x27;s credit history (loan payments, etc.) as well as the present credit status of all open credit accounts.</li></ul><ul id="4158ac6a-aab1-8040-9d12-f01298a4fbc4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A credit score is calculated using a formula that takes into consideration the information contained in those credit reports.</li></ul><ul id="4158ac6a-aab1-804e-8e76-c4d39fe77945" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The three major credit reporting companies are:</strong><ul id="4158ac6a-aab1-8063-b131-c1d3efe475a4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Equifax</li></ul><ul id="4158ac6a-aab1-8016-8c43-f41cd59fa392" class="bulleted-list" dir="auto"><li style="list-style-type:square">TransUnion</li></ul><ul id="4158ac6a-aab1-8063-8e82-d4938b77c001" class="bulleted-list" dir="auto"><li style="list-style-type:square">Experian</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-8086-95de-e5c2c5b7182a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>FICO Scores</strong><ul id="4158ac6a-aab1-802f-adde-ebdfa0a491d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A FICO score is <strong>a credit scoring system</strong> created by the Fair Isaac Corporation. Historically, it has been demonstrated that the higher the FICO score, the less likely it is that the borrower will default on a loan.</li></ul><ul id="4158ac6a-aab1-80ab-9dcd-eb87415fd58b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Major Factors Influencing Credit Scores</strong><ul id="4158ac6a-aab1-804a-a642-f44e1ec0db2d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Payment history</li></ul><ul id="4158ac6a-aab1-8016-b601-dd873f01185f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Current unpaid debt</li></ul><ul id="4158ac6a-aab1-801a-a7f5-c9808e8548e0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Length of credit history</li></ul><ul id="4158ac6a-aab1-8098-a246-fb3e75795717" class="bulleted-list" dir="auto"><li style="list-style-type:square">Percentage of available credit used</li></ul><ul id="4158ac6a-aab1-801f-b6fb-e4869c740318" class="bulleted-list" dir="auto"><li style="list-style-type:square">Debt type and start date</li></ul><ul id="4158ac6a-aab1-801f-a148-f3d0af4318e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">New applications for additional debt</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80d3-9215-f57a7339f853" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Residential Mortgage Credit Report</strong> <strong>(RMCR)</strong><ul id="4158ac6a-aab1-8048-bd2b-dba5962df687" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An RMCR is the result of a collaborative effort by credit reporting agencies to provide a comprehensive overview of an individual&#x27;s credit history and current status.</li></ul></li></ul><ul id="4158ac6a-aab1-8086-a34a-fe861ff4f8f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Worth</strong><ul id="4158ac6a-aab1-809e-9cc3-dca0c30f0516" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Net worth, assets, and debts are interrelated, as illustrated by the net worth formula shown here:</li></ul><ul id="4158ac6a-aab1-8077-8751-cf226da656c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Assets - Debts = Net worth</em></li></ul></li></ul><ul id="4158ac6a-aab1-8062-8968-daa5e439cbce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Different Types of Debts</strong><ul id="4158ac6a-aab1-8040-bb86-ec4a1a16aec2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Short-term debts:</strong> usually taken care of with one payment (or a few) and are not considered an ongoing obligation</li></ul><ul id="4158ac6a-aab1-80f8-9ed1-d00028d4e9c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Long-term debts:</strong> often paid as installments over a predetermined timeframe, which can extend for years</li></ul><ul id="4158ac6a-aab1-80dc-9543-f346163a7330" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revolving debts:</strong> an ongoing line of credit, as with a credit card, where the amount of debt can fluctuate as the borrower uses it</li></ul></li></ul><ul id="4158ac6a-aab1-8027-b1c9-e49e3f55fc67" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Qualifying Ratios</strong><ul id="4158ac6a-aab1-8058-94fb-f6b2a10c06c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Qualifying ratios are used by underwriters to determine whether a loan applicant can make the monthly mortgage payment.</li></ul></li></ul><ul id="4158ac6a-aab1-80c3-959a-eca33e5b4088" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Payment-to-income Ratio</strong><ul id="4158ac6a-aab1-80da-8fce-fbd1ca8693cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Payment-to-income ratio, aka <em>housing expense ratio</em> or <em>housing expense-to-income ratio,</em> is also referred to as the <strong>front-end ratio</strong> because it is <strong>primarily used to pre-qualify the applicant</strong> for possible loan amounts.<figure id="4158ac6a-aab1-806d-8e75-f03199b4a2dc" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_PaymentToIncomeRatio_9957.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_PaymentToIncomeRatio_9957.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_PaymentToIncomeRatio_9957.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-80a3-bbae-d0fe3ee611a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt-to-income Ratio</strong><ul id="4158ac6a-aab1-8063-ba1c-ec0be416832b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Debt-to-income ratio, aka <em>debt service ratio</em> or <em>total debt service-to-income ratio</em>, is also known as the <strong>back-end ratio</strong> because it requires the more rigorous work of pulling a credit report and collecting other verification documents. These are activities that happen on the back end of the underwriting effort that lead to the final decision to approve or reject a loan applicant.<figure id="4158ac6a-aab1-8001-a65c-d5367a551405" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_DebtToIncomeRatio_9958.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_DebtToIncomeRatio_9958.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_DebtToIncomeRatio_9958.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8028-80e1-cd20795f3b5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">FICO minimum score for FHA loans: 580</li></ul><ul id="4158ac6a-aab1-802b-9b91-e9174baccbd4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maximum payment-to-income ratio for conventional loans: 28%</li></ul><ul id="4158ac6a-aab1-809e-9cf7-d5dde3ab0e70" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maximum payment-to-income ratio for FHA loans: 31%</li></ul><ul id="4158ac6a-aab1-8052-ae32-ced172956f2b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maximum debt-to-income ratio for manually written conventional loans: 36%</li></ul><ul id="4158ac6a-aab1-809a-a3c9-ec73ce5947b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maximum debt-to-income ratio for FHA loans: 43%</li></ul><ul id="4158ac6a-aab1-801d-8395-d933e71900d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Protecting the Borrower</strong><ul id="4158ac6a-aab1-800a-96b1-f35545faff89" class="bulleted-list" dir="auto"><li style="list-style-type:circle">There are a number of rules, regulations, and laws in place to protect the consumer in their interactions with lenders and creditors. Two of the more significant protection laws are:<ul id="4158ac6a-aab1-80a2-8d3c-da27f05619e0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fair Credit Reporting Act (FCRA)</li></ul><ul id="4158ac6a-aab1-80fb-8ead-cab4ee750a98" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Equal Credit Opportunity Act (ECOA)</li></ul><p id="4158ac6a-aab1-8005-a3b5-cce046401a7b" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="4158ac6a-aab1-8079-8fac-fba8cd1b03e7" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

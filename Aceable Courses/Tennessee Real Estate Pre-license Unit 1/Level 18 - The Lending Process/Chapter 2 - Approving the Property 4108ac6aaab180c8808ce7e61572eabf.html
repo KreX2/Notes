@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Approving the Property</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4108ac6a-aab1-80c8-808c-e7e61572eabf" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Approving the Property</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4158ac6a-aab1-80fc-b046-d4e0205d771c" class="column-list" data-notion-column-list="" dir="auto"><div id="4158ac6a-aab1-804b-b0e8-dd69b482ebb8" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4158ac6a-aab1-80ae-9535-fefd5893832f" class="" dir="auto"><strong>Qualifying the Property </strong></p><ul id="4158ac6a-aab1-80d2-bf64-d1352cb81e92" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Dual-Approval Rule:</strong> Full mortgage approval requires two separate approvals:<ol type="1" id="4158ac6a-aab1-80f8-86fb-dfb2ba492bc0" class="numbered-list" start="1" dir="auto"><li>Approval of the buyer (income, assets, credit history, qualifying ratios).</li></ol><ol type="1" id="4158ac6a-aab1-80af-8e4f-c4fccae26b3d" class="numbered-list" start="2" dir="auto"><li>Approval of the property (collateral valuation and title clearings).</li></ol></li></ul><ul id="4158ac6a-aab1-80ef-be9f-e8e8fb9d1534" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why Property Approval Comes Last:</strong> Lenders focus the bulk of upfront underwriting efforts on evaluating the borrower&#x27;s creditworthiness. The lender&#x27;s interest in the property exists strictly to ensure their loan is adequately secured; if the borrower fails underwriting, property valuation is irrelevant.</li></ul><ul id="4158ac6a-aab1-80da-9201-dec8c0d1d02a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Residential Property Due Diligence</strong><ul id="4158ac6a-aab1-80ae-9601-fe8f9ff71fe4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Preliminary Title Report:</strong> A precursor to a title insurance policy indicating current ownership, liens, and encumbrances (identifying issues that title insurance will not cover).</li></ul><ul id="4158ac6a-aab1-80ae-86b4-f922ee34445c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Appraisal:</strong> A professional opinion of current market value conducted by an independent, licensed third-party appraiser as of a specific date.</li></ul><ul id="4158ac6a-aab1-8031-a541-c039c70fe9fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Red Flags &amp; Property Status:</strong> Underwriters check occupancy status and inspect for recent construction or property improvements, which serve as red flags for potential unrecorded mechanic&#x27;s liens.</li></ul></li></ul><ul id="4158ac6a-aab1-8059-860f-ee4188825981" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-to-Value (LTV) Ratio Mechanics &amp; Risk Management</strong><ul id="4158ac6a-aab1-80ab-b483-d17eb622445c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Concept:</strong> Expresses the loan amount as a percentage of the property&#x27;s value. Higher LTV percentages represent higher financial risk to the lender.</li></ul><ul id="4158ac6a-aab1-80ed-aeb5-edb56c171495" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The &quot;Lesser Of&quot; Rule (Exam Critical):</strong> Lenders base maximum loan amounts on the <strong>purchase price or the appraised value, whichever is LESS</strong>. In hot markets where buyers overbid, an appraisal shortfall requires the buyer to bridge the gap with extra cash.</li></ul><ul id="4158ac6a-aab1-8081-982f-c2d223611678" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Buffer (The Gap):</strong> Lenders avoid 100% financing on conventional loans to maintain a buffer against inaccurate original appraisals or subsequent downward market swings.</li></ul></li></ul><ul id="4158ac6a-aab1-8087-9c62-d8aa46e1ff2f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Maximum LTV &amp; Down Payment Thresholds (Exam Critical)</strong><ul id="4158ac6a-aab1-8008-9a0f-c1d672748bfb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All numerical metrics and thresholds strictly adhere to standard reference figures:<ul id="4158ac6a-aab1-802c-9a30-d1e9f9ee46ac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conventional Loan (Without PMI):</strong> Maximum LTV of <strong>80%</strong> (requires a <strong>20%</strong> down payment).</li></ul><ul id="4158ac6a-aab1-8052-b4f0-c9f44f144e7b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conventional Loan (With PMI):</strong> Maximum LTV up to <strong>95%</strong> (requires a <strong>5%</strong> down payment; Private Mortgage Insurance required for LTV &gt; 80%).</li></ul><ul id="4158ac6a-aab1-8021-9218-d3a08654a744" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>FHA Insured Loan:</strong> Maximum LTV up to <strong>96.5%</strong> (requires a minimum <strong>3.5%</strong> down payment, covered by Mortgage Insurance Premium / MIP).</li></ul><ul id="4158ac6a-aab1-8023-a844-e147564ee8e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>VA Guaranteed Loan:</strong> Maximum LTV of <strong>100%</strong> (allows <strong>0%</strong> down payment for eligible veterans).</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80e4-b0b2-df9355710b91" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Risk Mitigation Instruments</strong><ul id="4158ac6a-aab1-80bd-95d5-d2f7a2a65f75" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Private Mortgage Insurance (PMI):</strong> Borrower-paid insurance protecting conventional lenders against default losses on high-LTV loans.</li></ul><ul id="4158ac6a-aab1-8080-a70f-e74eea50a951" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Insurance Premium (MIP):</strong> FHA insurance paid by the borrower (upfront and annually) to insure the lender against default.</li></ul><ul id="4158ac6a-aab1-8051-be34-fd440be9a765" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>VA Loan Guarantee:</strong> Direct federal guarantee backing VA loans up to 100% LTV.<figure id="4158ac6a-aab1-8063-abed-f0f805949710" class="image" data-notion-image="Chapter%202%20-%20Approving%20the%20Property/image.png" dir="ltr"><a href="Chapter%202%20-%20Approving%20the%20Property/image.png"><img style="width:384px" src="Chapter%202%20-%20Approving%20the%20Property/image.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-8013-9755-c734ff08e5a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-to-Value (LTV) Math Principles</strong><ul id="4158ac6a-aab1-802a-af6e-d8bce1a20ee5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Concept:</strong> Loan-to-Value (LTV) measures the ratio of the loan amount to the property&#x27;s value (appraised value or purchase price, whichever is lower) expressed as a percentage.</li></ul><ul id="4158ac6a-aab1-8042-a81a-ff95c6aeab12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Formulas:</strong><ul id="4158ac6a-aab1-80bb-a9dd-c46a6730124b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Loan amount ÷ Property value = LTV</code></li></ul><ul id="4158ac6a-aab1-8071-96b8-fd9b7e870ce8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Loan amount = LTV × Property value</code></li></ul><ul id="4158ac6a-aab1-808e-9806-cedf8c196bd1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Down payment amount = Purchase price - Loan amount</code></li></ul><ul id="4158ac6a-aab1-80f9-a1f4-fbe5c841ef71" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Equity = Property value - Current loan balance</code></li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-804c-bc8e-c323adade607" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario 1: Caroline&#x27;s Condo (Calculating LTV)</strong><ul id="4158ac6a-aab1-8014-853d-f4a53821ccec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given:</strong> Appraised Value = <strong>$200,000</strong> | Loan Amount = <strong>$160,000</strong></li></ul><ul id="4158ac6a-aab1-8090-8f4f-eae3e071add3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Calculation:</strong> <code>$160,000 ÷ $200,000 = 0.80</code></li></ul><ul id="4158ac6a-aab1-802e-a185-f645d8f4d563" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Result:</strong> Caroline&#x27;s loan has an <strong>LTV of 80%</strong>.</li></ul></li></ul><ul id="4158ac6a-aab1-8035-bd8e-c9556238c999" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario 2: Byron&#x27;s Down Payment (Solving for Loan Amount &amp; Down Payment)</strong><ul id="4158ac6a-aab1-803d-a168-e27e475ffbe7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given:</strong> Appraised Purchase Price = <strong>$300,000</strong> | Target Down Payment = <strong>20%</strong> | Target LTV = <strong>80%</strong></li></ul><ul id="4158ac6a-aab1-80fc-a918-c631b490c4ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 (Find Loan Amount):</strong> <code>0.80 × $300,000 = $240,000</code></li></ul><ul id="4158ac6a-aab1-8008-9d68-c3e3f6c1273b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 (Find Down Payment):</strong> <code>$300,000 - $240,000 = $60,000</code></li></ul><ul id="4158ac6a-aab1-80cd-b416-c862dee7ccc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Result:</strong> To achieve an 80% LTV, Byron secures a loan of <strong>$240,000</strong> and provides a down payment of <strong>$60,000</strong> (giving him an immediate <strong>$60,000 in home equity</strong> right out of the gate).</li></ul></li></ul><ul id="4158ac6a-aab1-80a5-99ae-dff1672ddf50" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formula for Equity</strong><ul id="4158ac6a-aab1-80cf-acac-cc84848c80f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>Equity = Current property value - Current loan balance</code> </li></ul></li></ul><ul id="4158ac6a-aab1-8021-b0b1-f85fc2c808ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Byron&#x27;s Future Equity Calculation</strong><ul id="4158ac6a-aab1-80cf-bea0-df5afd1dce2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables:</strong><ul id="4158ac6a-aab1-8049-846d-dc25d879076f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Original Purchase Price: <strong>$300,000</strong></li></ul><ul id="4158ac6a-aab1-8094-b138-d20d86e8f704" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Appreciation: <strong>+$30,000</strong></li></ul><ul id="4158ac6a-aab1-80f5-9695-e6abca374545" class="bulleted-list" dir="auto"><li style="list-style-type:square">Current Property Value: <strong>$330,000</strong> ($300,000 + $30,000)</li></ul><ul id="4158ac6a-aab1-80fd-ace5-eb98480368fa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Original Loan Balance: <strong>$240,000</strong></li></ul><ul id="4158ac6a-aab1-8065-9a83-ed5729aba7d8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan Paydown: <strong>$20,000</strong></li></ul><ul id="4158ac6a-aab1-805a-96dc-e214c96be732" class="bulleted-list" dir="auto"><li style="list-style-type:square">Current Loan Balance: <strong>$220,000</strong> ($240,000 - $20,000)</li></ul></li></ul><ul id="4158ac6a-aab1-8060-95c8-c6c9281138f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="4158ac6a-aab1-807b-bcab-fae3355c09a2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Equity = $330,000 - ($240,000 - $20,000)</code></li></ul><ul id="4158ac6a-aab1-80e1-8788-fb55745e20bd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Equity = $330,000 - $220,000</code></li></ul><ul id="4158ac6a-aab1-8086-b4cc-c64cafffdfbf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Equity = $110,000</code></li></ul></li></ul><ul id="4158ac6a-aab1-8041-bb4d-f6b7578b0045" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Result:</strong> Future Byron boasts a impressive <strong>$110,000 in equity</strong>, effectively nearly doubling his initial $60,000 down payment investment in just three years—a major milestone on his journey out of his mom&#x27;s she-shed!</li></ul></li></ul><ul id="4158ac6a-aab1-80fc-85ee-e858d02a6a6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commercial Property Valuation </strong><ul id="4158ac6a-aab1-80c2-8148-e824ec13a4ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Core Objective:</strong> Unlike non-income-producing residential properties, underwriters evaluate commercial (income-producing) properties primarily on their capacity to generate consistent, reliable cash flow sufficient to meet ongoing debt obligations with a surplus remaining.</li></ul><ul id="4158ac6a-aab1-8098-8411-fd79921db3ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>&quot;Covering the Debt&quot;:</strong> The property&#x27;s net earnings must reliably satisfy all debt service payments, ensuring the lender isn&#x27;t exposed to default risk.</li></ul></li></ul><ul id="4158ac6a-aab1-8078-bba9-dc8ae5340796" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt Service Coverage Ratio (DSCR) Mechanics</strong><ul id="4158ac6a-aab1-808b-a025-f4e04de5d262" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> DSCR is the primary financial metric commercial lenders use to measure a property&#x27;s ability to cover its annual debt payments from its net operating income.</li></ul><ul id="4158ac6a-aab1-809a-b270-dabcfe9285b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Formula (Plaintext Formatting):</strong><code>Net Operating Income (NOI) ÷ Total Debt Service = DSCR</code></li></ul><ul id="4158ac6a-aab1-80a0-a603-ffe524e9f002" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Component Definitions:</strong><ul id="4158ac6a-aab1-80eb-a7a8-c44aba1cac66" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Net Operating Income (NOI):</strong> Annual revenue generated by the commercial property minus all operating expenses (excluding debt service and income taxes).</li></ul><ul id="4158ac6a-aab1-8049-8db7-deccf01f6238" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Total Debt Service:</strong> Total annual principal and interest payments due on the mortgage loan.</li></ul></li></ul><ul id="4158ac6a-aab1-8011-ad55-cb2286912a18" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Interpreting DSCR Values:</strong><ul id="4158ac6a-aab1-808a-80c0-e5bd647c42b4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>DSCR &lt; 1.0 (e.g., 0.95):</strong> Indicates <strong>negative cash flow</strong> (the property generates only 95% of the income needed to cover debt service). Lenders view this unfavorably unless the borrower possesses substantial independent external liquid assets to cover the shortfall.</li></ul><ul id="4158ac6a-aab1-808e-a694-d0f5003fd6e6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>DSCR = 1.0:</strong> Indicates a break-even property (100% of NOI pays debt service, leaving zero safety margin).</li></ul><ul id="4158ac6a-aab1-8075-b26d-df39b0b3d1f1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>DSCR &gt; 1.0 (Target Benchmark):</strong> Indicates <strong>positive cash flow</strong> and a financial cushion.</li></ul></li></ul><ul id="4158ac6a-aab1-8026-bf95-cf244bca96c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lender Underwriting Requirements (Exam Critical):</strong><ul id="4158ac6a-aab1-8049-959e-f215819c8ea9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lenders typically look for a minimum DSCR <strong>above 1.2</strong>.</li></ul><ul id="4158ac6a-aab1-804a-8cd0-d63628232b73" class="bulleted-list" dir="auto"><li style="list-style-type:square">Common lender DSCR requirement ranges fall between <strong>1.15 and 1.50</strong>, depending on property type, market volatility, and risk profile.</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-8074-a544-e8281f16aaf1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">DSCR Calculation Example<table id="4158ac6a-aab1-8008-886e-d9e7e96187ce" class="simple-table" dir="ltr"><tbody><tr id="4158ac6a-aab1-80f5-aa37-f5190bf57f07" dir="ltr"><td id="BJ_j" class=""><strong>Metric</strong></td><td id="Lq&gt;z" class=""><strong>Amount / Value</strong></td><td id="SR[E" class=""><strong>Explanation</strong></td></tr><tr id="4158ac6a-aab1-80af-8282-fe33edac381c" dir="ltr"><td id="BJ_j" class=""><strong>Annual Gross Operating Income</strong></td><td id="Lq&gt;z" class="">$150,000</td><td id="SR[E" class="">Total rental income collected</td></tr><tr id="4158ac6a-aab1-80d4-aa56-f6d40d4aaa7f" dir="ltr"><td id="BJ_j" class=""><strong>Annual Operating Expenses</strong></td><td id="Lq&gt;z" class="">-$50,000</td><td id="SR[E" class="">Taxes, maintenance, insurance, management</td></tr><tr id="4158ac6a-aab1-80ab-851a-eb92d6afab42" dir="ltr"><td id="BJ_j" class=""><strong>Net Operating Income (NOI)</strong></td><td id="Lq&gt;z" class=""><strong>$100,000</strong></td><td id="SR[E" class=""><code>$150,000 - $50,000</code></td></tr><tr id="4158ac6a-aab1-8001-b3c8-d4d70ef71d2b" dir="ltr"><td id="BJ_j" class=""><strong>Annual Total Debt Service</strong></td><td id="Lq&gt;z" class=""><strong>$80,000</strong></td><td id="SR[E" class="">Total principal + interest payments per year</td></tr><tr id="4158ac6a-aab1-8015-a096-f546c3690eaa" dir="ltr"><td id="BJ_j" class=""><strong>Debt Service Coverage Ratio (DSCR)</strong></td><td id="Lq&gt;z" class=""><strong>1.25</strong></td><td id="SR[E" class=""><code>$100,000 ÷ $80,000</code></td></tr></tbody></table><ul id="4158ac6a-aab1-804a-8e1f-e297e86aa81d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Result:</em> A DSCR of <strong>1.25</strong> means the property produces 125% of the income needed to pay its annual mortgage obligations—comfortably exceeding the standard 1.20 lender threshold!</li></ul></li></ul><ul id="4158ac6a-aab1-8043-b0d2-d26c26c543a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formula for Debt Service Coverage Ratio (DSCR)</strong><ul id="4158ac6a-aab1-80b4-af00-d4edda4954eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>Net Operating Income (NOI) ÷ Total Debt Service = DSCR</code></li></ul></li></ul><ul id="4158ac6a-aab1-80d5-9c27-c410403b3bc2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario: Benjamin Bigbucks&#x27; Bowling Alley</strong><ul id="4158ac6a-aab1-806a-a79f-ed535a9d48b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Variables:</strong><ul id="4158ac6a-aab1-805c-85db-d969aa455cc6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Projected Annual Net Operating Income (NOI): <strong>$1,500,000</strong></li></ul><ul id="4158ac6a-aab1-804d-a2f4-c887957e35c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Annual Total Debt Service: <strong>$500,000</strong></li></ul></li></ul><ul id="4158ac6a-aab1-80c5-b717-e48e2d64e96e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="4158ac6a-aab1-80cf-96c3-d920291f2e21" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Net Operating Income ÷ Total Debt Service = DSCR</code></li></ul><ul id="4158ac6a-aab1-80e8-8ca9-c1b8c7bf0ac4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$1,500,000 ÷ $500,000 = 3</code></li></ul></li></ul><ul id="4158ac6a-aab1-80f3-8cc5-fbb3b6b274f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Result &amp; Underwriting Analysis:</strong><ul id="4158ac6a-aab1-8068-9c16-c6b5414acbaa" class="bulleted-list" dir="auto"><li style="list-style-type:square">Benjamin&#x27;s proposed commercial project achieves a <strong>DSCR of 3.0</strong>.</li></ul><ul id="4158ac6a-aab1-80a5-8a9c-d12324843db9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Since standard commercial lenders look for a minimum DSCR of <strong>1.15 to 1.20</strong>, Benjamin&#x27;s DSCR of 3.0 represents an exceptionally strong cash-flow cushion (generating 300% of the income needed to service the mortgage debt). Benjamin is in prime position for loan approval!</li></ul><ul id="4158ac6a-aab1-8057-bce2-dd029b8cbba7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>(And the lack of bowling puns was definitely spare-d!)</em></li></ul></li></ul></li></ul></div><div id="4158ac6a-aab1-8076-b26f-c9d57d413e60" style="width:31.250000000000007%" class="column" data-notion-column-ratio="0.31250000000000006" dir="auto"><p id="4158ac6a-aab1-80d0-bd37-fbe5fadaa9f5" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4158ac6a-aab1-801e-910b-e9fa7009be74" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>debt service </strong>- amount of money spent on an investment property’s loans; includes both the portion spent on the principal and the interest of a loan</li></ul><ul id="4158ac6a-aab1-8067-afa7-e9bfd8c0a4c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>debt service coverage ratio (DSCR) </strong> - used to evaluate income-producing properties; is calculated by dividing the net operating income (cash flow after all expenses and debts are paid) by total debt service (current debt obligations)</li></ul><p id="4158ac6a-aab1-80e3-acc7-d968da16a3a4" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4158ac6a-aab1-80be-a692-fdfaa8b093f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Qualifying a Property - </strong>A lender&#x27;s interest in a property only extends to wanting to be assured their loan is properly secured.</li></ul><ul id="4158ac6a-aab1-804a-9f60-e3be150689b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two primary types of properties:</strong><ul id="4158ac6a-aab1-808e-8753-eff55bb71b11" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Residential (non-income-producing)</li></ul><ul id="4158ac6a-aab1-809c-9858-d9df81718d64" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Commercial (income-producing)</li></ul></li></ul><ul id="4158ac6a-aab1-80bb-b830-e306ce8e5482" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Due Diligence - </strong>To properly evaluate a residential property, the underwriter will need to undertake a series of activities, all of which fall under the umbrella term of <em>due diligence</em>.<ul id="4158ac6a-aab1-8032-92c1-cd64d6feb0df" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Examples of this would include:<ul id="4158ac6a-aab1-8047-8cc6-ce6c20dd8e23" class="bulleted-list" dir="auto"><li style="list-style-type:square">Title search</li></ul><ul id="4158ac6a-aab1-8051-b461-f89eccb807c3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Appraisal</li></ul><ul id="4158ac6a-aab1-8077-89f0-c0a5353daaba" class="bulleted-list" dir="auto"><li style="list-style-type:square">Red flag investigations (like recent property improvements)</li></ul></li></ul></li></ul><ul id="4158ac6a-aab1-80e5-b162-e497b796ef99" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Loan-to-value Ratio</strong><ul id="4158ac6a-aab1-8033-80f2-e58f1300f671" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A loan-to-value ratio (LTV) is the ratio of the value of the property and the actual amount (or value) of the loan financing the property expressed as a percentage. The higher the percentage of the property value the lender is loaning, the riskier the loan.</li></ul><ul id="4158ac6a-aab1-808f-84ce-feb233c4adf3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Typically, the LTV on a conventional loan is 80% of the value of the property or less, which would be evidence of a down payment of 20% or more. If the LTV were greater than 80%, private mortgage insurance would be required.<figure id="4158ac6a-aab1-80aa-87d5-f9f29a89f181" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_IncomeRatiosMathImages_21952.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_IncomeRatiosMathImages_21952.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_IncomeRatiosMathImages_21952.png"/></a></figure></li></ul></li></ul><ul id="4158ac6a-aab1-809b-a89f-de0c59ee2a20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Valuation of Commercial Properties</strong><ul id="4158ac6a-aab1-804b-8f6b-f3f6b2491c6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For commercial (income-producing) properties, the underwriter must be able to verify that the property will be able to consistently produce the cash flows necessary to pay the debt obligations while still having something left over after expenses.</li></ul><ul id="4158ac6a-aab1-80ea-829d-d72b59b7bb92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This is accomplished by looking at the <strong>debt service coverage ratio (DSCR)</strong>, which can be found using this formula:</li></ul><ul id="4158ac6a-aab1-8094-942e-c2f3057c3c2f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Net operating income ÷ Total debt service = DSCR</em></li></ul><ul id="4158ac6a-aab1-8073-b1f6-dda521f166ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This is typically done using annual figures.</li></ul></li></ul><ul id="4158ac6a-aab1-80c6-bdfc-d3de9567705c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Numbers to Know</strong><ul id="4158ac6a-aab1-80ef-99a1-d8a99a6c5b45" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here are a few key numbers to commit to memory from this chapter:</li></ul><ul id="4158ac6a-aab1-8049-82b9-e26425ad2b64" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maximum LTV for conventional loans in order to avoid paying PMI: 80%</li></ul><ul id="4158ac6a-aab1-8025-a953-d2f966f7179e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maximum LTV for conventional loans WITH paying PMI: 95%</li></ul><ul id="4158ac6a-aab1-8080-8758-fbbc50dd3f97" class="bulleted-list" dir="auto"><li style="list-style-type:circle">VA allows LTV of 100% (which means no down payment)</li></ul><ul id="4158ac6a-aab1-8068-8f55-cc334f1ffb77" class="bulleted-list" dir="auto"><li style="list-style-type:circle">FHA insures loan with LTV up to 96.5% (a 3.5% down payment)</li></ul><p id="4158ac6a-aab1-8012-8d4a-cec67ec4284b" class="" dir="auto">
+</p></li></ul></div></div><p id="4158ac6a-aab1-8071-a55d-caaabc902cba" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

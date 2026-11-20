@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Federal Disability Law </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-8041-b85f-c05fb80ac062" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Federal Disability Law</strong> </h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41e8ac6a-aab1-80e3-8fa2-e1e7b2ddace7" class="column-list" data-notion-column-list="" dir="auto"><div id="41e8ac6a-aab1-80ec-ab35-e14241648388" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41e8ac6a-aab1-80d6-8140-f35e67153c5d" class="" dir="auto"><strong>Americans with Disabilities Act (ADA) vs. Fair Housing Act (FHA)</strong></p><ul id="41e8ac6a-aab1-805c-a51c-ce0ffcabd7e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Passed in <strong>1990</strong>, the <strong>Americans with Disabilities Act (ADA)</strong> is a federal civil rights law prohibiting discrimination against—and establishing accessibility standards for—individuals with disabilities.<table id="41e8ac6a-aab1-8053-a1da-c0bcb1606e90" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-803d-9a75-cc8f6bedb6ee" dir="ltr"><td id="ydPN" class=""><strong>Feature</strong></td><td id="o~ri" class=""><strong>Fair Housing Act (FHA)</strong></td><td id="A@:x" class=""><strong>Americans with Disabilities Act (ADA)</strong></td></tr><tr id="41e8ac6a-aab1-80ae-8d11-ffb04a8dfc04" dir="ltr"><td id="ydPN" class=""><strong>Protected Classes Covered</strong></td><td id="o~ri" class="">Covers <strong>seven</strong> protected classes (race, color, national origin, religion, sex, disability, and familial status).</td><td id="A@:x" class="">Covers <strong>only disability</strong>.</td></tr><tr id="41e8ac6a-aab1-8020-a106-f09a624e18f9" dir="ltr"><td id="ydPN" class=""><strong>Property &amp; Sector Scope</strong></td><td id="o~ri" class="">Applies to <strong>residential dwellings</strong> (apartments, condos, single-family rentals, HOAs, and sales).</td><td id="A@:x" class="">Applies to <strong>employment, public accommodations and commercial facilities</strong> (including public leasing offices), <strong>public/government services, public transportation, and telecommunications</strong>.</td></tr></tbody></table></li></ul><ul id="41e8ac6a-aab1-80f3-818f-dab7f0392e76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Definition of Disability (Shared by Both ADA and FHA)</strong><ul id="41e8ac6a-aab1-8007-8f76-faf4a3d123aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under both statutes, a person with a disability is any individual who:<ol type="1" id="41e8ac6a-aab1-808e-a584-fccffc7db683" class="numbered-list" start="1" dir="auto"><li>Has a <strong>physical or mental impairment that substantially limits one or more major life activities</strong>, <strong>or</strong></li></ol><ol type="1" id="41e8ac6a-aab1-803d-bffd-ece417bd36aa" class="numbered-list" start="2" dir="auto"><li>Has a <strong>record of</strong> such an impairment <em>(e.g., cancer in remission)</em>, <strong>or</strong></li></ol><ol type="1" id="41e8ac6a-aab1-806e-9143-fd17867b653e" class="numbered-list" start="3" dir="auto"><li>Is <strong>regarded as having</strong> such an impairment.</li></ol></li></ul><ul id="41e8ac6a-aab1-80d9-a205-d75356f5ecc8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>(Terminology Note: While older statutes and forms still use the word &quot;handicap,&quot; </em><em><strong>&quot;disability&quot;</strong></em><em> is the preferred modern standard.)</em></li></ul><ul id="41e8ac6a-aab1-808b-99e9-c6342355941b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Qualifying Physical or Mental Impairments:</strong><ul id="41e8ac6a-aab1-802a-b4d2-ebe201dfdcd0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Hearing impairments, mobility impairments, visual impairments, chronic alcoholism, chronic mental illness, AIDS and AIDS-related complex, and intellectual/developmental disabilities.</li></ul></li></ul><ul id="41e8ac6a-aab1-8059-bbc3-fc6cbba91814" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Substance Use — Current vs. In Recovery:</strong><ul id="41e8ac6a-aab1-8092-9950-d8c648b409ff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Not Protected:</strong> Current illegal use of controlled substances is <strong>excluded</strong> from disability protection.</li></ul><ul id="41e8ac6a-aab1-80a6-8d15-ed2dadcf4842" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Protected:</strong> Individuals with drug or alcohol addiction who are <strong>in recovery</strong> <em>(e.g., a recovering drug addict or sober alcoholic)</em> <strong>are protected</strong> under both laws.</li></ul></li></ul><ul id="41e8ac6a-aab1-80c1-8405-cc9f883f7931" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Major Life Activities:</strong><ul id="41e8ac6a-aab1-80b6-a788-ddf9c0100bf2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Basic functions such as <strong>seeing, hearing, eating, sleeping, walking, standing, caring for oneself, and performing manual tasks</strong>.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-802f-8334-f63270c39d6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reasonable Modifications (Changes to Property)</strong><ul id="41e8ac6a-aab1-80fb-b07a-ebdb591b2cc1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Structural alterations or physical changes made to a dwelling or common area so that a person with a disability can fully use and enjoy the premises.</li></ul><ul id="41e8ac6a-aab1-8004-9963-e35c9bb96ff9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples:</strong><ul id="41e8ac6a-aab1-80a2-8ebb-ec448a8d9e1c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Structural alterations:</strong> Installing a wheelchair ramp or widening doorways.</li></ul><ul id="41e8ac6a-aab1-8065-9ada-f95bfe596438" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Environmental controls:</strong> Lowering light switches/thermostats or installing grab bars in bathtubs.</li></ul></li></ul><ul id="41e8ac6a-aab1-809c-a328-eedb5d435c98" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost &amp; Restoration Rules:</strong><ul id="41e8ac6a-aab1-80a4-a643-dc7af721a6a5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Landlords and housing providers must <strong>allow</strong> reasonable modifications related to a tenant&#x27;s disability.</li></ul><ul id="41e8ac6a-aab1-80bf-be28-eb4d96a3a04d" class="bulleted-list" dir="auto"><li style="list-style-type:square">In private housing, the <strong>tenant is generally responsible for paying</strong> for the modification and may also be required to pay to <strong>restore the interior of the unit</strong> to its original, unmodified condition at the end of the lease (if the modification would interfere with future tenants&#x27; use).</li></ul><ul id="41e8ac6a-aab1-8053-9018-c77189644e7e" class="bulleted-list" dir="auto"><li style="list-style-type:square">In some cases, a landlord may ask that a helpful modification (such as an exterior wheelchair ramp) remain in place for future tenants rather than requiring removal.</li></ul></li></ul><ul id="41e8ac6a-aab1-80b5-9af1-f64666e86a04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Undue Financial Burden Limit:</strong><ul id="41e8ac6a-aab1-801b-bf2d-cba20d91cee1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Housing providers are not required to approve or install modifications that impose an <strong>undue financial and administrative burden</strong> or a fundamental alteration of the property <em>(e.g., requiring the owner of a small, older walk-up building to install an elevator for prospective tenant Darius would be an unreasonable financial burden)</em>.</li></ul></li></ul><figure id="41e8ac6a-aab1-80b4-a428-c321d563a20e" class="image" data-notion-image="Chapter%202%20-%20Federal%20Disability%20Law/image.png" dir="ltr"><a href="Chapter%202%20-%20Federal%20Disability%20Law/image.png"><img style="width:451.796875px" src="Chapter%202%20-%20Federal%20Disability%20Law/image.png"/></a></figure></li></ul><ul id="41e8ac6a-aab1-80cf-8807-ca2d51b78322" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reasonable Accommodations (Changes to Policy)</strong><ul id="41e8ac6a-aab1-802c-af4c-eeb3904b4c19" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Memory Rule — Policy, Not Property:</strong> An <strong>accommodation</strong> is a change or exception to a <strong>rule, policy, practice, or service</strong>, whereas a <strong>modification</strong> is a physical alteration to the <strong>property</strong>.</li></ul><ul id="41e8ac6a-aab1-8057-8f5e-c3cd043fe982" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Examples of Reasonable Accommodations:</strong><ul id="41e8ac6a-aab1-8043-bda9-da987d7b8754" class="bulleted-list" dir="auto"><li style="list-style-type:square">Providing <strong>interpreters or auxiliary aids</strong> to communicate effectively with a deaf or hard-of-hearing applicant or tenant.</li></ul><ul id="41e8ac6a-aab1-80b8-9b1a-f1e5f30c0a3e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Assigning a <strong>reserved accessible parking space</strong> close to a unit for a tenant with a mobility disability.</li></ul><ul id="41e8ac6a-aab1-8067-a5b5-eb1c24fb3717" class="bulleted-list" dir="auto"><li style="list-style-type:square">Granting an exception to a <strong>&quot;no-pets&quot; policy</strong> to allow a service or assistance animal for a tenant with a disability.</li></ul></li></ul><ul id="41e8ac6a-aab1-8023-994a-d83131f804b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>High-Risk Compliance Warning for Licensees:</strong><ul id="41e8ac6a-aab1-8022-a53d-c15949897967" class="bulleted-list" dir="auto"><li style="list-style-type:square">Improperly denying a reasonable accommodation request is one of the <strong>highest-risk danger zones</strong> for a Fair Housing Act violation. Because a person&#x27;s disability or need for an accommodation is not always visibly obvious, property managers and licensees must carefully evaluate every request before issuing a denial.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-8003-8567-c5043f78a559" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Service Animals vs. Emotional Support Animals (Assistance Animals)</strong><ul id="41e8ac6a-aab1-805e-8e38-d515569fc654" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under housing and public access rules, requests to waive a <strong>&quot;no pets&quot; policy</strong> involve two distinct categories of animals:<table id="41e8ac6a-aab1-8082-a777-e66483ce0001" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-8029-8804-f40b28e57a1f" dir="ltr"><td id="Wjfi" class=""><strong>Category</strong></td><td id="BIZ^" class=""><strong>Definition &amp; Training Requirement</strong></td><td id="SSzK" class=""><strong>Covered Species &amp; Examples</strong></td><td id="[au]" class=""><strong>Key Legal Rules</strong></td></tr><tr id="41e8ac6a-aab1-80c2-85d2-c56f39bbbe2d" dir="ltr"><td id="Wjfi" class=""><strong>Service Animals</strong></td><td id="BIZ^" class="">Animals <strong>individually trained</strong> to do work or perform specific tasks directly related to a person&#x27;s disability.</td><td id="SSzK" class="">• Primarily <strong>dogs</strong> (and occasionally <strong>miniature horses</strong> under ADA regulations).<br/><br/>• Tasks include guiding blind individuals, alerting deaf individuals, pulling a wheelchair, seizure alert, or balance support.</td><td id="[au]" class="">• Protected in public accommodations under the <strong>ADA</strong> and in residential housing under the <strong>Fair Housing Act (FHA)</strong>.<br/><br/>• Not considered pets; exempt from pet deposits and pet rent.</td></tr><tr id="41e8ac6a-aab1-802f-a28b-ead680f11f45" dir="ltr"><td id="Wjfi" class=""><strong>Emotional Support Animals (ESAs)</strong></td><td id="BIZ^" class="">Also referred to as assistance animals; they are <strong>not individually trained</strong> to perform disability-related tasks.</td><td id="SSzK" class="">• Provide therapeutic comfort, companionship, and emotional support for individuals with mental or psychological conditions.</td><td id="[au]" class="">• <strong>Not</strong> covered by the ADA in public places.<br/><br/>• Historically covered under FHA reasonable accommodation rules (exempt from pet fees/breed limits), though under <strong>HUD&#x27;s May 22, 2026 FHEO enforcement guidance</strong>, HUD now limits its federal enforcement charges to animals trained to perform disability-related assistance <em>(while private FHA lawsuits and state laws may still apply)</em>.</td></tr></tbody></table></li></ul></li></ul><ul id="41e8ac6a-aab1-805c-84ea-c09d90a3fe5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Physical Accessibility Standards: Fair Housing Act vs. ADA</strong><ul id="41e8ac6a-aab1-806c-99c2-c847eb86ee2f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition of Accessibility:</strong> Designing and constructing buildings or spaces so that they are usable and navigable by everyone, including individuals with mobility, visual, or hearing disabilities.</li></ul><ul id="41e8ac6a-aab1-80ce-aade-f2241c28bb39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Coverage Deadlines:</strong><ul id="41e8ac6a-aab1-8080-9fe0-dc579ada64c8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fair Housing Act (Residential):</strong> Applies to all newly constructed multi-family dwellings containing <strong>four or more units</strong> intended for first occupancy after <strong>March 13, 1991</strong> (covering ground-floor units in non-elevator buildings and all units in elevator-equipped buildings).</li></ul><ul id="41e8ac6a-aab1-807b-8302-ccf2cc3d4a08" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Americans with Disabilities Act (Commercial &amp; Public):</strong> Applies to newly constructed commercial facilities and places of public accommodation built after <strong>1993</strong> (and requires readily achievable barrier removal in existing public facilities).</li></ul></li></ul><ul id="41e8ac6a-aab1-8033-b384-e0600f8d664b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seven Mandatory Fair Housing Act Design &amp; Construction Features:</strong><ol type="1" id="41e8ac6a-aab1-801f-81e9-c0423e43642b" class="numbered-list" start="1" dir="auto"><li>An <strong>accessible building entrance</strong> located on an accessible route</li></ol><ol type="1" id="41e8ac6a-aab1-80bf-a66c-e3019e9bcff8" class="numbered-list" start="2" dir="auto"><li><strong>Accessible common and public-use areas</strong> (such as lobbies, laundry rooms, mailrooms, and parking)</li></ol><ol type="1" id="41e8ac6a-aab1-800c-a603-ed84a0cafd0c" class="numbered-list" start="3" dir="auto"><li><strong>Doors sufficiently wide</strong> to accommodate wheelchairs</li></ol><ol type="1" id="41e8ac6a-aab1-80c8-9c7d-e1eae64d57c5" class="numbered-list" start="4" dir="auto"><li><strong>Accessible routes</strong> into and throughout each covered dwelling unit</li></ol><ol type="1" id="41e8ac6a-aab1-8094-8472-c1dd096c0bdc" class="numbered-list" start="5" dir="auto"><li><strong>Light switches, electrical outlets, thermostats, and environmental controls</strong> placed in accessible locations</li></ol><ol type="1" id="41e8ac6a-aab1-8067-ad9a-f28f2ab024f0" class="numbered-list" start="6" dir="auto"><li><strong>Reinforcements in bathroom walls</strong> to allow safe installation of grab bars</li></ol><ol type="1" id="41e8ac6a-aab1-8045-b549-e9f4ca629103" class="numbered-list" start="7" dir="auto"><li><strong>Usable kitchens and bathrooms</strong> configured with sufficient clear floor space for a wheelchair to maneuver</li></ol></li></ul></li></ul><ul id="41e8ac6a-aab1-8074-a905-fc195bb20bfd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Five Titles of the Americans with Disabilities Act (ADA) &amp; Enforcement</strong><table id="41e8ac6a-aab1-8036-8539-ec4b3f5d6d69" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-80c5-9c8d-e0000d7e02ab" dir="ltr"><td id="fEkw" class=""><strong>ADA Title</strong></td><td id="geGN" class=""><strong>Area Governed</strong></td><td id="X;g\" class=""><strong>Core Scope &amp; Requirements</strong></td></tr><tr id="41e8ac6a-aab1-8019-84ed-d70da9439fa8" dir="ltr"><td id="fEkw" class=""><strong>Title I</strong></td><td id="geGN" class=""><strong>Employment</strong></td><td id="X;g\" class="">Prohibits disability discrimination in hiring, firing, promotions, and pay; requires employers with <strong>15 or more employees</strong> to provide reasonable accommodations.</td></tr><tr id="41e8ac6a-aab1-801d-97fe-db0a5d6931b1" dir="ltr"><td id="fEkw" class=""><strong>Title II</strong></td><td id="geGN" class=""><strong>Public Entities &amp; Public Transportation</strong></td><td id="X;g\" class="">Prohibits disability discrimination by state and local governments and covers public transportation systems, including <strong>bus and passenger train services</strong>.</td></tr><tr id="41e8ac6a-aab1-808b-9efd-daa5ebf8a4e5" dir="ltr"><td id="fEkw" class=""><strong>Title III</strong></td><td id="geGN" class=""><strong>Public Accommodations &amp; Commercial Facilities</strong></td><td id="X;g\" class="">Governs privately owned and operated facilities open to the public—including <strong>hotels, restaurants, retail stores, real estate brokerage offices open to the public, doctor&#x27;s offices, golf courses, private schools, sports stadiums, and movie theaters</strong>.</td></tr><tr id="41e8ac6a-aab1-80a8-abbb-d18ed7341c4f" dir="ltr"><td id="fEkw" class=""><strong>Title IV</strong></td><td id="geGN" class=""><strong>Telecommunications</strong></td><td id="X;g\" class="">Requires telephone companies to provide <strong>telecommunications relay services (TRS)</strong> for individuals with hearing or speech impairments, and mandates <strong>closed captioning</strong> on federally funded public service announcements.</td></tr><tr id="41e8ac6a-aab1-807f-af4c-f2d553144423" dir="ltr"><td id="fEkw" class=""><strong>Title V</strong></td><td id="geGN" class=""><strong>Miscellaneous Provisions</strong></td><td id="X;g\" class="">Addresses the ADA&#x27;s relationship to other federal/state laws, insurance and benefit plans, illegal drug use exclusions, anti-retaliation rules, and recovery of attorney&#x27;s fees.</td></tr></tbody></table></li></ul><ul id="41e8ac6a-aab1-809c-abd0-cbebe703eb83" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ADA Enforcement &amp; Civil Penalties:</strong><ul id="41e8ac6a-aab1-8010-b5c2-d336f33f5fc7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Enforced by the <strong>U.S. Department of Justice (DOJ)</strong>.</li></ul><ul id="41e8ac6a-aab1-805d-a4ca-fdc362ea024f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Curriculum Exam Benchmark:</strong> Civil penalties of <strong>up to </strong><code><strong>$55,000</strong></code><strong> for a first violation</strong> and <strong>up to </strong><code><strong>$110,000</strong></code><strong> for any subsequent violation</strong> <em>(note: under current inflation-adjusted federal regulations, maximum DOJ Title III civil penalties reach </em><em><code>$75,000</code></em><em> for a first violation and </em><em><code>$150,000</code></em><em> for repeat violations)</em>.<figure id="41e8ac6a-aab1-8014-8637-c6c32edbe7a6" class="image" data-notion-image="Chapter%202%20-%20Federal%20Disability%20Law/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Federal%20Disability%20Law/image%201.png"><img style="width:432px" src="Chapter%202%20-%20Federal%20Disability%20Law/image%201.png"/></a></figure></li></ul></li></ul><ul id="41e8ac6a-aab1-8089-b86e-cd9aefe915e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affected Businesses</strong><ul id="41e8ac6a-aab1-80f3-9999-e554e2d18846" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The ADA affects a wide array of businesses and establishments, such as:<ol type="1" id="41e8ac6a-aab1-809b-8752-ee7be82f7217" class="numbered-list" start="1" dir="auto"><li>Businesses with 15 or more employees</li></ol><ol type="1" id="41e8ac6a-aab1-8024-a390-fbbb89e45573" class="numbered-list" start="2" dir="auto"><li>Any facilities or offices affiliated with state or local government</li></ol><ol type="1" id="41e8ac6a-aab1-806b-8db4-f232803b928e" class="numbered-list" start="3" dir="auto"><li>Public and private schools</li></ol><ol type="1" id="41e8ac6a-aab1-8010-b840-fc4510469fcf" class="numbered-list" start="4" dir="auto"><li>Hospitals and dental offices</li></ol><ol type="1" id="41e8ac6a-aab1-80e1-bb64-f8b472d2d950" class="numbered-list" start="5" dir="auto"><li>Restaurants</li></ol><ol type="1" id="41e8ac6a-aab1-8030-8083-ef28e4b6a754" class="numbered-list" start="6" dir="auto"><li>Hotels and motels</li></ol><ol type="1" id="41e8ac6a-aab1-80fc-8486-dc586c3666a2" class="numbered-list" start="7" dir="auto"><li>Grocery and retail stores</li></ol><ol type="1" id="41e8ac6a-aab1-8001-95f2-d9616475a842" class="numbered-list" start="8" dir="auto"><li>Shopping malls</li></ol><ol type="1" id="41e8ac6a-aab1-8060-8db8-f3617fc0b652" class="numbered-list" start="9" dir="auto"><li>Libraries and museums</li></ol><ol type="1" id="41e8ac6a-aab1-808e-9c94-cbc28991f663" class="numbered-list numbered-list-digits-2" start="10" dir="auto"><li>Banks</li></ol><ol type="1" id="41e8ac6a-aab1-80ef-9799-f742c93a560b" class="numbered-list numbered-list-digits-2" start="11" dir="auto"><li>Theaters</li></ol><ol type="1" id="41e8ac6a-aab1-80e5-83d0-d876cff98d60" class="numbered-list numbered-list-digits-2" start="12" dir="auto"><li>Amusement and recreation parks</li></ol><p id="41e8ac6a-aab1-80e3-b03c-cb297a759cca" class="" dir="auto">
+</p></li></ul></li></ul></div><div id="41e8ac6a-aab1-80e3-8c52-c615c9b0fd71" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41e8ac6a-aab1-80fb-8e3a-c136dd3b4332" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41e8ac6a-aab1-801d-9ef3-e947aa9241a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Americans with Disabilities Act (ADA) </strong>- a federal civil rights law passed in 1990 which prohibits discrimination against and creates standards for people with disabilities</li></ul><ul id="41e8ac6a-aab1-8037-91ad-efb8160a909c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>disability</strong> - a physical or mental impairment that substantially limits one or more major life activities, the record of such impairment, or being regarded as having such an impairment</li></ul><p id="41e8ac6a-aab1-80e0-96b7-d3c70c6b338f" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41e8ac6a-aab1-800b-a89b-e06812872db7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Americans with Disabilities Act</strong><figure id="41e8ac6a-aab1-8059-8cbf-edd3f0627292" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/ADA_Titles.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/ADA_Titles.jpg"><img style="width:336px" src="https://d1u7daj727sadp.cloudfront.net/images/ADA_Titles.jpg"/></a></figure></li></ul><ul id="41e8ac6a-aab1-8053-9b4c-da408351ad40" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Modifications and Accommodations</strong><ul id="41e8ac6a-aab1-80e4-ac08-dc9352fec980" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Fair Housing Act requires that landlords, property managers, and other housing operators make modifications to a property per a disabled tenant&#x27;s request, <em>as long as</em> it does not impose an undue financial burden on the owner.</li></ul><ul id="41e8ac6a-aab1-805d-9fc9-c1e7e2db5cd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>modification</strong> will likely be a structural alteration to the property, like installing a wheelchair ramp or widening doorways. It can also refer to environmental controls, like lowered light switches or grab bars for bathtubs.</li></ul><ul id="41e8ac6a-aab1-803f-b35f-ca24020427db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Along similar lines, a landlord or real estate professional must make any <strong>accommodation</strong> that helps a person with a disability acquire and enjoy their dwelling, <em>as long as</em> it does not cause them undue financial burden.<ul id="41e8ac6a-aab1-8095-968c-e9465c12a3f0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Modification: </strong>alteration to <em>property</em></li></ul><ul id="41e8ac6a-aab1-8003-bb87-e76472d80904" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accommodation: </strong>alteration to <em>policy</em></li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-806a-9e84-d792844c1e4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Act vs. ADA</strong><ul id="41e8ac6a-aab1-80e5-ace9-f24f6fa3923b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protected Classes:</strong> The Fair Housing Act covers multiple protected classes, including disability. The ADA covers only disability.</li></ul><ul id="41e8ac6a-aab1-80d1-a741-e4ab0bfab285" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application:</strong> The Fair Housing Act applies to residential dwellings. The ADA applies to employment, public accommodations and commercial facilities, public transportation, and telecommunications.</li></ul><ul id="41e8ac6a-aab1-800a-b7b5-cd5b8a5d3dcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accessibility: The Fair Housing Act requires all newly constructed multi-family dwellings of four or more units intended for first occupancy after March 13, 1991 to have certain features. The Americans with Disability Act (ADA) requires that commercial and public buildings that are newly constructed (built after 1993) be accessible.</strong></li></ul><ul id="41e8ac6a-aab1-8081-8e33-ec8402ef20ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accessibility: </strong>The Fair Housing Act requires all newly constructed multi-family dwellings of four or more units intended for first occupancy after March 13, 1991 to have certain features. The Americans with Disability Act (ADA) requires that commercial and public buildings that are newly constructed (built after 1993) be accessible.</li></ul><p id="41e8ac6a-aab1-80e3-9084-e0308d0b1c76" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

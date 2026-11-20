@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Closing Costs</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-80c1-aa5a-ee1790c6a7da" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Closing Costs</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41d8ac6a-aab1-8070-a0bb-f69f376af002" class="column-list" data-notion-column-list="" dir="auto"><div id="41d8ac6a-aab1-804e-81aa-ed7534bc4a26" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41d8ac6a-aab1-809b-831d-ed965d4fae6b" class="" dir="auto"><strong>Closing Disclosure (Settlement Statement) Overview</strong></p><ul id="41d8ac6a-aab1-8056-a304-db0331e698b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose &amp; Function:</strong> A detailed closing statement—issued on the standardized <strong>Consumer Financial Protection Bureau (CFPB) Closing Disclosure</strong> form for financed residential transactions—that itemizes each party&#x27;s transaction expenses, records amounts already paid or credited toward the transaction, and calculates the exact <strong>final cash to close</strong> the buyer must bring to the closing table.</li></ul><ul id="41d8ac6a-aab1-807d-bc48-d32fa7484939" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contractual &amp; Proration Basis:</strong><ul id="41d8ac6a-aab1-806e-828e-ded08cf151d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Most closing expenses are allocated based on what the buyer and seller negotiated in the <strong>sales contract</strong>.</li></ul><ul id="41d8ac6a-aab1-8039-8f33-d9ea91dae052" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate licensees must understand <strong>credits and debits</strong> as well as how to <strong>prorate</strong> ongoing expenses (such as property taxes, HOA dues, or prepaid rent) that must be divided fairly between the principals as of the closing date.</li></ul></li></ul><ul id="41d8ac6a-aab1-80ee-ac40-f3484c300748" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CFPB Closing Disclosure Structure &amp; Timing Rules</strong><ul id="41d8ac6a-aab1-801b-af09-d97bd05409e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five-Page Standardized Layout:</strong> Under the TILA-RESPA Integrated Disclosure (TRID) rules, the CFPB Closing Disclosure organizes transaction details across five pages:<ul id="41d8ac6a-aab1-8032-912f-cbf604ce350c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Page 1:</strong> General transaction information, <strong>Loan Terms</strong> (loan amount, interest rate, monthly principal and interest, prepayment penalty, balloon payment), <strong>Projected Payments</strong>, and <strong>Costs at Closing</strong> summary.</li></ul><ul id="41d8ac6a-aab1-8046-aa9d-f2432eeaad7c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Page 2:</strong> Detailed itemization of <strong>Closing Cost Details</strong> (Loan Costs—origination charges, services borrower did/did not shop for—and Other Costs—taxes/government fees, prepaids, initial escrow payment at closing, and other charges), separated into borrower-paid, seller-paid, and paid-by-others columns.</li></ul><ul id="41d8ac6a-aab1-80f9-bd45-eb4dba4c90ce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Page 3:</strong> <strong>Calculating Cash to Close</strong> comparison table (comparing the Loan Estimate to the final Closing Disclosure) and <strong>Summaries of Transactions</strong> detailing all borrower and seller debits and credits.</li></ul><ul id="41d8ac6a-aab1-801c-a1ff-c7c333d66bbc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Page 4:</strong> Additional <strong>Loan Disclosures</strong> (assumption, demand feature, late payment, negative amortization, partial payments) and <strong>Escrow Account</strong> breakdown.</li></ul><ul id="41d8ac6a-aab1-8099-b2fa-eda4aba605b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Page 5:</strong> <strong>Loan Calculations</strong> (Total of Payments, Finance Charge, Amount Financed, APR, Total Interest Percentage), <strong>Other Disclosures</strong>, contact information table for all transaction parties, and <strong>Confirm Receipt</strong> signature block.</li></ul></li></ul><ul id="41d8ac6a-aab1-8069-88a1-fe169b277c5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three-Business-Day Review Window:</strong><ul id="41d8ac6a-aab1-8080-a94b-d73f8380a789" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lenders must deliver the Closing Disclosure to the borrower <strong>at least three business days</strong> before the scheduled closing (consummation). <em>(Note: For Closing Disclosure timing, &quot;business day&quot; includes all calendar days except Sundays and federal legal public holidays.)</em></li></ul><ul id="41d8ac6a-aab1-809c-84f9-e6d6c55361ad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Changes Requiring a New 3-Day Waiting Period:</strong> If the lender changes the APR beyond permitted tolerances (more than 1/8 of a percent for standard loans, or 1/4 of a percent for irregular loans), changes the loan product (e.g., fixed-rate to adjustable-rate), or adds a prepayment penalty, a corrected Closing Disclosure must be issued with a <strong>new three-business-day waiting period</strong>.</li></ul></li></ul><ul id="41d8ac6a-aab1-8076-a019-ffb84c07e14c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role of the Real Estate Agent:</strong><ul id="41d8ac6a-aab1-8096-b59a-db33c3484f87" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agents should help their clients review the Closing Disclosure during the three-day window prior to closing—verifying that negotiated seller credits, earnest money deposits, purchase price, prorations, and contract-agreed expenses match the client&#x27;s expectations before they sign at the closing table.</li></ul><figure id="41d8ac6a-aab1-80b3-b7c2-ce1b1901d1a4" class="image" data-notion-image="Chapter%202%20-%20Closing%20Costs/image.png" dir="ltr"><a href="Chapter%202%20-%20Closing%20Costs/image.png"><img style="width:432px" src="Chapter%202%20-%20Closing%20Costs/image.png"/></a></figure></li></ul></li></ul><ul id="41d8ac6a-aab1-8059-8f44-e39e9b09bffa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Allocating Closing Expenses</strong><ul id="41d8ac6a-aab1-80fa-8da5-ccb687236ad7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Negotiability &amp; Contract Control:</strong> Nearly all closing costs are negotiable between the buyer and seller prior to signing the sales contract—a motivated party may agree to absorb costs traditionally paid by the other side to sweeten the deal. At closing, the signed <strong>sales contract</strong> dictates exactly how each expense is allocated.</li></ul></li></ul><ul id="41d8ac6a-aab1-80af-920a-d14bcc3c8340" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Typical Buyer&#x27;s Closing Costs</strong><ul id="41d8ac6a-aab1-80c6-a6f5-d32e6dc42e5f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent fee:</strong> Paid by the buyer as outlined in the buyer-agency agreement if the seller has not agreed to pay the buyer&#x27;s agent commission.</li></ul><ul id="41d8ac6a-aab1-808d-9c05-d8b2e8fabf24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal fees:</strong> Paid by the party who ordered the appraisal—generally the buyer, since the lender requires an appraisal for loan approval.</li></ul><ul id="41d8ac6a-aab1-8044-b512-efe8a53ad7c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Attorney fees:</strong> Paid by whichever party chooses to retain legal counsel <em>(lawyers are optional in most Tennessee transactions)</em>.</li></ul><ul id="41d8ac6a-aab1-80fd-9240-c65f32c7e886" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condo or co-op fees:</strong> Prorated/adjusted assessments owed by the buyer for common area maintenance covering the period after closing.</li></ul><ul id="41d8ac6a-aab1-8020-ae6a-e17f06ce6368" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow fee:</strong> Charged by the closing/escrow holder; negotiable between buyer and seller.</li></ul><ul id="41d8ac6a-aab1-808b-b919-d554741c8c35" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOA transfer fees:</strong> Typically <strong>$200–$400</strong>, traditionally <strong>split evenly (50/50)</strong> between buyer and seller.</li></ul><ul id="41d8ac6a-aab1-80ea-a7b0-f6504cbd40d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Homeowners insurance:</strong> Buyer prepays <strong>one full year</strong> of homeowners (hazard) insurance and flood insurance, if required.</li></ul><ul id="41d8ac6a-aab1-80d4-80ae-fc9a46fcd3db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Home warranty:</strong> Paid by either buyer or seller depending on what is negotiated in the sales contract.</li></ul><ul id="41d8ac6a-aab1-8031-89aa-f527375c34c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan fees:</strong> Loan origination fees for a new mortgage (or loan assumption fees if assuming the seller&#x27;s existing loan).</li></ul><ul id="41d8ac6a-aab1-805d-b48b-e85a892cd448" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage transfer tax:</strong> <strong>$0.115 per $100</strong> of loan amount (with the <strong>first $2,000 exempt</strong>), typically paid by the borrower.</li></ul><ul id="41d8ac6a-aab1-8038-848a-cdbd8cf520f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Points:</strong> Discount points purchased upfront by the buyer to buy down the mortgage interest rate.</li></ul><ul id="41d8ac6a-aab1-80c2-b7b3-d967971d9828" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recording fee:</strong> Paid by the buyer to record the deed in Tennessee—typically <strong>$5 per page ($10 minimum) plus a $2 processing fee</strong>.</li></ul><ul id="41d8ac6a-aab1-807c-941f-e81f560b0775" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Survey fee:</strong> Paid by the buyer if required, though negotiable (and sometimes paid by the seller).</li></ul><ul id="41d8ac6a-aab1-80a8-a415-c3a1f633bf85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax and insurance reserves:</strong> Initial deposits into the lender&#x27;s escrow impound account to cover upcoming property taxes and hazard insurance premiums <em>(with the buyer receiving a credit and the seller a debit for any unpaid taxes accrued prior to closing)</em>.</li></ul><ul id="41d8ac6a-aab1-8059-a891-db7edc964a24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transfer tax:</strong> Tennessee general deed transfer tax of <strong>$0.37 per $100</strong> of purchase price—negotiable, but traditionally paid by the buyer in Tennessee.</li></ul><ul id="41d8ac6a-aab1-803b-b1cf-c0c69cb91415" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title expenses:</strong> While Tennessee sellers typically pay for title insurance policies, the buyer pays if negotiated that way (or pays for the lender&#x27;s policy if split).</li></ul></li></ul><ul id="41d8ac6a-aab1-80d6-9369-d068b66bfdfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Transfer Taxes &amp; Math Practice</strong><table id="41d8ac6a-aab1-806f-b085-e505a3839cc5" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-803e-b99b-f276203ca6ff" dir="ltr"><td id="?]}a" class=""><strong>Tax Type</strong></td><td id="EDWx" class=""><strong>Tax Base &amp; Rate</strong></td><td id="&gt;ad}" class=""><strong>Exemptions &amp; Rules</strong></td></tr><tr id="41d8ac6a-aab1-80fb-b582-c2f1d3e2d810" dir="ltr"><td id="?]}a" class=""><strong>General Transfer Tax</strong> <em>(Recordation Tax / Stamps)</em></td><td id="EDWx" class=""><strong>$0.37 per $100</strong> of the <strong>property&#x27;s sales price</strong></td><td id="&gt;ad}" class="">• Charged on the deed transfer<br/><br/>• Payer must swear to the actual purchase price<br/><br/>• Traditionally paid by the <strong>buyer</strong> in Tennessee</td></tr><tr id="41d8ac6a-aab1-80d4-b878-df33cba25e3d" dir="ltr"><td id="?]}a" class=""><strong>Mortgage Transfer Tax</strong> <em>(Mortgage Tax)</em></td><td id="EDWx" class=""><strong>$0.115 per $100</strong> of the <strong>loan amount</strong></td><td id="&gt;ad}" class="">• <strong>First $2,000 of the loan is exempt</strong><br/><br/>• Charged before recording any evidence of debt (mortgage, deed of trust, personalty lien)<br/><br/>• <strong>Excludes:</strong> auto loans, judgment liens, and mechanic&#x27;s/materialperson&#x27;s liens<br/><br/>• Typically paid by the <strong>borrower (buyer)</strong></td></tr></tbody></table></li></ul><ul id="41d8ac6a-aab1-80d5-b2a2-d60824a57345" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Math Formulas:</strong><ul id="41d8ac6a-aab1-806c-a620-d07029d7c94d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>($Purchase Price ÷ $100) × $0.37 = Tennessee General Transfer Tax</code></li></ul><ul id="41d8ac6a-aab1-8012-8709-c7eb660a4ce7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>(($Loan Amount - $2,000) ÷ $100) × $0.115 = Tennessee Mortgage Transfer Tax</code></li></ul></li></ul><ul id="41d8ac6a-aab1-8038-899b-def9fcc56101" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Example (Annalisa&#x27;s $255,000 Purchase with 20% Down / $204,000 Loan):</strong><ul id="41d8ac6a-aab1-8063-a287-cfc7a372394b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 — General Transfer Tax (based on $255,000 purchase price):</strong><ul id="41d8ac6a-aab1-8093-9a12-eb333be6672d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$255,000 ÷ $100 = 2,550 hundreds</code></li></ul><ul id="41d8ac6a-aab1-8052-8ad9-fdf8bf45193c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>2,550 × $0.37 = $943.50</code></li></ul></li></ul><ul id="41d8ac6a-aab1-8023-a7af-fe7d74cb3326" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 — Mortgage Transfer Tax (based on $204,000 loan amount):</strong><ul id="41d8ac6a-aab1-8022-8e5d-c0185f99e169" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$204,000 - $2,000 (exempt) = $202,000 taxable loan balance</code></li></ul><ul id="41d8ac6a-aab1-8021-9f00-e674e9a4d7c8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$202,000 ÷ $100 = 2,020 hundreds</code></li></ul><ul id="41d8ac6a-aab1-8063-903a-e7b0cd8e48e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>2,020 × $0.115 = $232.30</code></li></ul></li></ul><ul id="41d8ac6a-aab1-807d-898c-ddf1e03f9cca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Total Tennessee Transfer &amp; Mortgage Taxes:</strong> <code>$943.50 + $232.30 = $1,175.80</code></li></ul></li></ul><ul id="41d8ac6a-aab1-80f7-b34b-ed224f432b6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Typical Seller&#x27;s Closing Costs</strong><ul id="41d8ac6a-aab1-8013-9fbc-ecaf9fac165f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller&#x27;s attorney fees:</strong> Paid by the seller if they choose to hire an attorney.</li></ul><ul id="41d8ac6a-aab1-80ec-bc21-c3fc361a7a60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker&#x27;s commission:</strong> Listing broker&#x27;s commission (usually calculated as a percentage of the sales price), negotiated and specified in the contract and paid by the seller.</li></ul><ul id="41d8ac6a-aab1-80f3-9ae1-f182dfc9fdc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condo or co-op fees:</strong> Seller must pay all past-due and current assessments to bring their account up to date prior to closing.</li></ul><ul id="41d8ac6a-aab1-8013-99f9-f8394d56334f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow fee:</strong> Paid by seller or buyer according to the terms of the sales contract.</li></ul><ul id="41d8ac6a-aab1-80b0-ae9a-e64f67be381c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOA transfer fees:</strong> Seller traditionally pays <strong>half (50%)</strong> of the HOA transfer fee.</li></ul><ul id="41d8ac6a-aab1-8046-b404-cb600190636c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Home warranty:</strong> Paid by the seller if negotiated in the sales contract.</li></ul><ul id="41d8ac6a-aab1-8065-9dc5-d64d1ce849db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Satisfying existing liens:</strong> Seller pays to clear all existing mortgages, tax liens, or judgments against the property (typically paid off at closing out of the buyer&#x27;s funds), including any <strong>early payoff / prepayment penalties</strong> charged by the seller&#x27;s lender.</li></ul><ul id="41d8ac6a-aab1-80ea-a00a-f9704664ceb5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title expenses:</strong> Seller generally pays for the <strong>title search</strong> (unless the buyer orders an extra search of their own) and typically pays for the <strong>title insurance policy</strong> in Tennessee, subject to negotiation.</li></ul></li></ul><ul id="41d8ac6a-aab1-80f6-b5b8-fbdbc7bb8e60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Recurring vs. Non-Recurring Closing Costs</strong><ul id="41d8ac6a-aab1-809f-9bd6-fc39706989be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Closing costs are divided into two primary classifications based on whether they repeat after the transaction closes:<table id="41d8ac6a-aab1-8033-8c78-d5b03be4b391" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-801c-af19-ff23f50489b9" dir="ltr"><td id="zQ{O" class=""><strong>Classification</strong></td><td id="Qv:m" class=""><strong>Definition &amp; Frequency</strong></td><td id="dMuK" class=""><strong>Examples &amp; Subcategories</strong></td></tr><tr id="41d8ac6a-aab1-805d-902e-ccd610cce3d5" dir="ltr"><td id="zQ{O" class=""><strong>Recurring Closing Costs</strong></td><td id="Qv:m" class="">Ongoing expenses that will be paid repeatedly after closing—typically annually or monthly.</td><td id="dMuK" class="">• <strong>Property taxes</strong><br/><br/>• <strong>Property / homeowners insurance</strong><br/><br/>• <strong>Flood insurance</strong></td></tr><tr id="41d8ac6a-aab1-80c1-be37-e4abcf09edc0" dir="ltr"><td id="zQ{O" class=""><strong>Non-Recurring Closing Costs</strong></td><td id="Qv:m" class="">One-time charges paid only once at closing; make up the bulk of total closing costs.</td><td id="dMuK" class="">Divided into two subcategories:<br/><br/>1. <strong>Home-purchase-process costs</strong> <em>(e.g., title, escrow, and inspection fees)</em><br/><br/>2. <strong>Lender-associated costs</strong> <em>(e.g., loan origination fees and points)</em></td></tr></tbody></table></li></ul></li></ul><ul id="41d8ac6a-aab1-8086-bb5d-daa34994dcd5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Non-Recurring Home-Purchase-Process Closing Costs</strong><ul id="41d8ac6a-aab1-803e-89da-e33962863d6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">These one-time fees relate directly to the property transfer and settlement process rather than loan origination:<ul id="41d8ac6a-aab1-8089-9041-dcb4e65079ac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Courier fee:</strong> Covers overnight or physical delivery of documents among the buyer, seller, lender, title company, law firm, and county recorder.</li></ul><ul id="41d8ac6a-aab1-8001-8073-e1eddbf324cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Escrow fee:</strong> Fee paid to the escrow officer/holder for managing funds and coordinating closing.</li></ul><ul id="41d8ac6a-aab1-803c-9033-c5855c2c7f01" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Home inspection fee:</strong> Paid at closing by the buyer if the general property inspection was not already paid upfront at the time of inspection.</li></ul><ul id="41d8ac6a-aab1-80f6-87b1-f08e86f4ff5b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Homeowners&#x27; association (HOA) transfer fee:</strong> Charged by an HOA to transfer ownership records and account documents to the new homeowner.</li></ul><ul id="41d8ac6a-aab1-800d-af52-da93ef9b2b5e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Home warranty:</strong> Optional one-year service contract covering repair or replacement of major home appliances and systems <em>(distinct from a new-construction builder&#x27;s structural warranty)</em>.</li></ul><ul id="41d8ac6a-aab1-8003-be32-e69a8c6ee577" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal or document preparation fee:</strong> Paid to an attorney, law firm, or lender for preparing transaction deeds, legal instruments, and required loan forms.</li></ul><ul id="41d8ac6a-aab1-8085-ac75-ef9f749d08ca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Notary fees:</strong> Charged for witnessing and notarizing signatures on recordable legal documents.</li></ul><ul id="41d8ac6a-aab1-80a7-aae6-e8b0f7d2190e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pest inspection / treatment:</strong> Covers termite/wood-destroying organism inspections, treatments, or repairs for pest damage, wood rot, and water damage <em>(often required by the lender prior to loan approval)</em>.</li></ul><ul id="41d8ac6a-aab1-8007-b36e-df48d5424691" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recording fees:</strong> Paid to the local county recorder/clerk to enter the deed, mortgage/deed of trust, and related instruments into the public land records.</li></ul><ul id="41d8ac6a-aab1-80ed-93e2-fff4b23faf59" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Title insurance:</strong> One-time premium assuring clear title free of undisclosed liens and encumbrances (and boundary/area discrepancies when a survey is included).</li></ul></li></ul></li></ul><ul id="41d8ac6a-aab1-80cc-9e68-f896114dfc05" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Credits and Debits on the Closing Disclosure</strong><ul id="41d8ac6a-aab1-804b-b3d6-f86ad26525a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every financial entry on the Closing Disclosure is recorded as either a <strong>credit</strong> or a <strong>debit</strong> to determine each party&#x27;s final settlement figure:<table id="41d8ac6a-aab1-800f-95f7-c6006bfe0976" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-8079-bcf3-c9552e3f9ad6" dir="ltr"><td id="hoV]" class=""><strong>Accounting Entry</strong></td><td id="\oUX" class=""><strong>Definition</strong></td><td id="VA_?" class=""><strong>Effect on Buyer</strong></td><td id="RqXD" class=""><strong>Effect on Seller</strong></td></tr><tr id="41d8ac6a-aab1-80e7-8eac-f13a86713430" dir="ltr"><td id="hoV]" class=""><strong>Credit</strong> <em>(Positive Entry)</em></td><td id="\oUX" class="">A positive balance entered in a party&#x27;s favor—reflecting money already paid by that party, amounts owed to them, or concessions granted to them.</td><td id="VA_?" class=""><strong>Reduces</strong> the cash the buyer must bring to closing <em>(e.g., prepaid earnest money deposit, new loan amount, assumed loan balance, seller credits, or unpaid seller property taxes)</em>.</td><td id="RqXD" class=""><strong>Increases</strong> the net proceeds the seller receives at closing <em>(e.g., property purchase price and prepaid items reimbursed by the buyer, such as prorated HOA dues or prepaid taxes)</em>.</td></tr><tr id="41d8ac6a-aab1-8012-b4a2-c9c785caa6ec" dir="ltr"><td id="hoV]" class=""><strong>Debit</strong> <em>(Negative Entry)</em></td><td id="\oUX" class="">A negative balance or charge owed by a party—reflecting expenses charged to that individual in the transaction.</td><td id="VA_?" class=""><strong>Increases</strong> the cash the buyer must bring to closing <em>(e.g., property purchase price, buyer closing costs, and prepaid interest/escrow reserves)</em>.</td><td id="RqXD" class=""><strong>Reduces</strong> the net proceeds the seller receives at closing <em>(e.g., existing mortgage payoff, broker commission, seller-paid closing costs, and unpaid accrued taxes)</em>.</td></tr></tbody></table><figure id="41d8ac6a-aab1-80ba-b8bf-f3e36575faae" class="image" data-notion-image="Chapter%202%20-%20Closing%20Costs/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Closing%20Costs/image%201.png"><img style="width:672px" src="Chapter%202%20-%20Closing%20Costs/image%201.png"/></a></figure></li></ul></li></ul><ul id="41d8ac6a-aab1-80ff-9bc5-f6c1e6941373" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Earnest Money Deposit Example:</strong> Because the buyer pays the good-faith <strong>earnest money deposit</strong> upfront when the purchase contract is negotiated, that amount appears on the Closing Disclosure as a <strong>credit to the buyer</strong> at closing so it is deducted from the remaining cash owed.</li></ul><ul id="41d8ac6a-aab1-8073-a355-dab870648db3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Cash to Close &amp; Net to Seller Formulas</strong><ul id="41d8ac6a-aab1-80c2-a1cb-dabcf905471c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Cash to Close Formula:</strong><ul id="41d8ac6a-aab1-805a-b06a-c645b770170e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Buyer&#x27;s Total Debits - Buyer&#x27;s Total Credits = Cash to Close</code></li></ul></li></ul><ul id="41d8ac6a-aab1-80e4-8515-ede5f0b13280" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net to Seller Formula:</strong><ul id="41d8ac6a-aab1-8032-ac29-c6213f859338" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Seller&#x27;s Total Credits - Seller&#x27;s Total Debits = Net to Seller</code></li></ul></li></ul><ul id="41d8ac6a-aab1-8086-a10e-ec72f840e0d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Net to Seller Example (Susie&#x27;s Home Sale):</strong><ul id="41d8ac6a-aab1-8094-b570-ed529f48b822" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller&#x27;s Credits:</strong> <code>$250,000</code> <em>(purchase price plus prorated HOA fees and prepaid taxes credited back to Susie)</em></li></ul><ul id="41d8ac6a-aab1-8075-a6ae-f853ce09a716" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller&#x27;s Debits:</strong> <code>$100,000</code> <em>(existing mortgage loan payoff, real estate agent commission, and title search fee)</em></li></ul><ul id="41d8ac6a-aab1-800a-96d2-e2435f28e252" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Calculation:</strong> <code>$250,000 - $100,000 = $150,000 Net to Seller</code></li></ul></li></ul></li></ul><ul id="41d8ac6a-aab1-8061-b6a4-eebdb65cd663" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Introduction to Proration</strong><ul id="41d8ac6a-aab1-805f-a2d0-d8c581045afd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The proportionate division of ongoing property expenses—such as annual property taxes, HOA assessments, or prepaid rents—between the buyer and the seller based on each party&#x27;s exact period of ownership before and after the closing date.</li></ul></li></ul><ul id="41d8ac6a-aab1-8054-94a8-d6f8f209f29c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Proration Overview</strong><ul id="41d8ac6a-aab1-80c1-8aea-cd32431f242a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The proportionate division or allocation of ongoing property expenses (and rental income) between the buyer and seller at closing based on each party&#x27;s exact period of ownership or usage, ensuring neither party pays for time they did not occupy or own the property.</li></ul></li></ul><ul id="41d8ac6a-aab1-808d-b331-e1080790b114" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Accrued Items vs. Prepaid Items</strong><table id="41d8ac6a-aab1-8002-954a-d667870b4f5c" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-802a-8351-ee36e239b2cd" dir="ltr"><td id="fT|k" class=""><strong>Category</strong></td><td id="zNc]" class=""><strong>Definition &amp; Timing</strong></td><td id="NadH" class=""><strong>Examples</strong></td><td id="b{M_" class=""><strong>Closing Disclosure Accounting Rule</strong></td></tr><tr id="41d8ac6a-aab1-8036-a308-ed9d8a8d771f" dir="ltr"><td id="fT|k" class=""><strong>Accrued Items</strong> <em>(Paid in Arrears)</em></td><td id="zNc]" class="">Costs incurred by the seller during their period of ownership that have <strong>not yet been paid</strong> at closing and will be paid later by the buyer after taking title.</td><td id="NadH" class="">• Unpaid real estate taxes paid in arrears<br/><br/>• Recurring special assessments<br/><br/>• Unpaid accrued mortgage interest (on an assumed loan)</td><td id="b{M_" class=""><strong>Debit to Seller / Credit to Buyer</strong> <em>(Seller compensates the buyer at closing for the seller&#x27;s unpaid share)</em></td></tr><tr id="41d8ac6a-aab1-80d1-9371-dda6604b5845" dir="ltr"><td id="fT|k" class=""><strong>Prepaid Items</strong> <em>(Paid in Advance)</em></td><td id="zNc]" class="">Expenses already <strong>paid ahead of time</strong> by the seller that cover a period extending past the closing date into the buyer&#x27;s ownership.</td><td id="NadH" class="">• Prepaid HOA dues<br/><br/>• Prepaid HOA-required master insurance policy<br/><br/>• Prepaid utility/fuel reserves</td><td id="b{M_" class=""><strong>Credit to Seller / Debit to Buyer</strong> <em>(Buyer reimburses the seller for the unused portion remaining after closing)</em></td></tr></tbody></table></li></ul><ul id="41d8ac6a-aab1-8026-81bd-d895b496828d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Commonly Prorated Expenses &amp; Exceptions</strong><ul id="41d8ac6a-aab1-8018-81c1-ebd4c0a6a4f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Items Typically Prorated at Closing:</strong><ul id="41d8ac6a-aab1-8050-9af6-cad4b9fc17ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Real estate taxes</strong></li></ul><ul id="41d8ac6a-aab1-80e9-a944-c993a4e8e1ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Special assessments</strong> <em>(government-levied charges on a geographic area to fund a public project)</em></li></ul><ul id="41d8ac6a-aab1-805a-8db4-f4f56620cfa4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>HOA dues</strong></li></ul><ul id="41d8ac6a-aab1-807a-bfb9-cdb0d33fb70f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fuel</strong> <em>(e.g., heating oil or propane remaining in tank)</em></li></ul><ul id="41d8ac6a-aab1-8092-b14f-cd69d086522b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Water and sewer charges</strong></li></ul><ul id="41d8ac6a-aab1-804f-b720-d450f27464f8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rent</strong> <em>(when selling an income-producing rental property)</em></li></ul><ul id="41d8ac6a-aab1-802e-b282-caf4e15e13fc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Security deposits</strong> <em>(transferred in full from seller to buyer via a buyer credit/seller debit so the buyer holds them for the tenant)</em></li></ul></li></ul><ul id="41d8ac6a-aab1-80c9-9a41-e92590091b83" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Homeowners Insurance Exception:</strong><ul id="41d8ac6a-aab1-8074-a367-eeaed3c4976c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Individual homeowners insurance is <strong>not prorated</strong> between buyer and seller at closing because the buyer purchases their own separate policy; instead, the seller cancels their policy and receives a <strong>prorated refund directly from their insurance company</strong> for the unused portion of their prepaid premium.</li></ul></li></ul></li></ul><ul id="41d8ac6a-aab1-801a-810d-cfd89396fd2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prorating Rent on Rental Properties</strong><ul id="41d8ac6a-aab1-8060-8537-ce985964ee5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because tenants pay rent <strong>in advance</strong> (at the beginning of the month for the upcoming month), if the seller has already collected rent for the month in which closing occurs, the buyer is entitled to their <strong>prorated share of that month&#x27;s rent</strong> starting on the day closing/escrow takes effect (<strong>Debit Seller / Credit Buyer</strong>).</li></ul></li></ul><ul id="41d8ac6a-aab1-8071-9236-c6e82faa98fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Proration Rules &amp; Worked Example (June 14 Closing)</strong><ul id="41d8ac6a-aab1-8019-94ce-de4941207e9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who Owns Closing Day:</strong> The purchase contract specifies whether the buyer or the seller is responsible for expenses on the <strong>day of closing</strong>.</li></ul><ul id="41d8ac6a-aab1-8052-97f8-d515b14eee3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Setup:</strong><ul id="41d8ac6a-aab1-8014-a9dc-dbdc916e1d9e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing Date:</strong> June 14 <em>(June has 30 days)</em></li></ul><ul id="41d8ac6a-aab1-805e-99ab-f1947b9cd25a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contract Rule:</strong> Buyer is responsible for expenses starting on the day of closing.</li></ul><ul id="41d8ac6a-aab1-80b0-a07c-e97611a54406" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expense:</strong> Monthly HOA bill of <code>$30</code> for the month of June.</li></ul></li></ul><ul id="41d8ac6a-aab1-80d3-a0d7-deac974354ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="41d8ac6a-aab1-8001-a7b5-ed6bfe363d01" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Calculate Daily Rate:</strong><ul id="41d8ac6a-aab1-802e-be8f-ca84d073b954" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$30 ÷ 30 days in June = $1.00 per day</code></li></ul></li></ul><ul id="41d8ac6a-aab1-80c8-94cc-d2c7605db56e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Determine Each Party&#x27;s Days of Responsibility:</strong><ul id="41d8ac6a-aab1-807f-8a9e-f7b9c3f35ffa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller&#x27;s days (June 1 – June 13):</strong> <code>13 days × $1.00 = $13.00</code></li></ul><ul id="41d8ac6a-aab1-80dd-ac7a-cc98c3bb9267" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s days (June 14 – June 30):</strong> <code>17 days × $1.00 = $17.00</code></li></ul></li></ul><ul id="41d8ac6a-aab1-806b-9e72-fed7e96884d0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Apply Closing Disclosure Entries:</strong><ul id="41d8ac6a-aab1-80fc-8839-ed3c658bd274" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If the HOA bill was already prepaid by the seller for June:</strong> Buyer reimburses the seller for the 17 remaining days → <strong>Credit Seller </strong><code><strong>$17.00</strong></code><strong> / Debit Buyer </strong><code><strong>$17.00</strong></code>.</li></ul><ul id="41d8ac6a-aab1-80b3-a143-e627e93319e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>If the HOA bill has not yet been paid (accrued/in arrears):</strong> Seller credits the buyer for the 13 days the seller owned the property → <strong>Debit Seller </strong><code><strong>$13.00</strong></code><strong> / Credit Buyer </strong><code><strong>$13.00</strong></code>.</li></ul></li></ul></li></ul></li></ul><ul id="41d8ac6a-aab1-80fe-9c46-cf9fb97d371a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Proration Calendar</strong><figure id="41d8ac6a-aab1-8091-8ec1-f10af38d090a" class="image" data-notion-image="Chapter%202%20-%20Closing%20Costs/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Closing%20Costs/image%202.png"><img style="width:768px" src="Chapter%202%20-%20Closing%20Costs/image%202.png"/></a></figure><ul id="41d8ac6a-aab1-80ef-a0e6-e3a3c7102d20" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To calculate the prorated expenses, we divided the $30 by the 30 days in the month of June to find that the cost of the HOA bill was $1 per day. The seller paid $13 for the first 13 days, and the buyer paid the remaining $17 for the remaining 17 days.</li></ul></li></ul><ul id="41d8ac6a-aab1-80ee-b18a-fce647f57aad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Prorated Expenses: Two Calendar Methods</strong><ul id="41d8ac6a-aab1-8061-8161-d98936cb009d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Before calculating a proration, determine: (1) the assessment schedule of the item (daily, monthly, or annual), (2) whether the item is <strong>accrued</strong> (paid in arrears) or <strong>prepaid</strong> (paid in advance), and (3) which calendar method applies under the sales contract:<table id="41d8ac6a-aab1-805c-99bf-d065745f7f03" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-801b-a8bc-df6009f77c50" dir="ltr"><td id="WcGJ" class=""><strong>Calculation Method</strong></td><td id="YdBZ" class=""><strong>Alternative Name</strong></td><td id="XqmM" class=""><strong>Structure &amp; Daily Charge Formulas</strong></td></tr><tr id="41d8ac6a-aab1-8060-adac-d6e9606fc82d" dir="ltr"><td id="WcGJ" class=""><strong>360-Day Year</strong></td><td id="YdBZ" class=""><strong>Banker&#x27;s Year</strong></td><td id="XqmM" class="">Divides the year into <strong>12 equal months of 30 days each</strong>:<br/><br/>• <code>Annual Charge ÷ 12 months = Monthly Charge</code><br/><br/>• <code>Annual Charge ÷ 360 days = Daily Charge</code> <em>(or </em><em><code>Monthly Charge ÷ 30 days = Daily Charge</code></em><em>)</em></td></tr><tr id="41d8ac6a-aab1-80fd-b8fd-d6452c6a6aaa" dir="ltr"><td id="WcGJ" class=""><strong>365-Day Year</strong></td><td id="YdBZ" class=""><strong>Conventional Calendar Year</strong></td><td id="XqmM" class="">Reflects actual calendar months and days:<br/><br/>• <code>Annual Charge ÷ 365 days = Daily Charge</code> <em>(or </em><em><code>÷ 366 days</code></em><em> in a leap year)</em></td></tr></tbody></table></li></ul></li></ul><ul id="41d8ac6a-aab1-809c-b324-c7d494c45afe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Proration Formula:</strong><ul id="41d8ac6a-aab1-80f4-ac95-f2261dec882c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><code>(Monthly Charge × Number of Full Months) + (Daily Charge × Number of Remaining Days) = Prorated Amount</code></li></ul></li></ul><ul id="41d8ac6a-aab1-802d-9115-df85941a2344" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Math Practice 1: Prorating an Accrued Item (360-Day Year)</strong><ul id="41d8ac6a-aab1-8087-8999-e530736e1c9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario:</strong><ul id="41d8ac6a-aab1-8044-9824-d893bacc6d99" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing Date:</strong> July 2 <em>(contract assigns closing day expenses to the </em><em><strong>seller</strong></em><em>)</em>.</li></ul><ul id="41d8ac6a-aab1-80a4-aa40-e4e70d67e613" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Item:</strong> Estimated annual water bill of <code>$300</code>, paid at year-end (<strong>accrued</strong>).</li></ul><ul id="41d8ac6a-aab1-807b-b01a-df259ce8b3cc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller&#x27;s Responsibility Period:</strong> <code>6 full months</code> (January through June) + <code>2 days</code> (July 1 and July 2).</li></ul></li></ul><ul id="41d8ac6a-aab1-80f3-80dd-d7e8a5b1ffae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="41d8ac6a-aab1-8023-a41b-d9874276cc7d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Monthly water bill:</strong> <code>$300 ÷ 12 months = $25.00 per month</code></li></ul><ul id="41d8ac6a-aab1-806b-8f87-d0ae9fc9b77a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Daily water bill:</strong> <code>$25.00 ÷ 30 days = $0.83 per day</code></li></ul><ul id="41d8ac6a-aab1-8085-97e0-c2f85b93e210" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Monthly portion (6 months):</strong> <code>$25.00 × 6 months = $150.00</code></li></ul><ul id="41d8ac6a-aab1-805c-b2f7-d72ce7bfb8e2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 4 — Daily portion (2 days):</strong> <code>$0.83 × 2 days = $1.66</code></li></ul><ul id="41d8ac6a-aab1-8018-8fc2-cbf9ee18f551" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 5 — Total accrued water bill:</strong> <code>$150.00 + $1.66 = $151.66</code></li></ul></li></ul><ul id="41d8ac6a-aab1-80a2-91a6-db7b40057cc9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Closing Disclosure Entry:</strong> Because the buyer will pay the full bill at year-end, <strong>Debit Seller </strong><code><strong>$151.66</strong></code><strong> / Credit Buyer </strong><code><strong>$151.66</strong></code>.</li></ul></li></ul><ul id="41d8ac6a-aab1-80b1-bb4b-c091c390030c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Math Practice 2: Prorating a Prepaid Item (360-Day Year)</strong><ul id="41d8ac6a-aab1-8084-9089-f048f6de0d75" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario:</strong><ul id="41d8ac6a-aab1-801e-b48e-f88eaeefd42d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing Date:</strong> October 5 <em>(contract assigns closing day to the seller, leaving 25 days in a 30-day October for the buyer)</em>.</li></ul><ul id="41d8ac6a-aab1-8048-922b-dbaadcf1753d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Item:</strong> Annual real estate taxes of <code>$2,000</code>, already <strong>prepaid</strong> by the seller through December 31.</li></ul><ul id="41d8ac6a-aab1-803f-b20a-c22380fd0017" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer&#x27;s Reimbursement Period:</strong> <code>25 remaining days in October</code> (<code>30 - 5 = 25 days</code>) + <code>2 full months</code> (November and December).</li></ul></li></ul><ul id="41d8ac6a-aab1-802a-9d2f-ff95069c9125" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Calculation:</strong><ul id="41d8ac6a-aab1-80f7-a685-df8406e14bb2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Monthly tax bill:</strong> <code>$2,000 ÷ 12 months = $166.67 per month</code></li></ul><ul id="41d8ac6a-aab1-80d7-b7c6-f8790a71003d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Daily tax bill:</strong> <code>$166.67 ÷ 30 days = $5.56 per day</code></li></ul><ul id="41d8ac6a-aab1-800f-8ec0-e01fa5dc5926" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Multiply and add buyer&#x27;s months and days:</strong><ul id="41d8ac6a-aab1-802e-8d5f-cf924f5be874" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>($166.67 × 2 months) + ($5.56 × 25 days) = Prorated tax bill</code></li></ul><ul id="41d8ac6a-aab1-80a4-8b17-d55a8abace64" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>$333.34 + $139.00 = $472.34</code></li></ul></li></ul></li></ul><ul id="41d8ac6a-aab1-803b-b1fc-f1fc83a629d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Closing Disclosure Entry:</strong> Because the seller prepaid taxes covering the buyer&#x27;s ownership period, <strong>Credit Seller </strong><code><strong>$472.34</strong></code><strong> / Debit Buyer </strong><code><strong>$472.34</strong></code>.</li></ul></li></ul><ul id="41d8ac6a-aab1-8079-9d91-c9a15974ff53" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reconciliation</strong><ul id="41d8ac6a-aab1-8057-98ad-f16a9d8a19d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The final accounting verification process of combining all prorations, debits, and credits on the <strong>Closing Disclosure</strong> to confirm that every charge is accurately assessed and balanced—establishing the exact <strong>cash to close</strong> the buyer must bring and the exact <strong>net to seller</strong> proceeds.</li></ul></li></ul><ul id="41d8ac6a-aab1-808c-9177-c3d87dc536fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Solution 1: Marcel and Lena&#x27;s Closing (Memphis, TN)</strong><ul id="41d8ac6a-aab1-8026-a15d-fd3c26fa6d8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Rules:</strong> Closing date is <strong>November 14</strong> (buyer pays for closing day), 360-day banker&#x27;s year, <code>$255,000</code> purchase price.<table id="41d8ac6a-aab1-80e7-b536-d7210e9f2633" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-80e4-ae9d-fb8a8a4b5d76" dir="ltr"><td id="LcTK" class=""><strong>Settlement Item</strong></td><td id="NiOP" class=""><strong>Buyer (Lena) Entry</strong></td><td id="vvt{" class=""><strong>Seller (Marcel) Entry</strong></td><td id="ak@&gt;" class=""><strong>Calculation &amp; Accounting Explanation</strong></td></tr><tr id="41d8ac6a-aab1-80dc-9329-ea1646b26102" dir="ltr"><td id="LcTK" class=""><strong>Purchase Price</strong></td><td id="NiOP" class=""><strong>Debit </strong><code><strong>$255,000.00</strong></code></td><td id="vvt{" class=""><strong>Credit </strong><code><strong>$255,000.00</strong></code></td><td id="ak@&gt;" class="">Buyer owes the purchase price; seller receives the purchase price.</td></tr><tr id="41d8ac6a-aab1-803e-af53-e7541f47869b" dir="ltr"><td id="LcTK" class=""><strong>Earnest Money Deposit</strong></td><td id="NiOP" class=""><strong>Credit </strong><code><strong>$2,500.00</strong></code></td><td id="vvt{" class="">—</td><td id="ak@&gt;" class="">Buyer already paid <code>$2,500</code> into escrow, reducing her cash needed at closing.</td></tr><tr id="41d8ac6a-aab1-802a-8069-fe1df99435bd" dir="ltr"><td id="LcTK" class=""><strong>Escrow Fee (</strong><code><strong>$400</strong></code><strong>)</strong></td><td id="NiOP" class=""><strong>Debit </strong><code><strong>$200.00</strong></code></td><td id="vvt{" class=""><strong>Debit </strong><code><strong>$200.00</strong></code></td><td id="ak@&gt;" class=""><code>$400 ÷ 2 = $200</code> each; paid to the escrow company (not credited to either party).</td></tr><tr id="41d8ac6a-aab1-80eb-bba7-cac402971a51" dir="ltr"><td id="LcTK" class=""><strong>Title Policies (</strong><code><strong>$2,050</strong></code><strong>)</strong></td><td id="NiOP" class="">—</td><td id="vvt{" class=""><strong>Debit </strong><code><strong>$2,050.00</strong></code></td><td id="ak@&gt;" class="">Seller traditionally pays title policies in Tennessee; paid to the title company.</td></tr><tr id="41d8ac6a-aab1-803d-8116-db7cc675e13c" dir="ltr"><td id="LcTK" class=""><strong>Property Taxes (</strong><code><strong>$1,620</strong></code><strong>/yr in arrears)</strong></td><td id="NiOP" class=""><strong>Credit </strong><code><strong>$1,408.50</strong></code></td><td id="vvt{" class=""><strong>Debit </strong><code><strong>$1,408.50</strong></code></td><td id="ak@&gt;" class="">• Monthly: <code>$1,620 ÷ 12 = $135.00/mo</code><br/><br/>• Daily: <code>$135 ÷ 30 = $4.50/day</code><br/><br/>• Seller&#x27;s period (Jan 1 – Nov 13 = <code>10 mos, 13 days</code>): <code>($135 × 10) + ($4.50 × 13) = $1,350 + $58.50 = $1,408.50</code> owed by seller to buyer.</td></tr><tr id="41d8ac6a-aab1-800e-ad33-c02dbd5d7f68" dir="ltr"><td id="LcTK" class=""><strong>HOA Transfer Fee (</strong><code><strong>$300</strong></code><strong>)</strong></td><td id="NiOP" class=""><strong>Debit </strong><code><strong>$150.00</strong></code></td><td id="vvt{" class=""><strong>Debit </strong><code><strong>$150.00</strong></code></td><td id="ak@&gt;" class=""><code>$300 ÷ 2 = $150</code> each, split evenly per contract.</td></tr><tr id="41d8ac6a-aab1-8031-ba84-c2d630178275" dir="ltr"><td id="LcTK" class=""><strong>Broker Commission (</strong><code><strong>6%</strong></code><strong>)</strong></td><td id="NiOP" class="">—</td><td id="vvt{" class=""><strong>Debit </strong><code><strong>$15,300.00</strong></code></td><td id="ak@&gt;" class=""><code>$255,000 × 0.06 = $15,300.00</code> paid by seller.</td></tr><tr id="41d8ac6a-aab1-80a5-8046-f9f112b6f309" dir="ltr"><td id="LcTK" class=""><strong>Recording Fee (</strong><code><strong>$30</strong></code><strong>)</strong></td><td id="NiOP" class=""><strong>Debit </strong><code><strong>$30.00</strong></code></td><td id="vvt{" class="">—</td><td id="ak@&gt;" class="">Paid by buyer to the county recorder.</td></tr><tr id="41d8ac6a-aab1-8023-b656-e9a051886b6d" dir="ltr"><td id="LcTK" class=""><strong>Lender Fees (</strong><code><strong>$2,700</strong></code><strong>)</strong></td><td id="NiOP" class=""><strong>Debit </strong><code><strong>$2,700.00</strong></code></td><td id="vvt{" class="">—</td><td id="ak@&gt;" class="">Paid by buyer to the lender for loan origination/notary fees.</td></tr></tbody></table></li></ul></li></ul><ul id="41d8ac6a-aab1-8021-b9b5-c7fd3fd30b60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Complete Debit &amp; Credit Breakdown: Brenda and Marc&#x27;s Closing</strong><ul id="41d8ac6a-aab1-8064-a3b2-dcc1eec20303" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Parameters:</strong><ul id="41d8ac6a-aab1-8022-8f93-eebfb703fa66" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing Date:</strong> June 4 <em>(buyer owns closing day; seller Brenda owns Jan 1 – June 3 = </em><em><code>5 months, 3 days</code></em><em>)</em></li></ul><ul id="41d8ac6a-aab1-806a-bce6-defc30cee73f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Calendar Convention:</strong> 360-day banker&#x27;s year (<code>12 months × 30 days</code>)</li></ul><ul id="41d8ac6a-aab1-800d-93ab-ec852e81f001" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Purchase Price:</strong> <code>$360,000</code></li></ul></li></ul><ul id="41d8ac6a-aab1-80c9-a187-fc154206a113" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Property Tax Proration (</strong><code><strong>$3,780</strong></code><strong>/year paid in arrears):</strong><ul id="41d8ac6a-aab1-80a5-b57e-d4ffa2c2e44f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Monthly tax rate:</strong> <code>$3,780 ÷ 12 months = $315.00 per month</code></li></ul><ul id="41d8ac6a-aab1-8013-8a35-d95b40b941a9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Daily tax rate:</strong> <code>$315.00 ÷ 30 days = $10.50 per day</code></li></ul><ul id="41d8ac6a-aab1-8082-8239-df110d42bb5a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Seller Brenda&#x27;s accrued share (</strong><code><strong>5 months</strong></code><strong> Jan–May + </strong><code><strong>3 days</strong></code><strong> June 1–3):</strong><ul id="41d8ac6a-aab1-8042-988a-dbd7ea36b2a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>($315.00 × 5 months) + ($10.50 × 3 days) = $1,575.00 + $31.50 = $1,606.50</code></li></ul></li></ul><ul id="41d8ac6a-aab1-8036-b0f2-fc46bc5ce56c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 4 — Closing Disclosure entry:</strong> Because taxes are paid in arrears at year-end by buyer Marc, <strong>Debit Seller </strong><code><strong>$1,606.50</strong></code><strong> / Credit Buyer </strong><code><strong>$1,606.50</strong></code>.</li></ul></li></ul><ul id="41d8ac6a-aab1-80b4-8249-f05364f58f53" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Broker Commission Calculation (</strong><code><strong>6%</strong></code><strong>):</strong><ul id="41d8ac6a-aab1-8026-89c8-e7a89c9c85bc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$360,000 × 0.06 = $21,600.00</code> → <strong>Debit Seller </strong><code><strong>$21,600.00</strong></code></li></ul></li></ul><ul id="41d8ac6a-aab1-805e-b712-da2ace819380" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Settlement Ledger for Brenda (Seller) and Marc (Buyer):</strong><table id="41d8ac6a-aab1-80fa-9d52-f43d9cefe257" class="simple-table" dir="ltr"><tbody><tr id="41d8ac6a-aab1-8034-aee5-e4cfacfb5f8c" dir="ltr"><td id="e&lt;_D" class=""><strong>Settlement Item</strong></td><td id="ny{P" class=""><strong>Buyer (Marc) Entry</strong></td><td id="\MKe" class=""><strong>Seller (Brenda) Entry</strong></td><td id="}aox" class=""><strong>Calculation &amp; Notes</strong></td></tr><tr id="41d8ac6a-aab1-806b-88f4-c750c2c3271d" dir="ltr"><td id="e&lt;_D" class=""><strong>Purchase Price</strong></td><td id="ny{P" class=""><strong>Debit </strong><code><strong>$360,000.00</strong></code></td><td id="\MKe" class=""><strong>Credit </strong><code><strong>$360,000.00</strong></code></td><td id="}aox" class="">Total consideration for the bungalow.</td></tr><tr id="41d8ac6a-aab1-8038-9b35-c4537b525e33" dir="ltr"><td id="e&lt;_D" class=""><strong>Earnest Money Deposit</strong></td><td id="ny{P" class=""><strong>Credit </strong><code><strong>$2,200.00</strong></code></td><td id="\MKe" class="">—</td><td id="}aox" class="">Already deposited by Marc when signing the contract.</td></tr><tr id="41d8ac6a-aab1-8045-b3c4-d33335c11887" dir="ltr"><td id="e&lt;_D" class=""><strong>Escrow Fee (</strong><code><strong>$500</strong></code><strong>)</strong></td><td id="ny{P" class=""><strong>Debit </strong><code><strong>$250.00</strong></code></td><td id="\MKe" class=""><strong>Debit </strong><code><strong>$250.00</strong></code></td><td id="}aox" class=""><code>$500 ÷ 2 = $250.00</code> each (paid to escrow holder).</td></tr><tr id="41d8ac6a-aab1-8033-8921-e2be14bebc40" dir="ltr"><td id="e&lt;_D" class=""><strong>Title Insurance (</strong><code><strong>$2,750</strong></code><strong>)</strong></td><td id="ny{P" class="">—</td><td id="\MKe" class=""><strong>Debit </strong><code><strong>$2,750.00</strong></code></td><td id="}aox" class="">Paid by seller Brenda per standard Tennessee custom.</td></tr><tr id="41d8ac6a-aab1-8043-930a-fc6e4934480c" dir="ltr"><td id="e&lt;_D" class=""><strong>Prorated Property Taxes (</strong><code><strong>$3,780</strong></code><strong>/yr)</strong></td><td id="ny{P" class=""><strong>Credit </strong><code><strong>$1,606.50</strong></code></td><td id="\MKe" class=""><strong>Debit </strong><code><strong>$1,606.50</strong></code></td><td id="}aox" class=""><code>($315.00 × 5 mos) + ($10.50 × 3 days) = $1,606.50</code> accrued taxes owed by Brenda.</td></tr><tr id="41d8ac6a-aab1-8099-b5d8-e898e23dde66" dir="ltr"><td id="e&lt;_D" class=""><strong>Broker Commission (</strong><code><strong>6%</strong></code><strong>)</strong></td><td id="ny{P" class="">—</td><td id="\MKe" class=""><strong>Debit </strong><code><strong>$21,600.00</strong></code></td><td id="}aox" class=""><code>$360,000 × 0.06 = $21,600.00</code> paid by Brenda.</td></tr></tbody></table></li></ul></li></ul><ul id="41d8ac6a-aab1-8075-89eb-cfe71cf103d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Settlement Totals (Based on Given Items):</strong><ul id="41d8ac6a-aab1-8067-b6d3-e266a689b11b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Marc&#x27;s Cash to Close:</strong> <code>($360,000.00 + $250.00) - ($2,200.00 + $1,606.50) = $360,250.00 - $3,806.50 = $356,443.50</code> <em>(before any loan amount or transfer taxes)</em></li></ul><ul id="41d8ac6a-aab1-80aa-a42a-fa3161016580" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Brenda&#x27;s Net Proceeds:</strong> <code>$360,000.00 - ($250.00 + $2,750.00 + $1,606.50 + $21,600.00) = $360,000.00 - $26,206.50 = $333,793.50</code></li></ul></li></ul></div><div id="41d8ac6a-aab1-8009-86d9-dd6527c21eab" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41d8ac6a-aab1-80b1-92e6-c8cfb96a3bb9" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41d8ac6a-aab1-8038-9205-d756cf4badfc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>credits</strong> - sum of money that is received</li></ul><ul id="41d8ac6a-aab1-8012-a1b6-f1a685df9115" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>debits</strong> - sum of money that is owed</li></ul><ul id="41d8ac6a-aab1-80d2-a67a-f09a7f5b1052" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>proration</strong> - the act of dividing or allocating expenses between buyers and sellers based on the actual period of usage of the item or service</li></ul><ul id="41d8ac6a-aab1-80ed-992d-f893b78d23d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>transfer tax</strong> - one-time tax issued by the state that must be paid when a property is transferred from one owner to another</li></ul><p id="41d8ac6a-aab1-8024-b26f-fd76a19830dd" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41d8ac6a-aab1-807d-931c-e7142b0c9f79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Closing Costs</strong><ul id="41d8ac6a-aab1-80b1-941c-d454356b3b24" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even though everything is up for negotiation, there are expenses typically paid by each party. Like we talked about, this may change in some transactions, but traditionally, here&#x27;s what a buyer pays for:</li></ul><ul id="41d8ac6a-aab1-8077-bda8-fdf747d99d5c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal fees:</strong> The party that ordered the appraisal usually pays the fees associated with that appraisal, and generally, the buyer orders the appraisal. This is paid by the buyer because it is required by the lender in order to get loan approval.</li></ul><ul id="41d8ac6a-aab1-8050-ad7b-e5e6dc7c32d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Attorney fees:</strong> Lawyers aren&#x27;t required for most real estate transactions in Tennessee. However, if one of the parties wants or needs a lawyer, they&#x27;ll be the one to pay their fee.</li></ul><ul id="41d8ac6a-aab1-803e-90f3-ca83d91a164c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condo or co-op fees:</strong> These are assessments that are used to help pay for maintenance of common areas and other co-op- or condo-related items. The buyer might owe the seller an adjusted amount based on the time the buyer uses the services.</li></ul><ul id="41d8ac6a-aab1-8043-86f1-ef3a4128d0bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow fee: </strong>This is the fee charged by the person who conducts the closing (and holds all the funds in escrow). It&#x27;s up for negotiation who pays this fee.</li></ul><ul id="41d8ac6a-aab1-80a7-962b-df7892afff40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOA transfer fees: </strong>Many properties are part of a homeowners association, or HOA. Typically, the HOA charges a fee ($200-$400) to transfer the property. This is traditionally split evenly between buyer and seller.</li></ul><ul id="41d8ac6a-aab1-8080-9bdf-d88b6a002fc4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Homeowners insurance: </strong>The buyer will need to pre-pay for a year of homeowners insurance (sometimes called hazard insurance) and, if it&#x27;s required, flood insurance.</li></ul><ul id="41d8ac6a-aab1-808b-854d-f351d3374a70" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Home warranty: </strong>It will say in the contract whether the buyer or the seller pays for the home warranty.</li></ul><ul id="41d8ac6a-aab1-807a-8aa2-cef14d1782f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan fees:</strong> A buyer is usually responsible for paying loan origination fees for a new loan, and for paying assumption fees if they assume the seller’s existing loan.</li></ul><ul id="41d8ac6a-aab1-8059-92a8-cabbf4326d4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage transfer tax</strong>: There is a mortgage transfer tax of 11-and-a-half cents ($0.115) per $100 in value. The first $2,000 is exempt. This fee is usually paid by the borrower.</li></ul><ul id="41d8ac6a-aab1-806e-86cd-deee84a135be" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Points</strong>: If a buyer chooses to buy points to lower their mortgage interest rate, that is something they&#x27;ll pay for at closing.</li></ul><ul id="41d8ac6a-aab1-80b7-b917-edeb92183c0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recording fee: </strong>There is a small fee for recording a deed in Tennessee. Typically, it&#x27;s $5 per page with a minimum of $10, plus a $2 processing fee. Usually, this is paid by the buyer.</li></ul><ul id="41d8ac6a-aab1-8030-ad3d-cddae501c36f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Survey fee</strong>: There is usually a fee to create a survey, though it may not be necessary (or maybe be paid for by the seller).</li></ul><ul id="41d8ac6a-aab1-80d1-a5c3-cb4014827624" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax and insurance reserves:</strong> A buyer is often required to open an escrow account to cover real estate taxes that are assessed during the time the transaction is taking place. In this case, they generally deposit at least enough in the account to pay for the taxes through the end of the month of closing. However, a seller is debited and a buyer is credited for any of the seller’s unpaid taxes. A buyer often also pays at least the first year’s premium on fire or hazard insurance at closing.</li></ul><ul id="41d8ac6a-aab1-808d-8ab2-de24ecb66970" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transfer tax</strong>: In addition to the mortgage transfer tax, Tennessee charges a general transfer tax of $0.37 per $100 of value. Though who pays this fee is negotiable, it&#x27;s traditionally paid by the buyer.</li></ul><ul id="41d8ac6a-aab1-80d2-84f7-ef7004e2d415" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title expenses:</strong> There are two types of title insurance policies: lender’s (mortgage loan) policies, and owner’s (fee or purchase) policies. In Tennessee, it&#x27;s typical for the seller to pay for the title insurance policies, but that is up for negotiation. If the seller doesn&#x27;t pay them, the buyer will have to.</li></ul></li></ul><ul id="41d8ac6a-aab1-80c5-b53a-d9d1415a30d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller&#x27;s Closing Costs</strong><ul id="41d8ac6a-aab1-80a3-a1bd-cd69265f7139" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Their attorney&#x27;s fees: </strong>Again, it&#x27;s not typical to use a lawyer, but if the seller hires one, they will pay them.</li></ul><ul id="41d8ac6a-aab1-80e1-a972-d9a2c82df264" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker&#x27;s commission:</strong> A commission is usually paid out as a percentage of the property&#x27;s sales price, and it&#x27;s negotiated and paid by the seller. The agreed-upon commission percentage will be explicitly stated in the sales contract.</li></ul><ul id="41d8ac6a-aab1-8083-8eeb-ec454ddaf493" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condo or co-op fees:</strong> These are assessments that are used to help pay for maintenance of common areas and other co-op- or condo-related items. Before the closing, a seller must bring their account up to date.</li></ul><ul id="41d8ac6a-aab1-80dc-a163-e7f3d2aa7dbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escrow fee</strong>: Depending on what it says in the contract, the buyer or the seller may be responsible for this fee.</li></ul><ul id="41d8ac6a-aab1-8071-b912-eecc2077675c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HOA transfer fees: </strong>Again, it&#x27;s typical for sellers to pay half of the HOA transfer fee.</li></ul><ul id="41d8ac6a-aab1-8075-b575-c4feb974525e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Home warranty: </strong>Sometimes the seller pays for the home warranty, sometimes the buyer does. It will be negotiated before signing the contract and included in the contract.</li></ul><ul id="41d8ac6a-aab1-8045-af91-f40b87d0d717" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Satisfying existing liens:</strong> A seller will need to take on the expense of satisfying any existing lien on the property. In most cases, there is at least a mortgage lien that the seller will pay off with a portion of the buyer&#x27;s lender&#x27;s funds. If the lender charges an early payoff fee, that&#x27;s the responsibility of the seller.</li></ul><ul id="41d8ac6a-aab1-8015-bfd1-df12299f3b8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title expenses:</strong> Generally, a seller is required to pay for the title search. However, if a buyer conducts another search of their own, then they usually pay for that additional research. It&#x27;s typical in Tennessee for the seller to pay for the title insurance, but it is negotiable.</li></ul></li></ul><ul id="41d8ac6a-aab1-8094-b21d-dd5ad0026c67" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net to Seller</strong><ul id="41d8ac6a-aab1-8009-9c13-f401f107d76b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To determine how much money a seller will receive from a transaction, the <strong>net to seller</strong>, we subtract the seller’s total debits (such as the balance of a mortgage loan and closing costs) from the seller’s total credits (such as the purchase price). The remaining total is the amount that the seller will receive.</li></ul><ul id="41d8ac6a-aab1-8056-9ffe-c517d332ba0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Seller&#x27;s credits - Seller&#x27;s debits = Net to seller</em></li></ul></li></ul><ul id="41d8ac6a-aab1-8079-932b-c533ddced4dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Accrued Items</strong><ul id="41d8ac6a-aab1-804d-b740-e0687193efaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accrued items</strong> are costs that have been incurred, but have not been paid for yet. Accrued costs are owed by a seller (such as some recurring special assessments and mortgage interest), but will ultimately be paid by a buyer after they receive title to a property.</li></ul></li></ul><ul id="41d8ac6a-aab1-804d-a3c0-edfc78f6847b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prepaid Items</strong><ul id="41d8ac6a-aab1-802c-aea4-c84a8a7e14b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>prepaid item</strong> is an item that has been paid for ahead of time, generally by the seller.</li></ul></li></ul><ul id="41d8ac6a-aab1-8075-9e2a-e562895e30d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Banker&#x27;s Year</strong><ul id="41d8ac6a-aab1-80a3-96f1-dd041bf6782e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>360-day year</strong> is known as a &quot;banker&#x27;s year.” It is commonly used in banking to make calculations easier. The contract (or for an exam, the exam question) will specify whether to use a banker&#x27;s year or a 365-day year when doing prorations.</li></ul></li></ul><ul id="41d8ac6a-aab1-8056-af16-c23c27fd9048" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>A Visual Guide to Credits and Debits</strong><figure id="41d8ac6a-aab1-80a5-bcca-cfddc867d09c" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_CreditsDebits_9004.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_CreditsDebits_9004.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_CreditsDebits_9004.png"/></a></figure></li></ul><ul id="41d8ac6a-aab1-8072-8c7c-c4cd78c4bc40" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reconciliation</strong><ul id="41d8ac6a-aab1-8099-a630-d33991b45d51" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once all prorations, debits, and credits are known, they will be used to calculate how much money the buyer needs to bring to the closing and how much the seller can expect to take home from the closing.</li></ul><ul id="41d8ac6a-aab1-8011-8f26-d35f0294dfa1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This process of verifying that the <em><strong>Closing Disclosure</strong></em> correctly assesses these costs is known as <strong>reconciliation</strong>.</li></ul></li></ul><p id="41d8ac6a-aab1-80af-8fd0-f7b9fcd20780" class="" dir="auto">
+</p></div></div><p id="41d8ac6a-aab1-80d3-92aa-f24daf07822f" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

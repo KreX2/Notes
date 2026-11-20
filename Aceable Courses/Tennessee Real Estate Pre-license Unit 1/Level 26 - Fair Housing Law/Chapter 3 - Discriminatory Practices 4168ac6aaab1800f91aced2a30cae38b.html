@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Discriminatory Practices</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-800f-91ac-ed2a30cae38b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Discriminatory Practices</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41e8ac6a-aab1-80b0-a47e-d0a4ce46fd85" class="column-list" data-notion-column-list="" dir="auto"><div id="41e8ac6a-aab1-8035-8de5-d1a987daf626" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41e8ac6a-aab1-8034-9a0b-d9851b8c0052" class="" dir="auto"><strong>Steering Overview &amp; Scope</strong></p><ul id="41e8ac6a-aab1-8040-9200-fd9ae11a26f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Steering is the illegal act of guiding, directing, or influencing prospective homebuyers or tenants toward or away from certain neighborhoods, communities, or housing units because of their membership in a federally or locally protected class.</li></ul><ul id="41e8ac6a-aab1-80d8-9c98-c8e728732ee0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Examples Across Housing Levels:</strong><ul id="41e8ac6a-aab1-8072-85a0-db6819db645f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Neighborhood Level:</strong> Showing Black prospects homes exclusively in historically Black neighborhoods, or hinting to a white family that living in an integrated neighborhood is not in their best interest.</li></ul><ul id="41e8ac6a-aab1-80f7-aaff-ed13016133de" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Apartment Building / Floor Level:</strong> Telling a rental applicant they should live in one building rather than another so they will be closer to other tenants of the same national origin.</li></ul></li></ul><ul id="41e8ac6a-aab1-8046-aba6-f46044d9dccc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subtle &amp; Non-Verbal Steering:</strong><ul id="41e8ac6a-aab1-8037-a8c8-fc62a8d19405" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Steering does not require explicit verbal statements—it can occur through subtle words, coded phrases, tone of voice, facial expressions (e.g., making a disgusted face when mentioning a neighborhood), or body language (e.g., saying <em>&quot;eh&quot;</em> and shrugging when describing an area).</li></ul><ul id="41e8ac6a-aab1-8033-91d5-d9c190c688db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If a licensee observes another agent engaging in subtle steering, they should report the concern to their managing broker.</li></ul></li></ul><ul id="41e8ac6a-aab1-8084-9e57-c8f5e5bbc7f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client Choice &amp; Requests to Be Steered</strong><ul id="41e8ac6a-aab1-802e-a8b0-d51e619f76ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Client Decides Where to Live:</strong> The simplest way to prevent steering is ensuring that the buyer or tenant selects the geographic areas and properties they wish to view based on their own objective criteria (such as price, square footage, commute, or amenities).</li></ul><ul id="41e8ac6a-aab1-80bb-aac5-db839f461ba6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Never Steer—Even at the Client&#x27;s Explicit Request:</strong> A licensee must <strong>never</strong> allow a client&#x27;s protected class—or preferences based on protected classes—to dictate which properties are shown, <strong>even if the client explicitly asks the agent to steer them</strong> (e.g., asking to be shown homes only in neighborhoods of a specific racial, religious, or ethnic demographic).</li></ul></li></ul><ul id="41e8ac6a-aab1-80d2-8310-dbf329f2f884" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Handling Client Questions About Safety &amp; School Districts</strong><ul id="41e8ac6a-aab1-80d8-905a-c71e14850190" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Traditional Real Estate Compliance Standard (&quot;Be the Source of the Source&quot;):</strong><ul id="41e8ac6a-aab1-8010-bf65-c60276529b87" class="bulleted-list" dir="auto"><li style="list-style-type:square">Rather than offering personal opinions, subjective labels (such as <em>&quot;safe neighborhood&quot;</em> or <em>&quot;good schools&quot;</em>), or hearsay, real estate best practice—and standard real estate licensing exam guidance—is to act as the <strong>&quot;source of the source&quot;</strong> by directing all clients consistently to objective, verifiable third-party resources so they can evaluate the area for themselves:<ul id="41e8ac6a-aab1-808f-92e9-c2d12c0aea6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Neighborhood Safety / Crime Rates:</strong> Direct clients to local police department crime databases, municipal statistics, or independent public safety websites rather than giving personal assessments of safety.</li></ul><ul id="41e8ac6a-aab1-802a-a622-e240996e2b12" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>School Districts:</strong> Direct clients to official school district websites, state department of education report cards, or national school ranking platforms rather than offering personal opinions on school quality.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-8005-b254-c8cbe0c4e708" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Current Regulatory Update (2026 HUD Clarification):</strong><ul id="41e8ac6a-aab1-804a-8eeb-d2f12c715ba4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under <strong>HUD&#x27;s April 24, 2026 Dear Colleague Letter</strong> and <strong>NAR&#x27;s June 2026 Fair Housing FAQs</strong>, sharing publicly available, objective, factual data regarding neighborhood crime statistics or school quality in response to a client&#x27;s question does <strong>not</strong> violate the Fair Housing Act—provided the licensee shares factual data <strong>equally and consistently</strong> with all clients, avoids subjective opinions or demographic coding, and never directs clients toward or away from areas based on protected characteristics.<table id="41e8ac6a-aab1-80a5-8d46-ca4ecc167d12" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-803f-aa70-f255137fdf7f" dir="ltr"><td id="UDzE" class=""><strong>Client Question</strong></td><td id="dQQQ" class=""><strong>Best-Practice Response Strategy</strong></td><td id="AKiP" class=""><strong>What to Avoid</strong></td></tr><tr id="41e8ac6a-aab1-80cb-a4c9-e2b64e4700b5" dir="ltr"><td id="UDzE" class=""><strong>&quot;Is this neighborhood safe?&quot;</strong></td><td id="dQQQ" class="">Provide or point the client to official local police department crime statistics and municipal data consistently across all clients.</td><td id="AKiP" class="">Offering personal opinions, subjective labels (<em>&quot;safe&quot;</em> vs. <em>&quot;bad area&quot;</em>), or giving different warnings to different clients.</td></tr><tr id="41e8ac6a-aab1-80d1-89a2-c5954afad2cc" dir="ltr"><td id="UDzE" class=""><strong>&quot;Are the schools good here?&quot;</strong></td><td id="dQQQ" class="">Refer the client to the school district&#x27;s official website, state education report cards, or objective third-party school ranking sites.</td><td id="AKiP" class="">Sharing personal anecdotes, hearsay, or steering families toward or away from districts based on demographics.</td></tr></tbody></table></li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-8011-9224-d4e2c76a7eb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Handling Discriminatory Sellers</strong><ul id="41e8ac6a-aab1-8097-8928-cf80dc5c5ba0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Upfront Compliance Protocol (Before Signing a Listing Agreement):</strong><ul id="41e8ac6a-aab1-8088-9910-f32fcc937cf6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Explain to the seller that the brokerage strictly complies with federal, state, and local fair housing laws at every stage of the transaction and obtain the seller&#x27;s acknowledgment and agreement.</li></ul><ul id="41e8ac6a-aab1-80bd-ab55-dbf5ce0b85ba" class="bulleted-list" dir="auto"><li style="list-style-type:square">Explicitly state that the licensee will:<ol type="1" id="41e8ac6a-aab1-805a-998d-e5cdfeb4662b" class="numbered-list" start="1" dir="auto"><li><strong>Reject</strong> the use of any terms referencing race, color, religion, sex, national origin, disability, familial status, or other protected categories to describe prospective buyers.</li></ol><ol type="1" id="41e8ac6a-aab1-8022-945e-fe6a9c898939" class="numbered-list" start="2" dir="auto"><li><strong>Terminate the listing</strong> if the seller considers any protected category when evaluating or negotiating an offer.</li></ol><ol type="1" id="41e8ac6a-aab1-806f-ae85-e5b9c2b9eba7" class="numbered-list" start="3" dir="auto"><li><strong>Report to the managing broker</strong> immediately if the seller attempts to discriminate.</li></ol></li></ul></li></ul><ul id="41e8ac6a-aab1-800b-986b-e66cd7f299bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Warning Signs of Seller Discrimination:</strong><ul id="41e8ac6a-aab1-8089-b54e-d98fb85988df" class="bulleted-list" dir="auto"><li style="list-style-type:square">Refusing to accept a full-price offer from a qualified buyer who belongs to a protected class.</li></ul><ul id="41e8ac6a-aab1-8036-bf7d-de3dfad3ce81" class="bulleted-list" dir="auto"><li style="list-style-type:square">Taking the property off the market to avoid selling to an interested buyer from a protected class.</li></ul><ul id="41e8ac6a-aab1-8070-a885-c85359774e28" class="bulleted-list" dir="auto"><li style="list-style-type:square">Accepting a lower offer from one buyer while rejecting a higher offer from a buyer who belongs to a protected class.</li></ul></li></ul><ul id="41e8ac6a-aab1-8042-8a90-de3aa2da9783" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Response Protocol (Bob &amp; Seller Sally):</strong><ul id="41e8ac6a-aab1-804f-81e5-f3ca1460a697" class="bulleted-list" dir="auto"><li style="list-style-type:square">If Seller Sally asks about a prospective buyer&#x27;s race before signing an otherwise acceptable offer, Bob must explain that <strong>fair housing laws prohibit disclosing or considering a buyer&#x27;s race</strong>, and Bob must <strong>report the incident to his managing broker</strong> even if Sally immediately drops the question. If Sally persists after being educated on fair housing law, Bob must consult his broker to <strong>terminate the listing</strong>.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-806b-9297-ec6e1d432a20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Handling Discriminatory Buyers &amp; Licensee Liability</strong><ul id="41e8ac6a-aab1-80a5-afa2-ea63473d078c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Refusing Improper Demographic Questions:</strong><ul id="41e8ac6a-aab1-8038-a6d4-f7c9a70a91ba" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees are never obligated to answer discriminatory questions from buyers (such as <em>&quot;What is the racial makeup of this neighborhood?&quot;</em>). Answering such questions exposes the agent and brokerage to severe fair housing liability.</li></ul></li></ul><ul id="41e8ac6a-aab1-80b4-8143-c927963e4e0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standard Brokerage Response &amp; Termination Protocol:</strong><ul id="41e8ac6a-aab1-802a-8715-f11d2c001286" class="bulleted-list" dir="auto"><li style="list-style-type:square">Use a consistent, pre-approved brokerage response—for example: <em>&quot;It is the policy of our company not to answer questions of that nature. If you are concerned, you are free to do some research on your own.&quot;</em></li></ul><ul id="41e8ac6a-aab1-805c-becf-e4bcfee0d742" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the buyer persists or insists on discriminating, the licensee must <strong>terminate the agency relationship</strong>, document the incident in writing, and <strong>notify their managing broker immediately</strong>.</li></ul></li></ul><ul id="41e8ac6a-aab1-8028-8cf8-e9b0abd006f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Joint Liability for Going Along with Client Discrimination:</strong><ul id="41e8ac6a-aab1-802c-93a6-d0c99a044dfa" class="bulleted-list" dir="auto"><li style="list-style-type:square">An affiliate broker who acquiesces to, laughs off, or facilitates a client&#x27;s discriminatory conduct or remarks is <strong>personally and legally liable</strong> for violating fair housing laws. Speak up immediately, refuse to participate, and keep your managing broker informed—even in gray-area situations.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-80b7-8c24-d5619636d63c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Blockbusting &amp; Redlining</strong><table id="41e8ac6a-aab1-80e1-bd27-d8e5fdc3c24e" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-8021-904a-c15410dbcc79" dir="ltr"><td id="bCvT" class=""><strong>Illegal Practice</strong></td><td id="haOp" class=""><strong>Definition &amp; Mechanics</strong></td><td id="XjDl" class=""><strong>Statutory &amp; Historical Context</strong></td></tr><tr id="41e8ac6a-aab1-800f-8754-c33021745df8" dir="ltr"><td id="bCvT" class=""><strong>Blockbusting</strong> <em>(Panic Peddling / Panic Selling)</em></td><td id="haOp" class="">Inducing homeowners to sell their homes—often below market value—by stoking fear that the entry of members of a protected class into the neighborhood will cause property values to decline, increase crime, or negatively affect the area.</td><td id="XjDl" class="">• Historically used by unethical agents to trigger <strong>&quot;white flight,&quot;</strong> buying homes cheaply from panicked white owners and reselling them at inflated prices to Black buyers.<br/><br/>• Strictly prohibited under the <strong>Fair Housing Act of 1968</strong>.</td></tr><tr id="41e8ac6a-aab1-806f-80fe-d54b359a158f" dir="ltr"><td id="bCvT" class=""><strong>Redlining</strong></td><td id="haOp" class="">The illegal practice of a mortgage lender (or insurer) refusing to make loans, refusing to insure properties, or offering discriminatory loan terms in specific geographic neighborhoods based on the racial or ethnic demographics of the area.</td><td id="XjDl" class="">• Named after the historical practice of drawing red lines around disfavored neighborhoods on maps.<br/><br/>• Prohibited under the <strong>Fair Housing Act</strong> and <strong>ECOA</strong>, and combated through two federal transparency and reinvestment laws: the <strong>Home Mortgage Disclosure Act of 1975 (HMDA)</strong> and the <strong>Community Reinvestment Act of 1977 (CRA)</strong>.</td></tr></tbody></table><figure id="41e8ac6a-aab1-80bf-ba9a-ecbb346c2a27" class="image" data-notion-image="Chapter%203%20-%20Discriminatory%20Practices/image.png" dir="ltr"><a href="Chapter%203%20-%20Discriminatory%20Practices/image.png"><img style="width:720px" src="Chapter%203%20-%20Discriminatory%20Practices/image.png"/></a></figure></li></ul><ul id="41e8ac6a-aab1-80f9-bbd3-e9a0f544dd79" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equal Housing Opportunity Notice Requirements</strong><ul id="41e8ac6a-aab1-8022-bfce-cd559c3f1aaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mandate:</strong> Beyond avoiding discriminatory wording, HUD regulations (<strong>24 CFR Part 109 / Part 110</strong>) require real estate advertisements to affirmatively demonstrate a commitment to fair housing by incorporating the <strong>Equal Housing Opportunity logo, slogan, or statement</strong>.</li></ul><ul id="41e8ac6a-aab1-8097-8b06-ea63ae2725b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Approved Methods of Compliance:</strong><ol type="1" id="41e8ac6a-aab1-80fe-a01d-f422cef6032e" class="numbered-list" start="1" dir="auto"><li><strong>Equal Housing Opportunity Logo:</strong> The standard house-shaped emblem containing an equals sign (<code>=</code>) paired with the words <em>&quot;Equal Housing Opportunity.&quot;</em></li></ol><ol type="1" id="41e8ac6a-aab1-80f2-b422-de293b28916b" class="numbered-list" start="2" dir="auto"><li><strong>Equal Housing Opportunity Slogan:</strong> The phrase <em>&quot;Equal Housing Opportunity&quot;</em> printed or displayed clearly within the ad.</li></ol><ol type="1" id="41e8ac6a-aab1-80ef-8f58-ff724edfc34e" class="numbered-list" start="3" dir="auto"><li><strong>Equal Housing Opportunity Statement:</strong> A formal publisher&#x27;s or advertiser&#x27;s non-discrimination statement <em>(e.g., stating that all real estate advertised is subject to the Federal Fair Housing Act, which makes it illegal to advertise any preference, limitation, or discrimination based on race, color, religion, sex, disability, familial status, or national origin)</em>.</li></ol></li></ul></li></ul><ul id="41e8ac6a-aab1-8086-92f3-d3a3a9546c2b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Classified Ad Exemptions &amp; Publisher Rules</strong><ul id="41e8ac6a-aab1-8025-bbd7-f139db207b61" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Narrow Classified Ad Exception:</strong> Very small, single-column classified ads (typically under <strong>four column inches</strong> in print newspapers) are exempt from carrying the individual Equal Housing Opportunity logo or slogan—<strong>provided</strong> the newspaper or publication displays a <strong>general Equal Housing Opportunity publisher&#x27;s notice</strong> at the beginning of the real estate classified section.</li></ul><ul id="41e8ac6a-aab1-806a-a2c5-cc2d44df93a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equal Housing Poster Requirement:</strong> Under <strong>24 CFR Part 110</strong>, real estate brokerages, mortgage lenders, and rental/sales offices must also display the official <strong>HUD Fair Housing Poster</strong> (<code>11&quot; x 14&quot;</code>) in a conspicuous public location where clients and applicants can easily read it.</li></ul></li></ul><ul id="41e8ac6a-aab1-800e-868e-e89cebb76b95" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Poster</strong><ul id="41e8ac6a-aab1-801a-8244-c1efe30104de" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Each real estate office should post a special fair housing poster in a prominent location so that all can see it as they come and go.</li></ul><ul id="41e8ac6a-aab1-80c4-a50c-c5ef73b071b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>This poster is required by HUD. It is a declaration from the broker that the personnel of the company will give equal treatment to all who enter the office.</strong> Failure to post the sign is itself a violation and has been interpreted in some court cases to be indicative of a culture of noncompliance.</li></ul><figure id="41e8ac6a-aab1-809b-9021-c0822bf942ca" class="image" data-notion-image="Chapter%203%20-%20Discriminatory%20Practices/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Discriminatory%20Practices/image%201.png"><img style="width:432px" src="Chapter%203%20-%20Discriminatory%20Practices/image%201.png"/></a></figure></li></ul><ul id="41e8ac6a-aab1-80eb-a8cd-d77fb36ec0a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Visual Imagery &amp; Human Model Representation in Advertising</strong><ul id="41e8ac6a-aab1-8030-9349-c828a98ec56a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inclusive Visual Representation:</strong> Fair housing advertising compliance extends beyond written copy to photographs, illustrations, and human models. Advertisements should reflect an inclusive, representative cross-section of the diverse community seeking housing—representing both majority and minority groups, different sexes, families with children, and people with disabilities—rather than depicting only white models or a single demographic group.</li></ul><ul id="41e8ac6a-aab1-80b1-8ba6-ff6cdf322ac0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Visual Red Flags to Avoid:</strong><ul id="41e8ac6a-aab1-800b-807d-f011fc2f69a9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Depicting all or predominantly models of a single race, sex, or ethnic group across an ad campaign.</li></ul><ul id="41e8ac6a-aab1-80a1-b1c6-d310ea56ccd0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Depicting specific racial or ethnic groups exclusively in background, obscured, or service roles (such as maids or doormen).</li></ul><ul id="41e8ac6a-aab1-8037-836d-d74c6e3b3a09" class="bulleted-list" dir="auto"><li style="list-style-type:square">Using symbols, landmarks, or imagery with strong racial, religious, or exclusionary associations.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-804b-9d99-cde2f0c9cbf3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Selective Media Distribution Rules</strong><ul id="41e8ac6a-aab1-80d6-8dd6-c3b2bbe8bcde" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Geographic or Demographic Exclusion:</strong> It is illegal to selectively restrict housing advertisements to specific neighborhoods or demographic audiences in a way that excludes protected groups from learning about housing opportunities.</li></ul><ul id="41e8ac6a-aab1-8004-b12c-d7f97c37d27a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Circulation Requirement:</strong> If a broker chooses to advertise a property in a specialized or community-specific publication (such as a newspaper serving a predominantly Black readership), doing so is permissible <strong>only if</strong> the broker <strong>also</strong> advertises the property in media of <strong>general circulation</strong> so that the broader public has equal notice and access.</li></ul></li></ul><ul id="41e8ac6a-aab1-8044-8944-d7775c139d82" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Fair Housing Enforcement &amp; Filing Timelines</strong><ul id="41e8ac6a-aab1-80bb-9825-d57792edc85e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcing Agency:</strong> The <strong>U.S. Department of Housing and Urban Development (HUD)</strong> enforces the federal Fair Housing Act through its <strong>Office of Fair Housing and Equal Opportunity (FHEO)</strong> (and certified state/local Fair Housing Assistance Program, or FHAP, agencies).</li></ul><ul id="41e8ac6a-aab1-80ca-a13e-c26c2c27fcb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Remedies &amp; Statutory Filing Deadlines:</strong><table id="41e8ac6a-aab1-801a-8274-e4fa5cf10620" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-80c2-bf39-f671864bf233" dir="ltr"><td id="[&lt;yv" class=""><strong>Enforcement Path</strong></td><td id="ZGZ^" class=""><strong>Filing Deadline (Statute of Limitations)</strong></td><td id="M@Dt" class=""><strong>Key Procedural Rules</strong></td></tr><tr id="41e8ac6a-aab1-8004-b226-df036f82555a" dir="ltr"><td id="[&lt;yv" class=""><strong>HUD / FHEO Administrative Complaint</strong></td><td id="ZGZ^" class=""><strong>Within 1 year</strong> of the last date of the alleged discriminatory act</td><td id="M@Dt" class="">• Filed directly with HUD&#x27;s Office of Fair Housing and Equal Opportunity (or referred to a certified state/local FHAP agency).<br/><br/>• No filing fee or attorney is required to submit a complaint.</td></tr><tr id="41e8ac6a-aab1-8038-a1ee-f464164ee770" dir="ltr"><td id="[&lt;yv" class=""><strong>Private Civil Lawsuit (Federal or State Court)</strong></td><td id="ZGZ^" class=""><strong>Within 2 years</strong> of the alleged discriminatory act</td><td id="M@Dt" class="">• An aggrieved person may file a private lawsuit <strong>instead of</strong> or <strong>in addition to</strong> filing a HUD administrative complaint.<br/><br/>• Time spent while a HUD/FHEO administrative investigation is pending does not count against (tolls) the 2-year window.</td></tr></tbody></table></li></ul></li></ul><ul id="41e8ac6a-aab1-8035-b436-e673df25271b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>HUD Complaint Process</strong><ul id="41e8ac6a-aab1-8077-a21d-f122806816b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Note that <strong>conciliation</strong> is an attempt to resolve the issues raised by a complaint or an investigation through informal negotiations.<figure id="41e8ac6a-aab1-8087-b884-d0cc188b88dd" class="image" data-notion-image="Chapter%203%20-%20Discriminatory%20Practices/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Discriminatory%20Practices/image%202.png"><img style="width:432px" src="Chapter%203%20-%20Discriminatory%20Practices/image%202.png"/></a></figure></li></ul></li></ul><ul id="41e8ac6a-aab1-80c9-a4d9-dcc9b5155578" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Human Rights Commission (THRC) Enforcement &amp; Filing Deadlines</strong><ul id="41e8ac6a-aab1-8080-a331-fd639fcdfc54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcing Agency:</strong> The <strong>Tennessee Human Rights Commission (THRC)</strong> is the state agency responsible for enforcing Tennessee&#x27;s fair housing provisions under the <strong>Tennessee Human Rights Act</strong> <em>(working in coordination with the Civil Rights Enforcement Division of the Tennessee Attorney General&#x27;s Office)</em>.</li></ul><ul id="41e8ac6a-aab1-801e-a96c-e5beb10b1219" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>180-Day State Filing Window:</strong> A state fair housing complaint must be filed with the THRC within <strong>180 days</strong> of the alleged discriminatory act.</li></ul><ul id="41e8ac6a-aab1-80c0-9bc0-e1dc05b592c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Coordination with HUD:</strong><ul id="41e8ac6a-aab1-80c8-9548-daff04a13436" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because a victim also retains the right to file a federal fair housing complaint with <strong>HUD within 1 year (365 days)</strong> of the alleged violation (or a private civil lawsuit within <strong>2 years</strong>), the THRC maintains cooperative work-sharing agreements with HUD to coordinate investigations and prevent duplicate enforcement efforts.</li></ul></li></ul></li></ul><ul id="41e8ac6a-aab1-8065-9ea0-e41ce17e4d68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Civil Penalties Under the Tennessee Human Rights Act</strong><table id="41e8ac6a-aab1-8009-89a6-eb289ed28291" class="simple-table" dir="ltr"><tbody><tr id="41e8ac6a-aab1-80a5-9ef4-dc019341b692" dir="ltr"><td id="mwss" class=""><strong>Offense Tier</strong></td><td id="bc]D" class=""><strong>Maximum Civil Penalty</strong></td></tr><tr id="41e8ac6a-aab1-8042-8426-e6ba8100300e" dir="ltr"><td id="mwss" class=""><strong>First Offense</strong></td><td id="bc]D" class="">Up to <code><strong>$10,000</strong></code></td></tr><tr id="41e8ac6a-aab1-80ef-b76f-fd124ae1b379" dir="ltr"><td id="mwss" class=""><strong>Second Offense</strong> <em>(within 5 years)</em></td><td id="bc]D" class="">Up to <code><strong>$25,000</strong></code></td></tr><tr id="41e8ac6a-aab1-80aa-baa1-dbccefd10803" dir="ltr"><td id="mwss" class=""><strong>Third or Subsequent Offense</strong> <em>(within 7 years)</em></td><td id="bc]D" class="">Up to <code><strong>$50,000</strong></code></td></tr></tbody></table></li></ul><ul id="41e8ac6a-aab1-8033-af3d-d12dba6845af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Malicious Harassment &amp; Civil Liability</strong><ul id="41e8ac6a-aab1-8070-8d79-da80c0bc5598" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The Tennessee Human Rights Act specifically prohibits <strong>&quot;malicious harassment,&quot;</strong> which includes acts of <strong>civil rights intimidation</strong> directed at a person because of their protected characteristics.</li></ul><ul id="41e8ac6a-aab1-80ff-93be-d1172456de68" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recoverable Damages in a Civil Suit:</strong> A victim of malicious harassment may bring a civil lawsuit and recover both <strong>special damages</strong> (quantifiable financial losses) and <strong>general damages</strong>, including:<ul id="41e8ac6a-aab1-808d-8a90-f343d6b6c0c9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Damages for emotional distress</strong></li></ul><ul id="41e8ac6a-aab1-80ef-bc91-d8e2c6bda717" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reasonable attorney&#x27;s fees and court costs</strong></li></ul><ul id="41e8ac6a-aab1-807f-92d9-c188ef222355" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Punitive damages</strong> (awarded to punish egregious conduct and deter future violations)</li></ul></li></ul></li></ul></div><div id="41e8ac6a-aab1-8028-a75d-d9f0e9d51897" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41e8ac6a-aab1-8069-8334-c252b3c9ccd1" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41e8ac6a-aab1-8052-9b2b-f5a9c1039899" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>blockbusting</strong> - the illegal act of causing owners to sell their homes by creating fear that members of a protected class are moving into the area</li></ul><ul id="41e8ac6a-aab1-8075-a700-f7d2e9736190" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>redlining </strong>- the illegal act of a lender refusing to issue mortgages in a specific area</li></ul><ul id="41e8ac6a-aab1-800d-a807-c3e88c043432" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>steering </strong>-the illegal act of guiding prospective home buyers toward or away from certain neighborhoods because of their membership in a protected class</li></ul><p id="41e8ac6a-aab1-8085-9629-d060d690a371" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41e8ac6a-aab1-800f-8e8b-f4c5313d6edd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Steering</strong><ul id="41e8ac6a-aab1-80c7-b5de-f1d3b8701f47" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Steering isn&#x27;t limited to just neighborhoods. It can also occur within a building or even within a floor. It&#x27;s pretty easy to avoid steering: <strong>The client gets to choose where they want to live.</strong></li></ul><ul id="41e8ac6a-aab1-8082-94f9-edaa08008167" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A real estate license holder should not let a client’s membership in a protected class influence the properties they show that client – <strong>not even if the client specifically asks that they do so.</strong></li></ul></li></ul><ul id="41e8ac6a-aab1-80e1-93e7-ec82292766fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Blockbusting </strong>- Blockbusting encourages the panicked selling of homes below market value, generally by raising fears that an influx of individuals belonging to a particular minority group will decrease property values in a neighborhood and affect the area negatively.</li></ul><ul id="41e8ac6a-aab1-80cc-a5b7-ee7eec496c6b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Redlining </strong>- Redlining got its name because there were some areas where lenders would actually draw a line around a certain area on a map and refuse to lend to people there. Here&#x27;s an example:<figure id="41e8ac6a-aab1-8066-b7dc-ee24c9ca0851" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TXP1V_Redlining_6431.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TXP1V_Redlining_6431.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TXP1V_Redlining_6431.png"/></a></figure></li></ul><ul id="41e8ac6a-aab1-800d-bf3e-c88d18be452a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Advertising</strong><ul id="41e8ac6a-aab1-805f-be55-c110400cae1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Department of Housing and Urban Development (HUD) offers several guidelines around advertising. HUD outlaws the really obvious, discriminatory stuff. The more subtle stuff (&quot;facially neutral&quot;) is not in itself a violation.</li></ul><ul id="41e8ac6a-aab1-8020-b4ce-c1d62ccf4c06" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Remember when we talked about the exemptions to the Fair Housing Act? Even if these exempt individuals can choose to exclude certain tenants, they can never <em>advertise</em> those preferences. In other words, <strong>discriminatory advertising may not be used, even when the exemption itself is legal.</strong></li></ul></li></ul><ul id="41e8ac6a-aab1-8068-96b2-cedfc1a93813" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Filing a Fair Housing Complaint Through HUD</strong><figure id="41e8ac6a-aab1-8089-9b3b-faaf213d8d60" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png"/></a></figure></li></ul><p id="41e8ac6a-aab1-80c0-8e2a-e98cc9347831" class="" dir="auto">
+</p></div></div><p id="41e8ac6a-aab1-802d-92c5-c317ba23e117" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

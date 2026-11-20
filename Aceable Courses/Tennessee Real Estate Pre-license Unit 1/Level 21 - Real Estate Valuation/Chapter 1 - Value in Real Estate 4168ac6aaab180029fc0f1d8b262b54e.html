@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Value in Real Estate</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-8002-9fc0-f1d8b262b54e" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Value in Real Estate</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41a8ac6a-aab1-80f7-b4ce-c4b3fbfa1748" class="column-list" data-notion-column-list="" dir="auto"><div id="41a8ac6a-aab1-80cb-a0b7-c6ed416a47e2" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41a8ac6a-aab1-80e2-b2c8-e89f05c27179" class="" dir="auto"><strong>Physical Characteristics of Land</strong></p><ul id="41a8ac6a-aab1-809f-9b24-ff2c239e6542" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unlike ordinary commodities (products bought and sold interchangeably), real estate is governed by three inherent physical traits that directly shape how appraisers, agents, and consumers value land:<table id="41a8ac6a-aab1-80b9-87cb-d9e0d6db8607" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-805b-b5ae-f771720967f7" dir="ltr"><td id="^~;&lt;" class=""><strong>Physical Characteristic</strong></td><td id="LBlJ" class=""><strong>Alternative Terms</strong></td><td id="yz{[" class=""><strong>Core Definition &amp; Valuation Impact</strong></td></tr><tr id="41a8ac6a-aab1-80bf-9140-f6e162c290a2" dir="ltr"><td id="^~;&lt;" class=""><strong>1. Immobility</strong></td><td id="LBlJ" class="">—</td><td id="yz{[" class="">Every parcel of land has a fixed, constant geographic location that cannot be picked up and moved (barring slow geological erosion). Because land cannot move to a better market, local market conditions dictate its value.</td></tr><tr id="41a8ac6a-aab1-8063-9e23-dda30fe3bab6" dir="ltr"><td id="^~;&lt;" class=""><strong>2. Durability</strong></td><td id="LBlJ" class=""><strong>Indestructibility</strong></td><td id="yz{[" class="">Land is permanent—it cannot be destroyed, does not wear out, and has no finite &quot;usable life.&quot; Even if surface structures decay or environmental damage occurs, the underlying land remains (which is why land itself is not depreciated for tax/appraisal purposes).</td></tr><tr id="41a8ac6a-aab1-8021-9e7f-f81625a3a013" dir="ltr"><td id="^~;&lt;" class=""><strong>3. Uniqueness</strong></td><td id="LBlJ" class=""><strong>Non-homogeneity</strong></td><td id="yz{[" class="">Because no two parcels can occupy the exact same point in space, every tract of land is distinct and <strong>non-fungible</strong> (cannot be replaced by an identical substitute—even neighboring subdivision lots with identical houses occupy different locations).</td></tr></tbody></table></li></ul><ul id="41a8ac6a-aab1-80e4-a718-e62be4e48068" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Characteristics of Land</strong><ul id="41a8ac6a-aab1-80f1-9a17-f26cf263dddf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Five economic factors—<strong>Scarcity, Situs, Modification, Fixity, and Illiquidity</strong>—differentiate real estate from personal property and determine market value:</li></ul><ul id="41a8ac6a-aab1-8013-b3a2-c4c28c2f5d3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scarcity:</strong><ul id="41a8ac6a-aab1-8098-9cee-d208a38ef255" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Definition:</strong> Economic scarcity refers to the <strong>supply of land relative to demand</strong> in a particular area—not the total physical supply of earth on the planet.</li></ul><ul id="41a8ac6a-aab1-80a4-8d7a-e83a05ce485e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Supply-and-Demand Dynamics:</strong> High demand for a limited supply of desirable locations (such as downtown Chicago or tropical beachfronts) drives property prices upward, whereas declining job markets reduce demand, eliminate economic scarcity, and push prices down.</li></ul><ul id="41a8ac6a-aab1-80c0-a4fd-f4cea3ee1208" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Impact of Technology:</strong> Technological advances (such as new agricultural or irrigation techniques) can make previously unusable land productive, suddenly creating new demand and economic scarcity without changing the physical quantity of land.</li></ul></li></ul><ul id="41a8ac6a-aab1-80d0-b6f0-c52baf0d4f89" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Situs (Location Preference):</strong><ul id="41a8ac6a-aab1-8072-a0c8-e448ccf873e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Definition:</strong> The <strong>economic desirability</strong> of a particular location based on human preferences (reflected in the maxim <em>&quot;location, location, location&quot;</em>), rather than its purely geographic coordinates.</li></ul><ul id="41a8ac6a-aab1-80d0-bb49-c2344b864ba5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example:</strong> Buyers migrating from a rural town to a nearby city for stronger employment opportunities and amenities are driven by <strong>situs</strong>.</li></ul></li></ul><ul id="41a8ac6a-aab1-8086-9e5e-f330607cca0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modification (Alteration):</strong><ul id="41a8ac6a-aab1-8039-8a1e-f5c8d334050f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Definition:</strong> The principle that <strong>human-made improvements and developments</strong> to a parcel or its surrounding area directly alter the economic value of land—often transforming an area&#x27;s <strong>situs</strong>.</li></ul><ul id="41a8ac6a-aab1-80db-a2ad-d95fc6878e57" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Examples:</strong> Constructing a neighborhood park or public transit stop increases surrounding home values; similarly, building Disney World® in Orlando, Florida transformed adjacent farmland into high-demand commercial, hotel, and residential real estate.</li></ul></li></ul></li></ul><ul id="41a8ac6a-aab1-802d-ae46-f1b0ab755a36" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Characteristics</strong><figure id="41a8ac6a-aab1-8059-8a0d-c3c41658e94b" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image.png"><img style="width:432px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image.png"/></a></figure><ul id="41a8ac6a-aab1-80dc-bbd7-fca9b9187891" class="bulleted-list" dir="auto"><li style="list-style-type:circle">As an agent, you will be helping clients find homes, sell storefronts, and navigate transactions. But all of these actions will be impacted by economics: You&#x27;ll need to know what those economic factors are, how you can control them, and how both you and your client will be affected by them.</li></ul></li></ul><ul id="41a8ac6a-aab1-80b6-9943-cf118f637254" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Physical vs. Economic Characteristics</strong><figure id="41a8ac6a-aab1-80ce-96a4-c953576aee68" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image%201.png"/></a></figure></li></ul><ul id="41a8ac6a-aab1-8045-86d9-faf1023560e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Land&#x27;s Economic Characteristics: Fixity &amp; Illiquidity</strong><ul id="41a8ac6a-aab1-8087-86e2-cbe5b1ebf6b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Completing the five economic traits of land (alongside <em>scarcity, situs, and modification</em>):<ul id="41a8ac6a-aab1-807b-a29b-c920e5649ed3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fixity (Permanence of Investment):</strong> The economic counterpart to the physical characteristic of <em>immobility</em>—real estate exists in a fixed geographic location and cannot be moved, meaning capital invested in land and buildings is permanently tied to that specific site and its local market conditions.</li></ul><ul id="41a8ac6a-aab1-8041-bf57-f6eecf5a9e25" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Illiquidity:</strong> The relative difficulty of converting real estate into cash quickly without sacrificing market value. Unlike liquid assets such as publicly traded stocks, selling real property takes time; forcing an immediate sale (e.g., selling a $250,000 appraised home within 24 hours) requires heavily discounting the price. Consequently, real estate requires a long-term investment horizon.</li></ul></li></ul></li></ul><ul id="41a8ac6a-aab1-802b-bdf2-c343d3b86d20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>DUST: The Four Characteristics of Value</strong><ul id="41a8ac6a-aab1-8065-b831-e9137cf1c531" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In real estate appraisal and valuation, an asset must possess all four elements of <strong>DUST</strong> to have economic value:<table id="41a8ac6a-aab1-8006-8667-fb4b942b2d2f" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-8045-b89c-d9d44ff78d5a" dir="ltr"><td id="D|cm" class=""><strong>Element</strong></td><td id="&lt;k;[" class=""><strong>Core Definition</strong></td><td id="?xj:" class=""><strong>Valuation Impact &amp; Example</strong></td></tr><tr id="41a8ac6a-aab1-8043-9b08-d3f56bea3584" dir="ltr"><td id="D|cm" class=""><strong>D — Demand</strong></td><td id="&lt;k;[" class="">Desire for a property backed by the financial ability (purchasing power) to buy or lease it</td><td id="?xj:" class="">Without buyer/tenant desire and purchasing power, a property holds no market value; rising demand pushes value upward.</td></tr><tr id="41a8ac6a-aab1-808a-8bd6-dbed29199330" dir="ltr"><td id="D|cm" class=""><strong>U — Utility</strong></td><td id="&lt;k;[" class="">The property&#x27;s capacity to satisfy a human need, desire, or productive purpose</td><td id="?xj:" class="">Even raw, vacant land has utility to a buyer who intends to construct a custom home or commercial building on the site.</td></tr><tr id="41a8ac6a-aab1-8056-8f4a-f4104ed733aa" dir="ltr"><td id="D|cm" class=""><strong>S — Scarcity</strong></td><td id="&lt;k;[" class="">Limited supply of a desirable property type relative to market demand</td><td id="?xj:" class="">Oversupply depresses prices, whereas a limited supply of sought-after properties drives values higher.</td></tr><tr id="41a8ac6a-aab1-808b-8630-e00da1b7e84f" dir="ltr"><td id="D|cm" class=""><strong>T — Transferability</strong></td><td id="&lt;k;[" class="">The legal and practical ability to convey ownership or possession freely from seller to buyer</td><td id="?xj:" class="">Government restrictions, zoning bans, or title defects/clouds that block or complicate ownership transfer directly reduce a property&#x27;s value.</td></tr></tbody></table></li></ul></li></ul><ul id="41a8ac6a-aab1-80d2-a28f-d787ccf04d61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Differences: Cost, Value, and Price</strong><ul id="41a8ac6a-aab1-80b5-87e9-f63dc203e346" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although used interchangeably in everyday speech, <strong>cost</strong>, <strong>value</strong>, and <strong>price</strong> represent three distinct financial concepts in real estate appraisal:<table id="41a8ac6a-aab1-801a-b804-c50b4d9b1722" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-8016-aebc-c8f2a58495eb" dir="ltr"><td id="kTgm" class=""><strong>Term</strong></td><td id="=^wg" class=""><strong>Core Definition</strong></td><td id="udnl" class=""><strong>Key Characteristics &amp; Sub-Types</strong></td></tr><tr id="41a8ac6a-aab1-8004-a591-c850311b0d5c" dir="ltr"><td id="kTgm" class=""><strong>Cost</strong></td><td id="=^wg" class="">The total dollar expenditure required to buy, build, or develop a property (labor, materials, legal/architectural fees, financing, construction taxes/interest, and contractor/entrepreneurial overhead and profit)</td><td id="udnl" class="">• Focuses strictly on actual production/acquisition expenses without regard to market demand.<br/><br/>• Does <strong>not</strong> necessarily equal a property&#x27;s market value.<br/><br/>• <strong>Direct Costs (Hard Costs):</strong> Physical construction labor and building materials.<br/><br/>• <strong>Indirect Costs (Soft Costs):</strong> Non-material/non-labor project expenses such as architectural/engineering fees, appraisal/legal fees, financing, permits, filing fees, lease-up costs, and administration.</td></tr><tr id="41a8ac6a-aab1-8099-af24-d6b0fa224912" dir="ltr"><td id="kTgm" class=""><strong>Value</strong> <em>(Market Value)</em></td><td id="=^wg" class="">An estimate or opinion of the price for which a property will <strong>theoretically sell</strong> under typical, competitive open-market conditions</td><td id="udnl" class="">• Represents a <strong>probable, theoretical</strong> figure determined by an appraiser analyzing market data under normal sale conditions.</td></tr><tr id="41a8ac6a-aab1-8021-9cfc-d0389599ebd6" dir="ltr"><td id="kTgm" class=""><strong>Price</strong> <em>(vs. Market Price)</em></td><td id="=^wg" class="">The <strong>actual dollar amount</strong> a ready, willing, and able buyer agrees to pay—and a seller agrees to accept—in a specific transaction</td><td id="udnl" class="">• <strong>Price:</strong> Any actual agreed-upon transaction figure, including sales influenced by unusual circumstances (e.g., distress sales, family transfers, or urgent deadlines) that deviate from normal expectations.<br/><br/>• <strong>Market Price:</strong> The actual price paid in an open-market transaction occurring under <strong>normal, typical conditions</strong>—serving as the real-world counterpart to theoretical market value.</td></tr></tbody></table><figure id="41a8ac6a-aab1-80cf-86fe-c54a4d50350e" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image%202.png"><img style="width:624px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image%202.png"/></a></figure></li></ul></li></ul><ul id="41a8ac6a-aab1-807f-bcba-d05faf38dee3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Valuation Scenario</strong><ul id="41a8ac6a-aab1-80df-a0b5-dafae49eacac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Total Cost ($250,000):</strong> A developer spends <code>$200,000 + $50,000 = $250,000</code> to build a home:<ul id="41a8ac6a-aab1-8049-ad5b-cc61fd44da5b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Direct Costs (Hard Costs):</strong> <strong>$200,000</strong> for physical labor and building materials.</li></ul><ul id="41a8ac6a-aab1-803b-b195-d54f8c934a94" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Indirect Costs (Soft Costs):</strong> <strong>$50,000</strong> for architect fees, permits, and construction financing.</li></ul></li></ul><ul id="41a8ac6a-aab1-8066-93ed-f51aadbe3d69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Market Value ($300,000):</strong> An appraiser evaluates comparable market conditions and estimates the home&#x27;s theoretical selling price at <strong>$300,000</strong>.</li></ul><ul id="41a8ac6a-aab1-8029-a57b-f7c7a6f5a304" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Price &amp; Market Price ($325,000):</strong> A buyer purchases the property for <strong>$325,000</strong> in a competitive market. Because this is the actual amount paid under normal open-market conditions, <strong>$325,000</strong> is both the <strong>price</strong> and the <strong>market price</strong> (reflecting strong buyer demand pushing the actual sale <code>$325,000 - $300,000 = $25,000</code> above appraised market value).</li></ul></li></ul><ul id="41a8ac6a-aab1-80c0-a249-d7c06850e5e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Methods of Assigning Property Value or Utility</strong><ul id="41a8ac6a-aab1-80e8-a823-d191ebd1b2e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate professionals distinguish between <strong>appraisal</strong>, <strong>valuation</strong>, and <strong>evaluation</strong> based on who performs the analysis and whether the goal is estimating a dollar figure or studying property utility:<table id="41a8ac6a-aab1-8069-8749-c46bf841447a" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-8088-9bd1-dfc08942bf89" dir="ltr"><td id="aZ:_" class=""><strong>Method</strong></td><td id="PCxB" class=""><strong>Who Performs It</strong></td><td id="NaBC" class=""><strong>Primary Purpose &amp; Output</strong></td></tr><tr id="41a8ac6a-aab1-807b-b2a6-c1fac0c08efd" dir="ltr"><td id="aZ:_" class=""><strong>Appraisal</strong></td><td id="PCxB" class=""><strong>Licensed appraiser only</strong></td><td id="NaBC" class="">An impartial, formal <strong>written opinion of value</strong> for a specific property as of a specific effective date, supported by relevant market data.</td></tr><tr id="41a8ac6a-aab1-80b7-8bb0-ef13454618f0" dir="ltr"><td id="aZ:_" class=""><strong>Valuation</strong></td><td id="PCxB" class="">Real estate licensees (agents/brokers) or non-appraisers</td><td id="NaBC" class="">An estimate of property value on a specific day (such as a <strong>Comparative Market Analysis [CMA]</strong> prepared by an agent to help a client price a home). Uses similar market research as an appraisal, but cannot legally be called an appraisal if not performed by a licensed appraiser.</td></tr><tr id="41a8ac6a-aab1-8053-b71e-c7fb08cc31a6" dir="ltr"><td id="aZ:_" class=""><strong>Evaluation</strong></td><td id="PCxB" class="">Analysts, developers, consultants, or licensees</td><td id="NaBC" class="">A study of a property&#x27;s <strong>usefulness, nature, quality, or utility</strong>—focusing on <strong>highest and best use</strong>, project feasibility, and market supply and demand rather than assigning a dollar value estimate.</td></tr></tbody></table></li></ul></li></ul><ul id="41a8ac6a-aab1-80c9-8c7c-e1c201418d90" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraised Value vs. Assessed Value vs. Market Value</strong><ul id="41a8ac6a-aab1-80bd-954c-d665bf3224e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although these three value terms are closely related, each serves a distinct economic, lending, or taxation function:<table id="41a8ac6a-aab1-80de-b9df-fb57c8157cdb" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-80ad-9983-e37f8fa76298" dir="ltr"><td id="DJAg" class=""><strong>Value Type</strong></td><td id="_Ajh" class=""><strong>Who Determines It</strong></td><td id="Fc]x" class=""><strong>Core Purpose &amp; Distinction</strong></td></tr><tr id="41a8ac6a-aab1-8062-86c2-e174eff5e173" dir="ltr"><td id="DJAg" class=""><strong>Market Value</strong></td><td id="_Ajh" class="">Market forces (theoretical economic benchmark)</td><td id="Fc]x" class="">The <strong>theoretical price</strong> for which a property would sell under typical, competitive open-market conditions between a ready, willing, and able buyer and seller.</td></tr><tr id="41a8ac6a-aab1-805a-a72a-e5e7b6d624a8" dir="ltr"><td id="DJAg" class=""><strong>Appraised Value</strong></td><td id="_Ajh" class=""><strong>Licensed real estate appraiser</strong></td><td id="Fc]x" class="">The <strong>specific dollar figure</strong> reported on a formal appraisal report (typically ordered by a buyer or mortgage lender during loan origination) estimating the property&#x27;s market value as of a given date.</td></tr><tr id="41a8ac6a-aab1-804e-9ff3-efc062bd8dcf" dir="ltr"><td id="DJAg" class=""><strong>Assessed Value</strong></td><td id="_Ajh" class=""><strong>Governmental tax authority</strong> (county/municipal assessor)</td><td id="Fc]x" class="">The value assigned by a government unit strictly for calculating <strong>ad valorem</strong> (<em>&quot;according to value&quot;</em>) property taxes—based on the tax assessment rather than the actual purchase price paid by the owner.</td></tr></tbody></table></li></ul></li></ul><ul id="41a8ac6a-aab1-80b1-a848-cd6d90e2be1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Value Chart</strong><figure id="41a8ac6a-aab1-808f-8025-fc53c59641ec" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image%203.png"><img style="width:576px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image%203.png"/></a></figure></li></ul><ul id="41a8ac6a-aab1-80b9-a662-f1ccbdb4e599" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Principles of Value</strong><ul id="41a8ac6a-aab1-80ef-a47d-deb2d14e1682" class="bulleted-list" dir="auto"><li style="list-style-type:circle">These core economic principles explain how real estate values are formed, maintained, and altered in the marketplace, guiding appraisers and real estate licensees during property valuation:<table id="41a8ac6a-aab1-80e7-bc48-da7d2af2893a" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-80ff-8223-ef8047adbb7b" dir="ltr"><td id="s;[B" class=""><strong>Economic Principle</strong></td><td id="URxi" class=""><strong>Core Definition</strong></td><td id="^[HO" class=""><strong>Valuation Impact &amp; Practical Example</strong></td></tr><tr id="41a8ac6a-aab1-80e3-aa54-f17abb9b14c2" dir="ltr"><td id="s;[B" class=""><strong>1. Principle of Anticipation</strong></td><td id="URxi" class="">Present property value is shaped by the <strong>expected future benefits, income, or utility</strong> the property will generate for its owner.</td><td id="^[HO" class="">An investor pays slightly above current market price for a home expecting property values to rise once a nearby corporate headquarters opens.</td></tr><tr id="41a8ac6a-aab1-8004-accb-fa01bac716c9" dir="ltr"><td id="s;[B" class=""><strong>2. Principle of Contribution</strong></td><td id="URxi" class="">A property&#x27;s total value equals the combined contributory value of each individual component—<strong>not</strong> necessarily what those components cost to build.</td><td id="^[HO" class="">Spending <strong>$20,000</strong> to install a swimming pool might add only <strong>$10,000</strong> to the home&#x27;s market value (<code>Cost ≠ Contributory Value</code>).</td></tr><tr id="41a8ac6a-aab1-8095-b6b5-cd4221ab0b6d" dir="ltr"><td id="s;[B" class=""><strong>3. Principle of Substitution</strong></td><td id="URxi" class="">A buyer will pay no more for a property than the cost of acquiring an <strong>equally desirable substitute property</strong> without undue delay.</td><td id="^[HO" class="">Forms the foundation of the Sales Comparison Approach: similar properties in the same market should command roughly similar prices.</td></tr><tr id="41a8ac6a-aab1-807f-a360-e3e1ce180ef5" dir="ltr"><td id="s;[B" class=""><strong>4. Principle of Change</strong></td><td id="URxi" class="">Real estate physical condition, neighborhood desirability, and market conditions are constantly evolving—never static.</td><td id="^[HO" class="">Because zoning changes, property damage, or market shifts can quickly alter value, mortgage lenders typically accept appraisals for only a few months.</td></tr><tr id="41a8ac6a-aab1-8063-beb3-e86eba47a9f8" dir="ltr"><td id="s;[B" class=""><strong>5. Principle of Conformity</strong></td><td id="URxi" class="">Maximum property value is realized when land use, architectural style, and size are <strong>in harmony with surrounding neighborhood standards</strong>.</td><td id="^[HO" class="">Homes that are significantly larger, much smaller, or architecturally out of place compared to neighboring houses suffer reduced market value.</td></tr><tr id="41a8ac6a-aab1-808c-8471-c00a5d0c8b3e" dir="ltr"><td id="s;[B" class=""><strong>6. Principles of Regression &amp; Progression</strong></td><td id="URxi" class="">Surrounding property values directly pull a subject property&#x27;s value down or up:<br/><br/>• <strong>Regression:</strong> Lower-value surrounding homes drag down the value of a higher-value subject property.<br/><br/>• <strong>Progression:</strong> Higher-value surrounding homes lift the value of a lower-value subject property.</td><td id="^[HO" class="">• <strong>Regression:</strong> A $450,000 luxury home surrounded by $200,000 homes loses value.<br/><br/>• <strong>Progression:</strong> A modest $200,000 cottage located on a block of $450,000 homes gains value.</td></tr><tr id="41a8ac6a-aab1-80f9-ad6f-f1292cd06137" dir="ltr"><td id="s;[B" class=""><strong>7. Principle of Competition</strong></td><td id="URxi" class="">The interaction of <strong>supply and demand</strong> (and excess profits attracting competitors) directly governs market prices.</td><td id="^[HO" class="">• <strong>Low supply + High demand</strong> = Prices increase.<br/><br/>• <strong>High supply + Low demand</strong> = Prices decrease.</td></tr></tbody></table><figure id="41a8ac6a-aab1-80e9-8fd7-d570bc9030e0" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image%204.png"><img style="width:624px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image%204.png"/></a></figure></li></ul></li></ul><ul id="41a8ac6a-aab1-8008-9161-fc55513fb6f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Supply and Demand in Real Estate</strong><ul id="41a8ac6a-aab1-80c3-9d81-fad0dfe6c8ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Supply and demand are the primary market forces driving fluctuations in real estate values and prices.<table id="41a8ac6a-aab1-80bc-a97a-de4be3f0c1d4" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-8008-ae5c-d505d8ed5b4a" dir="ltr"><td id="k_`c" class=""><strong>Market Force</strong></td><td id="Ez|=" class=""><strong>Real Estate Definition</strong></td><td id="vO{&lt;" class=""><strong>Key Influencing Factors</strong></td></tr><tr id="41a8ac6a-aab1-807b-a7cb-d666cf26bfb4" dir="ltr"><td id="k_`c" class=""><strong>Demand</strong></td><td id="Ez|=" class="">The number of consumers who both <strong>desire</strong> to buy or rent property <strong>and have the financial ability (purchasing power)</strong> to afford it—not merely everyone who wishes to own</td><td id="vO{&lt;" class="">• Employment rates and wage levels<br/><br/>• Mortgage interest rates<br/><br/>• Population demographics and social attitudes<br/><br/>• Legal and tax structures</td></tr><tr id="41a8ac6a-aab1-8058-8b92-dbe76b8bfbd3" dir="ltr"><td id="k_`c" class=""><strong>Supply</strong></td><td id="Ez|=" class="">The total number of properties currently <strong>available for sale or rent</strong> within a given area</td><td id="vO{&lt;" class="">• New construction and development activity<br/><br/>• Existing homeowners/landlords listing properties<br/><br/>• Zoning, land availability, and financing costs</td></tr></tbody></table></li></ul></li></ul><ul id="41a8ac6a-aab1-808d-b21d-fb2789932a72" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Supply and Demand Drive Property Prices</strong><ul id="41a8ac6a-aab1-8021-9c61-ed3129216c57" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>High Demand + Low Supply (Seller&#x27;s Market):</strong> As buyer demand rises and available inventory shrinks, competition increases, driving property values and prices <strong>up</strong>.</li></ul><ul id="41a8ac6a-aab1-803b-8af0-f1828d0d7b41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Low Demand + High Supply (Buyer&#x27;s Market):</strong> As buyer demand drops and available inventory builds up, sellers compete for fewer buyers, pushing property values and prices <strong>down</strong>.<figure id="41a8ac6a-aab1-8000-8884-da7c019b334f" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/image%205.png"><img style="width:576px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/image%205.png"/></a></figure></li></ul></li></ul><ul id="41a8ac6a-aab1-80f4-bad4-d988ef448025" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Makeup of a Real Estate Market</strong><ul id="41a8ac6a-aab1-8043-80e9-c182512c0290" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition of a Market:</strong> An economic construct that isolates the buying and selling of a specific commodity (such as real estate) from the broader economy.</li></ul><ul id="41a8ac6a-aab1-8033-8b88-c657b416f6b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Geographic Scope:</strong> Because real estate is immovable, supply and demand levels vary significantly across locations—a real estate market can be defined as narrowly as a <strong>single neighborhood</strong> or as broadly as a <strong>city, state, or entire country</strong>.</li></ul></li></ul><ul id="41a8ac6a-aab1-807c-8309-c2daff69c247" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Supply and Demand Affect Property Prices</strong><ul id="41a8ac6a-aab1-80ff-9f07-fc583d152be3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The directional relationship between inventory levels, buyer purchasing power, and market pricing follows two core inverse and direct rules:<ul id="41a8ac6a-aab1-8081-8f4b-c9c1ff660c78" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Equilibrium (Proportional Supply &amp; Demand):</strong> When available property supply matches buyer demand, property values and prices remain <strong>stable</strong>.</li></ul><ul id="41a8ac6a-aab1-80fc-8e0c-f6b91341ce23" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Supply and Price Move in Opposite Directions (Inverse Relationship):</strong><ul id="41a8ac6a-aab1-80e7-b3b5-eb736235f1b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Under-supply (Low Supply):</strong> Fewer available properties create buyer competition, causing prices to <strong>increase</strong>.</li></ul><ul id="41a8ac6a-aab1-805d-b677-f84484a78a47" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Over-supply (High Supply):</strong> Excess available inventory forces sellers to compete for buyers, causing prices to <strong>decrease</strong>.</li></ul></li></ul><ul id="41a8ac6a-aab1-8069-b90d-fc39f6dcf46e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Demand and Price Move in the Same Direction (Direct Relationship):</strong><ul id="41a8ac6a-aab1-800b-b0e6-d27f867c1126" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rising Demand:</strong> Higher buyer demand pushes prices <strong>up</strong>.<figure id="41a8ac6a-aab1-801f-9b51-d35c43ae9b15" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/1.gif" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/1.gif"><img style="width:432px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/1.gif"/></a></figure></li></ul><ul id="41a8ac6a-aab1-800d-916e-dd54640c2ecf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Falling Demand:</strong> Lower buyer demand pulls prices <strong>down</strong>.<figure id="41a8ac6a-aab1-801c-965e-f00f62b5a55c" class="image" data-notion-image="Chapter%201%20-%20Value%20in%20Real%20Estate/2.gif" dir="ltr"><a href="Chapter%201%20-%20Value%20in%20Real%20Estate/2.gif"><img style="width:432px" src="Chapter%201%20-%20Value%20in%20Real%20Estate/2.gif"/></a></figure><table id="41a8ac6a-aab1-8029-8e04-e1b947f5c434" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-80b0-b0db-cc36cb670c40" dir="ltr"><td id="`TFN" class=""><strong>Market Condition</strong></td><td id="TNd_" class=""><strong>Direction of Force</strong></td><td id="lJEs" class=""><strong>Effect on Property Prices</strong></td><td id="kgmU" class=""><strong>Relationship Rule</strong></td></tr><tr id="41a8ac6a-aab1-8057-a1cd-d1b72683acdc" dir="ltr"><td id="`TFN" class=""><strong>Supply &amp; Demand Balanced</strong></td><td id="TNd_" class="">Proportional</td><td id="lJEs" class=""><strong>Prices remain stable</strong></td><td id="kgmU" class="">Market equilibrium</td></tr><tr id="41a8ac6a-aab1-802a-b00b-d839aca73dc0" dir="ltr"><td id="`TFN" class=""><strong>Under-Supply</strong></td><td id="TNd_" class="">Supply decreases (↓)</td><td id="lJEs" class=""><strong>Prices increase (↑)</strong></td><td id="kgmU" class="">Supply &amp; price move in <strong>opposite</strong> directions</td></tr><tr id="41a8ac6a-aab1-80cf-9a0e-c991648d4fde" dir="ltr"><td id="`TFN" class=""><strong>Over-Supply</strong></td><td id="TNd_" class="">Supply increases (↑)</td><td id="lJEs" class=""><strong>Prices decrease (↓)</strong></td><td id="kgmU" class="">Supply &amp; price move in <strong>opposite</strong> directions</td></tr><tr id="41a8ac6a-aab1-8040-84cd-e5ac7a2d1405" dir="ltr"><td id="`TFN" class=""><strong>Rising Demand</strong></td><td id="TNd_" class="">Demand increases (↑)</td><td id="lJEs" class=""><strong>Prices increase (↑)</strong></td><td id="kgmU" class="">Demand &amp; price move in the <strong>same</strong> direction</td></tr><tr id="41a8ac6a-aab1-800b-9dfe-fa25ac21e4e0" dir="ltr"><td id="`TFN" class=""><strong>Falling Demand</strong></td><td id="TNd_" class="">Demand decreases (↓)</td><td id="lJEs" class=""><strong>Prices decrease (↓)</strong></td><td id="kgmU" class="">Demand &amp; price move in the <strong>same</strong> direction</td></tr></tbody></table></li></ul></li></ul></li></ul></li></ul><ul id="41a8ac6a-aab1-8014-bdc1-cac7b16ec811" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Impact of the Economy on Real Estate</strong><ul id="41a8ac6a-aab1-80cb-90dd-ce304521646a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Macroeconomic health and consumer confidence heavily dictate buyer behavior, housing turnover, and market momentum:<table id="41a8ac6a-aab1-809b-b65f-c8c18a7bdb62" class="simple-table" dir="ltr"><tbody><tr id="41a8ac6a-aab1-806c-baeb-f85c8e5a644d" dir="ltr"><td id="?IHz" class=""><strong>Economic Condition</strong></td><td id="nirL" class=""><strong>Consumer &amp; Homeowner Behavior</strong></td><td id="VyIS" class=""><strong>Real Estate Market Effect</strong></td></tr><tr id="41a8ac6a-aab1-8029-bb09-d27a056432b3" dir="ltr"><td id="?IHz" class=""><strong>Strong Economy</strong> <em>(High confidence &amp; employment)</em></td><td id="nirL" class="">• First-time buyers actively enter the housing market.<br/><br/>• Existing homeowners feel confident upgrading or upsizing to larger properties.</td><td id="VyIS" class="">Higher transaction volume, stronger demand, and upward pressure on property values.</td></tr><tr id="41a8ac6a-aab1-8091-9fa1-cb9b3eb241fc" dir="ltr"><td id="?IHz" class=""><strong>Weak or Uncertain Economy</strong> <em>(Low confidence or downturn)</em></td><td id="nirL" class="">• Current homeowners stay put rather than taking on new financial commitments.<br/><br/>• Fewer prospective buyers enter the market.</td><td id="VyIS" class="">Slower housing turnover, reduced buyer demand, and downward pressure on prices.</td></tr></tbody></table></li></ul></li></ul><ul id="41a8ac6a-aab1-809a-a1f5-d1670e26b56d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Monitoring Economic Trends:</strong> While real estate professionals cannot control macroeconomic cycles, consistently following economic news and market trends helps licensees anticipate shifts in buyer sentiment and advise clients effectively.</li></ul><ul id="41a8ac6a-aab1-807e-a6d2-c1318b9e1e0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Understanding Specialized Real Estate Markets</strong><ul id="41a8ac6a-aab1-802b-b3d4-c8fb6551c3d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In <strong>real estate finance</strong>, mastering market mechanics—especially how <strong>supply and demand</strong> operate—is essential because &quot;real estate&quot; is not a single uniform market, but a collection of distinct, interconnected markets with their own trends and rules:<ul id="41a8ac6a-aab1-8044-b916-dd96269ae34c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Property Market:</strong> The buying, selling, and leasing of physical real estate (e.g., the residential housing market, commercial retail market, or industrial market).</li></ul><ul id="41a8ac6a-aab1-80fe-8af5-f7e4cad1c639" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Mortgage / Finance Market:</strong> The origination, sale, and trading of loan products by lenders and financial institutions.</li></ul></li></ul><ul id="41a8ac6a-aab1-808d-b542-d04b814f5dab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Takeaway:</strong> Long-term success in real estate requires studying the specific local property and financing markets in which you operate to understand how shifts in supply, demand, and economic conditions interact.</li></ul></li></ul></div><div id="41a8ac6a-aab1-802f-8027-d734b7eca34c" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41a8ac6a-aab1-8029-92ce-e80400a296ce" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41a8ac6a-aab1-800b-9d23-dcad011d4d88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>appraisal</strong> - an official valuation given to a property by a licensed appraiser</li></ul><ul id="41a8ac6a-aab1-8035-9cee-fe8b43088bba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>appraiser</strong> - an individual who is trained and licensed to perform appraisals, which estimate the value of real property</li></ul><ul id="41a8ac6a-aab1-80eb-ab64-e57f8bea561b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>assemblage</strong> - the process of combining two or more adjoining properties into one larger property; the combined property may have greater value than the individual lots.</li></ul><ul id="41a8ac6a-aab1-8021-8aba-ec207ddd7ea3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>assessed value</strong> - the value placed on a property by a governmental unit for use in calculating property taxes</li></ul><ul id="41a8ac6a-aab1-806d-848d-ddbea92110f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>contribution</strong> - the amount of market value added to a property by an addition or improvement to the property; not necessarily the same as the cost of the improvement</li></ul><ul id="41a8ac6a-aab1-80ff-a03d-c43178be8a20" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>demand</strong> - a measure of the general desire for an asset or commodity at a given time</li></ul><ul id="41a8ac6a-aab1-80da-ab91-f85799dfab89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>market value</strong> - the price for which a property will theoretically sell under typical conditions</li></ul><ul id="41a8ac6a-aab1-8089-a733-ffdda36795f9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>plottage</strong> - the increase in value that results from combining two or more adjoining properties into one larger property</li></ul><ul id="41a8ac6a-aab1-802e-a4d0-c94186d0bc38" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>scarcity</strong> - the economic characteristic that informs the economic principle of supply and demand</li></ul><ul id="41a8ac6a-aab1-8013-af39-da78b37e2fea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>substitution</strong> - an economic principle stating that the value of a good or service is affected by the cost of getting a similar (substitute) item elsewhere</li></ul><ul id="41a8ac6a-aab1-8098-b0f7-d440eb4b898a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>supply</strong> - in real estate, the amount of properties that are vacant or are available for sale or rent</li></ul><ul id="41a8ac6a-aab1-8078-8f35-fce963da514c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>value</strong> - an estimate of monetary worth</li></ul><p id="41a8ac6a-aab1-80f5-b4fa-d978b41d4353" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41a8ac6a-aab1-8076-a015-e8561c6c429f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Physical Characteristics of Real Estate</strong><ul id="41a8ac6a-aab1-80ef-a420-c50f1bb41e6a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immobility:</strong> can&#x27;t be moved</li></ul><ul id="41a8ac6a-aab1-80b1-972f-e63fb9669412" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Durability (indestructibility):</strong> can&#x27;t be destroyed</li></ul><ul id="41a8ac6a-aab1-80e3-a003-e04d33a8f398" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Uniqueness (non-homogeneity): </strong>no two parcels the same</li></ul></li></ul><ul id="41a8ac6a-aab1-8077-bc4e-c1fbdc06e63f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Characteristics of Real Estate</strong><figure id="41a8ac6a-aab1-8091-a55b-e5f04865cebf" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg"/></a></figure></li></ul><ul id="41a8ac6a-aab1-805f-b578-c562271ad174" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Characteristics of Value (DUST)</strong><ul id="41a8ac6a-aab1-80f1-8c3c-cc1d384b67a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>D</strong>emand: People want the property.</li></ul><ul id="41a8ac6a-aab1-808b-81dc-d3f1ba8d27d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>U</strong>tility: The property can be used.</li></ul><ul id="41a8ac6a-aab1-80f7-9f78-f9c395fe71db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>S</strong>carcity: Less available property means it&#x27;s worth more.</li></ul><ul id="41a8ac6a-aab1-8093-9c21-df0714b10a71" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>T</strong>ransferability: Property must be able to be sold to be of value.</li></ul></li></ul><ul id="41a8ac6a-aab1-80f6-8f40-d331215f850d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Value, Price, and Cost</strong><ul id="41a8ac6a-aab1-8019-9467-d460ad847122" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Value</strong>, specifically <strong>market value</strong>, is the price for which a property will theoretically sell under typical conditions.</li></ul><ul id="41a8ac6a-aab1-8018-9734-d961ee4bf2eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Price</strong> is the amount a ready, willing, and able buyer agrees to pay (and a seller agrees to accept) for a property.</li></ul><ul id="41a8ac6a-aab1-8089-a1eb-e60d2ee41293" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cost</strong> is the amount of money required to buy, build, or develop something. It&#x27;s not taking much context into consideration, only the literal cost of acquiring or making something.</li></ul></li></ul><ul id="41a8ac6a-aab1-80e0-9ad5-fd0b9677c045" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Value</strong><figure id="41a8ac6a-aab1-8091-a1f0-f918c1873c25" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TypesOfValue.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TypesOfValue.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TypesOfValue.png"/></a></figure></li></ul><ul id="41a8ac6a-aab1-8098-9bd7-fbde1df3d49e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Supply and Demand</strong><ul id="41a8ac6a-aab1-8051-99a9-ffb7d2e1ee60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supply</strong> is determined by looking at the number of properties that are available for sale or rent.</li></ul><ul id="41a8ac6a-aab1-80ac-b2dd-ca35753a39b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Demand</strong> tells us how many consumers are willing and able to afford property.</li></ul></li></ul><ul id="41a8ac6a-aab1-80ee-8814-efa725d75670" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Relationship Between Supply, Demand, and Price</strong><ul id="41a8ac6a-aab1-8013-b816-d5e9da47997d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">As the demand for real estate rises, supply will decrease. <strong>When demand is high and supply is low, property becomes more valuable and prices rise.</strong></li></ul><ul id="41a8ac6a-aab1-8089-be37-c965a3d47397" class="bulleted-list" dir="auto"><li style="list-style-type:circle">On the other hand, if the demand for real estate falls, supply will increase. <strong>When demand is low and supply is high, prices fall. </strong>As demand increases, the prices increase, and as demand decreases, the prices decrease.</li></ul></li></ul><p id="41a8ac6a-aab1-8056-aa89-f11d8af4c0cb" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

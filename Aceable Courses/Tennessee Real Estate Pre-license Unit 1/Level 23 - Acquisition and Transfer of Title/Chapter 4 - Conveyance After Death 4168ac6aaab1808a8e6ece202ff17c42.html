@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Conveyance After Death</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-808a-8e6e-ce202ff17c42" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Conveyance After Death</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41c8ac6a-aab1-805c-a24e-fefca3488b93" class="column-list" data-notion-column-list="" dir="auto"><div id="41c8ac6a-aab1-80da-b00e-c2362987eb2b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41c8ac6a-aab1-80b6-992f-c2f57328cfc0" class="" dir="auto"><strong>Transfer of a Deceased Person&#x27;s Property &amp; Wills Overview</strong></p><ul id="41c8ac6a-aab1-800b-8032-c907341cfbe6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Will (Last Will and Testament):</strong> A legal instrument made by an individual to voluntarily direct how title to their property will be conveyed after their death.</li></ul><ul id="41c8ac6a-aab1-80a0-be41-efe35d737388" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Amendatory Instrument:</strong> Because a will can be modified or revoked at any time while the maker is alive, it is referred to as an <strong>amendatory instrument</strong>.</li></ul><ul id="41c8ac6a-aab1-8042-9ebe-feaa25d47120" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Hereditament:</strong> Any property—whether <strong>real property</strong> or <strong>personal property</strong>—capable of being inherited and distributed via a will.</li></ul><ul id="41c8ac6a-aab1-806a-972c-d60e49a34883" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Testate vs. Intestate:</strong><ul id="41c8ac6a-aab1-8034-8279-ca6413b73b82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Testate:</strong> Dying <strong>with</strong> a valid will directing how property will be distributed.</li></ul><ul id="41c8ac6a-aab1-8075-badb-f729f02065f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Intestate:</strong> Dying <strong>without</strong> a valid will; the decedent&#x27;s real and personal property passes to statutory heirs under state <strong>intestate succession laws</strong> (laws of descent and distribution).</li></ul></li></ul><ul id="41c8ac6a-aab1-80ac-b163-e783db650d9b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parties &amp; Property Terminology in a Will</strong><table id="41c8ac6a-aab1-8018-a39a-d4cdf45a9eb8" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8042-8ca8-e409dc12ce1d" dir="ltr"><td id="[\w^" class=""><strong>Term</strong></td><td id="Dv{O" class=""><strong>Role / Property Type</strong></td><td id="Cx[=" class=""><strong>Definition &amp; Example</strong></td></tr><tr id="41c8ac6a-aab1-80cb-85cb-da8cdc158b7e" dir="ltr"><td id="[\w^" class=""><strong>Testator</strong> <em>(Maker / Devisor)</em></td><td id="Dv{O" class="">Will creator</td><td id="Cx[=" class="">The person who executes a will directing how their estate is distributed after death.</td></tr><tr id="41c8ac6a-aab1-805d-b357-dc251992f141" dir="ltr"><td id="[\w^" class=""><strong>Beneficiary / Heir</strong></td><td id="Dv{O" class="">Recipient under a will</td><td id="Cx[=" class="">A person or entity named in the will to receive estate assets.</td></tr><tr id="41c8ac6a-aab1-80e6-a90d-cd3b874007a8" dir="ltr"><td id="[\w^" class=""><strong>Legacy (Bequest) &amp; Legatee</strong></td><td id="Dv{O" class=""><strong>Personal property</strong></td><td id="Cx[=" class="">A gift of personal property left by will (e.g., a diamond ring) is a <strong>legacy</strong> or <strong>bequest</strong>; the person receiving it is a <strong>legatee</strong>.</td></tr><tr id="41c8ac6a-aab1-806f-b578-f3a128ad02b1" dir="ltr"><td id="[\w^" class=""><strong>Devise &amp; Devisee</strong></td><td id="Dv{O" class=""><strong>Real property</strong></td><td id="Cx[=" class="">A gift of real property left by will is a <strong>devise</strong>; the person receiving the real property is a <strong>devisee</strong>.</td></tr></tbody></table></li></ul><ul id="41c8ac6a-aab1-805d-b309-f6abc7d0eed3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Will vs. Deed: Key Legal Difference</strong><ul id="41c8ac6a-aab1-80c1-8d1f-e195a48051b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deed:</strong> Conveys a <strong>present ownership interest</strong> in real estate during the <strong>lifetime</strong> of the grantor.</li></ul><ul id="41c8ac6a-aab1-8097-a441-e5ebd9e6eb4a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Will:</strong> Conveys <strong>no ownership interest</strong> until <strong>after the death</strong> of the testator (and can be altered or revoked at any time prior to death).</li></ul></li></ul><ul id="41c8ac6a-aab1-8031-b4b0-f050dc02a4a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Requirements &amp; Execution Rules for a Valid Will</strong><ul id="41c8ac6a-aab1-80c2-99df-de6c69cf1458" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Competent Testator:</strong> The testator must be a legal adult of sound mind at the time the will is executed and signed.</li></ul><ul id="41c8ac6a-aab1-80d1-a016-e996dfa35855" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voluntary Act:</strong> Must be drawn and signed freely without duress, fraud, or undue influence from others.</li></ul><ul id="41c8ac6a-aab1-8025-bcde-e6e2b0ef0d11" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lawful Execution:</strong> Must be prepared and executed in compliance with the laws of the <strong>state where the real estate is located</strong>.</li></ul><ul id="41c8ac6a-aab1-800c-b606-cee5472bf9b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Titled:</strong> Must be formally entitled <strong>&quot;Last Will and Testament.&quot;</strong></li></ul><ul id="41c8ac6a-aab1-807c-adfd-e67b38b42a43" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disinterested Witnesses:</strong> Witnesses to the signing of the will should be <strong>disinterested parties</strong>—meaning they are <strong>not named as devisees or legatees</strong> in the will—to avoid conflicts of interest or invalidation of gifts.</li></ul><ul id="41c8ac6a-aab1-8073-9178-f96d3f9ed1c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Codicils (Amendments):</strong> Formal written modifications or additions made to an existing will after its initial execution (must be executed with the same legal formalities as the original will).</li></ul><ul id="41c8ac6a-aab1-80dc-adca-ed4a260d82c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Passage of Title &amp; Probate:</strong> Legally, a decedent&#x27;s title to real estate passes immediately upon death either to the devisees named in the will or to statutory heirs by descent; however, <strong>probate</strong> is required to formally validate the will, settle creditor claims, clear title for future buyers, or resolve disputes among devisees.</li></ul></li></ul><ul id="41c8ac6a-aab1-80ac-b10d-e07582eb9c6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Types of Wills</strong><table id="41c8ac6a-aab1-807a-ab71-f5de4f9535c8" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8050-813c-e596853b8c32" dir="ltr"><td id="L?vk" class=""><strong>Type of Will</strong></td><td id="^~nb" class=""><strong>Format &amp; Execution Requirements</strong></td><td id="\MxB" class=""><strong>Recognition &amp; Tennessee Rules</strong></td></tr><tr id="41c8ac6a-aab1-80d7-a6a9-f1f1c75d99be" dir="ltr"><td id="L?vk" class=""><strong>Formal (Witnessed) Will</strong></td><td id="^~nb" class="">Typed out (or on a preprinted form) and signed by the testator plus <strong>at least two witnesses</strong>.</td><td id="\MxB" class="">Recognized by <strong>all states and courts</strong>; offers the strongest legal protection against challenges.</td></tr><tr id="41c8ac6a-aab1-80d2-b835-f7dea84480aa" dir="ltr"><td id="L?vk" class=""><strong>Holographic Will</strong></td><td id="^~nb" class=""><strong>Entirely handwritten</strong>, dated, and signed <strong>solely by the testator</strong> without witnesses <em>(cannot be typed)</em>.</td><td id="\MxB" class=""><strong>Recognized in Tennessee</strong> <em>(must be proved by witnesses familiar with the testator&#x27;s handwriting)</em>, though not recommended as a first choice because it is more vulnerable to fraud and heir challenges.</td></tr><tr id="41c8ac6a-aab1-800f-8b7d-e9abdda86bdc" dir="ltr"><td id="L?vk" class=""><strong>Oral Will</strong> <em>(Nuncupative / Deathbed Will)</em></td><td id="^~nb" class="">Spoken <strong>verbally</strong> by a person directly before their death (in imminent peril of death).</td><td id="\MxB" class="">Recognized by only some states due to high risk of error and fraud; <strong>Tennessee DOES recognize nuncupative wills</strong> <em>(subject to strict statutory limits, such as two disinterested witnesses and caps on personal property value)</em>.</td></tr></tbody></table></li></ul><ul id="41c8ac6a-aab1-80a0-90eb-c0aa922894da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Probate Proceedings (Surrogate Court)</strong><ul id="41c8ac6a-aab1-80ca-9ec2-e4e46ccc12cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The formal court-supervised legal process used to determine the validity of a will, inventory and establish the decedent&#x27;s assets, settle debts, and determine who legally inherits the estate.</li></ul><ul id="41c8ac6a-aab1-802c-85da-e819edbba87d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Name:</strong> Probate court is also known as <strong>surrogate court</strong>.</li></ul><ul id="41c8ac6a-aab1-80d4-8fbb-dc842be38e5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When Probate May Be Unnecessary:</strong> Probate is not always required, particularly in straightforward estates, when assets pass automatically outside of probate (such as joint tenancy with right of survivorship, tenancy by the entirety, or payable-on-death accounts), or when the estate qualifies under small-estate procedures.</li></ul></li></ul><ul id="41c8ac6a-aab1-80ef-b546-e5d91b862e68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Probate Works: Initiation, Outcomes &amp; Creditor Priority</strong><ul id="41c8ac6a-aab1-809a-8a4e-d494fdedca44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Starting Probate:</strong><ul id="41c8ac6a-aab1-8074-846c-df7ec1b084c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">The custodian of the will, an heir, or another interested party files a petition presenting the will/issue to the probate court.</li></ul><ul id="41c8ac6a-aab1-80ba-bd24-d3b394980ebb" class="bulleted-list" dir="auto"><li style="list-style-type:square">The court holds a hearing to verify the will&#x27;s validity (or establish the statutory order of descent if no valid will exists) and hears any statutory life estate or spousal claims—including <strong>dower/curtesy rights</strong>, <strong>elective share</strong>, and <strong>homestead law</strong> protections.</li></ul></li></ul><ul id="41c8ac6a-aab1-809b-bc10-c9946162869b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Probate Outcomes:</strong><ul id="41c8ac6a-aab1-809c-9d08-ebee2a745c79" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>If the will is upheld:</strong> Estate assets are distributed in accordance with the terms of the will.</li></ul><ul id="41c8ac6a-aab1-8008-9cd2-cadcad91239a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>If the will is declared invalid (or too much time has passed since death):</strong> The decedent is treated as having died intestate, and all property passes according to state <strong>laws of descent and distribution</strong>.</li></ul></li></ul><ul id="41c8ac6a-aab1-80fa-9b96-d364977347df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Mandatory Creditor Priority Rule:</strong><ul id="41c8ac6a-aab1-80e9-800d-d8890f5873b6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regardless of whether the will is ruled valid or invalid, <strong>all valid creditors and lienors must be paid off first</strong> from estate assets before any remaining property or funds are distributed to heirs or devisees.</li></ul><figure id="41c8ac6a-aab1-80a6-aeab-d3cf46396d3a" class="image" data-notion-image="Chapter%204%20-%20Conveyance%20After%20Death/image.png" dir="ltr"><a href="Chapter%204%20-%20Conveyance%20After%20Death/image.png"><img style="width:480px" src="Chapter%204%20-%20Conveyance%20After%20Death/image.png"/></a></figure></li></ul></li></ul><ul id="41c8ac6a-aab1-8040-b956-f6fdb6d7335a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Probate People (Estate Administration Roles)</strong><table id="41c8ac6a-aab1-8051-8539-ef1624d7d3ee" class="simple-table" dir="ltr"><tbody><tr id="41c8ac6a-aab1-8007-b0b2-ccb29684d55f" dir="ltr"><td id="`bpE" class=""><strong>Role / Party</strong></td><td id="]kSz" class=""><strong>How Appointed &amp; Primary Responsibilities</strong></td></tr><tr id="41c8ac6a-aab1-808e-b184-e23bde4169a7" dir="ltr"><td id="`bpE" class=""><strong>Executor</strong> <em>(Executrix — antiquated female term / Personal Representative)</em></td><td id="]kSz" class="">Named directly in the decedent&#x27;s <strong>will</strong> to carry out its instructions, inventory estate assets, settle valid debts, and disburse remaining property to beneficiaries.</td></tr><tr id="41c8ac6a-aab1-8073-b46d-d4eb566e3f70" dir="ltr"><td id="`bpE" class=""><strong>Administrator</strong> <em>(Personal Representative)</em></td><td id="]kSz" class="">Appointed by the <strong>probate court</strong> when a decedent dies <strong>intestate</strong> (without a will) or when no executor is named/able to serve; oversees estate administration and statutory distribution.</td></tr><tr id="41c8ac6a-aab1-8081-b8e1-e688ea419c07" dir="ltr"><td id="`bpE" class=""><strong>Lienors and Creditors</strong></td><td id="]kSz" class="">Parties holding valid liens or unpaid debts against the decedent; regardless of whether the decedent died <strong>testate or intestate</strong>, all legitimate creditor and lienor claims must be settled <strong>first</strong>—according to <strong>lien priority rules</strong>—before any property is distributed to heirs or devisees.</td></tr></tbody></table></li></ul><ul id="41c8ac6a-aab1-809e-82ab-d02d65329f2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Intestate Probate Proceedings (Dying Without a Will)</strong><ul id="41c8ac6a-aab1-80fc-a775-c7df54dc18e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Rule:</strong> When a person dies <strong>intestate</strong>, title to their real estate and personal property passes by operation of law to their legal heirs in accordance with state <strong>laws of descent and distribution</strong>—only <strong>after</strong> all valid lienors and creditors are paid off.</li></ul><ul id="41c8ac6a-aab1-802f-9d86-d33d4ec74c35" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Rules of Descent and Distribution:</strong><ol type="1" id="41c8ac6a-aab1-801a-85bf-d6c7ea23134f" class="numbered-list" start="1" dir="auto"><li><strong>Surviving Spouse and Children:</strong> The estate is divided among the surviving spouse and children, with the surviving spouse guaranteed <strong>at least one-third (1/3)</strong> of the estate (or a child&#x27;s share, whichever is greater).</li></ol><ol type="1" id="41c8ac6a-aab1-8030-a3a3-f844516381c8" class="numbered-list" start="2" dir="auto"><li><strong>No Known Heirs:</strong> If no legal heirs exist, all real and personal property reverts to the <strong>state</strong> <em>(whereas in some other states, property reverts to the county)</em>.</li></ol><ol type="1" id="41c8ac6a-aab1-8031-a952-efdf6629168d" class="numbered-list" start="3" dir="auto"><li><strong>Custodial State Policy:</strong> Tennessee is a <strong>custodial state</strong>, meaning the state makes every reasonable effort to locate any heirs or distant relatives of the deceased before exercising its power of escheat.</li></ol></li></ul></li></ul><ul id="41c8ac6a-aab1-8001-a399-d96efd339cf0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Avoiding Probate via Survivorship &amp; Escheat as a Last Resort</strong><ul id="41c8ac6a-aab1-8059-bf1e-f01a9600222a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Joint Tenancy &amp; Survivorship in Tennessee:</strong><ul id="41c8ac6a-aab1-8069-9ea8-d5ca566a040b" class="bulleted-list" dir="auto"><li style="list-style-type:square">In Tennessee, <strong>joint tenancy with right of survivorship</strong> <em>(alongside tenancy by the entirety)</em> is available for <strong>married couples</strong>, allowing a surviving spouse to automatically inherit full ownership of the property <strong>outside of probate</strong>—even if the deceased spouse died intestate.</li></ul></li></ul><ul id="41c8ac6a-aab1-804e-b148-d374bbc37ba6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Escheat (Last Resort):</strong><ul id="41c8ac6a-aab1-8012-8032-fd9248806028" class="bulleted-list" dir="auto"><li style="list-style-type:square">If no creditor claims consume the property and <strong>absolutely no living relatives or heirs</strong> can be found after exhaustive search efforts, the property <strong>escheats (reverts) to the state</strong> as a final resort so land never becomes ownerless.</li></ul></li></ul><figure id="41c8ac6a-aab1-80fe-acfe-f2d69959f228" class="image" data-notion-image="Chapter%204%20-%20Conveyance%20After%20Death/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Conveyance%20After%20Death/image%201.png"><img style="width:480px" src="Chapter%204%20-%20Conveyance%20After%20Death/image%201.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-8015-a484-d7e17dcb94b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>With &amp; Without a Will</strong><figure id="41c8ac6a-aab1-80ce-9d01-d71ef13502cb" class="image" data-notion-image="Chapter%204%20-%20Conveyance%20After%20Death/image%202.png" dir="ltr"><a href="Chapter%204%20-%20Conveyance%20After%20Death/image%202.png"><img style="width:480px" src="Chapter%204%20-%20Conveyance%20After%20Death/image%202.png"/></a></figure></li></ul><ul id="41c8ac6a-aab1-8068-ad72-e8827a0d004c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conveyance After Death</strong><figure id="41c8ac6a-aab1-803a-b405-e35501ea49a7" class="image" data-notion-image="Chapter%204%20-%20Conveyance%20After%20Death/image%203.png" dir="ltr"><a href="Chapter%204%20-%20Conveyance%20After%20Death/image%203.png"><img style="width:480px" src="Chapter%204%20-%20Conveyance%20After%20Death/image%203.png"/></a></figure></li></ul><p id="41c8ac6a-aab1-80c0-9a71-fd90f0730cf3" class="" dir="auto">
+</p></div><div id="41c8ac6a-aab1-801e-a6dd-ffbd3c155994" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="41c8ac6a-aab1-8019-9633-db8b50d493ba" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41c8ac6a-aab1-804a-95db-c8abb57d9bfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>intestate</strong> - the name for conditions in which the owner of a property dies without having left a valid will</li></ul><ul id="41c8ac6a-aab1-8065-8d9f-cff8b75d1ae3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>testate</strong> - the name for conditions in which the owner of a property dies having left a valid will</li></ul><ul id="41c8ac6a-aab1-806e-8334-dfce87cacc9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>testator</strong> - the party who makes a will</li></ul><ul id="41c8ac6a-aab1-80b1-83ee-df256ad76e45" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>will</strong> - a written or verbal legal statement by an owner (testator) that prescribes the method of distribution of the owner&#x27;s estate to heirs</li></ul><p id="41c8ac6a-aab1-805d-95dc-e3c3c0c4026e" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41c8ac6a-aab1-80d6-8e5e-ef8648b86322" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Intestate vs. Testate</strong><ul id="41c8ac6a-aab1-80fd-aac1-e26db0f5e96d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Intestate</strong> is the name for conditions in which the owner of a property dies without having left a valid will.</li></ul><ul id="41c8ac6a-aab1-801b-8bed-cc3b15893592" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Testate</strong> is the name for conditions in which the owner of a property dies having left a valid will.</li></ul></li></ul><ul id="41c8ac6a-aab1-80ba-80c6-ccffdf1e8003" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Kinds of Wills</strong><ul id="41c8ac6a-aab1-8061-9c46-fae25cf234ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Formal will:</strong> created by a lawyer, signed by two witnesses (recognized everywhere)</li></ul><ul id="41c8ac6a-aab1-8035-91ef-fa7b5dccc77c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Holographic will:</strong> created by the testator, handwritten, dated, and signed, not witnessed</li></ul><ul id="41c8ac6a-aab1-8067-9de3-e1ea4ea11ed3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nuncupative (oral) will:</strong> created verbally by the testator, told to a witness before dying</li></ul></li></ul><ul id="41c8ac6a-aab1-8076-8b24-ecfad7845f54" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Executor and Administrator</strong><ul id="41c8ac6a-aab1-8006-94c4-e4f229925d4d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An <strong>executor</strong> is a person identified in a will to carry out its provisions, including the disbursement of property.</li></ul><ul id="41c8ac6a-aab1-80e4-8511-fc1336dfa454" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If no executor was named in the will, the court appoints an <strong>administrator</strong> – also known as a <em>personal representative</em> – to oversee the administration and distribution of the estate.</li></ul></li></ul><ul id="41c8ac6a-aab1-8068-afc3-c7fc242a7c68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conveyance After Death</strong></li></ul><figure id="41c8ac6a-aab1-809b-a896-c95f0233b10f" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/ConveyanceAfterDeath_DecisionTree.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/ConveyanceAfterDeath_DecisionTree.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/ConveyanceAfterDeath_DecisionTree.jpg"/></a></figure><p id="41c8ac6a-aab1-8026-a79a-ca35be0246bd" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

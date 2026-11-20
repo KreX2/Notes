@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - The Practice of Appraisal</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-80e5-a5bc-cfa6c137f1cd" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>The Practice of Appraisal</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41b8ac6a-aab1-80a5-81b4-cd7dd70dcfb1" class="column-list" data-notion-column-list="" dir="auto"><div id="41b8ac6a-aab1-8053-9f9a-e2a52b7a794c" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41b8ac6a-aab1-8025-8a97-e07c0ef3ac8c" class="" dir="auto">What Is an Appraisal?</p><ul id="41b8ac6a-aab1-8010-87a2-c0db6aac1eaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Definition:</strong> An appraisal is an <strong>impartial, licensed or certified appraiser&#x27;s written opinion of the value</strong> of a specific property as of a <strong>specific date</strong>, supported by relevant market data.</li></ul><ul id="41b8ac6a-aab1-801b-a5e4-f88831032f45" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why It Is an &quot;Opinion&quot;:</strong> Because there is no single, absolute dollar figure everyone would assign to a property, even qualified appraisers can reach slightly different conclusions. An appraisal is an educated, data-driven estimate informed by current market research, professional experience, and judgment—considering the nature, quality, and utility of an identified real estate interest.</li></ul><ul id="41b8ac6a-aab1-8020-b440-ea67c3c313c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deal Impact:</strong> Because financing hinges on the appraised value, receiving the appraisal report is often one of the highest-stakes steps in a transaction and can make or break a deal.</li></ul><ul id="41b8ac6a-aab1-8077-885c-d3d71a637791" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Appraisal vs. Valuation vs. Evaluation<table id="41b8ac6a-aab1-8005-b42a-f21856b4d369" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80b9-a5bc-eb19aa547c95" dir="ltr"><td id="Ddhu" class=""><strong>Method</strong></td><td id="cpnT" class=""><strong>Who Performs It</strong></td><td id="U?TE" class=""><strong>Core Focus &amp; Output</strong></td></tr><tr id="41b8ac6a-aab1-80be-a984-f4dc745b663d" dir="ltr"><td id="Ddhu" class=""><strong>Appraisal</strong></td><td id="cpnT" class=""><strong>Licensed or certified appraiser only</strong></td><td id="U?TE" class="">An official, impartial opinion of a property&#x27;s market value on a specific date, backed by market research.</td></tr><tr id="41b8ac6a-aab1-8093-9637-dc2ef70bac56" dir="ltr"><td id="Ddhu" class=""><strong>Valuation</strong></td><td id="cpnT" class="">Real estate licensees (agents/brokers) or non-appraisers</td><td id="U?TE" class="">An estimate of property value on a given date (e.g., a <strong>Comparative Market Analysis [CMA]</strong>); does <strong>not</strong> require an appraiser&#x27;s license.</td></tr><tr id="41b8ac6a-aab1-8081-b954-dbf46b1cbd0d" dir="ltr"><td id="Ddhu" class=""><strong>Evaluation</strong></td><td id="cpnT" class="">Analysts, consultants, developers, or licensees</td><td id="U?TE" class="">A study of a property&#x27;s <strong>usefulness or utility</strong> (past, present, and future highest and best use) rather than assigning a dollar value estimate.</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-80ee-a5b9-e2d149c717dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Appraisal Reports &amp; Transaction Roles<ul id="41b8ac6a-aab1-80e0-8a9a-c2ac5856ce3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Appraisal Report:</strong> The formal written document summarizing the appraiser&#x27;s value conclusion and supporting market data, typically ordered during the <strong>mortgage origination process</strong>.</li></ul><ul id="41b8ac6a-aab1-8085-9116-ddc07ec7d134" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payment &amp; Appraiser Selection:</strong><ul id="41b8ac6a-aab1-8094-b593-e9da1f603238" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Who Pays:</strong> Usually paid for by the <strong>buyer</strong> (often included in closing costs).</li></ul><ul id="41b8ac6a-aab1-8083-b1ba-cd638e44b283" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Who Chooses:</strong> Usually selected by the <strong>mortgage lender</strong> (rather than the buyer or seller) to prevent bias and ensure an objective valuation before lending funds.</li></ul><ul id="41b8ac6a-aab1-80b9-a2f9-c18f39e829cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Conflict-of-Interest Rule:</strong> Although lenders select the appraiser, it is <strong>illegal for a lender to be affiliated with the appraiser</strong> (to preserve independence and prevent conflicts of interest).</li></ul></li></ul><ul id="41b8ac6a-aab1-80ac-858d-c089753ec5ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why the Report Matters to Every Party:</strong><ul id="41b8ac6a-aab1-806a-9fc3-ec56fbcf569f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller:</strong> Confirms how much they can realistically charge and support in the market.</li></ul><ul id="41b8ac6a-aab1-805d-888f-f711f66ff207" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer:</strong> Verifies they are paying a fair market price and not overpaying.</li></ul><ul id="41b8ac6a-aab1-80c6-b2a7-eb2a6941c045" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lender:</strong> Ensures the collateral is worth enough to secure the mortgage loan without over-lending.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-809b-af20-f149203d371e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Property Types That Can Be Appraised<ul id="41b8ac6a-aab1-8026-848a-f6767a1b361c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Appraisals are not limited to residential houses—they are performed across virtually all categories of real property, particularly whenever financing is involved:</li></ul><ul id="41b8ac6a-aab1-80dc-930f-ffec3fae1d1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Residential:</strong> Single-family homes, condominiums, and multifamily apartment buildings</li></ul><ul id="41b8ac6a-aab1-80e8-9b86-d463ccbdd9b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commercial &amp; Retail:</strong> Office buildings, shopping centers, and general commercial properties</li></ul><ul id="41b8ac6a-aab1-807f-9f72-c8e0453145cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agricultural:</strong> Farms and rural land</li></ul></li></ul><ul id="41b8ac6a-aab1-8000-88f1-d26c5fbf8986" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Common Situations Requiring an Appraisal<ul id="41b8ac6a-aab1-80cd-a120-e0f388b9d8c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Beyond standard mortgage financing, appraisals are routinely ordered for a wide range of legal, financial, and governmental purposes:</li></ul><ul id="41b8ac6a-aab1-804c-a40b-d0f4f0eea49f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sales &amp; Lending:</strong> Any real estate sale, and mortgage lending (especially government-backed loans such as FHA or VA loans)</li></ul><ul id="41b8ac6a-aab1-8051-a8a4-e14642681fb3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Leasing &amp; Investing:</strong> Establishing market rental rates for leased properties and determining investment values</li></ul><ul id="41b8ac6a-aab1-808c-89af-fedbd8d2bf0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Government &amp; Taxation:</strong> Government property acquisitions (such as eminent domain/condemnation) and property tax assessment appeals</li></ul><ul id="41b8ac6a-aab1-80a1-a0cd-cc8655916193" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risk Management:</strong> Acquiring property insurance coverage</li></ul></li></ul><ul id="41b8ac6a-aab1-8081-95c5-ca7144afdd14" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Value of Collateral &amp; Loan-to-Value Ratio (LTV)<ul id="41b8ac6a-aab1-80d4-8be1-d5e75c739fdc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Collateral Value Matters:</strong><ul id="41b8ac6a-aab1-803c-8cae-df6fbd168926" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Collateral:</strong> Property pledged as security by a borrower to guarantee repayment and protect a lender&#x27;s investment.</li></ul><ul id="41b8ac6a-aab1-809f-8e65-dce8a4f3c4ea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Underwriting Protection:</strong> Even if a borrower has strong credit and income, a loan underwriter must verify the property&#x27;s appraised value—if the borrower defaults and the lender must foreclose, selling the collateral may be the lender&#x27;s only way to recover the unpaid loan balance.</li></ul></li></ul><ul id="41b8ac6a-aab1-8079-bdd4-e1e1d797ff5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan-to-Value Ratio (LTV):</strong><ul id="41b8ac6a-aab1-8064-8908-da05056eb085" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Concept:</strong> Compares the loan amount to the property&#x27;s appraised value (or purchase price, whichever is lower).</li></ul><ul id="41b8ac6a-aab1-802f-90cf-fda2b5fd3243" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Formula:</strong> <code>Loan Amount ÷ Appraised Value = Loan-to-Value Ratio (LTV)</code></li></ul><ul id="41b8ac6a-aab1-802c-9a1a-c0c07219fc48" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Risk Relationship:</strong> The higher the LTV (meaning a smaller equity gap between the loan balance and the property&#x27;s appraised value), the greater the lender&#x27;s risk of financial loss if foreclosure becomes necessary. Because LTV relies directly on an accurate valuation of the collateral, a valid appraisal is essential to mortgage lending.</li></ul><figure id="41b8ac6a-aab1-808f-bbb3-cd309303936e" class="image" data-notion-image="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image.png" dir="ltr"><a href="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image.png"><img style="width:336px" src="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-80b8-ae87-fff1d152ca10" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraiser Regulation &amp; Federal Oversight (FIRREA)</strong><ul id="41b8ac6a-aab1-80df-9b9d-c65c7dcdfbc9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FIRREA (Financial Institutions Reform, Recovery, and Enforcement Act):</strong> Established the first federal oversight of the appraisal profession and mandates that states regulate and license appraisers—preventing anyone from calling themselves an appraiser without a valid license.</li></ul><ul id="41b8ac6a-aab1-8047-b30d-c949229047fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Appraisal Foundation:</strong> Officially recognized by FIRREA as the nonprofit authority (composed of major appraisal organizations) that establishes professional standards and licensing qualifications to guide state regulation.</li></ul><ul id="41b8ac6a-aab1-8081-969f-d36df8c9ff78" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Governing Boards &amp; Subcommittee:</strong><table id="41b8ac6a-aab1-80a7-b4d6-f8a6948352ec" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80f3-8e8a-dc22ccdbb65a" dir="ltr"><td id="HmCV" class=""><strong>Oversight Body</strong></td><td id="N:@h" class=""><strong>Core Function &amp; Responsibilities</strong></td></tr><tr id="41b8ac6a-aab1-80d4-8ab4-fdd32c340964" dir="ltr"><td id="HmCV" class=""><strong>Appraiser Qualifications Board (AQB)</strong></td><td id="N:@h" class="">Establishes <strong>minimum licensing standards</strong> used by states, including mandatory training, examinations, and trainee registration.</td></tr><tr id="41b8ac6a-aab1-8011-9d1a-c4c3d3d66b4a" dir="ltr"><td id="HmCV" class=""><strong>Appraisal Standards Board (ASB)</strong></td><td id="N:@h" class="">Sets standards for <strong>actual appraisals</strong> by developing, interpreting, and amending <strong>USPAP</strong>.</td></tr><tr id="41b8ac6a-aab1-8034-b70d-e01cca156199" dir="ltr"><td id="HmCV" class=""><strong>Appraisal Subcommittee (ASC)</strong></td><td id="N:@h" class="">Monitors state-regulated appraisers to ensure compliance and maintains a <strong>searchable national database</strong> verifying whether an appraiser&#x27;s credential is active, suspended, revoked, or surrendered due to disciplinary action.</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-809f-86c9-f501533f8755" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Uniform Standards of Professional Appraisal Practice (USPAP)</strong><ul id="41b8ac6a-aab1-8039-b9d1-e26d66b9bc08" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Definition:</strong> Adopted by Congress in <strong>1989</strong>, USPAP is the generally recognized set of <strong>ethical and performance standards</strong> for the U.S. appraisal profession (covering real estate, personal property, business, and mass appraisal).</li></ul><ul id="41b8ac6a-aab1-8042-874f-dbffa49b8913" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Update Cycle:</strong> Updated <strong>every two years</strong> to ensure appraisers deliver unbiased, well-supported opinions of value.</li></ul><ul id="41b8ac6a-aab1-8013-b346-d6ca9f9c20a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federally Related Real Estate Transactions:</strong> Compliance with USPAP is legally mandatory for state-licensed and state-certified appraisers working on <strong>federally related transactions</strong>—any real estate transaction involving federal agencies or government-sponsored enterprises (such as <strong>FHA, VA, Fannie Mae, or Freddie Mac</strong>).</li></ul></li></ul><ul id="41b8ac6a-aab1-808d-9fdf-c55c0db1edfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Who Are Real Estate Appraisers? &amp; Tennessee Classifications</strong><ul id="41b8ac6a-aab1-80ab-b771-c728ee08710f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role &amp; Competence Rule:</strong> An appraiser is an individual legally authorized to perform formal property valuations, drawing on skills akin to a broker, surveyor, economist, and accountant. However, an appraiser must never undertake any assignment for which they lack the required education, license, or certification.</li></ul><ul id="41b8ac6a-aab1-8092-908f-fd99d4d295b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Licensing Rule:</strong> It is legal to hold both a <strong>real estate license</strong> and an <strong>appraiser license/certification</strong>, provided the licensee strictly avoids any <strong>conflict of interest</strong> in their professional work.</li></ul><ul id="41b8ac6a-aab1-80df-9201-dbef4f7c17fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Appraiser Classifications:</strong><ul id="41b8ac6a-aab1-80b0-b17d-dcf3de80fcef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State-Registered Real Estate Appraiser Trainee</strong></li></ul><ul id="41b8ac6a-aab1-80a4-ba02-c55cbf590ab6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Licensed Real Estate Appraiser</strong></li></ul><ul id="41b8ac6a-aab1-8050-bc19-c2570cb14859" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Certified Residential Appraiser</strong></li></ul><ul id="41b8ac6a-aab1-80ff-b733-e7a2206cfc7e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Certified General Appraiser</strong></li></ul></li></ul><ul id="41b8ac6a-aab1-807b-955a-d49d604a953e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Core Licensing/Certification Requirements:</strong><ol type="1" id="41b8ac6a-aab1-805b-a6e6-d43ddcb958e9" class="numbered-list" start="1" dir="auto"><li><strong>Education:</strong> Complete required qualifying coursework through an approved appraisal program (plus college credit hours, depending on the classification).</li></ol><ol type="1" id="41b8ac6a-aab1-802f-9f26-d106760636b8" class="numbered-list" start="2" dir="auto"><li><strong>Experience:</strong> Accumulate the required supervised appraisal experience hours for the target credential.</li></ol><ol type="1" id="41b8ac6a-aab1-802a-981d-f7a17a0361be" class="numbered-list" start="3" dir="auto"><li><strong>Examination:</strong> Pass the state-approved written licensing or certification exam.</li></ol></li></ul></li></ul><ul id="41b8ac6a-aab1-80a2-b432-e8c88148444e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of the Appraisal Process</strong><ul id="41b8ac6a-aab1-80f7-aa47-dfd7b3ee6096" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To produce an official estimate of value, an appraiser researches relevant market areas, analyzes property data, and applies professional judgment across <strong>eight sequential steps</strong> (while keeping all headers formatted as bulleted points as requested).</li></ul></li></ul><ul id="41b8ac6a-aab1-80a4-8c14-d3c2cda20573" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Eight Steps of an Appraisal</strong><ul id="41b8ac6a-aab1-8016-9fa9-c6934e0b4446" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1: State the Objective</strong><ul id="41b8ac6a-aab1-80b7-98f2-fab3b8ecc3f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Defines the exact scope, purpose, and parameters of the appraisal assignment before data collection begins:<ul id="41b8ac6a-aab1-80ef-a78c-d96843f06021" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Identify the Subject Property:</strong> Provide a complete <strong>legal description</strong> of the property being evaluated.</li></ul><ul id="41b8ac6a-aab1-8040-9434-d847d1c87086" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Establish Property Rights Appraised:</strong> Specify the ownership interest being valued—most commonly <strong>fee simple ownership</strong> (full ownership), though it may involve lesser interests such as a tenant&#x27;s leasehold rights, an easement, or a right-of-way.</li></ul><ul id="41b8ac6a-aab1-80e2-9a38-c9670204e46d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>State Type of Value:</strong> Define the value sought, typically <strong>market value</strong>.</li></ul><ul id="41b8ac6a-aab1-80c7-b566-d17b447d4f6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Set the Effective Date:</strong> Establish the specific date of valuation because market conditions and property values change over time.</li></ul><ul id="41b8ac6a-aab1-8053-a7d6-f9dae8d28a57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Clarify Limitations:</strong> Document any limiting conditions or assumptions to define the scope and protect the appraiser.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8007-b22f-f67b3f2bd540" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2: List Necessary Data and Sources</strong><ul id="41b8ac6a-aab1-8064-a7f2-c94423c5bfea" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identifies which appraisal approach(es) will be used and outlines the required data sources across two categories:<ul id="41b8ac6a-aab1-80f2-9b26-d5db93492e91" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Data:</strong> Information covering the surrounding market environment, including the city, region, and neighborhood.</li></ul><ul id="41b8ac6a-aab1-8031-9d35-e62a9d9c40c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Specific Data:</strong> Information detailing the <strong>subject property</strong> itself and comparable properties.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8074-9e0f-cb575c9de39f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3: Gather, Record, and Verify Data</strong><ul id="41b8ac6a-aab1-80e5-9540-e8c878c3a7b8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Collects and verifies both general regional/economic data and detailed physical descriptions of the subject property and comparables (critical for the sales comparison approach).</li></ul><ul id="41b8ac6a-aab1-8057-9c76-ccf6525668fc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Photographic Evidence:</strong> Appraisers routinely maintain a <strong>photo journal</strong> documenting property condition to substantiate findings and resolve any post-appraisal disputes.</li></ul></li></ul><ul id="41b8ac6a-aab1-80ea-9833-fa7dde686aa8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 4: Determine the Highest and Best Use</strong><ul id="41b8ac6a-aab1-80a6-8404-d49db7dee959" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The single most profitable use of a property that is <strong>legally permissible, physically possible, financially feasible (viable), and maximally productive (produces the greatest yield)</strong>.</li></ul><ul id="41b8ac6a-aab1-8020-82af-e394d0ab2369" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Factors Analyzed:</strong> Zoning regulations, lot size, deed restrictions, physical characteristics, and alternative uses (e.g., whether a commercial building would yield more value if converted to residential use). The appraiser&#x27;s final value estimate is based on this highest and best use—even if it differs from the property&#x27;s current use.</li></ul></li></ul><ul id="41b8ac6a-aab1-80f2-9956-e485f32bace1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 5: Estimate the Land Value</strong><ul id="41b8ac6a-aab1-80e7-b562-d0242e4b2758" class="bulleted-list" dir="auto"><li style="list-style-type:square">Evaluates the <strong>land parcel separately</strong> from any buildings or site improvements by locating, adjusting, and comparing similar vacant land parcels to the subject site.</li></ul></li></ul><ul id="41b8ac6a-aab1-80f7-8182-c4ed51be6222" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 6: Estimate Value with Applicable Approaches</strong><ul id="41b8ac6a-aab1-8059-8e0e-f262b5f01b59" class="bulleted-list" dir="auto"><li style="list-style-type:square">Applies one or more formal valuation approaches (such as the Sales Comparison, Cost, or Income Approach) best suited to the property&#x27;s characteristics.</li></ul></li></ul><ul id="41b8ac6a-aab1-8086-8f48-e33ab2885585" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 7: Reconcile the Final Value Estimate</strong><ul id="41b8ac6a-aab1-80ff-bff6-edb26e259acd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reconciliation (Correlation):</strong> Combines and weighs the value indicators produced by multiple appraisal approaches into one final value conclusion.</li></ul><ul id="41b8ac6a-aab1-8025-a88b-dafe5a2573be" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Simple Averaging:</strong> The appraiser must <strong>not</strong> simply average the numbers together; instead, the appraiser assigns the greatest weight to the approach and data most relevant and reliable for the subject property.</li></ul></li></ul><ul id="41b8ac6a-aab1-80fa-8454-e7cf5d1f7be7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 8: Write and Present the Value Report</strong><ul id="41b8ac6a-aab1-8081-866c-e186517668c1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Compiles the final findings in strict compliance with <strong>USPAP standards</strong> and delivers the report to the client (written reports are the industry standard, though USPAP also permits oral reports).</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8000-9ea1-f8b1447a073a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Uniform Residential Appraisal Report (URAR)</strong><ul id="41b8ac6a-aab1-8050-8472-eabd4e02fb90" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Developed by our friends at Fannie Mae and Freddy Mac, the Uniform Residential Appraisal Report has become the standard — the report form of choice for appraisers and lenders alike.<figure id="41b8ac6a-aab1-80af-804c-eb6b974ac0ba" class="image" data-notion-image="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%201.png" dir="ltr"><a href="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%201.png"><img style="width:384px" src="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%201.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-80fc-9f98-c4f7f2077abd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Eight Steps of an Appraisal: Recap</strong><ul id="41b8ac6a-aab1-802c-936f-e25c56dfe00b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">And remember, various procedures comprise each of these eight steps, and an appraiser completes all of them (depending upon the particularities of their job, of course).<figure id="41b8ac6a-aab1-803f-8694-faed93f7015f" class="image" data-notion-image="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%202.png" dir="ltr"><a href="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%202.png"><img style="width:384px" src="Chapter%201%20-%20The%20Practice%20of%20Appraisal/image%202.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-806d-9d84-fdfd83d12d51" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraisals and Underwriting</strong><ul id="41b8ac6a-aab1-80a6-a5b3-d197b471aa2f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Underwriter Verification:</strong> Once completed, the appraisal report is sent to the mortgage lender&#x27;s underwriter to verify that the property and valuation meet all guidelines and collateral standards for the specific loan program.</li></ul><ul id="41b8ac6a-aab1-801d-a867-c2b316c20b39" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Calling for an Appraisal Review:</strong> To double-check the accuracy, completeness, and credibility of the initial report, the underwriter may order an <strong>appraisal review</strong> conducted by another qualified specialist (either an in-house reviewer or an independent third-party appraiser).</li></ul><ul id="41b8ac6a-aab1-800e-b9e7-c311b379b67d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Binding Underwriting Figure:</strong> When an appraisal review establishes a reviewed value, the lender uses the <strong>reviewer&#x27;s appraised value</strong> for final loan underwriting decisions.</li></ul></li></ul><ul id="41b8ac6a-aab1-8044-8122-dcfa023d7cab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Appraisal Reviews: Desk Review vs. Field Review</strong><ul id="41b8ac6a-aab1-8053-9a23-df9d8389a818" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depending on the loan&#x27;s risk profile, property complexity, and required level of scrutiny, an appraisal review can range from a quick office check to an on-site re-verification:<table id="41b8ac6a-aab1-80d4-90f4-e5c6ed964d31" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-805d-9a2d-d9ba52cc8c17" dir="ltr"><td id="Io\E" class=""><strong>Review Type</strong></td><td id="_BbC" class=""><strong>Who Performs It &amp; Where</strong></td><td id="g?hm" class=""><strong>Scope &amp; Typical Use Case</strong></td></tr><tr id="41b8ac6a-aab1-802d-b212-cba43ed47b24" dir="ltr"><td id="Io\E" class=""><strong>Desk Review</strong></td><td id="_BbC" class="">An in-house specialist or review appraiser working directly at their <strong>desk</strong> (without visiting the property)</td><td id="g?hm" class="">• Examines the completed appraisal report, supporting data, and local market records to confirm the form is properly filled out and the appraiser&#x27;s value conclusions are logically supported by the report&#x27;s findings.<br/><br/>• Faster and less costly than an on-site review.</td></tr><tr id="41b8ac6a-aab1-805f-b550-c8b22c2681b8" dir="ltr"><td id="Io\E" class=""><strong>Field Review</strong></td><td id="_BbC" class="">An independent <strong>third-party appraiser</strong> who conducts an <strong>on-site exterior/property inspection</strong> and verifies comparables in the field</td><td id="g?hm" class="">• Thoroughly audits the validity of the original appraiser&#x27;s physical observations, comparable selections, adjustments, and market conclusions.<br/><br/>• Requires more time and expense, so lenders typically reserve it for <strong>higher-risk loans</strong>, complex properties, or significant value discrepancies.</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-80df-8ca8-dfd0b438961b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You can explore more on how underwriting and review roles differ in <a href="https://www.youtube.com/watch?v=howVNBqMpco">QC Review vs. Appraisal Review vs. Underwriter Review</a>, which breaks down each layer of collateral quality control in mortgage lending.</li></ul></div><div id="41b8ac6a-aab1-80c8-8c9d-dd19b7c8c407" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="41b8ac6a-aab1-8098-a7ea-d184ca870ca5" class="" dir="auto"><strong>Key Term</strong></p><ul id="41b8ac6a-aab1-80d6-8306-e6c922b36043" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>highest and best use</strong> - the use of a property that is legal, physically possible, financially viable, and produces the greatest yield</li></ul><ul id="41b8ac6a-aab1-8017-91e7-f37143cee8e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Concepts &amp; Principles</strong><ul id="41b8ac6a-aab1-80cf-b5dd-daaa50a43ec6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal</strong><ul id="41b8ac6a-aab1-8082-93f9-ffa205f4716b" class="bulleted-list" dir="auto"><li style="list-style-type:square">An appraisal is an impartial, <strong>qualified appraiser&#x27;s opinion</strong> of the value of a specific property as of a specific date, supported by relevant market information. Appraisals can be used for almost any type of property, and they can be ordered for a variety of purposes.</li></ul></li></ul><ul id="41b8ac6a-aab1-8096-a386-d9354954be3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Valuation</strong><ul id="41b8ac6a-aab1-802e-bd73-e7a3b81bc5f4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Similar to an appraisal, except that a valuation <strong>does NOT have to be performed by a licensed appraiser</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-80ab-88bf-d4474e2c75ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Evaluation</strong><ul id="41b8ac6a-aab1-80ff-8f06-d00df4d1fdec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Evaluation is a statement regarding the <strong>usefulness or utility of a property</strong>, but not the value of it.</li></ul></li></ul><ul id="41b8ac6a-aab1-80bb-b5f7-e65482046692" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal Reports</strong><ul id="41b8ac6a-aab1-80f7-b19b-e8a3f9b215c1" class="bulleted-list" dir="auto"><li style="list-style-type:square">The tangible result of an appraisal is an appraisal report. This document, created by a licensed appraiser, sums up a property&#x27;s market value based on collected data.</li></ul><ul id="41b8ac6a-aab1-8063-87a4-f12598f5df33" class="bulleted-list" dir="auto"><li style="list-style-type:square">The appraisal report is usually paid for by the <strong>buyer</strong>. The appraiser who will complete the appraisal report is usually chosen by the <strong>lender</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8016-84ac-e3a2468108fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Collateral</strong><ul id="41b8ac6a-aab1-8026-ad8a-c57daa1ee02c" class="bulleted-list" dir="auto"><li style="list-style-type:square">In the event of foreclosure, the value of the collateral property may be the lender&#x27;s only means of recovering the loan amount. This makes the appraisal an important part of real estate financing.</li></ul></li></ul><ul id="41b8ac6a-aab1-80d5-950f-dc37bf12e46e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraiser Regulation and Oversight</strong><ul id="41b8ac6a-aab1-80c8-8549-cfe77bce07eb" class="bulleted-list" dir="auto"><li style="list-style-type:square">The <strong>Financial Institutions Reform, Recovery, and Enforcement Act (FIRREA)</strong> created the first federal oversight of appraisers. FIRREA mandates that states regulate and license appraisers.</li></ul><ul id="41b8ac6a-aab1-800c-9dcc-e3ec2ed9206a" class="bulleted-list" dir="auto"><li style="list-style-type:square">All appraisers are regulated by the <strong>Appraiser Qualifications Board (AQB)</strong> of the <strong>Appraisal Foundation</strong>, which was authorized by Congress to set the minimum requirements for appraisers. The <strong>Uniform Standards of Professional Appraisal Practice (USPAP)</strong> is the ethical code that appraisers in the United States must follow.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-806c-83ea-d2decc10734f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Eight Steps of an Appraisal</strong><figure id="41b8ac6a-aab1-80b9-b89a-c789c35fe5a3" class="image" data-notion-image="https://aceable-multimedia.s3-us-west-2.amazonaws.com/images/AppraisalProcessChecklist.png" dir="ltr"><a href="https://aceable-multimedia.s3-us-west-2.amazonaws.com/images/AppraisalProcessChecklist.png"><img src="https://aceable-multimedia.s3-us-west-2.amazonaws.com/images/AppraisalProcessChecklist.png"/></a></figure></li></ul><ul id="41b8ac6a-aab1-801e-ac68-c4b5e067ab8f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General and Specific Data</strong><ul id="41b8ac6a-aab1-809e-8078-ef35a5241be5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Appraisers use both general and specific data to appraise a property:</li></ul><ul id="41b8ac6a-aab1-8072-b5c5-f64e392bb9dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General data</strong> is information about <strong>the area surrounding the property</strong>. This could include the city, region, and neighborhood in which the property is situated. 🏙</li></ul><ul id="41b8ac6a-aab1-800c-b457-e31cf14b22b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specific data,</strong> on the other hand, is information regarding <strong>the property itself</strong>. 🏠</li></ul></li></ul><ul id="41b8ac6a-aab1-8028-88d2-d933070980ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Highest and Best Use</strong><ul id="41b8ac6a-aab1-80aa-ace7-fd5f2a34855d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An appraiser determines whether a property is serving its highest and best use by considering:<ul id="41b8ac6a-aab1-807f-83bc-ea5b750eda41" class="bulleted-list" dir="auto"><li style="list-style-type:square">Zoning regulations</li></ul><ul id="41b8ac6a-aab1-80a7-b181-dee1a2f056c2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Size of the lot</li></ul><ul id="41b8ac6a-aab1-8009-af5a-e131d7952d7c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Deed restrictions</li></ul><ul id="41b8ac6a-aab1-80d5-bf99-f5d470942b74" class="bulleted-list" dir="auto"><li style="list-style-type:square">Potential value of the property if it were to be used for something else (such as if a commercial building was used as a single-family residence)</li></ul></li></ul></li></ul><p id="41b8ac6a-aab1-80fe-b58e-fec6130ce4fe" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

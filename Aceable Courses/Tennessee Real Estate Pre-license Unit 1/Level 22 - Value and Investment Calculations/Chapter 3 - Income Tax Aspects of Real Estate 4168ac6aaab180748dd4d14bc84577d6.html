@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Income Tax Aspects of Real Estate </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4168ac6a-aab1-8074-8dd4-d14bc84577d6" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Income Tax Aspects of Real Estate</strong> </h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="41b8ac6a-aab1-8075-99d1-fdeaaf9628cf" class="column-list" data-notion-column-list="" dir="auto"><div id="41b8ac6a-aab1-80d0-96af-f6fd94046db9" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="41b8ac6a-aab1-8046-a646-ca13994c4364" class="" dir="auto"><strong>The Tax-Real Estate Connection &amp; Core Homeowner Tax Incentives</strong></p><ul id="41b8ac6a-aab1-8085-af23-efcf685c0857" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why Real Estate Tax Incentives Exist:</strong> To encourage homeownership and help offset the significant upfront and ongoing costs of buying property, the federal government offers several tax deductions and exclusions for homeowners <em>(for IRS purposes, a qualifying &quot;home&quot; can be a house, condominium, or even a houseboat)</em>.</li></ul><ul id="41b8ac6a-aab1-802d-b17c-e1455cf16a83" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seven Common Homeowner Tax Benefits:</strong><ul id="41b8ac6a-aab1-8055-9260-d847474638d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mortgage interest deduction</li></ul><ul id="41b8ac6a-aab1-80c1-8497-e760375f966a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Home equity loan interest deduction</li></ul><ul id="41b8ac6a-aab1-805c-bee7-fc066ac3f9ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property tax deduction</li></ul><ul id="41b8ac6a-aab1-80fd-b085-e0bd8e14a1a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">IRA withdrawals for first-time homebuyers</li></ul><ul id="41b8ac6a-aab1-803d-acf7-dda6de96cfe1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Points deduction</li></ul><ul id="41b8ac6a-aab1-8044-bdd2-c13f5d2c12e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mortgage prepayment penalty deduction</li></ul><ul id="41b8ac6a-aab1-805d-be5e-e929766e6d55" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Exclusions from capital gains</li></ul></li></ul><ul id="41b8ac6a-aab1-8005-8ef0-ca4e934573ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tax Cuts and Jobs Act of 2017 (TCJA) &amp; Pass-Through Business Exclusion</strong><ul id="41b8ac6a-aab1-8080-aef4-fb1b07b02a84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Impact of the Higher Standard Deduction:</strong> The TCJA nearly doubled the standard deduction to simplify tax filing. Because most real estate tax breaks require <strong>itemizing deductions</strong>, homeowners should compare their total itemized deductions (such as mortgage interest plus property taxes) against the standard deduction—if the standard deduction is higher, taking the standard deduction yields a greater tax benefit.</li></ul><ul id="41b8ac6a-aab1-806f-95ef-c54bc1ecd14f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pass-Through Business Exclusion (20% Qualified Business Income Deduction):</strong><ul id="41b8ac6a-aab1-8066-864f-e9a5c59b6a84" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pass-Through Business Defined:</strong> A legal business entity (such as a sole proprietorship, partnership, LLC, or S corporation) where business income is not taxed at the corporate entity level, but instead &quot;passes through&quot; directly to the individual owners or investors to report on their personal federal tax returns.</li></ul><ul id="41b8ac6a-aab1-80a8-a64a-d8c33703daa1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The 20% Exclusion:</strong> Allows eligible taxpayers to exclude up to <strong>20%</strong> of pass-through business income from federal income taxation—a major benefit given that over <strong>75%</strong> of pass-through businesses are sole proprietorships.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8079-aaa3-f46be1888fec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Interest Deduction (MID), Home Equity Loans, &amp; Property Tax Rules</strong><ul id="41b8ac6a-aab1-8014-9fe0-d371726f7db3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Interest Deduction (MID):</strong> Because amortized mortgages consist predominantly of interest in the early years of the loan, deducting mortgage interest is one of the largest tax benefits for borrowers.<ul id="41b8ac6a-aab1-8037-a8e8-c7d671ab54cb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Qualifying Loan Limits:</strong> Dropped under the TCJA from <code>$1,000,000</code> (joint) / <code>$500,000</code> (separate) to <code><strong>$750,000</strong></code><strong> (married filing jointly)</strong> and <code><strong>$375,000</strong></code><strong> (married filing separately)</strong>—now permanently codified at these thresholds. Interest on debt above these caps is not deductible.</li></ul><ul id="41b8ac6a-aab1-806f-8cf1-f30e525bb26c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Three Eligibility Requirements for MID:</strong><ol type="1" id="41b8ac6a-aab1-8035-a61a-f45860bf9930" class="numbered-list" start="1" dir="auto"><li><strong>Legal Liability:</strong> The taxpayer must be legally responsible for the mortgage debt (tenants cannot deduct rent even if the landlord uses it to pay a mortgage).</li></ol><ol type="1" id="41b8ac6a-aab1-8057-bd30-d930cbd065e1" class="numbered-list" start="2" dir="auto"><li><strong>Secured Debt:</strong> The loan must be secured by the home as collateral.</li></ol><ol type="1" id="41b8ac6a-aab1-8023-ba4e-efb812bd3e4d" class="numbered-list" start="3" dir="auto"><li><strong>Qualifying Residence:</strong> The loan must be for a primary residence (or qualifying second home).<table id="41b8ac6a-aab1-80c1-89dd-eb951feb9927" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-809a-b460-eac7c4e65c69" dir="ltr"><td id="xGNE" class=""><strong>Deduction Type</strong></td><td id="ygax" class=""><strong>Key Tax Rule &amp; Limits</strong></td><td id="?|gb" class=""><strong>When It Does NOT Apply</strong></td></tr><tr id="41b8ac6a-aab1-80b0-81b8-ef4ddd154ae6" dir="ltr"><td id="xGNE" class=""><strong>Home Equity Loan Interest Deduction</strong></td><td id="ygax" class="">Interest is deductible <strong>only if the loan proceeds are used to buy, build, or substantially improve</strong> the home securing the loan—and only up to the combined <code><strong>$750,000</strong></code><strong> / </strong><code><strong>$375,000</strong></code> MID mortgage debt ceiling.</td><td id="?|gb" class="">Interest on home equity loans or HELOCs used for <strong>personal expenses</strong> (e.g., paying off credit cards, buying a car, or paying tuition) is <strong>not deductible</strong>.</td></tr><tr id="41b8ac6a-aab1-8018-aff0-da1c797040ea" dir="ltr"><td id="xGNE" class=""><strong>State &amp; Local Tax (SALT) / Property Tax Deduction</strong></td><td id="ygax" class="">Requires itemizing deductions on Schedule A.<br/><br/>• <strong>Course / TCJA Baseline:</strong> Capped at <code><strong>$10,000</strong></code><strong> combined</strong> (<code>$5,000</code> married filing separately) for state income taxes, local/city taxes, and property taxes.<br/><br/>• <strong>2026 Current Law Update:</strong> Under the One Big Beautiful Bill Act (effective 2025–2029), the combined SALT cap temporarily increased to <code><strong>$40,400</strong></code><strong> in 2026</strong> (<code>$20,200</code> married filing separately) for filers with MAGI under <code>$505,000</code> (<code>$252,500</code> separate), phasing back down toward <code>$10,000</code> for higher earners and reverting to <code>$10,000</code> in 2030.</td><td id="?|gb" class="">Cannot be claimed if the homeowner takes the <strong>standard deduction</strong> instead of itemizing.</td></tr></tbody></table></li></ol></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8001-b539-df691818b983" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Points &amp; Mortgage Prepayment Penalty Deductions</strong><ul id="41b8ac6a-aab1-8062-a058-df82d41a5528" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Review of Mortgage Points (1 Point = 1% of Total Loan Amount):</strong><ul id="41b8ac6a-aab1-805e-8f34-dbb67935f1ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Discount Points:</strong> Upfront prepaid interest paid at closing to buy down the mortgage interest rate.</li></ul><ul id="41b8ac6a-aab1-80a3-bf6f-fe24f68c0ccc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Origination Points:</strong> Lender fees charged for processing and creating the loan.</li></ul><ul id="41b8ac6a-aab1-80e0-ad7a-fab4878191f7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tax Treatment:</strong> Qualifying discount points are generally tax-deductible in the year paid (when itemizing on Schedule A for a loan secured by a main home to buy or build it).</li></ul></li></ul><ul id="41b8ac6a-aab1-8052-bd95-fe88835e30e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Interest Deduction (MID) Threshold Limit on Points:</strong><ul id="41b8ac6a-aab1-80ab-b4fa-c5ab60c2382f" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a mortgage exceeds the <strong>$750,000</strong> MID principal limit (<code>$375,000</code> married filing separately), the borrower can deduct points only in proportion to the first <code>$750,000</code> of debt:<ul id="41b8ac6a-aab1-8092-8a05-d22bd14e644a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>($750,000 ÷ Total Loan Amount) × Total Points Paid = Deductible Points</code></li></ul><ul id="41b8ac6a-aab1-80a5-9a3f-e442321db93a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Example:</em> On a <code>$1,000,000</code> loan, <code>$750,000 ÷ $1,000,000 = 0.75</code>, so only <strong>75%</strong> of the points paid are tax-deductible.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-804a-89ee-f799b90cc7e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mortgage Prepayment Penalty Deduction:</strong><ul id="41b8ac6a-aab1-80cc-9695-ca42378fd771" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a borrower is charged a penalty for paying off a mortgage early, the IRS treats that prepayment penalty as <strong>deductible home mortgage interest</strong> (provided it is not a fee for a specific service or cost incurred in connection with the loan).</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80ac-a95a-d01d58c35b08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Capital Gains, Basis, Equity, &amp; Leverage Concepts</strong><ul id="41b8ac6a-aab1-8066-ae08-df42e33cc69d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Capital Gain:</strong> The profit realized when an asset (real estate, stocks, bonds, etc.) appreciates and sells for more than its adjusted basis. <em>(Note: &quot;Capital gains exemption&quot; and &quot;capital gains exclusion&quot; are used interchangeably.)</em></li></ul><ul id="41b8ac6a-aab1-800a-883a-d0bf5416119a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjusted Basis Formula:</strong><ul id="41b8ac6a-aab1-8006-a502-f59a6f9bdb3c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Initial Cost (Purchase Price) + Capital Improvements - Depreciation = Adjusted Basis</code></li></ul><ul id="41b8ac6a-aab1-8095-91cd-fbfdca803c5a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Depreciation Rule:</strong> Only <strong>investment/income-producing properties</strong> can be depreciated—<strong>primary residences cannot be depreciated</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8011-b1bd-c1450d20b043" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equity:</strong> The portion of a property&#x27;s market value owned outright by the owner:<ul id="41b8ac6a-aab1-8027-8faf-c3c5790f94cc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Current Property Value - Debt Owed = Equity</code></li></ul><ul id="41b8ac6a-aab1-80de-b840-f8efc973cf11" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>How Equity Grows:</em> Increases over time through two forces: <strong>paying down mortgage principal</strong> and <strong>property value appreciation</strong> (though exact equity remains an estimate until verified by an actual market sale).</li></ul></li></ul><ul id="41b8ac6a-aab1-8049-b811-dd2a4ca51a44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Leverage:</strong> Using borrowed capital (debt) alongside a smaller down payment to increase purchasing power and amplify potential returns:<ul id="41b8ac6a-aab1-80f4-ae85-e200710f146f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Positive Leverage:</strong> The profit/return generated by the investment exceeds the interest cost of borrowing (<code>Investment Return &gt; Loan Interest Cost</code>), creating positive cash flow.</li></ul><ul id="41b8ac6a-aab1-8011-9425-dc2857b029ee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Negative Leverage:</strong> The interest cost of borrowing exceeds the profit generated by the investment (<code>Loan Interest Cost &gt; Investment Return</code>), producing negative cash flow.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8090-97a0-de2c38fbf4ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Capital Gains Exclusion on Primary Residences (Section 121 / The $250,000/$500,000 Rule)</strong><ul id="41b8ac6a-aab1-8012-a96d-f91f959cb144" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legislative Background:</strong> Created by the <strong>Taxpayer Relief Act of 1997</strong> and codified in <strong>Internal Revenue Code (IRC) Section 121</strong> so homeowners would not be penalized with heavy capital gains taxes when selling an appreciated primary residence to move up the housing ladder.</li></ul><ul id="41b8ac6a-aab1-805a-90d2-f1afdb6860cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusion Amounts &amp; Frequency:</strong><table id="41b8ac6a-aab1-80e5-9ebc-ffabbc679e84" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80c5-8b11-e015bc495408" dir="ltr"><td id="@vy\" class=""><strong>Filing Status</strong></td><td id="inDg" class=""><strong>Maximum Capital Gains Exclusion</strong></td><td id="p;jC" class=""><strong>Reuse Frequency</strong></td></tr><tr id="41b8ac6a-aab1-80ab-a7c3-d48bc2e6b578" dir="ltr"><td id="@vy\" class=""><strong>Single Filers</strong> <em>(or Married Filing Separately)</em></td><td id="inDg" class="">Up to <strong>$250,000</strong> of capital gain</td><td id="p;jC" class="">Reusable <strong>once every 2 years</strong></td></tr><tr id="41b8ac6a-aab1-808f-91b4-dfc766380758" dir="ltr"><td id="@vy\" class=""><strong>Married Filing Jointly</strong></td><td id="inDg" class="">Up to <strong>$500,000</strong> of capital gain</td><td id="p;jC" class="">Reusable <strong>once every 2 years</strong> <em>(neither spouse may have used the exclusion within the prior 2 years)</em></td></tr></tbody></table><figure id="41b8ac6a-aab1-80e8-a6fb-e1b59aba0a53" class="image" data-notion-image="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image.png" dir="ltr"><a href="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image.png"><img style="width:720px" src="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image.png"/></a></figure></li></ul></li></ul><ul id="41b8ac6a-aab1-8036-947b-e1e3c7a95378" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ownership and Use Eligibility Requirements:</strong><ul id="41b8ac6a-aab1-8047-8903-d6ee2c7066fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2-out-of-5-Year Rule:</strong> The taxpayer must have <strong>owned</strong> and <strong>occupied</strong> the home as their principal residence for at least <strong>2 years (24 months) out of the 5 years (60 months)</strong> immediately preceding the sale date.</li></ul><ul id="41b8ac6a-aab1-801a-b382-c938a8a28f74" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Continuous Time Allowed:</strong> The two years of ownership and use are measured in the <strong>aggregate</strong> and <strong>do not need to be continuous</strong> (nor do the 2-year ownership period and 2-year residency period have to overlap).</li></ul><ul id="41b8ac6a-aab1-8045-bc26-f310b9cd51ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Married Couples Rule:</strong> For married couples filing jointly to claim the full <code>$500,000</code> exclusion, <strong>both spouses</strong> must meet the <strong>2-year occupancy (use) requirement</strong>, while <strong>only one spouse</strong> needs to meet the <strong>2-year ownership requirement</strong>—and <strong>neither spouse</strong> can have claimed a Section 121 exclusion on another home sale during the preceding 2 years.</li></ul></li></ul><ul id="41b8ac6a-aab1-8074-8e22-d2f0a985ed5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Capital Gain (or Loss) for a Primary Residence</strong><ul id="41b8ac6a-aab1-80ab-be9f-f3db663c2fb8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Capital Gain Formula:</strong><ul id="41b8ac6a-aab1-80f4-b09f-c12eed78ad59" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>Realized gain - Adjusted basis = Capital gain</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80da-be6c-dd04a5b1cd37" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Component Formulas &amp; Definitions:</strong><ul id="41b8ac6a-aab1-80a2-9330-fb0fbf282ff6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Adjusted Basis (Primary Residence):</strong> Starts with the original purchase price and adds qualifying purchase closing costs and capital improvements made during ownership.<ul id="41b8ac6a-aab1-8097-9e48-f9ade75e0579" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formula:</strong> <code>Basis (Purchase price) + Cost of improvements + Qualified closing costs = Adjusted basis</code></li></ul><ul id="41b8ac6a-aab1-80cd-b1d6-e1e7eeb58ebd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Capital Improvement:</strong> Any renovation or structural upgrade beyond routine repair and maintenance intended to increase the property&#x27;s value, prolong its useful life, or adapt it to new uses (unlike routine repairs, capital improvements increase adjusted basis).</li></ul></li></ul><ul id="41b8ac6a-aab1-80fa-b431-ddf448bb6b95" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Realized Gain (Amount Realized):</strong> The net proceeds from selling the property after deducting selling expenses such as real estate commissions and seller closing costs.<ul id="41b8ac6a-aab1-801a-a3fa-e7888457e5d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formula:</strong> <code>Sales price - Selling costs = Realized gain</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80b6-a69e-d8c3bb7f6be2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Loss:</strong> Calculated using the exact same formula (<code>Realized gain - Adjusted basis</code>), resulting in a <strong>negative number</strong>. While capital losses on investment assets can offset capital gains or reduce taxable income, losses on the sale of a personal-use primary residence are generally not tax-deductible.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8043-87f0-d5bd6093d7d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Capital Gains Scenarios (Section 121 Exclusion Applied)</strong><table id="41b8ac6a-aab1-8092-8731-cf8d1abed423" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8087-9dcb-c9ab41fd6452" dir="ltr"><td id="l:@I" class=""><strong>Metric / Calculation Step</strong></td><td id="haVL" class=""><strong>Scenario 1: Harry &amp; Louis (Married Filing Jointly)</strong></td><td id="`;~P" class=""><strong>Scenario 2: Liam&#x27;s Condo (Single Filer)</strong></td></tr><tr id="41b8ac6a-aab1-80fe-bda0-ccac2e280c9d" dir="ltr"><td id="l:@I" class=""><strong>Purchase &amp; Ownership Details</strong></td><td id="haVL" class="">Bought 3 years ago for <code>$650,000</code>; <code>$50,000</code> purchase closing costs; lived in home for all 3 years</td><td id="`;~P" class="">Bought 13 years ago for <code>$200,000</code>; <code>$10,000</code> purchase closing costs; primary residence for 7 total years (including 3 of the last 5 years)</td></tr><tr id="41b8ac6a-aab1-80e3-b937-dbfe74568ec4" dir="ltr"><td id="l:@I" class=""><strong>Sale Details</strong></td><td id="haVL" class="">Sold for <code>$900,000</code> with <code>$10,000</code> in selling costs</td><td id="`;~P" class="">Sold for <code>$1,300,000</code> with <code>$90,000</code> in selling costs</td></tr><tr id="41b8ac6a-aab1-8095-861b-cebf8575c9b9" dir="ltr"><td id="l:@I" class=""><strong>Step 1: Adjusted Basis</strong></td><td id="haVL" class=""><code>$650,000 + $50,000 = $700,000</code></td><td id="`;~P" class=""><code>$200,000 + $10,000 = $210,000</code></td></tr><tr id="41b8ac6a-aab1-806b-958d-e1e818fa290d" dir="ltr"><td id="l:@I" class=""><strong>Step 2: Realized Gain</strong></td><td id="haVL" class=""><code>$900,000 - $10,000 = $890,000</code></td><td id="`;~P" class=""><code>$1,300,000 - $90,000 = $1,210,000</code></td></tr><tr id="41b8ac6a-aab1-80f9-aa96-c1ce7981af4b" dir="ltr"><td id="l:@I" class=""><strong>Step 3: Total Capital Gain</strong></td><td id="haVL" class=""><code>$890,000 - $700,000 = $190,000</code></td><td id="`;~P" class=""><code>$1,210,000 - $210,000 = $1,000,000</code></td></tr><tr id="41b8ac6a-aab1-80a1-8fd5-d4bc107bc1b5" dir="ltr"><td id="l:@I" class=""><strong>Applicable Exclusion</strong></td><td id="haVL" class=""><code><strong>$500,000</strong></code> (both spouses met the 2-of-5-year occupancy test)</td><td id="`;~P" class=""><code><strong>$250,000</strong></code> (single filer meeting the 2-of-5-year ownership and use tests)</td></tr><tr id="41b8ac6a-aab1-8075-9532-c6b66375baa4" dir="ltr"><td id="l:@I" class=""><strong>Taxable Capital Gain</strong></td><td id="haVL" class=""><code><strong>$0</strong></code> (<code>$190,000</code> gain is well under the <code>$500,000</code> exclusion)</td><td id="`;~P" class=""><code><strong>$750,000</strong></code> (<code>$1,000,000 - $250,000 = $750,000</code> subject to long-term capital gains tax)</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-80c2-b163-ce0c6b81bd97" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Capital Gains Holding Periods &amp; Tax Rates</strong><ul id="41b8ac6a-aab1-80e9-8300-d0496c87d123" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Holding Period:</strong> The length of time between acquiring and selling an asset, which determines whether any non-excluded capital gain is taxed at short-term or long-term rates:<table id="41b8ac6a-aab1-809f-aefb-dc129a79b582" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80af-acb2-c94a62c1eab6" dir="ltr"><td id="gMol" class=""><strong>Classification</strong></td><td id="b{zf" class=""><strong>Holding Period</strong></td><td id="@wTl" class=""><strong>Applicable Federal Tax Rate Structure</strong></td></tr><tr id="41b8ac6a-aab1-80a2-8c23-d5a37d511344" dir="ltr"><td id="gMol" class=""><strong>Short-Term Capital Gains</strong></td><td id="b{zf" class=""><strong>Less than 1 year</strong> (1 year or less)</td><td id="@wTl" class="">Taxed as <strong>ordinary income</strong> at the taxpayer&#x27;s regular marginal federal income tax bracket (up to <strong>37%</strong>).</td></tr><tr id="41b8ac6a-aab1-8096-9806-c7cc0543f65c" dir="ltr"><td id="gMol" class=""><strong>Long-Term Capital Gains</strong></td><td id="b{zf" class=""><strong>1 year or more</strong> (more than 1 year)</td><td id="@wTl" class="">Taxed at preferential progressive rates of <strong>0%, 15%, or 20%</strong> based on overall taxable income (for 2026, the 0% rate applies up to <code>$49,450</code> single / <code>$98,900</code> joint; 15% up to <code>$545,500</code> single / <code>$613,700</code> joint; and 20% above those thresholds), plus special rates of <strong>25%</strong> and <strong>28%</strong> for specific asset categories.</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-8074-ad01-cf8b39023ef0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Taxes &amp; Special Long-Term Rate Categories:</strong><ul id="41b8ac6a-aab1-8098-b1d3-fae3aea0a9cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Net Investment Income Tax (NIIT — 3.8%):</strong> An additional <strong>3.8%</strong> surtax that may apply to higher-income taxpayers whose modified adjusted gross income (MAGI) exceeds <code>$200,000</code> (single) or <code>$250,000</code> (married filing jointly), bringing the top combined federal long-term rate to <strong>23.8%</strong>.</li></ul><ul id="41b8ac6a-aab1-80c4-a70e-c7c8b9d9e0f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Depreciation Recapture Tax (25% Maximum Rate — Unrecaptured Section 1250 Gain):</strong> Applies to gain attributable to prior <strong>depreciation deductions</strong> claimed on depreciated investment/rental real estate over its useful life.</li></ul><ul id="41b8ac6a-aab1-80e2-b77f-fd7b48594564" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Collectibles &amp; Section 1202 Qualified Small Business Stock (28% Maximum Rate):</strong> Applies to gains from selling high-end collectibles (art, antiques, jewelry, coins, wine) or the taxable 50% portion of qualifying small business stock held for at least five years.</li></ul></li></ul><ul id="41b8ac6a-aab1-806b-a942-f31e59fdc81e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxes &amp; Real Estate Investment Overview</strong><ul id="41b8ac6a-aab1-8081-80ad-c3ae1ad85708" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Section 121 Capital Gains Exclusion:</strong> The <code>$250,000</code> / <code>$500,000</code> capital gains exclusion applies <strong>only to primary residences</strong>—real estate investors are excluded from using it on investment properties.</li></ul><ul id="41b8ac6a-aab1-804b-a3c8-d1348d366edd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Shelters:</strong> Any legal method or tax strategy used by investors to reduce taxable income and lower the amount of taxes owed to the government.</li></ul><ul id="41b8ac6a-aab1-8093-a04b-e498082b3e1c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Uncapped Interest &amp; Property Tax Deductions:</strong> Unlike primary residences (which face federal itemized caps), <strong>mortgage interest and property taxes on investment properties are fully tax-deductible</strong> as business/rental expenses on Schedule E with no upper dollar limit.</li></ul></li></ul><ul id="41b8ac6a-aab1-803c-bdcc-c93d457c4da8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxable Income &amp; Deductible Expenses on Investment Properties</strong><ul id="41b8ac6a-aab1-8063-ab0c-e6d1e5232573" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Taxable Income Definition:</strong> The net income from an investment property subject to taxation after subtracting all allowable deductions and adjustments.</li></ul><ul id="41b8ac6a-aab1-80e3-980e-e4361119aee0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deduction Rules for Property Expenses:</strong><table id="41b8ac6a-aab1-8099-81e9-cf57d1159d8d" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-8073-9438-d015e8ee5f45" dir="ltr"><td id="wu==" class=""><strong>Expense Category</strong></td><td id="Pf=i" class=""><strong>Tax Deductibility Rule</strong></td><td id="Ujvz" class=""><strong>Example</strong></td></tr><tr id="41b8ac6a-aab1-80a9-a8a4-d722d9796223" dir="ltr"><td id="wu==" class=""><strong>Operating Expenses</strong></td><td id="Pf=i" class="">Ordinary and necessary expenses paid to run and maintain the property are <strong>deductible in the tax year paid</strong>.</td><td id="Ujvz" class="">Repairs, maintenance, utilities, insurance, and property management fees paid during the year.</td></tr><tr id="41b8ac6a-aab1-806d-bfe2-d3914e98a828" dir="ltr"><td id="wu==" class=""><strong>Property Taxes</strong></td><td id="Pf=i" class="">Considered a <strong>fixed operating expense</strong> and <strong>fully deductible</strong> from gross investment income.</td><td id="Ujvz" class="">Annual county and municipal real estate taxes assessed on the rental building.</td></tr><tr id="41b8ac6a-aab1-80e8-8423-edad1248da8f" dir="ltr"><td id="wu==" class=""><strong>Cash Reserves for Replacements</strong></td><td id="Pf=i" class="">Money merely held in a reserve account is <strong>not deductible</strong> when set aside; however, <strong>actual replacement or repair expenses paid out of that reserve</strong> during the tax year <strong>are deductible</strong>.</td><td id="Ujvz" class="">Investor Ida holds <code>$200,000</code> in a reserve account (not deductible), then spends <code>$10,000</code> from that account to repaint units during the tax year (<code>$10,000</code> is deductible).</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-80ae-af07-ed1f2bcd25da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Debt Service, Cash Flow, &amp; Investment Income Review</strong><ul id="41b8ac6a-aab1-80a4-b42b-ffa8451e718d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Debt Service:</strong> The amount of money required over a given period (monthly or annually) to pay both the <strong>principal and interest</strong> portions of a loan (analogous to a homeowner&#x27;s &quot;mortgage payment&quot;).</li></ul><ul id="41b8ac6a-aab1-8083-b5e3-fb4db1b856dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cash Flow:</strong> The net cash an investment property generates after accounting for <strong>operating expenses, debt service, and taxes</strong>:<ul id="41b8ac6a-aab1-808c-a450-d6c85f3d1cab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Before-Tax Cash Flow:</strong> <code>NOI - Debt service = Before-tax cash flow</code> <em>(used heavily by investors to evaluate whether a property is worth acquiring)</em>.</li></ul><ul id="41b8ac6a-aab1-80c7-958b-d0f85325c4be" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>After-Tax Cash Flow:</strong> <code>Before-tax cash flow - Income taxes = After-tax cash flow</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80cd-a57e-ff3dafe44d20" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Review of the Three Core Investment Income Tiers:</strong><ul id="41b8ac6a-aab1-8037-9733-e02c4c7a375c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Potential Gross Income (PGI):</strong> Total rental income a property would generate at <strong>100% occupancy</strong> with all rents collected:<ul id="41b8ac6a-aab1-8057-a3ed-e6bed9e7f2b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Contract rent + Projected rent = Potential gross income</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8093-9f78-f455a53f5c67" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Effective Gross Income (EGI):</strong> Estimated total annual income actually collected by the property before operating expenses:<ul id="41b8ac6a-aab1-804e-ab8e-cd033eb3f58b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Potential gross income + Other income - Vacancy cost = Effective gross income</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80f6-be83-f34a7ffcf5e2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Net Operating Income (NOI):</strong> Annual property-level profit remaining after deducting operating expenses (before debt service and income taxes):<ul id="41b8ac6a-aab1-804c-8792-cb902ebb1b2b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Effective gross income - Operating expenses = Net operating income</code></li></ul><figure id="41b8ac6a-aab1-80d1-b499-cf3e822099a1" class="image" data-notion-image="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%201.png"><img style="width:720px" src="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-805e-a51b-d7442fa3bd7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Depreciation &amp; The Three Stages of Investment Property Ownership</strong><ul id="41b8ac6a-aab1-80df-a88c-fa02ff180ca0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition of Tax Depreciation:</strong> A non-cash <strong>tax shelter</strong> that allows real estate investors to recover the cost of wear, tear, and deterioration on an income-producing asset by deducting a portion of its cost each year.</li></ul><ul id="41b8ac6a-aab1-805e-87b3-e1a5c969678c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Major Stages of Investment Property Ownership:</strong><ol type="1" id="41b8ac6a-aab1-804d-a2ef-fda2055dd9af" class="numbered-list" start="1" dir="auto"><li><strong>Acquisition:</strong> Purchasing and taking ownership of the investment property.</li></ol><ol type="1" id="41b8ac6a-aab1-80e5-9282-e7a0dc01ba3a" class="numbered-list" start="2" dir="auto"><li><strong>Holding Period:</strong> Owning and operating the property over time—this is the stage when <strong>depreciation deductions</strong> are claimed.</li></ol><ol type="1" id="41b8ac6a-aab1-809b-bcc2-fd8a9488372e" class="numbered-list" start="3" dir="auto"><li><strong>Reversion:</strong> Selling or disposing of the property so the investment converts (&quot;reverts&quot;) back into cash proceeds.</li></ol></li></ul><ul id="41b8ac6a-aab1-80c0-a598-dcafb9f2480b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When Depreciation Begins and Ends:</strong><ul id="41b8ac6a-aab1-8008-b739-e366a000046c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Starts When &quot;Placed in Service&quot;:</strong> Depreciation does <strong>not</strong> begin on the purchase/acquisition date; it begins when the property is <strong>ready and available for its intended income-producing use</strong> (for example, if you buy an apartment building and spend two months renovating it before listing/renting units, depreciation begins once renovations are complete and it is placed in service).</li></ul><ul id="41b8ac6a-aab1-8009-8c0a-e46acbc91aef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ends When Fully Depreciated or Retired from Service:</strong> Depreciation stops once the investor has recovered the entire depreciable basis <strong>or</strong> when the property is <strong>retired from service</strong> (such as being sold or converted into a personal/non-income-producing property).</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8033-a3ad-de2513de8a9a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>IRS Rules for Depreciable vs. Non-Depreciable Property</strong><ul id="41b8ac6a-aab1-801a-9bb9-de5ec1279bf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Residence Rule:</strong> Only <strong>investment and business properties</strong> can be depreciated—a personal <strong>primary residence can never be depreciated</strong>.</li></ul><ul id="41b8ac6a-aab1-809d-81fd-c4e9d60e9d9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four IRS Requirements for an Asset to Be Depreciable:</strong><ol type="1" id="41b8ac6a-aab1-804a-ba85-e0afceae9d1a" class="numbered-list" start="1" dir="auto"><li><strong>Ownership:</strong> You must own the property.</li></ol><ol type="1" id="41b8ac6a-aab1-809c-a7e6-e18f7d85bbff" class="numbered-list" start="2" dir="auto"><li><strong>Business or Income-Producing Use:</strong> It must be used in a business or income-producing activity.</li></ol><ol type="1" id="41b8ac6a-aab1-80ea-a28d-c6484f501637" class="numbered-list" start="3" dir="auto"><li><strong>Determinable Useful Life:</strong> It must wear out, decay, get used up, become obsolete, or lose value from natural causes over a measurable period.</li></ol><ol type="1" id="41b8ac6a-aab1-8002-aef0-ed5410597b67" class="numbered-list" start="4" dir="auto"><li><strong>Expected Life Exceeding One Year:</strong> It must be expected to last <strong>more than one year</strong>.</li></ol><table id="41b8ac6a-aab1-80e0-9add-d4af2e646511" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-807a-a8c4-c7583e908523" dir="ltr"><td id="~Tl{" class=""><strong>Depreciable Assets</strong></td><td id="{t[C" class=""><strong>Non-Depreciable Assets</strong></td></tr><tr id="41b8ac6a-aab1-8068-9509-ebff54ffa036" dir="ltr"><td id="~Tl{" class="">• Rental buildings and structural improvements (apartments, offices, retail buildings)<br/><br/>• Business equipment and machinery used in income-producing activities (e.g., computers, appliances in rental units)</td><td id="{t[C" class="">• <strong>Land</strong> (never depreciates because it does not wear out or have a determinable useful life)<br/><br/>• <strong>Primary residences</strong> (personal-use real estate)<br/><br/>• <strong>Equipment used to build capital improvements</strong> (those costs are added to the basis of the improvement instead)<br/><br/>• <strong>Personal property</strong> used for personal purposes (e.g., clothing)<br/><br/>• <strong>Property placed in service and disposed of in the same tax year</strong><br/><br/>• <strong>Stocks and bonds</strong><br/><br/>• <strong>Intangible property</strong> (generally non-depreciable under standard physical depreciation rules)</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-80da-8f3a-fbcfa02e6a3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Causes of Property Depreciation (Review)</strong><ul id="41b8ac6a-aab1-8089-966a-dfa820294714" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Physical Deterioration:</strong> Gradual wear and tear from aging and everyday use (e.g., a roof wearing out over time—not sudden storm damage like a hailstorm). Usually <strong>curable</strong> through maintenance or replacement, though it becomes <strong>incurable</strong> in an investment property if the repair cost exceeds the value added.</li></ul><ul id="41b8ac6a-aab1-809c-a0ff-dcadcd74b349" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Functional Obsolescence:</strong> Loss of value when a property&#x27;s design, style, or systems become outdated (e.g., aesthetic issues like dated pink bathroom tile or engineering issues like insufficient electrical capacity for modern appliances). Can be <strong>curable or incurable</strong>, depending on whether the cost to fix is economically justified.</li></ul><ul id="41b8ac6a-aab1-80d0-8ba3-dc650f78b36d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>External (Economic) Obsolescence:</strong> Loss of value driven by negative off-site factors outside the property boundaries and beyond the owner&#x27;s control (e.g., an unfavorable zoning change or a highway built through the neighborhood). Always <strong>incurable</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8056-9e64-d43c5eef9b82" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Depreciation vs. Physical Condition</strong><ul id="41b8ac6a-aab1-8048-9f9e-cd3db12b3220" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>IRS Accounting Construct:</strong> Unlike appraisal depreciation (which measures actual loss in market value), <strong>tax depreciation</strong> is a statutory IRS accounting mechanism for business and investment properties. Even if an investment building is impeccably maintained and rising in market value, the IRS still treats it as depreciating for tax deduction purposes.</li></ul></li></ul><ul id="41b8ac6a-aab1-80b5-a10c-e87b4452b90b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Depreciation Accounting Methods: Straight-Line &amp; MACRS</strong><ul id="41b8ac6a-aab1-8032-aba9-eb4a85db8b42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Straight-Line Depreciation (Straight-Line Cost Recovery):</strong> An accounting method that divides an asset&#x27;s depreciable basis evenly across its recovery period, allowing the investor to deduct the <strong>same fixed amount each full year</strong> (<code>Depreciable basis ÷ Recovery period = Annual depreciation</code>).</li></ul><ul id="41b8ac6a-aab1-8000-b86d-dc74786ab1be" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>MACRS (Modified Accelerated Cost Recovery System):</strong> The mandatory IRS tax depreciation system for investment real estate (under IRC Section 168 / IRS Publication 946). For real property buildings, MACRS applies the <strong>straight-line method</strong> alongside a <strong>mid-month convention</strong> (which prorates the first and last year&#x27;s deduction based on the midpoint of the month the property is placed in service).</li></ul></li></ul><ul id="41b8ac6a-aab1-800a-b598-d8e7b7ae4d2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>IRS Recovery Periods for Depreciable Real Property</strong><ul id="41b8ac6a-aab1-8059-954d-d4d123a01e74" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The IRS assigns fixed cost recovery periods over which a building&#x27;s depreciable basis (excluding land) is fully depreciated:<table id="41b8ac6a-aab1-8081-bd80-da17f7658644" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-803b-b566-c64671198ac5" dir="ltr"><td id="Lcnb" class=""><strong>Property Classification</strong></td><td id="Tgok" class=""><strong>IRS Recovery Period</strong></td><td id="r{Su" class=""><strong>Qualifying Examples &amp; IRS Rules</strong></td></tr><tr id="41b8ac6a-aab1-8051-92c3-cb0c5fa4525d" dir="ltr"><td id="Lcnb" class=""><strong>Residential Income-Producing Property</strong></td><td id="Tgok" class=""><strong>27.5 years</strong></td><td id="r{Su" class="">• Apartment buildings, single-family rental homes, duplexes/triplexes, long-term rental condos, and vacation rentals rented out <strong>more than 14 days per year</strong>.<br/><br/>• Under IRC Section 168(e)(2), a building qualifies as residential rental property if <strong>80% or more</strong> of its gross rental income comes from dwelling units.</td></tr><tr id="41b8ac6a-aab1-80b0-9f14-f5107ad369fc" dir="ltr"><td id="Lcnb" class=""><strong>Commercial (Nonresidential) Investment Property</strong></td><td id="Tgok" class=""><strong>39 years</strong></td><td id="r{Su" class="">• Office buildings, retail shopping centers, industrial parks, warehouses, hotels/motels, and professional buildings.<br/><br/>• Includes mixed-use buildings where <strong>less than 80%</strong> of gross rental income comes from dwelling units, as well as short-term rentals with average stays of 30 days or fewer.</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-804c-965f-efba1a818c14" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Calculating Capital Gains on Investment Property</strong><ul id="41b8ac6a-aab1-8045-b5be-d2f5121d8af5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Difference from Primary Residences:</strong> Because investors claim annual depreciation deductions during the holding period, <strong>realized (accumulated) depreciation must be subtracted</strong> when calculating the property&#x27;s adjusted basis—which lowers the basis and increases the resulting capital gain.</li></ul><ul id="41b8ac6a-aab1-802a-9e05-da8145b3b2eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Investment Property Capital Gain Formulas:</strong><ul id="41b8ac6a-aab1-8083-9652-da15b3e0023b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Adjusted Basis:</strong> <code>Basis (Purchase price) + Cost of improvements + Qualified closing costs - Realized depreciation = Adjusted basis</code></li></ul><ul id="41b8ac6a-aab1-8030-b4f3-f39685663f70" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Realized Gain:</strong> <code>Sales price - Selling costs = Realized gain</code></li></ul><ul id="41b8ac6a-aab1-80d6-9fba-c9227d4acdb2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Gain (or Loss):</strong> <code>Realized gain - Adjusted basis = Capital gain</code></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8040-bc68-dd4cd799ef9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Worked Scenario: Maria&#x27;s Investment Property</strong><ul id="41b8ac6a-aab1-80a1-bc59-fa6c0b14bad6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Given Data:</strong><ul id="41b8ac6a-aab1-80e1-895d-fe151f65e7c5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Purchase price (basis): <code>$500,000</code></li></ul><ul id="41b8ac6a-aab1-802e-86c0-c0a65852f27f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Capital improvements: <code>$200,000</code></li></ul><ul id="41b8ac6a-aab1-8010-8c84-c9d8fce343b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Initial purchase closing costs: <code>$10,000</code></li></ul><ul id="41b8ac6a-aab1-8016-8a18-cb8032ece75c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Annual depreciation claimed: <code>$20,654.55</code> per year for <code>5 years</code></li></ul><ul id="41b8ac6a-aab1-803c-9a1d-fb003c1d2957" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sales price: <code>$1,300,000</code></li></ul><ul id="41b8ac6a-aab1-806d-96af-f79a53364b4a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Selling costs (6% commission + closing costs): <code>$100,000</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8077-941f-ddfdc2c7fb87" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 1 — Calculate Total Realized Depreciation &amp; Adjusted Basis:</strong><ul id="41b8ac6a-aab1-8022-a757-f77796994154" class="bulleted-list" dir="auto"><li style="list-style-type:square">Total realized depreciation over 5 years: <code>$20,654.55 × 5 = $103,272.75</code></li></ul><ul id="41b8ac6a-aab1-8090-bf98-c55481c188d2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Adjusted basis: <code>$500,000 + $200,000 + $10,000 - $103,272.75 = $606,727.25</code></li></ul></li></ul><ul id="41b8ac6a-aab1-8004-9e02-db962e42bd1c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 2 — Calculate Realized Gain:</strong><ul id="41b8ac6a-aab1-8032-b15e-d5668f8ab0d2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$1,300,000 - $100,000 = $1,200,000</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80d4-a29e-d77650fe269f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step 3 — Calculate Total Capital Gain:</strong><ul id="41b8ac6a-aab1-80ec-8241-fd2ec01f4779" class="bulleted-list" dir="auto"><li style="list-style-type:square"><code>$1,200,000 - $606,727.25 = $593,272.75</code></li></ul></li></ul><ul id="41b8ac6a-aab1-80e0-97ff-fe238a86e525" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Implication:</strong> Because investment properties do <strong>not</strong> qualify for the Section 121 primary-residence exclusion, Maria&#x27;s entire <code>$593,272.75</code> gain is subject to capital gains and depreciation recapture taxes unless she uses a tax-deferral strategy such as a <strong>1031 exchange</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8016-9911-f37c74a5e642" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Section 1031 Like-Kind Exchanges (Tax-Deferred Exchanges)</strong><ul id="41b8ac6a-aab1-8023-9527-c6abdbd103a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Under <strong>IRC Section 1031</strong>, a like-kind exchange allows a real estate investor to sell an investment or business-use property and reinvest the proceeds into another like-kind real property within strict statutory deadlines while <strong>deferring capital gains taxes</strong>.</li></ul><ul id="41b8ac6a-aab1-8084-a71e-ff764a51e542" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Deferral vs. Tax Elimination:</strong><ul id="41b8ac6a-aab1-8090-9fad-c7bd95ec561e" class="bulleted-list" dir="auto"><li style="list-style-type:square">A 1031 exchange <strong>defers</strong> (postpones) taxes rather than permanently forgiving them—if the investor later sells the replacement property in a standard taxable sale, the deferred capital gains become due.</li></ul><ul id="41b8ac6a-aab1-8099-8d6e-ca900566b81d" class="bulleted-list" dir="auto"><li style="list-style-type:square">However, investors can continue rolling gains forward through successive 1031 exchanges, and if the property is held until the investor&#x27;s death, heirs generally receive a <strong>stepped-up basis</strong> to fair market value, effectively eliminating the deferred gain.</li></ul></li></ul><ul id="41b8ac6a-aab1-80ff-8455-e83e83b06a01" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deferral of Depreciation Recapture Tax:</strong><ul id="41b8ac6a-aab1-8099-ad02-ea71bf35b38a" class="bulleted-list" dir="auto"><li style="list-style-type:square">In addition to deferring standard capital gains taxes, a properly executed 1031 exchange <strong>also defers the 25% depreciation recapture tax</strong> that would otherwise come due at sale.</li></ul></li></ul><ul id="41b8ac6a-aab1-803b-994e-df25fcfb99fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Timing &amp; Intermediary Rules (Key Exam &amp; Practice Mechanics):</strong><ul id="41b8ac6a-aab1-80df-bb01-cf1512938eb6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Qualified Intermediary (QI):</strong> The investor cannot take direct or constructive receipt of the sale proceeds; funds must be held by an independent Qualified Intermediary.</li></ul><ul id="41b8ac6a-aab1-808e-ba41-fe3ef3c14f9b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>45-Day Identification Window:</strong> The investor has <strong>45 calendar days</strong> from the closing of the relinquished property to identify potential replacement property(ies) in writing.</li></ul><ul id="41b8ac6a-aab1-8099-969d-d4e6df6d3085" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>180-Day Closing Window:</strong> The investor must close on the replacement property within <strong>180 calendar days</strong> of selling the relinquished property (running concurrently with the 45-day window, or by the tax return due date if earlier).</li></ul><ul id="41b8ac6a-aab1-8080-bc22-d9d55c7192b2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Boot:</strong> Any cash received or net mortgage debt reduction (&quot;boot&quot;) that is not reinvested into like-kind property is taxable in the year of the exchange.</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-803d-adbb-d330a806a171" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What Properties Qualify for a 1031 Like-Kind Exchange?</strong><ul id="41b8ac6a-aab1-806a-ab12-c3cb440a0703" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Since the Tax Cuts and Jobs Act (TCJA), Section 1031 applies <strong>exclusively to real property</strong> held for business or investment purposes (personal residences, dealer/fix-and-flip inventory, stocks/bonds, personal property, and foreign real estate do <strong>not</strong> qualify).</li></ul><ul id="41b8ac6a-aab1-8095-943d-e511d385ec9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under IRS rules, U.S. investment real estate is broadly considered &quot;like-kind&quot; to virtually any other U.S. investment real estate regardless of grade or class:<table id="41b8ac6a-aab1-80e1-9a6d-d71252905b97" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-801e-ac78-f257822025bb" dir="ltr"><td id="Xh{m" class=""><strong>Eligible Real Property Types</strong></td><td id="Pb:[" class=""><strong>Examples &amp; Special Conditions</strong></td></tr><tr id="41b8ac6a-aab1-808b-a4a2-cf5f98e978b1" dir="ltr"><td id="Xh{m" class=""><strong>Commercial Property</strong></td><td id="Pb:[" class="">Office buildings, retail centers, medical buildings</td></tr><tr id="41b8ac6a-aab1-8091-9f9a-df8046d370af" dir="ltr"><td id="Xh{m" class=""><strong>Industrial Property</strong></td><td id="Pb:[" class="">Warehouses, manufacturing facilities, industrial parks</td></tr><tr id="41b8ac6a-aab1-805e-8159-ec1cf0223223" dir="ltr"><td id="Xh{m" class=""><strong>Income-Producing Residential Property</strong></td><td id="Pb:[" class="">Apartment complexes, multifamily buildings, single-family rental homes</td></tr><tr id="41b8ac6a-aab1-80c7-8a0c-e6d982534232" dir="ltr"><td id="Xh{m" class=""><strong>Vacant Land</strong></td><td id="Pb:[" class="">Raw or unimproved land held for investment purposes <em>(real estate dealers/developers holding lots as inventory are excluded)</em></td></tr><tr id="41b8ac6a-aab1-80f7-8cf5-d398af9e8e8e" dir="ltr"><td id="Xh{m" class=""><strong>Hospitality Properties</strong></td><td id="Pb:[" class="">Hotels and motels</td></tr><tr id="41b8ac6a-aab1-8071-86e4-e8264fde0365" dir="ltr"><td id="Xh{m" class=""><strong>Long-Term Leaseholds</strong></td><td id="Pb:[" class="">Leasehold interests with <strong>30 years or more</strong> remaining on the lease term (including optional renewal periods)</td></tr></tbody></table></li></ul></li></ul><ul id="41b8ac6a-aab1-8041-8a75-c57e5b644a08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Installment Sales (Contracts for Deed)</strong><ul id="41b8ac6a-aab1-8058-99cb-efb6d6b1bf5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mechanism:</strong> Functions similarly to a layaway plan—the buyer pays the seller for the property in predetermined installments over a set period of time, while the <strong>seller retains legal title</strong> until the purchase price is paid in full.</li></ul><ul id="41b8ac6a-aab1-800d-b239-d1935029a5b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tax Timing &amp; Profit Allocation:</strong><ul id="41b8ac6a-aab1-804e-a28b-eacf595a7b8f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Instead of paying capital gains tax on the entire sale profit upfront, the seller pays taxes <strong>only on the payments actually received during each tax year</strong>.</li></ul><ul id="41b8ac6a-aab1-807d-8774-cc5a88f52db1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Each annual installment payment received is broken down and reported partly as <strong>taxable gain (profit)</strong> and partly as a <strong>non-taxable recovery of investment (basis)</strong> (alongside any taxable interest income).</li></ul></li></ul><ul id="41b8ac6a-aab1-80d2-a472-eecc2abbf5d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>&quot;Gainers Only&quot; Rule (Losses Excluded):</strong><ul id="41b8ac6a-aab1-806d-8e0d-fac712dac8e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">The installment sale tax method applies <strong>only to sales resulting in a capital gain</strong>. If an installment sale produces a <strong>loss</strong>, the seller cannot spread the loss over multiple years and must report the entire loss in the <strong>year of the sale</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8059-ba98-d1b22c30e98b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Professional Referral Rule:</strong> Because installment sale tax reporting and basis allocation rules are complex, licensees should always refer sellers considering an installment sale to a qualified <strong>CPA or tax accountant</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8033-b127-da90e097dc03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Like-Kind Exchanges (Section 1031) vs. Installment Sales</strong><table id="41b8ac6a-aab1-8055-824d-db6e736c5a09" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-800b-8087-dbc9566b708a" dir="ltr"><td id="zAkg" class=""><strong>Tax Deferral Strategy</strong></td><td id="`DSu" class=""><strong>How It Works</strong></td><td id="pnpp" class=""><strong>Primary Tax Advantage</strong></td></tr><tr id="41b8ac6a-aab1-80d7-9719-d8525057bebc" dir="ltr"><td id="zAkg" class=""><strong>Like-Kind Exchange (1031 Exchange)</strong></td><td id="`DSu" class="">The tax-deferred sale or exchange of one investment/business real property for another similar (&quot;like-kind&quot;) investment real property within strict IRS deadlines.</td><td id="pnpp" class="">Defers <strong>100%</strong> of capital gains and depreciation recapture taxes as long as proceeds are reinvested into qualifying like-kind property.</td></tr><tr id="41b8ac6a-aab1-80ab-b0e3-e298e7eb8d03" dir="ltr"><td id="zAkg" class=""><strong>Installment Sale (Contract for Deed)</strong></td><td id="`DSu" class="">Seller-financed sale in which the buyer pays over time and the seller holds title until full payoff.</td><td id="pnpp" class="">Spreads out tax liability so the seller pays capital gains taxes <strong>only on the portion of gain actually collected in each tax year</strong>.</td></tr></tbody></table></li></ul><ul id="41b8ac6a-aab1-800d-8690-ed72f7a8b9c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Implications for the Real Estate Licensee</strong><ul id="41b8ac6a-aab1-8074-ba74-f4ec5fbc4ae6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Employment Classification (Independent Contractor vs. Employee):</strong><ul id="41b8ac6a-aab1-8038-a3af-eca9c1636708" class="bulleted-list" dir="auto"><li style="list-style-type:square">In Tennessee (as in most states), real estate licensees and salespersons are typically—though not always—classified as <strong>independent contractors</strong>.</li></ul><ul id="41b8ac6a-aab1-8002-8014-cfbb7c557862" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Control Test:</strong><ul id="41b8ac6a-aab1-8073-89fd-f973fa6dd815" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Employee:</strong> The employer controls <strong>how</strong> the worker accomplishes their work.</li></ul><ul id="41b8ac6a-aab1-805b-bad4-ee4b0cd6d42d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Independent Contractor:</strong> The worker controls <strong>how</strong> they accomplish their work (setting their own schedule, methods, and business operations).</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-804d-afcf-eba2d47c9849" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>IRS Three-Prong Safe Harbor / TEFRA Test (Statutory Nonemployee Classification):</strong><ul id="41b8ac6a-aab1-8091-af8a-f053b39649de" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under Internal Revenue Code Section 3508 (TEFRA), a real estate agent is treated as an independent contractor for federal tax purposes when all three criteria are met:<ol type="1" id="41b8ac6a-aab1-8055-b3f1-c65a25d2163c" class="numbered-list" start="1" dir="auto"><li><strong>Licensure:</strong> The individual holds a valid real estate license.</li></ol><ol type="1" id="41b8ac6a-aab1-800c-97c0-fe3d22a47a65" class="numbered-list" start="2" dir="auto"><li><strong>Sales-Based Compensation:</strong> Substantially all of the individual&#x27;s income is directly tied to <strong>sales output/commissions</strong> rather than hours worked or a fixed salary.</li></ol><ol type="1" id="41b8ac6a-aab1-8032-94cd-e2b639725ebe" class="numbered-list" start="3" dir="auto"><li><strong>Written Agreement:</strong> A written independent contractor agreement exists between the licensee and the sponsoring broker explicitly stating that the agent <strong>will not be treated as an employee</strong> for federal tax purposes.</li></ol><figure id="41b8ac6a-aab1-807b-bbaa-c7f1502f1772" class="image" data-notion-image="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%202.png"><img style="width:480px" src="Chapter%203%20-%20Income%20Tax%20Aspects%20of%20Real%20Estate/image%202.png"/></a></figure></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-80db-bb9a-c49b71d995f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Forms &amp; Payroll Tax Responsibilities by Classification</strong><table id="41b8ac6a-aab1-80c5-95de-ead258333db5" class="simple-table" dir="ltr"><tbody><tr id="41b8ac6a-aab1-80f0-8837-e7463c3d383a" dir="ltr"><td id="r&gt;_&lt;" class=""><strong>Worker Classification</strong></td><td id="f`YU" class=""><strong>Year-End Tax Form Issued by Broker</strong></td><td id="jNSO" class=""><strong>Payroll &amp; Income Tax Handling</strong></td></tr><tr id="41b8ac6a-aab1-8013-83b2-debbed926e23" dir="ltr"><td id="r&gt;_&lt;" class=""><strong>Employee</strong></td><td id="f`YU" class=""><strong>Form W-2</strong></td><td id="jNSO" class="">The employing broker automatically withholds income and payroll taxes (Social Security and Medicare) from paychecks and remits them to the IRS.</td></tr><tr id="41b8ac6a-aab1-80b0-a853-c3a05a690199" dir="ltr"><td id="r&gt;_&lt;" class=""><strong>Independent Contractor</strong></td><td id="f`YU" class=""><strong>Form 1099-MISC</strong> <em>(or Form 1099-NEC in current IRS nonemployee compensation reporting)</em></td><td id="jNSO" class="">No taxes are withheld by the broker; the licensee is responsible for tracking business expenses, calculating self-employment/payroll taxes, and paying <strong>quarterly estimated taxes</strong> directly to the IRS.</td></tr></tbody></table></li></ul></div><div id="41b8ac6a-aab1-80e8-b238-f6c6201ba879" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="41b8ac6a-aab1-8015-b15a-c8c090c396d4" class="" dir="auto"><strong>Key Terms</strong></p><ul id="41b8ac6a-aab1-8006-882a-fbfd93fff40e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>basis </strong>- the cost of purchasing a property plus the cost of any improvements, minus the amount of depreciation</li></ul><ul id="41b8ac6a-aab1-8046-ad21-c0340d3d8903" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>capital gain </strong>- the increase in the value of an asset from the time it was purchased to the time it was sold</li></ul><ul id="41b8ac6a-aab1-80e4-964a-c439b88c19b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>investment </strong>- the purchase of an asset with the intention of profiting from it in the future</li></ul><ul id="41b8ac6a-aab1-80e4-8e19-d8e51daa8100" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>straight-line cost recovery </strong>- an accounting method in which depreciation expenses are deducted from a property&#x27;s income</li></ul><p id="41b8ac6a-aab1-809d-95bb-d2082be37d86" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="41b8ac6a-aab1-8007-8714-ee3fd54c0a4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Homeowner Tax Deductions/Benefits</strong><ul id="41b8ac6a-aab1-803a-a9f8-f4acf71542be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here is a list of tax deductions and benefits most homeowners are eligible for:<ul id="41b8ac6a-aab1-802a-a665-dce30540e6b7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mortgage interest deduction</li></ul><ul id="41b8ac6a-aab1-8080-95b9-f32dd5f858e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Home equity loan interest deduction</li></ul><ul id="41b8ac6a-aab1-80d6-9514-e3ee7c6b2439" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property tax deduction</li></ul><ul id="41b8ac6a-aab1-80f8-bd11-db36c4fa6f5c" class="bulleted-list" dir="auto"><li style="list-style-type:square">IRA withdrawals for first-time homebuyers</li></ul><ul id="41b8ac6a-aab1-8031-867d-ffaec48d409a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Points deduction</li></ul><ul id="41b8ac6a-aab1-80c7-88f5-e3f89e6f67c6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mortgage prepayment penalty deduction</li></ul><ul id="41b8ac6a-aab1-800e-ac44-ff246ae42e17" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exclusions from capital gains</li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8064-ac51-f6635898e961" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tax Cuts and Jobs Act of 2017</strong><ul id="41b8ac6a-aab1-804e-8bea-c707f5e3d49e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Tax Cuts and Jobs Act of 2017 (TCJA) simplified tax filing for most taxpayers by almost <strong>doubling the standard deduction</strong>.</li></ul><ul id="41b8ac6a-aab1-80b5-b34f-d6fadc72d28f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>It also allows households to exclude from reporting up to 20% of any pass-through business income </strong>they might have received during the year on their federal income tax returns.</li></ul></li></ul><ul id="41b8ac6a-aab1-80a4-99ea-caba5d826cc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mortgage Interest Deduction</strong><ul id="41b8ac6a-aab1-8054-8b14-d594627415d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The mortgage interest deduction (MID) allows homeowners to deduct the interest on a mortgage loan. Currently, the eligible amounts are:<ul id="41b8ac6a-aab1-80ba-9b13-dd39f83fbc35" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>$750,000 (for people filing jointly</strong>)</li></ul><ul id="41b8ac6a-aab1-8006-8536-d7e34e95866d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>$375,000 (for people filing separately)</strong></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8044-acd3-dc15f8eb707d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Home Equity Loan Interest Deduction</strong><ul id="41b8ac6a-aab1-80c9-8bf7-cdee358e14cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The interest on loans used to pay for improvements to your home are deductible – unless it puts your total loan balance above the MID loan amount thresholds.</li></ul></li></ul><ul id="41b8ac6a-aab1-8063-8368-e63df57c5493" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Tax Deduction</strong><ul id="41b8ac6a-aab1-8067-a13b-ea07891d191e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">After the passage of the TCJA, homeowners can only deduct a total of <strong>$10,000 combined of state, city, and property taxes</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-80e1-b45c-f23d288770dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Points and Prepayment Penalties</strong><ul id="41b8ac6a-aab1-8039-9074-e310724e5790" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Most points and prepayment penalties are tax-deductible in the year they&#x27;re paid.</li></ul></li></ul><ul id="41b8ac6a-aab1-8009-8e7c-fe78fdf1744e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Taxpayer Relief Act of 1997</strong><ul id="41b8ac6a-aab1-809c-9da1-f796cfe0aecc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Taxpayer Relief Act of 1997 created certain exclusions from capital gains taxes for homeowners.</li></ul><ul id="41b8ac6a-aab1-80ae-929c-e203631638f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Under the capital gains exemption, single homeowners may exclude up to the first $250,000 on the sale of a primary residence. Married homeowners may exclude up to the first $500,000.</li></ul></li></ul><figure id="41b8ac6a-aab1-8046-8550-e64901397cb6" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_CapitalGainsExemption_4793.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_CapitalGainsExemption_4793.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/FL.PL_CapitalGainsExemption_4793.png"/></a></figure><ul id="41b8ac6a-aab1-8028-bdcc-ca7aab8707bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tax Shelters</strong><ul id="41b8ac6a-aab1-80f4-90ae-c9e53d97ae93" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Investors have tax strategies they can utilize to their benefit. These maneuvers, known as <strong>tax shelters</strong>, might not get the shrewd investor completely out of paying taxes, but they provide some relief. A tax shelter is any method used to reduce taxable income and, consequently, reduce the amount of taxes paid to the government.</li></ul></li></ul><ul id="41b8ac6a-aab1-809f-91bd-c70ae357370a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Taxable Income on Investment Properties</strong><ul id="41b8ac6a-aab1-8013-b5e3-edadb2579d4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This refers to the income that can be taxed after all deductions and permissible adjustments have been made.</li></ul></li></ul><ul id="41b8ac6a-aab1-80e7-9d13-dbf75c166699" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Here&#x27;s what you need to know:<ul id="41b8ac6a-aab1-80f9-a5b9-eff3f84a4a67" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Certain operating expenses (money spent on running and maintaining the property) are deductible in the year they are paid.</li></ul><ul id="41b8ac6a-aab1-8092-a3ee-d1e9783c6b22" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Property taxes are considered a fixed operating expense and are deductible from gross income.</li></ul><ul id="41b8ac6a-aab1-800a-bb28-dc04049aeb12" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A cash reserve for replacements is not deductible. However, replacement expenses paid during the tax year may be deducted.</li></ul></li></ul><ul id="41b8ac6a-aab1-80fb-83c2-e74c6ad83445" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Depreciation of Investment Properties</strong><ul id="41b8ac6a-aab1-80fe-bf06-f6d9956ddef8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depreciation is a type of tax shelter for investors. It&#x27;s a way to recapture the loss in value of an asset over time by writing off a portion each year.</li></ul></li></ul><ul id="41b8ac6a-aab1-8097-a7f1-ddc93ad46f56" class="bulleted-list" dir="auto"><li style="list-style-type:disc">There are three major events in investment property ownership:<ul id="41b8ac6a-aab1-8085-93ff-d662ce481a58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acquisition:</strong> when you buy it</li></ul><ul id="41b8ac6a-aab1-80a9-b209-fabbb620fc84" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Holding period:</strong> when you own it</li></ul><ul id="41b8ac6a-aab1-808d-aeb3-e141aca36c65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reversion:</strong> when you sell it and it reverts back to the natural state of the investment, meaning the cash you used to buy it</li></ul><ul id="41b8ac6a-aab1-8053-94ac-f93bc9a1af6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Depreciation is something that happens during the holding period.</strong> It doesn&#x27;t start at acquisition, however – it starts when the property is &quot;placed in service.&quot;</li></ul><ul id="41b8ac6a-aab1-80bd-8275-c8cbb00f4ef9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An investment property is <strong>placed in service </strong>when you start using it for its intended, income-producing purpose.</li></ul></li></ul><ul id="41b8ac6a-aab1-8096-a20c-c5e2e613c323" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Land Doesn&#x27;t Depreciate</strong><ul id="41b8ac6a-aab1-80fe-ab80-ee2670a3ac10" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Land does NOT depreciate because land doesn&#x27;t have a determinable useful life or lose value over time.</li></ul></li></ul><ul id="41b8ac6a-aab1-8035-94e3-ff814a3a9e96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Recovery Periods for Depreciable Assets</strong><ul id="41b8ac6a-aab1-8041-8fa8-fb6b4e592af7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The recovery period <strong>for residential income-producing property is 27.5 years</strong>.</li></ul><ul id="41b8ac6a-aab1-80b8-a881-cddf82aa1e4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The recovery period <strong>for commercial investment property is 39 years</strong>.</li></ul></li></ul><ul id="41b8ac6a-aab1-8030-ab2d-ee07c70b242b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Depreciation Recapture Tax</strong><ul id="41b8ac6a-aab1-802d-9522-e1beea5183d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When investment property is sold, depreciation recapture tax comes due. Depreciation recapture is taxed at<strong> 25%</strong> of the total allowable depreciation deductions.</li></ul></li></ul><ul id="41b8ac6a-aab1-808b-9d6b-ecb9db8d9d94" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Like-kind Exchange or 1031 Exchange</strong><ul id="41b8ac6a-aab1-80b7-9be1-e9de6b3736e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A like-kind exchange or 1031 exchange is the tax-deferred sale or exchange of one investment property for another similar one. It&#x27;s used when an investor wants to sell an asset and acquire a similar one while avoiding the capital gains tax.</li></ul></li></ul><ul id="41b8ac6a-aab1-80b0-8128-e9c7a125acd2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Installment Sales</strong><ul id="41b8ac6a-aab1-80f4-bd5e-ca573d3c4c1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Installment sales work like any kind of layaway plan. The buyer pays the seller for the property in pre-determined chunks for a pre-determined length of time, and the seller holds the title until the property has been fully paid for.</li></ul><ul id="41b8ac6a-aab1-8043-a22f-ec30bdc9b8fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An installment sale is also known as a <strong>contract for deed</strong>.</li></ul><ul id="41b8ac6a-aab1-8022-8e92-d6c84b0e0936" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In an installment sale, the seller only pays taxes on the money they have already received, in the year that they receive it.</li></ul></li></ul><ul id="41b8ac6a-aab1-80f2-afa5-f9c2f344ffa1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Independent Contractors vs. Employees</strong><ul id="41b8ac6a-aab1-80bd-be02-d8628a935a9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In Tennessee, as in most states, workers are classified as either independent contractors or employees. Real estate licensees are generally, but not always, considered independent contractors.</li></ul><ul id="41b8ac6a-aab1-8057-acc1-c2a514d59153" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here are the tax forms used by each:<ul id="41b8ac6a-aab1-8087-8e98-e8eba4e3e7ae" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Employee: W-2</strong></li></ul><ul id="41b8ac6a-aab1-8036-a006-d4aad598e911" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Independent Contractor: 1099</strong></li></ul></li></ul></li></ul><ul id="41b8ac6a-aab1-8091-9570-f3052bad08ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Formulas to Know</strong><ul id="41b8ac6a-aab1-8094-a7a0-c42df43f8892" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Straight-line Recovery</strong><ul id="41b8ac6a-aab1-809d-a45d-e05ccd6e613a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Depreciable basis ÷ Useful life = Annual IRS depreciation deduction</em></li></ul></li></ul><ul id="41b8ac6a-aab1-80da-b9c3-e6ac87b2c251" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Depreciation Basis</strong><ul id="41b8ac6a-aab1-8049-ba88-d0a6e40082a1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Purchase price + Acquisition costs + Renovations - Land value = Depreciation basis</em></li></ul></li></ul><ul id="41b8ac6a-aab1-804f-8e63-fb8c474e959f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjusted Basis</strong><ul id="41b8ac6a-aab1-8060-a7aa-f73c61032cf1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Basis + Cost of improvements + Qualified closing costs - Realized depreciation = Adjusted basis</em></li></ul></li></ul><ul id="41b8ac6a-aab1-805f-8e93-e2300227dba1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Realized Gain</strong><ul id="41b8ac6a-aab1-80f8-9cc1-d93c49a8352d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Sales price - Selling costs = Realized gain</em></li></ul></li></ul><ul id="41b8ac6a-aab1-802d-a8d3-cffcfa4fbb56" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Capital Gain</strong><ul id="41b8ac6a-aab1-80c1-944b-ed53f56a0c3d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Realized gain - Adjusted basis = Capital gain</em></li></ul><p id="41b8ac6a-aab1-806f-8516-c18eedceed6a" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="41b8ac6a-aab1-809e-a42a-ed8538e192e1" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

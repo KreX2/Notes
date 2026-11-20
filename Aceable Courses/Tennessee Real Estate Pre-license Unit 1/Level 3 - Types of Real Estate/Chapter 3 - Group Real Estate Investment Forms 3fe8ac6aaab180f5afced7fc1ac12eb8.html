@@ -1,0 +1,804 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Group Real Estate Investment Forms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="3fe8ac6a-aab1-80f5-afce-d7fc1ac12eb8" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Group Real Estate Investment Forms</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4008ac6a-aab1-80be-833a-eaebf7640730" class="column-list" data-notion-column-list="" dir="auto"><div id="4008ac6a-aab1-805f-ba3d-ef7d2fb626c1" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4008ac6a-aab1-8065-b092-e0c85a264ca0" class="" dir="auto"><strong>Group Real Estate Investments</strong></p><ul id="4008ac6a-aab1-8010-8db2-cef617bcb654" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real estate leveraged as an investment<figure id="4008ac6a-aab1-8024-8321-d0cfad761c1c" class="image" data-notion-image="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image.png" dir="ltr"><a href="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image.png"><img style="width:336px" src="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image.png"/></a></figure></li></ul><ul id="4008ac6a-aab1-8011-bc2c-f439e627edb0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Investors</strong><ul id="4008ac6a-aab1-80d2-90e6-ccb6536d3057" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When working with syndicates, joint ventures, and REITs, you will work with investors. They generally fall into three broad categories based on their investment property types, goals, and timelines:</li></ul><ul id="4008ac6a-aab1-8083-973f-db9b0c324a5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Cash Flow Investors:<ul id="4008ac6a-aab1-80bb-ada1-d7fc210d91ff" class="bulleted-list" dir="auto"><li style="list-style-type:square">Goal: Steady monetary return every month or on a regular basis.</li></ul><ul id="4008ac6a-aab1-80df-b9f2-ed840e24a39a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Types: Retail properties or rental buildings that collect rent to generate a regular, monthly profit.</li></ul></li></ul><ul id="4008ac6a-aab1-808c-bf25-c5f2bf910bba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Long-Term Return Investors:<ul id="4008ac6a-aab1-80c9-b1c6-ced3c2469d57" class="bulleted-list" dir="auto"><li style="list-style-type:square">Goal: Earn a large return further down the road (long-term mindset).</li></ul><ul id="4008ac6a-aab1-8064-ba24-d6246348e131" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Types: Properties in up-and-coming areas that will appreciate in value as the neighborhood develops and changes.</li></ul></li></ul><ul id="4008ac6a-aab1-803c-88f4-c73215b76847" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Short-Term Return Investors:<ul id="4008ac6a-aab1-806c-b4ff-c1d85764355a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Goal: Receive a monetary return within a few months or a few years.</li></ul><ul id="4008ac6a-aab1-8016-b4e0-ee1366b1020d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property Types: &quot;Fixer-uppers&quot; (buying a property, improving it, and flipping/selling it quickly).</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80e6-9f5b-dfab672f6f04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Syndicates</strong><ul id="4008ac6a-aab1-8079-a45b-e8c53450ddf0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A real estate investment syndicate is a group of investors who combine their resources to make investments they wouldn&#x27;t be able to afford on their own.</li></ul><ul id="4008ac6a-aab1-8007-ad3e-c4159f83c90d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Legal Status and Rules:<ul id="4008ac6a-aab1-80a6-ae5e-d39020992d80" class="bulleted-list" dir="auto"><li style="list-style-type:square">They must follow the regulations of the U.S. Securities and Exchange Commission (SEC).</li></ul><ul id="4008ac6a-aab1-80e8-a5db-f7afe96b4c24" class="bulleted-list" dir="auto"><li style="list-style-type:square">&quot;Syndicate&quot; is not a formal legal term; a syndicate can be organized as a corporation, partnership, or trust. How it operates depends on its chosen business structure.</li></ul><ul id="4008ac6a-aab1-8019-b8c8-f73859194234" class="bulleted-list" dir="auto"><li style="list-style-type:square">The process of forming one is called <em>syndication</em>.</li></ul></li></ul><ul id="4008ac6a-aab1-8074-ac6c-e2efa933a827" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Parts of a Syndicate:<ul id="4008ac6a-aab1-804a-90e0-c5f8a655a26e" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Sponsor (Syndicator or Organizer): The active manager of the endeavor. They build the investment group, direct the project, and charge the investor group fees for their work. If they invest their own money (usually required to co-invest at least 5% of the equity), they also collect a share of the profits when the property is sold.</li></ul><ul id="4008ac6a-aab1-807f-9370-e8bb6095e6e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Investors: The passive members who provide the capital (cash).</li></ul></li></ul><ul id="4008ac6a-aab1-8034-8284-d8eb67091641" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Typical Investments: While they can be used for single-family homes, they are typically created to finance large commercial real estate projects, including:<ul id="4008ac6a-aab1-8029-8756-d8d9ec141725" class="bulleted-list" dir="auto"><li style="list-style-type:square">Multi-family apartment complexes</li></ul><ul id="4008ac6a-aab1-8072-8673-e3eb589928f4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Office space</li></ul><ul id="4008ac6a-aab1-80c0-a887-c5b57388c50d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Retail centers</li></ul><ul id="4008ac6a-aab1-80e8-95f9-ed7d590214d8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Industrial buildings</li></ul></li></ul><ul id="4008ac6a-aab1-8066-813c-c8daafdc013c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Why Go Through a Syndicate? (Benefits)<ul id="4008ac6a-aab1-80f4-b658-ee7c7b119fdc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Pooling Resources: Allows small-scale investors to participate in the ownership and operation of large properties that would be too much to handle alone or with just one or two partners.</li></ul><ul id="4008ac6a-aab1-80e1-b6c6-f162b76ad849" class="bulleted-list" dir="auto"><li style="list-style-type:square">Professional Management: Provides access to professional management (the core service the syndicator provides), which might not otherwise be economically feasible for a small investor.</li></ul></li></ul><ul id="4008ac6a-aab1-8062-ad5d-e2e0b24664e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Syndicates as Securities<ul id="4008ac6a-aab1-80a3-9b41-dd8b3bec6c47" class="bulleted-list" dir="auto"><li style="list-style-type:square">Syndicate investors are passive (they have no say in daily operations) and the title to the real property is not initially transferred to them.</li></ul><ul id="4008ac6a-aab1-8035-8871-f255dc9aedb1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because of this, a real estate syndicate is considered a security (a financial instrument with monetary value). Investors own shares or securities in the syndicate rather than the property itself.</li></ul><ul id="4008ac6a-aab1-809f-b00f-f1e6be3315a6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Forms of Syndicate Organization:<ul id="4008ac6a-aab1-8061-99b4-eff3bf200b43" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Corporation: Provides centralized management and limited liability for investors. However, it is rarely used due to the negative feature of double taxation.</li></ul><ul id="4008ac6a-aab1-8047-af12-f5428c195e5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">General Partnership: Avoids double taxation, but is poorly suited for syndicates because of unlimited liability and a lack of centralized management (all members share equally in responsibilities, profits, and losses).</li></ul><ul id="4008ac6a-aab1-80d1-b027-f9620e98ce4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Limited Partnership: Combines the tax advantages of a partnership with the centralized management and limited liability of a corporation. The downside is that the general partner remains personally liable for the business&#x27;s losses and liabilities.</li></ul><ul id="4008ac6a-aab1-80b2-a6e7-f1d18ed33cba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Limited Liability Company (LLC): The most common form for a syndicate. It offers limited liability (like a corporation), permits active participation/control by members, and is taxed as a pass-through entity (like a partnership, avoiding double taxation).<ul id="4008ac6a-aab1-8012-a08b-e95827035c75" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><em>Note:</em> Syndications are often structured as an LLC owned by a partnership made up of both general and limited partners.</li></ul></li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-8030-beb8-d88311302946" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Three Phases of Syndication<ul id="4008ac6a-aab1-802a-bd5c-cc0b3cc2f754" class="bulleted-list" dir="auto"><li style="list-style-type:square">A typical real estate syndication goes through a three-phase cycle:<ul id="4008ac6a-aab1-809e-b72c-db512e55eecc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Organization: This phase involves planning, acquiring the property, satisfying registration and disclosure rules, and handling the marketing processes.</li></ul><ul id="4008ac6a-aab1-80ac-b50e-c83adbc3806a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Operation: During this phase, the sponsor typically manages both the syndicate itself and the real property.</li></ul><ul id="4008ac6a-aab1-8032-ac68-cfe63cdb6bcd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Liquidation (Completion): The final phase, which involves the resale of the property.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80b7-b862-e4ab0021ce54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Orion and the Syndicate</strong><ul id="4008ac6a-aab1-80bd-8ec0-ddb8be1d5cb1" class="bulleted-list" dir="auto"><li style="list-style-type:square"> <strong>Role of the Syndicator (Sponsor):</strong> Orion serves as the syndicate&#x27;s sponsor/general partner. He is responsible for orchestrating the entire deal, sourcing capital, managing operations, and earning compensation through fees and potential performance splits.   </li></ul><ul id="4008ac6a-aab1-80a8-bb1f-f707b4797dfc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Three-Stage Investment Cycle:</strong>    <ul id="4008ac6a-aab1-807b-87ec-ea3fded84bf3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">1. <strong>Organization (Origination):</strong> Sourcing property, forming the legal entity, organizing passive investors, and navigating regulatory disclosures and financing. </li></ul><ul id="4008ac6a-aab1-8027-a886-e2534c4243aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">2. <strong>Operation:</strong> Executing the business strategy, managing day-to-day property operations, and distributing rental income/cash flows.   </li></ul><ul id="4008ac6a-aab1-800d-a207-e9b6687b0cf9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">3. <strong>Liquidation:</strong> Exit strategy—selling or refinancing the asset and distributing capital returns and profits back to investors.   </li></ul></li></ul><ul id="4008ac6a-aab1-80d9-98f5-da6349ddd6e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sponsor Alignment (Skin in the Game):</strong> By contributing $50,000 of his own money alongside the syndicate&#x27;s investors, Orion demonstrates financial commitment and aligns his personal interests directly with the group.</li></ul><ul id="4008ac6a-aab1-80a5-a3e6-d111c7d7a335" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Pooling &amp; Scale:</strong> Syndication allows individual or small-scale investors to pool resources together to acquire high-value commercial and redevelopment projects that none of them could buy on their own.</li></ul></li></ul><ul id="4008ac6a-aab1-807a-9153-c07ab5168d7e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Joint Venture<ul id="4008ac6a-aab1-80ee-b3f4-d36ba39de725" class="bulleted-list" dir="auto"><li style="list-style-type:square">A kind of syndicate that is a one-off collaboration rather than an ongoing investing group.</li></ul><ul id="4008ac6a-aab1-809d-bb44-cc82cf75b13c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Investors merge their finances together for a single project or venture, and then part ways after the venture is finished.</li></ul><ul id="4008ac6a-aab1-80ac-b04e-fe22e36fce61" class="bulleted-list" dir="auto"><li style="list-style-type:square">Typical Structure:<ul id="4008ac6a-aab1-80d9-9ef4-ffd282a0fc52" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Operating Partner: The individual who brings real estate expertise to the relationship (similar to a general partner, but without the liability).</li></ul><ul id="4008ac6a-aab1-8049-b846-dc3744d744bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Capital Partners: One or several investors who provide the funding.</li></ul></li></ul><ul id="4008ac6a-aab1-800d-b0b5-e5fe37692323" class="bulleted-list" dir="auto"><li style="list-style-type:square">Business Form: While a joint venture can take on a variety of partnership forms, the most popular structure is a Limited Liability Company (LLC).</li></ul><ul id="4008ac6a-aab1-802d-9ffc-d7ea883aeb8d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scenario:<ul id="4008ac6a-aab1-8010-816a-dc351fb160ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Orion&#x27;s Joint Venture<ul id="4008ac6a-aab1-80d9-a885-c039d2b6edf7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Project-Specific &amp; Limited Scope:</strong> The joint venture between Orion and Big Bucks Partners is created strictly to redevelop the waterfront parcel into a luxury high-rise. Once the project is complete and all the condos are sold, the LLC will be dissolved.</li></ul><ul id="4008ac6a-aab1-8037-85e4-ca8d8b51532e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Combining Resources (Capital + Local Expertise):</strong> This partnership pairs Big Bucks Partners&#x27; financial backing with Orion’s local market knowledge and hands-on operational management—a classic structure for large-scale real estate development.</li></ul><ul id="4008ac6a-aab1-8070-9f21-c3f429efb614" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Entity Flexibility:</strong> The joint venture was established as a <strong>Limited Liability Company (LLC)</strong>, which grants both parties corporate liability protection while allowing for flexible management terms and pass-through taxation.</li></ul><ul id="4008ac6a-aab1-8054-b9d6-d104baa458bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Governed by Contract:</strong> Because joint ventures involve distinct, independent entities coming together, a detailed contract is required to define capital contributions, profit-sharing splits, specific deliverables, and risk allocation.</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-8054-9c58-da1e69a991f7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real Estate Investment Trusts (REITs)<ul id="4008ac6a-aab1-80ef-add3-e4fa34a1ffce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A special kind of syndicate, organized as a trust, that invests in, owns, or acquires income-producing real estate or real estate assets.</li></ul><ul id="4008ac6a-aab1-8083-808b-c658515f1ff4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">How They Work: They operate much like mutual funds for real estate. Investors buy shares in the trust (which they can sell at any time), and the trust uses that pooled money to purchase and manage property or mortgages. Profits are shared among investors according to their shares.</li></ul><ul id="4008ac6a-aab1-8046-ab91-d8bbdd0bf8d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Publicly-Traded REITs: Many REITs are registered with the SEC and are publicly traded on a stock exchange.</li></ul><ul id="4008ac6a-aab1-80f6-af61-fc893368a4d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Benefits (Pooled Funds): They provide a way for individual investors to earn a share of the income produced by commercial real estate without having to buy, finance, or manage the properties on their own.</li></ul><ul id="4008ac6a-aab1-802e-8993-e6bac8155697" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Scale: According to the research group Nareit, REITs of all types collectively own more than $3 trillion in gross assets across the U.S.</li></ul><ul id="4008ac6a-aab1-807f-a86a-c02de2eddfe6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Appeal of REITs<ul id="4008ac6a-aab1-8091-bb77-c0e6084c4340" class="bulleted-list" dir="auto"><li style="list-style-type:square">Advantages (Over other investments):<ul id="4008ac6a-aab1-8043-b5c5-cf910f5ba69f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Acts as a good hedge against inflation.</li></ul><ul id="4008ac6a-aab1-80fe-8a9c-ecfecbb2f6e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">More stable than many high-risk stock investments.</li></ul><ul id="4008ac6a-aab1-8041-85b3-db24b2d8d94b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Offers higher returns than typical bond returns.</li></ul><ul id="4008ac6a-aab1-8042-ad20-dba991837700" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Avoids the double taxation associated with C corporations.</li></ul><ul id="4008ac6a-aab1-80e8-af97-dafc25bef679" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Backed by a tangible investment (the physical properties), making it generally safer than intangible investments like stocks.</li></ul></li></ul><ul id="4008ac6a-aab1-8085-8aa0-c156394807fd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disadvantages:<ul id="4008ac6a-aab1-802a-93be-edaaefe5cf84" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Typically offer lower returns when compared to traditional, direct real estate investments.</li></ul></li></ul><ul id="4008ac6a-aab1-80e5-80ef-d4911fa69d1c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Additional Benefits (Over traditional real estate investing):<ul id="4008ac6a-aab1-80ce-a25f-ead818af53e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">No Buying/Managing Hassles: Investors don&#x27;t have to find, purchase, or manage the physical properties themselves.</li></ul><ul id="4008ac6a-aab1-8096-b963-fea106d6e7fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Highly Liquid: Overcomes real estate&#x27;s typical illiquidity; because many REITs are traded on the stock market, shares can be bought and sold as easily as stocks.</li></ul><ul id="4008ac6a-aab1-8054-bfe9-d28314be8124" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Risk Mitigation: Avoids the &quot;all-or-nothing&quot; risk of owning a single property (where one vacancy means zero income) by spreading ownership across all properties the REIT owns.</li></ul><ul id="4008ac6a-aab1-801c-8d60-d8d4d2938b69" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Access to Scale: Allows small-dollar investors to pool funds and access equity in large-scale commercial projects that would normally be impossible to afford alone.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-80f1-8e7c-fdc1298676e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Types of REITs (Three Categories):<ul id="4008ac6a-aab1-80d7-b618-e080d5122162" class="bulleted-list" dir="auto"><li style="list-style-type:square">Equity REITs: Own or operate income-producing real estate. This is the most common type (often just referred to as a &quot;REIT&quot; without clarification) and they usually specialize in a single type of real estate (e.g., only houses or only office buildings).</li></ul><ul id="4008ac6a-aab1-80a5-8708-e00b87b48e50" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mortgage REITs (mREITs): Generate income by buying or originating loans and mortgage-backed securities. They provide financing for residential and commercial properties, allowing people to easily invest in the mortgage market. Less than 10% of all REITs are mREITs.</li></ul><ul id="4008ac6a-aab1-809a-8e0b-f512639ec20a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Hybrid REITs: Invest in both income-producing property AND mortgages/mortgage-based securities. This combination provides diversified holdings that help hedge against the risk of investing in just one type of asset.</li></ul></li></ul><ul id="4008ac6a-aab1-80a2-b077-fdae644e90ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>REIT Requirements</strong><ul id="4008ac6a-aab1-804f-83fa-cb43afb11b79" class="bulleted-list" dir="auto"><li style="list-style-type:square">To qualify as a REIT (and as a pass-through entity for tax purposes), a company must meet a strict set of rules and tests.</li></ul><ul id="4008ac6a-aab1-80d5-95d0-df8fa40e14c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Shareholder Tests:<ul id="4008ac6a-aab1-800d-8c2d-d3ad72e6e167" class="bulleted-list" dir="auto"><li style="list-style-type:disc">100 Shareholder Test: Must have at least 100 shareholders at the beginning of its second taxable year.</li></ul><ul id="4008ac6a-aab1-80d5-a567-e81ab542d7ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">5/50 Test: Five or fewer people cannot own more than 50% of the value of the REIT’s stock (many REITs cap individual stock ownership to prevent violating this).</li></ul></li></ul><ul id="4008ac6a-aab1-80fb-8b92-f53136d513be" class="bulleted-list" dir="auto"><li style="list-style-type:square">Income Tests (Ensures most income comes from real estate):<ul id="4008ac6a-aab1-800c-8237-f775db3885e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">At least 75% of annual gross income must come from real estate.</li></ul><ul id="4008ac6a-aab1-8068-b276-ee7ba3f01563" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Another 20% must come from real estate sources or other allowable sources (like interest and dividends).</li></ul><ul id="4008ac6a-aab1-800a-85cd-f8d858742647" class="bulleted-list" dir="auto"><li style="list-style-type:disc">No more than 5% of income can come from non-qualifying sources (like service fees or businesses unrelated to real estate).</li></ul></li></ul><ul id="4008ac6a-aab1-800a-9aef-e8f87de5be82" class="bulleted-list" dir="auto"><li style="list-style-type:square">Asset Tests (Must be met on a quarterly basis):<ul id="4008ac6a-aab1-80ff-96f9-dcdfc745e6bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">At least 75% of the REIT’s assets must consist of real estate assets (real property or loans backed by real property).</li></ul><ul id="4008ac6a-aab1-808a-b1d6-e64f2258744d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cannot own more than 10% of the voting securities of any corporation (except other REITs, taxable REIT subsidiaries, or qualified REIT subsidiaries).</li></ul><ul id="4008ac6a-aab1-802d-bfef-c6d1f643f655" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Cannot own stock in a corporation if the stock&#x27;s value exceeds 5% of the REIT’s assets.</li></ul><ul id="4008ac6a-aab1-801b-9914-e206c9ce5a73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The combined stock value of all the REIT’s taxable subsidiaries cannot exceed 25% of the REIT’s total assets.</li></ul></li></ul><ul id="4008ac6a-aab1-8098-9835-ec491d94d061" class="bulleted-list" dir="auto"><li style="list-style-type:square">Other Operational Rules:<ul id="4008ac6a-aab1-800e-91e1-eeddff8a8126" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Distributions: The company must distribute 90% or more of its annual real estate income AND 95% of its gains to investors every year (any income it retains is taxed like a standard corporation).</li></ul><ul id="4008ac6a-aab1-80de-84ee-c048578d266f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Transferability: Shares must be fully transferable.</li></ul><ul id="4008ac6a-aab1-8067-970c-ce1bfb87f6e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Management: Must be managed by a board of directors or trustees.</li></ul><ul id="4008ac6a-aab1-8060-acc2-fc6bde2a0996" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Tax Election: Must officially elect REIT status by filing Form 1120-REIT.</li></ul></li></ul></li></ul><ul id="4008ac6a-aab1-8053-b474-fd722d81a568" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Scenario<ul id="4008ac6a-aab1-80bc-82e0-d5d8985ec46f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Zoe and the REIT</strong></li></ul><ul id="4008ac6a-aab1-807d-98a0-d70d8900e768" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ease &amp; Liquidity:</strong> Investing in a publicly traded Real Estate Investment Trust (REIT) provides immediate exposure to the real estate market with stock-like liquidity, allowing investors to buy or sell shares instantly without the lengthy closing process of physical real estate.   </li></ul><ul id="4008ac6a-aab1-8073-8886-dba7ec8b8d1c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Passive Real Estate Investment:</strong> REITs allow investors like Zoe to earn passive income from large-scale real estate portfolios without taking on the operational hassles of managing properties, screening tenants, or dealing with physical repairs.</li></ul><ul id="4008ac6a-aab1-8003-838e-f6b2e6c8bcd6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Capital Diversification:</strong> REITs offer a simple way to diversify funds outside of direct business operations or family-run projects, giving investors a hands-off vehicle for generating potential dividend income and capital growth.</li></ul></li></ul><p id="4008ac6a-aab1-808f-a16f-c0ae02f98135" class="" dir="auto"><strong>Groups of Properties</strong></p><figure id="4008ac6a-aab1-80ea-810e-eca751ce862a" class="image" data-notion-image="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image%201.png"><img style="width:432px" src="Chapter%203%20-%20Group%20Real%20Estate%20Investment%20Forms/image%201.png"/></a></figure><p id="4008ac6a-aab1-801a-abb3-c450de444615" class="" dir="auto">
+</p><p id="4008ac6a-aab1-8050-94e4-f20cee2523ad" class="" dir="auto">
+</p><p id="4008ac6a-aab1-800e-85db-e3f7f58d6e15" class="" dir="auto">
+</p><p id="4008ac6a-aab1-80de-a917-f6c44d6f68c2" class="" dir="auto">
+</p><p id="4008ac6a-aab1-803b-8a69-c83560beb322" class="" dir="auto">
+</p></li></ul></div><div id="4008ac6a-aab1-8037-b866-fcb75fc89781" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4008ac6a-aab1-8048-870c-c57aa14244c7" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4008ac6a-aab1-809a-b2c6-ce5516fea1a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">real estate investment trust (REIT) - a trust that invests in, owns, or acquires real property and is owned by investors who share the trust’s profits according to shares</li></ul><ul id="4008ac6a-aab1-80d7-8aed-e18f242cd8eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">syndicate - a group of investors that get together and combine resources to make investments they wouldn&#x27;t be able to make on their own</li></ul><p id="4008ac6a-aab1-8084-8989-fd3d8dc80067" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4008ac6a-aab1-8074-bd46-eb3e72976c19" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Syndicates <ul id="4008ac6a-aab1-8060-b0ef-c57e3da81f5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A syndicate is generally made up of one sponsor and a group of passive investors. </li></ul><ul id="4008ac6a-aab1-8028-893a-f23c9a902793" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Syndicates are typically used for large, commercial real estate projects. </li></ul><ul id="4008ac6a-aab1-80d2-b70a-cb5a59f7a382" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The three phases of syndication are organization, operation, and liquidation. </li></ul><ul id="4008ac6a-aab1-809b-a4cf-f534834e0f3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A syndicate is an ongoing investor group. Contrast that with a joint venture, which is a one-off endeavor.</li></ul></li></ul><ul id="4008ac6a-aab1-80ae-89ba-e52d67c78081" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Real Estate Investment Trusts (REITs)<ul id="4008ac6a-aab1-80ec-818f-c8518a1130d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A special kind of syndicate, organized as a trust, that owns (and typically operates) income-producing real estate or real estate assets.</li></ul><ul id="4008ac6a-aab1-80ca-b324-de2fc7cd9873" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Investors buy shares in the trust—which can be bought or sold at any time—and the trust uses that pooled money to purchase and manage assets.</li></ul><ul id="4008ac6a-aab1-8067-88a6-cac10fa2165c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">REITs must meet strict criteria regarding their shareholders, income, and assets to maintain their tax status.</li></ul><ul id="4008ac6a-aab1-8011-9c7a-f8a306a81033" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Three Main Categories:<ul id="4008ac6a-aab1-808a-ab17-cc8d5c1f8d30" class="bulleted-list" dir="auto"><li style="list-style-type:square">Equity REITs: Own or operate income-producing real estate (makes up the majority of REITs).</li></ul><ul id="4008ac6a-aab1-8092-a9a2-f67242b2400c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mortgage REITs (mREITs): Buy or originate loans and mortgage-backed securities.</li></ul><ul id="4008ac6a-aab1-80d5-be85-ddfcd6c650c8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Hybrid REITs: Invest in a combination of both income-producing property and mortgages/mortgage-backed securities.</li></ul></li></ul></li></ul><p id="4008ac6a-aab1-809f-98f6-e11873d25d1e" class="" dir="auto">
+</p></div></div><p id="4008ac6a-aab1-80c9-83cc-f40e58981e60" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

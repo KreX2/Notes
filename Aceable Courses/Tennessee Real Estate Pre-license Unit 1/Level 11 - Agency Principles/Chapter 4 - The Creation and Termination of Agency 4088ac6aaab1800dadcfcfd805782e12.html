@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - The Creation and Termination of Agency</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-800d-adcf-cfd805782e12" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>The Creation and Termination of Agency</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40c8ac6a-aab1-80c6-b62f-dd5489559a26" class="column-list" data-notion-column-list="" dir="auto"><div id="40c8ac6a-aab1-8055-86c7-d7a2516ad02e" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40c8ac6a-aab1-8023-b8d0-efdb707ea0fd" class="" dir="auto"><strong>Agency Relationship Fundamentals</strong></p><ul id="40c8ac6a-aab1-8099-94c4-f1e1da079727" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Created when a principal (client) authorizes an agent (broker) to act on their behalf and in their best interests through a mutual agreement.</li></ul><ul id="40c8ac6a-aab1-8058-81b0-dfd6efc4074e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Requirement:</strong> While some states permit oral agreements, Tennessee real estate law strictly mandates that all agency agreements <strong>must be in writing</strong> as a <strong>bilateral agreement</strong> (an exchange of promises where both parties are obligated to perform).</li></ul><ul id="40c8ac6a-aab1-80fd-8a97-e7ca9531d810" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fiduciary Nature:</strong> Tennessee law officially recognizes the agency relationship between a broker and client as a fiduciary relationship built on a high degree of trust and financial confidence.</li></ul><ul id="40c8ac6a-aab1-8000-9ab5-d68ca6de9850" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Compensation vs. Agency Representation</strong><ul id="40c8ac6a-aab1-801d-9ece-f660f15f1225" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Separation of Concepts:</strong> Compensation <strong>does not</strong> equal agency representation; a licensee&#x27;s fiduciary duty is owed to their client regardless of who pays the commission.</li></ul><ul id="40c8ac6a-aab1-8064-91cf-c4046f2fa1a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Structure:</strong> A buyer&#x27;s agent frequently receives compensation from the seller (via property sale proceeds) rather than directly from their own buyer-client, without compromising their obligation to champion the buyer&#x27;s best interests.</li></ul></li></ul><ul id="40c8ac6a-aab1-806a-8f85-f497d19b3bc1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Two Essential Components of Agency</strong><ol type="1" id="40c8ac6a-aab1-8055-83da-df63de7e1347" class="numbered-list" start="1" dir="auto"><li><strong>Consent:</strong> Mutual agreement between both the agent and the client where the agent agrees to act on the client&#x27;s behalf (ideally preceding the agent&#x27;s actions). Both parties must actively consent.</li></ol><ol type="1" id="40c8ac6a-aab1-80a5-b275-cf552f694511" class="numbered-list" start="2" dir="auto"><li><strong>Control:</strong> The principle granting the agent the authority to act on behalf of the client, which is formally established, supported, and clarified through written agreements, contracts, and legal forms.</li></ol></li></ul><ul id="40c8ac6a-aab1-80f1-98f0-ed3ce3326f2c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Creation </strong><ul id="40c8ac6a-aab1-80e9-ab58-e7f13fc21167" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dimensions of Agency:</strong> Agency relationships can be classified and described by:<ol type="1" id="40c8ac6a-aab1-8060-8453-cd4745ba71fd" class="numbered-list" start="1" dir="auto"><li>The manner in which they are created.</li></ol><ol type="1" id="40c8ac6a-aab1-80c5-918e-d75502b231ba" class="numbered-list" start="2" dir="auto"><li>The degree of authority and liability they carry.</li></ol><ol type="1" id="40c8ac6a-aab1-808c-a0f3-c78b30ef289e" class="numbered-list" start="3" dir="auto"><li>The legal form they take.</li></ol></li></ul><ul id="40c8ac6a-aab1-8013-99cc-d266bc94785c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dynamic Nature:</strong> An agency relationship can also morph or transition from one type into another as interactions and transactions progress between the parties.</li></ul><ul id="40c8ac6a-aab1-80bc-9142-f02566d7e8d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Manner of Creation</strong><ul id="40c8ac6a-aab1-80a4-8020-e787ad444356" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>General Methods:</strong> Across various industries and states, agency can generally be established:<ul id="40c8ac6a-aab1-800a-8844-fc6599a33d06" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Orally</li></ul><ul id="40c8ac6a-aab1-807e-bffe-caa2e2880cbd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In writing</li></ul><ul id="40c8ac6a-aab1-802f-96fa-ed61a8147e0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">By implication or action (implied agency)</li></ul></li></ul><ul id="40c8ac6a-aab1-808d-9824-df04f84cd11f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Tennessee Rule:</strong> In Tennessee real estate practice, agency <strong>must be created in writing</strong>. Putting agreements in writing is legally mandatory for real estate licensees and serves as the best safeguard to ensure commissions are legally enforceable and earned.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8089-b804-db41acb71d80" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Express Agency </strong><ul id="40c8ac6a-aab1-8050-8210-e1184700f311" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Created when a principal explicitly appoints an agent to act on their behalf. Generally, express agency can be formed orally or in writing.</li></ul><ul id="40c8ac6a-aab1-8082-8224-f52a344c7d33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Tennessee Mandate:</strong> While some jurisdictions permit oral agreements, <strong>Tennessee real estate law strictly requires express agency agreements to be in writing</strong>.</li></ul><ul id="40c8ac6a-aab1-8061-b4c4-c5130a109d93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Tools:</strong> In Tennessee, express agency is formally established using standard written contracts such as the <strong>listing agreement</strong> (for sellers) and the <strong>buyer representation agreement</strong> (for buyers).</li></ul><ul id="40c8ac6a-aab1-809e-8cc3-d5c225eae04a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Pitfalls of Oral Agency</strong><ul id="40c8ac6a-aab1-80bd-8c41-cee49aa2ac8f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Even in states where oral express agency is legally permitted, industry professionals generally avoid it due to severe drawbacks:<ul id="40c8ac6a-aab1-806a-b4a1-f2b11295faac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Not enforceable</strong> against the principal (making commission collection difficult or impossible).</li></ul><ul id="40c8ac6a-aab1-80c1-aa87-ee41e445771e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Potentially enforceable</strong> against the agent, creating lopsided legal liability.</li></ul><ul id="40c8ac6a-aab1-8074-b281-c9836d599cf9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>High risk</strong> of misunderstandings, leading to formal complaints and lawsuits.</li></ul></li></ul><ul id="40c8ac6a-aab1-8097-964a-f50590eed24e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Furthermore, most MLS platforms prohibit licensees from uploading or publishing a listing without a valid written contract in place.</li></ul></li></ul><ul id="40c8ac6a-aab1-80e9-868c-e40087dc58b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Elements of a Written Agreement (&quot;Think Ink&quot;)</strong><ul id="40c8ac6a-aab1-80fa-95c1-c90544c426da" class="bulleted-list" dir="auto"><li style="list-style-type:square">A legally sound written real estate agreement must:<ul id="40c8ac6a-aab1-80fb-95ca-ddbbc3a942d6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clearly outline and address the mutual duties of both parties.</li></ul><ul id="40c8ac6a-aab1-8079-b795-cf7171496367" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provide adequate legal and professional protection for everyone involved.</li></ul><ul id="40c8ac6a-aab1-806a-a7f2-fe42d0460c5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Explicitly detail the broker&#x27;s <strong>compensation</strong>—specifically defining <em>when</em> it is earned and <em>when</em> it is payable.</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-804b-bd68-ef3f168de599" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Creation of Implied Agency </strong><ul id="40c8ac6a-aab1-80c3-a526-ec0378b8b57d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> In jurisdictions that permit it, an implied agency relationship is formed through the <strong>actions, conduct, and words</strong> of the parties rather than through an explicit written or oral agreement.</li></ul><ul id="40c8ac6a-aab1-8081-bbd7-ca70c68b41c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Liability Distribution:</strong> Both parties can be held to the duties of an implied agency, but courts hold <strong>licensees</strong> to a much higher standard of accountability than principals.</li></ul><ul id="40c8ac6a-aab1-8060-b1e8-d3c6a297c200" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Tennessee Rule:</strong> <strong>Tennessee does NOT recognize implied agency.</strong> Because state law strictly mandates that all real estate agency agreements must be in writing, implied agency cannot legally be established in Tennessee.</li></ul><ul id="40c8ac6a-aab1-8013-836b-c9b91afa3e9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How Implied Agency Arises &amp; Its Dangers</strong><ul id="40c8ac6a-aab1-80f6-baf0-ea315e985315" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Triggers:</strong> Accidental implied agency frequently happens when a licensee gives professional real estate advice, discusses property details, or acts as a trusted advisor to an unrepresented buyer-prospect or seller without explicitly clarifying their non-representation status.</li></ul><ul id="40c8ac6a-aab1-80d7-b751-df30e7d877ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>High-Risk Relationships:</strong> The danger is significantly amplified when dealing with personal acquaintances, friends, family members, or former clients where professional boundaries get blurred.</li></ul><ul id="40c8ac6a-aab1-80af-9bb6-f9663f4c99ed" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Judicial Determination:</strong> When disputes arise over unintentional representation, courts are often left to decide whether an agency relationship existed and precisely when it began—a costly and stressful courtroom scenario best avoided.</li></ul></li></ul><ul id="40c8ac6a-aab1-8060-b3d8-eccef5d156ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Practices for Avoiding Implication</strong><ul id="40c8ac6a-aab1-800e-8c23-ca1bf38c147b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Proactive Clarification:</strong> Always establish and communicate your representation status upfront with every party you interact with.</li></ul><ul id="40c8ac6a-aab1-80a2-a350-c33bb9d99601" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Put It in Writing:</strong> Follow Tennessee&#x27;s strict standard—if an agency relationship is desired by both parties, <strong>put it in writing immediately</strong> using the proper brokerage forms.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-806a-8bab-f0ee07d1b983" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gratuitous Agency </strong><ul id="40c8ac6a-aab1-803f-8a83-ee53aab9fc0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An agency relationship created when an agent agrees to represent or work for a principal <strong>without receiving any compensation</strong> or payment.</li></ul><ul id="40c8ac6a-aab1-809a-bc35-c2039e2ce0bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Fiduciary Burden:</strong> Even though no money changes hands, <strong>the agent is still held to all the standard fiduciary duties</strong> (OLDCAR) of a paid agency relationship. Agency creation does not require financial remuneration.</li></ul><ul id="40c8ac6a-aab1-803d-bdea-c947c69a61e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risks &amp; Liabilities (&quot;No Good Deed Goes Unpunished&quot;)</strong><ul id="40c8ac6a-aab1-80c2-9690-e1cb33f67d22" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Exposure:</strong> Offering free advice or favors to friends, family, or former clients can inadvertently trap an agent in gratuitous (or implied) agency.</li></ul><ul id="40c8ac6a-aab1-806c-b16a-df776ea50d68" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Negligence &amp; Lawsuits:</strong> If the unpaid advice proves incorrect and causes financial harm, a court can find the agent—and by extension, their sponsoring broker—guilty of professional negligence and legally liable for damages.</li></ul><ul id="40c8ac6a-aab1-80f9-9e88-fd91d19230b2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broker Authorization:</strong> Licensees should always secure explicit permission from their principal broker before engaging in any gratuitous agency activities.</li></ul></li></ul><ul id="40c8ac6a-aab1-809e-b5d8-f5d892d43681" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Practices for Gratuitous Agency</strong><ul id="40c8ac6a-aab1-80b1-87cf-c0b4e04a0431" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>High-Risk Demographics:</strong> Unpaid favors are most common among personal acquaintances, family members, and past clients, where informal boundaries naturally invite misunderstandings.</li></ul><ul id="40c8ac6a-aab1-8009-90c5-fa6825eb839e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Put It in Writing:</strong> Because false assumptions are significantly more likely when dealing with friends and family, agents should formalize the arrangement in writing just like any other client relationship to clearly outline expectations and limit liability.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80d6-82b3-df476ad2d936" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Creation Recap </strong><ul id="40c8ac6a-aab1-805a-8b73-d858daf8039a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Methods of Creation (General Rule):</strong><ol type="1" id="40c8ac6a-aab1-8091-bdb9-d801e7ce7974" class="numbered-list" start="1" dir="auto"><li><strong>Express Agency:</strong> Formed by the explicit appointment of the agent by the principal, which can be done orally or in writing.</li></ol><ol type="1" id="40c8ac6a-aab1-80e2-bac7-f9fd74bb71eb" class="numbered-list" start="2" dir="auto"><li><strong>Implied Agency:</strong> Formed unintentionally through the actions, conduct, and words of the parties rather than an explicit agreement.</li></ol></li></ul><ul id="40c8ac6a-aab1-8020-9a45-c1ab31425314" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Tennessee Mandate:</strong> Regardless of what other jurisdictions allow, <strong>the only acceptable way to create real estate agency in Tennessee is through a bilateral, written agreement</strong>.</li></ul><ul id="40c8ac6a-aab1-80dc-893f-e7931e606a81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Gratuitous Agency Principle:</strong> Agency relationships do <strong>not</strong> depend upon financial compensation; an agent working for free is still fully bound by all fiduciary duties and liabilities, making written clarification crucial.</li></ul></li></ul><ul id="40c8ac6a-aab1-8065-a196-cd2896dfc8dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Talkin&#x27; Termination </strong><ul id="40c8ac6a-aab1-805f-9ea0-f2b2db9b6c04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Proactive Mindset:</strong> Real estate professionals need to think strategically about how an agency relationship concludes, ensuring chapters close smoothly without burning bridges or damaging long-term referral potential.</li></ul><ul id="40c8ac6a-aab1-8038-8157-d766ed5f5427" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Client-First Guarantee Approach:</strong> Top-performing agents often build instant trust by offering a satisfaction guarantee—assuring clients that if they are ever unsatisfied, the contract can be terminated.</li></ul><ul id="40c8ac6a-aab1-80cd-8431-db74137aa261" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Business Philosophy:</strong> Grounding a real estate career on long-term relationship-building and lifelong referrals rather than trapping reluctant clients in rigid contracts.</li></ul><ul id="40c8ac6a-aab1-8062-9902-f875bbc2a879" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Takeaway for Licensees</strong><ul id="40c8ac6a-aab1-8057-9fa6-db0eab20834f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Building Immediate Trust:</strong> Giving prospects a clear, low-risk &quot;out&quot; upfront is one of the most effective ways to establish credibility and confidence from the very first meeting.</li></ul><ul id="40c8ac6a-aab1-8091-bacc-ea93b55a2c75" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expense Reimbursement:</strong> While offering contract termination for unhappy clients, agents often establish a fair condition—such as requesting the reimbursement of actual out-of-pocket marketing expenses incurred (like signs and brochures).</li></ul></li></ul><ul id="40c8ac6a-aab1-80ac-8c34-fed2f160aedd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agency Termination Umbrellas Overview</strong><ul id="40c8ac6a-aab1-80f0-8724-fe6ab72eaffb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agency relationships conclude under two primary classifications:<ol type="1" id="40c8ac6a-aab1-80ed-a33f-ccb349d86791" class="numbered-list" start="1" dir="auto"><li><strong>Operation of Law:</strong> Circumstances or external legal changes that result in the automatic termination of the agency agreement.</li></ol><ol type="1" id="40c8ac6a-aab1-8076-8f77-c126c920cee4" class="numbered-list" start="2" dir="auto"><li><strong>Acts of the Parties:</strong> Actions taken by one or both parties that actively bring the agreement to a close.</li></ol></li></ul></li></ul><ul id="40c8ac6a-aab1-8088-86f3-ee8031382db1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Operation of Law (Force of Law)</strong><ul id="40c8ac6a-aab1-8084-acc8-fe82a59c7833" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Also referred to as <em>force of law</em> to highlight its legally compelling and automatic nature, regardless of whether either party welcomes the outcome.</li></ul><ul id="40c8ac6a-aab1-8032-b035-d20d471b7b52" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contractual Foundation:</strong> Because agency agreements are fundamentally <strong>employment contracts</strong>, standard principles of general contract law govern how they are terminated.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80e1-982a-d39a3f60d2a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Termination by Operation of Law Overview</strong><ul id="40c8ac6a-aab1-80b4-a017-cdac884504e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Automatic termination of an agency relationship triggered by external circumstances, legal mandates, or events beyond the direct control of the parties.</li></ul><ul id="40c8ac6a-aab1-8007-9d2e-e68a5394c31e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Causes:</strong><ol type="1" id="40c8ac6a-aab1-800a-be78-fb8c2df7c5a0" class="numbered-list" start="1" dir="auto"><li>Performance / Fulfillment</li></ol><ol type="1" id="40c8ac6a-aab1-8066-b035-f5dbef9a10f2" class="numbered-list" start="2" dir="auto"><li>Expiration of Term</li></ol><ol type="1" id="40c8ac6a-aab1-80d4-8b69-fb843abd5252" class="numbered-list" start="3" dir="auto"><li>Destruction or Condemnation</li></ol><ol type="1" id="40c8ac6a-aab1-8094-b54f-fd6cb8053a40" class="numbered-list" start="4" dir="auto"><li>Death, Incapacitation, or Bankruptcy</li></ol><ol type="1" id="40c8ac6a-aab1-80cc-bcf5-fa0d1c5e5328" class="numbered-list" start="5" dir="auto"><li>Loss of Broker License</li></ol></li></ul><ul id="40c8ac6a-aab1-80e9-9a73-d895e2ca6fd3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deep Dive: The Five Causes of Operation of Law Termination</strong><ul id="40c8ac6a-aab1-807a-a636-ff4e7b7cc8d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Performance / Fulfillment:</strong><ul id="40c8ac6a-aab1-806a-bb62-d84f42647d75" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The most ideal and intended way to end agency.</li></ul><ul id="40c8ac6a-aab1-8063-bff1-e215f447bc37" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Achieved when the purpose of the agreement is fully completed—typically occurring on the day of closing.</li></ul></li></ul><ul id="40c8ac6a-aab1-8004-a09b-d1511b1a68ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expiration of Term:</strong><ul id="40c8ac6a-aab1-80b6-8ead-d27b6ff5420f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Reaching the end date specified in the representation agreement, regardless of whether the property has sold or been found.</li></ul><ul id="40c8ac6a-aab1-80e9-aa7c-f7168f842fbe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Continuing the relationship requires renewing or replacing the contract in writing.</li></ul></li></ul><ul id="40c8ac6a-aab1-80ed-be54-f4ffd5d8a76a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Destruction or Condemnation:</strong><ul id="40c8ac6a-aab1-8092-b404-c74ae230394e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Destruction:</strong> The physical extinction of property improvements (e.g., severe natural disasters or structural ruin) rendering the underlying contract impossible to fulfill.</li></ul><ul id="40c8ac6a-aab1-80c5-a9bb-f652d1d79d5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condemnation:</strong> The government&#x27;s seizure of private property via <strong>eminent domain</strong> for public use (with owner compensation), which legally voids existing private purchase contracts.</li></ul></li></ul><ul id="40c8ac6a-aab1-80aa-94fb-d556159c9eee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Death, Incapacitation, or Bankruptcy:</strong><ul id="40c8ac6a-aab1-80c9-a7c5-ffaddb1ac787" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Principal Broker Death/Incapacitation:</em> Voids all active agency agreements; affiliate brokers must secure a new sponsoring broker to continue working with clients.</li></ul><ul id="40c8ac6a-aab1-801c-97ce-fb3f6b2d6246" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Affiliate Broker Death/Incapacitation:</em> Agreements remain valid because the agency contract is established with the <strong>principal broker</strong>, who can simply reassign another affiliate to the account.</li></ul><ul id="40c8ac6a-aab1-8002-af76-e711a9f1acbb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Principal (Client) Death/Incapacitation:</em> Generally terminates the agency relationship.</li></ul><ul id="40c8ac6a-aab1-80c6-9581-e904bc42350f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Bankruptcy:</em> Filing for bankruptcy (particularly by a seller) strips them of property control, placing decisions in the hands of the court and terminating the agency.</li></ul></li></ul><ul id="40c8ac6a-aab1-8010-a3d4-eb8eb5d63376" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loss of Broker License:</strong><ul id="40c8ac6a-aab1-8055-9d3d-cb6db51632a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The revocation, suspension, or deactivation of a principal broker&#x27;s license immediately invalidates all active written representation agreements</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8024-8f76-d8513e180c56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Termination by Acts of the Parties Overview</strong><ul id="40c8ac6a-aab1-8020-835f-f6f2350f582c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Termination caused by the intentional actions, decisions, or behaviors of one or both parties involved in the agency agreement.</li></ul><ul id="40c8ac6a-aab1-805a-a584-fff7211db40e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Four Primary Methods:</strong><ol type="1" id="40c8ac6a-aab1-8086-a893-cad762dab66a" class="numbered-list" start="1" dir="auto"><li>Mutual Agreement</li></ol><ol type="1" id="40c8ac6a-aab1-808f-994c-e04c0a3d833e" class="numbered-list" start="2" dir="auto"><li>Revocation</li></ol><ol type="1" id="40c8ac6a-aab1-8066-98aa-f53b30705bb4" class="numbered-list" start="3" dir="auto"><li>Renunciation</li></ol><ol type="1" id="40c8ac6a-aab1-8030-becd-c4ab5e213a0e" class="numbered-list" start="4" dir="auto"><li>Breach of Agreement</li></ol></li></ul><ul id="40c8ac6a-aab1-80b4-9bb2-faa86111f2a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Deep Dive: The Four Methods of Party-Initiated Termination</strong><ul id="40c8ac6a-aab1-8010-984b-dc5a95ad64b5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mutual Agreement (Mutual Rescission):</strong><ul id="40c8ac6a-aab1-80da-a75f-c74599e7a06d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Both parties voluntarily agree to end the relationship early, releasing each other from breach-of-liability.</li></ul><ul id="40c8ac6a-aab1-809b-826b-e7db6a4c47e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Considered the cleanest form of early termination.</li></ul><ul id="40c8ac6a-aab1-80b8-acc1-ead979e7d417" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Rule:</strong> Just like creation, <strong>the mutual agreement to terminate must also be in writing</strong> (e.g., using Tennessee REALTORS® termination forms).<figure id="40c8ac6a-aab1-8085-bde0-c33fdb4587c1" class="image" data-notion-image="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image.png" dir="ltr"><a href="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image.png"><img style="width:432px" src="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image.png"/></a></figure></li></ul></li></ul><ul id="40c8ac6a-aab1-807d-888b-d85a1f2a2e0a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Revocation:</strong><ul id="40c8ac6a-aab1-803a-8cb4-d87842b49b1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A client (principal) fires their agent (usually via written notice).</li></ul><ul id="40c8ac6a-aab1-8070-8b3d-e681038c6818" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Liability Note:</em> While a client always has the power to revoke, they may still be liable for <strong>breach of contract</strong> if the agreement has a fixed termination date.</li></ul></li></ul><ul id="40c8ac6a-aab1-80e8-a917-f01d96f6911c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Renunciation:</strong><ul id="40c8ac6a-aab1-80ea-b504-f6729c7b29d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An agent decides to walk away from the agency relationship.</li></ul><ul id="40c8ac6a-aab1-80d8-8349-c11581be2ba4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Broker-Level Authority:</em> Because agency is legally established with the principal broker, only the broker can officially renounce or terminate an agency agreement. If an affiliate broker wants to leave but the broker wishes to continue, the broker can simply assign a different licensee to the client.</li></ul><ul id="40c8ac6a-aab1-808b-8fd6-e2ef6fcede6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Valid Reasons:</em> Abusive behavior, missed appointments, attempts to violate fair housing laws, or bad-faith negotiations. <strong>Always document everything and get it in writing.</strong></li></ul></li></ul><ul id="40c8ac6a-aab1-80ed-8f49-c247b4fe6db1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Breach of Agreement:</strong><ul id="40c8ac6a-aab1-80eb-8ca8-c5d9229da1d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Occurs when either party fails to fulfill their contractual duties without cause, opening them up to legal damages.</li></ul><ul id="40c8ac6a-aab1-807c-ab04-e9d74eb0b57f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Client Breach:</em> Uncooperative behavior (e.g., seller blocking showings) or breaking commitments.</li></ul><ul id="40c8ac6a-aab1-808c-8536-f89081ba54b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Agent Breach (Abandonment):</em> Failing to actively pursue the goals of the agreement through acts of commission or omission. Instead of abandonment, agents should pursue mutual rescission or proper renunciation in writing.</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8058-8103-fcc4d94f4685" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Coupled with an Interest </strong><ul id="40c8ac6a-aab1-808a-9502-cbee4f58245b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A unique legal relationship where the agent (broker) holds a legal, financial, or ownership stake in the subject property itself, extending beyond the typical scope of an agency agreement.</li></ul><ul id="40c8ac6a-aab1-8011-b3d3-e9c2807a77df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Irrevocable Authority:</strong> Because the broker&#x27;s personal financial stake is tied directly into the property, <strong>the client does NOT have the legal right to revoke</strong> this type of agency agreement.</li></ul><ul id="40c8ac6a-aab1-8008-8321-f14dd3b0f26a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immunity from Operation of Law:</strong> Unlike standard agency agreements, an agency coupled with an interest <strong>will not be terminated by death, incapacitation, or bankruptcy</strong> of either party, because the agent&#x27;s vested property interest survives those events.</li></ul></li></ul><ul id="40c8ac6a-aab1-80a2-aa45-f351bd5039a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Final Thoughts on Agency Termination Overview</strong><ul id="40c8ac6a-aab1-8098-9c45-c99af8fe3735" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Termination Without Cause (&quot;Rebel Without a Cause&quot;):</strong> Because agency agreements are legally binding contracts, ending them early without valid cause or proper contractual backing can expose the terminating party to liability for breach of contract.</li></ul><ul id="40c8ac6a-aab1-8063-9a57-c9fa919efb92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real-World Practice:</strong> Even when a broker has a clear legal right to pursue damages from an early client-initiated termination, they rarely do so due to the administrative hassle and negative public relations, choosing instead to move on.</li></ul><ul id="40c8ac6a-aab1-800f-acdc-f5db54904895" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immediate Compliance (&quot;Stop Means Stop&quot;):</strong> The moment a principal expresses a desire to terminate the agency relationship, the agent <strong>must comply immediately</strong>—regardless of whether the client&#x27;s reasons are valid. This requires swiftly pulling MLS listings, ending marketing campaigns, and removing physical items like yard signs and lockboxes.</li></ul><ul id="40c8ac6a-aab1-802b-be5f-c1e343505681" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Documentation &amp; Termination Fees:</strong><ul id="40c8ac6a-aab1-808c-b76d-dc2cd33b7c0b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Just like creation, <strong>all terminations must be put in writing</strong>.</li></ul><ul id="40c8ac6a-aab1-80fc-a1ca-f962986764b5" class="bulleted-list" dir="auto"><li style="list-style-type:square">The termination paperwork must accurately reflect any pre-agreed termination charges, fees, or expense reimbursements detailed in the original listing agreement; any changes require explicit mutual agreement in writing.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80d9-a275-d858368b6833" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Termination Recap</strong><figure id="40c8ac6a-aab1-8098-a9bf-edefbbd5083c" class="image" data-notion-image="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%201.png" dir="ltr"><a href="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%201.png"><img style="width:432px" src="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%201.png"/></a></figure></li></ul><ul id="40c8ac6a-aab1-8048-9706-e800f398cfa2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul></div><div id="40c8ac6a-aab1-8073-94e1-ef8f477bd5b2" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="40c8ac6a-aab1-8028-8e36-c22ab05585d0" class="" dir="auto"><strong>Key Term</strong><div class="indented"><ul id="40c8ac6a-aab1-807d-b4a5-ffb66c5dae56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>implied agency</strong> - agency that is created by the actions, conduct, and words of either or both parties without ever being expressly requested</li></ul></div></p><p id="40c8ac6a-aab1-80fb-a847-e6189858f742" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40c8ac6a-aab1-807d-8415-c573f4c895d6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Agency Creation<ul id="40c8ac6a-aab1-8003-9d06-f84780b16a41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Essential Components:</strong> Requires two foundational elements:<ol type="1" id="40c8ac6a-aab1-80e6-9d76-c2762f692776" class="numbered-list" start="1" dir="auto"><li><strong>Consent:</strong> Mutual agreement between agent and client.</li></ol><ol type="1" id="40c8ac6a-aab1-809c-a75d-f3b49951536a" class="numbered-list" start="2" dir="auto"><li><strong>Control:</strong> Authority granted to the agent to act on the client&#x27;s behalf.</li></ol></li></ul></li></ul><ul id="40c8ac6a-aab1-807a-9e67-f03ad3292ee3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dimensions of Agency:</strong> Described by the manner of creation, degree of authority/liability, and legal form.<ul id="40c8ac6a-aab1-805c-b1d6-d1b677ec99ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Express Agency:</strong><ul id="40c8ac6a-aab1-807e-92fc-dd0efe68cb80" class="bulleted-list" dir="auto"><li style="list-style-type:square">Generally formed by explicit appointment (oral or written).</li></ul><ul id="40c8ac6a-aab1-8097-a6be-f12f300e748b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Mandate:</strong> Real estate agency agreements <strong>must be in writing</strong> as a bilateral agreement.</li></ul></li></ul><ul id="40c8ac6a-aab1-802c-becf-d33dbef741c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Implied Agency:</strong> Created unintentionally through actions, conduct, and words rather than explicit agreement.</li></ul><ul id="40c8ac6a-aab1-80a2-8662-d812e4fe5c3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Gratuitous Agency</strong><ul id="40c8ac6a-aab1-802f-a498-e91c7daf3f3b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An agency relationship created when an agent works without compensation.</li></ul><ul id="40c8ac6a-aab1-807e-b8d3-c7bbe00c6913" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fiduciary Responsibility:</strong> Despite the lack of payment, the agent is still <strong>fully held to all standard fiduciary duties</strong> and legal liabilities.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8076-9686-fc42fdef69e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Termination Umbrellas<ul id="40c8ac6a-aab1-804d-8d99-eb39266f138a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agency relationships conclude under two primary classifications:<ol type="1" id="40c8ac6a-aab1-80df-9be6-f14586409a3b" class="numbered-list" start="1" dir="auto"><li><strong>Operation of Law:</strong> External circumstances or legal changes resulting in automatic termination (e.g., performance, expiration, destruction/condemnation, death/incapacitation/bankruptcy, or loss of broker license).</li></ol><ol type="1" id="40c8ac6a-aab1-8097-b15d-ca265a7621e1" class="numbered-list" start="2" dir="auto"><li><strong>Acts of the Parties:</strong> Intentional actions taken by one or more parties (e.g., mutual agreement/rescission, revocation by client, renunciation by agent, or breach of agreement/abandonment).</li></ol><figure id="40c8ac6a-aab1-80e1-912c-fd77fad25742" class="image" data-notion-image="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%202.png" dir="ltr"><a href="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%202.png"><img style="width:2084px" src="Chapter%204%20-%20The%20Creation%20and%20Termination%20of%20Agency/image%202.png"/></a></figure></li></ul></li></ul><ul id="40c8ac6a-aab1-8014-a4fe-fedb84c8d022" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duties That Survive Termination</strong><ul id="40c8ac6a-aab1-801f-98dc-c394b9ca4869" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The duties of <strong>confidentiality </strong>and<strong> accounting</strong> live on long after the agency relationship has terminated.</li></ul><p id="40c8ac6a-aab1-8021-814c-d9bb6e30d8f0" class="" dir="auto">
+</p></li></ul></div></div><p id="40c8ac6a-aab1-8055-9143-cd410e17dee3" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

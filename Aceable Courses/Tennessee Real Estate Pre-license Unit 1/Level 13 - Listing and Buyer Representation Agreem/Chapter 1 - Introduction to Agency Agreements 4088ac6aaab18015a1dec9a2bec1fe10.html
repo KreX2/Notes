@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Introduction to Agency Agreements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8015-a1de-c9a2bec1fe10" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Introduction to Agency Agreements</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40e8ac6a-aab1-8075-a77e-dad0ecc910dd" class="column-list" data-notion-column-list="" dir="auto"><div id="40e8ac6a-aab1-800a-b17b-c5b70fff496b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40e8ac6a-aab1-8098-828f-ea6b8b6128b3" class="" dir="auto"><strong>Agency Agreements: The Basics </strong></p><ul id="40e8ac6a-aab1-80b4-a7cd-e4bf13e3acf2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> An agency agreement is a mutually binding contract that authorizes an agent to act on a client&#x27;s behalf to achieve a specific real estate goal. They are frequently referred to as <strong>employment agreements</strong>.</li></ul><ul id="40e8ac6a-aab1-8011-ad46-feb13750154f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Written Requirement in Tennessee:</strong> In Tennessee, <strong>a written, signed agency agreement is legally required</strong> to establish an agency relationship. Handing over an agency disclosure form is not enough.</li></ul><ul id="40e8ac6a-aab1-8032-ad6d-e440b47bc863" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No Accidental Agency:</strong> Because a written agreement is mandatory, you cannot accidentally fall into an agency relationship—it must be created intentionally.</li></ul><ul id="40e8ac6a-aab1-80e3-8ecf-f23d5332c37e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Primary Types of Agency Agreements</strong><ul id="40e8ac6a-aab1-8031-ad94-c641621c694f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Listing Agreement:</strong> The contract between a <strong>seller and a broker</strong>.</li></ul><ul id="40e8ac6a-aab1-80c9-a7fc-d0b4ff97ad01" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Representation Agreement:</strong> The contract between a <strong>buyer and a broker</strong>.</li></ul><ul id="40e8ac6a-aab1-8098-a667-eccbe497347c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transaction Coordinator Agreement:</strong> Serves a distinctly different administrative purpose, which we will explore later.</li></ul></li></ul><ul id="40e8ac6a-aab1-80b8-af61-ed3ff209e92f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nature of the Client-Broker Relationship</strong><ul id="40e8ac6a-aab1-8002-9496-e2df224f86bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Task-Oriented:</strong> Unlike traditional ongoing employer-employee relationships, real estate agency agreements are strictly focused on completing a specific service or objective (like selling a home, buying a property, or leasing commercial space) and terminate once that objective is met.</li></ul></li></ul><ul id="40e8ac6a-aab1-803e-af13-dfe080ee5c50" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Details </strong><ul id="40e8ac6a-aab1-806e-b0e5-d1e68e48f914" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Agency in Agreements:</strong><ul id="40e8ac6a-aab1-80bc-ba37-f51e309ef907" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Traditional Agency:</strong> Established between the client and the managing broker (referred to as the <strong>principal broker</strong> in Tennessee). This automatically creates an agency relationship with all affiliate brokers working under that principal broker, even if only one affiliate does the actual legwork.</li></ul><ul id="40e8ac6a-aab1-80e9-9c8f-cad86fbf8c0c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Designated Agency:</strong> Established between a specific affiliate broker and a client, isolating the relationship so it does not extend to other licensees in the brokerage.<figure id="40e8ac6a-aab1-8035-a0df-c8fbb2472c42" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image.png"><img style="width:336px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-80be-bc37-d534f759645c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Legal Rules for Tennessee Agency Agreements</strong><ul id="40e8ac6a-aab1-8046-9e13-c9e996ffcaf9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Must Be in Writing &amp; Bilateral:</strong> Agency cannot exist without a written, signed agreement executed by both parties. Until this contract is signed, the licensee defaults to being a <strong>facilitator</strong> (not a representative).</li></ul><ul id="40e8ac6a-aab1-80ee-8aa3-f5da8268bfee" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Interfering with Exclusive Agreements:</strong> Tennessee license law strictly prohibits a licensee from procuring or attempting to procure an employment agreement from a party already bound by an existing exclusive agreement (e.g., you cannot poach Client Callie from Broker Brenda).</li></ul><ul id="40e8ac6a-aab1-8098-9b95-c417c6466e95" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Does Not Provide Forms:</strong> The State of Tennessee does <strong>not</strong> promulgate or provide standardized agency contract forms. Licensees typically rely on forms provided by <strong>Tennessee REALTORS®</strong> or drafted with the help of an attorney, in addition to their supervising broker&#x27;s approved templates.</li></ul><ul id="40e8ac6a-aab1-80cb-a1aa-d78bc12fe757" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Non-Assignable:</strong> Agency agreements are personal service contracts and <strong>cannot be assigned</strong> to another broker without the explicit, written consent of all parties involved at the time of the assignment.<figure id="40e8ac6a-aab1-80c7-81e2-df6419ae7531" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%201.png"><img style="width:384px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8021-b1ba-c081a9ad8407" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Disclosure: A Review </strong><ul id="40e8ac6a-aab1-801b-a35c-c812d896a888" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Prerequisite Rule:</strong> Before signing any employment agreement, a licensee <strong>must</strong> deliver the agency disclosure form in writing. An agency relationship cannot legally be established without it.</li></ul><ul id="40e8ac6a-aab1-80bc-bbf4-c0aad21dd653" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>First Substantive Contact (The Trigger):</strong> The critical turning point requiring formal agency disclosure. It occurs at the first face-to-face meeting (or equivalent substantive interaction) <strong>before</strong> any confidential information is shared or specific property discussions/actions take place.</li></ul><ul id="40e8ac6a-aab1-80b4-89b9-d1fa9b0442b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Informed Consent (The Principle):</strong> Parties must fully understand and consent to agency terms and existing representations <em>prior</em> to implementation. Even if a customer chooses <em>not</em> to enter into representation, they still have a right to know about any existing agency relationships the licensee holds.</li></ul></li></ul><ul id="40e8ac6a-aab1-8044-b650-eb57dad83ec9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Employment Agreements</strong><ul id="40e8ac6a-aab1-800c-b01f-e23df3b15291" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prerequisite Reminder:</strong> Before executing either type of employment agreement, the required written agency disclosure must be delivered to ensure informed consent.</li></ul><ol type="1" id="40e8ac6a-aab1-80b6-91ba-d2552e5b4c3f" class="numbered-list" start="1" dir="auto"><li><strong>Listing Agreements</strong><ul id="40e8ac6a-aab1-80b0-ad9c-f741979e2873" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parties:</strong> Between a <strong>property owner/seller (principal) and a broker</strong>.</li></ul><ul id="40e8ac6a-aab1-8065-89ba-de0fa94225b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Function:</strong> Authorizes the broker and their affiliated licensees to market and assist in the sale of real property.</li></ul><ul id="40e8ac6a-aab1-80e2-ab75-fc44e62a04c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Status Change:</strong> Automatically transforms a customer into a <strong>client</strong> and the broker into the <strong>listing agent</strong>.</li></ul></li></ol><ol type="1" id="40e8ac6a-aab1-80f7-9773-d408e2d3b881" class="numbered-list" start="2" dir="auto"><li><strong>Buyer Representation Agreements</strong><ul id="40e8ac6a-aab1-8068-9bdb-f4e754bb9720" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Also Known As:</strong> Buyer-agency agreement or buyer-broker agreement.</li></ul><ul id="40e8ac6a-aab1-80c7-9cb4-c3cc24b102c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parties:</strong> Between a <strong>prospective buyer (principal) and a broker</strong>.</li></ul><ul id="40e8ac6a-aab1-8041-8c16-d014e2dfec62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Function:</strong> Authorizes the broker and their affiliates to assist the buyer in locating, negotiating, and procuring real property.</li></ul><ul id="40e8ac6a-aab1-8017-9248-d47d8d35b887" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Status Change:</strong> Transforms a customer into a <strong>client</strong> and the broker into the <strong>buyer&#x27;s agent</strong>.</li></ul></li></ol></li></ul><ul id="40e8ac6a-aab1-80de-9d1e-f6b2ef68edfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transaction Coordinator Agreement </strong><ul id="40e8ac6a-aab1-80a0-8322-d671c4e0e9fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Newer Industry Role:</strong> Transaction coordinator agreements are a relatively modern addition to real estate practice and serve a fundamentally different purpose than traditional agency agreements.</li></ul><ul id="40e8ac6a-aab1-8039-b92f-f794c4c0adef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Neutral Middleman (Zero Agency):</strong> Instead of representing the buyer or the seller, the transaction coordinator/facilitator represents <strong>neither party</strong>. Their primary role is purely administrative: managing, organizing, and facilitating the paperwork and closing documents of the transaction.</li></ul><ul id="40e8ac6a-aab1-80eb-a7d5-dc7e0022ba37" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strict Boundaries (No Advice or Negotiation):</strong> Because they operate without an agency relationship, facilitators <strong>owe no fiduciary duties to anyone</strong>. They are strictly prohibited from giving advice, counseling, or negotiating on behalf of either party. Crossing that line violates their non-agency status.</li></ul><ul id="40e8ac6a-aab1-80ef-b283-ee57588e3910" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Industry Perception:</strong> Due to the extreme difficulty of remaining truly neutral while serving both sides of a transaction, transaction brokerage is viewed with caution and is <strong>not recommended</strong> by many real estate professionals.<figure id="40e8ac6a-aab1-80b7-87fa-d5601a8ef0d4" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%202.png"><img style="width:288px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%202.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-8082-881f-f618cb5e651a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Law and Contract Law </strong><ul id="40e8ac6a-aab1-8053-bce1-efbc908bab82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Dual Legal Domain:</strong> Agency agreements sit at the intersection of two distinct legal frameworks: <strong>agency law</strong> and <strong>contract law</strong>. Because they are literally written contracts governing agency practice, they must comply with both.</li></ul><ul id="40e8ac6a-aab1-80b5-8a1d-c5e628f1a0a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Agency Law</strong><ul id="40e8ac6a-aab1-80dc-be82-e7ed82df3d84" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>What it Governs:</strong> Regulates the structural practice of agency, including the specific roles of brokers and clients, the fiduciary duties owed by the agent, and the precise scope of the agent&#x27;s authority.</li></ul><ul id="40e8ac6a-aab1-8086-aa75-c0d520be04b0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Tennessee Override Rule:</strong> In Tennessee, statutory real estate agency law <strong>completely supersedes and overrules the common law of agency</strong>. If statutory law and common law conflict, Tennessee statutory law always wins.</li></ul></li></ul><ul id="40e8ac6a-aab1-80cb-a023-eda75d8547ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Contract Law</strong><ul id="40e8ac6a-aab1-80dc-b073-ee461f457094" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>What it Governs:</strong> Regulates the formation and execution of contracts, covering essential legal pillars such as contract validity requirements, proper legal form, and the lawful methods for terminating a contract.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8005-b70c-d428aec86c68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Terminating an Agency Agreement</strong><figure id="40e8ac6a-aab1-80d9-af66-e245aff330f4" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%203.png"><img style="width:384px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%203.png"/></a></figure></li></ul><ul id="40e8ac6a-aab1-806a-a6d4-dc507eb46dee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Termination by Performance</strong><ul id="40e8ac6a-aab1-8096-a56a-cb46b323a98f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Gold Standard:</strong> The absolute most desirable way to terminate a real estate employment agreement is through the complete <strong>fulfillment of its purpose</strong> (e.g., the house successfully sells or the buyer closes on a property).</li></ul><ul id="40e8ac6a-aab1-80f3-8169-dd6abb5fbb67" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> <strong>Performance</strong> is the legal fulfillment of an obligation, duty, or contract.</li></ul><ul id="40e8ac6a-aab1-8082-ad17-e2242c3c1912" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Performance Looks Like in Action</strong><ul id="40e8ac6a-aab1-80dd-aa59-ef82cd934ea2" class="bulleted-list" dir="auto"><li style="list-style-type:square">A listing agent successfully bringing a <strong>ready, willing, and able buyer</strong> who purchases the property.</li></ul><ul id="40e8ac6a-aab1-80db-a660-c5d03db1c295" class="bulleted-list" dir="auto"><li style="list-style-type:square">A buyer&#x27;s agent helping evaluate properties, market conditions, or structure winning offers.</li></ul><ul id="40e8ac6a-aab1-801c-8261-d7cfc51e0d68" class="bulleted-list" dir="auto"><li style="list-style-type:square">A listing agent executing marketing campaigns and negotiating favorable purchase prices.</li></ul></li></ul><ul id="40e8ac6a-aab1-8043-8919-e5e425914352" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Performance and Compensation</strong><ul id="40e8ac6a-aab1-80ab-b791-f0488bdcff20" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tied Together:</strong> Compensation is directly linked to performance, and every employment agreement must clearly outline the broker&#x27;s compensation terms.</li></ul><ul id="40e8ac6a-aab1-805f-b821-d585c23458c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Broker Flow Rule:</strong> All compensation must be paid directly to the <strong>employing/principal broker</strong>, who then distributes the appropriate split to the sponsored affiliate brokers who handled the transaction.</li></ul></li></ul><ul id="40e8ac6a-aab1-801a-82a2-d913fdea9c13" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Performance in a Listing Agreement</strong><ul id="40e8ac6a-aab1-809c-a0bb-dcc402eeaffe" class="bulleted-list" dir="auto"><li style="list-style-type:square">For a seller&#x27;s listing agreement, performance is typically achieved when the agent produces a <strong>ready, willing, and able buyer; </strong>someone who is fully prepared, legally qualified, and financially able to close the transaction on the seller&#x27;s terms.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8002-b052-ce74cd67a586" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Due Diligence </strong><ul id="40e8ac6a-aab1-80c2-aaec-cd487e446d05" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Due diligence refers to the <strong>reasonable steps, investigations, and verifications</strong> a person must take to fulfill a legal requirement or standard of care. It is the direct opposite of negligence.</li></ul><ul id="40e8ac6a-aab1-80fd-a191-e0a1f121ed97" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role of the Agent:</strong> Licensees exercise due diligence by actively verifying critical transaction details rather than blindly relying on unverified assumptions.</li></ul><ul id="40e8ac6a-aab1-80c9-b9f6-f707fb94693e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Due Diligence Looks Like in Practice</strong><ul id="40e8ac6a-aab1-800f-9c19-da67e8a091cf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Verifying the accuracy of property listing details and marketing claims.</li></ul><ul id="40e8ac6a-aab1-80e8-bad4-e06f21f631f0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Checking the physical condition of a property or reviewing inspection disclosures.</li></ul><ul id="40e8ac6a-aab1-8011-b779-c6a3565ea9ec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Investigating the legal ownership status of a property (title checks).</li></ul><ul id="40e8ac6a-aab1-80ac-9265-eb2881928873" class="bulleted-list" dir="auto"><li style="list-style-type:square">Confirming the legal authority or eligibility of other parties to act in the transaction.</li></ul></li></ul></li></ul></div><div id="40e8ac6a-aab1-8085-8734-fedf559ee122" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40e8ac6a-aab1-8051-aed6-fcf7640add73" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40e8ac6a-aab1-809d-8692-d5b18e46222b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>buyer representation agreement</strong>  - a written agreement by which a real estate broker is entitled to compensation for services rendered to assist the buyer in the procurement of real property</li></ul><ul id="40e8ac6a-aab1-808e-97ee-ce3462db75d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>due diligence</strong> - a legal term used to describe the reasonable steps a person must take in order to satisfy a legal requirement</li></ul><ul id="40e8ac6a-aab1-808d-ad35-c30acbd69112" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>performance </strong>- the fulfillment of an obligation, duty, or contract</li></ul><p id="40e8ac6a-aab1-806c-8145-d53b536b0fff" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40e8ac6a-aab1-8059-a233-d9276270dbc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Employment Agreements</strong><ul id="40e8ac6a-aab1-80c5-b06a-fb7b05ecfa1c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In Tennessee, agency agreements relate to the following types of agency:</li></ul><ul id="40e8ac6a-aab1-804f-af70-e2c84c1a4395" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Traditional agency agreements </strong>are between the client and the <em>managing broker</em>, which in effect creates an agency relationship between the client and all of the affiliate brokers working for that broker. Even though one of the broker&#x27;s licensed affiliates may be doing all the legwork, they are acting on behalf of the managing broker. (Remember that the managing broker is called <em>principal broker</em> in Tennessee.)</li></ul><ul id="40e8ac6a-aab1-8058-80ef-ee1ccd38fc70" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Designated agency agreements</strong> are between a specific <em>affiliate broker</em> and a client. This means it does not establish relationships between the client and other licensees in the brokerage.<figure id="40e8ac6a-aab1-802d-850a-f6b0b47ea367" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%204.png"><img style="width:384px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%204.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-8066-91dc-cf274dd91f0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In addition, agency agreements:<ul id="40e8ac6a-aab1-809f-be00-d4d9a8fdb740" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must be written, bilateral agreements</li></ul><ul id="40e8ac6a-aab1-806a-af2c-d65435155c00" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Are <strong>not</strong> assignable</li></ul><ul id="40e8ac6a-aab1-8072-986f-d2269ff72964" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Are <strong>not </strong>promulgated, meaning the state of Tennessee does not provide standardized forms<figure id="40e8ac6a-aab1-8001-893f-efbdab141089" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%205.png"><img style="width:4167px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%205.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-8065-889a-e87890d1c997" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Types of Employment Agreements</strong><ul id="40e8ac6a-aab1-8035-8cfc-e9a754651d2d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Written agency between a broker and a seller will usually take the form of a <strong>listing agreement,</strong> in which a principal authorizes the broker and their affiliate brokers to assist the principal in the sale of real property. Signing this agreement transforms the customer into a client and the broker into a listing agent.</li></ul><ul id="40e8ac6a-aab1-805c-94af-dfb315db81b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Written agency between a broker and a buyer will usually take the form of a <strong>buyer representation agreement</strong> in which a buyer authorizes the broker and their affiliate brokers to assist the buyer in the procurement of real property. Signing this agreement transforms a buyer into a client and the broker into a buyer&#x27;s agent.</li></ul><ul id="40e8ac6a-aab1-80c1-a303-f9c84fb7bc9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In a <strong>transaction coordinator agreement</strong>, instead of representing either of the parties in a sale, a transaction broker represents <em>neither</em> party. They simply facilitate the paperwork of the transaction and do not owe fiduciary duties to either party.<figure id="40e8ac6a-aab1-80d2-950b-fe3f9ddfad33" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%206.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%206.png"><img style="width:375.796875px" src="Chapter%201%20-%20Introduction%20to%20Agency%20Agreements/image%206.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-801d-bc2b-da80b00f4e89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Terminating Employment Agreements</strong><ul id="40e8ac6a-aab1-8062-b3f3-cda3da217b58" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here are the ways a written employment agreement can come to an end:<ul id="40e8ac6a-aab1-8072-ac3d-dc1127c42e3a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Expiration</li></ul><ul id="40e8ac6a-aab1-80d9-8d78-c9fa6689be6d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Infeasibility</li></ul><ul id="40e8ac6a-aab1-8095-b3f4-c3d9ab12b255" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mutual agreement</li></ul><ul id="40e8ac6a-aab1-80d7-99d6-cac1f70e745d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Abandonment</li></ul><ul id="40e8ac6a-aab1-80c1-a10f-c5103b341a41" class="bulleted-list" dir="auto"><li style="list-style-type:square">Breach or invalidity</li></ul><ul id="40e8ac6a-aab1-804e-bcae-e910532afedc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Revocation</li></ul><ul id="40e8ac6a-aab1-8036-90fd-d4efb6cba871" class="bulleted-list" dir="auto"><li style="list-style-type:square">Performance (most desirable!)</li></ul><p id="40e8ac6a-aab1-80f2-91e8-fded43a6288a" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="40e8ac6a-aab1-803d-81f9-cf8e3a676fd4" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Material Facts Related to Environmental Issues</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-80cc-acf8-e2c5cbb8ac0b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Material Facts Related to Environmental Issues</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40f8ac6a-aab1-8019-824c-f55282129b11" class="column-list" data-notion-column-list="" dir="auto"><div id="40f8ac6a-aab1-80c7-8cc6-c7f3fe5e5544" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40f8ac6a-aab1-80d2-93be-c2f9af906e87" class="" dir="auto"><strong>Economic Impact of Environmental Hazards</strong></p><ul id="40f8ac6a-aab1-80ff-9eda-ef77192ba60a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Market Value and Marketability:</strong> Public awareness of environmental issues heavily influences real property values. Both <em>real</em> and <em>perceived</em> problems can drastically tank a property&#x27;s marketability and financial worth.</li></ul><ul id="40f8ac6a-aab1-8090-801f-cbba5bca6373" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Remediation Costs:</strong> In severe cases, the literal cost of cleaning up, remediating, and removing environmental hazards can vastly exceed the total dollar value of the real property itself.</li></ul><ul id="40f8ac6a-aab1-80c8-8c1c-ced414ff8dbc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Internal and External Hazards</strong><ul id="40f8ac6a-aab1-80c3-b426-e060f056f924" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Environmental hazards can originate or impact properties both internally (inside the structure) and externally (surrounding land, air, and groundwater).</li></ul></li></ul><ul id="40f8ac6a-aab1-80ac-9052-caaaf71657a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Contemporary Environmental Hazards Covered in Curriculum</strong><ul id="40f8ac6a-aab1-8093-b168-d14d253f53a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Poor indoor air quality</li></ul><ul id="40f8ac6a-aab1-80b4-9c3c-f755b508a483" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Carbon monoxide</li></ul><ul id="40f8ac6a-aab1-8075-bff7-c80c80da134f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Asbestos</li></ul><ul id="40f8ac6a-aab1-80ad-9192-cdd10f0ea342" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lead-based paint and hazards</li></ul><ul id="40f8ac6a-aab1-80a2-bd77-cbd49e578195" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Radon gas</li></ul><ul id="40f8ac6a-aab1-80ff-a1ad-c37f6ca0201c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Mold</li></ul><ul id="40f8ac6a-aab1-80f2-a80e-c7f499c00db5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Chlorofluorocarbons (CFCs)</li></ul><ul id="40f8ac6a-aab1-80cb-9e7e-f9f01a3f9c9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Chlordane</li></ul><ul id="40f8ac6a-aab1-8099-bcb2-fc3f239213a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Urea-formaldehyde</li></ul><ul id="40f8ac6a-aab1-80da-b692-f043f3bdd04a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Polychlorinated biphenyls (PCBs)</li></ul><ul id="40f8ac6a-aab1-8000-b516-f453c421e952" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Methamphetamine production sites</li></ul><ul id="40f8ac6a-aab1-8029-9e7c-fdef5dfccd82" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Underground Storage Tanks (USTs)</li></ul><ul id="40f8ac6a-aab1-8070-acf5-e195e879675b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Groundwater contamination</li></ul><ul id="40f8ac6a-aab1-8066-b9d6-eac3f730b2a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Hazardous waste disposal sites</li></ul><ul id="40f8ac6a-aab1-8099-baa9-eb1f2d508e71" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Destructive pests and environmental vectors</li></ul></li></ul><ul id="40f8ac6a-aab1-80ef-b9fe-cae6b771c8fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Here&#x27;s a preview of where environmental hazards might be lurking on a property:<figure id="40f8ac6a-aab1-8007-acae-d976782bb615" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/1.gif" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/1.gif"><img style="width:432px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/1.gif"/></a></figure></li></ul><ul id="40f8ac6a-aab1-8055-8848-e23eddf3cb5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Indoor Air Quality (IAQ) &amp; Pollutants</strong><ul id="40f8ac6a-aab1-80b5-9602-fe100b2efdf7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Impact:</strong> Refers to the air quality within and around buildings affecting occupant health and comfort. Poor IAQ can cause immediate short-term symptoms (eye/nose/throat irritation, headaches, dizziness, fatigue) or long-term respiratory aggravation (e.g., triggering or worsening asthma).</li></ul><ul id="40f8ac6a-aab1-8057-8484-f1ad458e8245" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Diagnostic Strategy:</strong> Because symptoms mirror viral colds, tracking the time and place symptoms occur is vital. If symptoms fade away when leaving the building, indoor sources are likely to blame.</li></ul><ul id="40f8ac6a-aab1-8073-8100-ea08c09d66dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carbon Monoxide (CO)</strong><ul id="40f8ac6a-aab1-8043-9a1e-f9fe0426c3a0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Characteristics:</strong> An odorless, colorless toxic gas produced by incomplete combustion when burning fuels like wood, oil, and natural gas (from furnaces, water heaters, fireplaces, etc.).</li></ul><ul id="40f8ac6a-aab1-80ab-acaf-e0faa60b7c57" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Safety Rule:</strong> Proper ventilation neutralizes emissions, but equipment malfunction or blocked venting can cause severe poisoning or death.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-8088-91c3-fd02ed0e25dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Asbestos</strong><ul id="40f8ac6a-aab1-8047-8382-c033feb5eda2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> A naturally occurring mineral fiber prized for fire resistance and strength, historically used in insulation, roofing shingles, floor tiles, brake parts, and heat-resistant goods.</li></ul><ul id="40f8ac6a-aab1-80c6-9318-d9dd8cf4331c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Friability &amp; Exposure:</strong> Asbestos is <strong>friable</strong> (crumbles easily into powder). It poses no threat when intact; exposure only occurs when materials are damaged, disturbed, or remodeled, releasing breathable fibers into the air.</li></ul><ul id="40f8ac6a-aab1-80f6-90bf-d0138d6568f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Health Risks:</strong> Increases lung disease risks (compounded heavily by smoking), leading to lung cancer, <strong>mesothelioma</strong> (rare cancer of lung/chest/abdomen/heart linings), and <strong>asbestosis</strong> (progressive, non-cancer lung scarring).</li></ul><ul id="40f8ac6a-aab1-80a5-9fc4-c7d8a84a7762" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Professional Handling:</strong> Never sample or test DIY, as improper handling releases hazardous airborne fibers. Professionals use bulk sampling, air monitoring, or wipe sampling. <strong>Repair (encapsulation/leaving intact)</strong> is frequently preferred over removal to avoid airborne dispersion.</li></ul></li></ul><ul id="40f8ac6a-aab1-80af-922b-f4d172675928" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Radon Gas</strong><ul id="40f8ac6a-aab1-8087-a2a3-f0027aa6b9ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> An odorless, radioactive gas produced by the natural decay of subterranean rocks. It enters homes through foundation cracks, slab joints, gaps around pipes, sump pumps, and well water systems.</li></ul><ul id="40f8ac6a-aab1-80d8-9fec-d29e410dad51" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Health Risks:</strong> Long-term exposure is the <strong>number one cause of lung cancer among non-smokers</strong> (affecting roughly 1 in 15 US homes).</li></ul><ul id="40f8ac6a-aab1-8094-9e99-e6ca043660dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Testing &amp; Zones:</strong> Agents/buyers can consult EPA radon zone maps. Testing is simple using retail DIY kits or hiring certified radon testers.</li></ul><ul id="40f8ac6a-aab1-8099-9b02-c865a14126bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mitigation:</strong> Requires specialized contractors to install sub-slab ventilation systems, exhaust fans, seal entry cracks, or deploy water filtration systems. DIY mitigation risks worsening radon levels.</li></ul></li></ul><ul id="40f8ac6a-aab1-80b1-bab5-f6520d9b479a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mold Fundamentals &amp; Ubiquity</strong><ul id="40f8ac6a-aab1-80fb-8c5c-d38dae9817ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nature of Mold:</strong> A type of fungus that releases spores into the environment. Spores are a natural, ubiquitous part of the atmosphere and exist in all non-sterile indoor and outdoor environments, making up roughly <strong>5% of the earth&#x27;s biomass</strong>.</li></ul><ul id="40f8ac6a-aab1-803f-9fc1-de33eb316a71" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Growth Triggers:</strong> Mold can grow on virtually any surface given sufficient moisture, thriving in warm, humid conditions. It is typically fueled by flooding, building defects allowing water intrusion, high humidity, plumbing leaks, or condensation.</li></ul><ul id="40f8ac6a-aab1-801d-b8ae-d926273d0080" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modern Construction Risk:</strong> Ironically, newly built homes that are sealed tightly and airtight can trap indoor moisture, creating ideal breeding grounds for mold if ventilation is inadequate.</li></ul><ul id="40f8ac6a-aab1-8049-835d-fd842d6103a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Sources of Moisture Promoting Mold Growth</strong><ul id="40f8ac6a-aab1-80d7-ae06-f23af69eaf4c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Controlling moisture is the absolute key to mold prevention. Primary sources include:<ul id="40f8ac6a-aab1-804c-aaa6-d98802dc71d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Roof leaks</li></ul><ul id="40f8ac6a-aab1-80ac-97ad-f6875c6dd9da" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Indoor plumbing leaks</li></ul><ul id="40f8ac6a-aab1-8056-8899-e92fd0551813" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Outdoor drainage problems</li></ul><ul id="40f8ac6a-aab1-80b5-8b9f-ee1d2cb08bf4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Damp basements and crawl spaces</li></ul><ul id="40f8ac6a-aab1-8028-9362-c388f1d7248f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Excessive steam from kitchens and bathrooms</li></ul><ul id="40f8ac6a-aab1-8097-ae6f-f6d863fdb666" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Condensation accumulating on cool surfaces</li></ul><ul id="40f8ac6a-aab1-8012-8ccd-fc19edd6f1ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Humidifiers and unvented clothes dryers (or drying clothes indoors)</li></ul><ul id="40f8ac6a-aab1-80bc-8fb0-f0be8c633b09" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Improper or poor ventilation of heating and cooking appliances</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80d6-a000-f7b62355b08c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mold Health Effects &amp; Sensitivities</strong><ul id="40f8ac6a-aab1-8008-83f9-e5005e4accd8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Symptoms:</strong> Exposure can trigger allergic reactions in sensitive individuals, including nasal stuffiness, eye irritation, wheezing, or skin irritation.</li></ul><ul id="40f8ac6a-aab1-8011-af06-d4c3761aa2c5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Severe Reactions:</strong> Extreme health risks are generally confined to individuals with chronic lung illnesses, impaired immune systems, or workers facing heavy occupational exposure.</li></ul></li></ul><ul id="40f8ac6a-aab1-806f-96a4-caa7839d88f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Spotting and Identifying Mold</strong><ul id="40f8ac6a-aab1-8003-a3de-ce979c6b6ffe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Visual &amp; Olfactory Cues:</strong> Mold typically appears as fuzzy or slimy patches that expand over time, accompanied by a distinct musty odor.</li></ul><ul id="40f8ac6a-aab1-804a-94e6-d944542816ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Red Flags:</strong> During property walk-throughs, agents and buyers should look for mold growth, water stains, dampness, or structural warping. If spotted, the buyer should be immediately alerted and encouraged to order a professional mold inspection.</li></ul></li></ul><ul id="40f8ac6a-aab1-80ad-a78f-cb2e11bcfb12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mold Remediation &amp; Mitigation</strong><ul id="40f8ac6a-aab1-80a7-84b1-f046b2c9838d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Hard Surfaces:</strong> According to the CDC, mold on hard, non-porous surfaces can usually be cleaned and removed using standard cleaning products or a mild bleach solution.</li></ul><ul id="40f8ac6a-aab1-80a0-9fe2-f29f65098569" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Porous Materials:</strong> Absorbent or porous materials (such as ceiling tiles, drywall, and carpeting) <strong>cannot be effectively cleaned and must be discarded and replaced</strong>.</li></ul><ul id="40f8ac6a-aab1-8074-a698-dd1ad825dade" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fixing the Root Cause:</strong> Cleaning alone is useless unless the underlying moisture problem (leaks, poor ventilation, humidity) is fully resolved. Once cleaned, the area must be dried thoroughly to prevent regrowth.</li></ul><ul id="40f8ac6a-aab1-80eb-af81-fe9908024082" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Professional Remediation:</strong> For extensive mold infestations, hiring a licensed mold remediation contractor is essential to ensure safe containment and removal.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-8000-9acf-c7cd8d4ba163" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Chlorofluorocarbons (CFCs)</strong><ul id="40f8ac6a-aab1-808e-be1f-e9191cffe90d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Composition &amp; Uses:</strong> Chemical compounds containing chlorine, fluorine, and carbon (widely known by the trademarked name <strong>Freon</strong>). Historically used in refrigerator coolants, AC units, dehumidifiers, and old aerosol can propellants.</li></ul><ul id="40f8ac6a-aab1-80da-abbe-d924a5ad92d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Impact &amp; Ban:</strong> Heavily destructive to the earth&#x27;s ozone layer, leading to a global ban beginning in the <strong>1970s</strong>.</li></ul><ul id="40f8ac6a-aab1-8092-9a1b-d1b65283ef8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clean Air Act Regulations:</strong> Strict federal laws govern the disposal and servicing of older CFC-containing appliances. Only <strong>certified professionals</strong> are legally permitted to maintain or repair damaged equipment to prevent coolant leaks into the atmosphere. Violating CFC disposal laws carries severe penalties, including hefty fines and potential prison sentences.</li></ul></li></ul><ul id="40f8ac6a-aab1-80cf-aa45-d943d1f3adab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Urea-Formaldehyde Foam Insulation (UFFI)</strong><ul id="40f8ac6a-aab1-80fb-bf0d-f4c76647810c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics:</strong> A synthetic, human-made insulation material that poses health risks due to formaldehyde gases released as the material hardens.</li></ul><ul id="40f8ac6a-aab1-80cc-825d-dd087a2051b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modern Relevance:</strong> Because UFFI is <strong>no longer permitted in new residential construction</strong>, the actual exposure risk to modern homeowners is minimal, though legacy installations can occasionally be found in older homes.</li></ul></li></ul><ul id="40f8ac6a-aab1-8017-9ee4-ec6b8825e989" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Chlordane</strong><ul id="40f8ac6a-aab1-8058-83ce-d2916ffc3f97" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeline:</strong> A chemical compound widely used in U.S. pesticides from <strong>1948 to 1988</strong> before being banned due to toxicity.</li></ul><ul id="40f8ac6a-aab1-8059-a456-c688040da28b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Health Effects:</strong> Short-term exposure causes gastrointestinal distress and neurological symptoms (tremors, convulsions); long-term inhalation results in chronic nervous system damage.</li></ul></li></ul><ul id="40f8ac6a-aab1-8086-a8f6-f505f433d0e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Polychlorinated Biphenyls (PCBs)</strong><ul id="40f8ac6a-aab1-80cc-b672-f83c4b9cd07d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; History:</strong> Human-made organic chemicals composed of carbon, hydrogen, and chlorine used in hundreds of industrial and commercial applications prior to being <strong>banned in 1979</strong>.</li></ul><ul id="40f8ac6a-aab1-8031-876a-e1b313e8ccb6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Legacy Products:</strong> Transformers, capacitors, electrical equipment, motor/hydraulic oils, thermal/cable insulation, adhesives, oil-based paints, caulking, plastics, and floor finishes produced before 1979.</li></ul><ul id="40f8ac6a-aab1-80e6-9c93-c182671bd637" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Persistence &amp; Bioaccumulation:</strong> PCBs do not break down easily, lingering indefinitely by cycling through air, water, and soil. They bioaccumulate in crops and aquatic life, posing direct ingestion risks to humans (especially through contaminated fish).</li></ul><ul id="40f8ac6a-aab1-806c-b9d9-fcafda543ef9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Drinking Water Standards:</strong> PCBs are classified by the EPA as <strong>probable human carcinogens</strong>. Federal regulations enforce a strict limit of <strong>.5 parts per billion (ppb)</strong> in public drinking water supplies, monitored via regular municipal testing.</li></ul><ul id="40f8ac6a-aab1-8098-ad1c-c708f65a58a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Abatement:</strong> Older PCB-containing electrical gear must be handled strictly by experts using specialized abatement techniques, such as high-temperature incineration, irradiation, or chemical decontamination. (<em>Abatement</em> simply means the process of reducing or neutralizing a hazard).</li></ul></li></ul><ul id="40f8ac6a-aab1-80c7-ac32-d7fa783501cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Clandestine Methamphetamine Labs</strong><ul id="40f8ac6a-aab1-80b2-8aa8-fffe7beac532" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Hazard:</strong> Residential properties used to manufacture illegal drugs (most commonly methamphetamine) become heavily contaminated. Toxic manufacturing gases seep into walls, floorboards, carpets, and HVAC vents, leaving toxic chemical residues that pose severe health risks (respiratory illness, migraines, skin/eye irritation, and cancer).</li></ul><ul id="40f8ac6a-aab1-80c2-bc41-dd693d64ba36" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Disclosure:</strong> Due to extreme health hazards, any history or even strong suspicion of illegal drug production on a property <strong>must be formally disclosed</strong> to prospective buyers. Professional testing and investigation are critical if a meth lab is suspected.</li></ul></li></ul><ul id="40f8ac6a-aab1-8087-ae85-cf1313fbf81d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Destructive Pests and Biological Hazards</strong><ul id="40f8ac6a-aab1-80fd-b0dd-fc0cbe146709" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bees 🐝:</strong><ul id="40f8ac6a-aab1-80a7-9078-e959f5ae0a80" class="bulleted-list" dir="auto"><li style="list-style-type:square">Never attempt DIY bee removal. Call a professional or, ideally, a <strong>beekeeper</strong> first (which can save money and preserve vital global pollinators).</li></ul></li></ul><ul id="40f8ac6a-aab1-804c-b27d-f71fe3483759" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carpenter Bees 🔨🐝:</strong><ul id="40f8ac6a-aab1-8015-b8ce-ce950e073723" class="bulleted-list" dir="auto"><li style="list-style-type:square">Wood-boring bees that do not sting but ruin homes by drilling circular tunnels to lay eggs, compromising structural wood if left unchecked.</li></ul></li></ul><ul id="40f8ac6a-aab1-8025-ab67-c1f1aed4a272" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Termites:</strong><ul id="40f8ac6a-aab1-8046-989f-d77da6bf88e9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tiny insects that consume structural wood in large numbers. Detection involves looking for swarms, hollow-sounding wooden beams, or probing with a flathead screwdriver.</li></ul><ul id="40f8ac6a-aab1-809c-beb2-d57eea561753" class="bulleted-list" dir="auto"><li style="list-style-type:square">Remediation requires certified professionals using physical barriers, baits, or specialized toxic termiticides.</li></ul></li></ul><ul id="40f8ac6a-aab1-8034-8646-f7b8f885bba9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carpenter Ants 🔨🐜:</strong><ul id="40f8ac6a-aab1-8075-a9e4-fb6c7da5c22b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Destructive wood-destroying pests that, unlike termites, <strong>chew through wood rather than eating it</strong>, leaving behind a telltale trail of fine sawdust.</li></ul></li></ul><ul id="40f8ac6a-aab1-80e5-9106-e9e13140811f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bedbugs 🐞:</strong><ul id="40f8ac6a-aab1-8007-9526-fd2b1f2ccee3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Small, flat, oval-shaped bugs (about apple-seed size) found around beds/furniture. Bites cause skin irritation, requiring patient professional eradication.</li></ul></li></ul><ul id="40f8ac6a-aab1-8097-8655-c17c2c527e16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real Estate Rule for Pests:</strong> Pest infestations and associated structural damage are material facts that <strong>must be disclosed</strong>. Sellers should address and remediate issues prior to marketing, providing buyers with professional documentation and warranties.</li></ul></li></ul><ul id="40f8ac6a-aab1-8025-a1b4-db65ea52dcd5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sinkholes: A Tennessee Statutory Mandate</strong><ul id="40f8ac6a-aab1-80c6-be15-dee2bc88bf52" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Significance:</strong> Sinkholes are underground cavities formed naturally or by human activity. They pose catastrophic structural risks, making them so critical in Tennessee that disclosure is <strong>explicitly mandated by state law</strong> under <strong>Tennessee Code Annotated § 66-5-212</strong> (requiring written disclosure of any known sinkhole prior to entering into a purchase contract, plus a special callout on the state property disclosure form).</li></ul><ul id="40f8ac6a-aab1-800e-b9c1-ff121864ca5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Red Flags 🚩:</strong> Warning signs closely mirror foundation failure indicators: cracks in foundations/walls, deep driveway cracks, and doors or windows that stick or won&#x27;t shut.</li></ul><ul id="40f8ac6a-aab1-80a2-a138-f683f6101113" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expert Action:</strong> If sinkhole red flags are spotted, buyers must hire a qualified <strong>geologist or structural engineer</strong> to survey the property.</li></ul></li></ul><ul id="40f8ac6a-aab1-802a-bef0-e4789ac1673a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Underground Storage Tanks (USTs)</strong><ul id="40f8ac6a-aab1-8041-9aa5-c383f85fd7ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Purpose:</strong> Tanks buried beneath the ground used to store chemicals, fuels, toxic wastes, and hazardous substances (such as gasoline beneath service stations).</li></ul><ul id="40f8ac6a-aab1-8077-b2b4-d2d6f9b23c79" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Hazards:</strong> Aging, rusting tanks are highly prone to leaking. The EPA estimates that <strong>roughly 40% of USTs leak</strong>, releasing hazardous toxins into surrounding soil and groundwater, polluting private wells and public water supplies, and creating severe explosion or fire risks.</li></ul><ul id="40f8ac6a-aab1-8028-85bf-cfadd464a595" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Regulations &amp; Financial Responsibility:</strong> Heavily regulated by the EPA. Owners/operators are legally mandated to report and clean up leaks, maintain leak-detection systems, and meet strict financial responsibility rules to ensure they can fund cleanup costs and third-party liabilities.</li></ul></li></ul><ul id="40f8ac6a-aab1-8099-94de-c64a5f3a1fbc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Groundwater Contamination</strong><ul id="40f8ac6a-aab1-80f6-86f8-edfb9fc023c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Pollution affecting subsurface water stored in soil and rock crevices—the primary source for private wells and public drinking water systems.</li></ul><ul id="40f8ac6a-aab1-8074-8381-c2e2a6e2b16d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sources:</strong> Human-made sources include leaking USTs, faulty septic tanks, chemical spills, agricultural pesticides/herbicides, and waste sites. Natural sources include radon, arsenic, and lead.</li></ul><ul id="40f8ac6a-aab1-8080-9938-f71b35ba3567" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Material Fact:</strong> The precise source and quality of a property&#x27;s water supply is a critical material fact that must be understood and disclosed.</li></ul></li></ul><ul id="40f8ac6a-aab1-80c8-8fa4-e42892c6d632" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lead Hazards &amp; Lead-Based Paint</strong><ul id="40f8ac6a-aab1-80e3-b65d-c0753b2f4855" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The History &amp; Ban:</strong> A naturally occurring toxic mineral historically used in paint and plumbing pipes due to its durability. Because of severe poisoning risks, the federal government <strong>banned consumer use of lead-based paint in 1977</strong>, enacting a strict federal disclosure requirement for all residential properties built <strong>prior to 1978</strong>.</li></ul><ul id="40f8ac6a-aab1-807d-ac21-e77dbcf8ab4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Health Impacts:</strong> Ingestion or inhalation damages the brain, kidneys, nervous system, and red blood cells. Children under six are exceptionally vulnerable (suffering reduced IQ and behavioral disorders), and pregnant women face risks of abnormal fetal development.</li></ul><ul id="40f8ac6a-aab1-809b-b987-fe7241ea18bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exposure Pathways:</strong><ul id="40f8ac6a-aab1-8042-91ae-c5e08e7a3c14" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Paint:</strong> Intact lead paint is typically dormant, but peeling, chipping, cracking, or damp lead-based paint creates hazardous dust and paint chips that children may ingest or occupants may inhale.</li></ul><ul id="40f8ac6a-aab1-8055-be79-d71495ebaae2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Soil:</strong> Exterior paint deterioration or improper renovation/remodeling projects can contaminate yard soil with toxic lead dust, endangering children playing outside.</li></ul><ul id="40f8ac6a-aab1-808c-9a03-dfda98767fe1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Water:</strong> Lead leaches into drinking water via pipe corrosion, particularly in homes built <strong>before 1986</strong> (which are more likely to have lead pipes, fixtures, or solder). Even newer homes can contain low levels, as legally &quot;lead-free&quot; plumbing fixtures could historically contain up to 8% lead.</li></ul></li></ul><ul id="40f8ac6a-aab1-8045-992f-f7e1ab531ca2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lead Testing and Remediation Strategies</strong><ul id="40f8ac6a-aab1-80f8-8053-d76d018587b7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Testing:</strong> The only definitive way to confirm the presence of harmful lead quantities in drinking water or building materials is through professional testing.</li></ul><ul id="40f8ac6a-aab1-8033-9974-e6fcf1b6dcac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Water Remediation:</strong> The most effective remediation for lead-contaminated plumbing is the complete removal and replacement of affected pipes by licensed professionals.</li></ul><ul id="40f8ac6a-aab1-808c-ba82-c86b25f2a367" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Paint Remediation:</strong><ul id="40f8ac6a-aab1-80b8-91ab-c47fb2f0468e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If lead-based paint is completely intact, undisturbed, and not flaking, peeling, or chipping, leaving it alone is often preferable.</li></ul><ul id="40f8ac6a-aab1-805a-902c-d461da3f6294" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Encapsulation can be achieved by covering interior walls with new drywall or exterior walls with vinyl siding.</li></ul><ul id="40f8ac6a-aab1-80b1-9097-f7a01d326fa1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full Abatement Warning:</strong> Complete physical removal of lead-based paint is an extremely hazardous, complex process that <strong>must</strong> be handled strictly by certified professionals to prevent toxic dust dispersion.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-805f-b90e-f28b591bb2b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Lead-Based Paint Mandates (Title X)</strong><ul id="40f8ac6a-aab1-80be-bb81-cd7d7149a1ad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Law:</strong> The <strong>Residential Lead-Based Paint Hazard Reduction Act of 1992 (Title X)</strong> was enacted by Congress to protect the public from lead exposure found in paint, dust, and soil. It directs HUD and the EPA to enforce strict disclosure rules for residential properties built <strong>before 1978</strong>.</li></ul><ul id="40f8ac6a-aab1-8044-a2e7-ebdd03cd6957" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mandatory Requirements Prior to Contract Ratification:</strong> Before a purchase contract or lease is signed, sellers and landlords must fulfill five explicit requirements:<ol type="1" id="40f8ac6a-aab1-8048-ab08-df8d3b7d4103" class="numbered-list" start="1" dir="auto"><li><strong>Disclose Known Facts:</strong> Formally disclose any known information concerning lead-based paint or related hazards.</li></ol><ol type="1" id="40f8ac6a-aab1-8063-bcd6-f740e3105e0a" class="numbered-list" start="2" dir="auto"><li><strong>Provide Records &amp; Reports:</strong> Hand over any existing inspection reports, historical records, or data regarding lead hazards available to the seller or landlord.</li></ol><ol type="1" id="40f8ac6a-aab1-8080-b6aa-ec0ea79581f1" class="numbered-list" start="3" dir="auto"><li><strong>Include the Lead Warning Statement:</strong> Attach a mandatory warning statement to the contract/lease (or insert explicit language within the lease text) confirming that the seller or landlord has complied with all notification duties.</li></ol><ol type="1" id="40f8ac6a-aab1-804b-9ac6-f86eed538a64" class="numbered-list" start="4" dir="auto"><li><strong>Deliver the EPA Pamphlet:</strong> Provide the buyer or tenant with the official EPA-approved information booklet titled <em><strong>&quot;Protect Your Family from Lead in Your Home.&quot;</strong></em></li></ol><ol type="1" id="40f8ac6a-aab1-802d-87b4-d6c6b57f5bdb" class="numbered-list" start="5" dir="auto"><li><strong>The 10-Day Inspection Window:</strong> Grant homebuyers a <strong>10-day period</strong> to conduct a professional inspection or risk assessment for lead-based paint hazards.<ul id="40f8ac6a-aab1-802a-ae71-d4f507e83af4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Note on Flexibility:</em> The 10-day period can be lengthened or shortened by mutual written agreement of both parties, and buyers retain the legal right to completely waive the inspection opportunity if they choose.</li></ul></li></ol></li></ul></li></ul><ul id="40f8ac6a-aab1-8054-ada2-d2effade104b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lead-Based Paint Documents</strong><ul id="40f8ac6a-aab1-800b-a5e9-d466ef5875ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disclosure Form - </strong>The following is the Tennessee REALTORS®&#x27; <em><strong>Lead-Based Paint Disclosure</strong></em>.<figure id="40f8ac6a-aab1-8005-863f-c235069ae9da" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image.png"><img style="width:336px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image.png"/></a></figure></li></ul></li></ul><ul id="40f8ac6a-aab1-8007-97a9-eec5c1d2f22e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>EPA Pamphlet</strong><ul id="40f8ac6a-aab1-80c2-9e97-eff698f4cd2b" class="bulleted-list" dir="auto"><li style="list-style-type:square">This is the EPA-approved information pamphlet on identifying and controlling lead-based paint hazards, <strong>“Protect Your Family from Lead in Your Home.”</strong><figure id="40f8ac6a-aab1-809b-8685-e6286273dbf4" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%201.png"><img style="width:336px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%201.png"/></a></figure></li></ul></li></ul><ul id="40f8ac6a-aab1-80bc-ba86-db90074246e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HUD Lead-Based Paint Disclosure Form</strong><ul id="40f8ac6a-aab1-807e-8df9-e54d81be37e0" class="bulleted-list" dir="auto"><li style="list-style-type:square">The U.S. Department of Urban Housing and Development (HUD) has published a disclosure form that ensures compliance with Title X, called <em><strong>Disclosure of Information on Lead-Based Paint and/or Lead-Based Paint Hazards.</strong></em><figure id="40f8ac6a-aab1-809c-b706-f4f334dc70bf" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%202.png"><img style="width:336px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%202.png"/></a></figure></li></ul></li></ul><ul id="40f8ac6a-aab1-804a-8cc5-dffd410ce6e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compliance: </strong>It&#x27;s the responsibility of the seller or landlord to perform all of the aforementioned disclosures – <strong>as well as the real estate affiliate broker.</strong></li></ul></li></ul><ul id="40f8ac6a-aab1-809c-a824-d33548f9c1a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosing Environmental Hazards</strong><figure id="40f8ac6a-aab1-807f-b9e9-f326d11dfc12" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%203.png"><img style="width:384px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%203.png"/></a></figure></li></ul><ul id="40f8ac6a-aab1-801d-a471-c0ef6d50be53" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agent Responsibilities with Seller Clients</strong><ul id="40f8ac6a-aab1-8010-b1ad-cc60574b0040" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Educational Duty:</strong> Ensure sellers fully understand their legal obligation to disclose all known environmental hazards and the severe legal/financial consequences of failing to do so.</li></ul><ul id="40f8ac6a-aab1-8004-b31a-d3e40d5a9d14" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Duty to Reveal Concealed Facts:</strong> If a real estate agent is aware of an environmental hazard that the seller knows about but is intentionally hiding, attempting to conceal, or failing to disclose, the agent has an affirmative duty to step in and disclose it.</li></ul></li></ul><ul id="40f8ac6a-aab1-8076-8a4f-ca5d22003e30" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agent Responsibilities with Buyer Clients</strong><ul id="40f8ac6a-aab1-808a-a3c8-c0e367b698c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Proactive Warning:</strong> Advise buyers of potential environmental hazards that may affect the property.</li></ul><ul id="40f8ac6a-aab1-80fd-bfb9-e04926c4dc41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Avoiding Negligence:</strong> While buyers carry personal responsibility for investigating property conditions, an agent&#x27;s failure to disclose known or suspected hazards can expose them to legal claims of negligence.</li></ul><ul id="40f8ac6a-aab1-805f-9b46-fd644ec08fde" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Golden Rule:</strong> <em>When in doubt, always have your buyer consult a qualified environmental expert!</em></li></ul></li></ul><ul id="40f8ac6a-aab1-8075-9152-eaa6f93cd619" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Environmental Assessments &amp; Commercial/Vacant Land Due Diligence</strong><ul id="40f8ac6a-aab1-80ec-ad53-fb224a5eae49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Liability:</strong> Buyers bear ultimate responsibility for identifying environmental hazards and can inherit massive legal liabilities if they purchase contaminated real estate.</li></ul><ul id="40f8ac6a-aab1-80fc-8076-c5e17f88cbc6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Assessments:</strong> Formal reports used during due diligence (predominantly in commercial real estate or vacant land transactions) to identify existing or potential environmental liabilities.</li></ul><ul id="40f8ac6a-aab1-80d3-a1bd-c2f25165e220" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pro Tip for Vacant Land:</strong> Whenever representing a client purchasing vacant or non-residential land—especially parcels with a history of agricultural, industrial, or chemical use—agents should strongly recommend commissioning a professional environmental assessment before closing.</li></ul></li></ul><ul id="40f8ac6a-aab1-8036-bd91-f6a7e6890964" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Phases</strong><figure id="40f8ac6a-aab1-8060-8ccd-e81019b6b80f" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%204.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%204.png"><img style="width:528px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%204.png"/></a></figure></li></ul></div><div id="40f8ac6a-aab1-80cf-bddf-c2d04a00cc27" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40f8ac6a-aab1-80de-b595-f0391893bd29" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40f8ac6a-aab1-80b1-948e-f816e6976c11" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ubiquity</strong> - capacity of being in an indefinite number of places at the same time, not strictly amounting to omnipresence</li></ul><ul id="40f8ac6a-aab1-8007-81ba-d583f714fed1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>asbestos</strong> - a naturally occurring mineral fiber that is commonly used in insulation, but if airborne or inhaled, can cause severe respiratory health issues</li></ul><ul id="40f8ac6a-aab1-80f9-8463-c8824a07b698" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>environmental assessment</strong> - a report prepared for a real estate holding that identifies potential or existing environmental contamination liabilities</li></ul><ul id="40f8ac6a-aab1-8099-ae27-e5c9e442f268" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>lead</strong> - a naturally occurring mineral that has been used in the manufacturing of paint and water pipes and is toxic to humans</li></ul><ul id="40f8ac6a-aab1-8037-a0ee-f3e4437edc1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>radon</strong> - an odorless, radioactive gas produced by the decay of other radioactive materials in rocks under the surface of the earth; can cause lung cancer</li></ul><p id="40f8ac6a-aab1-8080-a1a8-dbe8fe6c7d87" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40f8ac6a-aab1-805e-ac3f-c0edc6832c3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Environmental Hazards</strong><figure id="40f8ac6a-aab1-8090-a0e7-d642f7300891" class="image" data-notion-image="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%205.png" dir="ltr"><a href="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%205.png"><img style="width:413.796875px" src="Chapter%203%20-%20Material%20Facts%20Related%20to%20Environmenta/image%205.png"/></a></figure></li></ul><ul id="40f8ac6a-aab1-80e6-afb5-fd57c4811875" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Indoor Air Quality - </strong>The quality of the air inside a building can be compromised by various chemicals, mold, and volatile organic compounds.<ul id="40f8ac6a-aab1-8071-83b4-f682e95d3720" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The air can even be deadly if there is too much <strong>carbon monoxide</strong> present. Carbon monoxide is an odorless, colorless gas that occurs as a by-product due to incomplete combustion when burning such fuels as wood, oil, and natural gas.</li></ul><ul id="40f8ac6a-aab1-8003-ac8c-fadcccbf1e86" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Improper ventilation or equipment malfunction may result in carbon monoxide poisoning. The most common symptoms are headache, dizziness, weakness, upset stomach, vomiting, chest pain, and confusion.</li></ul></li></ul><ul id="40f8ac6a-aab1-807d-b915-e56d0c3f6725" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Asbestos</strong><ul id="40f8ac6a-aab1-806f-b8cd-e5c9e124d4fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If airborne or inhaled, this insulation material can cause severe respiratory health issues. Asbestos fibers may be released into the air by the disturbance of asbestos-containing material during product use, maintenance, and remodeling.</li></ul><ul id="40f8ac6a-aab1-8040-ae4b-ce656b3146c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The most common health effects associated with asbestos exposure are lung cancer, mesothelioma, and asbestosis. Testing and remediation (whether by removal, encapsulation, or enclosure) should be handled by professionals.</li></ul></li></ul><ul id="40f8ac6a-aab1-80ab-8283-e6b2cd534cf2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Radon</strong><ul id="40f8ac6a-aab1-80ae-ab0b-d1cf6a43aa42" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Radon gas comes up from the ground and can enter a house through cracks in the foundation or other openings in the floors or walls. Long-term exposure to radon gas can cause lung cancer. The EPA recommends that those buying or selling a home have it tested for radon and that any necessary mitigation be done by qualified professionals.</li></ul></li></ul><ul id="40f8ac6a-aab1-807d-a37a-df33546e7d14" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sinkholes</strong><ul id="40f8ac6a-aab1-807f-9fd8-f09a588fe38b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sinkholes are cavities in the ground that may be formed naturally or by human activity. Sinkhole disclosure is absolutely required. If you see warning signs that a sinkhole might be present, have the property surveyed by an engineer or geologist.</li></ul></li></ul><ul id="40f8ac6a-aab1-8020-8477-f31980855184" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Environmental Site Assessments</strong><ul id="40f8ac6a-aab1-804e-a009-ef415a4ec100" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Environmental site assessments can consist of up to four phases:<ul id="40f8ac6a-aab1-803b-8700-e5f1552cf94f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Phase I: Investigation:</strong> inspection and evaluation of suspected hazardous materials</li></ul><ul id="40f8ac6a-aab1-80d2-99ba-ca65e94ee5ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Phase II: Testing:</strong> environmental specialists conduct tests to verify contamination</li></ul><ul id="40f8ac6a-aab1-80f0-9c41-d7678ba5bfa5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Phase III: Remediation:</strong> appropriate cleanup efforts initiated</li></ul><ul id="40f8ac6a-aab1-809d-816d-d3dac16a3cea" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Phase IV: Management</strong>: periodic inspections and implementation of methods to prevent future problems</li></ul><p id="40f8ac6a-aab1-805a-b963-e807ebea5468" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="40f8ac6a-aab1-8012-bdbf-e0194024d2fd" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Types of Agency and Agents in Real Estate</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8009-85dc-de62b9f2f968" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Types of Agency and Agents in Real Estate</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40c8ac6a-aab1-801b-b65c-df0844096f29" class="column-list" data-notion-column-list="" dir="auto"><div id="40c8ac6a-aab1-8078-ae1e-ebd839496af8" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40c8ac6a-aab1-80a9-8131-d71c28d8932c" class="" dir="auto"><strong>Tennessee Agent Types </strong></p><ul id="40c8ac6a-aab1-8070-af6f-e24f43c18f54" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Allowed Agency Types in Tennessee:</strong><ul id="40c8ac6a-aab1-80f2-be7d-dec837a22a48" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Single agents</li></ul><ul id="40c8ac6a-aab1-80cc-a78a-f55c01915337" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Designated agents</li></ul><ul id="40c8ac6a-aab1-800f-925f-e28cbed8042c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Dual agents</li></ul><ul id="40c8ac6a-aab1-80d1-852a-dcbb9091f9c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Subagents</li></ul><ul id="40c8ac6a-aab1-8042-8583-dfb97feb82d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Facilitators</li></ul><ul id="40c8ac6a-aab1-80de-aeb5-fe379d72ff4a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Brokerage Discretion:</strong> State law permits these agency types, but individual principal brokers decide which types their brokerage and specific licensees are authorized to practice based on experience and training.</li></ul></li></ul><ul id="40c8ac6a-aab1-80e4-bf6a-f89f7991f16e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Default Representation Status (Facilitator)</strong><ul id="40c8ac6a-aab1-800d-b526-c2bcafb032cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Agreement Requirement:</strong> Agency agreements in Tennessee <strong>must be in writing</strong>.</li></ul><ul id="40c8ac6a-aab1-80e5-9828-e145e9ba4787" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Default Status:</strong> Until a formal written agency agreement is executed, any interaction between a licensee and a party defaults to transaction brokerage (non-agency), with the licensee legally operating as a neutral <strong>facilitator</strong>.</li></ul></li></ul><ul id="40c8ac6a-aab1-80fc-bbfa-cc2dff58b447" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Single Agent</strong><figure id="40c8ac6a-aab1-803d-b93a-ed7abf9c06f9" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image.png"><img style="width:240px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image.png"/></a></figure><ul id="40c8ac6a-aab1-8005-b444-eacd63becb92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Single agency is an arrangement in which an agent represents <strong>only one party</strong> (either a buyer, seller, landlord, or tenant) in a real estate transaction.</li></ul><ul id="40c8ac6a-aab1-8039-ac03-c4d2bda2ccbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Brokerage-Level Representation:</strong> Because agency is established at the broker level, when a brokerage practices single agency, <em>all</em> affiliate brokers sponsored by that principal broker represent that single client in the transaction.</li></ul><ul id="40c8ac6a-aab1-8030-994d-fef87cab9cf0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Characteristics &amp; Benefits</strong><ul id="40c8ac6a-aab1-8081-85d3-e0969411e9b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Minimal Conflicts of Interest:</strong> Single agency is highly popular because it virtually eliminates the conflicts of interest and confusion common in dual agency.</li></ul><ul id="40c8ac6a-aab1-80dd-bbb1-e690d4f76493" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Traditional Approach:</strong> Represents the traditional, undivided-loyalty model of real estate representation.</li></ul><ul id="40c8ac6a-aab1-809f-8172-cf5452b90d82" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Working Relationships:</strong> A single agent works <em>for</em> their client (fiduciary duties owed) and works <em>with</em> customers on the opposing side (fair dealing and honesty owed).</li></ul></li></ul><ul id="40c8ac6a-aab1-80e5-8d68-ea864c41b1a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Documentation &amp; Creation</strong><ul id="40c8ac6a-aab1-8056-8770-c35d6ddc1fc1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Must be formally documented in writing using either a <strong>listing agreement</strong> (for sellers/landlords) or a <strong>buyer representation agreement</strong> (for buyers/tenants).</li></ul></li></ul><ul id="40c8ac6a-aab1-8035-b326-d56db4ed3ed1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Duties of the Single Agent </strong><ul id="40c8ac6a-aab1-80d2-8caf-c54c65224f88" class="bulleted-list" dir="auto"><li style="list-style-type:square">Single agents owe rigorous, undivided duties to their clients, whether representing a seller or a buyer. These duties reflect core fiduciary responsibilities combined with statutory real estate requirements.</li></ul></li></ul><ul id="40c8ac6a-aab1-8072-83df-c6af9d96172e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Duties of a Seller&#x27;s Agent (Listing Agent)</strong><ul id="40c8ac6a-aab1-8087-a5f7-fb996e828dde" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fulfill all specific duties outlined in the <strong>listing agreement</strong>.</li></ul><ul id="40c8ac6a-aab1-80d9-b651-da64c4638390" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seek a sales price and terms matching the agreement or acceptable to the seller.</li></ul><ul id="40c8ac6a-aab1-8041-980c-c12e26276204" class="bulleted-list" dir="auto"><li style="list-style-type:square">Present <strong>all written offers and counteroffers</strong> in a timely manner.</li></ul><ul id="40c8ac6a-aab1-8070-8876-f051161f0e70" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose all <strong>material adverse facts</strong> regarding the transaction.</li></ul><ul id="40c8ac6a-aab1-8033-95e7-d468ce2e8673" class="bulleted-list" dir="auto"><li style="list-style-type:square">Advise the seller to seek expert advice on matters beyond the agent&#x27;s expertise.</li></ul><ul id="40c8ac6a-aab1-808e-a335-d2003a425b75" class="bulleted-list" dir="auto"><li style="list-style-type:square">Account for all money and property received in a timely manner.</li></ul><ul id="40c8ac6a-aab1-80a1-a4e3-f1a3ca597f85" class="bulleted-list" dir="auto"><li style="list-style-type:square">Comply with all federal, state, and local laws.</li></ul><ul id="40c8ac6a-aab1-8040-a36e-c5c3ac977d2f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exercise <strong>reasonable skill and care</strong>.</li></ul><ul id="40c8ac6a-aab1-80c6-aee3-fea8b0fec5b3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Maintain strict seller <strong>confidentiality</strong>.</li></ul><ul id="40c8ac6a-aab1-8031-be17-f66aa5303f19" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Note:</em> These duties do not prevent a seller&#x27;s agent from listing competing properties or showing other properties to buyers.</li></ul></li></ul><ul id="40c8ac6a-aab1-802f-97b7-f1f087eb186e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Duties of a Buyer&#x27;s Agent</strong><ul id="40c8ac6a-aab1-8005-ba31-cecbdaa46aeb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fulfill all specific duties outlined in the <strong>buyer representation agreement</strong>.</li></ul><ul id="40c8ac6a-aab1-8069-8628-ecf26cdf6932" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seek a suitable property at a price and terms matching the agreement or acceptable to the buyer.</li></ul><ul id="40c8ac6a-aab1-809f-aaa1-f75f73f0d97a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Present <strong>all written offers and counteroffers</strong> in a timely manner.</li></ul><ul id="40c8ac6a-aab1-8019-ae7b-f5791d5cc9d9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose all <strong>material adverse facts</strong> regarding the transaction.</li></ul><ul id="40c8ac6a-aab1-8002-8e1e-ea228008e4bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Advise the buyer to seek expert advice on matters beyond the agent&#x27;s expertise.</li></ul><ul id="40c8ac6a-aab1-803a-ae3b-c03db714b1b3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Account for all money and property received in a timely manner.</li></ul><ul id="40c8ac6a-aab1-8019-a84f-d6e657eedc8f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Comply with all federal, state, and local laws.</li></ul><ul id="40c8ac6a-aab1-8018-ba74-e85707248639" class="bulleted-list" dir="auto"><li style="list-style-type:square">Exercise <strong>reasonable skill and care</strong>.</li></ul><ul id="40c8ac6a-aab1-809f-b548-f25cc2729fa4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Maintain strict buyer <strong>confidentiality</strong>.</li></ul><ul id="40c8ac6a-aab1-8013-972c-e2abe49a2039" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Note:</em> These duties do not prevent a buyer&#x27;s agent from showing properties of interest to multiple prospective buyers.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8054-8940-f1466dc6c0b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Designated Agent </strong><figure id="40c8ac6a-aab1-80e0-8841-f5ca96916357" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%201.png"><img style="width:336px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%201.png"/></a></figure><ul id="40c8ac6a-aab1-8007-8b4a-fa987c464991" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Designated agency is an arrangement where the principal broker assigns a specific licensee within the brokerage to exclusively represent a single client (buyer, seller, landlord, or tenant) in a transaction.</li></ul><ul id="40c8ac6a-aab1-8075-82fa-ee2e4874afaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive Representation:</strong> The designated agent is the <strong>only</strong> licensee in the firm who holds an agency relationship with that client.</li></ul><ul id="40c8ac6a-aab1-8056-b720-f4a1fb07343e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Characteristics &amp; Confidentiality</strong><ul id="40c8ac6a-aab1-8060-aa99-e4754fa07684" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Isolation of Confidential Info:</strong> Only the designated agent possesses intimate, confidential knowledge regarding the client (such as maximum affordability, true motivation, or time pressures).</li></ul><ul id="40c8ac6a-aab1-80c1-a7f4-f5094fb2fa1b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Maintaining Arm&#x27;s Length:</strong> To protect negotiation leverage, the designated agent must keep all other license holders—even those within the same brokerage—at arm&#x27;s length.</li></ul><ul id="40c8ac6a-aab1-8082-bd32-f0eaf80e9f2b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Single-Agent Simulation:</strong> The designated agent operates essentially as a one-person brokerage representing a single client, treating all other in-house agents as if they represent the opposing party.</li></ul></li></ul><ul id="40c8ac6a-aab1-8016-9783-cb9111997110" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>In-House Transactions</strong><ul id="40c8ac6a-aab1-80ef-a36b-d5d631bd35f5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Importance:</strong> This strict segregation is critical when another licensee in the same brokerage represents the opposing principal, creating an <strong>in-house transaction</strong></li></ul></li></ul><ul id="40c8ac6a-aab1-801c-a250-cbe298712a9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Clients; One Brokerage Overview</strong><ul id="40c8ac6a-aab1-8055-bfd3-fb4674216d73" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>In-House Transaction:</strong> Occurs when both principals (buyer and seller, or landlord and tenant) to a transaction are represented by the same brokerage.</li></ul><ul id="40c8ac6a-aab1-8003-b8ff-c4a2109e4b82" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Scenarios:</strong></li></ul><ol type="1" id="40c8ac6a-aab1-801c-bbbd-f4de199ac0de" class="numbered-list" start="1" dir="auto"><li>A buyer client decides to view properties listed within their own agent&#x27;s brokerage.</li></ol><ol type="1" id="40c8ac6a-aab1-803f-a15a-f31adc049d5e" class="numbered-list" start="2" dir="auto"><li>A seller client permits buyers represented by the same brokerage to tour their listing.</li></ol></li></ul><ul id="40c8ac6a-aab1-80e8-b576-d16de6506484" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Shift from Single Agency to Dual Agency</strong><ul id="40c8ac6a-aab1-8047-ab75-fac1373f462e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Single Agency Rule:</strong> In brokerages practicing standard single agency (without designated agency), <em>every</em> licensee in the firm represents all clients. Consequently, representing both opposing principals in an in-house transaction creates <strong>dual agency</strong>.</li></ul><ul id="40c8ac6a-aab1-801c-ae52-fd7f482831ad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Brokerage Choices When a Second Client Appears:</strong></li></ul><ol type="1" id="40c8ac6a-aab1-80ba-a57c-c98c1a3f3d60" class="numbered-list" start="1" dir="auto"><li>Proceed with dual agency (navigating competing interests and compromises, which is heavily regulated and relatively rare).</li></ol><ol type="1" id="40c8ac6a-aab1-80d2-a309-e261cb9f85b1" class="numbered-list" start="2" dir="auto"><li>Terminate the relationship with one of the principals to maintain single agency.</li></ol></li></ul><ul id="40c8ac6a-aab1-806b-b7cf-cc4d5da2cbca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Documentation and Written Agreement</strong><ul id="40c8ac6a-aab1-80da-97bf-cc684d44d90d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mandatory Transition:</strong> Moving from single agency to dual agency requires terminating the old agreement and executing a <strong>new agency agreement in writing</strong>.</li></ul><ul id="40c8ac6a-aab1-80cb-a4b6-feef3b938f22" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example:</strong> If Buyer Colin (represented under single agency by Broker Selena) wants to view an in-house listing, Selena must fully disclose dual agency mechanics and secure a signed dual agency agreement <em>before</em> showing the property.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8036-a7c0-f5eab377abc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Dual Agent </strong></li></ul><figure id="40c8ac6a-aab1-800a-9142-eb45b949e982" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%202.png"><img style="width:336px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%202.png"/></a></figure><ul id="40c8ac6a-aab1-80d0-913c-ee30fe53ceeb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Dual agency is an agency relationship where both the buyer and the seller (or opposing principals) are represented by the same broker in an in-house real estate transaction.<ul id="40c8ac6a-aab1-8000-8ef3-fc7974c82a9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Status in Tennessee:</strong> While legal in Tennessee, dual agency is tricky, problematic, and <strong>rarely practiced</strong> because many brokerages choose to prohibit it. Always verify your specific brokerage&#x27;s policy.</li></ul><ul id="40c8ac6a-aab1-8077-a657-f8e070534c8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Informed Consent Requirement:</strong> Before entering into dual agency, <strong>both parties must give informed consent in writing</strong>.</li></ul><ul id="40c8ac6a-aab1-805e-8958-cb7ac7ca934f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compromise of Fiduciary Duties</strong><ul id="40c8ac6a-aab1-806e-9ff2-f0c014e36a06" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because the two parties have inherently conflicting interests (e.g., sellers want the highest price and fewest contingencies; buyers want the lowest price and maximum protection), representation is severely limited.</li></ul><ul id="40c8ac6a-aab1-8033-921d-debee246765c" class="bulleted-list" dir="auto"><li style="list-style-type:square">In dual agency, licensees cannot provide:<ul id="40c8ac6a-aab1-80d4-848f-e02f0b36509c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full disclosure</strong> (certain confidential information must be protected).</li></ul><ul id="40c8ac6a-aab1-80fe-a082-f017c7ef7cb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Undivided loyalty</strong> (the agent cannot champion one party&#x27;s financial interests over the other&#x27;s).</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-803a-8d70-fe6911982bb8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Agency vs. Designated Agency Overview</strong><ul id="40c8ac6a-aab1-80f4-8333-f379adcd4863" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>In-House Transactions:</strong> Both agency types occur when an in-house transaction involves clients of the same brokerage, but they operate under vastly different rules.</li></ul><ul id="40c8ac6a-aab1-808f-861a-ea9562faea16" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Designated Agency (Full Representation):</strong> Allows designated agents to fulfill their <strong>full set of fiduciary duties</strong>—including undivided loyalty and full disclosure—because the principal broker assigns separate, isolated licensees to each opposing client.</li></ul><ul id="40c8ac6a-aab1-8032-aea7-ffab6f0baea1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Dual Agency (Compromised Representation):</strong> Involves shared representation where duties like full disclosure and undivided loyalty are inherently compromised due to conflicting client interests.</li></ul></li></ul><ul id="40c8ac6a-aab1-8094-be35-de20402fb846" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mechanics of Designated Agency</strong><ul id="40c8ac6a-aab1-80ab-82bc-e25ccb5a7a61" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Strict Information Isolation:</strong> In a designated agency in-house transaction, the designated agents do not share confidential client details with anyone else in the firm—not even with each other or the principal broker.</li></ul><ul id="40c8ac6a-aab1-8021-827f-da9d4dfd559a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Acting as a One-Person Brokerage:</strong> Each designated agent exclusively champions their assigned client&#x27;s interests without conflicting obligations.</li></ul><ul id="40c8ac6a-aab1-80f0-bb70-dda0c99c06b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Vicarious Supervisory Responsibility:</strong> Although the principal broker and other affiliate brokers remain entirely outside the agency relationship, the principal broker still holds ultimate vicarious supervisory responsibility for the actions of both designated agents.</li></ul><ul id="40c8ac6a-aab1-801e-bad0-ed62266b06db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Distinction:</strong> Because the firm isolates representation, designated agency <strong>is not</strong> considered dual agency.</li></ul><figure id="40c8ac6a-aab1-8064-b4f7-d611904c6d04" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%203.png"><img style="width:432px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%203.png"/></a></figure></li></ul></li></ul><ul id="40c8ac6a-aab1-80bd-9566-d45241ce5a6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Subagent </strong><ul id="40c8ac6a-aab1-8083-81ac-fb71af3a61ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Subagency is a form of agency created when an agent enlists the help of other agents to achieve a client&#x27;s goal (essentially, an agent of an agent). While sponsored licensees are technically subagents to their broker&#x27;s clients internally, the term traditionally refers to outside cooperation.</li></ul><ul id="40c8ac6a-aab1-806a-b706-d512f1c4474c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Traditional Application:</strong> Occurs when an <strong>unaffiliated cooperating broker</strong> (from a different brokerage) and their licensees assist a listing broker in finding a buyer for a seller-client.<figure id="40c8ac6a-aab1-8044-ab5c-c9f945f1a8b8" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%204.png"><img style="width:288px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%204.png"/></a></figure></li></ul><ul id="40c8ac6a-aab1-808c-b55a-cce6a71a12df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Rules &amp; Relationships</strong><ul id="40c8ac6a-aab1-8075-b184-ff9b1eb7304e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusivity of Role:</strong> A cooperating broker can only operate as a subagent if they are <strong>not</strong> representing the buyer. If they represent the buyer, they are a buyer&#x27;s agent, not a subagent.</li></ul><ul id="40c8ac6a-aab1-800d-8044-d9e61783719d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fiduciary Obligations:</strong> Subagents owe the principal (the seller) the exact same high standard of <strong>fiduciary duties</strong> as the primary listing agent.</li></ul><ul id="40c8ac6a-aab1-8024-ae57-cea217278e0f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mandatory Disclosure:</strong> Cooperating brokers must disclose their agency relationships to all parties upfront.</li></ul></li></ul><ul id="40c8ac6a-aab1-80a0-a05b-e39b30eb3909" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rarity and Risks in Tennessee</strong><ul id="40c8ac6a-aab1-80ee-aeda-ec1d15e95ba5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legality vs. Practice:</strong> While legal in Tennessee, subagency is <strong>rare and risky</strong>.</li></ul><ul id="40c8ac6a-aab1-8092-921a-dab45cdfb28c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Why It&#x27;s Rare:</strong><ul id="40c8ac6a-aab1-809d-9f8b-ccc1fed2815f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Listing brokers face heightened <strong>vicarious liability</strong> for the actions of unaffiliated licensees whom they do not directly supervise.</li></ul><ul id="40c8ac6a-aab1-805b-9b2b-db55aeb54266" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Because buyer&#x27;s agents typically receive an equal split of the listing commission (just like subagents), cooperating brokers prefer the protections of representing buyers directly rather than acting as subagents for the seller.</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8057-8238-d258bafd5a69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Facilitators &amp; Transaction Brokerage Overview</strong><ul id="40c8ac6a-aab1-8042-84e0-e424dab986ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A facilitator practices <strong>transaction brokerage</strong>, which is a form of <strong>non-agency</strong> rather than an agency relationship. They assist both parties in completing a transaction without representing, favoring, or acting as an advocate for either party.</li></ul><ul id="40c8ac6a-aab1-802b-a8fd-d98431770349" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Required Disclosures:</strong> When working with a customer, a facilitator must state in writing that they are not an agent, are not an advocate, and will only provide limited confidentiality.<figure id="40c8ac6a-aab1-80e8-a3ad-f4639aa305af" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%205.png"><img style="width:336px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%205.png"/></a></figure></li></ul><ul id="40c8ac6a-aab1-80fe-8cdf-db971241ce73" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Facilitator Duties &amp; Ministerial Acts</strong><ul id="40c8ac6a-aab1-80c9-bd19-f0f275ea5b5c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Responsibilities:</strong> Perform ministerial acts to move the transaction forward, such as:<ul id="40c8ac6a-aab1-80ce-892b-f4859984e93f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Handling funds, documents, and materials.</li></ul><ul id="40c8ac6a-aab1-8069-9702-f7a2b8c1d485" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Presenting all offers and counteroffers.</li></ul><ul id="40c8ac6a-aab1-80d1-af34-e7cac5f5a3d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Keeping parties informed of progress and assisting with closing.</li></ul></li></ul><ul id="40c8ac6a-aab1-8095-bbbb-ed7a1c09c858" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Standard of Conduct Owed to Both Parties:</strong><ul id="40c8ac6a-aab1-80bc-9e43-dd191b71e752" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Reasonable care and skill.</li></ul><ul id="40c8ac6a-aab1-80d0-b08e-ee120931df65" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Honesty and fair dealing.</li></ul><ul id="40c8ac6a-aab1-8052-9228-f0e7a316ec2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Confidentiality and impartiality.</li></ul><ul id="40c8ac6a-aab1-809e-b7ba-dd5401ef45c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Disclosure of material facts regarding the property.</li></ul><ul id="40c8ac6a-aab1-8018-a356-e0ec2d2ec23b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Advising parties to seek expert or legal counsel when appropriate.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80dc-8730-e6a30af29323" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Facilitator by Default &amp; Agreement</strong><ul id="40c8ac6a-aab1-809b-849e-cb250bbb9f44" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Default Rule:</strong> Because Tennessee law strictly mandates that all agency agreements must be in writing, any relationship between a licensee and a party <strong>defaults to a neutral facilitator (transaction brokerage)</strong> until a formal written agency agreement is established.</li></ul><ul id="40c8ac6a-aab1-80b2-b881-e4c8ed601fca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Facilitator by Agreement:</strong> If a licensee (or someone associated with them) represents the opposing party, the licensee must execute a written agreement explicitly stating they are operating as a facilitator and <em>not</em> a dual agent.</li></ul><ul id="40c8ac6a-aab1-8074-93c7-da5c057746f6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The &quot;Either/Or&quot; Rule:</strong> A licensee cannot split their role in a transaction; they cannot act as a facilitator to one party and an agent to the other. They must serve as a facilitator to both or a dual agent to both.\</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80c8-a2e9-c4d89c49849f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Recap<figure id="40c8ac6a-aab1-808d-a071-e78e88d33353" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%206.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%206.png"><img style="width:336px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%206.png"/></a></figure></li></ul></div><div id="40c8ac6a-aab1-8017-9c5b-ed958c8153e5" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40c8ac6a-aab1-804c-a87c-e9c3ca775c7c" class="" dir="auto"><strong>Key Term</strong></p><ul id="40c8ac6a-aab1-806c-a55e-c9771fa8fd3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>designated agent - the only licensee in a brokerage who has been designated by the principal broker to act as agent of a party in a transaction; no other licensees in the brokerage have that agency relationship</strong></li></ul><p id="40c8ac6a-aab1-806a-bfaf-ef00e2d9a599" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40c8ac6a-aab1-8046-9c22-fbd820fd0b8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Agent Types</strong><ul id="40c8ac6a-aab1-80d5-bd33-fa916a81acf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Single agent -</strong> One agent represents one party in a real estate transaction; all agents in that brokerage share in the duties of that representation.</li></ul><ul id="40c8ac6a-aab1-80c7-98b7-e48cb998be54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Designated agent -</strong> A licensee is designated to represent a single client in a transaction; the designated agent for this client is the ONLY licensee in the firm with an agency relationship with that client.</li></ul><ul id="40c8ac6a-aab1-80db-bb8d-d21534e457e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual agent -</strong> Both the buyer and the seller are represented by the same broker in an in-house real estate transaction.</li></ul><ul id="40c8ac6a-aab1-8028-9fb3-f220cc25931a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Subagent - </strong>An agent of an agent; traditionally, an <em>unaffiliated</em> cooperating broker and/or their licensees helping a listing broker find a buyer for the listing broker&#x27;s seller-client.</li></ul><ul id="40c8ac6a-aab1-8038-aa48-fa9eb753beaf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Facilitator - </strong>A licensee practicing<strong> </strong>a form of non-agency; fulfills ministerial acts to assist in the completion of the transaction for the parties who are considered customers.</li></ul></li></ul><ul id="40c8ac6a-aab1-808a-8188-d661ba0aa6ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>In Writing - </strong>All agency relationships should be documented in writing with either a listing agreement or a buyer representation agreement.</li></ul><figure id="40c8ac6a-aab1-808d-b98d-c1860969112e" class="image" data-notion-image="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%207.png" dir="ltr"><a href="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%207.png"><img style="width:432px" src="Chapter%202%20-%20Types%20of%20Agency%20and%20Agents%20in%20Real%20Est/image%207.png"/></a></figure><p id="40c8ac6a-aab1-80c1-aa08-e0909a3a8cd3" class="" dir="auto">
+</p></div></div><p id="40c8ac6a-aab1-80a9-8b3f-ff5f9ceb2096" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Material Facts Related to Public Controls</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-80b4-97a8-d3f592f72bb6" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Material Facts Related to Public Controls</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40f8ac6a-aab1-804f-bfba-cf49f23fcd4f" class="column-list" data-notion-column-list="" dir="auto"><div id="40f8ac6a-aab1-8039-b668-e59e07038d8c" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40f8ac6a-aab1-80d0-b200-cac44fbd8a20" class="" dir="auto"><strong>Public Controls </strong></p><ul id="40f8ac6a-aab1-80ab-98e3-c4ea904375e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> Public controls encompass legal restrictions, ordinances, and governmental regulations imposed by municipal or state authorities that dictate how land and property can be used.</li></ul><ul id="40f8ac6a-aab1-8042-8c01-f36f3d8b3f36" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Categories:</strong> Public controls heavily involve <strong>zoning and planning laws</strong>, <strong>municipal boundaries</strong> (such as school districts, utility districts, and taxation zones), and the availability or scope of <strong>municipal services</strong>.</li></ul><ul id="40f8ac6a-aab1-808c-a057-d7fe3e34dca4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why Public Controls Matter in Real Estate</strong><ul id="40f8ac6a-aab1-8074-bf9a-e2dfb43eca6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyers must understand these legal boundaries and restrictions before purchasing because they directly impact property utility, tax liabilities, schooling options, and future development rights.</li></ul><ul id="40f8ac6a-aab1-80b0-b83f-fb1f1ce63c71" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In upcoming sections, we will break down the specific disclosures required under each of these municipal and zoning categories.</li></ul></li></ul><ul id="40f8ac6a-aab1-8086-94e1-e65f071a907c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Zoning and Planning Purpose</strong><ul id="40f8ac6a-aab1-8046-aafb-f8f3928c6c58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Government ordinances that divide municipalities into distinct zones to regulate and restrict the location, height, bulk, and use of buildings, structures, and land.</li></ul><ul id="40f8ac6a-aab1-8024-b8a8-ed32ce3ea20f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Objective:</strong> To protect specific districts (residential, commercial, industrial, agricultural, recreational, and special purpose) from the harmful encroachment of incompatible uses (e.g., preventing a heavy industrial factory or giant retail center from being built in the middle of a quiet single-family subdivision).</li></ul></li></ul><ul id="40f8ac6a-aab1-806c-a7f2-c589bb28d854" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Alexander Family Scenario: Zoning as a Material Fact</strong><ul id="40f8ac6a-aab1-809a-a773-d84de5216b8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Dilemma:</strong> The Alexanders love a home specifically because of the serene, undeveloped field behind it. However, you (the informed agent) know that the land is <strong>zoned commercial</strong> and slated for strip mall construction next year.</li></ul><ul id="40f8ac6a-aab1-801c-bbb2-ec41e1ef4b7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Material Fact Test:</strong> A material fact is anything that, if known, would likely cause a buyer to change their course of action or decision. Because losing the open field and gaining a commercial strip mall would undoubtedly impact the Alexanders&#x27; purchasing decision, this zoning status and future development plan constitute a <strong>critical material fact</strong>.</li></ul><ul id="40f8ac6a-aab1-805b-b612-d6e73eda3dcb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Duty:</strong> Licensees have an affirmative duty to disclose known zoning and planning facts that affect property enjoyment, value, or usability.</li></ul></li></ul><ul id="40f8ac6a-aab1-80c8-b709-c6c5ade30dac" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pro Tip for Licensees</strong><ul id="40f8ac6a-aab1-80f7-8cea-e43fa82aff67" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Official zoning classifications, maps, and future planning data can be verified and retrieved by inquiring directly with the <strong>city or municipal planning department</strong> (or checking public records).</li></ul></li></ul><ul id="40f8ac6a-aab1-8086-896b-ffc4749843ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Game of Zones Scenario</strong><ul id="40f8ac6a-aab1-806f-9ade-ea1648fe7f66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Dilemma:</strong> Sarah wants to move away from a football stadium to escape noise, but you (the agent) know from widespread public news that the stadium is scheduled to be demolished and rebuilt <em>right next to the new neighborhood</em> she has chosen.</li></ul><ul id="40f8ac6a-aab1-8032-b64a-eb11d676da58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Material Fact &amp; Public Knowledge:</strong> Even though zoning maps currently show the area&#x27;s designation, widely publicized future development plans (like relocating a major stadium) can constitute a material fact or critical factor that would influence the buyer&#x27;s decision.</li></ul><ul id="40f8ac6a-aab1-80fc-8662-c54543fd9c06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Duty:</strong> Agents must share known public developments affecting property enjoyment, help buyers obtain local master plans, and encourage independent research into future municipal changes.</li></ul></li></ul><ul id="40f8ac6a-aab1-803f-8a59-f73a4adfc5a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nonconforming Uses</strong><ul id="40f8ac6a-aab1-809e-91fb-db64d687c066" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A <strong>nonconforming use</strong> occurs when a property use was entirely legal when established, but a subsequent change in zoning ordinances rendered it illegal (often grandfathered in under specific conditions).</li></ul><ul id="40f8ac6a-aab1-80dd-96d6-ea1e0c5e1bbe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disclosure Rule:</strong> Sellers are legally required to disclose nonconforming uses as part of their material fact duties.</li></ul></li></ul><ul id="40f8ac6a-aab1-8085-9c93-f099482600fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Municipal Boundaries &amp; Public Controls</strong><ul id="40f8ac6a-aab1-808e-9481-f14a661f0a82" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Public controls also encompass boundaries governing <strong>taxation districts, school districts, voting/legislative districts, public utilities, and municipal services</strong>.</li></ul><ol type="1" id="40f8ac6a-aab1-80ed-808a-cc2ca5445079" class="numbered-list" start="1" dir="auto"><li><strong> Taxation Districts</strong><ul id="40f8ac6a-aab1-80ce-ad8f-f76842d73dd4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Source Attribution:</strong> Property tax data and special assessments should always be sourced directly from the <strong>county tax assessor&#x27;s office</strong> to protect against liability.</li></ul><ul id="40f8ac6a-aab1-8049-be82-fc137f1334aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Duty:</strong> Sellers are generally not required to disclose general local tax rates, but they <strong>must disclose any outstanding municipal tax assessments or liens/fees</strong> tied to the property.</li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-8053-9695-ec65ee69281e" class="numbered-list" start="2" dir="auto"><li><strong> School Districts</strong><ul id="40f8ac6a-aab1-809e-9997-fdfb26476603" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Duty:</strong> Sellers are typically exempt from disclosing school district details.</li></ul><ul id="40f8ac6a-aab1-8021-9752-c303d1016ccf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tax Statement:</strong> The property tax statement will list the official school district code.</li></ul><ul id="40f8ac6a-aab1-800c-a521-f24d7852882a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Golden Rule on School Opinions:</strong> <strong>Never give personal opinions on school quality.</strong> Because school rankings and &quot;good vs. bad&quot; designations are subjective, agents exposing opinions take on unnecessary professional risk.</li></ul><ul id="40f8ac6a-aab1-8089-a850-f1c6405205bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Standard Agent Response Script:</strong> When asked if a home is in a &quot;good school district,&quot; agents should deflect professionally: <em>&quot;Real estate agents are not qualified to assess schools or school districts. Luckily though, there are plenty of qualified resources out there that do. I would definitely encourage you to reach out to the school district and do some research online!&quot;</em></li></ul></li></ol><ol type="1" id="40f8ac6a-aab1-80f7-944c-c70ffe979300" class="numbered-list" start="3" dir="auto"><li><strong> Voting (Legislative) Districts</strong><ul id="40f8ac6a-aab1-80d6-ae21-df401f42477a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Clients can verify voting and legislative district assignments through official state government websites, keeping in mind that district lines are subject to periodic political redistricting.</li></ul></li></ol></li></ul><ul id="40f8ac6a-aab1-8044-90b0-d1de5c478d22" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Public Utilities Overview</strong><ul id="40f8ac6a-aab1-806f-a4dd-e490dc551f20" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Availability:</strong> Buyers must be fully informed about the availability, source, and reliability of all essential public utilities—including water, wastewater (sewer/septic), electricity, trash removal, and recycling.</li></ul><ul id="40f8ac6a-aab1-8008-b097-caf8c359d007" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Material Fact Status:</strong> The precise source and status of a property&#x27;s utility services constitute a critical material fact that agents must help clients research and verify.</li></ul><ul id="40f8ac6a-aab1-8059-998e-ea86ac3e58a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Water Services: Municipal vs. Private Supplies</strong><ul id="40f8ac6a-aab1-8036-b936-e3fa047a93dc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Municipal Water:</strong> Most urban and suburban homes receive water from a community public water system. Public suppliers must provide customers with an annual <strong>Consumer Confidence Report</strong> (typically delivered with July water bills) disclosing detected contaminants, potential health effects, and the source of the water.</li></ul><ul id="40f8ac6a-aab1-80f5-bd0f-c0aadfd4b6a3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Private / Well Water:</strong> Rural or remote properties often rely on private or community wells.<ul id="40f8ac6a-aab1-80ee-b8e5-f764542965b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Owner Responsibility:</strong> According to the EPA, private well owners bear <strong>sole responsibility</strong> for ensuring their drinking water is safe.</li></ul><ul id="40f8ac6a-aab1-8000-b47c-f295d4994cbb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Testing:</strong> Routine testing for common contaminants is strongly recommended to safeguard health and establish a historical record of water quality for future liability or compensation claims.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-8059-ad5b-d0118b2e5630" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sanitary Waste &amp; Wastewater Systems</strong><ul id="40f8ac6a-aab1-808a-9e2d-c88eba56d1bd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Municipal Sewer Systems:</strong> Wastewater is channeled from household plumbing into public collection systems leading to municipal treatment plants. Public sewers are always preferred where available.</li></ul><ul id="40f8ac6a-aab1-804d-9178-c37a48d239b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>On-Site Wastewater Treatment (Septic Systems):</strong> Used in areas lacking municipal sewer access to store, distribute, and treat domestic wastewater safely without contaminating groundwater or surface water.</li></ul><ul id="40f8ac6a-aab1-8013-a784-dadb01d300cc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Septic System Goals &amp; Regulations:</strong> Governed strictly by the Department of Health. Must be designed by professional engineers or registered architects, with specifications filed at the local health department.</li></ul><ul id="40f8ac6a-aab1-8052-9807-cafde383f2c1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Perc Tests for Vacant Land:</strong> When a buyer purchases a vacant lot intending to build a home with a septic system, they <strong>must conduct a soil and percolation (&quot;perc&quot; test)</strong> to verify that the ground can successfully and safely absorb and filter wastewater.</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-801a-9597-eb5aa3e54759" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Specially Regulated Areas</strong><ul id="40f8ac6a-aab1-8014-b045-e822dad51bde" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Properties located within government-protected zones—such as wetlands, endangered species habitats, or wildlife preserves—carry strict land-use restrictions and require mandatory disclosure.</li></ul><ul id="40f8ac6a-aab1-8035-82e6-defe96c35e4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Wetland Reality:</strong> Wetlands do not always look like traditional swamps or bogs; they can appear completely dry, making visual identification deceptive.</li></ul><ul id="40f8ac6a-aab1-80e2-9b77-e278507ca98e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensee Best Practice:</strong> Real estate agents operating in markets with protected zones should educate themselves on local boundaries and direct clients to environmental specialists when regulatory questions arise.</li></ul></li></ul><ul id="40f8ac6a-aab1-80a9-8917-d1f026696f6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Hazardous and Uninsurable Areas</strong><ul id="40f8ac6a-aab1-80e3-b72d-d926850ed15c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Locations prone to severe natural disasters (such as flood zones or wildfire-prone regions) or unique environmental threats.</li></ul><ul id="40f8ac6a-aab1-8016-bf46-c82a17e9b5ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Uninsurability as a Material Fact:</strong> Some hazards are so severe that properties become <strong>ninsurable</strong> or prohibitively expensive to cover. Because hazard insurance is mandatory for nearly all mortgaged properties, an area&#x27;s uninsurable status is a critical material fact that buyers must know before committing.</li></ul></li></ul><ul id="40f8ac6a-aab1-80cc-a53a-e0c2a61110bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Airspace and Military Facilities</strong><ul id="40f8ac6a-aab1-80c5-adc8-c2fd22d8738d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sellers are legally required to disclose if a property is located in the vicinity of:<ul id="40f8ac6a-aab1-809c-98e5-ede3edec3537" class="bulleted-list" dir="auto"><li style="list-style-type:square">Public, private, or military airports</li></ul><ul id="40f8ac6a-aab1-80c9-a7f0-ce5f6525385d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Ancillary military facilities, low-level training routes, or restricted airspace</li></ul></li></ul><ul id="40f8ac6a-aab1-803c-8b6b-e053b32db611" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reason for Disclosure:</strong> While proximity to these facilities is not inherently a physical hazard, the chronic noise pollution and flight activity can drastically impact a buyer&#x27;s enjoyment of the property.</li></ul></li></ul><ul id="40f8ac6a-aab1-80c7-bf00-ffc215032d09" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Flood Zones &amp; FEMA Guidance</strong><ul id="40f8ac6a-aab1-80cc-9e53-ed7692c1e53e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FEMA Flood Maps:</strong> If a prospective buyer inquires whether a property sits within a flood zone, agents should direct them to check up-to-date flood maps available online through <strong>FEMA</strong>.</li></ul><ul id="40f8ac6a-aab1-802b-8fc8-f0e7e40be0e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Flood Insurance Realities:</strong> Suggest that buyers in flood zones look into flood insurance and the National Flood Insurance Program (NFIP). While the ultimate decision rests with the buyer, mortgage lenders will almost universally <strong>require</strong> it as a loan condition.</li></ul></li></ul><ul id="40f8ac6a-aab1-80e7-9905-ec487de7da24" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosures That Are NOT Required (Stigmatized Properties)</strong><ul id="40f8ac6a-aab1-80cd-9375-e21ddb2ed0cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Stigmatized properties are homes that suffer from suppressed market value due to psychological or emotional factors entirely unrelated to the physical condition, safety, or structural features of the property.</li></ul><ul id="40f8ac6a-aab1-8027-93b4-cec41936220c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Examples:</strong> Locations where a tragic event occurred, such as a natural death, murder, suicide, or rumored paranormal activity/hauntings.</li></ul><ul id="40f8ac6a-aab1-8059-b0f5-eae99dcd3072" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Stigmatized Property Law:</strong> Under Tennessee law, license holders <strong>are not obligated to disclose the psychological stigma</strong> of a property, as long as it has no material bearing on the physical condition of the property.</li></ul><ul id="40f8ac6a-aab1-801e-ada7-e03638603598" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Physical Exception:</strong> If a death or injury was caused directly by a physical defect or serious safety hazard on the property (e.g., carbon monoxide poisoning from a faulty furnace), that physical defect <em>is</em> a material fact and must be disclosed.</li></ul></li></ul><ul id="40f8ac6a-aab1-8087-8e83-fc067a66dd68" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Golden Rule on Stigmatized Properties: Never Lie</strong><ul id="40f8ac6a-aab1-8051-b163-c35aa3c295ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Duty to Voluntarily Disclose vs. Absolute Duty to Tell the Truth:</strong> While agents have no legal duty to volunteer information about a property&#x27;s stigma unprompted, they <strong>are strictly prohibited from lying or misrepresenting facts</strong>.</li></ul><ul id="40f8ac6a-aab1-80cf-80b0-c089772a89e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Handling Direct Inquiries:</strong> If a buyer specifically asks whether a stigmatized event occurred, the licensee has two choices: <strong>answer truthfully or decline to answer</strong> (never deceive, fabricate, or make intentional misrepresentations).</li></ul></li></ul><ul id="40f8ac6a-aab1-80ec-92c6-cda5e765da3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Information That CANNOT Be Disclosed (Non-Material &amp; Protected Classes)</strong><ul id="40f8ac6a-aab1-80a1-b9c9-d65e5d0da86e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HIV/AIDS &amp; Infectious Diseases:</strong><ul id="40f8ac6a-aab1-805a-94b3-c809850ee529" class="bulleted-list" dir="auto"><li style="list-style-type:square">Real estate licensees are <strong>strictly prohibited</strong> from disclosing whether a previous occupant suffered from any infectious disease, including HIV/AIDS.</li></ul><ul id="40f8ac6a-aab1-8094-828e-dd7103d92904" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under the Americans with Disabilities Act (ADA) and the Federal Fair Housing Act, persons with disabilities (including HIV/AIDS) are protected. The law explicitly deems this non-material because it has no bearing on the physical condition or safety of the property.</li></ul></li></ul><ul id="40f8ac6a-aab1-80cc-86e8-e34ce89fcc54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protected Classes Under Federal Fair Housing Act:</strong><ul id="40f8ac6a-aab1-8086-8294-d2777c42e97c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agents are legally barred from disclosing personal information regarding a previous occupant&#x27;s protected class status: <strong>race, color, religion, sex, national origin, familial status, or disability</strong>.</li></ul><ul id="40f8ac6a-aab1-8001-a484-fad555332289" class="bulleted-list" dir="auto"><li style="list-style-type:square">Prohibited disclosure examples include answering questions about previous occupants&#x27; religion, race/nationality, sex, family status (children), or specific disabilities.</li></ul><ul id="40f8ac6a-aab1-8095-bcea-e31774e91f25" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Standard Agent Response Script for Protected Inquiries:</strong> When faced with forbidden questions from buyers, agents should respond professionally: <em>&quot;Legally, I am not allowed to answer that question.&quot;</em> (Clients almost always understand when framed around clear legal obligations).</li></ul></li></ul></li></ul><ul id="40f8ac6a-aab1-80f0-9632-c5fb0045f9f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Megan&#x27;s Law &amp; Sex Offender Registries</strong><ul id="40f8ac6a-aab1-8088-8f5d-f3a806b92043" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Mandate:</strong> Megan’s Law (enacted federally in 1994) allows states to make registered sex offender information accessible to the public.</li></ul><ul id="40f8ac6a-aab1-80d1-bd22-d6fb1842677f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensee Liability:</strong> Real estate licensees are <strong>not legally required to investigate, track, or voluntarily disclose</strong> the presence of registered sex offenders near a property, and agents bear no legal liability for failing to do so.</li></ul><ul id="40f8ac6a-aab1-8018-ade1-dfe87cfbf2a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Handling Client Inquiries:</strong> If a buyer specifically asks whether sex offenders live nearby, agents should step outside the transaction scope and <strong>direct the client to local law enforcement</strong> or official state registry databases to perform their own research.</li></ul></li></ul><p id="40f8ac6a-aab1-803b-98ff-e33321d1efc9" class="" dir="auto">
+</p></div><div id="40f8ac6a-aab1-80ff-bda6-d727b8c67610" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40f8ac6a-aab1-8056-a110-c80a706adac0" class="" dir="auto"><strong>Key Term</strong></p><ul id="40f8ac6a-aab1-8000-958c-c644cef41b76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>stigmatized property </strong>- property with suppressed market value unrelated to its physical condition or features; frequently as result of death of an occupant, murder, suicide, or suspected paranormal activity</li></ul><p id="40f8ac6a-aab1-804b-a39d-c72d189f4f61" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40f8ac6a-aab1-80af-9c6b-fd7c9cfa6737" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Public Controls</strong><ul id="40f8ac6a-aab1-80a5-9d21-f65421d0f8b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Public controls generally refer to restrictions or other controls imposed by law. Some examples include:<ul id="40f8ac6a-aab1-80b1-b3f7-f263754c8a37" class="bulleted-list" dir="auto"><li style="list-style-type:square">Zoning and planning</li></ul><ul id="40f8ac6a-aab1-8060-8065-d9a15fccbb8d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Municipal boundaries of school, utility, and taxation districts</li></ul><ul id="40f8ac6a-aab1-8007-a9a6-d89e107fefb2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Municipal services</li></ul></li></ul><ul id="40f8ac6a-aab1-80f7-944b-dbeb6c5c2135" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Make sure details (including potential changes) related to the above are disclosed.</li></ul></li></ul><ul id="40f8ac6a-aab1-80ca-b4ab-f5b2ea7ef395" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Location Issues</strong><ul id="40f8ac6a-aab1-8076-a7ff-d1e3ea76c9e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A property’s location within a specially regulated area requires disclosure. These areas can include government-protected wetlands or endangered species or wildlife habitats.</li></ul><ul id="40f8ac6a-aab1-80f6-a2ec-d09ea906961a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An area can be deemed hazardous (and even uninsurable) if it&#x27;s prone to natural disasters or other threats to safety and property.</li></ul><ul id="40f8ac6a-aab1-80b9-a932-d67e1e4bf421" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lastly, buyers have a right to know if a home is in close proximity to an airport, landfill, or any other facility that could interfere with their enjoyment of the property.</li></ul></li></ul><ul id="40f8ac6a-aab1-80df-8b1f-e3b4dbe34684" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Stigmatized Properties</strong><ul id="40f8ac6a-aab1-80e1-b36b-e458c95fbc18" class="bulleted-list" dir="auto"><li style="list-style-type:circle">License holders are not obligated to disclose the psychological stigma of a property so long as it has no material effect on the condition of the property. The death of an occupant is only considered a material fact if the condition of the property <em>caused</em> the death.</li></ul></li></ul><ul id="40f8ac6a-aab1-8056-9549-fda64586ef08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Megan&#x27;s Law</strong><ul id="40f8ac6a-aab1-8022-8cd0-d402eb2552c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Authorities must make information available to the public regarding registered sex offenders.</li></ul><ul id="40f8ac6a-aab1-80a8-8924-cb198222def3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">As a licensee, you are NOT required by law to disclose or investigate the presence of sex offenders. You will <strong>not be held liable</strong> for failing to disclose info on the Sex Offenders Registry.</li></ul><p id="40f8ac6a-aab1-8046-8664-c4b6c75c1e3c" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

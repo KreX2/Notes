@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Key Clauses in Listing Agreements and Buyer Representation Agreements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-801d-99d3-dddc9a91144d" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Key Clauses in Listing Agreements and Buyer Representation Agreements</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40e8ac6a-aab1-8008-abbc-cb44d470883d" class="column-list" data-notion-column-list="" dir="auto"><div id="40e8ac6a-aab1-80b0-9380-f19207db2dbd" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40e8ac6a-aab1-801a-bde5-c816c16242ef" class="" dir="auto"><strong>Listing Agreements: An Introduction </strong></p><ul id="40e8ac6a-aab1-8080-9a70-e7ba877e52bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Re-confirming the Basics:</strong> A listing agreement is a bilateral employment contract between a property seller and a broker, where the broker is hired to find a ready, willing, and able buyer.</li></ul><ul id="40e8ac6a-aab1-8088-b20e-c261ef7673b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No State-Promulgated Forms:</strong> The State of Tennessee does not provide official standard listing forms. Instead, brokers typically rely on professional forms provided by <strong>Tennessee REALTORS®</strong> or drafted by legal counsel.</li></ul><ul id="40e8ac6a-aab1-8050-b33d-d8374afd4725" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Legal Requirements:</strong> To be valid, every listing agreement must be in writing, bilateral, signed by both parties, and free of material mistakes.</li></ul><ul id="40e8ac6a-aab1-80f0-9429-dfd685672041" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Form Variations:</strong> Tennessee requires distinct forms depending on whether the relationship is structured as <strong>traditional seller agency</strong> (binding the entire brokerage under the principal broker) or <strong>designated agency</strong> (isolating the relationship to a specific affiliate broker).</li></ul><ul id="40e8ac6a-aab1-8046-8ad1-d15f2b314c48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Anatomy of a Listing Agreement </strong><ul id="40e8ac6a-aab1-8089-b06a-ee7c5fdfaeb8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Content Elements:</strong> While Tennessee does not use a state-promulgated standard form, standard listing agreements universally contain:<ul id="40e8ac6a-aab1-8054-ac55-f171d2c20e19" class="bulleted-list" dir="auto"><li style="list-style-type:square">Names of the broker and seller(s)</li></ul><ul id="40e8ac6a-aab1-801c-9132-d47153ac6dfc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property address or legal description</li></ul><ul id="40e8ac6a-aab1-80ee-b92f-dba76cac2e54" class="bulleted-list" dir="auto"><li style="list-style-type:square">Listing price</li></ul><ul id="40e8ac6a-aab1-805b-8f52-c397d7fc29e6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definite expiration date</strong> of the agreement</li></ul><ul id="40e8ac6a-aab1-800f-b125-f5d83f5653a6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Compensation terms</li></ul><ul id="40e8ac6a-aab1-8042-8770-e62d7395d2ab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Scope of agent authority</li></ul><ul id="40e8ac6a-aab1-80c5-9b44-dd5cc24b84a6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Signatures of all parties</li></ul></li></ul><ul id="40e8ac6a-aab1-806c-a32b-de259479c7ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Validity Prerequisites:</strong> Must contain all standard elements of a valid employment contract, and the broker must hold a valid, active real estate license.</li></ul></li></ul><ul id="40e8ac6a-aab1-803b-a1c5-ff72df68a440" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What Is NOT Allowed: Automatic Renewals</strong><ul id="40e8ac6a-aab1-80d2-8ee0-c938bb449f98" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Listing agreements <strong>must never include an automatic renewal clause</strong> (e.g., stating that the contract auto-renews for another 30 or 60 days upon expiration). Automatic renewals are illegal in many jurisdictions and violate licensing standards.</li></ul><ul id="40e8ac6a-aab1-8009-a4a9-cd0a7ed2784c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once a listing expires without extension, the seller is entirely free to list with a different agent without committing any breach of contract.</li></ul></li></ul><ul id="40e8ac6a-aab1-805c-a3e8-e590eea1f7e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Gathering Property Information Upfront</strong><ul id="40e8ac6a-aab1-8040-985f-d4f0f49b3482" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agents must collect comprehensive property details before completing the listing agreement.</li></ul><ul id="40e8ac6a-aab1-8077-ac86-e1e0e3008f3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why It Matters:</strong> Enables accurate marketing on the MLS and direct communication with prospective buyers, reduces the need to constantly bother the seller for basic facts, and builds vital trust and confidence with both clients and customers.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f4-8a8e-c35b059c6ca1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Agreement Sample</strong><figure id="40e8ac6a-aab1-8018-8357-e58c60185a31" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image.png"><img style="width:336px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image.png"/></a></figure></li></ul><ul id="40e8ac6a-aab1-80e9-bd2e-d96466d5fc24" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parties and Property: Opening Sections of a Listing Agreement</strong><ul id="40e8ac6a-aab1-802e-9750-ef3aa5a36052" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Parties:</strong> Explicitly names the contracting parties: the property owner (seller), the representing brokerage, and the specific agent working with the client.</li></ul><ul id="40e8ac6a-aab1-80a4-9504-dcbecbc6c682" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Property Identification:</strong><ul id="40e8ac6a-aab1-80a2-8dec-d864dcdc50a8" class="bulleted-list" dir="auto"><li style="list-style-type:square">While a street address is helpful for everyday use, formal listing agreements require a precise <strong>legal description</strong> (or accurate distinct description).</li></ul><ul id="40e8ac6a-aab1-8006-98ac-fd46966ca06f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Why It Matters:</strong> Ensures everyone is marketing the correct property and prepares the groundwork for a valid deed conveyance at closing.</li></ul></li></ul><ul id="40e8ac6a-aab1-802b-87e8-e393c5e3faa7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fixtures vs. Personal Property:</strong> The agreement must explicitly outline which attached fixtures and movable personal property items (e.g., appliances, lighting, window treatments) are included in the sale to prevent disputes later.</li></ul></li></ul><ul id="40e8ac6a-aab1-8061-a535-e5e09a66b04c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Price and Terms </strong><ul id="40e8ac6a-aab1-80d4-be06-c1bcd9427857" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive Grant:</strong> The seller grants the listing agent the exclusive right and privilege to show and market the property. (Reminder: A seller must never sign exclusive agreements with multiple brokers simultaneously, or they risk liability for multiple full commissions).</li></ul><ul id="40e8ac6a-aab1-80a6-81a8-cfd6226606a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Listing Price Mechanics:</strong><ul id="40e8ac6a-aab1-80ff-9bde-c8e8206f9366" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Set by the Seller:</strong> While agents provide professional pricing advice (backed by a CMA), the <strong>seller</strong> ultimately decides and sets the final listing price.</li></ul><ul id="40e8ac6a-aab1-80e8-8a29-e8a1e003b7a7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Initial Asking Price Only:</strong> The listing price is simply the starting asking price on the MLS and does not guarantee that the property will sell for that exact amount or higher.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f1-96d7-f8ec59d7eef3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Term:</strong> Establishes the exact duration of the employment relationship by defining both the <strong>effective date</strong> (start) and the <strong>listing expiration date</strong> (end).</li></ul></li></ul><ul id="40e8ac6a-aab1-8055-83aa-ca20c11dfbc9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Carry-Over Clause </strong><ul id="40e8ac6a-aab1-806b-bf8c-e9194daa2916" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A carry-over clause (also known as a protection period clause) outlines a specific, limited time frame <strong>after</strong> a real estate employment agreement officially expires during which the agent can still claim a commission under certain conditions.</li></ul><ul id="40e8ac6a-aab1-801f-bc1d-ecb04811c324" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose:</strong> Designed to prevent bad-faith clients from waiting out the clock on a listing or buyer-representation agreement, cutting the agent out of the deal at the last second to save on commission after benefiting from their marketing or house-hunting efforts.</li></ul><ul id="40e8ac6a-aab1-80db-bf95-e975259e7327" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How the Protection Period Works</strong><ul id="40e8ac6a-aab1-8027-b132-f25e8333457c" class="bulleted-list" dir="auto"><li style="list-style-type:square">An agent remains protected and eligible for compensation if a transaction occurs with a buyer who was directly introduced to the property or shown homes <em>during</em> the active term of the agreement (e.g., someone who attended an open house or was toured through the property by that agent).</li></ul><ul id="40e8ac6a-aab1-80b6-a968-de1198158c9a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example Scenario: 7565 Palace Drive</strong></li></ul><ul id="40e8ac6a-aab1-8068-a711-fb57a63155e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Setup:</strong> You have a 3-month listing. In the final week, you tour Buyer Bob through the home, where he shows high interest, but the listing expires shortly after without an offer.</li></ul><ul id="40e8ac6a-aab1-80d5-a4ed-d80b4248bae9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Twist:</strong> Two weeks post-expiration, you discover the home sold directly to Buyer Bob with no agents involved—indicating the seller and buyer colluded to bypass you and save on fees.</li></ul><ul id="40e8ac6a-aab1-8068-9c6d-c48a8767936c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Remedy:</strong> If your listing agreement included a valid carry-over clause, you retain legal recourse to claim your commission during that post-expiration protection window.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8043-be34-c3bac677eb89" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>More on Carry-Over Clauses</strong><ul id="40e8ac6a-aab1-8077-8ee9-cce4c65e4596" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In the carry-over clause, the listing agent and seller agree to the<strong> specified number of days</strong> that the protection period will last after the listing agreement period.<figure id="40e8ac6a-aab1-803c-aeef-f0833a60ccd9" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%201.png"><img style="width:480px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%201.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-80c3-ae9c-f0215ccfb8af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Defining &quot;Protected Buyers&quot; in a Carry-Over Clause</strong><ul id="40e8ac6a-aab1-80b0-9855-c433b5adfee9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who is Covered:</strong> Protected buyers are specific individuals to whom the broker showed properties, negotiated with, or submitted inquiries during the active term of the agreement who subsequently complete a sale, rental, exchange, or option after the listing expires.</li></ul><ul id="40e8ac6a-aab1-8091-a106-f0d723ea9155" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Burden of Proof:</strong> Having concrete <strong>written proof</strong> makes it significantly easier to enforce a carry-over claim in court.</li></ul><ul id="40e8ac6a-aab1-80db-9e81-fe74cca06c5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent Pro Tip:</strong> Always use open house attendance sheets to capture the contact information of every attendee. This creates an unshakeable record for carry-over enforcement <em>and</em> gives you an instant follow-up list to chase down a sale.</li></ul><ul id="40e8ac6a-aab1-804a-a5cd-d188db8cd3d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stopping Clever Workarounds (&quot;No Tricks&quot;)</strong><ul id="40e8ac6a-aab1-80a8-a1b4-e0fa47f2f11b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Carry-over clauses are intentionally drafted to block bad-faith evasions—such as a buyer using a family member, close friend, or business associate to purchase the property in their place just to bypass the agent&#x27;s protection window.</li></ul><ul id="40e8ac6a-aab1-80f3-b29d-cd938380395e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Subsequent Broker Protection:</strong> Once a listing agreement ends, the seller is entirely free to list with a new broker. However, the new broker will only owe a commission to the <em>previous</em> broker if the transaction falls squarely into an active carry-over protection period scenario.</li></ul></li></ul><ul id="40e8ac6a-aab1-805a-baef-fcfa1bd2471e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Triggering Mutual Termination</strong><ul id="40e8ac6a-aab1-8061-b43d-f377fe18adda" class="bulleted-list" dir="auto"><li style="list-style-type:square">Protection periods apply whether the employment agreement naturally lapses via its <strong>expiration date</strong> or is cut short through <strong>early mutual termination</strong>.</li></ul><ul id="40e8ac6a-aab1-80ae-8d7a-c765b97e7a24" class="bulleted-list" dir="auto"><li style="list-style-type:square">In both scenarios, the clock on the protection period starts ticking the exact moment the agency relationship officially terminates.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80e3-9e5b-dc60ad1b60ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Responsibilities and Rights: MLS and Cooperating Brokers</strong><ul id="40e8ac6a-aab1-802e-96de-fbccdb650245" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>MLS Authorization:</strong> The seller formally agrees to permit the listing broker to publish and syndicate the property details onto the <strong>Multiple Listing Service (MLS)</strong>.</li></ul><ul id="40e8ac6a-aab1-80cd-a3e0-e2a682214685" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cooperating Broker Compensation:</strong> Outlines how the listing broker shares a portion of their total commission with a cooperating buyer&#x27;s broker. Crucially, the seller pays the listing broker, who in turn pays the cooperating broker—the seller does not have a direct financial contract with the buyer&#x27;s broker.</li></ul><ul id="40e8ac6a-aab1-800a-a71c-d58d64e21251" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Shortfall Responsibility:</strong> If the listing broker offers a cooperating commission that is lower than what the buyer agreed to pay their own agent in their buyer representation agreement, the <strong>buyer</strong> is personally responsible for covering the remaining balance out of pocket.</li></ul><ul id="40e8ac6a-aab1-80d6-b85e-e0fa88c3a93d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Required Permissions and Marketing Authorizations</strong><ul id="40e8ac6a-aab1-80ae-988a-de0024dbb23f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Listing agreements require the seller to explicitly grant permission for specific marketing and operational activities, including:<ul id="40e8ac6a-aab1-8045-b39c-ccdd9d0b5111" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Placing physical <strong>&quot;For Sale&quot; or &quot;For Rent&quot; signs</strong> on the property.</li></ul><ul id="40e8ac6a-aab1-80c8-ac36-c3b9b5ff2550" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Publishing interior/exterior <strong>photos and videos</strong> across online platforms, social media, and digital advertising networks.</li></ul><ul id="40e8ac6a-aab1-8010-8eea-c173b9b4d5fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Installing and utilizing a <strong>lockbox</strong> for easy agent access.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-801b-a27b-fa30a6bceb0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Access and Lockbox Safety</strong><ul id="40e8ac6a-aab1-80fb-b7c4-d1c1d493ec0c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Access Needs:</strong> The listing agent requires authorized entry to show the property when the owner is absent and to coordinate access for third-party professionals (home inspectors, appraisers, contractors).</li></ul><ul id="40e8ac6a-aab1-80db-ac83-c3e5d8c34c1b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lockbox Consent &amp; Precaution:</strong> While sellers consent to lockbox usage, agents should always advise them to <strong>remove or secure high-value items, cash, and heirlooms</strong>.</li></ul><ul id="40e8ac6a-aab1-808c-a140-c0ea37ff4ac6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agent Pro Tip:</strong> <strong>Never</strong> enter a seller&#x27;s property without explicit written consent. Doing so creates severe legal liability if damages occur during an unapproved showing or visit.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80c1-8c87-ed1161552bbb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Representation &amp; Conduct</strong><ul id="40e8ac6a-aab1-80e0-a764-db4d1155ddd7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Representation Scope:</strong> Formally establishes that the broker represents the seller, and clarifies that the broker fulfills these duties through their affiliated licensees (affiliate brokers).</li></ul><ul id="40e8ac6a-aab1-8052-a3d7-ec12e1c8ea48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fiduciary Conduct:</strong> Reinforces the fundamental duties owed to the principal client under the framework of agency law.</li></ul><ul id="40e8ac6a-aab1-8029-bb81-fea73d4f6239" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Limited Representation (Dual Agency)</strong><ul id="40e8ac6a-aab1-80ec-95c5-c5da74d5c10e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Conflict of Interests:</strong> Acknowledges that buyers and sellers have inherently competing financial goals (sellers want the highest net price; buyers want the lowest purchase price).</li></ul><ul id="40e8ac6a-aab1-8040-a8b9-c60c3e71656b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disclosure rules: </strong>Just like for all other real estate transactions, a listing broker acting in dual agency will need to comply with dual disclosure rules.</li></ul><ul id="40e8ac6a-aab1-801f-a4bb-c7957c1e3a87" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Informed Consent Required:</strong> Dual agency can <em>only</em> occur with the explicit, prior knowledge and <strong>informed, written consent of both parties</strong>. Either party retains the absolute right to refuse consent.</li></ul><ul id="40e8ac6a-aab1-807f-a998-e7180fed8549" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Confidentiality under Dual Agency:</strong> Even in dual representation, the agent must protect the seller&#x27;s confidential secrets. Unless an item constitutes a required material fact, the agent cannot disclose information that would harm the seller&#x27;s negotiating position.</li></ul></li></ul><ul id="40e8ac6a-aab1-8097-8509-f1826ff09c4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Disclosures</strong><ul id="40e8ac6a-aab1-8023-928d-fec1eecebc0a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Listing agents are legally and ethically obligated to keep their seller clients fully informed by disclosing:<ul id="40e8ac6a-aab1-8027-bd4a-ff07f188c44c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>All offers</strong> received on the property.</li></ul><ul id="40e8ac6a-aab1-80eb-a16d-f7db19db2147" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Any knowledge regarding a <strong>buyer&#x27;s willingness to pay more</strong> or terms beyond their initial offer.</li></ul><ul id="40e8ac6a-aab1-8063-b20b-e96262afd2fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Any <strong>conflicts of interest</strong> (such as representing a competing buyer in a dual agency setup).</li></ul><ul id="40e8ac6a-aab1-80a0-9287-dceaacd15e12" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Continuous real-time updates regarding all offers and counteroffers.</li></ul></li></ul><ul id="40e8ac6a-aab1-800e-8a1b-d7d371838b73" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Material Facts:</strong> Agents must always disclose all known material facts affecting the property or transaction to both buyers and sellers, while strictly observing the limitations on what can or cannot be shared under limited representation.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-802f-905f-c0b0ba67b85e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Owner Obligations &amp; Responsibilities</strong><ul id="40e8ac6a-aab1-8057-b0fd-c3d6f2f16c09" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Title &amp; Exclusivity:</strong> The owner guarantees they are legally able to convey a marketable title, are not currently represented by another broker, and will not list or lease the property elsewhere during the contract term.</li></ul><ul id="40e8ac6a-aab1-807f-9669-e962ae143173" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cooperation &amp; Access:</strong> Must refer all direct inquiries/prospects to the listing agent, provide property access for showings, and thoroughly review their MLS listing for accuracy.</li></ul><ul id="40e8ac6a-aab1-8081-90e9-c060bc0513c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Material Facts &amp; Statutory Disclosures:</strong> The seller is legally bound to disclose all known material facts about the property and complete mandatory state/federal disclosure forms—specifically including the <strong>property condition disclosure</strong> and <strong>lead-based paint disclosure</strong> (for homes built prior to 1978).</li></ul><ul id="40e8ac6a-aab1-80b2-aa76-ce5e0a94cbaf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reviewing Contracts:</strong> The owner also has a duty to review a sample sales contract ahead of time so they understand the purchase terms they will eventually encounter.</li></ul><ul id="40e8ac6a-aab1-8044-92b5-dfb0e1a09402" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Legal and Operational Clauses</strong><ul id="40e8ac6a-aab1-80fc-88fb-e204bef008e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Third-Party Recommendations &amp; Referrals:</strong> Acknowledges that while agents may refer third-party service providers (e.g., inspectors, contractors), the seller is responsible for doing their own due diligence. It also transparently discloses if the agent receives any referral fees or compensation from those third parties.</li></ul><ul id="40e8ac6a-aab1-8024-9076-e93e429f1dd0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Indemnification:</strong> Protects the broker by stating the agent is not financially or legally responsible for damages arising from false, misleading, or inaccurate information provided by the owner.</li></ul><ul id="40e8ac6a-aab1-800e-b9f9-ff341ff9bf5a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Flood Hazard Insurance:</strong> Requires the seller to formally declare whether they currently hold or are legally required to carry flood insurance for the property.</li></ul><ul id="40e8ac6a-aab1-8021-b864-e7b395631378" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Escrow Authorization:</strong> Grants the broker the formal authorization to hold earnest money deposits from buyers in a designated escrow or trust account until the transaction closes.</li></ul><ul id="40e8ac6a-aab1-80e3-9e8f-eaedc8d71c9f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>IRS &amp; Tax Requirements:</strong> Binds the seller to comply with federal tax regulations (such as FIRPTA declarations if applicable) by providing accurate tax and identification information.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80db-b40e-d2d156e24199" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Miscellaneous Clauses </strong><ul id="40e8ac6a-aab1-8073-997e-dae842e46f76" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remedies &amp; Dispute Resolution:</strong> Outlines the legal pathways for handling conflicts before escalating to litigation.<ul id="40e8ac6a-aab1-8030-b234-d45589e24a4b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mediation:</strong> Requires the seller to attempt mediation to settle disputes prior to filing a lawsuit against the broker.</li></ul><ul id="40e8ac6a-aab1-80b8-b030-f6f7fd6c63e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Attorney Fees Clause:</strong> Dictates that the losing party in a legal dispute is responsible for paying all associated costs, including court expenses and attorney fees.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f0-a073-cd9905c3b209" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Additional Terms &amp; Standard Legal Protections:</strong> Captures residual housekeeping and protective clauses essential for contract validity:<ul id="40e8ac6a-aab1-8019-8231-dfd1add03b31" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Acknowledgment:</strong> Confirms the owner has read and fully understands the contract.</li></ul><ul id="40e8ac6a-aab1-8037-98cf-f9ff742e719e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Entire Agreement / Integration Clause:</strong> Proves that the written contract contains all agreements between the parties and cannot be modified verbally—any changes require written consent from everyone involved.</li></ul><ul id="40e8ac6a-aab1-8048-bc0c-e37da124b9de" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Binding Effect:</strong> Binds the parties and their legal successors to the obligations of the agreement.</li></ul><ul id="40e8ac6a-aab1-80b7-8736-c2d4120f7c7b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fee Negotiability Disclaimer:</strong> Re-emphasizes that broker fees are entirely negotiable and arrived at through direct negotiation, protecting against price-fixing assumptions.</li></ul><ul id="40e8ac6a-aab1-80cd-9398-d47e9d36ead2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Advice Disclaimer:</strong> Directs the seller to seek professional legal counsel from an attorney rather than relying on the real estate agent for legal advice.</li></ul><ul id="40e8ac6a-aab1-806f-890e-e4e8c3a88c4c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Saving Clause (Severability):</strong> Ensures that if one specific clause or section of the contract is ruled legally invalid, that part can be severed/removed while the remaining clauses stay fully valid and enforceable.</li></ul></li></ul><ul id="40e8ac6a-aab1-8036-8660-ffe2cd16cf03" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Governing Law:</strong> Explicitly binds the agreement and transaction to the laws of the state (such as Tennessee statutory law), reminding all parties that private contracts cannot supersede state or federal laws, including mandatory fair housing regulations.</li></ul><ul id="40e8ac6a-aab1-804f-9ee1-dc770886ad05" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signatures</strong><figure id="40e8ac6a-aab1-803b-a0fe-f4671c252541" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%202.png"><img style="width:384px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%202.png"/></a></figure></li></ul></li></ul><ul id="40e8ac6a-aab1-8012-8638-f8b662ad471a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agreement to Show Property</strong><ul id="40e8ac6a-aab1-803f-b876-cdfee723f79f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Agreement to Show Property</strong></em> is a form used when the property is FSBO — <strong>For Sale By Owner</strong>. With this form, an unrepresented seller doesn&#x27;t have a listing agent and is therefore selling the home all by themselves.<figure id="40e8ac6a-aab1-8028-9553-de13d2de2760" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%203.png"><img style="width:480px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%203.png"/></a></figure></li></ul><ul id="40e8ac6a-aab1-8023-8b7f-c1082e5331b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Distinction: Listing Agreement vs. Agreement to Show Property</strong><ul id="40e8ac6a-aab1-8023-b8b6-cca075fa2ab7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Listing Agreement:</strong> A full employment contract between a seller and a broker where the agent is officially hired to represent the seller, market the property, and secure a buyer.</li></ul><ul id="40e8ac6a-aab1-8053-9552-d961e4fa000f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agreement to Show Property (Unrepresented Compensation Agreement):</strong> Used when a property owner is unrepresented (for-sale-by-owner / FSBO). Crucially, <strong>this agreement does NOT create an agency relationship or representation</strong>; its sole purpose is to establish how a prospective buyer&#x27;s broker will be compensated by the unrepresented seller if their client buys the property, while explicitly clarifying that the seller has no agent.</li></ul></li></ul><ul id="40e8ac6a-aab1-80c0-a29b-e3328ce93cf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Introducing Buyer Agency &amp; Representation</strong><ul id="40e8ac6a-aab1-807f-88b0-e6a18e98d4d5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Shift:</strong> Moving from listing agreements (seller side) to <strong>buyer representation agreements</strong> (buyer side).</li></ul><ul id="40e8ac6a-aab1-801a-9a83-e682a873e075" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Client vs. Customer Status:</strong> Buyers want professional guidance, advocacy, and loyalty through every phase—house hunting, offer negotiation, and closing—elevating their status from a mere &quot;customer&quot; to a fully represented <strong>client</strong>.</li></ul><ul id="40e8ac6a-aab1-80f9-8679-c680d65fa7f1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Golden Rule: Compensation $\neq$ Representation:</strong> Just because someone pays a fee does not dictate who they represent. A buyer&#x27;s agent can be compensated by the seller, the buyer, or through dual sources (with full disclosure and informed consent) while maintaining <strong>100% undivided loyalty to the buyer</strong>.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-804a-8f71-f47e6017872a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Representation Agreements Overview</strong><ul id="40e8ac6a-aab1-8007-95c3-f7f60f67b9bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A bilateral employment contract between a buyer (or tenant) and a broker, creating an official agency relationship and establishing full fiduciary duties (loyalty, obedience, disclosure, confidentiality, accounting, and reasonable skill/care) toward the buyer.</li></ul><ul id="40e8ac6a-aab1-805f-8833-e0f2eaebfd33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Parallel to Listing Agreements:</strong> Like listing agreements, buyer rep agreements <strong>must be in writing and bilateral</strong>, contain defined terms and party names, and incorporate non-discrimination clauses and signatures.</li></ul><ul id="40e8ac6a-aab1-804a-8b56-e58b79616322" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Promulgated Forms in Tennessee:</strong> The State does not provide standard forms; brokers rely on standardized templates provided by <strong>Tennessee REALTORS®</strong>.</li></ul><ul id="40e8ac6a-aab1-80ac-9330-cb22c601ac33" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Description:</strong> Unlike a listing agreement (which uses a specific legal description), a buyer rep agreement features a <strong>general description</strong> of the target property parameters (e.g., property type, size, preferred location, price range).</li></ul><ul id="40e8ac6a-aab1-80df-8ec1-c3566353077f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Obligations Under the Agreement</strong><ul id="40e8ac6a-aab1-80aa-8e8b-c4d399e73312" class="bulleted-list" dir="auto"><li style="list-style-type:square">Showing properties matching the buyer&#x27;s criteria.</li></ul><ul id="40e8ac6a-aab1-804e-bd0c-e1356d55bf63" class="bulleted-list" dir="auto"><li style="list-style-type:square">Advising the buyer on conducting rigorous due diligence and obtaining professional home inspections.</li></ul><ul id="40e8ac6a-aab1-8061-b3ba-e931b9305c1b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Delivering and explaining required disclosures in a timely fashion.</li></ul><ul id="40e8ac6a-aab1-80df-b1b9-e3d0d82a4a53" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reviewing all transaction documents with the buyer (while avoiding unauthorized legal advice).</li></ul><ul id="40e8ac6a-aab1-8017-88fa-da61d6e1ccef" class="bulleted-list" dir="auto"><li style="list-style-type:square">Skillfully negotiating contract terms with sellers or listing agents on the buyer&#x27;s behalf.</li></ul></li></ul><ul id="40e8ac6a-aab1-80a9-91d9-efb655b35401" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Distinction: No Obligation to Purchase</strong><ul id="40e8ac6a-aab1-8008-a139-dd86e470a88a" class="bulleted-list" dir="auto"><li style="list-style-type:square">A buyer representation agreement is an employment contract to secure <em>representation</em> and search assistance—<strong>it does not force the buyer to purchase a home</strong>. There is no mandatory clause requiring a purchase by a certain date; however, if the buyer <em>does</em> purchase a property during the active term, the broker is legally entitled to compensation.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8074-923a-db823200e579" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The NAR Mandate &amp; &quot;Working With&quot; a Buyer</strong><ul id="40e8ac6a-aab1-801c-b77b-da024afc0e7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Rule Change:</strong> While buyer-agency agreements were once optional recommendations, the National Association of REALTORS® (NAR) now <strong>strictly requires</strong> a signed buyer representation agreement between agents and their buyer clients.</li></ul><ul id="40e8ac6a-aab1-80fa-a101-dedd93f95b4e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Defining &quot;Working With&quot;:</strong> This trigger point encompasses active real estate services, such as:<ul id="40e8ac6a-aab1-804e-91d9-ed5646857cb3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identifying and selecting listings based on client criteria.</li></ul><ul id="40e8ac6a-aab1-8094-8638-e94f7ed60eba" class="bulleted-list" dir="auto"><li style="list-style-type:square">Arranging or conducting property tours (in-person or <strong>virtual tours</strong>).</li></ul><ul id="40e8ac6a-aab1-804d-95c1-daa6d5fc813c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Negotiating on the buyer&#x27;s behalf.</li></ul><ul id="40e8ac6a-aab1-80be-9ef5-f566aa6cbaf9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Preparing and presenting offers.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f4-a583-ef79c56f655f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Distinction from Casual Interaction:</strong> Merely chatting with a visitor at an open house does not constitute &quot;working with&quot; a buyer—unless that visitor crosses the line into requesting dedicated representation or specific property procurement services.</li></ul><ul id="40e8ac6a-aab1-801e-831d-e0bb8242cdf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Mandatory Timeline: Before Touring</strong><ul id="40e8ac6a-aab1-8056-9fce-d812c7c2bb7c" class="bulleted-list" dir="auto"><li style="list-style-type:square">A written buyer-agent agreement <strong>must be signed before touring any home</strong> with a client.</li></ul><ul id="40e8ac6a-aab1-8001-929f-d318ccdf59d4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Alongside this signed agreement, the agent must have an explicit compensation conversation to ensure the buyer completely understands how their agent will be paid and what financial responsibilities they hold.</li></ul></li></ul><ul id="40e8ac6a-aab1-8051-8216-cabbec729866" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exceptions: When a Buyer Agreement Is Not Required</strong><ul id="40e8ac6a-aab1-801a-af29-c4539d1b33dd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Listing Agents Showing Their Own Listing:</strong> If an agent represents a seller (via a listing agreement) and shows that specific property to an unrepresented buyer at an open house or private showing, they are working for the <em>seller</em>, not the buyer. No buyer representation agreement is needed (though proper agency disclosure of seller representation is still legally required).</li></ul><ul id="40e8ac6a-aab1-80f2-acfe-e3a5cfc6ebb8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Dual Agency Exception:</strong> If that same listing agent transitions into representing <em>both</em> parties under an authorized dual agency framework, they are now formally working with the buyer as well, which <strong>does</strong> trigger the requirement for a signed agreement and the appropriate dual agency disclosures.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80be-a69d-f64e2805cdc4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Buyer Representation Agreements Overview</strong><ul id="40e8ac6a-aab1-8087-89b9-c800fec3aece" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Just like listing agreements, buyer representation agreements come in distinct forms that match the structural relationship between the client, the brokerage, and the affiliate brokers.</li></ul><ul id="40e8ac6a-aab1-801b-9750-dc71ff24e63f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">They are categorized along two main spectrums: <strong>Exclusivity</strong> (Exclusive vs. Non-Exclusive) and <strong>Agency Structure</strong> (Traditional/Broker Agency vs. Designated Agency).</li></ul><ul id="40e8ac6a-aab1-80ae-8657-eec4d290a216" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Four Buyer Representation Types</strong><ul id="40e8ac6a-aab1-80d7-95a1-d280b7fa5aab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1. Exclusive Buyer Representation Agreement (Designated Agency):</strong><ul id="40e8ac6a-aab1-800d-911b-cb5be5b3c4c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The buyer establishes an exclusive relationship with a <strong>specific affiliate broker</strong> (isolated within the brokerage).</li></ul><ul id="40e8ac6a-aab1-80e6-bbb4-ded2d0ea11f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The affiliate broker is guaranteed a commission if the buyer purchases a property during the contract term.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f6-9cbf-e9c9a4490fc9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>. Exclusive Buyer Representation Agreement (Buyer Agency):</strong><ul id="40e8ac6a-aab1-80f9-8680-c871177cdad5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The buyer establishes an exclusive relationship with the <strong>managing broker / entire brokerage</strong>.</li></ul><ul id="40e8ac6a-aab1-8050-8f9c-dc165fbf5c75" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The brokerage receives a commission if a property is purchased through <em>any</em> licensee under that broker during the contract term.</li></ul></li></ul><ul id="40e8ac6a-aab1-80e0-a882-ce638b63e97e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>3. Non-Exclusive Buyer Representation Agreement (Designated Agency):</strong><ul id="40e8ac6a-aab1-80d3-be2c-c699acdf474a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A nonexclusive agreement giving a <strong>specified affiliate broker</strong> (and the buyer themselves) the right to search for and secure a property.</li></ul><ul id="40e8ac6a-aab1-809a-be9f-e305083901c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Commission is <strong>not guaranteed</strong> to the affiliate broker unless they are the procuring cause or directly involved in the transaction.</li></ul></li></ul><ul id="40e8ac6a-aab1-805f-9526-dd67958c77e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>4. Non-Exclusive Buyer Representation Agreement (Buyer Agency):</strong><ul id="40e8ac6a-aab1-8054-a1f6-e699896aeddb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A nonexclusive agreement with a <strong>managing broker/brokerage</strong> where the buyer can also work with other brokerages or find a property on their own.</li></ul><ul id="40e8ac6a-aab1-80e9-911a-d7641be2aa07" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Commission is <strong>not guaranteed</strong> to the brokerage unless they successfully procure the property.<figure id="40e8ac6a-aab1-8083-95fe-c7bc3d47a1d7" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%204.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%204.png"><img style="width:528px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%204.png"/></a></figure></li></ul></li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-80e5-ac21-eb358acc330f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exclusivity in Buyer Representation Agreements</strong><ul id="40e8ac6a-aab1-804e-84ee-e12a5045399a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusive Right to Represent:</strong> In an exclusive agreement, the buyer grants the broker the sole and exclusive right to locate property on their behalf, promising they are not bound by any concurrent representation agreements with other brokerages.</li></ul><ul id="40e8ac6a-aab1-8084-a9be-c9de6ab76962" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commission Protection:</strong> Under an exclusive contract, if the buyer purchases a property through a different broker or on their own during the active term, <strong>the exclusive broker is still owed their agreed compensation</strong>.</li></ul><ul id="40e8ac6a-aab1-80ea-ad82-e4d0fed44d34" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Other Buyers Acknowledgment Clause</strong><ul id="40e8ac6a-aab1-80d5-bc17-e85ff9b84b5a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Competing Clients:</strong> This provision explicitly discloses and establishes that the affiliate broker represents and works with <em>other</em> buyers simultaneously.</li></ul><ul id="40e8ac6a-aab1-80e2-b334-cc1d97dd4b63" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Potential Competition:</strong> The buyer formally acknowledges that these other clients may look at, tour, and bid on the exact same properties, meaning multiple clients of the same brokerage could occasionally find themselves competing for the same home.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8011-b150-d5843ea145ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker&#x27;s Duties to Buyer Overview</strong><ul id="40e8ac6a-aab1-80dd-a068-d303452746c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Responsibilities:</strong> The buyer&#x27;s agent is contractually bound to deliver three foundational services:<ul id="40e8ac6a-aab1-80a8-a7ec-e70dcdb285d9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assisting in property search:</strong> Actively helping the buyer locate and identify properties matching their criteria.</li></ul><ul id="40e8ac6a-aab1-807b-a8ee-c2c84804ab9e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Negotiating the sale:</strong> Serving as the buyer&#x27;s fierce advocate during offer preparation, counteroffers, and price/term negotiations.</li></ul><ul id="40e8ac6a-aab1-805d-8f6c-fc7e499945d1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Transaction assistance:</strong> Guiding the buyer step-by-step through inspections, due diligence, closing prep, and paperwork.</li></ul></li></ul><ul id="40e8ac6a-aab1-803c-83f9-d39781679be3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specific Enhancements &amp; Details:</strong><ul id="40e8ac6a-aab1-80aa-8030-c4213c600b3f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Target Geographic Market:</strong> Some contract versions explicitly outline the specific geographic area or market radius where the agent will search.</li></ul><ul id="40e8ac6a-aab1-8069-bf92-fc67a052e1e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Deposit Handling:</strong> The agreement may also detail the broker&#x27;s specific obligations and protocols regarding the handling and earnest money deposit procedures.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-803e-898e-fd84578260da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Viewings &amp; Commission Protection</strong><ul id="40e8ac6a-aab1-80a4-91dd-ecdcf4fd7677" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The First-Visit Rule:</strong> The broker (or their representing licensee) <strong>must accompany the buyer on their very first visit</strong> to any property.</li></ul><ul id="40e8ac6a-aab1-80b5-9d05-e6bb84eecf93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Risk of Losing Compensation:</strong> If the buyer&#x27;s agent fails to attend that initial showing, the seller or the seller&#x27;s broker can legally refuse to pay the buyer&#x27;s broker their split of the cooperating commission.</li></ul><ul id="40e8ac6a-aab1-80d2-a9bf-ea9c7a6955f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Due Diligence &amp; Good Faith</strong><ul id="40e8ac6a-aab1-805a-8e5b-e1c35635606f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Re-emphasizes the broker&#x27;s ongoing statutory and fiduciary duty to act in good faith, thoroughly investigating details and protecting the buyer&#x27;s interests throughout the search and transaction.</li></ul></li></ul><ul id="40e8ac6a-aab1-809c-8573-f4e7b9ba0872" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stigmatized Properties &amp; Nondisclosure Protections</strong><ul id="40e8ac6a-aab1-805b-9277-ff12aa172fde" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Properties that carry psychological or social impressions (stigmas) that do not affect the actual physical condition or habitability of the real estate.</li></ul><ul id="40e8ac6a-aab1-8091-9ef8-e9e38c910e95" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Disclosure Exemptions:</strong> Sellers, brokers, and lessors are <strong>legally exempt from disclosing</strong> if a property:<ul id="40e8ac6a-aab1-8002-9620-e3d10ed11127" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Was the site of a <strong>natural death, suicide, homicide, or any felony crime</strong>.</li></ul><ul id="40e8ac6a-aab1-8034-a6bf-e7ad9dd0f3a7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Was previously owned or occupied by someone with <strong>HIV or AIDS</strong>.</li></ul><ul id="40e8ac6a-aab1-80ea-9561-eeb7d65f01d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Is situated in the <strong>vicinity of a registered sex offender</strong>.</li></ul></li></ul></li></ul></li></ul><p id="40e8ac6a-aab1-8096-bb9d-f57ec1b58fc6" class="" dir="auto">
+</p><ul id="40e8ac6a-aab1-8015-aa83-c6c40667288c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Post-Settlement Paradigm Shift in Buyer Compensation</strong><ul id="40e8ac6a-aab1-8020-8d0a-c141e595badf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historical Norm vs. Today:</strong> Previously, buyer&#x27;s agents were almost universally paid via a commission split funded entirely by the seller. Following the milestone 2023 NAR settlement, compensation structures have fundamentally evolved.</li></ul><ul id="40e8ac6a-aab1-80b4-ad3c-dca83a0c9a89" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Direct Buyer Responsibility:</strong> While seller-paid splits remain an option, if a seller or listing agent does not offer a cooperating commission split, <strong>the buyer is directly responsible</strong> for compensating their agent based on the terms outlined in their buyer-broker agreement. Agents must explicitly educate clients on this financial liability upfront.</li></ul></li></ul><ul id="40e8ac6a-aab1-8035-b124-dd7f9d101648" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alternative Buyer-Paid Compensation Models</strong><ul id="40e8ac6a-aab1-8039-9828-e468dd8c2311" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Hourly Rate (Consulting Fee):</strong><ul id="40e8ac6a-aab1-8024-88e2-c758907afc0d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>How it works:</em> The buyer pays the agent an hourly rate for time spent providing real estate services.</li></ul><ul id="40e8ac6a-aab1-8062-a1c0-c8c9f0e80845" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Trade-offs:</em> The agent is guaranteed payment for their time regardless of whether a property is successfully purchased; however, extended searches can become quite costly for the buyer.</li></ul></li></ul><ul id="40e8ac6a-aab1-80c9-aaaa-c9efd0ea6c52" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>. Percentage Commission (Paid by Buyer):</strong><ul id="40e8ac6a-aab1-805f-9443-e4fb88f9525d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>How it works:</em> The buyer agrees to pay a predetermined percentage of the final purchase price directly to their agent.</li></ul><ul id="40e8ac6a-aab1-8090-964a-df121ad4cb0d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>The Fiduciary Conflict:</em> Unlike seller-paid commissions, a buyer-paid percentage commission creates a theoretical alignment clash (higher purchase price means a higher commission for the agent, but a worse deal for the buyer). Agents are legally and ethically bound by their <strong>fiduciary duties to prioritize the buyer&#x27;s best financial interests</strong>, even if it reduces their own compensation.</li></ul></li></ul><ul id="40e8ac6a-aab1-80f9-9004-e51f72bdd164" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Flat Fee (Limited Service / Tiered Models):</strong><ul id="40e8ac6a-aab1-80fe-8491-f68c81c336ca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>How it works:</em> A fixed fee calculated based on a restricted, predefined scope of work, assuming the buyer handles more of the upfront legwork.</li></ul><ul id="40e8ac6a-aab1-8013-a2ef-eeda49b3fde5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Division of Responsibilities under Flat Fees:</em><ul id="40e8ac6a-aab1-8070-80d3-d20a337859f9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Legwork:</strong> Provides pre-qualification letters, independently selects target homes, and compiles viewing lists (without contacting listing agents directly).</li></ul><ul id="40e8ac6a-aab1-80ea-8f8c-df0140b474b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agent&#x27;s Support:</strong> Schedules showings for a capped number of properties, offers pricing/condition insights, navigates negotiations, and guides the transaction through closing.</li></ul></li></ul><ul id="40e8ac6a-aab1-80fe-ab32-cba6e39d184f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Conversion to Full Service:</em> If the buyer exceeds the agreed-upon limits (e.g., requesting additional property tours), the agreement typically mandates a conversion from the limited flat-fee structure to a standard full-service arrangement.</li></ul></li></ul></li></ul><ul id="40e8ac6a-aab1-8073-8521-c8c3a8de3740" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Retainer Fees in Buyer Representation Agreements</strong><ul id="40e8ac6a-aab1-808b-bd87-e336f87f2230" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Purpose / Application:</strong> If the transaction successfully closes, the non-refundable retainer fee is typically <strong>credited toward or applied against the final commission due</strong> to the broker. If the house hunt does not result in a purchase, the broker keeps the retainer as baseline compensation for the time, labor, and upfront expenses invested.</li></ul><ul id="40e8ac6a-aab1-802e-b8fc-ec82e6ebcb17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strictly Negotiable:</strong> As with all real estate fees, retainer amounts, structures, and terms are <strong>100% negotiable</strong> between the client and the agent—there are no standard, mandated, or fixed rates.</li></ul></li></ul><p id="40e8ac6a-aab1-809f-99e9-e3276a6e0052" class="" dir="auto">
+</p></div><div id="40e8ac6a-aab1-80f0-90dc-ca384ba3c705" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="40e8ac6a-aab1-80a3-b026-cb18306c13ea" class="" dir="auto"><strong>Key Term</strong></p><ul id="40e8ac6a-aab1-800c-b600-e326b51c221c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>protection</strong> <strong>period </strong>- a limited time frame after an employment agreement ends during which an agent can be owed compensation under certain circumstances</li></ul><p id="40e8ac6a-aab1-801a-9da6-f19a100ac075" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40e8ac6a-aab1-8011-b50b-e55f494b894a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Agreements - </strong> <strong>employment agreements made between a seller and a broker.</strong> The seller is hiring an agent to sell their home.<ul id="40e8ac6a-aab1-80a3-8e26-cce374ca77d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In Tennessee, listing agreements are<strong> not promulgated</strong> — in other words, there isn&#x27;t a standard form for everyone in Tennessee to use.</li></ul><ul id="40e8ac6a-aab1-8035-8866-e3107b90d14e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although there is no standard form, all listing agreements must <strong>follow the requirements of an employment agreement</strong>. All real estate employment agreements must be written, bilateral agreements.</li></ul></li></ul><ul id="40e8ac6a-aab1-805e-b6df-c10ffcdae8f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Representation Agreements - </strong> <strong>employment agreements made between a buyer and a broker.</strong> They create an agency relationship authorizing a license holder to represent the principal (the buyer or tenant) as they seek to find a property.<ul id="40e8ac6a-aab1-80c3-b7a5-f8d300188189" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Like listing agreements, they are <strong>not promulgated</strong>.</li></ul><ul id="40e8ac6a-aab1-8045-bf0c-ee936a0c369b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyer rep agreements need to <strong>follow the requirements of an employment agreement</strong>.</li></ul><ul id="40e8ac6a-aab1-80d6-864c-cfea1c607a98" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyer representation contracts can take different forms. You&#x27;ll notice that they&#x27;re pretty logical counterparts to the listing types. Buyers can choose from the following:</li></ul></li></ul><ul id="40e8ac6a-aab1-80d5-b170-fa11d9769380" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>Exclusive Buyer Representation Agreement (Designated Agency) </strong></em><em>- </em>an agreement in which the buyer has an exclusive relationship with a specific affiliate broker; the affiliate broker receives a commission if the buyer finds a property</li></ul><ul id="40e8ac6a-aab1-8061-9859-d6165acbaf2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>Exclusive Buyer Representation Agreement (Buyer Agency) </strong></em><em>-</em> an agreement in which the buyer has an exclusive relationship with one managing brokerage; the managing brokerage receives a commission if the buyer finds a property</li></ul><ul id="40e8ac6a-aab1-8016-8892-f7bfec98f97e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>Non-Exclusive Buyer (Designated Agency) </strong></em><em>- </em>a nonexclusive agreement that gives a specified affiliate broker (and buyers themselves) the right to find a property; commission is not guaranteed to the affiliate broker</li></ul><ul id="40e8ac6a-aab1-809c-b596-f1d7a7a112ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>Non-Exclusive Buyer (Buyer Agency) - </strong></em>a nonexclusive agreement that gives a managing brokerage (and buyers themselves) the right to find a property; commission is not guaranteed to the brokerage<figure id="40e8ac6a-aab1-80e9-9494-ff3f5af0aa57" class="image" data-notion-image="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%205.png" dir="ltr"><a href="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%205.png"><img style="width:1513px" src="Chapter%203%20-%20Key%20Clauses%20in%20Listing%20Agreements%20and%20/image%205.png"/></a></figure><p id="40e8ac6a-aab1-8003-aca8-e531fd6881c8" class="" dir="auto">
+</p></li></ul></div></div><p id="40e8ac6a-aab1-802c-8cf8-c10045a7e09b" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

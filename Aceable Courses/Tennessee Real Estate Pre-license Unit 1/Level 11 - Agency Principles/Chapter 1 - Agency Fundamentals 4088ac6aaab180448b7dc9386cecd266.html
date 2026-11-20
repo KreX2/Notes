@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Agency Fundamentals</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4088ac6a-aab1-8044-8b7d-c9386cecd266" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Agency Fundamentals</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="40c8ac6a-aab1-80af-aae5-c65952425075" class="column-list" data-notion-column-list="" dir="auto"><div id="40c8ac6a-aab1-80d3-8c2e-c79a04cfc183" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="40c8ac6a-aab1-80b7-81a9-ca4d408f54f3" class="" dir="auto"><strong>The Common Law of Agency</strong></p><ul id="40c8ac6a-aab1-807c-90bb-dd23d4ebdac1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> The body of laws governing agency relationships derived from historical customs, traditions, and judicial case law rather than statutory law enacted by state or federal legislatures.</li></ul><ul id="40c8ac6a-aab1-803b-af3d-f955ea0ce69e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Origins:</strong> Traced back to centuries-old customs and legal precedents established by English court decisions long before the United States was founded.</li></ul><ul id="40c8ac6a-aab1-80d5-a008-c8eea25fe38e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Application in Tennessee:</strong> While modern agency law in Tennessee is heavily influenced by historical common law principles, statutory law has been enacted that supersedes and replaces it.</li></ul><ul id="40c8ac6a-aab1-8045-bde9-e67fe4b18179" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agents &amp; Fiduciaries Overview</strong><ul id="40c8ac6a-aab1-80cb-8b4d-ce5b70bda96c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Agent:</strong> An individual granted the legal authority to act on behalf of another person. In Tennessee real estate, both principal brokers and their affiliate brokers operate in this capacity.</li></ul><ul id="40c8ac6a-aab1-8040-842e-e9606359511a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Client/Principal:</strong> The individual who grants the agent the authority to act on their behalf.</li></ul><ul id="40c8ac6a-aab1-80c9-bbe8-c1e05af2d3e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Fiduciary:</strong> A person held to the highest standard of trust and confidence when acting for another. Fiduciaries carry profound ethical and legal obligations, requiring them to <strong>put their client&#x27;s interests ahead of all others</strong>, including their own personal interests.</li></ul></li></ul><ul id="40c8ac6a-aab1-800b-8a9f-fdb1734aef0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Relationships in Real Estate </strong><ul id="40c8ac6a-aab1-8041-8f3e-cbf534a7b7b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Core Elements:</strong> An agency relationship occurs when one party (the principal/client) authorizes another (the agent) to represent their best interests, and the agent accepts.</li></ul><ul id="40c8ac6a-aab1-80fe-a5b0-d0fc256250da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Building Blocks:</strong><ol type="1" id="40c8ac6a-aab1-805d-b8b3-c842fa685dd9" class="numbered-list" start="1" dir="auto"><li>Two parties (agent and principal)</li></ol><ol type="1" id="40c8ac6a-aab1-8077-9eb2-e83bc5d4c3f1" class="numbered-list" start="2" dir="auto"><li>An agreement</li></ol><ol type="1" id="40c8ac6a-aab1-80da-84cc-d93a316ff5b6" class="numbered-list" start="3" dir="auto"><li>A fiduciary obligation</li></ol></li></ul></li></ul><ul id="40c8ac6a-aab1-80d9-a7d5-ec83870d40c2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Creation &amp; The Written Requirement</strong><ul id="40c8ac6a-aab1-80ff-95d1-e46e828865ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Methods vs. Real Estate:</strong> While general agency can technically be formed via written agreement, oral agreement, or action, <strong>Tennessee real estate law strictly mandates that all agency agreements must be in writing</strong> (to prevent miscommunication and protect commissions).</li></ul><ul id="40c8ac6a-aab1-8085-84f0-cc28d9934ddf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mutual Consent:</strong> Both parties must mutually consent to form the relationship.</li></ul></li></ul><ul id="40c8ac6a-aab1-80b8-a342-dc6eb147abc4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker-Level Agency</strong><ul id="40c8ac6a-aab1-80bf-875c-ee0db3c13160" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Sponsoring Broker:</strong> Agency relationships are legally established at the <strong>broker level</strong>.</li></ul><ul id="40c8ac6a-aab1-808f-be43-faf0cc692bcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a consumer signs an agency agreement with an affiliate broker (licensee), they are entering into an agency contract with that licensee&#x27;s principal broker, who sponsors affiliate brokers to help carry out fiduciary responsibilities.</li></ul></li></ul><ul id="40c8ac6a-aab1-80ea-8cc6-c926b934058e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role Players </strong><ul id="40c8ac6a-aab1-8006-b011-f92263e5c460" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Participants in a real estate transaction generally act in one of three roles: <strong>Client</strong> (principal), <strong>Customer</strong> (&quot;other&quot; principal), or <strong>Third Party</strong> (anyone else).</li></ul><ul id="40c8ac6a-aab1-804e-b277-c05b56a7ac93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Definition of &quot;Principal&quot;</strong><ol type="1" id="40c8ac6a-aab1-8029-9087-d28c137c58fd" class="numbered-list" start="1" dir="auto"><li>An individual who authorizes an agent to represent their best interests.</li></ol><ol type="1" id="40c8ac6a-aab1-8086-9465-d990b9f8fea4" class="numbered-list" start="2" dir="auto"><li>A primary party to a real estate transaction (e.g., buyer, seller, landlord, or tenant).</li></ol><ul id="40c8ac6a-aab1-80c4-b7cc-ebcf11c753cf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Example:</em> If Jami hires Broker Betty to sell her home, Jami is Betty&#x27;s principal (client). When Jami sells to Buyer Jenna, both Jami and Jenna are considered principals to the transaction.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80bd-b18b-f7329f30e348" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Client (Your Principal)</strong><ul id="40c8ac6a-aab1-8016-8790-e289a0a8501d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An individual who has signed a written agency agreement with a broker, authorizing the broker to represent them.</li></ul><ul id="40c8ac6a-aab1-8047-ba43-f76c6d1c7c44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Distinction:</strong> While industry professionals often use &quot;client&quot; and &quot;principal&quot; interchangeably, a client is specifically <em>your</em> principal to whom you owe strict fiduciary duties.</li></ul><ul id="40c8ac6a-aab1-8073-b480-dab2d7e271a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rule of Thumb:</strong> Never call someone a client until a formal agency agreement is signed. In Tennessee real estate, all agency agreements <strong>must be in writing</strong>.</li></ul></li></ul><ul id="40c8ac6a-aab1-8049-8d76-cdd830ea7cf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Role Players: Customers and Third Parties</strong><ul id="40c8ac6a-aab1-8092-b7e0-d17e30583330" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Distinction:</strong> In any real estate transaction, licensees interact with various individuals categorized by their relationship to the agent. While clients are owed strict fiduciary duties, customers and third parties are non-client participants who are instead owed fundamental duties of honesty, fairness, and professional dealing.</li></ul><ul id="40c8ac6a-aab1-8097-aa82-cd32bfbb4dd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Customer</strong><ul id="40c8ac6a-aab1-80d4-83de-c035f3c7e90a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A customer is a principal on the opposite side of a transaction with whom no agency relationship exists and to whom no fiduciary duties are owed. They are typically represented by an agent from a separate, unaffiliated brokerage.</li></ul><ul id="40c8ac6a-aab1-80d3-90be-ddcca7826a30" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Common Customer Scenarios:</strong><ul id="40c8ac6a-aab1-8000-b876-c94a449b1b73" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Listing Agent Perspective:</em> The buyer principal is a customer.</li></ul><ul id="40c8ac6a-aab1-804a-a698-c79f64500540" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Buyer&#x27;s Agent Perspective:</em> The seller principal is a customer.</li></ul><ul id="40c8ac6a-aab1-805f-baa0-eb06cd280322" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Landlord&#x27;s Agent Perspective:</em> The tenant principal is a customer.</li></ul><ul id="40c8ac6a-aab1-8075-a734-faf8aa78dc24" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Tenant&#x27;s Agent Perspective:</em> The landlord principal is a customer.</li></ul><ul id="40c8ac6a-aab1-807d-8329-db153c4f4c19" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Required Standard of Conduct:</strong> Although fiduciaries are not owed to customers, licensees are legally and ethically mandated to treat all customers with <strong>fair dealing, honesty, and professional integrity</strong>.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8025-b54e-dccf50ad34b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Third Party</strong><ul id="40c8ac6a-aab1-80c2-ba90-e0e9892f8bd1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A third party is an expansive term encompassing <strong>any person</strong> involved in a real estate transaction who is not your client.</li></ul><ul id="40c8ac6a-aab1-8027-9747-c9662730023b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Scope:</strong> While all customers are third parties, not all third parties are customers. The category includes anyone with whom the licensee has no agency representation.</li></ul></li></ul><ul id="40c8ac6a-aab1-80be-a78d-c29eb726591d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Non-Client Third Parties:</strong><ul id="40c8ac6a-aab1-8079-8e93-f3d965b7e07b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Customers (principals on the opposing side)</li></ul><ul id="40c8ac6a-aab1-80f6-9907-dee8b8a745af" class="bulleted-list" dir="auto"><li style="list-style-type:square">Title officers and closing attorneys</li></ul><ul id="40c8ac6a-aab1-804e-b1a8-fd851bb13cb4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Home inspectors and pest inspectors</li></ul><ul id="40c8ac6a-aab1-802b-8d3e-d25f19ebf1f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Loan officers and mortgage brokers</li></ul><ul id="40c8ac6a-aab1-801f-ba49-d1dd5659020c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Insurance agents</li></ul><ul id="40c8ac6a-aab1-805b-96b7-c40ed4b9e849" class="bulleted-list" dir="auto"><li style="list-style-type:square">Certified real estate appraisers</li></ul></li></ul><ul id="40c8ac6a-aab1-80a1-9ec5-dab1e435ed81" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Summary of Transactional Role Players</strong><figure id="40c8ac6a-aab1-8026-a422-d64af711ab80" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image.png"><img style="width:432px" src="Chapter%201%20-%20Agency%20Fundamentals/image.png"/></a></figure><ul id="40c8ac6a-aab1-80b3-9fb1-f71d58cf522e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Real estate professionals navigate three distinct categories of individuals during a transaction: <strong>Clients</strong> (principals represented via a written agency agreement), <strong>Customers</strong> (opposing principals represented elsewhere or unrepresented), and <strong>Third Parties</strong> (all other participating professionals and non-clients). Managing these relationships requires balancing fierce loyalty to clients with honest, fair treatment toward all third parties.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8049-9eb5-f9fab389dc13" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Team</strong><figure id="40c8ac6a-aab1-809c-a634-c0c2b4d4a71e" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Agency%20Fundamentals/image%201.png"/></a></figure><ul id="40c8ac6a-aab1-80b0-9f73-d1295deffac3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Principal Broker:</strong> The individual who legally establishes the agency relationship with the client. The principal broker bwwwwwwwwwwwwwwwwwars ultimate supervisory responsibility for all sponsored licensees within the brokerage. There is strictly <strong>one principal broker per brokerage</strong>.</li></ul><ul id="40c8ac6a-aab1-801a-a4fd-d4e58c892a34" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Affiliate Broker:</strong> A licensed professional sponsored by the principal broker to act as an agent on the broker&#x27;s behalf. All interactions, negotiations, and agency duties performed by an affiliate broker are executed on behalf of their sponsoring broker. A brokerage may sponsor any number of affiliate brokers.</li></ul></li></ul><ul id="40c8ac6a-aab1-80cc-9ae5-e282b581dd88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role Player Recap</strong><ul id="40c8ac6a-aab1-806e-a17e-ffdd395c9edb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Client:</strong> The principal in a transaction who has a formal agency relationship with the broker (an agent <em>works for</em> a client).</li></ul><ul id="40c8ac6a-aab1-80e0-a2b7-d98449e3dc66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Customer:</strong> A principal in the transaction with whom no agency relationship exists (an agent <em>works with</em> a customer).</li></ul><ul id="40c8ac6a-aab1-8071-bd36-d1cda5067895" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Third Party:</strong> Any person involved in the transaction other than your client. This is a broad category encompassing both customers (opposing principals) and supporting professionals (e.g., title officers, loan officers, inspectors).</li></ul><ul id="40c8ac6a-aab1-80b1-ba7b-d1e6da84bab7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Relationship Rules:</strong><ul id="40c8ac6a-aab1-801e-a95b-c92ccdc9caac" class="bulleted-list" dir="auto"><li style="list-style-type:square">All customers are third parties, but not all third parties are customers.</li></ul><ul id="40c8ac6a-aab1-80ff-9067-cff245acb4ff" class="bulleted-list" dir="auto"><li style="list-style-type:square">Every client is a principal, but a client is specifically <em>your</em> principal.</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-80cb-bf03-d3015abc4f48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duties Comparison: Clients vs. Customers &amp; Third Parties</strong><ul id="40c8ac6a-aab1-80ad-b523-dfa4b3cd23ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clients:</strong> Owed the highest standard of care, loyalty, and strict <strong>fiduciary duties</strong>.</li></ul><ul id="40c8ac6a-aab1-807d-8a15-c42beb35654b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Customers &amp; Third Parties:</strong> Not owed fiduciary duties, but licensees are legally and ethically required to treat them with basic honesty, fairness, and professional integrity.</li></ul></li></ul><ul id="40c8ac6a-aab1-80de-aa9b-e1e0b4912cd9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ministerial Acts</strong><ul id="40c8ac6a-aab1-80c5-8f02-f1359ecedb6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Actions performed for another party according to established guidelines or procedures without requiring personal discretion or professional judgment.</li></ul><ul id="40c8ac6a-aab1-808d-8266-c8a71e18484e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application with Customers:</strong> Agents can (and should) perform ministerial acts to facilitate the transaction for a customer without violating their primary fiduciary duties to their client.</li></ul><ul id="40c8ac6a-aab1-80ba-81e8-fbde27f0cb47" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Benefit:</strong> Performing ministerial acts moves the transaction forward smoothly, which ultimately serves the best interests of the client. It does not constitute a conflict of interest.</li></ul></li></ul><p id="40c8ac6a-aab1-804d-ba16-cc0ef051d52d" class="" dir="auto"><strong>Agency Classifications</strong><div class="indented"><ul id="40c8ac6a-aab1-8003-b0f5-fd888aea4649" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scope of Authority:</strong> When a principal grants an agent the authority to act on their behalf, that authority is subject to constraints known as the scope of authority, which dictates how broad or narrow the agent&#x27;s powers are.</li></ul><ul id="40c8ac6a-aab1-8043-b62b-f8280d051a4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Classifications:</strong> Based on the scope of authority granted, agency relationships are categorized into:<ul id="40c8ac6a-aab1-8025-841b-ec47f0088448" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Special agency<ul id="40c8ac6a-aab1-80fa-9e1a-f68dc9a06a66" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Also known as <em>limited agency</em>, special agency restricts an agent&#x27;s scope of authority to one or more specific acts directed by the principal toward a single, defined objective. It is typically not ongoing and automatically terminates once the authorized goal is achieved.</li></ul><ul id="40c8ac6a-aab1-80a1-bcc2-f96a9a200284" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Scope &amp; Limitations:</strong> Of the three agency classifications, special agency is the most limited in scope. Consequently, principals hold limited liability, restricted only to actions taken by the agent at the direct request of the principal.</li></ul><ul id="40c8ac6a-aab1-8057-8cb6-d1a111a6116a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Special Agency in Real Estate</strong><ul id="40c8ac6a-aab1-8021-baf2-fe5594c38bd4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Standard Relationship:</strong> The most common real estate example is the relationship between a broker and their client, established via <strong>listing agreements</strong> or <strong>buyer representation agreements</strong>.</li></ul><ul id="40c8ac6a-aab1-8007-9758-c11a6d282d9f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Role of the Broker:</strong> Operating as a special (or limited) agent, the broker possesses very narrow authority to help the client buy or sell a specific property.</li></ul><ul id="40c8ac6a-aab1-809f-8541-e24ed7cbe456" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Actions Included:</strong><ul id="40c8ac6a-aab1-80a8-bd23-c8919d774f08" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Listing the principal&#x27;s home on the MLS.</li></ul><ul id="40c8ac6a-aab1-80a2-9670-e315dbc4af8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Showing the property to prospective buyers.</li></ul><ul id="40c8ac6a-aab1-80f8-9eb6-d500d1edacb6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Representing a buyer&#x27;s interests at an open house.</li></ul><figure id="40c8ac6a-aab1-806d-8c75-e424652832c3" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%202.png"><img style="width:384px" src="Chapter%201%20-%20Agency%20Fundamentals/image%202.png"/></a></figure></li></ul></li></ul><ul id="40c8ac6a-aab1-80f0-8100-f5dfaa8d441a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Special Agency Does Not Equal Binding Authority</strong><ul id="40c8ac6a-aab1-80a4-bed4-e3c3253bc429" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No Binding Power:</strong> A defining limitation is that special agents <strong>cannot make decisions that legally bind or obligate their principals</strong>.</li></ul><ul id="40c8ac6a-aab1-806b-904e-e9ddb43809c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Example:</strong> While a listing agreement grants an agent the authority to market a home and negotiate, the agent cannot accept a buyer&#x27;s purchase offer on the seller&#x27;s behalf. The principal retains sole authority to make binding decisions (such as accepting an offer).</li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-809d-adde-d5cb28ff6621" class="bulleted-list" dir="auto"><li style="list-style-type:circle">General agency<ul id="40c8ac6a-aab1-8024-a699-e7848068dba5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A general agent is authorized to manage all of a principal&#x27;s affairs within specified, ongoing areas of business. Unlike special agency, general agency is typically open-ended and covers multiple ongoing transactions or responsibilities rather than a single isolated objective.</li></ul><ul id="40c8ac6a-aab1-8014-86aa-eceb4788bdc3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Binding Authority:</strong> Unlike special agents, general agents possess the authority to legally bind their principals within the scope of their assigned duties.</li></ul><ul id="40c8ac6a-aab1-80aa-8fe5-d56f7ec9768b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>General Agency in Real Estate</strong><ul id="40c8ac6a-aab1-808d-a624-ce0c9d06bbfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker and Affiliate Broker Relationship:</strong> The classic real estate example of general agency is the relationship between a principal broker and an affiliate broker.<ul id="40c8ac6a-aab1-806b-bfac-fc8820417443" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The principal broker acts as the principal.</li></ul><ul id="40c8ac6a-aab1-80a5-ad39-e916f65bc9df" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The affiliate broker acts as the general agent to carry out ongoing brokerage business.</li></ul></li></ul><ul id="40c8ac6a-aab1-80a0-a18d-eee3c45150ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Binding Effect:</strong> When an affiliate broker signs a listing agreement with a seller, that act legally binds the principal broker&#x27;s company to the client because of the general agency relationship.</li></ul><ul id="40c8ac6a-aab1-8043-908f-d634c2179ee2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Management:</strong> Licensees operating as property managers also require general agency. Their multifaceted duties are ongoing, and they routinely possess the power to bind property owners to tenant leases and operational service contracts.</li></ul></li></ul><ul id="40c8ac6a-aab1-8029-9275-d0c7970b961d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agency Classifications Comparison</strong><ul id="40c8ac6a-aab1-8087-b389-dea45597c5c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Agency:</strong> Short-term, narrow authority; <em>does not</em> include binding power (e.g., listing/buyer agreements between a broker and a client).</li></ul><ul id="40c8ac6a-aab1-8037-b18b-c6252a13795d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Agency:</strong> Ongoing, broad authority; <em>includes</em> binding power (e.g., broker-to-affiliate relationship or property management).<figure id="40c8ac6a-aab1-80b0-b5e6-ff70db79ee5e" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%203.png"><img style="width:384px" src="Chapter%201%20-%20Agency%20Fundamentals/image%203.png"/></a></figure></li></ul></li></ul><ul id="40c8ac6a-aab1-8055-9015-f7e9e7bac004" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Agency Relationship Triangle</strong><figure id="40c8ac6a-aab1-805e-afdb-d90741d783d5" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%204.png"><img style="width:384px" src="Chapter%201%20-%20Agency%20Fundamentals/image%204.png"/></a></figure><ul id="40c8ac6a-aab1-80f5-8718-f92b9f27ef02" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Agency vs. Special Agency in Real Estate</strong><ul id="40c8ac6a-aab1-80dd-9dbe-d6da0a4d322c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Agency (Broker &amp; Affiliate Broker):</strong> Affiliate brokers maintain a general agency relationship with their principal broker, granting them ongoing authority to act on the broker&#x27;s behalf. This includes the power to bind the broker to agency agreements (such as listing contracts). Sponsoring brokers are ultimately responsible for the approved actions of their affiliate brokers.</li></ul><ul id="40c8ac6a-aab1-801e-a63b-e533edee632d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special Agency (Broker/Affiliate &amp; Client):</strong> When assisting clients with short-term goals like buying or selling a home, brokers and affiliate brokers operate as special (limited) agents. Because special agency <strong>does not include binding authority</strong>, licensees cannot accept offers on a client&#x27;s property without explicit client permission.</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-8099-a134-de8cc1e9daf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Universal agency</strong><ul id="40c8ac6a-aab1-8092-aa99-d7d4791cd51e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The broadest and most comprehensive form of agency, granting the agent the power to act and make binding decisions on behalf of the principal across <strong>all</strong> personal and business matters, rather than just a specific area or single objective.</li></ul><ul id="40c8ac6a-aab1-8041-8484-f101f9e4aeff" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Power of Attorney:</strong> Established via a <strong>power of attorney</strong>, which grants the agent the legal status of an <strong>attorney-in-fact</strong> with the full legal authority to sign documents and execute transactions on the principal&#x27;s behalf.</li></ul><ul id="40c8ac6a-aab1-8066-b9aa-d1bc0c19240e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Universal Agency in Real Estate</strong><ul id="40c8ac6a-aab1-80ec-bf7c-fb5dcb8ce0d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Rarity:</strong> While uncommon in standard everyday real estate transactions, universal agency is utilized in specific scenarios—such as when a principal is traveling or living abroad and needs to grant an agent full power of attorney to execute the sale or purchase of property in their absence.</li></ul></li></ul></li></ul></li></ul><ul id="40c8ac6a-aab1-802e-b91c-eb032166c8ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Classifications Review Summary</strong><ul id="40c8ac6a-aab1-80a0-8b5d-c58e0e2fe282" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Special Agency (Limited Agency):</strong> The most restricted scope of authority, typically governing the relationship between brokers and clients (via listing or buyer representation agreements). It focuses on a single objective and <strong>does not include binding authority</strong> (agents cannot accept offers on a client&#x27;s behalf).</li></ul><ul id="40c8ac6a-aab1-800d-8b1f-cd461e9572f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Agency:</strong> Grants a broader, ongoing scope of authority. It is the classification existing between principal brokers and affiliate brokers (allowing affiliate brokers to bind the broker to agency contracts) and is required for property managers. It <strong>includes binding power</strong> within its designated scope.</li></ul><ul id="40c8ac6a-aab1-806d-821a-d835b48ff5ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Universal Agency:</strong> The broadest and most comprehensive form of agency, authorizing an agent to act and make binding decisions across <strong>all</strong> personal and business matters. Established via a <strong>power of attorney</strong> (making the agent an <em>attorney-in-fact</em>), though it is rarely utilized in standard real estate transactions.<figure id="40c8ac6a-aab1-805c-bf73-daf2f1fe3a66" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%205.png"><img style="width:384px" src="Chapter%201%20-%20Agency%20Fundamentals/image%205.png"/></a></figure></li></ul></li></ul></div></p></div><div id="40c8ac6a-aab1-80b3-a367-d31796dfc64d" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="40c8ac6a-aab1-80be-b218-e0d944617f0b" class="" dir="auto"><strong>Key Terms</strong></p><ul id="40c8ac6a-aab1-8025-a962-dca0f336e9a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>affiliate broker</strong> - a licensee operating under the sponsorship, authority, and guidance of (and on behalf of) their principal broker in a brokerage environment</li></ul><ul id="40c8ac6a-aab1-803c-abbd-fab13f219b30" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>agent</strong> - an individual with authority to act on behalf of another; a state license is required to operate as an agent in real estate</li></ul><ul id="40c8ac6a-aab1-801f-95b7-fd14de87349c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>broker</strong> - a licensee who holds a broker license and who engages in an activity enumerated in the license law for a commission or other valuable consideration</li></ul><ul id="40c8ac6a-aab1-8050-814d-cccb5d9dd03d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>customer</strong> - an individual with whom a license holder has no agency relationship nor fiduciary duties but to whom fairness and honesty are still required</li></ul><ul id="40c8ac6a-aab1-80a7-9651-c7912ce48b75" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>fiduciary</strong> - an individual upon whom is placed the highest levels of trust and confidence when acting on behalf of another</li></ul><ul id="40c8ac6a-aab1-8052-b738-ffc6768d5ef0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>general agency</strong> - a form of agency relationship that authorizes an agent to manage all of a principal&#x27;s affairs within certain specified areas; provides broader authority than that of special agency but less than that of universal agency</li></ul><ul id="40c8ac6a-aab1-80c0-9e7f-d027037aa329" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>law of agency</strong> - the body of laws affecting agency that has come about as a result of custom and/or case law, as opposed to statutory law introduced at the state or federal level</li></ul><ul id="40c8ac6a-aab1-803e-8013-ed8b62282f11" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>limited agent</strong> - an agent operating in an agency relationship that constrains the agent to specific acts authorized by the principal; the vicarious liability of the principal for the agent&#x27;s acts are equally limited to what was specifically authorized by the principal</li></ul><ul id="40c8ac6a-aab1-80d0-a7b9-d8363aa12eb7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ministerial acts</strong> - an action performed for another according to established procedures or guidelines and without the need for discretion or individual judgment</li></ul><ul id="40c8ac6a-aab1-806e-ad62-df5ff35b7904" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>mutual consent</strong> - agreement by all parties to either create, amend, or terminate a contract</li></ul><ul id="40c8ac6a-aab1-8009-9fa4-d8a042b1a9af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>power of attorney</strong> - a legal instrument used to confer the right of one individual to act on behalf of another</li></ul><ul id="40c8ac6a-aab1-8061-b4f7-df32627fcc76" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>principal</strong> - the client of a broker in an agency relationship; the parties to a contract in a real estate transaction (as opposed to lenders, escrow agents, etc.)</li></ul><ul id="40c8ac6a-aab1-80b1-9de9-e4001af1f27d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>principal broker</strong> - a broker who leads the activities of a brokerage and who is accountable for the actions of affiliated licensees and the brokerage&#x27;s adherence to licensing rules, regulations, and laws</li></ul><ul id="40c8ac6a-aab1-8029-ad25-e22f12b9c2ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>special agency</strong> - a form of agency relationship in which agents are limited in scope and are only authorized to perform acts permitted by their principal</li></ul><ul id="40c8ac6a-aab1-800c-a465-daf1bd66bcf7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>third party</strong> - any person involved in a real estate transaction who is not your client; includes not only customers (the non-client principal in a transaction) but also all other non-client participants in a transaction such as title officers, lenders, appraisers, etc.</li></ul><ul id="40c8ac6a-aab1-809c-8bcc-e69ac7224ff5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>universal agency</strong> - the broadest type of agency; gives agents the power to act AND make decisions on behalf of the principal in all business matters of concern; often granted via a power of attorney</li></ul><p id="40c8ac6a-aab1-8038-9fc2-f9112f7cc34c" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="40c8ac6a-aab1-8047-831d-e3fdb244a85f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Common Law of Agency - </strong>refers to the body of laws affecting agency that are the result of custom and/or case law, as opposed to statutory law introduced at the state or federal level.</li></ul><ul id="40c8ac6a-aab1-808a-ba59-ed29a4574bff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Building Blocks of an Agency Relationship in Real Estate</strong><ul id="40c8ac6a-aab1-807c-a2df-defd6dd5efcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Two parties (agent and principal)</li></ul><ul id="40c8ac6a-aab1-80f0-8df3-f4d48d649e62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An agreement</li></ul><ul id="40c8ac6a-aab1-80e6-8ca1-e1d586875959" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A fiduciary obligation</li></ul></li></ul><ul id="40c8ac6a-aab1-8076-9a8f-c9b60e4e65ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Client</strong><ul id="40c8ac6a-aab1-806b-8949-ec46064613d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although many in the industry use the terms <em>client</em> and <em>principal</em> interchangeably, <strong>a client is not simply </strong><em><strong>a</strong></em><strong> principal. A client is </strong><em><strong>your</strong></em><strong> principal</strong>.</li></ul></li></ul><ul id="40c8ac6a-aab1-80ca-83e8-d4970f31d2e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client and Customer Comparison</strong><ul id="40c8ac6a-aab1-8068-95f2-c12ce07f1eea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Understanding the difference between a customer and a client is crucial for understanding agency relationships. Here’s a quick snapshot of the difference:<ul id="40c8ac6a-aab1-80e1-a0f7-fd97b1eefb7d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>An agent works for a client.</strong></li></ul><ul id="40c8ac6a-aab1-8060-a22a-e658d4b4c205" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>An agent works with a customer.</strong></li></ul></li></ul><figure id="40c8ac6a-aab1-80f7-9d03-ef26d5a8519b" class="image" data-notion-image="Chapter%201%20-%20Agency%20Fundamentals/image%206.png" dir="ltr"><a href="Chapter%201%20-%20Agency%20Fundamentals/image%206.png"><img style="width:3334px" src="Chapter%201%20-%20Agency%20Fundamentals/image%206.png"/></a></figure><p id="40c8ac6a-aab1-80a0-a37f-d456a3eff572" class="" dir="auto">
+</p></li></ul></div></div><p id="40c8ac6a-aab1-80d4-bd4a-c695f01abeca" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

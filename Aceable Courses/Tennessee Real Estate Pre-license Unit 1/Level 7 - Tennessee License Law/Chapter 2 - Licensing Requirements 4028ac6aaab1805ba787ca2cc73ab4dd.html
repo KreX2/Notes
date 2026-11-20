@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Licensing Requirements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-805b-a787-ca2cc73ab4dd" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Licensing Requirements</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4068ac6a-aab1-8038-978d-dc2f516455c3" class="column-list" data-notion-column-list="" dir="auto"><div id="4068ac6a-aab1-8070-b282-d2ac4771cd86" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4068ac6a-aab1-80a6-b77b-ecc919e44104" class="" dir="auto"><strong>General Rule for Licensure</strong></p><ul id="4068ac6a-aab1-8024-9de8-e956289f94d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Tennessee, anyone who engages in real estate <strong>brokerage activities</strong> for another person with the expectation of receiving <strong>compensation</strong> (including fees, commissions, finder&#x27;s fees, or valuable consideration) must hold an active real estate license.</li></ul><ul id="4068ac6a-aab1-80c9-bba4-dcdde3c0c5b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Regulated Activities:</strong> Listing, selling, purchasing, negotiating exchanges, leasing/renting, collecting rent, auctioning real estate, handling timeshare intervals, offering/attempting to perform these acts, or advertising oneself as engaged in these activities.</li></ul><ul id="4068ac6a-aab1-8008-b232-d00c670b6d65" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Penalties for Unlicensed Practice</strong><ul id="4068ac6a-aab1-80a7-b6e6-e88d17beca42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Criminal Offense:</strong> Committing real estate licensing acts without a valid license is classified as a <strong>Class B misdemeanor</strong>.</li></ul><ul id="4068ac6a-aab1-8056-b5e4-c932e4eeca54" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Civil Penalties:</strong> TREC has the authority to assess civil penalties of <strong>$1,000 per violation</strong> of the statute.</li></ul></li></ul><ul id="4068ac6a-aab1-809a-8e24-e827ba74d600" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Real Estate License Categories (5 Types)</strong><ul id="4068ac6a-aab1-80f6-b00f-caf2fe47158d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker</strong></li></ul><ul id="4068ac6a-aab1-8065-a9a2-d57c98886fb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affiliate Broker</strong></li></ul><ul id="4068ac6a-aab1-8078-a527-c41d39b89db7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshare Salesperson</strong></li></ul><ul id="4068ac6a-aab1-80ce-af55-ec2003200ef8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acquisition Agent</strong></li></ul><ul id="4068ac6a-aab1-8095-a091-f61cf185597c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Vacation Lodging Services – Designated Agent</strong></li></ul></li></ul><ul id="4068ac6a-aab1-808e-897e-c17ecfd27776" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Principal Broker </strong><ul id="4068ac6a-aab1-8094-a89c-da6d32359894" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role:</strong> The &quot;big boss&quot; and head of a real estate brokerage who assumes ultimate legal liability and supervisory responsibility for all actions originating from the brokerage. Often holds a partial or full ownership stake in the firm.</li></ul><ul id="4068ac6a-aab1-8091-a368-d8ed097869e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sponsorship &amp; Supervision:</strong> Sponsors a team of licensees (affiliate brokers) who act as their agents and may also employ unlicensed assistants for administrative duties.</li></ul><ul id="4068ac6a-aab1-80a3-932e-f2e75c5663a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Independent vs. Sponsored Status:</strong><ul id="4068ac6a-aab1-803f-92c5-fee3b305daaf" class="bulleted-list" dir="auto"><li style="list-style-type:square">A <em>broker</em> can work independently without being sponsored or supervised by another license holder.</li></ul><ul id="4068ac6a-aab1-800f-8d1b-c7b4ca1d398f" class="bulleted-list" dir="auto"><li style="list-style-type:square">An <em>affiliate broker</em> must always operate under the sponsorship of a principal broker and cannot be referred to simply as a &quot;broker.&quot;</li></ul></li></ul><ul id="4068ac6a-aab1-80e7-ac0d-d21ed30a933a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal Broker Responsibilities</strong><ul id="4068ac6a-aab1-8079-836a-f8264ef18cfe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Properly supervising and training all affiliated licensees.</li></ul><ul id="4068ac6a-aab1-807b-ae14-e59757c8988a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Verifying that all affiliates maintain active licenses and continuous <strong>Errors and Omissions (E&amp;O)</strong> insurance coverage.</li></ul><ul id="4068ac6a-aab1-802f-baf3-deb8695294dc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reviewing and promptly approving transactional documents (listing agreements, purchase contracts).</li></ul><ul id="4068ac6a-aab1-80c4-87f8-f9b5d65ff616" class="bulleted-list" dir="auto"><li style="list-style-type:square">Establishing and communicating a standardized set of firm policies and procedures.</li></ul><ul id="4068ac6a-aab1-80f0-993b-cecb3465b5a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusive Compensation Rule:</strong> Only the principal broker is legally authorized to pay licensees affiliated with them.</li></ul></li></ul><ul id="4068ac6a-aab1-80f3-bdff-f615d759ea79" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Vicarious Liability</strong><ul id="4068ac6a-aab1-806b-8c6c-cfd79323c1e5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Principal brokers are subject to strict vicarious liability, meaning they can be held legally accountable for the mistakes, performance issues, or legal infractions of the affiliate brokers working under their authority.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80de-848e-da7944760c05" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate Brokers</strong><ul id="4068ac6a-aab1-80d5-8236-d4a4ff653aa7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Licensed real estate professionals who are authorized to engage in real estate activities <strong>only under the direct guidance and supervision</strong> of a sponsoring principal broker (which creates their &quot;affiliated&quot; status).</li></ul><ul id="4068ac6a-aab1-803b-b7f4-fba382266843" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensing Goal:</strong> The standard entry-level license type for individuals starting out in the profession.</li></ul><ul id="4068ac6a-aab1-80d6-8516-ed9fb5989365" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agency Relationships &amp; Contracts</strong><ul id="4068ac6a-aab1-80d6-b026-f4db8bf12c42" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broker as the Principal Party:</strong> An affiliate broker cannot contract directly with clients in their own name. All agency agreements (such as listing agreements and buyer-broker agreements) are legally established between the <strong>client and the sponsoring broker</strong>, even though the affiliate broker performs the day-to-day work and handles the transaction.</li></ul><ul id="4068ac6a-aab1-802b-b7d9-e60222d617e8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example Structure:</strong> If an affiliate broker (Alec) secures a client (Carla) to sell a house, the listing agreement is signed with the principal broker (Felicia) on behalf of the brokerage (Ace Realty).</li></ul></li></ul><ul id="4068ac6a-aab1-80b0-8a43-d87118f5fa44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compensation Rules</strong><ul id="4068ac6a-aab1-80b3-911d-d5af828db390" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusive Pay Channel:</strong> Affiliate brokers may receive compensation <strong>ONLY through their principal broker</strong>. Receiving direct payment from clients, outside parties, or other unapproved sources is a violation of license law.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80a5-a37c-dba757652c7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Timeshare Salespersons</strong><ul id="4068ac6a-aab1-804a-aa80-f48202e38a94" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Role:</strong> Professionals authorized to sell timeshares (scheduled intervals where property is used or occupied by multiple owners).</li></ul><ul id="4068ac6a-aab1-804f-bbb9-e4ee3fc32da7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensing Requirements:</strong> Must pass the specialized timeshare salesperson exam <strong>OR</strong> hold a standard real estate broker or affiliate broker license (which automatically qualifies an individual to sell timeshares).</li></ul><ul id="4068ac6a-aab1-804c-bdd4-e32108a080d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Superposition &amp; Affiliation:</strong> Must be affiliated with a brokerage firm that operates a registered timeshare program and must operate under the direct supervision of a principal broker (cannot work independently).</li></ul><ul id="4068ac6a-aab1-80c8-8fb6-c7feffdf2d42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acquisition Agents</strong><ul id="4068ac6a-aab1-803a-89eb-e1121e3e1165" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition &amp; Role:</strong> Individuals who work for a timeshare program to generate prospects—acting essentially as a &quot;timeshare solicitor&quot; by finding people interested in purchasing timeshares and encouraging them to attend sales pitches.</li></ul><ul id="4068ac6a-aab1-8074-ae14-fd7cd2e31ab1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Licensing &amp; Supervision:</strong> Requires a specific acquisition agent license and must also be supervised by a principal broker.</li></ul><ul id="4068ac6a-aab1-80fa-9592-f3a18ad3df66" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusions:</strong> Acquisition agents do not represent hotels, motels, private resorts, or standard lodging rental offices.</li></ul><ul id="4068ac6a-aab1-8017-b884-e70060d3cf6f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Dual Licensure Restriction</strong></li></ul><ul id="4068ac6a-aab1-807f-bc53-e3f6ddf6703f" class="bulleted-list" dir="auto"><li style="list-style-type:square">In Tennessee, a licensee is strictly prohibited from holding an active <strong>timeshare salesperson license</strong> and an active <strong>acquisition agent license</strong> at the same time; individuals must choose to hold only one of these two specific licenses.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80d2-930b-d471d748b26c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vacation Lodging Services (VLS) Overview</strong><ul id="4068ac6a-aab1-803f-8bbe-e2d597a82e74" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A service organization that helps property owners manage, market, and provide booking and short-term rental services for travelers seeking sleeping accommodations.</li></ul><ul id="4068ac6a-aab1-8091-9389-e8a9e163ae91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensing Requirement:</strong> The only employee within a vacation lodging service required to hold an active license is the <strong>designated agent</strong>.</li></ul><ul id="4068ac6a-aab1-803c-999a-c4fa7c3f79a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Designated Agent Licensing &amp; Qualifications</strong><ul id="4068ac6a-aab1-803c-a3ee-e092307fc9ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Educational Qualifications:</strong> Must meet TREC&#x27;s specific educational requirements to become eligible for a license.</li></ul><ul id="4068ac6a-aab1-8036-86f4-f1c82ab57e78" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>No Exam Required:</strong> Unlike standard real estate brokers or affiliate brokers, a designated agent applies directly to TREC with proof of education and <strong>does not need to pass an exam</strong>.</li></ul></li></ul><ul id="4068ac6a-aab1-8035-9b6f-ec28f6bde046" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role &amp; Supervisory Duties</strong><ul id="4068ac6a-aab1-8043-aed1-e011020f803a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Leadership Status:</strong> Must be an owner, principal, officer, or upper-level manager of the VLS firm.</li></ul><ul id="4068ac6a-aab1-80f4-b646-d1ef7b348dc8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Responsibilities:</strong> Responsible for managing and supervising all VLS employees and remaining available to staff during regular business hours (similar to the supervisory role of a principal broker).</li></ul><ul id="4068ac6a-aab1-80ad-866b-e050d9d88dad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Independent Operation:</strong> Unlike affiliate brokers, a VLS designated agent operates independently and does not require a principal broker to oversee or sponsor them.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80ad-9e4b-e4a77a8809f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Individuals Exempt from Tennessee Real Estate Licensing Law</strong><ul id="4068ac6a-aab1-8029-946a-ccfd5b788e2b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principals / Owners (FSBO):</strong> Individuals who buy, sell, lease, or exchange real estate <strong>on their own behalf</strong> (such as For Sale By Owner properties).</li></ul><ul id="4068ac6a-aab1-8008-8ad5-d08c3667c818" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Power of Attorney (POA):</strong> Someone acting under a legal power of attorney explicitly granted by a property owner or lessor (commonly utilized when an owner is ill, disabled, or absent).</li></ul><ul id="4068ac6a-aab1-803c-bd93-c2ca082355dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Attorneys at Law:</strong> An attorney performing regular legal duties (e.g., reviewing contracts), provided they are <em>not</em> performing acts that require a real estate license (such as actively listing or selling someone&#x27;s home as an agent).</li></ul><ul id="4068ac6a-aab1-8084-9bd4-fb03507c72d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fiduciaries &amp; Court Appointees:</strong> Anyone acting as a receiver, trustee, administrator, executor, or guardian, or operating under a direct court order (e.g., a bankruptcy trustee or a trustee conducting a foreclosure sale under a deed of trust&#x27;s power of sale clause).</li></ul><ul id="4068ac6a-aab1-805c-b8bf-eac1916d4463" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Resident Managers &amp; On-Site Employees:</strong> Resident managers or employees of an owner/broker whose duties are strictly limited to supervising, showing rental units, leasing, or collecting security deposits and rents (note: <em>negotiating</em> lease terms, rent amounts, or deposits still requires a license).</li></ul><ul id="4068ac6a-aab1-80da-a618-d4d0ce378073" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Corporate Officers:</strong> A domestic or foreign corporation acting through an authorized officer, provided the real estate transaction is strictly <strong>incidental</strong> to managing, leasing, selling, or disposing of corporate-owned real estate (does not apply if compensation is contingent upon the value of the real estate).</li></ul><ul id="4068ac6a-aab1-80f6-aa0f-e7abd72ccd61" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Principles of Exemptions</strong><ul id="4068ac6a-aab1-80db-88bf-fcd74d7c3c7e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Each state maintains its own specific statutory list of exemptions.</li></ul><ul id="4068ac6a-aab1-807b-8884-d6ed0f57e9a7" class="bulleted-list" dir="auto"><li style="list-style-type:square">In general, individuals acting as a legal surrogate principal, carrying out official judicial/fiduciary duties, or government officials conducting official acts are exempt from standard real estate licensing requirements.</li></ul></li></ul><ul id="4068ac6a-aab1-8056-9021-e9a872af97db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Breakdown: Licensing Exemptions Analysis</strong><ul id="4068ac6a-aab1-800f-8c5f-e1de851bcf8b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Emily (Selling her own home):</strong> <strong>Exempt.</strong> Individuals buying, selling, or leasing real estate on their own behalf (FSBO) do not require a real estate license.</li></ul><ul id="4068ac6a-aab1-800e-9f6a-f3e17f3c2784" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Billy (Escrow agent) &amp; María (Title insurance agent):</strong> <strong>Exempt.</strong> Professionals handling escrow, closing, and title insurance duties operate under their own distinct industry regulations and do not need real estate licenses.</li></ul><ul id="4068ac6a-aab1-80bd-bd1b-ecf22cdb7652" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Richard (Lawyer):</strong> <strong>Exempt.</strong> An attorney performing standard legal duties—such as reviewing sales contracts for a client—is exempt from licensing, provided they are not acting as a traditional real estate broker or agent.</li></ul><ul id="4068ac6a-aab1-80ec-9b85-c0e4867e1064" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gil (Apartment manager):</strong> <strong>Exempt.</strong> Resident managers or on-site employees whose duties are limited to showing units, leasing, and collecting rents/security deposits for their employer do not require a real estate license.</li></ul><ul id="4068ac6a-aab1-80bc-8893-c7391ab215c7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Hettie (Listing and selling Emily&#x27;s mother&#x27;s home):</strong> <strong>Requires a License.</strong> Because Hettie is performing real estate brokerage activities (listing and selling property) for another person with the expectation of compensation, she must hold an active real estate license.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-808d-881c-e39266a3bdb4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Requirements (All License Types)</strong><ul id="4068ac6a-aab1-801b-b994-c06dea8532e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must possess a high school diploma or GED certificate.</li></ul><ul id="4068ac6a-aab1-8022-9684-f2efd1b16fb3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must be at least 18 years old.</li></ul><ul id="4068ac6a-aab1-80c1-abc1-d58346bd7883" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must submit an application and pay the required licensing fee.</li></ul><ul id="4068ac6a-aab1-80ba-8d9e-cee30bad488b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Must meet citizenship or residency status criteria: U.S. citizen, a qualified alien under Tennessee&#x27;s Eligibility Verification for Entitlements Act, or a foreign national not physically present in the U.S.</li></ul><ul id="4068ac6a-aab1-800e-9fa6-c3b8ef9ec55d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker License Requirements</strong><ul id="4068ac6a-aab1-80fa-b66b-fa0c549f50e2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Experience:</strong> Must hold an active real estate license for at least 3 years (if licensed as an affiliate broker after May 12, 1988) or at least 2 years (if licensed before May 12, 1988, or holding a BA with a real estate major).</li></ul><ul id="4068ac6a-aab1-80b6-87e9-c3d7b0356923" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Education:</strong> Successfully complete 120 hours of approved coursework (including a mandatory 30-hour office or brokerage management course).</li></ul><ul id="4068ac6a-aab1-80bd-9be0-d0ba90488dbf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exam:</strong> Pass the national and state licensing exam with a score of at least <strong>75%</strong>.</li></ul><ul id="4068ac6a-aab1-80d3-8160-fad107f2fe9f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Residency:</strong> Must be a resident of Tennessee for at least 45 days.</li></ul></li></ul><ul id="4068ac6a-aab1-8002-9c06-eaabb7a2c47b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affiliate Broker License Requirements</strong><ul id="4068ac6a-aab1-80d2-a1ec-d9fd3f61aff0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Experience:</strong> No prior real estate experience required.</li></ul><ul id="4068ac6a-aab1-80d6-b331-d0b049345c7a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Education:</strong> Complete 90 hours of pre-licensing education: 60 hours of Real Estate Principles (before the exam) and 30 hours for New Affiliates (before license application).</li></ul><ul id="4068ac6a-aab1-80df-82b1-c32af19ab394" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exam:</strong> Pass the national and state licensing exam with at least <strong>70%</strong>.</li></ul><ul id="4068ac6a-aab1-80e3-bb2f-cad6f209d005" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Residency:</strong> Must be a resident of Tennessee for at least 45 days.<figure id="4068ac6a-aab1-806b-be36-ee3710798d65" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image.png"><img style="width:432px" src="Chapter%202%20-%20Licensing%20Requirements/image.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-80fb-b4da-cd105d9c7502" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timeshare Salesperson Requirements</strong><ul id="4068ac6a-aab1-8005-90fb-f228d74ab7ec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Experience:</strong> No prior real estate experience required.</li></ul><ul id="4068ac6a-aab1-807b-9b44-e2f6dd22dc85" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Education:</strong> Complete a 30-hour timeshare pre-licensing program.</li></ul><ul id="4068ac6a-aab1-8004-bf86-fb6ce90c6604" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exam:</strong> Pass the state and national licensing exam with at least <strong>70%</strong> within 12 months before applying.</li></ul><ul id="4068ac6a-aab1-8030-b8ab-d388f940a96d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Supervision &amp; Endorsement:</strong> Submit a form where the principal broker attests to the applicant&#x27;s honesty, trustworthiness, and proper supervision/training.</li></ul><ul id="4068ac6a-aab1-808b-9ac8-d1442c2d5acd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Residency:</strong> Must be a resident of Tennessee.</li></ul></li></ul><ul id="4068ac6a-aab1-80f7-a770-e363b5e4af23" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acquisition Agent Requirements</strong><ul id="4068ac6a-aab1-80a8-8ec4-e72b5baaff27" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Experience:</strong> No prior real estate experience required.</li></ul><ul id="4068ac6a-aab1-809d-8da5-ec9b16f563b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exam:</strong> Pass the same state and national licensing exam as timeshare salespersons with at least <strong>70%</strong> within 12 months before application (can use this exam to apply for a timeshare salesperson license without retesting within 12 months).</li></ul></li></ul><ul id="4068ac6a-aab1-8040-8c47-d8b45608fe02" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Designated Agent for Vacation Lodging Services (VLS) Requirements</strong><ul id="4068ac6a-aab1-806b-be56-e328c84f36c7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Status:</strong> Must prove ownership, principal, officer, or upper-level manager status within a VLS firm.</li></ul><ul id="4068ac6a-aab1-8028-a31b-c11c9bf75ddc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Education:</strong> Successfully complete an <strong>8-hour</strong> approved pre-licensing program.</li></ul><ul id="4068ac6a-aab1-8043-b858-c1dd4ff7545c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exam:</strong> <strong>No exam required.</strong></li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80c0-91aa-c6148111c7e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Resident Candidates with Out-of-State Licenses</strong><ul id="4068ac6a-aab1-809f-b712-f4c63c2c4d47" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Substitutions &amp; Waivers:</strong> Individuals holding or formerly holding an out-of-state real estate license who become Tennessee residents may qualify to have their prior out-of-state education, national exam portion, and broker experience count toward Tennessee requirements.</li></ul><ul id="4068ac6a-aab1-8072-af4d-e1f287f13dea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory State Exam:</strong> Regardless of any waivers granted for education or the national exam, out-of-state applicants <strong>must still take and pass the Tennessee-specific portion</strong> of the licensing exam.</li></ul><ul id="4068ac6a-aab1-80b3-bc8f-caeee95e23b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Process:</strong> Applicants must submit a licensure history worksheet and required documents to TREC for evaluation, followed by the formal license application.</li></ul><ul id="4068ac6a-aab1-80ab-a976-dca06b164468" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Requirement:</strong> The brokerage firm and principal broker with whom the licensee affiliates must hold active Tennessee real estate licenses.</li></ul><ul id="4068ac6a-aab1-805c-b4a7-d4d90297c4ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nonresident Candidates with Out-of-State Licenses</strong><ul id="4068ac6a-aab1-8072-810a-db9b20590324" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Procedure:</strong> Follows the same pathway as resident out-of-state applicants—certain out-of-state requirements may be waived, but the candidate must pass the Tennessee state exam and complete the application process.</li></ul><ul id="4068ac6a-aab1-801a-aefc-de871cf92dec" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Consent to Suits:</strong> Nonresident applicants must sign a <strong>Consent to Suits</strong> form. This legal document ensures that aggrieved parties can file and pursue lawsuits against the nonresident licensee directly within Tennessee, rather than having to travel to the licensee&#x27;s home state.</li></ul></li></ul><ul id="4068ac6a-aab1-809a-823f-fda8c81db07a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>License Recognition vs. Reciprocity</strong><ul id="4068ac6a-aab1-80d4-9bd3-f08ced5693a9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recognition Only:</strong> Tennessee recognizes out-of-state education and licensing history by waiving specific hurdles, but it <strong>does not offer full reciprocity</strong> (where holding a license in one state automatically grants a license in another without testing or evaluation).</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8075-bcfa-c7558d829e66" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview of the Tennessee Affiliate Broker Licensing Exam</strong><ul id="4068ac6a-aab1-8009-8310-c18f8c5d22c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Test Administrator:</strong> Administered by <strong>PSI</strong> (PSI Services LLC) in accordance with guidelines outlined in the PSI Candidate Information Bulletin.</li></ul><ul id="4068ac6a-aab1-800a-9e04-cecadf588428" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Structure &amp; Format:</strong> Divided into two distinct sections administered via multiple-choice questions:<ul id="4068ac6a-aab1-8009-ba58-d4704c9d0c56" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>National Section:</strong> 80 questions, with <strong>160 minutes</strong> (2 hours and 40 minutes) allotted. Requires a minimum score of <strong>70%</strong> (56 correct answers) to pass.</li></ul><ul id="4068ac6a-aab1-80df-a2e7-d30172458f80" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>State Section:</strong> 40 questions, with <strong>80 minutes</strong> (1 hour and 20 minutes) allotted. Requires a minimum score of <strong>70%</strong> (28 correct answers) to pass.</li></ul></li></ul><ul id="4068ac6a-aab1-80ec-9cff-e60188cdc1fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Total Time &amp; Volume:</strong> 120 graded questions across 240 minutes (4 hours total), alongside 5 to 10 unscored experimental questions.</li></ul><ul id="4068ac6a-aab1-80c3-9529-d7464fc1d233" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Test Day Protocols &amp; Qualifying Questions</strong><ul id="4068ac6a-aab1-80fd-b33e-c3f6b075a3a0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pre-Exam Inquiries:</strong> Test-takers begin by answering six administrative screening questions regarding prior professional licenses, past Tennessee real estate licensure, age (minimum 18), criminal history (felonies or misdemeanors involving theft of money, services, or property requiring a 2-year buffer past probation/parole/incarceration expiration), and disciplinary sanctions by any occupational body.</li></ul><ul id="4068ac6a-aab1-801b-9617-e45a71a06660" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Identification Requirements:</strong> Candidates must bring a valid, government-issued photo ID (such as a state driver&#x27;s license or ID card) displaying their signature exactly matching their registration name.</li></ul><ul id="4068ac6a-aab1-8080-9112-d508a2426be9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Test Centers:</strong> Located across Tennessee (including Chattanooga, Dyersburg, Jackson, Johnson City, Knoxville, Memphis, and Nashville) or via secure remote online proctoring. ADA accommodations are available through prior registration.</li></ul></li></ul><ul id="4068ac6a-aab1-8020-b596-e1b22dbc7872" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Retake Policies &amp; Scoring Rules</strong><ul id="4068ac6a-aab1-80d1-8531-c5ec7c3f3b08" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Partial Passes:</strong> If a candidate passes one section and fails the other, they only need to retake and pass the failed section. A passing score on one section remains valid for two retakes of the failed section or <strong>one year</strong>, whichever comes first.</li></ul><ul id="4068ac6a-aab1-80a7-a84e-f7298bb3ca6d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Retake Timing:</strong> After a first failed attempt, a candidate can retake the exam as soon as desired, though scheduling cannot occur until the calendar day following the test. After a <strong>second failed attempt</strong>, candidates must observe a mandatory <strong>30-day waiting period</strong> between subsequent retakes.</li></ul></li></ul><ul id="4068ac6a-aab1-80e3-b9c9-e4f9acbb0621" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Post-Exam Deadlines &amp; Next Steps</strong><ul id="4068ac6a-aab1-80b2-8146-fb1f356923c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Application Deadline:</strong> Once both sections of the exam are successfully passed, the applicant has a strict <strong>six-month window</strong> to submit their initial license application; failing to do so requires re-testing and re-applying.</li></ul><ul id="4068ac6a-aab1-80f9-b899-fa1b525d1f9c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Final Licensing Prerequisites:</strong> Before license issuance, applicants must complete the remaining 30-hour New Affiliates course, submit digital fingerprints for background checks, provide proof of Errors and Omissions (E&amp;O) insurance, and apply through the official online state portal <figure id="4068ac6a-aab1-8070-918f-deb573a43560" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image%201.png"><img style="width:336px" src="Chapter%202%20-%20Licensing%20Requirements/image%201.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8039-bfb6-d01e2d975be4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate Broker License Application Requirements</strong><ul id="4068ac6a-aab1-805c-b35f-edb1a4f7cf5e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Documentation:</strong><ul id="4068ac6a-aab1-807b-9fca-d8d493725553" class="bulleted-list" dir="auto"><li style="list-style-type:square">Official application form with a photograph (obtained at the testing center upon passing the exam).</li></ul><ul id="4068ac6a-aab1-8023-a5da-c1dd2dfadb96" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of high school graduation or GED certificate.</li></ul><ul id="4068ac6a-aab1-80f7-974e-eabaf85e9f7b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of completion for both the 60-hour Real Estate Principles course and the 30-hour New Affiliates course.</li></ul><ul id="4068ac6a-aab1-80fd-8956-dce7f60dfe05" class="bulleted-list" dir="auto"><li style="list-style-type:square">Application fee payment of <strong>$91.00</strong>.</li></ul><ul id="4068ac6a-aab1-80d3-b77d-caf8b85ae005" class="bulleted-list" dir="auto"><li style="list-style-type:square">Completed Eligibility Verification Form (confirming U.S. citizenship, qualified noncitizen status, or foreign nationality not physically present in the U.S.).</li></ul><ul id="4068ac6a-aab1-80e2-b922-ee6f3c3869ef" class="bulleted-list" dir="auto"><li style="list-style-type:square">Electronic fingerprint receipt for criminal background checks conducted by the FBI and the Tennessee Bureau of Investigation (TBI).</li></ul></li></ul><ul id="4068ac6a-aab1-8076-9be1-d0495cc8fa58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Broker Affiliation Requirements (for an Active License):</strong><ul id="4068ac6a-aab1-80d2-85a5-d92f212c4a8b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of an active <strong>Errors and Omissions (E&amp;O)</strong> insurance policy.</li></ul><ul id="4068ac6a-aab1-80e8-906f-dc582d8c7390" class="bulleted-list" dir="auto"><li style="list-style-type:square">Proof of formal affiliation with a licensed Tennessee real estate firm located within <strong>50 miles</strong> of the applicant&#x27;s residence.</li></ul><ul id="4068ac6a-aab1-800e-8abe-ed7f2a42250b" class="bulleted-list" dir="auto"><li style="list-style-type:square">A sworn statement from the principal broker attesting to the applicant&#x27;s honesty and trustworthiness, along with an assurance of continued supervision and training.</li></ul><ul id="4068ac6a-aab1-80aa-a579-ff2bd0f90ad4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Certification from the principal broker confirming the applicant has completed the mandatory 30-hour new affiliate training program.</li></ul><ul id="4068ac6a-aab1-802a-9f01-ffe2c6fd9665" class="bulleted-list" dir="auto"><li style="list-style-type:square">The principal broker&#x27;s signature on the license application.</li></ul></li></ul><ul id="4068ac6a-aab1-8023-aeb1-f88cfcfde7dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inactive Status Option:</strong> Applicants who have not yet secured a sponsoring broker when passing the exam may still apply and receive an <strong>inactive license</strong>.</li></ul><ul id="4068ac6a-aab1-8064-86df-e663cc28ee07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prior Convictions &amp; Disciplinary History Protocol</strong><ul id="4068ac6a-aab1-801a-9acc-f31e110fcc88" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Eligibility Timeframe:</strong> Must be at least two years past the date of expiration for probation, parole, conviction, or release from incarceration for any felony or misdemeanor involving the theft of money, services, or property.</li></ul><ul id="4068ac6a-aab1-8012-9ae4-e7abad358467" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Required Filings &amp; Documents:</strong><ul id="4068ac6a-aab1-80e3-9428-cb51b170891e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Application for Decision Regarding Prior Criminal Conviction(s) and/or Disciplinary Sanction(s)</em> (can be submitted prior to taking pre-licensing education or the exam).</li></ul><ul id="4068ac6a-aab1-8085-906a-f993898f1486" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Three character references.</li></ul><ul id="4068ac6a-aab1-80f7-b29a-c90e7fa3f35f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Certified copies of court dispositions or official disciplinary documents.</li></ul><ul id="4068ac6a-aab1-80c5-ac60-f01c14574921" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Personal appearance before TREC (accompanied by the prospective principal broker) so the Commission can determine licensure eligibility.</li></ul></li></ul><ul id="4068ac6a-aab1-80a2-802f-f80a709ce214" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The 10-Year Rule:</strong> The submission of these specific forms, character references, and court documents is only required if the guilty plea, conviction, or formal sanction occurred within the last <strong>10 years</strong>.</li></ul></li></ul><ul id="4068ac6a-aab1-80e5-adf3-ed18b0fa1503" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Denial of Licensure</strong><ul id="4068ac6a-aab1-803b-a14f-d59797db77a4" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a license application is officially denied by TREC, the applicant must wait a mandatory <strong>six months</strong> before becoming eligible to reapply.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-808b-a3df-ed4a8817dba8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General License Renewal Process</strong><ul id="4068ac6a-aab1-807c-ab09-f33812fe2ad3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Continuing Education (CE):</strong> Licensees must complete all mandated continuing education courses within the designated renewal period.</li></ul><ul id="4068ac6a-aab1-80da-888a-c8ece66003f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Renewal Submission:</strong> Licensees must deliver renewal paperwork and fees to TREC at least <strong>60 days prior</strong> to the license expiration date.</li></ul><ul id="4068ac6a-aab1-808b-8a80-dc8ce268a882" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Brokers Renewal Requirements</strong><ul id="4068ac6a-aab1-8032-aebb-eff9fa08c4c2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Initial Post-Licensing Period:</strong> Must complete <strong>120 hours</strong> of additional approved coursework within the first three years of licensure.</li></ul><ul id="4068ac6a-aab1-80cd-9be4-cac204b01bef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ongoing CE:</strong> After the initial period, brokers must complete <strong>16 hours</strong> of continuing education every two years, which must include <strong>6 hours of TREC-determined &quot;core&quot; coursework</strong>.</li></ul><ul id="4068ac6a-aab1-80db-b27c-c31f034d5fe0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemptions:</strong> Brokers licensed before January 1, 2005, and those who placed their license in a temporarily retired (inactive) status for the entire renewal period, are exempt from CE.</li></ul></li></ul><ul id="4068ac6a-aab1-8051-b8b8-db0b15e8d7cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affiliate Brokers Renewal Requirements</strong><ul id="4068ac6a-aab1-8008-b0da-ea2436cf59b6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ongoing CE:</strong> Must complete <strong>16 hours</strong> of continuing education every two years, including <strong>6 hours of TREC-determined &quot;core&quot; coursework</strong>.</li></ul><ul id="4068ac6a-aab1-8016-a1cf-caa9913afe07" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Course Restrictions:</strong> Affiliate brokers cannot use the broker-level office/management course to fulfill their CE requirements.</li></ul><ul id="4068ac6a-aab1-809e-bb92-e77fe18e2c2a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemptions:</strong> Affiliate brokers licensed before July 1, 1980, and those whose licenses were retired for the entire period, are exempt from CE.</li></ul></li></ul><ul id="4068ac6a-aab1-8074-94f6-ebdeefd14821" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Specialty License Renewal Requirements</strong><ul id="4068ac6a-aab1-803a-9be9-e1df4f9825cd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Timeshare Salesperson:</strong> Must submit a certification from their broker every two years verifying the completion of the required 30-hour pre-licensing training program.</li></ul><ul id="4068ac6a-aab1-804a-816d-c40890e71132" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Acquisition Agent:</strong> No continuing education requirements.</li></ul><ul id="4068ac6a-aab1-80d2-a16c-fdd44e0f2e89" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Designated Agent for Vacation Lodging Services:</strong> Must submit a certification from the firm every two years confirming completion of the required 8-hour training program.</li></ul></li></ul><ul id="4068ac6a-aab1-805c-817f-dcfa908d8b0f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Military Service Provisions</strong><ul id="4068ac6a-aab1-805a-bb6d-ff726b63cd2c" class="bulleted-list" dir="auto"><li style="list-style-type:square">National Guard or U.S. military reservists called to active duty whose real estate licenses expire during active deployment are granted renewal eligibility upon release from active duty:</li></ul><ul id="4068ac6a-aab1-8038-b94b-df3dc17f4e52" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Without</strong> paying late fees or associated penalties.</li></ul><ul id="4068ac6a-aab1-808f-80c2-f3b18ec79bb8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Without</strong> needing to complete continuing education credits for that cycle.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80cb-a5d0-d047e4d5cc70" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee-Requested Statuses</strong><ul id="4068ac6a-aab1-80c7-9076-eec8511fd6ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Active Status:</strong> Requires meeting all licensing and renewal conditions, including maintaining a mandatory affiliation with a sponsoring principal broker to legally perform real estate activities.</li></ul><ul id="4068ac6a-aab1-802a-8a9a-eff475ad213d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Retired Status:</strong><ul id="4068ac6a-aab1-803f-9701-fbb0c510f7b5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees (firms, brokers, affiliate brokers, timeshare salespersons, or acquisition agents) can temporarily retire by submitting a written request, current mailing address, and change-of-status fee to TREC.</li></ul><ul id="4068ac6a-aab1-80e7-acc6-c2497680a816" class="bulleted-list" dir="auto"><li style="list-style-type:square">Retired licensees are <strong>exempt from E&amp;O insurance</strong> and, if retired for the entire renewal period, <strong>exempt from continuing education (CE)</strong>.</li></ul><ul id="4068ac6a-aab1-8025-bcd6-e99f494280ae" class="bulleted-list" dir="auto"><li style="list-style-type:square">Must continue paying the license renewal fee to maintain retired status and must complete CE requirements before returning to active status. Performing real estate activities while retired is strictly prohibited.</li></ul></li></ul><ul id="4068ac6a-aab1-804d-bcdc-d7b98a72fc60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>TREC-Imposed Statuses</strong><ul id="4068ac6a-aab1-8036-aacb-d7982d6124a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Problem Status:</strong> Applied when there is an unresolved material issue, such as failing to notify TREC of an address or brokerage change.</li></ul><ul id="4068ac6a-aab1-800b-b974-eb2ba36bd923" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broker Release Status:</strong><ul id="4068ac6a-aab1-80ad-97bc-ec88b3fc6bab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Covers the transitional gap between being released from one firm and affiliating with a new one.</li></ul><ul id="4068ac6a-aab1-804a-8eb2-e5efd2beb039" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Licensee has <strong>10 days</strong> from the release date to either affiliate with a new firm or place the license on retired status. Real estate activities are prohibited during this window.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-805d-911c-c9e7c8e2a1f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expired-Grace Status:</strong><ul id="4068ac6a-aab1-8053-98ed-c21e94963aa0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Occurs within <strong>60 days</strong> following license expiration.</li></ul><ul id="4068ac6a-aab1-80e1-8c06-f9f26645efdb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees can restore their license to active status by completing requirements and paying penalties; failure to act within 60 days results in full expiration, requiring reapplication. (Medical waivers are available for health-related delays with supporting documentation).</li></ul></li></ul><ul id="4068ac6a-aab1-80e2-ac02-c63abcb09525" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expired Status:</strong><ul id="4068ac6a-aab1-8028-864d-de9829a88a49" class="bulleted-list" dir="auto"><li style="list-style-type:square">Applies when a license has expired beyond the grace period.</li></ul><ul id="4068ac6a-aab1-80f3-8ee7-f2a319745086" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reinstatement Fees:</strong> Lapsed 60 days or longer incurs a penalty of <strong>$50 per 30-day period</strong>; expired for more than 120 days increases to <strong>$100 per 30-day period</strong>.</li></ul><ul id="4068ac6a-aab1-8028-883d-eda72a6fb52f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>One-Year Rule:</strong> If a license remains expired for <strong>more than one year</strong>, the individual <strong>MUST retest and reapply</strong> to meet current licensing requirements.<figure id="4068ac6a-aab1-800c-afd2-ce0fc183126a" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image%202.png"><img style="width:384px" src="Chapter%202%20-%20Licensing%20Requirements/image%202.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-8098-b8e2-f62b1a1757b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Suspended Status:</strong> A temporary disciplinary measure (or consequence of delinquent student loan/child support payments) lasting a set period or until specific conditions are met. Real estate activities are prohibited.</li></ul><ul id="4068ac6a-aab1-8080-aeb1-c0542547dab7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revoked Status:</strong> Permanent loss of a license as a disciplinary penalty, though individuals may petition TREC for future reinstatement. Real estate activities are strictly prohibited.</li></ul></li></ul><ul id="4068ac6a-aab1-8064-ad63-eb13891f7ed9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Administrative Changes &amp; Reporting to TREC</strong><ul id="4068ac6a-aab1-8038-8b17-df1c74083e21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Change of Name:</strong> Licensees must provide official legal documentation (such as a marriage certificate or driver&#x27;s license) to TREC to update their official records.</li></ul><ul id="4068ac6a-aab1-80a5-832a-e36cff0fbd69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Change of Status (Retirement Process):</strong> To temporarily retire a license, a licensee must submit a written request, pay the required fee, continue paying renewal fees to keep the retired status active, and complete all required continuing education (CE) before reactivating. Real estate activities are strictly prohibited while retired.</li></ul><ul id="4068ac6a-aab1-80cf-a356-f68a58755ca0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Change of Affiliation (Switching Brokerages):</strong><ul id="4068ac6a-aab1-800b-8a2a-c6e88bab0737" class="bulleted-list" dir="auto"><li style="list-style-type:square">The licensee must obtain a formal release from their current brokerage to terminate supervisory responsibilities.</li></ul><ul id="4068ac6a-aab1-8092-9899-ff2138ac495f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Required paperwork and transfer actions must be completed within <strong>10 days</strong> of release; otherwise, the license status changes to inactive/broker release status.</li></ul><ul id="4068ac6a-aab1-80a7-b529-c194fcc54147" class="bulleted-list" dir="auto"><li style="list-style-type:square">The former broker must immediately sign and date the change-of-affiliation form, submit it to TREC, and pay the transfer fee.</li></ul><ul id="4068ac6a-aab1-8012-848a-e821d5997a3d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Real estate activity is prohibited during the transition window.</li></ul><ul id="4068ac6a-aab1-80bc-956a-fd3141c32075" class="bulleted-list" dir="auto"><li style="list-style-type:square">Once affiliated with a new firm, the license must be physically or digitally displayed in the principal broker&#x27;s main place of business.</li></ul><ul id="4068ac6a-aab1-8084-a67c-fdac1e768660" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Listing Ownership:</strong> Listings belong exclusively to the brokerage and the principal broker; they cannot be taken by the affiliate broker when switching firms.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8032-a463-cb1670adb860" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Errors &amp; Omissions (E&amp;O) Insurance Requirement</strong><ul id="4068ac6a-aab1-80bc-ab18-fdf4edf5a8cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Coverage:</strong> Required for all Tennessee real estate license types <strong>except</strong> acquisition agents.</li></ul><ul id="4068ac6a-aab1-80da-b579-f7f87a065042" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose:</strong> Protects licensees against financial losses resulting from accidental errors, mistakes, or omissions committed during real estate transactions.</li></ul><ul id="4068ac6a-aab1-80f3-9bd8-c2f70328a49b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusions:</strong> Does <strong>not</strong> cover intentional acts, fraud, or deliberate wrongdoing.</li></ul><ul id="4068ac6a-aab1-8069-8ac1-dfd8647db5da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Methods of Obtaining Coverage</strong><ul id="4068ac6a-aab1-8038-8f73-f06b1eb795da" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>TREC Program:</strong> Licensees can opt into TREC&#x27;s group insurance program (and may purchase additional supplemental coverage through their brokerage).</li></ul><ul id="4068ac6a-aab1-806e-8157-f2a3d4b0f9e9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Independent Policy:</strong> Licensees can secure an independent policy, provided it strictly meets all state requirements established by TREC.</li></ul></li></ul><ul id="4068ac6a-aab1-80a8-9813-dcf244a6ba04" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcement &amp; Status Rules</strong><ul id="4068ac6a-aab1-8092-8589-e76cbe4a798b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>License Suspension:</strong> Failure to obtain, maintain, or renew E&amp;O insurance results in the immediate suspension of the real estate license.</li></ul><ul id="4068ac6a-aab1-80ba-97c4-e862c1228392" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Retired Status Exception:</strong> Licensees whose status is officially retired are <strong>exempt</strong> from carrying E&amp;O insurance until they formally reactivate their license.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-80e2-87df-c9b06ff09f84" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Firm Licensure Basics</strong><ul id="4068ac6a-aab1-809b-a885-c985ec678df3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Requirement:</strong> Every real estate office and branch office must hold an active real estate firm license.</li></ul><ul id="4068ac6a-aab1-80f9-9438-e6686eb47b63" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Leadership &amp; Location:</strong> Every firm requires a principal broker and a physical office location with adequate space to accommodate affiliated licensees.</li></ul><ul id="4068ac6a-aab1-8034-8d57-fc43a63d1e10" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Zoning Compliance:</strong> When applying for a firm license or changing addresses, the firm must verify that the office conforms to local zoning laws and ordinances.</li></ul><ul id="4068ac6a-aab1-80b6-b933-f2898e1c0ed1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>E&amp;O Exemption:</strong> Firm licenses do not carry Errors &amp; Omissions (E&amp;O) insurance requirements—E&amp;O coverage applies solely to individuals.</li></ul><ul id="4068ac6a-aab1-80cd-8582-da0e7e91d989" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signage &amp; License Display</strong><ul id="4068ac6a-aab1-802d-9769-ed6fa1b7304c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Office Signage:</strong> Brokers must display a sign outside the office clearly indicating that the business is engaged in real estate, including the name of the firm. The name of an individual licensee on the sign cannot appear larger than the name of the firm.</li></ul><ul id="4068ac6a-aab1-807d-a6d3-d84117d53c67" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>License Display:</strong> The principal broker&#x27;s license and the licenses of all affiliate brokers must be prominently displayed in the broker&#x27;s main place of business.</li></ul></li></ul><ul id="4068ac6a-aab1-809e-9d9b-e6e65a0cfee4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Change of Address</strong><ul id="4068ac6a-aab1-8042-bd43-fc5eee89e440" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Firm Obligations:</strong> The firm must submit the appropriate change-of-address form and fee to TREC.</li></ul><ul id="4068ac6a-aab1-8082-ab00-ef5db04ed5f3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Licensee Obligations:</strong> All affiliated licensees of the firm must notify TREC of the move within <strong>10 days</strong> and pay the required change-of-address fee.</li></ul></li></ul><ul id="4068ac6a-aab1-8057-82ad-e7ec18c453fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Branch Offices &amp; Two-Year Renewal</strong><ul id="4068ac6a-aab1-804f-ac8b-c4c6971bfd10" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Branch Criteria:</strong> Branch offices require a separate firm license and must meet all standard office requirements. A location is legally considered a branch office if it is advertised to the public, utilizes a mail drop, or invites/solicits telephone calls.</li></ul><ul id="4068ac6a-aab1-80e9-b3cf-fd18d682cba5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Two-Year Renewal &amp; Escrow:</strong> Firm licenses (including branch offices) must be renewed every two years. Upon renewal, the firm must provide proof of an established escrow account that fully complies with TREC regulations.</li></ul></li></ul></li></ul><p id="4068ac6a-aab1-8056-b873-fa5f53ff687f" class="" dir="auto">
+</p><p id="4068ac6a-aab1-8082-a35b-d0b8b40d5883" class="" dir="auto">
+</p></div><div id="4068ac6a-aab1-80b9-9bfe-cbf5e31af78f" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4068ac6a-aab1-809e-a800-e6ff1fabec08" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4068ac6a-aab1-8013-98bb-f03638351166" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>affiliate broker</strong> - a licensee operating under the sponsorship, authority, and guidance of (and on behalf of) their principal broker in a brokerage environment</li></ul><ul id="4068ac6a-aab1-8027-a5a2-f927a2f3202d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>broker</strong> - a licensee who holds a broker license and who engages in an activity enumerated in the license law for a commission or other valuable consideration</li></ul><p id="4068ac6a-aab1-8027-997e-e8123c0d0a8e" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><figure id="4068ac6a-aab1-8052-8481-f50bdce7c403" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image%203.png"><img style="width:1700px" src="Chapter%202%20-%20Licensing%20Requirements/image%203.png"/></a></figure><p id="4068ac6a-aab1-8015-98f5-fb549ae2a21b" class="" dir="auto"><strong>Acts That Require a License</strong></p><ul id="4068ac6a-aab1-80a9-83d1-e22389cdb41e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">In Tennessee, you must have a real estate license if you engage in brokerage activities. That means any person who does any of the below with the<strong> expectation of receiving compensation</strong>:<ul id="4068ac6a-aab1-8016-80e5-cda2952c8de2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Listing real estate</li></ul><ul id="4068ac6a-aab1-805e-a90c-f28326e9bb54" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Selling real estate</li></ul><ul id="4068ac6a-aab1-80f8-949b-c0404e3a4b77" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Purchasing real estate</li></ul><ul id="4068ac6a-aab1-80ca-a9b8-c1d3ef8d27ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Negotiating the exchange of real estate</li></ul><ul id="4068ac6a-aab1-8041-a968-ef176b1295b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Leasing or renting</li></ul><ul id="4068ac6a-aab1-800b-9652-dc4af2de8f2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Performing any of the above for any timeshare interval (as defined in the Tennessee Timeshare Act)</li></ul><ul id="4068ac6a-aab1-80c3-be6b-debd06807e31" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Collecting rent</li></ul><ul id="4068ac6a-aab1-8033-8d1b-f341e396cd0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Auctioning real estate</li></ul><ul id="4068ac6a-aab1-8079-922e-dc83bb85371c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Offering or attempting to do any of the items in this list</li></ul><ul id="4068ac6a-aab1-808a-8c5e-e0958d6bd33c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Advertising or presenting as engaged in any of the items on this list</li></ul></li></ul><ul id="4068ac6a-aab1-80d7-b9ae-e03784ea5d71" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exemptions to Licensure Requirements</strong><ul id="4068ac6a-aab1-8068-97b2-f5c07575debf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Those who sell, purchase, or lease real estate on their own behalf</li></ul><ul id="4068ac6a-aab1-80f5-b950-fd74f0430066" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An individual acting under power of attorney from the property owner or lessor</li></ul><ul id="4068ac6a-aab1-808d-aa34-f880331f7812" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An attorney performing duties as an attorney</li></ul><ul id="4068ac6a-aab1-80d1-91f2-d976ba9d8708" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Anyone acting as a receiver, trustee, administrator, executor, or guardian, or while acting under a court order</li></ul><ul id="4068ac6a-aab1-804d-99b4-eba32bf446b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Resident managers or employees of an owner or broker (the manager&#x27;s duties are limited to supervision, showing units, leasing, or collecting security deposits and rents)</li></ul><ul id="4068ac6a-aab1-8009-a8cd-c10eebb634d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A domestic or foreign corporation acting through an officer who is authorized to engage in a real estate transaction (the transaction must be incidental to the management, lease, sale, or other disposition of real estate owned by the corporation)</li></ul></li></ul><p id="4068ac6a-aab1-8051-8e16-c084b3923b10" class="" dir="auto"><strong>Comparison: Brokers and Affiliate Brokers</strong></p><figure id="4068ac6a-aab1-80ec-9e7d-f27ab692e26f" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image%204.png"><img style="width:413.796875px" src="Chapter%202%20-%20Licensing%20Requirements/image%204.png"/></a></figure><p id="4068ac6a-aab1-80cf-8805-d66f73cd4195" class="" dir="auto"><strong>Affiliate Broker Application Process</strong></p><figure id="4068ac6a-aab1-803c-8941-e6e6f9135d77" class="image" data-notion-image="Chapter%202%20-%20Licensing%20Requirements/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Licensing%20Requirements/image%205.png"><img style="width:1100px" src="Chapter%202%20-%20Licensing%20Requirements/image%205.png"/></a></figure><p id="4068ac6a-aab1-80a3-b563-c51326776088" class="" dir="auto"><strong>License Renewal</strong></p><ul id="4068ac6a-aab1-802b-8dad-e20784b51ca4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Broker: </strong>120 hours of additional approved coursework within first three years of licensure. After that, 16 hours of continuing education every two years (includes six hours of &quot;core&quot; coursework determined by TREC).</li></ul><ul id="4068ac6a-aab1-802a-85a1-faba11fcbdc0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Affiliate broker: </strong>16 hours of continuing education every two years (includes six hours of &quot;core&quot; coursework determined by TREC).</li></ul><ul id="4068ac6a-aab1-805f-90f7-e10196b7a583" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Deliver renewal paperwork and fees to TREC <strong>60 days</strong> prior to license&#x27;s expiration date.</li></ul><p id="4068ac6a-aab1-80e4-9858-fe5915f394e1" class="" dir="auto"><strong>Errors and Omissions Insurance (E&amp;O)</strong></p><ul id="4068ac6a-aab1-802d-88c2-c4fa63992513" class="bulleted-list" dir="auto"><li style="list-style-type:disc">All license types EXCEPT acquisition agents need Errors and Omissions insurance.</li></ul><p id="4068ac6a-aab1-80f8-96b9-e6bd4f74a812" class="" dir="auto">
+</p></div></div><p id="4068ac6a-aab1-80a9-8521-c5c2a6c40686" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

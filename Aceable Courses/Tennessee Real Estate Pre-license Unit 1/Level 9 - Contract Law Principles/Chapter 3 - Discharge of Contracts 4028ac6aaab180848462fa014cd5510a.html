@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Discharge of Contracts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8084-8462-fa014cd5510a" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Discharge of Contracts</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4088ac6a-aab1-8045-80f0-e1173ec3c608" class="column-list" data-notion-column-list="" dir="auto"><div id="4088ac6a-aab1-80e4-9853-f99d0770140a" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4088ac6a-aab1-80b3-886d-cd6aac0137d1" class="" dir="auto"><strong>Discharge of Contracts Overview</strong></p><ul id="4088ac6a-aab1-80de-9d47-d49d3fedffe6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> The termination or discharge of a contract&#x27;s obligations.</li></ul><ul id="4088ac6a-aab1-8006-b425-f37483164d38" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Assumptions:</strong><ol type="1" id="4088ac6a-aab1-805a-9c6c-fac3b7464a06" class="numbered-list" start="1" dir="auto"><li>Applies to <strong>executory contracts</strong> (live contracts between creation and final execution).</li></ol><ol type="1" id="4088ac6a-aab1-80af-b8ac-f1b3ca57e9d3" class="numbered-list" start="2" dir="auto"><li>Assumes the contract is valid (or presumed valid until an event or discovery proves otherwise).</li></ol></li></ul><ul id="4088ac6a-aab1-80d0-88ea-f8847b20f874" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Main Classifications of Discharge</strong><ul id="4088ac6a-aab1-80b0-9d4e-c71b6913b927" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Operation of Law:</strong> Termination triggered by legal rules, statutes, or external legal circumstances.</li></ul><ul id="4088ac6a-aab1-806e-8243-fb5136628bca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acts of the Parties:</strong> Termination resulting from the intentional actions, agreements, or breaches of the parties involved.</li></ul></li></ul><ul id="4088ac6a-aab1-80c2-8b5b-f8b9852d9c82" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge by Operation of Law Overview</strong><ul id="4088ac6a-aab1-8070-b5e5-d17d4afd50d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The termination of a contract resulting strictly from the application of legal rules or statutes, completely independent of the desires or intent of the parties involved.</li></ul><ul id="4088ac6a-aab1-80b0-9674-ce92957f558b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contrast:</strong> Differs from discharge by acts of the parties, which directly reflects the intentional choices or actions of at least one party.</li></ul></li></ul><ul id="4088ac6a-aab1-80de-8385-e202198d6ef9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Causes of Discharge by Operation of Law</strong><ul id="4088ac6a-aab1-8096-aef5-d55bb3028b5a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Performance:</strong> All parties complete their required contractual obligations.</li></ul><ul id="4088ac6a-aab1-8029-a95d-f61e8f7b0f0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expiration:</strong> The time period specified in the contract lapses.</li></ul><ul id="4088ac6a-aab1-8093-9f5d-d3a05ca00991" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Limitations:</strong> The statutory deadline to file a legal claim has passed.</li></ul><ul id="4088ac6a-aab1-8056-afb8-fb133c62f419" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lack of Legal Element:</strong> Discovery that an essential element of validity is missing.</li></ul><ul id="4088ac6a-aab1-807f-a4d9-d8a6723aa761" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Destruction of Property:</strong> The physical destruction of the subject matter of the contract.</li></ul><ul id="4088ac6a-aab1-8002-85d8-c23a35fd67fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Death or Incapacity:</strong> The death or loss of mental capacity of a necessary party.</li></ul><ul id="4088ac6a-aab1-801d-a782-f4a284b18346" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bankruptcy:</strong> Legal insolvency proceedings discharge certain contractual duties.</li></ul><ul id="4088ac6a-aab1-8003-aef7-e44b51afaba6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alteration of the Contract:</strong> Unauthorized material alteration of the written document by one party.</li></ul></li></ul><ul id="4088ac6a-aab1-80a2-8cf4-e70801b1f5ee" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Full Performance</strong><ul id="4088ac6a-aab1-80fa-8af1-cccbb75f178b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The most positive and ideal method for discharging a contract.</li></ul><ul id="4088ac6a-aab1-8040-bb30-d5f48ea5e55c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Occurs when all parties successfully complete their required obligations and receive what they bargained for, rendering the contract executed and discharged.</li></ul></li></ul><ul id="4088ac6a-aab1-8037-afc3-c81d10538ca6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Expiration</strong><ul id="4088ac6a-aab1-80dd-aae9-cf044ec0bcdd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Many contracts feature a definitive end date. Once that date passes, the contract discharges by operation of law, releasing the parties from future obligations.</li></ul><ul id="4088ac6a-aab1-8099-a95a-fdcb03be95b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Distinct from internal performance deadlines within a contract. If parties wish to continue operating under the same terms after expiration, they must create a new contract.</li></ul></li></ul><ul id="4088ac6a-aab1-803c-a7f7-fb3c510b27bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statute of Limitations</strong><ul id="4088ac6a-aab1-80ec-b98f-fe75febb9825" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If a party defaults, the injured party must file a lawsuit within the strict statutory time frame set by the statute of limitations.</li></ul><ul id="4088ac6a-aab1-8018-9b80-e72e578dec22" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once the deadline passes, the right to recover damages is permanently lost and the claim is discharged, regardless of the underlying merit of the damage claim.</li></ul></li></ul><ul id="4088ac6a-aab1-8074-8b4a-cdb58ed1d4bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lack of Legal Element</strong><ul id="4088ac6a-aab1-800a-8770-e0eab9d491a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A contract lacks legal standing, purpose, or essential elements, resulting in discharge by operation of law.</li></ul><ul id="4088ac6a-aab1-80da-856a-d5d9b893670e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Missing Essential Elements:</strong> If any essential element (offer and acceptance, consideration, legally competent parties, reality of consent, or lawful objective) was missing at inception, or if an objective later becomes unlawful (such as discovering a protected species habitat on a building site), the contract is discharged.</li></ul><ul id="4088ac6a-aab1-8028-9450-f026837e343d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory vs. Voidable Discharge:</strong><ul id="4088ac6a-aab1-804d-9b37-faaefa8fd21d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts with an illegal purpose (violating environmental law) <em>must</em> be discharged; parties cannot choose to continue.</li></ul><ul id="4088ac6a-aab1-80d9-b6ad-c7d5f899694e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts lacking a party-based element (such as a minor or duress) are <em>voidable</em>, meaning the injured or incapacitated party can choose whether to discharge the contract.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-803c-b26d-e5c64e78b91f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Destruction of Property</strong><ul id="4088ac6a-aab1-8097-accf-ebcf7096f287" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An act of God or external event occurring after contract formation that physically destroys the subject property.</li></ul><ul id="4088ac6a-aab1-80be-ad6d-e963f8694bca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect:</strong> Voids and discharges the contract by operation of law, releasing both parties from their obligations (e.g., a tornado completely destroying a home prior to closing).</li></ul></li></ul><ul id="4088ac6a-aab1-80ba-938e-e94400815a29" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Death or Incapacity</strong><ul id="4088ac6a-aab1-809f-b8c3-d99ee88a8d44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Rule:</strong> Death or incapacity generally does <strong>not</strong> relieve a party of their contractual obligations; the estate remains liable.</li></ul><ul id="4088ac6a-aab1-8071-a21e-c82ab4bfab00" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exception (Personal Service Contracts):</strong> Contracts requiring unique personal skills or talents (rather than the mere supply of goods) are discharged by death or incapacity.</li></ul><ul id="4088ac6a-aab1-809b-a8f7-f950d104e8b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real Estate Application:</strong> Listing agreements and buyer representation agreements are personal service contracts between a <strong>broker and a client</strong>. If an affiliate broker dies or becomes incapacitated, the agreement does not terminate because the broker can reassign the client to another sponsored licensee.</li></ul></li></ul><ul id="4088ac6a-aab1-800c-b33d-ff5c21eabae8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bankruptcy</strong><ul id="4088ac6a-aab1-8023-befc-d893883d5ecb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Filing for bankruptcy by either party frequently results in the discharge of existing contracts (such as purchase contracts and agency agreements) as an operation of law.</li></ul></li></ul><ul id="4088ac6a-aab1-8039-9dec-ed7bc0060d8b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Alteration of Contract</strong><ul id="4088ac6a-aab1-80f0-99ae-e69ae4429eaa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Occurs when a party modifies the material terms or conditions of an original contract.</li></ul><ul id="4088ac6a-aab1-80a0-8d7c-f74b977837f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect:</strong> A material alteration without mutual consent discharges the old contract because the modified terms no longer reflect the original mutual intent.</li></ul><ul id="4088ac6a-aab1-8009-9102-e082bbdacdb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mutual Consent:</strong> Alterations are legal and valid if made by mutual agreement of all parties (following any specific contract guidelines), which effectively creates a new contract and discharges the old one.</li></ul></li></ul><ul id="4088ac6a-aab1-801d-ba20-d23f907cd2b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Acts of the Parties Overview</strong><ul id="4088ac6a-aab1-80cb-ae70-c4d39057f4b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The termination or discharge of a contract initiated by the intentional actions, efforts, or agreements of at least one of the parties involved.</li></ul><ul id="4088ac6a-aab1-80c3-9e9f-dc4c50e2aa80" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Mechanism:</strong> Unlike discharge by operation of law, discharge by acts of the parties directly reflects the active choice, intent, or conduct of the participants.</li></ul><ul id="4088ac6a-aab1-805f-b3ec-ff95263547d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Causes of Discharge by Acts of the Parties</strong><ul id="4088ac6a-aab1-8037-8026-c3caf58eda6c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Merger:</strong> Combining a preliminary agreement (such as a purchase contract) into a final document (such as a deed), where the preliminary terms merge into the final instrument.</li></ul><ul id="4088ac6a-aab1-80ce-8c67-ce1969655555" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mutual Agreement / Rescission:</strong> Both parties voluntarily agree to cancel or undo the contract.</li></ul><ul id="4088ac6a-aab1-80a8-b4f3-cff08e9dc428" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cooling-Off Period:</strong> A statutory right allowing a party to cancel an agreement within a specified timeframe.</li></ul><ul id="4088ac6a-aab1-80ab-8105-e07572054c11" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Novation:</strong> Replacing an existing obligation or party with a completely new one, releasing the original party.</li></ul><ul id="4088ac6a-aab1-801b-afe7-f42d14b0ef92" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assignment:</strong> Transferring contractual rights or duties to a third party.</li></ul><ul id="4088ac6a-aab1-8077-a881-dc7a8eb3c869" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accord and Satisfaction:</strong> Accepting a different performance or lesser consideration to settle an existing claim.</li></ul><ul id="4088ac6a-aab1-803d-aff1-ea5188b983ce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Revocation:</strong> Withdrawing an offer before acceptance.</li></ul><ul id="4088ac6a-aab1-80fc-a9fb-c6672652bb5c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Renunciation / Abandonment:</strong> Walking away from or explicitly abandoning contractual obligations.</li></ul></li></ul><ul id="4088ac6a-aab1-806a-9598-d44989acce85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Novation</strong><ul id="4088ac6a-aab1-80ad-95d6-c35ac05da992" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A mutual agreement to replace an existing contract with an entirely new one, which effectively discharges the original obligations.</li></ul><ul id="4088ac6a-aab1-809b-af97-fe9690512ff4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Types:</strong> Can involve a novation of parties (replacing individuals) or a novation of contract (replacing terms).</li></ul><ul id="4088ac6a-aab1-809f-b149-fd09f2b55bf6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Distinction:</strong> Unlike assignment, novation creates a brand-new contract and completely releases the original parties from any remaining responsibility.</li></ul></li></ul><ul id="4088ac6a-aab1-8070-bdb7-e26c31989de1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assignment</strong><ul id="4088ac6a-aab1-8034-b0aa-f427b4ff62e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The transfer of contractual rights and obligations by an original party (assignor) to a third party (assignee), while the original contract remains intact.</li></ul><ul id="4088ac6a-aab1-8099-a2cb-dc2bda72df80" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Liability:</strong> Unless explicitly released via an assignment clause, the original assignor generally remains secondarily liable if the assignee defaults.</li></ul><ul id="4088ac6a-aab1-8071-9086-c5df5f7bcfbc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Limitations:</strong> Cannot be used for personal services contracts and may be prohibited by specific contract terms.</li></ul><ul id="4088ac6a-aab1-80f2-825f-e8328c14fe86" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Nominee vs. Assignee:</strong> A nominee acts on behalf of another party (often to conceal identity) and does not relieve the true principal of liability, whereas an assignee steps into the contractual shoes.</li></ul></li></ul><ul id="4088ac6a-aab1-8091-bbd8-d1542919e2e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accord and Satisfaction</strong><ul id="4088ac6a-aab1-8095-a5c3-f4bdd72d59c1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> An agreement to discharge an original contract through a substituted performance or lesser consideration than initially promised.</li></ul><ul id="4088ac6a-aab1-80b1-b1e9-d7c72d8073a2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Application:</strong> Used when there is partial performance rather than full performance.</li></ul><ul id="4088ac6a-aab1-80bb-89f2-e4679461585e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Real Estate Examples:</strong> A seller accepting earnest money forfeiture in lieu of pursuing specific performance, or a broker accepting expense reimbursement to release a client from an agency agreement.</li></ul></li></ul><ul id="4088ac6a-aab1-8022-a293-cc3a1fd726a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recap</strong><figure id="4088ac6a-aab1-8010-8745-ce620a115145" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image.png"><img style="width:576px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80e6-af4d-eee09ef5bfcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revocation</strong><ul id="4088ac6a-aab1-80f1-ad1c-d9a3d191ea3b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> The annulment or cancellation of a contract.</li></ul><ul id="4088ac6a-aab1-8005-bb8e-f7a36332debf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Power vs. Right:</strong> While either party has the <em>power</em> to revoke a contract, that does not mean they have the <em>right</em> to do so without legal consequence. If a party revokes without justifiable cause, they may still face liability or ongoing contractual obligations.</li></ul></li></ul><ul id="4088ac6a-aab1-80bf-9d48-c767fcad7ab8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Renunciation (Abandonment)</strong><ul id="4088ac6a-aab1-80c7-a19b-db830c6a808f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A unilateral action similar to revocation, functioning as the abandonment of contractual obligations.</li></ul><ul id="4088ac6a-aab1-80f9-ac5a-e960b82e73e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Distinction in Agency Agreements:</strong> The primary difference between revocation and renunciation relates to agency relationships based on which party initiates the termination:<ul id="4088ac6a-aab1-80c9-ae86-c7cd05bbdc17" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Revocation:</strong> Initiated by the <strong>principal</strong> to withdraw the agent&#x27;s authority.</li></ul><ul id="4088ac6a-aab1-8076-9861-e0698a236b6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Renunciation:</strong> Initiated by the <strong>agent</strong> to abandon or surrender their authority and willingness to act for the principal.</li></ul></li></ul><ul id="4088ac6a-aab1-808f-bc5f-d064a89966a7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Non-Agency Contracts:</strong> In contracts between two principals (without agents), both parties revoke rather than renounce.</li></ul><ul id="4088ac6a-aab1-80f0-bf0b-f3b3715ba95d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Liability Warning:</strong> As with revocation, possessing the power to renounce does not grant the right to do so without cause; doing so without justification can trigger liability for breach.</li></ul></li></ul><ul id="4088ac6a-aab1-80f0-bd70-c1c9b223c707" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Discharge of Contracts Recap</strong><figure id="4088ac6a-aab1-8068-8e30-f541249f5652" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%201.png"><img style="width:480px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%201.png"/></a></figure></li></ul></li></ul><ul id="4088ac6a-aab1-8086-aa08-e05545cad9d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Breach of Contract Overview</strong><ul id="4088ac6a-aab1-80df-85d0-c68bffadceb7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Occurs when a party, without legal cause, fails to perform according to the terms and conditions of a contract, representing an unlawful attempt to discharge through acts of the parties.</li></ul><ul id="4088ac6a-aab1-80e6-898c-d032a7380a74" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect on Defaulter:</strong> A breach terminates the defaulting party&#x27;s rights under the contract while keeping all of their obligations intact.</li></ul><ul id="4088ac6a-aab1-80a0-8d2f-d53daf06766f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remedies:</strong> When a breach occurs, the injured (wronged) party gains access to several legal and equitable remedies.</li></ul></li></ul><ul id="4088ac6a-aab1-80a1-87de-ccb0f7f84e23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Remedies</strong><figure id="4088ac6a-aab1-807c-b464-ce03315af040" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%202.png"><img style="width:480px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%202.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80d5-8804-f2b56b627127" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Remedies</strong><figure id="4088ac6a-aab1-805a-8168-d4ef6c363d18" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%203.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%203.png"><img style="width:480px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%203.png"/></a></figure><ul id="4088ac6a-aab1-8000-8d95-fafefb7242ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Remedies for Breach of Contract Overview</strong><ul id="4088ac6a-aab1-807a-9ed8-daf08a58ef3e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> When a party breaches a contract without legal cause, the injured party has access to specific legal and equitable remedies to address the default.</li></ul></li></ul><ul id="4088ac6a-aab1-8006-9c92-f6dcb993619a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Legal Remedies</strong><ul id="4088ac6a-aab1-8061-b249-c97eb301908a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Specific Performance:</strong> A court order compelling the defaulting party to fulfill their contractual obligations exactly as originally agreed.</li></ul><ul id="4088ac6a-aab1-8079-b77d-dbdf6d0fba97" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rescission:</strong> The complete annulment of the contract, attempting to restore both parties to the exact financial and legal positions they held before the agreement was made (typically occurring early in the agreement and requiring the return of exchanged funds).</li></ul><ul id="4088ac6a-aab1-8044-863b-dc90cc0f4454" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Forfeiture:</strong> Relies on a contract clause identifying liquidated damages as compensation for the injury, commonly confined to the retention of earnest money in real estate transactions.</li></ul><ul id="4088ac6a-aab1-8065-a65c-f560b1047fc2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Suit for Damages:</strong> A lawsuit initiated within the applicable statute of limitations to recover financial losses. (In Tennessee, the statute of limitations for a breach of contract is <strong>six years</strong>).</li></ul></li></ul><ul id="4088ac6a-aab1-8097-8c33-fc413bfd57b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Damages</strong><ul id="4088ac6a-aab1-80db-974f-cb26f26f5f49" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Liquidated Damages:</strong> Pre-agreed damages (such as forfeited earnest money) stipulated in the contract to compensate the injured party when actual damages are difficult to quantify.</li></ul><ul id="4088ac6a-aab1-8061-8acf-ecc015b963d8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Compensatory (Actual) Damages:</strong> Awards given to cover actual losses or injury, divided into:<ul id="4088ac6a-aab1-8083-909f-fbcc37d67b1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Special Damages:</em> Measurable economic losses and property damage.</li></ul><ul id="4088ac6a-aab1-80df-a58f-e3b7730893b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>General Damages:</em> Subjective losses such as pain, suffering, and emotional distress (which require legal precedent and specific court evaluation).</li></ul></li></ul><ul id="4088ac6a-aab1-8034-8cf7-e9d735906980" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Punitive (Exemplary) Damages:</strong> Rarely awarded in contract cases except in instances of fraudulent misrepresentation or intentional, harmful conduct, designed to punish the offender and deter future bad behavior.</li></ul></li></ul></li></ul></div><div id="4088ac6a-aab1-8018-83fa-d1e369e65c9d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4088ac6a-aab1-8001-be6a-d35276331fea" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4088ac6a-aab1-8098-8931-c085c2a0da08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>assignment </strong>- the transference of rights and obligations in a contract from one party to another</li></ul><ul id="4088ac6a-aab1-8054-9997-d203be35f621" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>liquidated damages </strong>- damages established by the contract to be paid as compensation in the event of default</li></ul><ul id="4088ac6a-aab1-80a8-b108-edbf2206bd23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>specific performance </strong>- a legal remedy that requires the party in breach of contract to perform in accordance with the terms of the contract (as opposed to paying damages)</li></ul><p id="4088ac6a-aab1-8085-b516-faaabc82b82e" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4088ac6a-aab1-80b2-b602-e2df330dbb69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge of Contracts - </strong>The discharge of contracts refers to the termination of a contract. Most contracts are discharged as a result of either the <strong>operation of law</strong> or the <strong>acts of the parties</strong>.</li></ul><ul id="4088ac6a-aab1-8044-9e1d-d04c37df2647" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Operation of Law - </strong>When contracts are said to be discharged by operation of law, it means that they are discharged as a result of the application of the law without regard to the desires of the parties.</li></ul><ul id="4088ac6a-aab1-8068-a4cd-ec97008a20cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Acts of the Parties - </strong>Contracts that are said to be discharged as a result of acts of the parties are primarily classified as such to differentiate them from contracts that are simply discharged as an operation of law. They require a specific effort from one or both parties.<figure id="4088ac6a-aab1-80e1-9c2b-e2e1e43ea9fe" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%204.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%204.png"><img style="width:413.796875px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%204.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8043-9b6a-c29576857ac3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Breach of Contract </strong><ul id="4088ac6a-aab1-8061-924d-c61de5c3b379" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A party to an agreement who, without cause, fails to perform according to the terms and conditions of a contract is said to be in breach of contract.</li></ul><ul id="4088ac6a-aab1-80cb-959a-d2eb78d301da" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The wronged party has a number of contractual or legal remedies to consider when faced with a breach of contract.<figure id="4088ac6a-aab1-807e-a255-d05058c545bb" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%205.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%205.png"><img style="width:375.796875px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%205.png"/></a></figure><figure id="4088ac6a-aab1-8077-8f99-d509ed92a24e" class="image" data-notion-image="Chapter%203%20-%20Discharge%20of%20Contracts/image%206.png" dir="ltr"><a href="Chapter%203%20-%20Discharge%20of%20Contracts/image%206.png"><img style="width:375.796875px" src="Chapter%203%20-%20Discharge%20of%20Contracts/image%206.png"/></a></figure><p id="4088ac6a-aab1-806d-a0c7-f47026fb093d" class="" dir="auto">
+</p></li></ul></li></ul></div></div><p id="4088ac6a-aab1-8049-ab01-c9f14c26c090" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

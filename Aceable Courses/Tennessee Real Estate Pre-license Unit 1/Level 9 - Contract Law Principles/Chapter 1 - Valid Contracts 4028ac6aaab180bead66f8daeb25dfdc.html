@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Valid Contracts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-80be-ad66-f8daeb25dfdc" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Valid Contracts</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4088ac6a-aab1-80d1-b741-fd8585fe9ca9" class="column-list" data-notion-column-list="" dir="auto"><div id="4088ac6a-aab1-80dd-9a92-ccb5c78e3b08" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4088ac6a-aab1-80fa-b62b-d209d3580c6f" class="" dir="auto"><strong>Definition of a Contract</strong></p><ul id="4088ac6a-aab1-80db-8333-e075bb62bb9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A legally enforceable and binding agreement between two or more parties where a promise to do (or not do) something is exchanged for valuable consideration.</li></ul><ul id="4088ac6a-aab1-8028-84b6-e6732a1ab76a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Binding Nature</strong><ul id="4088ac6a-aab1-8084-9776-ce585e7151a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Contracts are legally binding promises; violating a contract goes beyond a simple social broken promise, typically resulting in civil lawsuits and legal damages.</li></ul></li></ul><ul id="4088ac6a-aab1-808b-acf4-e79deb6723b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Forbearance</strong><ul id="4088ac6a-aab1-8055-b5df-d2190dae6239" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A contractual promise <strong>not</strong> to do something (e.g., an athlete signing an endorsement agreement agreeing not to wear competing sneaker brands).</li></ul></li></ul><ul id="4088ac6a-aab1-803f-9cde-cd746dded253" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Valuable Consideration</strong><ul id="4088ac6a-aab1-80d5-8d2f-c50d66053178" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Something of tangible value exchanged between parties to demonstrate mutual agreement to the contract&#x27;s terms. A valid contract cannot exist without consideration.</li></ul><ul id="4088ac6a-aab1-80cf-9be6-e132db5c5ae5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adequacy:</strong> Consideration must be deemed appropriate and sufficient for what is being offered in exchange; grossly mismatched value can cause an agreement to be legally classified as a gift or signal bad faith negotiations.</li></ul></li></ul><ul id="4088ac6a-aab1-803e-ad44-e452f82e8254" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Five Essential Elements of a Valid Contract</strong><ul id="4088ac6a-aab1-8053-b7d2-f0d39ebd2c8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every legally enforceable contract must satisfy five fundamental elements:<ol type="1" id="4088ac6a-aab1-80c4-907d-daf24c16c6cd" class="numbered-list" start="1" dir="auto"><li>Offer and acceptance (mutual agreement or mutual assent)</li></ol><ol type="1" id="4088ac6a-aab1-8032-a753-de6dcb9a56e2" class="numbered-list" start="2" dir="auto"><li>Consideration</li></ol><ol type="1" id="4088ac6a-aab1-806c-948d-e9c8f12e2d20" class="numbered-list" start="3" dir="auto"><li>Legally competent parties</li></ol><ol type="1" id="4088ac6a-aab1-8083-af09-ecef3ca467ac" class="numbered-list" start="4" dir="auto"><li>Reality of consent</li></ol><ol type="1" id="4088ac6a-aab1-8081-b300-e0104d3cc592" class="numbered-list" start="5" dir="auto"><li>Lawful objective</li></ol></li></ul></li></ul><ul id="4088ac6a-aab1-8085-8e7f-f82b70addbb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer and Acceptance (Mutual Agreement)</strong><ul id="4088ac6a-aab1-8091-9d41-c8808aa6178b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Also referred to as a &quot;meeting of the minds&quot; or mutual assent, it represents the fully agreed-upon exchange of promises between the parties entering into a contract.</li></ul><ul id="4088ac6a-aab1-8064-ae89-d202f7f99af5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Process:</strong> Achieved when all terms and conditions required for full acceptance are mutually understood and agreed upon, which may involve a process of back-and-forth offers and counteroffers</li></ul></li></ul><ul id="4088ac6a-aab1-8062-a3da-f8f73fe8e2d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consideration</strong><ul id="4088ac6a-aab1-8057-b25d-f992740ae43d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Consideration is something of value exchanged by each party to prove mutual agreement to a contract&#x27;s terms; without it, a contract is not legally binding.</li></ul><ul id="4088ac6a-aab1-8013-b6ee-e444f479e0e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Forms of Consideration</strong><ul id="4088ac6a-aab1-8073-9d2e-dcb78767f749" class="bulleted-list" dir="auto"><li style="list-style-type:square">Can consist of money, property, services, forbearance, or a simple exchange of promises (e.g., in a real estate contract, the buyer promises to pay the purchase price and the seller promises to transfer the deed).</li></ul><ul id="4088ac6a-aab1-80f5-b0d1-c335c4a07dbc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em>Note on Earnest Money:</em> Earnest money is <strong>not</strong> consideration; it merely serves as evidence of good faith to fulfill a promise, not the promise itself.</li></ul></li></ul><ul id="4088ac6a-aab1-8025-94a2-d29b4db84839" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Valuable Consideration vs. Good Consideration</strong><ul id="4088ac6a-aab1-80fe-a650-f76f60bd4291" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Valuable Consideration:</strong> Tangible, sufficient value (such as money or property) exchanged between parties.</li></ul><ul id="4088ac6a-aab1-8051-8893-d9054f809258" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Good Consideration:</strong> Goodwill, love, or affection (often used when gifting property to a relative), which legally classifies the transaction as a gift rather than a standard commercial contract.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80a0-a5d7-d71e33f1e866" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legally Competent Parties</strong><ul id="4088ac6a-aab1-80e2-981b-d00b10e7a570" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For a contract to be valid and enforceable, all parties must possess the legal capacity to enter into an agreement, meaning they have reached the age of majority and are mentally competent.</li></ul><ul id="4088ac6a-aab1-8089-908d-d67284332953" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Age of Majority &amp; Minors</strong><ul id="4088ac6a-aab1-8033-9820-d9200c1df250" class="bulleted-list" dir="auto"><li style="list-style-type:square">In Tennessee, the age of majority is <strong>18 years old</strong> (unless minority disabilities are removed by a court).</li></ul><ul id="4088ac6a-aab1-8099-9fea-da54de154097" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts entered into with a minor are <strong>voidable by the minor only</strong>; the adult party remains legally bound if the minor chooses to enforce it. A minor can ratify and validate the contract upon turning 18 if they do not void it within a reasonable timeframe.</li></ul></li></ul><ul id="4088ac6a-aab1-80c7-8fe1-e692ec242f60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mental Competency &amp; Impairment</strong><ul id="4088ac6a-aab1-8050-9235-f3da448f43b7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Judicially Declared Incompetent:</strong> Contracts made by individuals officially declared of unsound mind by a judge are completely <strong>void</strong>.</li></ul><ul id="4088ac6a-aab1-80a6-a3b5-c6a34826a279" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Temporary Impairment:</strong> Contracts signed while temporarily incompetent (due to extreme intoxication or drugs) are <strong>voidable</strong> at that person&#x27;s option once they regain a sound mind.</li></ul><ul id="4088ac6a-aab1-8028-b545-c44de7c95fad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Attorney-in-Fact:</strong> An individual lacking mental capacity can only enter into a valid contract through a legal representative holding a power of attorney.</li></ul></li></ul><ul id="4088ac6a-aab1-805c-906a-c4331a67abef" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Corporations as Parties</strong><ul id="4088ac6a-aab1-8024-8513-df1844df7288" class="bulleted-list" dir="auto"><li style="list-style-type:square">Corporations possess the legal capacity to act as competent parties, assuming the same contractual rights, responsibilities, and obligations as natural persons.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80de-a97d-ee03b35aa033" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reality of Consent</strong><ul id="4088ac6a-aab1-80ce-ae24-e196ef4b374f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While offer and acceptance addresses the mutual agreement on contract terms, <strong>reality of consent</strong> ensures that the agreement was reached voluntarily and in good faith, meaning parties entered into the contract of their own free will with all necessary information.</li></ul><ul id="4088ac6a-aab1-80aa-aa03-c3b86783a5f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Elements That Destroy Reality of Consent</strong><ul id="4088ac6a-aab1-80f2-8c55-e58479725d10" class="bulleted-list" dir="auto"><li style="list-style-type:square">A contract lacks reality of consent—and can be deemed voidable—if tainted by any of the following factors:<ul id="4088ac6a-aab1-8084-94cb-ffa4beb1c294" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fraud:</strong> Intentional deception to secure an unfair or unlawful gain.</li></ul><ul id="4088ac6a-aab1-8061-b570-e71efe1bdde2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Misrepresentation:</strong> False statements or concealment of material facts (whether intentional or accidental).</li></ul><ul id="4088ac6a-aab1-8047-a1e3-f796061d973e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mutual Mistake / Misunderstanding:</strong> An error made by both parties regarding a fundamental fact of the agreement.</li></ul><ul id="4088ac6a-aab1-8050-9589-dabddc5e4e8d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Undue Influence:</strong> Taking advantage of a position of trust or power to pressure someone into a contract.</li></ul><ul id="4088ac6a-aab1-800b-a352-d3064f04bf36" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duress:</strong> Forcing someone into an agreement through threats, physical harm, or coercion</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80a7-8539-d52c8ed2a23a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Impact on Reality of Consent</strong><ul id="4088ac6a-aab1-8043-8518-da49f35ab32b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reality of consent requires the absolute absence of fraud, misrepresentation, and mistakes to ensure a contract is entered into voluntarily and fairly.</li></ul></li></ul><ul id="4088ac6a-aab1-80d5-b591-d08c6a3bda3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Categories of Fraud</strong><ul id="4088ac6a-aab1-80fa-921e-ebafd300194f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Actual Fraud:</strong> Intentional deceit or reckless behavior, including knowingly stating a false fact, making a reckless false statement without reasonable belief of its truth (negligent misrepresentation), intentionally concealing a material fact, making a false promise with no intent to perform, or any act meant to deceive.</li></ul><ul id="4088ac6a-aab1-806b-9aed-ce36eb4f0ec6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Constructive Fraud:</strong> An unintentional breach of legal or equitable duty that results in an unfair advantage to the breaching party, or any act legally declared fraudulent regardless of intent.</li></ul></li></ul><ul id="4088ac6a-aab1-80e8-b3d5-eada419d6a7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Categories of Mistakes</strong><ul id="4088ac6a-aab1-8019-97fc-ddedc4916fda" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mistake of Fact:</strong> A lack of awareness, forgetting of a material fact, mistaken belief in a non-fact, or a misunderstanding regarding an actual fact (provided it does not stem from a neglect of legal duty).</li></ul><ul id="4088ac6a-aab1-80a9-9b90-f3b28198096d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mistake of Law:</strong> A mutual misunderstanding or lack of awareness by all parties regarding the applicable law governing the transaction.</li></ul></li></ul><ul id="4088ac6a-aab1-8033-a0dd-c10db7429d58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Lawful Objective</strong><ul id="4088ac6a-aab1-801d-9d4d-fc15a7660277" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Every valid contract must have a lawful objective, meaning its purpose and terms must conform to all applicable local, state, and federal laws and statutes.</li></ul><ul id="4088ac6a-aab1-809c-a10b-f133bc766d15" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Illegal Contracts:</strong> Any agreement that requires illegal activities, violates public policy, or involves unlawful outcomes is considered completely <strong>void and unenforceable</strong> from its inception.</li></ul><ul id="4088ac6a-aab1-80e1-8855-d8326564c1a6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Example:</strong> A contract to sell a property officially declared hazardous by the EPA due to unmitigated contamination (such as a leaking underground storage tank) lacks a lawful objective and is void, allowing the buyer to back out because the agreement was legally invalid from the start.</li></ul></li></ul><ul id="4088ac6a-aab1-80df-b065-c9765d12f043" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Possibility to Complete</strong><ul id="4088ac6a-aab1-80ff-b5dd-eb0b8f80c3b4" class="bulleted-list" dir="auto"><li style="list-style-type:square">While sometimes considered an essential element, contracts are rarely created from inception with an impossible completion; instead, valid contracts are typically disrupted later by external events.</li></ul></li></ul><ul id="4088ac6a-aab1-8003-b1af-d0e221e951ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supervening Illegality</strong><ul id="4088ac6a-aab1-8057-a81a-f515a300e36a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A situation where a new law, statute, or legal change enacted <em>after</em> a contract is formed makes the fulfillment of the contract legally impossible.</li></ul><ul id="4088ac6a-aab1-8051-963b-e28e02361019" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Result:</strong> Results in the automatic discharge and termination of the contract.</li></ul></li></ul><ul id="4088ac6a-aab1-8069-a0f3-cd12f153dec9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Essential Elements</strong></li></ul><figure id="4088ac6a-aab1-8017-8941-c3a3c6212633" class="image" data-notion-image="Chapter%201%20-%20Valid%20Contracts/image.png" dir="ltr"><a href="Chapter%201%20-%20Valid%20Contracts/image.png"><img style="width:384px" src="Chapter%201%20-%20Valid%20Contracts/image.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8086-af9a-fa4d3ef35c56" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Legal Status Categories</strong><ul id="4088ac6a-aab1-80c5-a61e-f8591faa3070" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once created, every contract falls into one of four legal status categories evaluated by courts:<ol type="1" id="4088ac6a-aab1-8015-9c9e-f3c9379854a4" class="numbered-list" start="1" dir="auto"><li>Valid<ul id="4088ac6a-aab1-8042-95ff-dc584fc8736d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> A valid contract meets all essential legal requirements, accurately reflecting the intentions of the parties and making the agreement fully binding and enforceable in a court of law.</li></ul><ul id="4088ac6a-aab1-8006-80d5-def4969c1ff4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Requirements:</strong> Must incorporate all five essential elements: offer and acceptance (mutual assent), valuable consideration, legally competent parties, reality of consent, and a lawful objective.</li></ul></li></ol><ol type="1" id="4088ac6a-aab1-80d4-899c-c12f8468eca0" class="numbered-list" start="2" dir="auto"><li>Void<ul id="4088ac6a-aab1-80b6-be4b-c1d97e732ff4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> An agreement that has no legal effect and cannot be enforced by law from its very inception, imposing no legal rights or obligations on the parties.</li></ul><ul id="4088ac6a-aab1-803e-88e6-ee5800c2b88f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Causes:</strong><ul id="4088ac6a-aab1-803f-b988-cea925d26b97" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Missing one or more essential elements of a valid contract.</li></ul><ul id="4088ac6a-aab1-80e8-9ed0-c38c2f895520" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Requiring an illegal or impossible act.</li></ul><ul id="4088ac6a-aab1-8013-8e43-c4bc1269a45e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lacking proper consideration.</li></ul><ul id="4088ac6a-aab1-8040-a4dc-d6c7a6541ea5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Containing a material mistake.</li></ul><ul id="4088ac6a-aab1-8051-a45b-ee605e46988a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Prevention of completion due to an operation of law or an act of God.</li></ul></li></ul><ul id="4088ac6a-aab1-8033-82c0-f8909ba625f7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Null and Void:</strong> A commonly used redundant term where both words emphasize that the agreement is completely ineffective and legally void of effect.</li></ul></li></ol><ol type="1" id="4088ac6a-aab1-8042-b3e2-e1533663cd52" class="numbered-list" start="3" dir="auto"><li>Voidable<ul id="4088ac6a-aab1-80f4-a039-e3271669b8cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> A potentially valid agreement where at least one party has the legal option to rescind or terminate the contract without penalty.</li></ul><ul id="4088ac6a-aab1-80c1-af60-f9f3df447755" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Triggers:</strong> Contracts involving individuals lacking legal capacity (minors or adults incapacitated by mental illness, drugs, or alcohol) or agreements tainted by duress, fraud, or misrepresentation (which are voidable solely by the injured party).</li></ul><ul id="4088ac6a-aab1-8003-bbbc-e9d430a6a2f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Voidable Contracts with Minors</strong><ul id="4088ac6a-aab1-80b8-a13e-d0c3c7a3cf92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Valid at the sole option of the minor. The minor can legally force performance on the adult party, but the adult cannot compel performance from the minor.</li></ul><ul id="4088ac6a-aab1-8017-9e16-f87127e90ed4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the minor chooses to honor the agreement, the contract converts from voidable to fully valid.</li></ul></li></ul><ul id="4088ac6a-aab1-8066-b490-dd1142c54949" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Voidable Contracts with Incapacitated Adults</strong><ul id="4088ac6a-aab1-80b1-9709-f2eada3f1e93" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An adult who signed while temporarily incapacitated can void the contract during their incapacitation or for a reasonable period following recovery.</li></ul><ul id="4088ac6a-aab1-8062-b1d4-f8b2ca4eb98d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Choosing to perform the contract after regaining full capacity validates the agreement.</li></ul></li></ul><ul id="4088ac6a-aab1-8016-b5b9-fa838f3bced5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ratification vs. Disaffirmance</strong><ul id="4088ac6a-aab1-80da-83c3-e3820e77f5ff" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ratification:</strong> When a party voluntarily performs their obligations under a contract they previously had the right to rescind, permanently binding them to it.</li></ul><ul id="4088ac6a-aab1-80a5-a355-d94cb16d575f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disaffirmance:</strong> The legal process of voiding or rejecting a voidable contract.</li></ul><ul id="4088ac6a-aab1-8065-bf70-fb213fa5d74a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Difference:</strong> Voidable contracts remain enforceable until actively disaffirmed by the injured party, whereas void contracts are completely unenforceable from their inception.</li></ul></li></ul></li></ol><ol type="1" id="4088ac6a-aab1-8012-953a-d88ea8369001" class="numbered-list" start="4" dir="auto"><li>Unenforceable<ul id="4088ac6a-aab1-8095-b118-c9c68de32cfb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> An agreement that is essentially valid in its substance but cannot be enforced by a court due to a legal technicality, statute, or procedural defect (meaning it lacks a legal remedy).</li></ul><ul id="4088ac6a-aab1-80a5-9c4b-f79cf9099c57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Voluntary Performance:</strong> Unenforceable contracts can still be successfully completed if both parties willingly choose to fulfill their obligations; they simply cannot be legally compelled to do so.</li></ul><ul id="4088ac6a-aab1-80bd-82e6-f81294fcdd4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Legal Restrictions on Enforcement</strong><ul id="4088ac6a-aab1-80fb-b4f1-d159d4236ce6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The enforcement of otherwise valid contracts is commonly barred by three major doctrines:<ol type="1" id="4088ac6a-aab1-800b-961c-d31c5e972a32" class="numbered-list" start="1" dir="auto"><li><strong>Statute of Frauds</strong><ul id="4088ac6a-aab1-809d-be1a-d6bc612d9152" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A state-level law requiring certain types of contracts to be in writing to be legally enforceable. In Tennessee (under Tennessee Code 20-2-101), contracts failing to comply are generally unenforceable or voidable rather than completely void.</li></ul><ul id="4088ac6a-aab1-8001-b363-d17a22d20e05" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contracts Covered in Tennessee</strong><ul id="4088ac6a-aab1-8030-81d2-cccf12fbfaa8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate and related agreements requiring a writing include:<ul id="4088ac6a-aab1-80b4-9221-f1204108c48d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Leases exceeding one year in length.</li></ul><ul id="4088ac6a-aab1-8056-8da6-fc556bd2ff8e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agency representation agreements (listing and buyer-broker agreements).</li></ul><ul id="4088ac6a-aab1-80d6-a01b-f7d629dcacda" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agreements involving the conveyance of real property.</li></ul><ul id="4088ac6a-aab1-80c0-8f99-cdd7e5995cf2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts for the sale of goods valued at $500 or more.</li></ul><ul id="4088ac6a-aab1-8077-bf0b-e53738fa13ff" class="bulleted-list" dir="auto"><li style="list-style-type:square">Co-signer (surety/guaranty) agreements.</li></ul><ul id="4088ac6a-aab1-8089-a279-db954528dac0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Employment contracts between brokers and affiliated licensees.</li></ul><ul id="4088ac6a-aab1-8012-8a7c-cf4d3006a141" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts where an executor promises to pay debts for a deceased&#x27;s estate.</li></ul><ul id="4088ac6a-aab1-8036-bf37-d7047bbe0e9c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Contracts for the loan of money.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8075-afa0-d702f6d06281" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose &amp; Impact</strong><ul id="4088ac6a-aab1-80df-96f0-ec9cb4d08e54" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Designed to prevent the fraud and misunderstandings common with oral agreements by focusing strictly on enforceability. While covered oral contracts cannot be legally forced, potential liability or damages claims may still arise under specific circumstances.</li></ul></li></ul><ul id="4088ac6a-aab1-801d-a44c-df23a7033a83" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Parol Evidence Rule</strong><ul id="4088ac6a-aab1-807a-973d-d04a06dd92e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A legal principle supporting the statute of frauds stating that oral evidence (parol evidence) can be used to clarify or support a written contract, but <strong>cannot</strong> be used to contradict a written contract intended as the final expression of the parties&#x27; agreement.</li></ul><ul id="4088ac6a-aab1-807c-bf48-c02b3c15b060" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Parol Contracts:</strong> Orally created contracts or oral modifications of written agreements whose legal enforceability depends entirely on the surrounding circumstances.</li></ul></li></ul></li></ol><ol type="1" id="4088ac6a-aab1-8072-b70f-c8c6d8c2348b" class="numbered-list" start="2" dir="auto"><li><strong>Statute of Limitations</strong><ul id="4088ac6a-aab1-80d2-b174-ff57a79a5169" class="bulleted-list" dir="auto"><li style="list-style-type:disc">State and federal laws that establish strict time limits for filing specific types of legal actions or claims.</li></ul><ul id="4088ac6a-aab1-808f-907e-e6a4f819fb72" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Once the statutory deadline passes, the legal right to press the claim is permanently barred, rendering the complaint legally invalid even if the underlying contract was fully valid.</li></ul><ul id="4088ac6a-aab1-80dd-af63-eab38af98ac2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose &amp; Rationale</strong><ul id="4088ac6a-aab1-80b5-a982-f730e2ee435c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ensures claims are brought forward within a reasonable timeframe while evidence remains fresh.</li></ul><ul id="4088ac6a-aab1-8012-a14f-d354e0857536" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Prevents the lingering threat of lawsuits indefinitely hanging over parties long after an event has occurred.</li></ul></li></ul><ul id="4088ac6a-aab1-80a2-b42b-d383149981c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Extenuating Circumstances</strong><ul id="4088ac6a-aab1-80f9-875f-dadf94d3857c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Various legal factors and extenuating circumstances can occasionally pause, stop, or adjust the statutory clock (such as discovery rules or legal incapacitation).</li></ul><ul id="4088ac6a-aab1-800b-a0b5-e0ab0be13632" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Professional legal counsel should always be consulted regarding deadlines and claims governed by statutes of limitations.</li></ul></li></ul></li></ol><ol type="1" id="4088ac6a-aab1-8002-8573-c67d4ba1d85f" class="numbered-list" start="3" dir="auto"><li>Doctrine of Laches<ul id="4088ac6a-aab1-80f7-804c-d5b407e61d3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">An equitable legal principle allowing courts to deny dated claims based on unreasonable delay or negligence in asserting one&#x27;s rights.</li></ul><ul id="4088ac6a-aab1-80ac-9123-c15e7c95ee7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Effectively functions as a &quot;use it or lose it&quot; rule: if a party unreasonably delays bringing a suit and that delay prejudices or harms the defending party, equitable relief is barred.</li></ul><ul id="4088ac6a-aab1-8078-9939-c417a4d49601" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Doctrine of Laches vs. Statute of Limitations</strong><ul id="4088ac6a-aab1-8055-8b62-df8129e456d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Limitations:</strong> Fixed, statutory time limits set by law for filing specific legal actions. If the deadline passes, the claim is strictly barred by law.</li></ul><ul id="4088ac6a-aab1-8082-9348-f987a387d346" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Doctrine of Laches:</strong> Flexible and case-specific, relying entirely on judicial discretion to determine if a plaintiff waited an unreasonable length of time, even if the formal statute of limitations has not yet expired.</li></ul></li></ul></li></ol></li></ul></li></ul></li></ol></li></ul></li></ul><ul id="4088ac6a-aab1-800d-a817-f0799c3793f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Legal Status</strong><figure id="4088ac6a-aab1-8045-ae73-c795dbe66ea6" class="image" data-notion-image="Chapter%201%20-%20Valid%20Contracts/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Valid%20Contracts/image%201.png"><img style="width:528px" src="Chapter%201%20-%20Valid%20Contracts/image%201.png"/></a></figure></li></ul></div><div id="4088ac6a-aab1-80f0-85c8-db8f68679cfb" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4088ac6a-aab1-80f6-a150-d0166a12bc15" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4088ac6a-aab1-800a-8687-f557f9596f9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consideration - </strong>Something of value exchanged by parties as evidence of agreement to contract terms.</li></ul><ul id="4088ac6a-aab1-8052-8830-e1848e62eaef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract -</strong> A legally enforceable and binding agreement where a promise to do (or not do) something is given for valuable consideration.</li></ul><ul id="4088ac6a-aab1-8094-8cc3-fc02bc000540" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Enforceability -</strong> Possessing essential elements necessary to be legally binding and obligate performance.</li></ul><ul id="4088ac6a-aab1-80ad-afa5-fcb3cf48588d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Goodwill (Good Consideration) -</strong> Non-monetary consideration like love and affection, often treating the transaction as a gift.</li></ul><ul id="4088ac6a-aab1-806d-9743-ce97fb161122" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Null and Void -</strong> Lacking legal or binding force; invalid.</li></ul><ul id="4088ac6a-aab1-80da-8dd9-cb586510149c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Parol Contract -</strong> An orally created contract or oral modification of a written contract.</li></ul><ul id="4088ac6a-aab1-807e-a931-daade779c66e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statute of Frauds -</strong>A law requiring certain contracts (such as real property conveyances and agency agreements) to be in writing to be enforceable.</li></ul><ul id="4088ac6a-aab1-80e6-8cc2-d01af545c845" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statute of Limitations - </strong>Laws establishing strict time limits for bringing specific legal actions.</li></ul><ul id="4088ac6a-aab1-803e-b13e-d41fc648c470" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Validity -</strong> Possessing legal accuracy and being legally binding.</li></ul><ul id="4088ac6a-aab1-8080-ba51-f436822fa174" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Void Contract -</strong> An agreement lacking legal or binding force from inception due to illegality or impossibility.</li></ul><ul id="4088ac6a-aab1-8021-bb5d-fd0e216e071b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Voidable Contract -</strong> An agreement where the injured or wronged party has the option to perform, enforce, or rescind the contract.</li></ul><p id="4088ac6a-aab1-80bb-9575-f8d6d23d94a7" class="" dir="auto"><strong>Core Principles &amp; Concepts</strong></p><ul id="4088ac6a-aab1-8086-ac73-ee115ba2cabd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Essential Elements of a Valid Contract:</strong><ol type="1" id="4088ac6a-aab1-8083-be6a-ef703219291e" class="numbered-list" start="1" dir="auto"><li>Offer and acceptance (meeting of the minds / mutual assent)</li></ol><ol type="1" id="4088ac6a-aab1-809c-8b1d-d5825ac1dca1" class="numbered-list" start="2" dir="auto"><li>Consideration (exchange of value)</li></ol><ol type="1" id="4088ac6a-aab1-8008-b8ad-e9c04007b557" class="numbered-list" start="3" dir="auto"><li>Legally competent parties (age of majority, mental capacity)</li></ol><ol type="1" id="4088ac6a-aab1-806a-a189-e80427c7dc14" class="numbered-list" start="4" dir="auto"><li>Reality of consent (free of fraud, misrepresentation, mistake, undue influence, or duress)</li></ol><ol type="1" id="4088ac6a-aab1-80df-8e1c-d0ab555680f5" class="numbered-list" start="5" dir="auto"><li>Lawful objective (conforming to all laws)</li></ol><figure id="4088ac6a-aab1-80f8-b07d-f91672718ddc" class="image" data-notion-image="Chapter%201%20-%20Valid%20Contracts/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Valid%20Contracts/image%202.png"><img style="width:413.78125px" src="Chapter%201%20-%20Valid%20Contracts/image%202.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80ca-b850-e0328c56d7ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Four Legal Categories of Contracts</strong><figure id="4088ac6a-aab1-8076-b8b2-fe2055548daf" class="image" data-notion-image="Chapter%201%20-%20Valid%20Contracts/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Valid%20Contracts/image%203.png"><img style="width:1100px" src="Chapter%201%20-%20Valid%20Contracts/image%203.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80fd-b321-d7ee47084ca3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Restrictions on Contract Enforcement:</strong><ul id="4088ac6a-aab1-80c3-82a1-f772d73bfa0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Frauds:</strong> Mandates writing for enforceability in real estate and agency agreements.</li></ul><ul id="4088ac6a-aab1-804f-9119-f82a78d56f82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Limitations:</strong> Imposes rigid statutory timeframes for filing legal claims.</li></ul><ul id="4088ac6a-aab1-80cc-abed-f8d92e03ac36" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Doctrine of Laches:</strong> An equitable &quot;use it or lose it&quot; rule allowing courts to dismiss dated claims due to unreasonable delay and prejudice to the defense.</li></ul><p id="4088ac6a-aab1-80b2-be98-f8153cce2039" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

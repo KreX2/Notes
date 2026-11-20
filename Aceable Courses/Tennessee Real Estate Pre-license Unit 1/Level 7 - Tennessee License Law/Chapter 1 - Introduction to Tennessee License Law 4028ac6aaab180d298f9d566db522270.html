@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Introduction to Tennessee License Law</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-80d2-98f9-d566db522270" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Introduction to Tennessee License Law</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4068ac6a-aab1-8008-8a4d-d94a0c5e64e0" class="column-list" data-notion-column-list="" dir="auto"><div id="4068ac6a-aab1-8094-a507-fd74b2d7e576" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4068ac6a-aab1-80b7-8d86-c4dd434e3a27" class="" dir="auto"><strong>Purpose &amp; Value of Real Estate License Laws</strong></p><ul id="4068ac6a-aab1-80de-925a-eb4f63a36edc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consumer Protection:</strong> The fundamental purpose of any state real estate license law is to safeguard members of the public—including buyers, sellers, tenants, and property owners—from harmful or unethical actions by licensees.</li></ul><ul id="4068ac6a-aab1-804b-841d-fd882f527e04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Standardization:</strong> Establishes uniform processes, professional expectations, and clear operational standards within the real estate industry to improve transaction outcomes for all parties.</li></ul><p id="4068ac6a-aab1-802f-a302-c5d0f7147945" class="" dir="auto"><strong>The Tennessee Real Estate Broker License Act of 1973</strong></p><ul id="4068ac6a-aab1-803d-9532-e027fd8b1953" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Enactment &amp; Statute:</strong> Established in <strong>1973</strong>, Tennessee&#x27;s governing license law is officially titled the <strong>Tennessee Real Estate Broker License Act</strong>.</li></ul><ul id="4068ac6a-aab1-8082-8c69-e68414e39499" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Code Location:</strong> Codified under <strong>Chapter 13, Title 62 of the Tennessee Code Annotated (T.C.A.)</strong>.</li></ul><ul id="4068ac6a-aab1-801a-8b94-ca92f02c3310" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Purpose:</strong> Created to regulate real estate professionals and protect the general public against misconduct or harmful practices.</li></ul><ul id="4068ac6a-aab1-809d-8bda-c6c67539d4e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Main Elements of Tennessee License Law</strong><ul id="4068ac6a-aab1-80dd-9054-e30780523667" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Outlines basic qualifications and ongoing requirements for obtaining and maintaining a real estate license.</li></ul><ul id="4068ac6a-aab1-80d8-9733-c2787a689a83" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Clearly distinguishes between activities that legally require a license and those that do not.</li></ul><ul id="4068ac6a-aab1-8007-aaac-e4a1cc78e06e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sets mandatory professional standards of conduct and practice.</li></ul><ul id="4068ac6a-aab1-8054-879e-e2772a11649c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Establishes legal consequences, disciplinary actions, and penalties for violating regulatory standards.</li></ul><ul id="4068ac6a-aab1-801f-89df-fc9f7e0f7130" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Governs educational providers and pre-licensing/continuing education rules.</li></ul><ul id="4068ac6a-aab1-806a-9efd-dab3bb051a06" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Provides the statutory authority for creating and empowering the <strong>Tennessee Real Estate Commission (TREC)</strong>.</li></ul></li></ul><ul id="4068ac6a-aab1-806d-8a53-cfe260874b77" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tennessee Real Estate Commission (TREC) Overview</strong><ul id="4068ac6a-aab1-8080-9f94-f1b613f6fb6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role:</strong> The official regulatory body established to oversee the real estate profession in Tennessee.</li></ul><ul id="4068ac6a-aab1-808f-b037-d40fa2cfbdf5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Goals:</strong></li></ul><ul id="4068ac6a-aab1-80de-8c6c-d0ea34b31baa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Protect the public&#x27;s interest in both residential and commercial real estate transactions.</li></ul><ul id="4068ac6a-aab1-80f2-b1fb-cc0b1690a5f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Establish mandatory education and pre-licensing standards for licensees.</li></ul><ul id="4068ac6a-aab1-8097-bf45-e3af96321e89" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Strictly enforce Tennessee&#x27;s real estate license laws.</li></ul></li></ul><ul id="4068ac6a-aab1-8009-973d-f6bee0becda7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Regulatory Authority &amp; Hierarchy</strong><ul id="4068ac6a-aab1-8023-9935-d41e738b4dfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Foundation:</strong> State legislators create and pass statutes (such as the Tennessee Real Estate Broker License Act of 1973).</li></ul><ul id="4068ac6a-aab1-80d6-a530-c0aec81b917c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Commission Rules:</strong> TREC adopts rules to promulgate (clarify and enforce) the state license law.</li></ul><ul id="4068ac6a-aab1-809b-a6c4-dad2b3fdcc6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Policy Statements:</strong> TREC occasionally issues Policy Statements to further amplify or clarify its rules, which subsequently become part of the regulatory framework.</li></ul><ul id="4068ac6a-aab1-80d8-aab9-fb2350d45095" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Distinction in Lawmaking:</strong> TREC <em>does not</em> possess the power to make statutory laws (a power reserved exclusively for the state legislature); instead, TREC administers, promulgates, and enforces rules and regulations.</li></ul></li></ul><ul id="4068ac6a-aab1-8038-9ec5-cb90787268ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TREC&#x27;s Jurisdiction &amp; Areas of Regulation</strong><ul id="4068ac6a-aab1-80d9-8373-d535c734a31f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licenses, registers, and regulates real estate brokers and affiliate brokers.</li></ul><ul id="4068ac6a-aab1-8096-b255-eafbf5e8b6b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Oversees real estate firms.</li></ul><ul id="4068ac6a-aab1-80b0-8c72-f0eab4b12cf6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Regulates rental location agents, timeshare salespersons and developments, vacation clubs, and vacation lodging services.</li></ul><ul id="4068ac6a-aab1-8043-a7af-fd6d913b4fa7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Composition of the Tennessee Real Estate Commission (TREC)</strong><ul id="4068ac6a-aab1-80fe-9888-f2a4370a349f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Total Members:</strong> 9 members, all of whom must be residents of Tennessee of good moral character.</li></ul><ul id="4068ac6a-aab1-8004-9746-ddaabd759750" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Appointment &amp; Terms:</strong> Appointed by the governor to serve <strong>five-year terms</strong>, with members prohibited from succeeding themselves for more than one full term.</li></ul></li></ul><ul id="4068ac6a-aab1-8062-8c1a-eca35e6922ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Membership Distribution &amp; Qualifications</strong><ul id="4068ac6a-aab1-804d-b7bc-d6fcf55bac07" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Industry Experience:</strong> 7 members must have been licensed real estate brokers or affiliate brokers in Tennessee for at least 5 years.</li></ul><ul id="4068ac6a-aab1-8019-a980-cff2707663fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Public Members:</strong> 2 members must represent the general public (unlicensed in real estate) and cannot reside in the same grand division.</li></ul><ul id="4068ac6a-aab1-80b9-bd63-dbd7354313fe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Geographic Representation:</strong> Must include exactly <strong>3 members from each of Tennessee&#x27;s three grand divisions</strong> (Eastern, Middle, and Western divisions).</li></ul><ul id="4068ac6a-aab1-80d9-96f1-ced0c4838661" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Diversity Requirements:</strong> At least 1 member must be 60 years of age or older, and at least 1 member must be a person of color.</li></ul></li></ul><ul id="4068ac6a-aab1-80be-a6c5-c2994037c0d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Meetings &amp; Operational Rules</strong><ul id="4068ac6a-aab1-80b1-a859-cbc012de26c1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Meeting Locations:</strong> At least one meeting must be held annually in each of the three grand divisions, with additional meetings scheduled as necessary.</li></ul><ul id="4068ac6a-aab1-8016-8f22-db1acc128727" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Quorum Requirements:</strong> A minimum of <strong>5 members</strong> must be in attendance for a TREC meeting to be valid.</li></ul><ul id="4068ac6a-aab1-8062-96f1-e002ace4b559" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Transparency:</strong> All official meetings are open to the public.<figure id="4068ac6a-aab1-809b-aab2-e50841eaec13" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image.png"><img style="width:480px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-8035-b6e0-d801c093423c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Powers &amp; Judicial Role</strong><ul id="4068ac6a-aab1-809d-b553-fc03a00fb8e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Quasi-Judicial Authority:</strong> TREC holds the legal power to determine whether a violation of license law has occurred.</li></ul><ul id="4068ac6a-aab1-8048-bcc4-c05167fa0601" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Civil Immunity:</strong> Commission members enjoy immunity from civil liability when performing their official duties in good faith.</li></ul><ul id="4068ac6a-aab1-8058-8cc4-e671b5973774" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Representation:</strong> Members have the right to be represented by the state&#x27;s Attorney General.</li></ul></li></ul><ul id="4068ac6a-aab1-8074-803d-e69a07af764d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Internal Organization &amp; Administration</strong><ul id="4068ac6a-aab1-80cc-abba-db8e90539154" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Leadership:</strong> Members elect a chairperson and vice chairperson from among themselves.</li></ul><ul id="4068ac6a-aab1-801a-a60f-dae7295bbb82" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Official Seal:</strong> Authorized to use an official seal to authenticate official records and documents.</li></ul><ul id="4068ac6a-aab1-8045-96b1-fd651aa76844" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Meetings:</strong> Empowered to hold necessary meetings, with the mandatory requirement of at least one meeting per year in each of Tennessee&#x27;s three grand divisions.</li></ul></li></ul><ul id="4068ac6a-aab1-80e2-b281-ee2d7e301e42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executive &amp; Professional Appointments</strong><ul id="4068ac6a-aab1-80e4-bcac-f47d485f29ac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Executive Director:</strong> Appointed to a four-year term (subject to approval by the Commissioner of Personnel). Must have passed the Tennessee broker&#x27;s exam and meet specific qualifications set by TREC.</li></ul><ul id="4068ac6a-aab1-80f6-8922-cd74f2c6dd70" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Director of Education:</strong> Required to hold a college degree from an accredited university.</li></ul><ul id="4068ac6a-aab1-80a5-8b26-d584d18d26f7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>General Counsel:</strong> Provided with a dedicated, full-time licensed attorney well-versed in Tennessee law.</li></ul></li></ul><ul id="4068ac6a-aab1-80a2-91c7-c908b7f0b34f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Regulatory &amp; Financial Powers</strong><ul id="4068ac6a-aab1-800a-838f-d353cff4d848" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Rulemaking:</strong> Authorized to adopt bylaws, rules, and regulations to enforce license law, provided they do not contradict Tennessee statutes.</li></ul><ul id="4068ac6a-aab1-808c-b964-dcfa8a1a78e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recovery Account Administration:</strong> Manages and administers the <strong>Real Estate Education and Recovery Account</strong>, which provides compensation to consumers who win a civil lawsuit against a licensee but are unable to collect the awarded damages.<figure id="4068ac6a-aab1-803a-b27c-f12adcda6378" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%201.png"><img style="width:336px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%201.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-80bd-8863-c5ed1a691a60" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Practical Day-to-Day Functions of TREC</strong><ul id="4068ac6a-aab1-8009-ac97-fdfd9c1e415b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Licensing Management:</strong> Reviewing, approving, or denying initial license applications, as well as managing renewals, suspensions, and revocations.</li></ul><ul id="4068ac6a-aab1-80aa-a149-fa8489364d2c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fee Adjustments:</strong> Authority to increase licensing fees as necessary to support administrative operations.</li></ul><ul id="4068ac6a-aab1-80e4-8383-c7b0be012dce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Educational Oversight:</strong> Approving real estate schools, licensing exam test vendors, and promulgating rules governing pre-licensing courses and continuing education (CE).</li></ul><ul id="4068ac6a-aab1-80df-a64f-d5ec3caa1f91" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Requirements &amp; Waivers:</strong> Empowered to waive specific examination or education requirements under qualifying circumstances.</li></ul><ul id="4068ac6a-aab1-80eb-a35c-f1b874fca863" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Industry Support &amp; Training:</strong> Conducting or assisting in real estate clinics, educational meetings, specialized courses, and professional institutes.</li></ul></li></ul><ul id="4068ac6a-aab1-809e-8f75-fa1fbf37d418" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Real Estate Education and Recovery Account Overview</strong><ul id="4068ac6a-aab1-8051-a870-f58de69b2d3a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Purpose:</strong> A consumer protection fund administered by TREC to reimburse clients or customers who win a civil judgment against a licensee for misconduct (such as fraud, misrepresentation, or deceit) but are unable to collect the damages owed.</li></ul><ul id="4068ac6a-aab1-80c1-b4df-eacba50c7382" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Application Timeline:</strong> If a court judgment remains unpaid for <strong>60 days</strong>, the aggrieved party may formally apply to TREC for relief from the fund.</li></ul></li></ul><ul id="4068ac6a-aab1-8086-a5af-e35d01ef20db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Funding &amp; Minimum Balance Requirements</strong><ul id="4068ac6a-aab1-80d6-8e17-ce102217d58d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Minimum Balance:</strong> The account must maintain a minimum statutory balance of <strong>$500,000</strong>.</li></ul><ul id="4068ac6a-aab1-805d-a70f-cb14240415b1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Source of Funds:</strong> Funded primarily through fees collected from applicants seeking broker, affiliate broker, or timeshare salesperson licenses.</li></ul><ul id="4068ac6a-aab1-80c7-891a-e272ac816013" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Assessments:</strong> If the fund balance drops below $500,000, TREC can levy an additional assessment of <strong>up to $30</strong> upon all active licensees at the time of license renewal.</li></ul></li></ul><ul id="4068ac6a-aab1-8012-914e-ea1ae5bceeb9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Payout Caps &amp; Limitations on Liability</strong><ul id="4068ac6a-aab1-80d8-9695-d64c5a0b1ae8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Per Transaction Limit:</strong> The maximum payout a consumer can receive from the account for a single transaction is <strong>$15,000</strong>.</li></ul><ul id="4068ac6a-aab1-8011-b300-c6622b64c05c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Per Licensee Limit:</strong> The absolute maximum liability payout from the fund for a single licensee is <strong>$30,000</strong>, regardless of how many individual victims file claims or how many separate transactions are involved.</li></ul><ul id="4068ac6a-aab1-801b-8b6e-f3a63b4b37f0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusions:</strong> Payouts cover actual damages awarded by a judge; they typically do not cover attorney fees or punitive damages if they exceed statutory limits.</li></ul></li></ul><ul id="4068ac6a-aab1-80d7-98f4-d96aeb33d996" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consequences for the Licensee</strong><ul id="4068ac6a-aab1-8036-8c32-fd628a059a16" class="bulleted-list" dir="auto"><li style="list-style-type:square">If any money is paid out from the Recovery Account on behalf of a licensee, TREC holds the discretionary authority to <strong>suspend or revoke</strong> that individual&#x27;s real estate license.<figure id="4068ac6a-aab1-8037-b794-cc31d29df444" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%202.png"><img style="width:432px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%202.png"/></a></figure></li></ul></li></ul><ul id="4068ac6a-aab1-804c-87e1-fc6b58f6b8f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"></li></ul></li></ul><p id="4068ac6a-aab1-806f-9de8-fa87c25e84bf" class="" dir="auto">
+</p></div><div id="4068ac6a-aab1-80ec-8092-d3a15c6dc8fd" style="width:31.250000000000007%" class="column" data-notion-column-ratio="0.31250000000000006" dir="auto"><p id="4068ac6a-aab1-8000-acbc-d1d31def1f62" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4068ac6a-aab1-80a6-93a5-c2a3f995ac00" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Real Estate Commission (TREC)</strong> - group that regulates the real estate industry in Tennessee in order to protect the public&#x27;s interest; aka <em>TREC</em> or <em>the Commission</em></li></ul><ul id="4068ac6a-aab1-806b-832b-cb233ae3eab2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Education and Recovery Fund</strong> - fund serving the purpose of reimbursing people who have been harmed by a licensee&#x27;s conduct</li></ul><p id="4068ac6a-aab1-809a-9efe-d03926d5ee7b" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4068ac6a-aab1-8019-850c-fd0ddd3011f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tennessee Real Estate Broker License Act of 1973</strong><ul id="4068ac6a-aab1-8008-9bc3-e490ead91945" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The license law which real estate professionals must follow in Tennessee is contained in <strong>Chapter 13, Title 62 of the Tennessee Code Annotated</strong>. This law standardizes processes and expectations within the real estate industry, including:<ul id="4068ac6a-aab1-80ee-b44f-e56579253be8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Basic requirements for licensure and maintaining a license</li></ul><ul id="4068ac6a-aab1-80d9-90bf-d1ab95d60322" class="bulleted-list" dir="auto"><li style="list-style-type:square">Distinctions between acts that require a license and acts that do not</li></ul><ul id="4068ac6a-aab1-80d4-aea6-e090561f2c09" class="bulleted-list" dir="auto"><li style="list-style-type:square">Standards of conduct and practice</li></ul><ul id="4068ac6a-aab1-8040-a8ca-d2b43e4d1beb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Consequences for violating those standards</li></ul><ul id="4068ac6a-aab1-801e-bc16-d2d062cbec7a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regulations for education providers (like Aceable!)</li></ul><ul id="4068ac6a-aab1-804e-bdb4-eb201799783f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Creation of the Tennessee Real Estate Commission (TREC)</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8029-9a1e-f682ed4a3ed1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Tennessee Real Estate Commission (TREC)</strong><ul id="4068ac6a-aab1-8085-9cb1-e8f58fc164f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To regulate the real estate industry in order to protect the public&#x27;s interest when involved in real estate transactions</li></ul><ul id="4068ac6a-aab1-8040-8900-e05dd7e25ead" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To establish standards for the education of licensees</li></ul><ul id="4068ac6a-aab1-8069-8265-d6ec61369b12" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To enforce Tennessee&#x27;s license law<figure id="4068ac6a-aab1-808a-8e5b-d590be480fbc" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%203.png"><img style="width:1500px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%203.png"/></a></figure><figure id="4068ac6a-aab1-804a-9804-f8573b5aea0d" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%204.png"><img style="width:375.796875px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%204.png"/></a></figure></li></ul><ul id="4068ac6a-aab1-80d9-bad7-c125489a2742" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What TREC CANNOT Do</strong><ul id="4068ac6a-aab1-80a6-9351-ce0f1f39f4f6" class="bulleted-list" dir="auto"><li style="list-style-type:square">TREC is <strong>NOT allowed </strong>to set fees or commissions for licensees! They will not take commission complaints, either.</li></ul></li></ul></li></ul><ul id="4068ac6a-aab1-8070-8472-d85807255d78" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Education and Recovery Account</strong><figure id="4068ac6a-aab1-8041-b971-c2a96c498fca" class="image" data-notion-image="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%205.png"><img style="width:432px" src="Chapter%201%20-%20Introduction%20to%20Tennessee%20License%20Law/image%205.png"/></a></figure><p id="4068ac6a-aab1-8022-a88e-d1b3cf8a3b2e" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

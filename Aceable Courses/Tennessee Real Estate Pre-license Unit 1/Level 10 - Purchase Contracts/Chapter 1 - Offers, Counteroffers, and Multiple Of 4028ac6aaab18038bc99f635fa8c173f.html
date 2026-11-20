@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Offers, Counteroffers, and Multiple Offers</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8038-bc99-f635fa8c173f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Offers, Counteroffers, and Multiple Offers</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4088ac6a-aab1-809b-bd0f-eda427eded92" class="column-list" data-notion-column-list="" dir="auto"><div id="4088ac6a-aab1-8057-8148-ea6970c0db06" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4088ac6a-aab1-80b7-9ec1-e4072adc1dc4" class="" dir="auto"><strong>Contract Lifecycle: From Offer to Performance</strong></p><ul id="4088ac6a-aab1-807a-9ad9-c56ab2937dc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A legally binding contract progresses through three distinct stages:<ol type="1" id="4088ac6a-aab1-80a6-9b91-e77657d493fb" class="numbered-list" start="1" dir="auto"><li><strong>Offer:</strong> A proposition made by an offeror to an offeree, often shaped by initial negotiations and counteroffers.</li></ol><ol type="1" id="4088ac6a-aab1-8073-8dee-d04a364eefb0" class="numbered-list" start="2" dir="auto"><li><strong>Offer and Acceptance:</strong> Mutual understanding and agreement on terms, finalized when the offeree communicates unconditional acceptance to the offeror.</li></ol><ol type="1" id="4088ac6a-aab1-80aa-b36d-c2e3da535da2" class="numbered-list" start="3" dir="auto"><li><strong>Performance:</strong> The fulfillment of all promises outlined in the contract.</li></ol></li></ul><ul id="4088ac6a-aab1-80ae-9440-e01ad4604e0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer Presentation &amp; Responses</strong><ul id="4088ac6a-aab1-8068-9462-e437e57deb68" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Presentation:</strong> Buyers&#x27; agents typically present offers to listing agents either via personal presentation or electronically (the modern standard).</li></ul><ul id="4088ac6a-aab1-803e-9d3e-f4ed513368fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller&#x27;s Authority:</strong> Only the seller—never the agent—has the authority to decide how to respond or to sign/initial documents on the client&#x27;s behalf.</li></ul><ul id="4088ac6a-aab1-805f-9b27-dabb7de76165" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Responses:</strong> A seller presented with an offer may total accept, counter, reject, or ignore (no response). Tennessee purchase contracts feature a dedicated box for sellers to indicate acceptance, rejection, or a counteroffer.</li></ul></li></ul><ul id="4088ac6a-aab1-8074-9632-eb8ea1fad085" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Acceptance &amp; Equitable Title</strong><ul id="4088ac6a-aab1-80ac-ba2c-f15161f8e4fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mirror Image Rule:</strong> Acceptance must be unconditional, unambiguous, and leave the terms completely unaltered.</li></ul><ul id="4088ac6a-aab1-807c-b6e7-cbad6a4ab9fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Delivery and Binding Effect:</strong> Official communication of acceptance (delivery) creates a meeting of the minds and grants the buyer <strong>equitable title</strong>, giving them a legally recognized interest in the property and the right to compel specific performance prior to closing.</li></ul></li></ul><ul id="4088ac6a-aab1-80a4-9f38-f4c6a2a53f0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer Termination &amp; Revocation</strong><ul id="4088ac6a-aab1-80ea-ac36-dcdf5de33f28" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Offers terminate through acceptance, counteroffer, rejection, expiration, revocation, death or mental incapacity, property destruction, or improper acceptance.</li></ul><ul id="4088ac6a-aab1-806d-a0fa-fe139aabcdcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revocation Rule:</strong> An offeror may withdraw an offer at any time <em>before</em> the proper communication of acceptance has been received, even if a stated acceptance deadline has not yet passed. Once acceptance is communicated, the right to revoke is extinguished.</li></ul></li></ul><ul id="4088ac6a-aab1-805e-8b1a-c285fa54f3dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">How an Offer becomes a Contract <figure id="4088ac6a-aab1-8016-b815-c10ca63229d6" class="image" data-notion-image="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image.png" dir="ltr"><a href="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image.png"><img style="width:432px" src="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-8023-a8c4-d770f654ce46" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Best Practices for Offers Overview</strong><ul id="4088ac6a-aab1-80da-adfe-fc45c1059a6c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate licensees must follow professional standards when handling offers, prioritizing client autonomy and transparent communication.</li></ul></li></ul><ul id="4088ac6a-aab1-802e-ac4a-e06fb6eebb85" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Duty to Present All Offers</strong><ul id="4088ac6a-aab1-80cc-9e52-f3317f66e444" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>General Rule:</strong> Agents must present <strong>all</strong> offers to their clients, regardless of whether the agent believes the client will reject them or if the terms seem unfavorable.</li></ul><ul id="4088ac6a-aab1-804f-bfd0-f89efd7f8d07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Sole Exception:</strong> An agent may decline to present certain offers <strong>only</strong> if the client provides explicit, ideally written permission to do so (such as an established minimum price threshold or rejected contingency criteria). Agents should not encourage setting such limits, but must respect client instructions if given.</li></ul></li></ul><ul id="4088ac6a-aab1-80c9-8c99-d3a1e65206cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Educating the Client&#x27;s Decision-Making</strong><ul id="4088ac6a-aab1-8032-9690-ea4a6748ac0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agents should help clients evaluate offers beyond just the purchase price by considering:<ul id="4088ac6a-aab1-80c3-b85b-cd4917c99e8a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Flexibility on the closing date</li></ul><ul id="4088ac6a-aab1-8075-9647-c23792ad0de4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Buyer financial strength</li></ul><ul id="4088ac6a-aab1-80d5-bcfc-fa38c9de6bb2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Amount of earnest money</li></ul><ul id="4088ac6a-aab1-80cc-9e32-cbc945b67626" class="bulleted-list" dir="auto"><li style="list-style-type:square">Willingness to cover closing costs</li></ul><ul id="4088ac6a-aab1-806d-b259-cf39c66b7b2b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Potential contingencies that could derail the transaction</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8008-aa1c-d99db53065bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Reviewing Client Options</strong><ul id="4088ac6a-aab1-80e2-afc1-eba85f2f64ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Ensure clients understand their four available responses to any offer: accept, reject, ignore, or counter.</li></ul></li></ul><ul id="4088ac6a-aab1-8042-859d-cf7c1ef122da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Counteroffers Overview</strong><ul id="4088ac6a-aab1-80a6-a791-de5d3cda418d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A proposal submitted in response to an existing offer that modifies its terms. In Tennessee, real estate professionals frequently use the standard <strong>Counter Offer Form (RF651)</strong>, though any clear, signed writing satisfying the Statute of Frauds is legally sufficient.</li></ul><ul id="4088ac6a-aab1-8027-aa06-d2db20ff9a41" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Effect on Original Offer:</strong> Submitting a counteroffer acts as an automatic rejection, rendering the original offer null, void, and permanently dead.</li></ul><ul id="4088ac6a-aab1-80ca-9baf-ce382a7b672a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Options &amp; Disposition:</strong> Like initial offers, a counteroffer can be accepted, rejected, ignored, countered again, or allowed to expire.</li></ul></li></ul><ul id="4088ac6a-aab1-8023-aa65-e5da4a44d4de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Negotiation &amp; Writing Requirement</strong><ul id="4088ac6a-aab1-8039-81f5-ecbdb747042b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statute of Frauds:</strong> To be legally valid and enforceable, a counteroffer must be in <strong>writing</strong> and signed. Oral negotiations are non-binding; if communicating details verbally, licensees should always qualify them with &quot;subject to written confirmation.&quot;</li></ul><ul id="4088ac6a-aab1-80e4-827b-d40ddecb0683" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role of the Agent:</strong> Skillful negotiation helps bridge gaps when clients are hesitant to counter close offers, bringing parties closer to mutually acceptable terms.</li></ul></li></ul><ul id="4088ac6a-aab1-802b-bf84-d7f4b7713db8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Revocation &amp; Property Status While Countering</strong><ul id="4088ac6a-aab1-8080-974e-e6ea82f74df1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Right to Withdraw:</strong> A party may withdraw a counteroffer at any time <em>before</em> proper communication of its acceptance by the other side.</li></ul><ul id="4088ac6a-aab1-80b5-a091-c874889273b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Competing Offers &amp; Best Practices:</strong> If a seller issues a counteroffer and subsequently receives a superior offer, they should officially withdraw the first counteroffer before responding to the new one.</li></ul><ul id="4088ac6a-aab1-80ba-92b3-d1dbc6aceab0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property Availability:</strong> Licensees must remind buyers that while a counteroffer is active and pending, the property remains on the market and the seller is legally free to accept another offer.</li></ul></li></ul><ul id="4088ac6a-aab1-80a2-906a-f702f6f56f70" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Overview: Mary and the Counteroffer</strong><ul id="4088ac6a-aab1-8069-a519-f8ce4992a5a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property List Price:</strong> $225,000</li></ul><ul id="4088ac6a-aab1-8070-b8fb-f902ec330822" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Initial Buyer Offer (Feb 10):</strong> $205,000 purchase price; 20% down conventional loan; buyer pays closing costs; seller furnishes title policy and survey; closing date March 30. Presented by listing agent Juan on Feb 11.</li></ul><ul id="4088ac6a-aab1-80b9-a11a-fa3c93826cea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Counter 1:</strong> Full price ($225,000) and closing date changed to April 15.</li></ul><ul id="4088ac6a-aab1-8008-8402-d2871d575e91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Counter 1:</strong> Agrees to April 15 closing date, but counters with a purchase price of $215,000.</li></ul><ul id="4088ac6a-aab1-80a2-a468-e55adbe0290f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Counter 2:</strong> Agrees to the $215,000 price, but stipulates that the buyer must pay for the survey.</li></ul><ul id="4088ac6a-aab1-806d-9bc0-c28d2ef183b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Counter 2:</strong> Agrees to pay for the survey at the $215,000 price. All changes are initialed and signed by both parties, forming a binding contract.</li></ul><ul id="4088ac6a-aab1-80ec-96bd-df3dccfd01a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Post-Acceptance Agent Responsibilities</strong><ul id="4088ac6a-aab1-809c-8b1c-fe9439d2c014" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Filling in the Effective Date:</strong> The agent who obtains final acceptance (in this case, Mary) completes the effective date on the contract. (If Juan had secured final acceptance, Juan would handle this step).</li></ul><ul id="4088ac6a-aab1-80ed-acef-e46a4f0b4b30" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Notification &amp; Distribution:</strong> Notify the opposing agent (Juan) of the final acceptance and ensure all parties and agents receive copies of the fully executed contract.</li></ul><ul id="4088ac6a-aab1-8081-b904-c8efa200c179" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Earnest Money &amp; Contract Delivery:</strong> Deliver the earnest money deposit and a copy of the final contract to the appropriate escrow/closing party.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-807f-b37b-d0d79d981c69" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Executory Contract Overview</strong><ul id="4088ac6a-aab1-80cd-896b-c25f62cf7b44" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Once an offer or counteroffer is fully accepted and signed, it transitions into an executory contract. In real estate practice, agents commonly refer to the property&#x27;s status as &quot;pending.&quot;</li></ul><ul id="4088ac6a-aab1-8046-9bcd-cf07108ce314" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Party Commitment:</strong> Both parties are legally committed to performing their required obligations. The seller must not negotiate with other prospective buyers unless it is specifically to establish a back-up contract.</li></ul></li></ul><ul id="4088ac6a-aab1-8036-b4e8-ddc5cbd2fb21" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Back-Up Contracts</strong><ul id="4088ac6a-aab1-8085-a1ee-ee1e3a5c8840" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A secondary contract that serves as a contingency plan (Plan B) if the primary contract terminates or falls through.</li></ul><ul id="4088ac6a-aab1-80c5-a67d-c9438bdbfca1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origin:</strong> A contract may be placed in a back-up position because it was selected as the seller&#x27;s second choice among multiple offers, or simply because it arrived after the primary contract was already finalized.</li></ul></li></ul><ul id="4088ac6a-aab1-80dd-af68-f794d8ee9700" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Multiple Offer Situations Overview</strong><ul id="4088ac6a-aab1-8001-bc86-cc0f6561ba59" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Market Context:</strong> Occurs when housing supply lags behind demand, creating fierce competition where two or more prospective buyers submit competing offers on the same property.</li></ul><ul id="4088ac6a-aab1-8090-999b-cf09057a9f92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Dilemma:</strong> Since a property can only be sold to one buyer, sellers must navigate the selection process to determine the winning bid while avoiding a timeshare outcome.</li></ul></li></ul><ul id="4088ac6a-aab1-809a-add6-f0859cad2adc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Agent Strategies for Multiple Offers</strong><ul id="4088ac6a-aab1-806d-a187-d1df2a548fcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Be Grateful &amp; Prepared:</strong> Multiple offers signal a strong seller&#x27;s market. Listing agents and sellers should establish a structured plan before listing the property on how they will handle competing bids.</li></ul><ul id="4088ac6a-aab1-804b-95df-ca5da3732be4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Control Over Disclosure:</strong> Agents must follow the seller&#x27;s explicit directions regarding what details to share with competing buyers. Agents should never disclose the existence of multiple offers unless authorized by the seller (preferably in writing).</li></ul><ul id="4088ac6a-aab1-80ae-bbab-c66119afe7f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Confidentiality:</strong> Standard purchase offers are not inherently confidential documents. If a buyer requires confidentiality, their agent must set up a formal confidentiality agreement prior to submitting the offer.</li></ul><ul id="4088ac6a-aab1-8080-9570-e8e216f0be5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Honesty Rule:</strong> While agents are not obligated to volunteer information about competing bids, they must never lie. If directly asked if other offers exist, an agent with knowledge of them must answer truthfully.</li></ul><ul id="4088ac6a-aab1-80e0-b208-f871ef6941d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Avoiding Multiple Counteroffers:</strong> Proposing standard counteroffers to multiple buyers simultaneously is risky and discouraged, because a traditional counteroffer remains open until withdrawn or rejected, which can accidentally bind the seller to multiple enforceable contracts if accepted.</li></ul><ul id="4088ac6a-aab1-800b-9db8-f893d551b1f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Encouraging Patience:</strong> Listing agents should advise sellers to resist rushing into early offers. Allowing a property adequate market exposure (such as keeping it on the market for at least a week) often yields multiple high-quality offers to evaluate.</li></ul></li></ul><ul id="4088ac6a-aab1-803c-8dbb-fda9e933115f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Listing Agent Duties in Multiple Offers</strong><ul id="4088ac6a-aab1-807a-8ada-dc8a09d92c89" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Present All Offers:</strong> Listing agents have a strict legal and fiduciary duty to present every offer to the seller promptly and objectively, regardless of how low or unfavorable the terms are (e.g., presenting a $135,000 offer alongside full-price bids).</li></ul><ul id="4088ac6a-aab1-8012-b584-e237dcba7fb6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Sole Exception:</strong> Offers may only be withheld or declined without presentation if the seller has granted explicit, ideally written permission to do so (such as an established minimum price threshold).</li></ul><ul id="4088ac6a-aab1-802b-b1f9-fde54c9a65db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Timely Submission:</strong> Offers and counteroffers must be presented promptly, though they do not strictly need to be presented in the exact chronological order they were received.</li></ul></li></ul><ul id="4088ac6a-aab1-80a7-b244-e80247502556" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dispelling Seller Duty Misconceptions</strong><ul id="4088ac6a-aab1-80c6-a7b3-d9bf88bbfd9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sellers are under <strong>no obligation</strong> to respond to offers in the order received, respond simply because an offer is in writing, or automatically accept a full-price offer.</li></ul><ul id="4088ac6a-aab1-8082-a09d-c6d73d2e57ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Sellers retain full discretion to:<ul id="4088ac6a-aab1-80c8-8c4b-f65c14b8154f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Accept one offer while ignoring or rejecting the rest.</li></ul><ul id="4088ac6a-aab1-8038-b855-d422a6ddc0f1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reject all offers entirely.</li></ul><ul id="4088ac6a-aab1-800c-8761-d0e399d34020" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reject an offer while issuing a counteroffer to that specific buyer.</li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-8098-baae-ecee3046c2e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Post-Acceptance Marketing Rules</strong><ul id="4088ac6a-aab1-8002-bbd6-f6d59fe0933e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once a seller officially accepts an enforceable primary offer, the listing agent is no longer required to advertise the property or show it to new buyers, unless the seller explicitly requests in writing to continue marketing the property (typically to secure back-up offers).</li></ul></li></ul><ul id="4088ac6a-aab1-8015-91d8-c4dd9ed759cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Net Sheet for Seller Overview</strong><ul id="4088ac6a-aab1-80fe-8c76-dda7d4905347" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Purpose:</strong> A financial estimate prepared by the listing agent for every offer, showing the seller an accurate breakdown of what they will walk away with (&quot;net&quot;) after accounting for all closing costs, fees, and prorations.</li></ul><ul id="4088ac6a-aab1-809b-9601-fe0dd19fc436" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Beyond the Top-Line Price:</strong> A higher purchase price does not always mean a higher net payout. For example, a full-price offer where the buyer refuses closing costs might net the seller less than a slightly lower offer where the buyer covers specific fees, or an offer with a faster closing date that saves holding costs.</li></ul><ul id="4088ac6a-aab1-803a-b4f6-dce045f346fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Educational Value:</strong> Net sheets help educate sellers during pricing conversations and allow them to objectively compare the financial impact of multiple competing offers.<figure id="4088ac6a-aab1-807b-a248-de0960b618d6" class="image" data-notion-image="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%201.png"><img style="width:432px" src="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%201.png"/></a></figure></li></ul></li></ul><ul id="4088ac6a-aab1-8045-a167-f4a1d3da72d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Multiple Offers (Listing Agent)</strong><figure id="4088ac6a-aab1-80fb-b36a-fc92a792ed93" class="image" data-notion-image="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%202.png"><img style="width:384px" src="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%202.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80e3-b5b7-fb5760c22511" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Agent Strategies in Multiple Offers</strong><ul id="4088ac6a-aab1-8007-99cd-e729bf4858c1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Open House Etiquette:</strong> Convey genuine enthusiasm when touring properties with clients. Making a positive impression on the listing agent helps build rapport and positions the buyer favorably.</li></ul><ul id="4088ac6a-aab1-80ef-90d5-e1e9ab29a2c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recommending Reputable Lenders:</strong> Help buyers secure strong loan qualification letters by recommending trusted, highly respected local lenders with proven track records of closing on time, which enhances the offer&#x27;s credibility. (Buyers must choose their own lender and cannot be forced to use a specific recommendation).</li></ul><ul id="4088ac6a-aab1-8093-8b29-ecc66633c613" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assisting with Offer Pricing:</strong><ul id="4088ac6a-aab1-808b-aa3d-ef48fa1f8390" class="bulleted-list" dir="auto"><li style="list-style-type:square">Guide buyers toward the &quot;sweet spot&quot;: an offer they won&#x27;t regret regardless of the outcome (avoiding overpaying just to win, or losing a home to save a minor amount).</li></ul><ul id="4088ac6a-aab1-802e-8c5b-fa36e3056232" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a client insists on submitting a low offer despite your warnings, you must still professionally cooperate and write up the offer as requested.</li></ul><ul id="4088ac6a-aab1-80b7-8ad4-c57862ca77b0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Limit Contingencies:</strong> Minimize contract contingencies unless absolutely necessary, as conditions make an offer less attractive to a seller in a competitive market.</li></ul><ul id="4088ac6a-aab1-805a-ad3e-f5fc1cffddf2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Leverage Financial &amp; Concession Resources:</strong><ul id="4088ac6a-aab1-802b-9fbb-ff09578321a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Encourage a larger down payment to signal financial strength.</li></ul><ul id="4088ac6a-aab1-804f-aa59-da6b19becf40" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Reduce requests for seller-paid closing costs.</li></ul><ul id="4088ac6a-aab1-8028-91ea-e62cad91ad49" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Offer to pay for the buyer&#x27;s own home warranty and title policy to save the seller money at closing.</li></ul></li></ul><ul id="4088ac6a-aab1-8037-86d8-ea19aeed39c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tailor Terms to the Seller&#x27;s Living Situation:</strong><ul id="4088ac6a-aab1-80a8-a2ed-fc8999332bf9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Occupied Home:</em> Offer a leaseback if the seller needs extra time after closing to move or coordinate their next purchase.</li></ul><ul id="4088ac6a-aab1-80e6-8cd7-fad199d0dead" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Vacant Home:</em> Offer a quick closing to help the seller stop carrying holding costs on an empty property.</li></ul></li></ul><ul id="4088ac6a-aab1-80cb-b5fe-d7307b2c0376" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Build Rapport with the Listing Agent:</strong> Maintain prompt, polite communication to uncover the seller&#x27;s priorities and ideal closing dates, while respecting that ethical agents will not disclose details about competing offers.</li></ul><ul id="4088ac6a-aab1-805d-9c2c-f5f13da578a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Prepare a Buyer Net Cost Sheet:</strong> Provide the buyer with a net cost sheet (or use brokerage net calculators) to outline all expected financial outlays and closing costs transparently.</li></ul><ul id="4088ac6a-aab1-80cb-a298-f4b9d7176b36" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Escalation Clause Overview</strong><ul id="4088ac6a-aab1-809d-bc44-d0d3382b699b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition:</strong> A contractual provision stating that a buyer will automatically increase their offer by a specified increment over any higher competing offer, up to a pre-set maximum cap.</li></ul><ul id="4088ac6a-aab1-8025-adfb-e2a52df11f9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Base Offer vs. Escalation:</strong> The initial offer price stands if there are no competing bids; the escalator only triggers when a verifiable better offer is presented.</li></ul><ul id="4088ac6a-aab1-8080-8133-f3846cf434cf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Thomas&#x27; Dream House Scenario:</strong> Thomas offers $300,000 with an escalation clause beating competing offers by $2,000, up to a maximum cap of $310,000. If another buyer offers $311,000, that competing bid outranks Thomas&#x27;s capped limit.</li></ul></li></ul><ul id="4088ac6a-aab1-80e6-869d-e55e46d77f8f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Drawbacks &amp; Risks of Escalation Clauses</strong><ul id="4088ac6a-aab1-8030-994e-c68249496261" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller Resistance:</strong> Some sellers dislike escalators and prefer buyers to submit their highest and best offers upfront.</li></ul><ul id="4088ac6a-aab1-80af-9530-dd295d0460c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Revealing the Cap:</strong> Stating an absolute price ceiling signals to the seller exactly how much the buyer is willing to spend, which can eliminate bargaining leverage.</li></ul><ul id="4088ac6a-aab1-809f-83f9-c7d6bb10f14e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Risk of Fake Bids:</strong> Vulnerability to unauthentic or fabricated competing offers submitted solely to drive up the escalation price.</li></ul></li></ul><ul id="4088ac6a-aab1-80b4-8c54-f646d8884f19" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Best Practices for Using Escalation Clauses Safely</strong><ul id="4088ac6a-aab1-80e9-8ed0-e00bb1facb0a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Verify Market Competition:</strong> Only use escalators when multiple offers are highly likely; otherwise, exposing the ceiling prematurely weakens negotiation power and invites a higher seller counteroffer.</li></ul><ul id="4088ac6a-aab1-80e1-b26d-ff4b687d0680" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comfort with the Cap:</strong> Ensure the buyer is fully prepared and comfortable paying the absolute maximum limit, as they may end up bound to that exact price.</li></ul><ul id="4088ac6a-aab1-80c1-b337-e8578be0cd64" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Require Proof of Bona Fide Offers:</strong> Safeguard the agreement by specifying that any competing offer must be &quot;bona fide&quot; and require verifiable proof of the competing bid.</li></ul><ul id="4088ac6a-aab1-8035-8e60-e2f80ec4cc96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Balance Contingencies Carefully:</strong> While financing, inspection, or appraisal contingencies protect the buyer if the escalated price spikes, heavy contingencies can cancel out the competitive strength of the escalator.</li></ul><ul id="4088ac6a-aab1-8062-b6e5-d26e041183b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Include an Expiration Date:</strong> Set a strict end date for the offer so sellers cannot revive or invoke the escalation clause long after the buyer has moved on.</li></ul></li></ul><ul id="4088ac6a-aab1-80f1-ba97-ca865a673bf8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Last Steps for Buyer&#x27;s Agents Overview</strong><ul id="4088ac6a-aab1-8011-a9b5-d201b3013af5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Preparing and Submitting the Offer:</strong> Ensure the offer is filled out completely and accurately, then deliver it promptly along with a loan pre-approval letter. Increasing earnest money demonstrates serious intent and strengthens the buyer&#x27;s position in a competitive multi-offer market.</li></ul><ul id="4088ac6a-aab1-8007-af12-f50b06cc95f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Withdrawing Offers:</strong> An offer may be withdrawn at any time prior to the seller&#x27;s communication of acceptance, but the withdrawal must always be done in writing. This gives buyers flexibility if they are weighing multiple properties.</li></ul><ul id="4088ac6a-aab1-8069-a9db-f1db27e9ffe5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Handling Bidding War Losses:</strong><ul id="4088ac6a-aab1-80f9-bf8f-ccd8c23f0c39" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Deliver rejection news personally by phone rather than email.</li></ul><ul id="4088ac6a-aab1-80ff-baa1-ec89cb55b012" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Empathize with the disappointed client while keeping a positive, forward-looking tone.</li></ul><ul id="4088ac6a-aab1-802a-a754-ce6b67ddc424" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Share a personal or client anecdote about a rejected offer leading to a more ideal home later.</li></ul></li></ul><ul id="4088ac6a-aab1-808b-93a4-c498ea9f507e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyers Submitting Multiple Simultaneous Offers:</strong><ul id="4088ac6a-aab1-80af-b7cd-ef46c3fe1598" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyers occasionally submit offers on multiple properties concurrently during tight seller&#x27;s markets.</li></ul><ul id="4088ac6a-aab1-80c5-9244-d57449c0612a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If multiple offers are accepted, the buyer must navigate carefully to avoid severe consequences, such as losing earnest money or facing legal liability to purchase multiple homes.</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="4088ac6a-aab1-80e4-9390-c4ea3c862d00" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Multiple Offers (Buyer&#x27;s Agent)</strong><figure id="4088ac6a-aab1-804f-b504-f5f783df192d" class="image" data-notion-image="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%203.png"><img style="width:288px" src="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%203.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80bd-b770-ce120ec1a86f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Managing Stress in Multiple Offer Situations</strong><ul id="4088ac6a-aab1-80ca-b38e-ce76ceaab6f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Stress:</strong> Driven by intense competition, high emotion, and a lack of control over the seller&#x27;s decision.</li></ul><ul id="4088ac6a-aab1-808b-94a5-fa4015f9ed7e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Stress:</strong> Caused by the pressure of evaluating competing bids where the highest purchase price may not necessarily represent the best overall contract terms.</li></ul></li></ul><ul id="4088ac6a-aab1-8099-a881-e297c3bdd2dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The &quot;Highest and Best&quot; Deadline Strategy</strong><ul id="4088ac6a-aab1-8072-8789-d38cc0d30074" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Mechanics:</strong> A common strategy used by listing agents where all interested buyers and their agents are given a strict deadline (such as 24 or 48 hours) to submit their absolute &quot;highest and best&quot; offer, after which the seller evaluates them and makes a final decision.</li></ul><ul id="4088ac6a-aab1-8090-8552-ea5286e9f910" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Flexibility:</strong> This is merely one approach among many; sellers and listing agents collaborate to determine the strategy that best fits their specific market conditions and goals.</li></ul></li></ul><p id="4088ac6a-aab1-80cb-8c19-e511b4c4224c" class="" dir="auto">
+</p></div><div id="4088ac6a-aab1-809e-9e80-ca76b01ed211" style="width:31.250000000000007%" class="column" data-notion-column-ratio="0.31250000000000006" dir="auto"><p id="4088ac6a-aab1-80b5-ba95-d62d397fa39c" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4088ac6a-aab1-8067-9d2d-eba08827e438" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>counteroffer</strong> - a contract proposal submitted in response to a previous offer, modifying the terms of the original offer; considered a rejection of the original offer</li></ul><ul id="4088ac6a-aab1-8032-8f02-f08c9578dce5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>offer</strong> - a proposition made by an offeror to an offeree to agree to the terms of a binding contract; becomes a contract upon acceptance</li></ul><ul id="4088ac6a-aab1-803a-a5dd-d5c740b38d15" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>offer and acceptance</strong> - the mutual understanding and agreement of the parties of a contract to that contract&#x27;s terms; process that changes an offer into a contract when the offeree communicates acceptance to the offeror</li></ul><ul id="4088ac6a-aab1-80ee-a76e-e1729dc99d4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>revocation</strong> - the termination of an agreement by the person who granted it, such as when a principal terminates an agency relationship or withdraws an offer</li></ul><p id="4088ac6a-aab1-800e-b8b1-c804c98a8842" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4088ac6a-aab1-8016-8229-e5312a395942" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How an Offer Becomes a Contract</strong><figure id="4088ac6a-aab1-80e7-a51a-d03384599a81" class="image" data-notion-image="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%204.png"><img style="width:1050px" src="Chapter%201%20-%20Offers,%20Counteroffers,%20and%20Multiple%20Of/image%204.png"/></a></figure></li></ul><ul id="4088ac6a-aab1-80fb-9270-ffa232ceb20d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Counteroffers - </strong>Counteroffers are legally considered a rejection of the original offer. When a counteroffer is made, the original offer is terminated and the new offer takes its place. In Tennessee, there is a standard form to use when submitting a counteroffer: <em><strong>Counter Offer RF651. </strong></em><ul id="4088ac6a-aab1-80f8-aa85-d0386dd30aba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the offeree wants to change <em>any </em>of the terms of the offer, a counteroffer is necessary.</li></ul></li></ul><ul id="4088ac6a-aab1-8042-8b9b-c04b9561b91b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Multiple Offers - </strong>Multiple offer situations occur when more than one party submits an offer on a single property. If you&#x27;re the <em>listing agent</em>, make a plan with your seller regarding how you&#x27;ll handle multiple offers. Provide your seller with a net sheet for each offer and help them make educated decisions about how to respond.<ul id="4088ac6a-aab1-8000-8dff-ecdb3521ec18" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If you&#x27;re a <em>buyer&#x27;s agent</em> in a seller&#x27;s market, help your clients understand how to make their offers as compelling as possible. This could mean limiting contingencies, paying for closing costs, or being flexible with dates.</li></ul><p id="4088ac6a-aab1-807c-b982-f361f89626d0" class="" dir="auto">
+</p></li></ul></div></div><p id="4088ac6a-aab1-80e6-9925-d0038c32675b" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

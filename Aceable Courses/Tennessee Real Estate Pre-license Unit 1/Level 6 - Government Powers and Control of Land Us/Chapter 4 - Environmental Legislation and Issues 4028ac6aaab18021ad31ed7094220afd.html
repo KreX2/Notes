@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Environmental Legislation and Issues</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8021-ad31-ed7094220afd" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Environmental Legislation and Issues</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4058ac6a-aab1-80f0-9695-d63ad6759a3b" class="column-list" data-notion-column-list="" dir="auto"><div id="4058ac6a-aab1-80b4-a123-d4eb2e699ebe" style="width:62.5%" class="column" data-notion-column-ratio="0.625" dir="auto"><p id="4058ac6a-aab1-803b-b250-c36893f31463" class="" dir="auto"><strong>Environmental Regulation Overview</strong></p><ul id="4058ac6a-aab1-8087-ba60-e14972a5e3b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Primary Objective:</strong> Limit soil, air, and water pollution, establish maximum allowable contaminant levels, and define liability for cleaning up toxic spills and polluted areas.</li></ul><ul id="4058ac6a-aab1-80a5-ae02-ef160f3cf79b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Regulatory Enforcement:</strong> Enforced at both federal and state levels through specialized governmental agencies.</li></ul><ul id="4058ac6a-aab1-80dc-a7d4-ecf155e4a5a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Enforcement: Environmental Protection Agency (EPA)</strong><ul id="4058ac6a-aab1-8087-b616-eaef7770a4f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Establishment:</strong> Created in 1970 to consolidate federal environmental research, monitoring, standard-setting, and enforcement into a single agency.</li></ul><ul id="4058ac6a-aab1-801d-a0ca-ff80be395637" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Rulemaking &amp; Enforcement:</strong> Translates congressional environmental laws into enforceable regulations, sets national standards, assists states, and directly enforces federal environmental statutes.</li></ul></li></ul><ul id="4058ac6a-aab1-80a9-94a6-dd71fb12a903" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>State Enforcement: Tennessee Department of Environment and Conservation (TDEC)</strong><ul id="4058ac6a-aab1-80ee-a283-f6f6dd4b804b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role:</strong> Administers both federal and state environmental laws in Tennessee through its <strong>Bureau of Environment</strong>.</li></ul></li></ul><ul id="4058ac6a-aab1-8095-b478-c4981702a13b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Major Federal Environmental Legislation</strong><ul id="4058ac6a-aab1-80a7-9c49-f0e19a56a8eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CERCLA:</strong> Comprehensive Environmental Response, Compensation, and Liability Act</li></ul><ul id="4058ac6a-aab1-8039-9697-c4f7280594ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>SARA:</strong> Superfund Amendments Reauthorization Act</li></ul><ul id="4058ac6a-aab1-806b-9b2c-f7a5ff67c494" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CAA:</strong> Clean Air Act</li></ul><ul id="4058ac6a-aab1-80e4-ba60-d66dba4a009b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CWA:</strong> Clean Water Act</li></ul><ul id="4058ac6a-aab1-80a3-ba51-e6b2e198e1b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>RCRA:</strong> Resource Conservation and Recovery Act</li></ul><ul id="4058ac6a-aab1-8027-8d5c-d55f37dca348" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>SDWA:</strong> Safe Drinking Water Act</li></ul><ul id="4058ac6a-aab1-8048-88ee-d2fd7327d9c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>NEPA:</strong> National Environmental Policy Act</li></ul></li></ul><ul id="4058ac6a-aab1-8023-90c2-d2efb03c2489" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Love Canal Disaster (1978)</strong><ul id="4058ac6a-aab1-8021-bdfc-c98208146891" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origin:</strong> An uncompleted hydro-power canal in Niagara Falls, New York, was acquired by the Hooker Chemical Company in the mid-20th century and used as an industrial disposal site for toxic hazardous waste.</li></ul><ul id="4058ac6a-aab1-80f9-85bf-f36bf229dd07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sale to the City:</strong> In 1953, Hooker Chemical covered the toxic waste pit with earth and sold the property to the local school board for $1; a residential neighborhood and elementary school were subsequently built directly on top of the landfill.</li></ul><ul id="4058ac6a-aab1-802a-a4d3-d1dc208dd1bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Leak &amp; Crisis:</strong> Heavy rains in 1978 caused corroding steel drums to rupture, forcing toxic chemical sludge, noxious puddles, and chemical-laden groundwater to surface in residential backyards, basements, and school grounds.</li></ul><ul id="4058ac6a-aab1-8089-90b6-f88c7e8f9868" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Health Impacts:</strong> Residents suffered severe health consequences, including elevated cancer rates, severe burns on children, and congenital abnormalities.</li></ul><ul id="4058ac6a-aab1-80cc-a700-cc4a7567c2d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historical &amp; Legislative Significance</strong><ul id="4058ac6a-aab1-80ec-8088-f542a0322e35" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Catalyst for Reform:</strong> Love Canal became a national symbol of unregulated hazardous waste disposal and environmental neglect.</li></ul><ul id="4058ac6a-aab1-80fa-ab60-c87d0e6918dc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Birth of Superfund Legislation:</strong> Along with contemporaneous environmental disasters, the crisis directly galvanized public and congressional momentum to enact <strong>CERCLA</strong> (Comprehensive Environmental Response, Compensation, and Liability Act), establishing strict liability mechanisms to hold polluters accountable for toxic cleanups.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8012-a7e9-fac940654128" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Love Canal Disaster (1978)</strong><ul id="4058ac6a-aab1-804d-a656-c18dc7a01bce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Origin:</strong> An uncompleted hydro-power canal in Niagara Falls, New York, was acquired by the Hooker Chemical Company in the mid-20th century and used as an industrial disposal site for toxic hazardous waste.</li></ul><ul id="4058ac6a-aab1-803f-8c3b-eb6368673ccb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sale to the City:</strong> In 1953, Hooker Chemical covered the toxic waste pit with earth and sold the property to the local school board for $1; a residential neighborhood and elementary school were subsequently built directly on top of the landfill.</li></ul><ul id="4058ac6a-aab1-805a-878a-dfa9970100a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Leak &amp; Crisis:</strong> Heavy rains in 1978 caused corroding steel drums to rupture, forcing toxic chemical sludge, noxious puddles, and chemical-laden groundwater to surface in residential backyards, basements, and school grounds.</li></ul><ul id="4058ac6a-aab1-800a-ad6a-cba35168da31" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Health Impacts:</strong> Residents suffered severe health consequences, including elevated cancer rates, severe burns on children, and congenital abnormalities.</li></ul><ul id="4058ac6a-aab1-803a-8a82-ed897567b04e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historical &amp; Legislative Significance</strong><ul id="4058ac6a-aab1-806c-93d8-c79d9f51f9a0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Catalyst for Reform:</strong> Love Canal became a national symbol of unregulated hazardous waste disposal and environmental neglect.</li></ul><ul id="4058ac6a-aab1-80a1-b77d-eb6731f50a4c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Birth of Superfund Legislation:</strong> Along with contemporaneous environmental disasters, the crisis directly galvanized public and congressional momentum to enact <strong>CERCLA</strong> (Comprehensive Environmental Response, Compensation, and Liability Act), establishing strict liability mechanisms to hold polluters accountable for toxic cleanups.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80a3-92f9-c26bc96bf6b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CERCLA Overview (The Superfund Law)</strong><ul id="4058ac6a-aab1-808c-b171-f565ded83758" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment:</strong> Passed by Congress in <strong>1980</strong> to provide broad federal authority to respond to actual or threatened releases of hazardous substances endangering public health or the environment.</li></ul><ul id="4058ac6a-aab1-80fa-819f-c48f7c4b0177" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Provisions:</strong> Regulates closed/abandoned waste sites, establishes liability for hazardous waste releases, and creates a trust fund for cleanups.</li></ul><ul id="4058ac6a-aab1-801b-88e0-c3cac602b530" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Potentially Responsible Parties (PRPs)</strong><ul id="4058ac6a-aab1-806f-8b71-c8ae16fdeae7" class="bulleted-list" dir="auto"><li style="list-style-type:square">CERCLA establishes a legal framework to identify PRPs who must fund and execute environmental cleanups. </li></ul><ul id="4058ac6a-aab1-8061-a747-c67d154c5073" class="bulleted-list" dir="auto"><li style="list-style-type:square">PRPs include:<ul id="4058ac6a-aab1-8082-b517-eda1f80d85dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Current owners or operators of the site</li></ul><ul id="4058ac6a-aab1-80dd-93dd-fcfdb3e7c44a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Previous owners or operators of the site at the time of disposal</li></ul><ul id="4058ac6a-aab1-8024-b087-f48092b85a5a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Creators or generators of the hazardous substance</li></ul><ul id="4058ac6a-aab1-80d4-b7f7-c6c157ff9f13" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Transporters who selected the disposal site</li></ul><figure id="4058ac6a-aab1-80db-a8bc-d92274c51a70" class="image" data-notion-image="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image.png" dir="ltr"><a href="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image.png"><img style="width:480px" src="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image.png"/></a></figure></li></ul></li></ul><ul id="4058ac6a-aab1-8023-8dac-d1727fb108d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Superfund Trust Fund</strong><ul id="4058ac6a-aab1-8086-be9c-e7bd2da69086" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Funding Mechanism:</strong> Originally funded by a tax on the chemical and petroleum industries, establishing a $1.6 billion trust fund.</li></ul><ul id="4058ac6a-aab1-80b6-83de-ec24c40c9345" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Purpose:</strong> Used by the EPA to clean up abandoned or uncontrolled hazardous waste sites when no responsible party can be identified or when an immediate emergency response is required.</li></ul></li></ul><ul id="4058ac6a-aab1-802f-b0e6-fb65c2db165a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Landowner Liability &amp; Strict Liability</strong><ul id="4058ac6a-aab1-8086-8a5c-caebc859ed14" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Strict Liability:</strong> Landowners can be held liable for environmental cleanup costs even if they did not cause or contribute to the contamination.</li></ul><ul id="4058ac6a-aab1-8029-89ab-eea15c1cc8a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Scope of Liability:</strong> May cover cleanup costs for the landowner&#x27;s property as well as neighboring contaminated properties.</li></ul><ul id="4058ac6a-aab1-80d3-a874-dce1b2f76498" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Residential Protection:</strong> Residential homeowners are generally <strong>exempt</strong> from CERCLA cleanup liability unless they directly caused the contamination or used the property for commercial/non-residential purposes.</li></ul></li></ul><ul id="4058ac6a-aab1-80dd-8282-fa8160f5e335" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Superfund Amendments and Reauthorization Act (SARA)</strong><ul id="4058ac6a-aab1-80ff-87bc-c506eb7c5e8f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Enactment:</strong> Passed in <strong>1986</strong> as a major amendment to CERCLA to address operational experiences from the program&#x27;s first six years.</li></ul><ul id="4058ac6a-aab1-808e-bd7d-e2dc097707a5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Funding Expansion:</strong> Increased the Superfund trust fund size significantly from $1.6 billion to <strong>$8.5 billion</strong>.</li></ul><ul id="4058ac6a-aab1-80f6-8938-f9a555f4a3dc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Objectives &amp; Provisions:</strong><ul id="4058ac6a-aab1-8077-8646-f3e6152943bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Stressed permanent remedies and innovative treatment technologies over temporary fixes.</li></ul><ul id="4058ac6a-aab1-8085-9e1c-c34f785f019c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Required Superfund actions to coordinate with other state and federal environmental laws.</li></ul><ul id="4058ac6a-aab1-8045-9ca4-ed1623d7897d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Expanded state involvement, citizen participation, and human health risk assessments (including revisions to the Hazard Ranking System for the National Priorities List).</li></ul><ul id="4058ac6a-aab1-8046-8aad-d39950199909" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provided new enforcement authorities, settlement tools, and strengthened requirements.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8032-8be8-e2dd29c234e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Innocent Landowner (ILO) Immunity &amp; Defense</strong><ul id="4058ac6a-aab1-80ee-9bfc-f7e839fa934d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Purpose:</strong> Protects buyers who acquire contaminated property without any prior knowledge of the contamination.</li></ul><ul id="4058ac6a-aab1-8069-9322-cd167327e945" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>All Appropriate Inquiries (AAI):</strong> To claim the ILO defense, the buyer must have conducted proper due diligence prior to purchase—typically demonstrated by obtaining a <strong>Phase I Environmental Site Assessment</strong>.</li></ul><ul id="4058ac6a-aab1-80a3-98ca-e24414e76cd7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mandatory Disclosure:</strong> Once a property owner discovers contamination (or that it sits on a Superfund site), it constitutes a <strong>material fact</strong> that must be legally disclosed to any future prospective buyers.</li></ul><ul id="4058ac6a-aab1-80f8-86a3-daca1f581c20" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>ILO Qualification Requirements:</strong> To maintain innocent landowner status, the owner must:<ul id="4058ac6a-aab1-807f-8044-c0b6d2cb2baf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Comply with all land-use restrictions and protect the integrity of institutional controls.</li></ul><ul id="4058ac6a-aab1-80e3-83c7-c1c094c26e2f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Take &quot;reasonable steps&quot; regarding hazardous substances on the property.</li></ul><ul id="4058ac6a-aab1-807d-985c-e24bef37cda0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Provide full cooperation, assistance, and site access to environmental authorities.</li></ul></li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80b8-9f4c-f27a60f8379c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Environmental Site Assessments (ESAs) Overview</strong><ul id="4058ac6a-aab1-8044-ba41-e39d7909578c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A professional analysis of a property (land and improvements) to identify existing or potential environmental contamination issues and liabilities.</li></ul><ul id="4058ac6a-aab1-80e2-a5d5-ede3dc7781a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application Scope:</strong> Primarily conducted for commercial or industrial properties to verify CERCLA compliance; residential buyers typically rely on standard seller property disclosures instead.</li></ul><ul id="4058ac6a-aab1-80cf-bd44-f71376011a40" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Purpose:</strong> Protects buyers from unexpected cleanup liability and directly impacts property valuation.</li></ul></li></ul><ul id="4058ac6a-aab1-80ef-b7a1-e2324cf874d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>All Appropriate Inquiry (AAI)</strong><ul id="4058ac6a-aab1-80e4-abe5-cdcf4b98eb69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> The legal obligation of a prospective buyer to thoroughly investigate prior ownership and historical property use to check for environmental contamination.</li></ul><ul id="4058ac6a-aab1-80ce-b0ab-f99491850cd0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Significance:</strong> Required prior to purchase to qualify for the <strong>Innocent Landowner (ILO)</strong> exemption from strict CERCLA liability, originally established under CERCLA and expanded by SARA.</li></ul></li></ul><ul id="4058ac6a-aab1-8066-8709-fc3673e3062c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Phases of an Environmental Site Assessment</strong><ul id="4058ac6a-aab1-80d4-b139-c63a69852da8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Phase I: Preliminary Investigation</strong><ul id="4058ac6a-aab1-80c4-9e55-f6be8de86e5d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Standardized evaluation to check if potential environmental concerns exist based on historical land use over the past ~50 years.</li></ul><ul id="4058ac6a-aab1-8058-9ea5-e38fb1e15d1c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Entails an on-site visual inspection and a review of government and public records.</li></ul><ul id="4058ac6a-aab1-8032-b238-f836b80c91a4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Usually sufficient to qualify for innocent landowner status. If clear, the process ends; if concerns arise, it proceeds to Phase II.</li></ul></li></ul><ul id="4058ac6a-aab1-80fb-a105-eb1ae4075c62" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Phase II: Sampling</strong><ul id="4058ac6a-aab1-80ce-9191-c5bd1cd9a548" class="bulleted-list" dir="auto"><li style="list-style-type:square">Conducted when historical use indicates a potential hazard.</li></ul><ul id="4058ac6a-aab1-8097-82a4-c1d7edab85ea" class="bulleted-list" dir="auto"><li style="list-style-type:square">Involves taking physical samples of soil, water, and building materials (such as extracting and testing core samples up to 30 inches deep) to verify the actual existence of contamination.</li></ul></li></ul><ul id="4058ac6a-aab1-80c2-adc3-cdea12d88434" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Phase III: Further Evaluation</strong><ul id="4058ac6a-aab1-80ad-8bda-d7beeb677801" class="bulleted-list" dir="auto"><li style="list-style-type:square">Focuses on determining the <strong>exact extent of contamination</strong> both horizontally and vertically.</li></ul><ul id="4058ac6a-aab1-80b8-a365-c9ac75d06e50" class="bulleted-list" dir="auto"><li style="list-style-type:square">Involves extensive sampling and evaluating various potential remediation strategies.</li></ul></li></ul><ul id="4058ac6a-aab1-8089-a9b5-d739a79e810d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Phase IV: Remediation Plan</strong><ul id="4058ac6a-aab1-80a3-a6e9-c206233787bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Develops a comprehensive <strong>Remedial Action Plan (RAP)</strong> outlining exactly how the site will be cleaned up and estimating the total financial cost.</li></ul><ul id="4058ac6a-aab1-80db-9cf2-c2cc53edff2e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Serves as the blueprint before actual cleanup execution commences.</li></ul><figure id="4058ac6a-aab1-80e9-99a8-e838b4a03157" class="image" data-notion-image="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%201.png"><img style="width:480px" src="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%201.png"/></a></figure></li></ul></li></ul><ul id="4058ac6a-aab1-8091-a507-e8e9ef2b8c25" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Clean Air Act (CAA) Overview</strong><ul id="4058ac6a-aab1-8094-b5da-f53c38690245" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Purpose:</strong> A comprehensive federal law designed to protect public health and the environment from the harmful effects of air pollution by regulating emissions from both stationary and mobile sources.</li></ul><ul id="4058ac6a-aab1-80d5-8c40-eea84f586cbb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>EPA Authority:</strong> Authorizes the EPA to establish national ambient air quality standards and strictly regulate hazardous air pollutants.</li></ul><ul id="4058ac6a-aab1-8053-9d25-ea8e236425c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Historical Timeline:</strong> Initially aimed to achieve national air quality standards across all states by 1975, with subsequent major amendments in 1977 and 1990 to establish new compliance deadlines and address widespread non-compliance areas.</li></ul><ul id="4058ac6a-aab1-8052-a15b-e8f36afed9a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>State Implementation Plans (SIPs)</strong><ul id="4058ac6a-aab1-809a-a4dd-f1e7a8e79d06" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> Customized regulatory plans developed by individual states outlining how they will control, monitor, and achieve national ambient air quality standards within their borders.</li></ul><ul id="4058ac6a-aab1-8036-8336-db9215c94d55" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Target Sources:</strong> Applicable to major industrial sources and other state-level emission contributors to ensure compliance with federal environmental mandates.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80e5-b7ae-d91bb024c894" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Clean Water Act (CWA) Overview</strong><ul id="4058ac6a-aab1-8080-8188-cb736ce075ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Purpose:</strong> A foundational federal law establishing the basic legal structure for regulating pollutant discharges into U.S. waters and setting ambient water quality standards for surface waters.</li></ul><ul id="4058ac6a-aab1-8049-b2db-e356bed33236" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pollution Control Programs:</strong> Empowers the EPA to implement industrial wastewater standards and enforce strict contamination limits across all surface water bodies.</li></ul><ul id="4058ac6a-aab1-808c-9da0-cf364c115c32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>NPDES Permit Program</strong><ul id="4058ac6a-aab1-80ca-9073-f7e5299c4b52" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Discharge Prohibition:</strong> Makes it strictly unlawful to discharge pollutants from a <strong>point source</strong> into navigable waters without a valid permit.</li></ul><ul id="4058ac6a-aab1-80a6-a49a-c39e2177560b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>NPDES Definition:</strong> Controlled via the <strong>National Pollutant Discharge Elimination System (NPDES)</strong> permit program.</li></ul><ul id="4058ac6a-aab1-809f-a8cb-dfcf4d34c36a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Point Sources:</strong> Discrete conveyances such as industrial pipes, drainage ditches, or factory outflows.</li></ul><ul id="4058ac6a-aab1-80ee-a7d5-f679ef0a55e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exemptions vs. Requirements:</strong> Individual residential homes connected to municipal systems or septic tanks are generally exempt, whereas industrial, municipal, and commercial facilities discharging directly into surface waters must secure an NPDES permit.</li></ul></li></ul><ul id="4058ac6a-aab1-80b8-8785-df356b84e8bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protection of Wetlands (Section 404)</strong><ul id="4058ac6a-aab1-80da-ab0a-f871461ebe47" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Statutory Authority:</strong> <strong>Section 404</strong> of the CWA establishes a federal program regulating the discharge of dredged or fill material into U.S. waters, including designated wetlands.</li></ul><ul id="4058ac6a-aab1-809f-bf2d-c2b5ae23a5d7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Enforcing Agency:</strong> Enforced and administered by the <strong>U.S. Army Corps of Engineers</strong>, which defines official wetland boundaries and jurisdictional scope.</li></ul><ul id="4058ac6a-aab1-80fe-b720-c9dde1ac287e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Regulated Activities:</strong> Covers activities such as filling for real estate development, water resource projects (dams and levees), infrastructure (highways and airports), and mining.</li></ul><ul id="4058ac6a-aab1-80ab-956c-c8a33a528934" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Ecological Value of Wetlands:</strong> Defined as swamps, marshes, and bogs saturated by water to support specialized vegetation. They provide crucial natural habitats, absorb floodwaters, and protect against tidal erosion.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8090-ac18-d61ccdb996e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Resource Conservation and Recovery Act (RCRA) Overview</strong><ul id="4058ac6a-aab1-80a6-9348-e1736585aac6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Purpose:</strong> Establishes the comprehensive legal framework for the proper management, handling, and tracking of both <strong>hazardous and non-hazardous solid waste</strong>.</li></ul><ul id="4058ac6a-aab1-80d9-a1b9-d81d9542e291" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>&quot;Cradle to Grave&quot; Authority:</strong> Grants the EPA the statutory authority to control hazardous waste across its entire lifecycle—encompassing its <strong>generation, transportation, treatment, storage, and disposal</strong>.</li></ul><ul id="4058ac6a-aab1-809b-99bf-d6456443582b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope of Application:</strong> Focuses exclusively on <strong>active and future facilities</strong> (unlike CERCLA, which targets abandoned or historical hazardous waste sites).</li></ul><ul id="4058ac6a-aab1-807d-9668-c97c5483d999" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Legislative Amendments</strong><ul id="4058ac6a-aab1-80f4-b460-fe7b85ad3c24" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1984 Amendments (Federal Hazardous and Solid Waste Amendments):</strong> Placed a heavy emphasis on waste minimization and mandated the gradual phase-out of land disposal for hazardous wastes.</li></ul><ul id="4058ac6a-aab1-8099-85fa-dfbc5bc342e9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1986 Amendments:</strong> Empowered the EPA to regulate and address environmental risks associated with <strong>Underground Storage Tanks (USTs)</strong> used for storing petroleum and other hazardous substances.<ul id="4058ac6a-aab1-80e4-9249-f77ac2c1635a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em>Real Estate Impact:</em> Leaking USTs present severe environmental liabilities and financial remediation hurdles for property owners.</li></ul></li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8007-99cf-d73b9e1c2123" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Safe Drinking Water Act (SDWA) Overview</strong><ul id="4058ac6a-aab1-8019-92eb-c5da64ea2ad8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Purpose:</strong> A federal law designed to protect public drinking water supplies by establishing enforceable standards for drinking water quality across all waters designated for drinking use (both surface and underground sources).</li></ul><ul id="4058ac6a-aab1-80f2-a375-e169087672b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Support Programs:</strong> Created technical and financial assistance programs to help ensure the long-term safety of public water systems.</li></ul><ul id="4058ac6a-aab1-80f0-9fd1-f2818103b34f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Minimum Safe Standards for Tap Water</strong><ul id="4058ac6a-aab1-80e7-bbf1-cac73562400b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>EPA Authority:</strong> Empowers the EPA to establish minimum national standards (primary, health-related standards) to protect tap water.</li></ul><ul id="4058ac6a-aab1-8037-a923-dac3b9118c6e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Compliance Requirements:</strong> Mandates that all owners and operators of public water systems strictly comply with established contaminant limits.</li></ul><ul id="4058ac6a-aab1-80b4-b249-dcf7eded4808" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Collaborative Enforcement:</strong> Implemented jointly by the EPA, state governments, and local water systems, though practical enforcement challenges and agency limitations can still impact water safety outcomes.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8006-847d-dd5d003082a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>National Environmental Policy Act (NEPA) Overview</strong><ul id="4058ac6a-aab1-802a-b1d6-f67ee0728c66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Purpose:</strong> A foundational federal law that requires federal agencies to systematically evaluate and disclose the environmental, social, and economic effects of their proposed actions before making final decisions (effectively requiring agencies to &quot;show their work&quot;).</li></ul><ul id="4058ac6a-aab1-80fc-80c9-f06c755db6e5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Documentation:</strong> Requires all federal agencies to prepare formal environmental evaluations—specifically through environmental impact assessments and/or environmental impact statements.</li></ul><ul id="4058ac6a-aab1-8079-9e84-e2d654db02e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Impact Assessments</strong><ul id="4058ac6a-aab1-8090-a1da-ea43ae945055" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A preliminary evaluation and report used to determine whether a proposed federal project or action carries a risk of significant environmental impact.</li></ul><ul id="4058ac6a-aab1-80c2-b136-d01b115f29f7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Purpose &amp; Outcome:</strong> Analyzes potential negative environmental consequences to answer a single question: <em>Is a full environmental impact statement necessary?</em> If no risk is found, the process concludes; if potential impacts are identified, it triggers the requirement for an impact statement.</li></ul></li></ul><ul id="4058ac6a-aab1-80a7-8719-c9d4fc8d31dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Environmental Impact Statements (EIS)</strong><ul id="4058ac6a-aab1-803c-a115-f484170f90ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Definition:</strong> A detailed, comprehensive written statement required by NEPA for major federal actions that could significantly affect the quality of the environment.</li></ul><ul id="4058ac6a-aab1-80d8-8a84-ea54c9abb4ef" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Relationship to Assessments:</strong> Prepared as the mandatory next step whenever an initial environmental impact assessment determines that further, in-depth evaluation and mitigation planning are required.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-80d6-be11-ff34cd1e2245" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brownfields Overview</strong><ul id="4058ac6a-aab1-80cd-bddc-cf3754e407b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal Legislation &amp; Funding</strong><ul id="4058ac6a-aab1-804b-b3b0-e6406951426e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Origins (1990s):</strong> The EPA launched early pilot programs to provide municipal governments with financial assistance for brownfield cleanups.</li></ul><ul id="4058ac6a-aab1-8042-b065-dae7605ff2df" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Brownfields Revitalization and Environmental Restoration Act of 2001:</strong> Enacted by Congress to formally allocate dedicated funding and statutory structure for brownfield cleanups.</li></ul><ul id="4058ac6a-aab1-8025-8a47-c376ed53a8e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BUILD Act of 2018:</strong> The <em>Brownfields Utilization, Investment and Local Development (BUILD) Act</em> formally reauthorized and expanded the federal brownfield program.</li></ul><ul id="4058ac6a-aab1-802c-8b88-f328ba0c310a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>EPA Grants &amp; Loans:</strong> The EPA issues targeted grants and loans to help communities assess, cleanup, and safely redevelop brownfield sites.</li></ul></li></ul><ul id="4058ac6a-aab1-80d4-9d78-d8f73887db93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>State Administration in Tennessee</strong><ul id="4058ac6a-aab1-80b4-af32-c61b24ab2cb2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>TDEC Oversight:</strong> The Tennessee Department of Environment and Conservation administers federal EPA brownfield cleanup grants directly through the <strong>Brownfields Redevelopment Program</strong>, partnering with local communities and private entities to restore contaminated state properties.</li></ul></li></ul></li></ul><ul id="4058ac6a-aab1-8065-8c95-d9c549e705b7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Environmental Quality Incentives Program (EQIP) Overview</strong><ul id="4058ac6a-aab1-803a-840f-eea12a661987" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nature of the Program:</strong> A voluntary federal initiative—not a strict statutory law—administered by the <strong>U.S. Department of Agriculture&#x27;s Natural Resources Conservation Service (NRCS)</strong>.</li></ul><ul id="4058ac6a-aab1-809f-97de-fe0f891f2f99" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Target Audience:</strong> Farmers, ranchers, and other agricultural producers.</li></ul><ul id="4058ac6a-aab1-8021-8c34-d6d9198afa79" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose:</strong> Provides financial funding, technical resources, and professional planning assistance to help agricultural providers implement improved conservation practices that yield cleaner air and water, healthier soil, and resilience against increasingly volatile weather patterns.</li></ul></li></ul><ul id="4058ac6a-aab1-80ab-8668-d5d4d1d35e26" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Provisions &amp; Funding</strong><ul id="4058ac6a-aab1-8039-9472-fb9d55f2b675" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Types of Assistance:</strong> Offers targeted grants, financial cost-share assistance, and resources covering various conservation areas, including clean air, clean water, and organic farming transitions.</li></ul><ul id="4058ac6a-aab1-805e-8810-d1450c597a5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2018 Farm Bill Enhancements:</strong> Expanded provisions under the 2018 Farm Bill to make <strong>historically underserved populations</strong> (such as beginning, socially disadvantaged, or limited-resource farmers) eligible for advance payments for necessary equipment and supplies.<figure id="4058ac6a-aab1-80fb-bbd4-e6d8296050cf" class="image" data-notion-image="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%202.png" dir="ltr"><a href="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%202.png"><img style="width:288px" src="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%202.png"/></a></figure></li></ul></li></ul><ul id="4058ac6a-aab1-80ca-a966-e8fb135b5e8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Scenario<strong>: Buying a Contaminated Property</strong><ul id="4058ac6a-aab1-802c-8659-cb13129291b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If she does purchase it and finds the soil contaminated, she might be held liable for the cleanup. That could be a much more expensive process than she anticipates.</li></ul><ul id="4058ac6a-aab1-800c-94bf-f8dbcecc93ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>She&#x27;ll Have to Disclose to Future Buyers:</strong><ul id="4058ac6a-aab1-808b-84be-dd81caa9b0ab" class="bulleted-list" dir="auto"><li style="list-style-type:square">We will discuss disclosure at length in a later level, but any information she does get about contamination will have to be disclosed to a potential buyer when she&#x27;s ready to sell the property.</li></ul><ul id="4058ac6a-aab1-802d-9a5e-d5ae6eb0bb00" class="bulleted-list" dir="auto"><li style="list-style-type:square">If she buys the property and doesn&#x27;t test the soil for contamination, she might have an issue when she goes to sell it later. If a new buyer finds contamination, she will be required to disclose that to any other potential buyers.</li></ul></li></ul><ul id="4058ac6a-aab1-80d4-8266-ef45d7e4e151" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>She Could Have Financing Troubles</strong><ul id="4058ac6a-aab1-8031-aee0-f84dfdbf4c8e" class="bulleted-list" dir="auto"><li style="list-style-type:square">If she is planning to finance the purchase, it may be more difficult to get a loan on a potentially contaminated property. If she is buying in cash, she could still have issues when she tries to sell the property later if <em>that</em> buyer is financing the purchase.</li></ul></li></ul><ul id="4058ac6a-aab1-802a-a3a9-eda3f1d92814" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Don&#x27;t Do It, Elena</strong><ul id="4058ac6a-aab1-80cf-95f2-c4c519c016bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Living on contaminated land is a terrible idea! Don&#x27;t do it if you can avoid it, Elena! The range of health issues possible — from lead exposure to cancers — is not worth it, even if the property is a screaming deal.</li></ul></li></ul></li></ul><p id="4058ac6a-aab1-8038-a796-cf8a961a079e" class="" dir="auto">
+</p></div><div id="4058ac6a-aab1-8052-b67a-dea0776849f9" style="width:37.5%" class="column" data-notion-column-ratio="0.375" dir="auto"><p id="4058ac6a-aab1-80c6-8f5f-e53d2eb4f7c1" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4058ac6a-aab1-8049-9960-ee89aeb3ac17" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>brownfield </strong>- real property, the expansion, redevelopment, or reuse of which may be complicated by the presence or potential presence of a hazardous substance, pollutant, or contaminant</li></ul><ul id="4058ac6a-aab1-8021-87e7-f1a944b4ee7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>CERCLA </strong>- Comprehensive Environmental Response, Compensation, and Liability Act ; a federal law that provides broad authority to respond directly to releases or threatened releases of hazardous substances that may endanger public health or the environment; aka the <em>Superfund</em></li></ul><ul id="4058ac6a-aab1-80d6-914f-e641365c4dab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"> <strong>EPA </strong>- Environmental Protection Agency ;the agency charged with enforcing federal environmental protection laws and taking other actions to protect the environment</li></ul><ul id="4058ac6a-aab1-8067-ba18-c66d8a270c4b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>SARA </strong>- Superfund Amendments and Reauthorization Act; a federal law that amended CERCLA, designated more money to the Superfund trust, and established new environmental laws and regulations</li></ul><p id="4058ac6a-aab1-80da-87c0-e9d4cdfb5b02" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4058ac6a-aab1-80a4-8402-d156fbd5faa9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>National Environmental Laws</strong><figure id="4058ac6a-aab1-8060-aaa6-db5c6e7c5cc5" class="image" data-notion-image="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%203.png" dir="ltr"><a href="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%203.png"><img style="width:432px" src="Chapter%204%20-%20Environmental%20Legislation%20and%20Issues/image%203.png"/></a></figure><p id="4058ac6a-aab1-8070-a2db-d6795513c8ec" class="" dir="auto">
+</p></li></ul></div></div><p id="4058ac6a-aab1-80c1-bd13-f863bc5a225e" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

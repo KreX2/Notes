@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Brokerage Advertising</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="4028ac6a-aab1-8014-9030-fd25396b9214" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Brokerage Advertising</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4078ac6a-aab1-809a-a9f9-d73be51fd21d" class="column-list" data-notion-column-list="" dir="auto"><div id="4078ac6a-aab1-80fe-9d82-ca9d8e5f29bd" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><ul id="4078ac6a-aab1-8046-9c84-d6a663ff0286" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition of Advertising Under TREC Guidelines</strong><ul id="4078ac6a-aab1-8007-9952-f9a9d4a25878" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Includes any printed materials (newspapers, magazines, flyers, letterheads), audio/video recordings, radio, television, text messaging, and online communications (email signatures, websites, social media, internet broadcasts/streams).</li></ul><ul id="4078ac6a-aab1-8036-a489-eeca76967120" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Exclusions:</strong> Promotional merchandise designed solely to advertise the licensee themselves (such as pens, notepads, t-shirts, name tags, and business cards) is not classified as advertising.</li></ul></li></ul><ul id="4078ac6a-aab1-804d-87be-fa0fbe6f1180" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Determining What Constitutes Advertising</strong><ul id="4078ac6a-aab1-806d-8873-da2cb2e397a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The core test to determine if something is advertising is asking whether the communication could be perceived as attempting to induce business (e.g., Agent Muriel posting her sales milestones on Facebook to attract prospective customers).</li></ul></li></ul><ul id="4078ac6a-aab1-8020-ba95-ec259198f981" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose of Advertising Regulations</strong><ul id="4078ac6a-aab1-8027-85d3-fad9ad4a1dc0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Designed to protect consumers while balancing fair commerce and business competition, adhering to the foundational principle that real estate advertising must be truthful and helpful rather than misleading</li></ul></li></ul><ul id="4078ac6a-aab1-80e9-ac57-d07b48cd7295" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker Supervision &amp; Owner Permission</strong><ul id="4078ac6a-aab1-806f-9d7f-c7694affa099" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All real estate advertising falls under TREC Rule 1260-02-.12 and must be conducted under the direct supervision of the principal broker, who holds ultimate responsibility.</li></ul><ul id="4078ac6a-aab1-80eb-b827-c8c32bb99002" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees must obtain explicit written permission from the property owner before advertising another licensee&#x27;s listing.</li></ul></li></ul><ul id="4078ac6a-aab1-80dc-bff3-e0b54a8a979d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Information &amp; Prominence Rules</strong><ul id="4078ac6a-aab1-806f-a01f-fa48b7c08217" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Details:</strong> All ads must clearly include the real estate firm&#x27;s registered name (or registered DBA) and telephone number.</li></ul><ul id="4078ac6a-aab1-8019-a674-e4bd16d90c1c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prominence:</strong> The firm name must be the <strong>most prominent</strong> element in the advertisement, determined by factors such as font size, shape, and color.</li></ul><ul id="4078ac6a-aab1-8002-91e5-d73b476ba5fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Licensee Identity:</strong> Agents must use the exact name that appears on their TREC license (nicknames are prohibited unless officially registered with TREC).</li></ul><ul id="4078ac6a-aab1-8006-be06-fd0ac9b626c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Internet Disclaimers:</strong> Websites featuring listings from an outside database must include a disclaimer stating that data is sourced externally and accuracy cannot be guaranteed by the brokerage.</li></ul><ul id="4078ac6a-aab1-80f8-936b-d7831ebf7dc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Teams &amp; Groups:</strong> Licensees operating as a team or group within a firm cannot present themselves as an independent entity separate from the licensed brokerage.</li></ul></li></ul><ul id="4078ac6a-aab1-80f4-aab0-f8365882bb41" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prohibited Advertising Practices (&quot;The Don&#x27;ts&quot;)</strong><ul id="4078ac6a-aab1-80d7-a29c-e4ad64714e64" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>False/Misleading Affiliations:</strong> Advertising only the franchise name while omitting the firm name, or using misleading terms (e.g., &quot;realty,&quot; &quot;company,&quot; &quot;associates,&quot; &quot;real estate brokerage&quot;) that imply an agent works independently from the principal broker.</li></ul><ul id="4078ac6a-aab1-80d9-a9e5-ca9b88672ec4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Hiding Licensee Status:</strong> Concealing your status as a licensed real estate professional when advertising to sell, purchase, exchange, rent, or lease property.</li></ul><ul id="4078ac6a-aab1-80d6-bdd8-e595458d91d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unlicensed Links:</strong> Linking an ad to any unlicensed entity&#x27;s website (or a site that routes to one) if that entity engages in activities requiring a real estate license.</li></ul><ul id="4078ac6a-aab1-80c9-9eac-cd86e046d307" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>False Claims &amp; Misrepresentation:</strong> Unsubstantiated claims, misleading statements, and deliberately altering known property facts constitute intentional misrepresentation under the Tennessee Real Estate Broker License Act of 1973.</li></ul><ul id="4078ac6a-aab1-806c-921c-f9906d9c377f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Penalties:</strong> Violating advertising regulations can result in a disciplinary hearing leading to a formal reprimand, license suspension, or license revocation.</li></ul></li></ul><ul id="4078ac6a-aab1-8057-928d-fbe9629ddfcb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scope of Tennessee Online Advertising Rules</strong><ul id="4078ac6a-aab1-80e2-9071-dd4ad42d4201" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee regulations apply broadly to all digital mediums, including social media platforms, chat rooms, websites, blogs, webinars, email signatures, discussion groups, instant messages, and bulletin boards.</li></ul></li></ul><ul id="4078ac6a-aab1-80d4-a8a7-e2ebfc509cef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Internet Advertising Requirements</strong><ul id="4078ac6a-aab1-80fd-be3e-e5770a28ddc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Conspicuous Display:</strong> The real estate firm&#x27;s registered name and telephone number must be conspicuously displayed on every individual webpage.</li></ul><ul id="4078ac6a-aab1-805b-b2a4-cbc90d27047a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Outside Database Disclaimers:</strong> Websites featuring listings sourced from an outside database must clearly state that some or all listings may not belong to the firm.</li></ul><ul id="4078ac6a-aab1-800c-a96d-dc6833759648" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accuracy &amp; Currency:</strong> Listings placed directly by licensees (&quot;first-generation&quot; ads) must be kept current and accurate (though this rule does not apply to third-party or syndicated listings outside the licensee&#x27;s control).</li></ul></li></ul><ul id="4078ac6a-aab1-800e-8e0e-faba5ea236c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Social Media Advertising Standards</strong><ul id="4078ac6a-aab1-808d-8106-d9965141706d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Social media encompasses internet-based applications and platforms enabling public content creation and sharing (e.g., Facebook, Instagram, LinkedIn, X/Twitter).</li></ul><ul id="4078ac6a-aab1-8053-b5d6-c2b80cc86e1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>One-Click Rule:</strong> On standard social media ads, the firm&#x27;s name and telephone number must be no more than <strong>one click away</strong> from the viewable page.</li></ul><ul id="4078ac6a-aab1-80f5-a43a-c88d06af60cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Twitter/X Specific Rule:</strong> On Twitter, the firm&#x27;s name and telephone number must be prominently displayed directly on the user profile page and accessible via a clickable, linked photo.</li></ul></li></ul><ul id="4078ac6a-aab1-80df-9901-e49532cc3f37" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client Security &amp; Safety Best Practices on Social Media</strong><ul id="4078ac6a-aab1-809b-bce6-d7d56644ceac" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Social media posts can inadvertently expose properties and clients to security risks and criminals looking for vacant homes or high-end valuables.</li></ul><ul id="4078ac6a-aab1-809f-aa17-f4fa695273e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Safety Guidelines:</strong><ul id="4078ac6a-aab1-806b-b057-e450e5dee69c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Avoid posting photos of clients&#x27; expensive personal belongings.</li></ul><ul id="4078ac6a-aab1-8081-a62b-d8527cc23d7d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Be cautious using words like &quot;secluded&quot; or &quot;private,&quot; which can signal an easy target for burglars.</li></ul><ul id="4078ac6a-aab1-80d8-b83e-e780ef8edaab" class="bulleted-list" dir="auto"><li style="list-style-type:square">Limit the amount of personal information shared publicly.</li></ul><ul id="4078ac6a-aab1-8034-a72b-d9a487159edc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Decline friend requests from unknown individuals to protect personal security.</li></ul></li></ul></li></ul><ul id="4078ac6a-aab1-80cc-9a18-da8682342213" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Misleading &quot;For Sale by Owner&quot; Advertising</strong><ul id="4078ac6a-aab1-804a-9274-c437a83707e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Halbert Rule:</strong> A broker or affiliate cannot advertise a client&#x27;s property as &quot;for sale by owner&quot; (FSBO) if a real estate licensee is involved in the transaction. Even though the owner is ultimately selling the home, labeling it FSBO falsely implies to the public that the owner is completely unrepresented, which constitutes misleading advertising.</li></ul></li></ul><ul id="4078ac6a-aab1-8004-99b2-da6221dcb304" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensees Acting as Principals</strong><ul id="4078ac6a-aab1-80c9-a48b-ec2ab2ce9cf2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acting as an Agent + Principal:</strong> If a licensee is acting as an agent while also holding a principal interest in a property (e.g., selling a flipped property with investor partners), they <strong>must disclose</strong> their real estate license status.</li></ul><ul id="4078ac6a-aab1-80f5-be73-ef78b1e3efc8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Acting Strictly as a Principal (Non-Agent):</strong> If a licensee is buying or selling real estate strictly as a principal without acting as an agent (e.g., purchasing a personal home from an FSBO seller independently), legal disclosure of license status is not required.</li></ul></li></ul><ul id="4078ac6a-aab1-800b-bca2-d65f951a3cd3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Written Authorization &amp; Listing Agreements</strong><ul id="4078ac6a-aab1-8014-8c17-f706cd49d574" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signage:</strong> Licensees are strictly prohibited from placing any real estate sign on a property without prior written authorization from the owner or the owner&#x27;s authorized agent.</li></ul><ul id="4078ac6a-aab1-8064-8d5f-c1b068d404c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Advertising Other Listings:</strong> Advertising a property listed by another licensee requires explicit, written permission from the owner (typically documented within the listing agreement or a separate signed statement).</li></ul><ul id="4078ac6a-aab1-80a7-940f-fa9e2da7bc08" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Rule:</strong> Always secure written permission <strong>before</strong> initiating any form of property advertising.</li></ul></li></ul><ul id="4078ac6a-aab1-808c-8cf9-d485f61828be" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition of Blind Ads</strong><ul id="4078ac6a-aab1-8054-a15c-fe2dc2166285" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>blind ad</strong> is any real estate advertisement where a licensee attempts to promote or solicit real estate activity without disclosing that they are a licensed professional. Blind ads are strictly illegal in Tennessee.</li></ul></li></ul><ul id="4078ac6a-aab1-801e-846c-fb8e05e1358e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose of the Prohibition Against Blind Ads</strong><ul id="4078ac6a-aab1-80bf-9f2b-d92af7ef8847" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consumer Protection:</strong> Ensures buyers and sellers are never &quot;blind&quot; to the fact that they are dealing with a licensed real estate professional.</li></ul><ul id="4078ac6a-aab1-80df-a505-fa9d85db6078" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal Broker Representation:</strong> Mandates that all advertising be explicitly linked to the licensee&#x27;s principal broker to provide proper disclosure.</li></ul><ul id="4078ac6a-aab1-80f1-aa0f-d52a0027646d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Preventing Undisclosed Dual Agency:</strong> Stops licensees from covertly operating as an unrepresented &quot;for sale by owner&quot; party while secretly overseeing a transaction on both sides as an undisclosed dual agent.<figure id="4078ac6a-aab1-80ed-a560-d9b79c2ebe76" class="image" data-notion-image="Chapter%204%20-%20Brokerage%20Advertising/image.png" dir="ltr"><a href="Chapter%204%20-%20Brokerage%20Advertising/image.png"><img style="width:480px" src="Chapter%204%20-%20Brokerage%20Advertising/image.png"/></a></figure></li></ul></li></ul><ul id="4078ac6a-aab1-80e8-8c7b-d98cee240641" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offering Gifts and Prizes in Tennessee</strong><ul id="4078ac6a-aab1-80f1-b27b-fe92a0f7c981" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees are permitted to offer gifts, prizes, or promotional incentives to encourage a purchase, listing, or lease, provided strict regulatory conditions are met.</li></ul></li></ul><ul id="4078ac6a-aab1-8083-a616-f486c25b5182" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Required Approval &amp; Documentation</strong><ul id="4078ac6a-aab1-8081-817e-e748226f605f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Sponsorship:</strong> All gifts and prizes must be offered with the affiliated firm&#x27;s approval and under its direct sponsorship.</li></ul><ul id="4078ac6a-aab1-80e9-827c-c6d84a23a1b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Agreement:</strong> The offer must be put in writing and officially signed by the licensee.</li></ul></li></ul><ul id="4078ac6a-aab1-80c7-9fcb-caba3b5bc1de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Disclosure Details</strong><ul id="4078ac6a-aab1-80b2-a737-edf25a48c85c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Promotional offers must clearly disclose all pertinent information to the consumer, including:<ul id="4078ac6a-aab1-802e-be93-d1a2678fa7f0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Accurate details regarding the specific gift or prize.</li></ul><ul id="4078ac6a-aab1-8067-befa-c33dbeb79c6d" class="bulleted-list" dir="auto"><li style="list-style-type:square">The fair market value of the item.</li></ul><ul id="4078ac6a-aab1-8000-8288-e3180d92c02f" class="bulleted-list" dir="auto"><li style="list-style-type:square">The exact time and place of delivery.</li></ul><ul id="4078ac6a-aab1-8056-b08a-d6bd96ffb4ec" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any conditions, requirements, or obligations the prospective buyer or lessor must satisfy to receive the incentive.</li></ul></li></ul></li></ul></div><div id="4078ac6a-aab1-80a7-8e2a-ecc207832b25" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4078ac6a-aab1-80dc-966c-c94f57203f54" class="" dir="auto"><strong>Key Terms</strong></p><ul id="4078ac6a-aab1-80d9-9996-cb38ab44d1b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>blind ad - an ad in which a license holder attempts to promote or solicit real estate activity without disclosing the fact that they are a license holder; illegal in Tennessee</strong></li></ul><p id="4078ac6a-aab1-8051-af36-f66cd817338d" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4078ac6a-aab1-80c3-848e-cd4463bd2766" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>No Blind Ads!</strong><ul id="4078ac6a-aab1-801a-b7e7-c87ec12eecf1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This law is important because it makes sure the buyer is not &quot;blind&quot; to the fact that the seller is a licensed professional.</li></ul><ul id="4078ac6a-aab1-8063-a795-db3a25ff63d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If not for this law, the license holder could conceivably carry out the transaction as a &quot;for sale by owner&quot; sale between two private, unrepresented parties. In reality, it would be a two-party transaction overseen by one license holder.</li></ul><ul id="4078ac6a-aab1-809d-9c5c-fcd7a13d04b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Remember, here&#x27;s what a blind ad looks like.</li></ul><figure id="4078ac6a-aab1-806b-a74c-eb44daaf6aee" class="image" data-notion-image="Chapter%204%20-%20Brokerage%20Advertising/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Brokerage%20Advertising/image%201.png"><img style="width:413.796875px" src="Chapter%204%20-%20Brokerage%20Advertising/image%201.png"/></a></figure><p id="4078ac6a-aab1-8088-9b70-e831993082b7" class="" dir="auto">
+</p></li></ul></div></div><p id="4078ac6a-aab1-809b-939c-e74119872074" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

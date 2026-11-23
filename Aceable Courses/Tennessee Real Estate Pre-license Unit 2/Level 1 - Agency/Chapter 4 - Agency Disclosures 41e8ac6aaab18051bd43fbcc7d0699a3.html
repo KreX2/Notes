@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Agency Disclosures</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8051-bd43-fbcc7d0699a3" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Agency Disclosures</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4218ac6a-aab1-8053-b9d2-d8abbf0d53ac" class="column-list" data-notion-column-list="" dir="auto"><div id="4218ac6a-aab1-80f8-b060-f613ea7d79b0" style="width:62.5%" class="column" data-notion-column-ratio="0.625" dir="auto"><p id="4218ac6a-aab1-8044-948b-e3e61bf4e9ff" class="" dir="auto"><strong>Three Core Agency Disclosure Scenarios (</strong><code><strong>T.C.A. § 62-13-405</strong></code><strong>)</strong></p><ul id="4218ac6a-aab1-8058-8f99-dac083361507" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Agency disclosure occurs when a real estate licensee makes known existing or potential agency relationships and personal interests in a transaction:<ol type="1" id="4218ac6a-aab1-804c-97ca-ded9a174cc83" class="numbered-list" start="1" dir="auto"><li><strong>With Unrepresented Prospects:</strong> Educating unrepresented consumers about available representation options (seller agency, buyer agency, designated agency, dual agency, or facilitator) and clarifying that until a <strong>written bilateral agency agreement</strong> is signed, the licensee acts solely as a <strong>facilitator</strong> (non-agency). <em>(Note: A disclosure form alone is unilateral and never creates an agency relationship.)</em></li></ol><ol type="1" id="4218ac6a-aab1-803f-ab99-e77edff53682" class="numbered-list" start="2" dir="auto"><li><strong>With Represented Parties &amp; Other Licensees:</strong><ul id="4218ac6a-aab1-80ad-b556-c8f67c20bb0d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If representing a <strong>seller</strong>, disclosing that representation to prospective buyers from the outset.</li></ul><ul id="4218ac6a-aab1-80d4-ac0a-c3d70cb46072" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If representing a <strong>buyer</strong>, disclosing that representation to any sellers met.</li></ul><ul id="4218ac6a-aab1-80cb-b804-f8db9de847bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If representing <strong>either party</strong>, disclosing that agency status upon initial contact with <strong>any other licensee</strong> involved in the same prospective transaction—and immediately notifying all parties and licensees if that status changes later.</li></ul></li></ol><ol type="1" id="4218ac6a-aab1-803c-8c89-ea24aa995b59" class="numbered-list" start="3" dir="auto"><li><strong>Where There Is a Personal Interest (</strong><code><strong>T.C.A. § 62-13-312(b)(18)</strong></code><strong>):</strong> Disclosing in writing to all parties whenever the licensee has a personal interest beyond standard brokerage representation—including buying, selling, leasing, or holding an option on property on behalf of <strong>themselves, their immediate family, or a business entity in which they hold an ownership or financial interest</strong>.</li></ol></li></ul><ul id="4218ac6a-aab1-8069-90bb-dd032e19ac66" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>First Substantive Contact &amp; Informed Consent</strong><ul id="4218ac6a-aab1-8087-aecc-f4cacd649949" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>First Substantive Contact:</strong> The critical trigger requiring agency disclosure—generally occurring at the first face-to-face meeting (or substantive phone/electronic discussion) with a consumer and <strong>prior to</strong>:<ul id="4218ac6a-aab1-8090-a2cf-f2d5f490d374" class="bulleted-list" dir="auto"><li style="list-style-type:square">Sharing any confidential personal, financial, or motivational information</li></ul><ul id="4218ac6a-aab1-800e-9ce4-de6f9a6e2eb3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discussing, showing, or taking action regarding a specific property</li></ul></li></ul><ul id="4218ac6a-aab1-805f-aceb-d60bd826995a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Informed Consent:</strong> Clients and customers cannot legally consent to an agency or non-agency arrangement unless they have all material facts beforehand. Before signing a representation agreement, a consumer must understand the duties and limitations involved; if remaining unrepresented, they must be informed of any existing agency relationships the licensee holds in the transaction.</li></ul></li></ul><ul id="4218ac6a-aab1-80c4-ade6-c8608c30fe60" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Agency Disclosure Timing &amp; Form Rules</strong></li></ul><table id="4218ac6a-aab1-80a6-97b7-c7d143278c0a" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8018-b2e9-eb17fdae9b7a" dir="ltr"><td id="Af?a" class=""><strong>Stage / Milestone</strong></td><td id="jW]i" class=""><strong>Required Action</strong></td><td id="\Ef[" class=""><strong>Format Required</strong></td></tr><tr id="4218ac6a-aab1-80f6-9626-f960392f7575" dir="ltr"><td id="Af?a" class=""><strong>Before Providing Any Real Estate Services</strong> <em>(e.g., showing homes)</em></td><td id="jW]i" class="">Disclose agency or facilitator status to the consumer</td><td id="\Ef[" class=""><strong>Verbal or Written</strong></td></tr><tr id="4218ac6a-aab1-8059-98f8-d9b1b0a698c8" dir="ltr"><td id="Af?a" class=""><strong>Before Entering a Representation Agreement</strong></td><td id="jW]i" class="">Confirm disclosure of agency/facilitator status and options</td><td id="\Ef[" class=""><strong>Mandatory in Writing</strong> <em>(with signed receipt from unrepresented parties)</em></td></tr><tr id="4218ac6a-aab1-80c4-837a-fa519df4c18d" dir="ltr"><td id="Af?a" class=""><strong>Before Assisting With or Presenting a Purchase Offer</strong></td><td id="jW]i" class="">Confirm agency/facilitator status in the transaction</td><td id="\Ef[" class=""><strong>Mandatory in Writing</strong></td></tr><tr id="4218ac6a-aab1-807c-96ac-fb676a1350e8" dir="ltr"><td id="Af?a" class=""><strong>Upon Any Subsequent Change in Agency Status</strong></td><td id="jW]i" class="">Notify all other licensees and transaction parties immediately</td><td id="\Ef[" class=""><strong>Documented in Writing</strong> when the change occurs</td></tr></tbody></table><ul id="4218ac6a-aab1-800d-bddf-c9a7894a40f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Non-Promulgated Forms:</strong> The State of Tennessee (TREC) does <strong>not</strong> promulgate a single mandatory state agency disclosure form. However, whatever form a licensee uses—typically provided by their sponsoring brokerage or <strong>Tennessee REALTORS®</strong>—must include all statutory disclosures and acknowledgment elements required under <strong>T.C.A. § 62-13-405</strong> (including TREC&#x27;s address and telephone number).</li></ul><ul id="4218ac6a-aab1-808d-b8b5-e5e9b9aa4bef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Statutory Exemptions (</strong><code><strong>T.C.A. § 62-13-405(e)</strong></code><strong>):</strong> Written agency disclosure requirements under <code>§ 62-13-405</code> do not apply to commercial property transfers or leases, public auctions, residential properties with <strong>more than 4 units</strong>, or residential rentals/leases—though the rule that agency cannot be implied (<code>§ 62-13-401</code>) and baseline duties of honesty and reasonable care (<code>§ 62-13-403</code>) still apply.</li></ul><ul id="4218ac6a-aab1-8097-bad0-e96c85f9596b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Form RF301 (</strong><em><strong>Working with a Real Estate Professional</strong></em><strong>)</strong><ul id="4218ac6a-aab1-8062-a21e-f75693dd8d85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Promulgated Status &amp; Availability:</strong> Because the Tennessee Real Estate Commission (TREC) does <strong>not</strong> promulgate agency disclosure forms, licensees may use any form that satisfies statutory requirements (<code>T.C.A. § 62-13-405</code>). Form <strong>RF301</strong> is copyrighted and provided by <strong>Tennessee REALTORS®</strong> exclusively for its members.</li></ul><ul id="4218ac6a-aab1-80b1-b283-eb15e4e4ba12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Target Audience &amp; Timing:</strong> Designed to be presented to <strong>unrepresented consumers</strong> at <strong>first substantive contact</strong>—before confidential information is shared or specific property discussions/services take place.</li></ul><ul id="4218ac6a-aab1-80f2-87b3-fbe7234bd838" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Content Covered on RF301:</strong><ul id="4218ac6a-aab1-80d6-a164-db23e277295a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Statutory Duties Owed to All Parties (</strong><code><strong>T.C.A. § 62-13-403</strong></code><strong>):</strong> Explains baseline duties owed to both clients and customers (reasonable skill and care, disclosure of actual known adverse facts, pre-agency confidentiality, honesty and good faith, timely market data from public records upon request, timely accounting for funds/property, and refraining from undisclosed self-dealing or referral conflicts).</li></ul><ul id="4218ac6a-aab1-8094-873b-dac6ca345d60" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Additional Duties Owed to Clients (</strong><code><strong>T.C.A. § 62-13-404</strong></code><strong>):</strong> Explains client-level duties (obedience to lawful instructions, loyalty, scheduling showings, forwarding offers/counteroffers promptly, assisting with negotiations, and guiding post-contract closing steps).</li></ul><ul id="4218ac6a-aab1-80b8-8dd3-c832181a13fc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recording Devices Notice:</strong> Advises sellers and buyers regarding the potential presence and legal responsibilities surrounding audio/video recording devices on a property during showings.</li></ul><ul id="4218ac6a-aab1-80ca-ac87-cfc5ae53bb9c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Definitions &amp; Confidentiality Rules:</strong> Defines representation roles (Facilitator/Transaction Broker, Agent for the Seller, Agent for the Buyer, Designated Agent for Seller/Buyer, Disclosed Dual Agent), <strong>adverse facts</strong>, and <strong>confidentiality vs. sharing of information</strong>—warning consumers that once a licensee discloses an agency relationship with the opposing party, any confidential information the consumer subsequently shares must be passed along to that client.</li></ul></li></ul><ul id="4218ac6a-aab1-804c-896e-c9f25493e6a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signatures Required:</strong> Signed and dated by both the <strong>licensee</strong> and the <strong>unrepresented consumer</strong> to acknowledge receipt (signing RF301 does <strong>not</strong> create an agency contract).<figure id="4218ac6a-aab1-8060-bce6-d242b23bc67d" class="image" data-notion-image="Chapter%204%20-%20Agency%20Disclosures/image.png" dir="ltr"><a href="Chapter%204%20-%20Agency%20Disclosures/image.png"><img style="width:384px" src="Chapter%204%20-%20Agency%20Disclosures/image.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-80c5-a2bf-f19f12db95b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Form RF302 (</strong><em><strong>Confirmation of Agency Status</strong></em><strong>)</strong><ul id="4218ac6a-aab1-8060-b706-f1d3bd876a16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Scope:</strong> Provided by <strong>Tennessee REALTORS®</strong> (non-promulgated), RF302 formally documents and confirms for all interested parties the exact agency or non-agency relationships existing in a proposed sale or lease transaction (applying equally to <strong>sellers/landlords</strong> and <strong>buyers/tenants</strong>).</li></ul><ul id="4218ac6a-aab1-805c-b6f5-d78f8bd8e952" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Delivery Timing (</strong><code><strong>T.C.A. § 62-13-405</strong></code><strong>):</strong> Must be delivered in writing prior to:<ol type="1" id="4218ac6a-aab1-8092-86fa-c7b72dabb879" class="numbered-list" start="1" dir="auto"><li><strong>Preparing or presenting an offer to purchase</strong> (to an unrepresented buyer before preparing an offer, or to an unrepresented seller before presenting an offer), <strong>or</strong></li></ol><ol type="1" id="4218ac6a-aab1-80bb-a5a7-d819caca13f1" class="numbered-list" start="2" dir="auto"><li><strong>Executing a listing agreement</strong> (if the licensee is listing a property on a non-agency/facilitator basis without an agency agreement with the seller).</li></ol></li></ul><ul id="4218ac6a-aab1-8086-aa4a-fa0017fa696d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Information Disclosed on RF302:</strong><ul id="4218ac6a-aab1-8078-bbd6-ea9f90b9bde3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identifies the property address, <strong>Seller/Landlord</strong>, <strong>Buyer/Tenant</strong>, and participating <strong>Licensee(s) and Firm(s)</strong>.</li></ul><ul id="4218ac6a-aab1-80eb-962c-c5358f1d4d5e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Checks the exact representation status of each licensee:<ul id="4218ac6a-aab1-808b-8451-d7c8aacb819b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Transaction Broker or Facilitator</strong> (not an agent for either party)</li></ul><ul id="4218ac6a-aab1-8036-ae44-efa456972d6e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agent for the Seller</strong> or <strong>Agent for the Buyer</strong></li></ul><ul id="4218ac6a-aab1-8022-9015-ce6ff68d6b9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Designated Agent for the Seller</strong> or <strong>Designated Agent for the Buyer</strong></li></ul><ul id="4218ac6a-aab1-805c-a7c9-e917c5293809" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosed Dual Agent</strong> (for both parties, with written consent of both)</li></ul><ul id="4218ac6a-aab1-806b-843b-f55a008ce858" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Explicitly notes if the <strong>Seller is Unrepresented</strong> or <strong>Buyer is Unrepresented</strong>.</li></ul></li></ul><ul id="4218ac6a-aab1-80b6-8335-d38d4b354e0f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Includes statutory notice regarding filing TREC complaints (<code>T.C.A. § 62-13-312</code> / <code>§ 62-13-313(e)</code>) and confirms that compensation rates are negotiable and not set by law.</li></ul></li></ul><ul id="4218ac6a-aab1-8085-9146-c8daebe0a686" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect of Signatures:</strong> Signing RF302 does <strong>not</strong> commit a buyer, seller, landlord, or tenant to an agency agreement; it serves strictly as written proof that timely agency status disclosure was provided as required by law.<figure id="4218ac6a-aab1-80aa-bc48-e9e746e848e5" class="image" data-notion-image="Chapter%204%20-%20Agency%20Disclosures/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Agency%20Disclosures/image%201.png"><img style="width:384px" src="Chapter%204%20-%20Agency%20Disclosures/image%201.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-80d5-b23b-d98dc17f6f94" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Form RF305 (</strong><em><strong>Personal Interest Disclosure &amp; Consent</strong></em><strong>)</strong><ul id="4218ac6a-aab1-8054-a0b0-f6afcf287f31" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Ethical/Statutory Mandate:</strong> Both Tennessee real estate license law (<code>T.C.A. § 62-13-312(b)(18)</code> and <code>§ 62-13-403(7)(A)</code>) and <strong>Article 4 / Article 5</strong> of the NAR Code of Ethics prohibit a licensee from engaging in self-dealing or acting on behalf of themselves, their immediate family, or any business entity in which they hold an ownership or financial interest without <strong>prior written disclosure</strong> and <strong>informed consent</strong> from all parties to the transaction.</li></ul><ul id="4218ac6a-aab1-80b5-a0ca-f42d85527fbb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role of RF305:</strong> Provided by <strong>Tennessee REALTORS®</strong>, the two-page <strong>RF305 (</strong><em><strong>Personal Interest Disclosure &amp; Consent</strong></em><strong>)</strong> form serves as the standardized written notice disclosing the nature of a licensee&#x27;s personal, familial, or financial interest in a property or transaction and capturing the signed written consent of all affected parties before proceeding.<ul id="4218ac6a-aab1-80f0-be37-d84ab3c531a4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agency disclosure forms are not promulgated, so any form that meets state requirements can be used.</strong></li></ul><ul id="4218ac6a-aab1-8088-84fc-e0701b9e91c4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The purpose of this form is to disclose a licensee&#x27;s personal interest in a transaction and get consent from the parties to proceed with the contract.</strong></li></ul><ul id="4218ac6a-aab1-8068-a959-fe3702c0ff14" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Consent must be timely, meaning it must be given BEFORE a contract is signed.</strong></li></ul><ul id="4218ac6a-aab1-8007-88f5-f18f1b810846" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Direct personal interest means the licensee is participating in the transaction as the seller or buyer.</strong></li></ul><ul id="4218ac6a-aab1-8065-a6c5-f5dfe2ded6eb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Indirect personal interest means the seller or buyer is an immediate family member of the licensee or is another individual, organization, or business entity in which the licensee has a personal interest.</strong></li></ul><ul id="4218ac6a-aab1-803e-b53a-efc52063daac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Signatures on the form = acknowledgment of the disclosure and consent to proceed with the contract.</strong></li></ul><ul id="4218ac6a-aab1-80c4-ab7b-cab0ac57b443" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The </strong><em><strong>RF305</strong></em><strong> is available to members of the Tennessee Realtors association.</strong></li></ul><figure id="4218ac6a-aab1-802f-a7bc-c32259335012" class="image" data-notion-image="Chapter%204%20-%20Agency%20Disclosures/image%202.png" dir="ltr"><a href="Chapter%204%20-%20Agency%20Disclosures/image%202.png"><img style="width:384px" src="Chapter%204%20-%20Agency%20Disclosures/image%202.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8058-a6b1-f40d1d135cfe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Comparison of Tennessee REALTORS® Agency Disclosure Forms</strong><table id="4218ac6a-aab1-803d-91a8-c63b9a137422" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-806b-b304-d023447b22ce" dir="ltr"><td id="Nxd[" class=""><strong>Form</strong></td><td id="=G]J" class=""><strong>Official Title</strong></td><td id="P|KL" class=""><strong>Primary Purpose</strong></td><td id="yJq]" class=""><strong>When Used</strong></td><td id="raw^" class=""><strong>Creates Agency?</strong></td></tr><tr id="4218ac6a-aab1-804d-880f-c11c4fc488aa" dir="ltr"><td id="Nxd[" class=""><strong>RF301</strong></td><td id="=G]J" class=""><em>Working with a Real Estate Professional</em></td><td id="P|KL" class="">Educates unrepresented consumers on statutory duties, representation options, confidentiality, and recording devices.</td><td id="yJq]" class="">At <strong>first substantive contact</strong> with an unrepresented consumer.</td><td id="raw^" class=""><strong>No</strong> (informational receipt only).</td></tr><tr id="4218ac6a-aab1-8058-9f2a-f4c2ed1678cc" dir="ltr"><td id="Nxd[" class=""><strong>RF302</strong></td><td id="=G]J" class=""><em>Confirmation of Agency Status</em></td><td id="P|KL" class="">Confirms the exact agency/facilitator role of each licensee and whether either party is unrepresented.</td><td id="yJq]" class="">Before <strong>preparing/presenting an offer</strong> or executing a <strong>non-agency listing</strong>.</td><td id="raw^" class=""><strong>No</strong> (acknowledgment of disclosure only).</td></tr><tr id="4218ac6a-aab1-800a-a7b9-f9127bf2af67" dir="ltr"><td id="Nxd[" class=""><strong>RF305</strong></td><td id="=G]J" class=""><em>Personal Interest Disclosure &amp; Consent</em></td><td id="P|KL" class="">Discloses a licensee&#x27;s personal, immediate-family, or business-entity interest and obtains party consent.</td><td id="yJq]" class="">Prior to entering a transaction where the licensee has a personal interest.</td><td id="raw^" class=""><strong>No</strong> (conflict-of-interest disclosure &amp; consent).</td></tr></tbody></table></li></ul><p id="4218ac6a-aab1-80d4-a7df-e7a14e371a08" class="" dir="auto">
+</p></div><div id="4218ac6a-aab1-8047-b2ac-ecacf25331c6" style="width:37.50000000000001%" class="column" data-notion-column-ratio="0.37500000000000006" dir="auto"><p id="4218ac6a-aab1-8072-a9de-fa3fb2efeefa" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4218ac6a-aab1-80db-8afe-eb3174440abe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Disclosure: What It Is</strong><ul id="4218ac6a-aab1-80c8-be4e-e229e258cfde" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agency disclosure occurs when a licensee makes known possible or existing agency relationships/interests.</li></ul><ul id="4218ac6a-aab1-80b4-9175-da91fa3deeda" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This usually involves three scenarios:<ul id="4218ac6a-aab1-80a1-9c9f-f18f81b025e6" class="bulleted-list" dir="auto"><li style="list-style-type:square">When engaging with unrepresented individuals about <strong>possible agency relationships</strong></li></ul><ul id="4218ac6a-aab1-80af-aae9-efa9ba29c4ad" class="bulleted-list" dir="auto"><li style="list-style-type:square">When informing parties to a transaction of an <strong>existing agency relationship</strong></li></ul><ul id="4218ac6a-aab1-80e0-9317-eeb6a397300f" class="bulleted-list" dir="auto"><li style="list-style-type:square">When informing parties to a transaction of a <strong>licensee&#x27;s personal interest in a transaction</strong></li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8021-b46a-c43326ef090a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Disclosure: The Forms</strong><ul id="4218ac6a-aab1-8087-bdfc-cf7ad1e5c6c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">There are three forms commonly used to disclose agency. The forms are <strong>NOT promulgated by Tennessee</strong>, so any form that meets state requirements can be used. In other words, the specific forms are not mandated, but the disclosures are.</li></ul><ul id="4218ac6a-aab1-802d-83f3-fddeee028c51" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Tennessee Realtors association has three agency disclosure forms available to its membership:<ul id="4218ac6a-aab1-80fd-9c25-d3e37a3c4bc4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>RF301 - Working with a Real Estate Professional</strong></em><strong>:</strong> used to disclose possible agency relationships to unrepresented individuals during the first substantive contact</li></ul><ul id="4218ac6a-aab1-80be-89ea-f8934ad1ca50" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>RF302 - Confirmation of Agency Status</strong></em><strong>:</strong> used to inform all interested parties of existing relationship a licensee has with one party to the transaction</li></ul><ul id="4218ac6a-aab1-80d8-abc5-fdb9df17431e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>RF305 - Personal Interest Disclosure &amp; Consent</strong></em><strong>: </strong>used to disclose to all interested parties of a licensee’s personal interest in the transaction</li></ul></li></ul></li></ul><p id="4218ac6a-aab1-809d-8d27-f34bc9c342be" class="" dir="auto">
+</p></div></div><p id="4218ac6a-aab1-8057-baba-d8af43f2e039" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

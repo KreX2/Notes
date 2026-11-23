@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 5 - Buyer Representation Agreements</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80e3-a146-e7845673ec2a" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 5 - <strong>Buyer Representation Agreements</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4218ac6a-aab1-80b1-99a2-f646d0f2bcf2" class="column-list" data-notion-column-list="" dir="auto"><div id="4218ac6a-aab1-803c-b86e-f6ad0d0018c4" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4218ac6a-aab1-8096-b333-c8c0aff5e2b4" class="" dir="auto"><strong>Principles of Agency Creation in Tennessee</strong></p><ul id="4218ac6a-aab1-802e-a641-d9def5d3c0b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Written Bilateral Agreement Requirement (</strong><code><strong>T.C.A. § 62-13-401</strong></code><strong>):</strong> While general common law in many states allows agency to be created orally or by implication/action, <strong>Tennessee statutory law strictly prohibits implied or accidental agency</strong>. In Tennessee real estate, an agency relationship is created <strong>only</strong> through a <strong>written bilateral agreement</strong>—an exchange of mutual promises between the principal (client) and the principal broker (firm).</li></ul><ul id="4218ac6a-aab1-8094-bd34-d8154013e0fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Essential Components of Agency:</strong><ol type="1" id="4218ac6a-aab1-804b-acdd-d4034d488bc8" class="numbered-list" start="1" dir="auto"><li><strong>Consent:</strong> Mutual agreement where both the principal and the agent consent to the representation relationship.</li></ol><ol type="1" id="4218ac6a-aab1-80ba-a6a6-ecbbd84fe10b" class="numbered-list" start="2" dir="auto"><li><strong>Control:</strong> Legal authority granted to the agent to act on the principal&#x27;s behalf within the boundaries defined by their written agreement.</li></ol></li></ul><ul id="4218ac6a-aab1-8082-9d24-f9dd931aa66e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Express Agency in Tennessee:</strong> Express agency occurs when a principal explicitly appoints an agent to act for them. In Tennessee real estate practice, express agency is established exclusively through two written instruments: a <strong>listing agreement</strong> (for sellers/landlords) or a <strong>buyer/tenant representation agreement</strong> (for buyers/tenants). <em>(Disclosure forms such as RF301 or RF302 alone never create an agency relationship.)</em></li></ul><ul id="4218ac6a-aab1-8004-aaed-e58631430bf5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Representation Agreements: Core Structure &amp; Elements</strong><ul id="4218ac6a-aab1-80e6-bd67-c1a5deae7ca6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nature of the Contract:</strong> A buyer representation agreement is a <strong>written, bilateral employment contract</strong> between a buyer (principal) and a sponsoring principal broker (firm) authorizing the brokerage to represent the buyer in locating and acquiring property. Once executed, the brokerage owes full statutory and fiduciary client duties (<code>T.C.A. § 62-13-404</code>) to the buyer regardless of whether the seller, buyer, or both ultimately fund the broker&#x27;s commission.</li></ul><ul id="4218ac6a-aab1-80e5-b052-e1a646b8e84b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Promulgated Forms:</strong> The State of Tennessee (TREC) does <strong>not</strong> promulgate standard contract forms, though most Tennessee licensees use preprinted forms provided by <strong>Tennessee REALTORS®</strong> (such as Form <strong>RF141</strong> for designated agency or <strong>RF142</strong> for traditional buyer agency). Under <strong>TREC Rule 1260-02-.36</strong>, exclusive buyer representation agreements must also explicitly confirm in writing how the buyer arranges property viewings and whether the buyer would owe a commission if they purchase a property without the broker.</li></ul><ul id="4218ac6a-aab1-80ea-8d6c-d4d9953a1490" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Essential Elements of a Buyer Representation Agreement:</strong><table id="4218ac6a-aab1-8011-905f-f59855ebf88e" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-803f-bc68-f5b5623e103a" dir="ltr"><td id="Z{]q" class=""><strong>Contract Element</strong></td><td id="jz|w" class=""><strong>Purpose &amp; Key Details</strong></td></tr><tr id="4218ac6a-aab1-8071-8836-cb46baced779" dir="ltr"><td id="Z{]q" class=""><strong>Names of Parties</strong></td><td id="jz|w" class="">Identifies the buyer(s) (principal) and the sponsoring brokerage/principal broker (agent).</td></tr><tr id="4218ac6a-aab1-8048-870b-e60cede362d5" dir="ltr"><td id="Z{]q" class=""><strong>Property Description</strong></td><td id="jz|w" class="">Describes the general criteria of the desired property (property type, size, geographic location, price range) rather than a single street address.</td></tr><tr id="4218ac6a-aab1-8073-8523-dd0ff21bd060" dir="ltr"><td id="Z{]q" class=""><strong>Term (Duration)</strong></td><td id="jz|w" class="">Establishes the specific start date and expiration date of the employment relationship (with automatic extension if a purchase contract is pending at expiration).</td></tr><tr id="4218ac6a-aab1-80cd-88bd-d86752256e1c" dir="ltr"><td id="Z{]q" class=""><strong>Brokerage Obligations</strong></td><td id="jz|w" class="">Commits the broker to locating/showing properties, advising on due diligence and professional home inspections, delivering timely disclosures, reviewing transaction documents (without giving legal advice), and negotiating contract terms.</td></tr><tr id="4218ac6a-aab1-808a-91f2-d1124ba591ac" dir="ltr"><td id="Z{]q" class=""><strong>Buyer Obligations &amp; Compensation</strong></td><td id="jz|w" class="">Clarifies that the buyer is <strong>not obligated to buy a property</strong>, but specifies the compensation owed to the broker if the buyer purchases a qualifying property during the term (and the buyer&#x27;s duty to work through the broker).</td></tr><tr id="4218ac6a-aab1-804b-987c-c8af1b5f7d3b" dir="ltr"><td id="Z{]q" class=""><strong>Non-Discrimination Clause</strong></td><td id="jz|w" class="">Affirms that federal and state fair housing laws apply and that the brokerage will not accommodate any discriminatory instructions.</td></tr><tr id="4218ac6a-aab1-8056-bd1c-cefea0c49b6f" dir="ltr"><td id="Z{]q" class=""><strong>Dated Signatures</strong></td><td id="jz|w" class="">Executed with dated signatures of both the buyer(s) and the authorized brokerage representative.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-80ae-80ed-cb963e7c7bc3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exclusivity vs. Non-Exclusivity in Buyer Agreements</strong><ul id="4218ac6a-aab1-8053-a33d-e848064db46e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>One-Way Exclusivity:</strong> Buyer representation agreements may be either <strong>exclusive</strong> or <strong>non-exclusive</strong>, and exclusivity operates as a one-way commitment from the buyer to the brokerage:<ul id="4218ac6a-aab1-804b-8048-ccd75f61d046" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer&#x27;s Exclusive Commitment:</strong> Under an <strong>exclusive buyer representation agreement</strong>, the buyer grants that single brokerage the exclusive right to locate a property and warrants they have no active agreement with another broker. If the buyer purchases a property during the agreement term—even through another licensee or directly from an owner—the buyer still owes the agreed compensation to the exclusive broker (as required to be explicitly disclosed under <strong>TREC Rule 1260-02-.36</strong>).</li></ul><ul id="4218ac6a-aab1-808b-b3dc-df8742f89d09" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Other Buyers Acknowledgment:</strong> The broker is <strong>not</strong> restricted to working with only one buyer; the contract includes an acknowledgment that the broker represents other buyers who may view, bid on, and compete for the same properties.</li></ul></li></ul><ul id="4218ac6a-aab1-8096-8fb2-e51c584fb349" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Broker Duties Under the Agreement:</strong><ul id="4218ac6a-aab1-8077-a685-ca53b737a425" class="bulleted-list" dir="auto"><li style="list-style-type:square">Assist the buyer in locating a suitable property (often within a defined geographic market area).</li></ul><ul id="4218ac6a-aab1-8085-aad3-eb06417cb1d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Negotiate the purchase price and contract terms on the buyer&#x27;s behalf.</li></ul><ul id="4218ac6a-aab1-80ac-9908-da81b75513cf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Guide and assist the buyer through transaction milestones, including earnest money deposit handling, inspections, and closing.</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-805b-a2e6-f1df18b7445c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Agent Compensation Structures</strong><ul id="4218ac6a-aab1-805c-9634-c996e8a779ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Following the NAR settlement practice changes (effective August 2024 and affirmed on appeal in <strong>August 2026</strong>), offers of cooperative compensation can no longer be published on the MLS. While a buyer can still request in their offer that the seller pay their agent&#x27;s fee (or accept an off-MLS seller offer), the buyer is directly responsible for paying their agent if the seller does not pay—and the agent cannot collect more from any source than the objectively ascertainable amount capped in the written buyer agreement.<table id="4218ac6a-aab1-805c-91f9-e42d4e8bbf1d" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-80dc-ad9c-daeee0b1a56b" dir="ltr"><td id="@&gt;f?" class=""><strong>Compensation Model</strong></td><td id="CA=k" class=""><strong>How It Works</strong></td><td id="=vGm" class=""><strong>Key Pros, Cons &amp; Fiduciary Considerations</strong></td></tr><tr id="4218ac6a-aab1-807a-8cd3-d97d9ca21fc6" dir="ltr"><td id="@&gt;f?" class=""><strong>Hourly Rate</strong> <em>(Consulting Fee)</em></td><td id="CA=k" class="">Buyer pays an agreed hourly rate for the time the agent spends working on their behalf.</td><td id="=vGm" class=""><strong>Pro:</strong> Buyer pays strictly for time used.<br/><br/><strong>Con:</strong> Fee is owed even if no property is purchased, and total cost rises if the search takes many hours.</td></tr><tr id="4218ac6a-aab1-80ca-ac50-e8730444caed" dir="ltr"><td id="@&gt;f?" class=""><strong>Percentage Commission</strong></td><td id="CA=k" class="">Buyer pays a specified percentage of the final purchase price.</td><td id="=vGm" class=""><strong>Fiduciary Alert:</strong> Because a higher purchase price yields a larger dollar commission, the agent&#x27;s financial interest conflicts with the buyer&#x27;s desire for a lower price—requiring strict adherence to fiduciary loyalty above self-interest.</td></tr><tr id="4218ac6a-aab1-8068-bb2d-ccc79e1ee8a2" dir="ltr"><td id="@&gt;f?" class=""><strong>Flat Fee</strong> <em>(Limited-Service)</em></td><td id="CA=k" class="">Buyer pays a fixed dollar amount predicated on an estimated scope of work, taking on more legwork themselves.</td><td id="=vGm" class=""><strong>Buyer Tasks:</strong> Supplying pre-qualification, selecting homes to view, submitting a viewing list (without contacting listing agents directly).<br/><br/><strong>Agent Tasks:</strong> Scheduling a capped number of showings, advising on condition/pricing/resale, strategizing negotiations, and assisting through closing.<br/><br/><strong>Full-Service Conversion:</strong> If the buyer exceeds the agreed showing or service cap, the agreement converts to a full-service arrangement.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-80d2-8655-c99fb427224b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Written Buyer-Agency Agreement Triggers &amp; Exceptions</strong><ul id="4218ac6a-aab1-805b-85a7-ce1e788b2f8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When a Signed Written Agreement Is Required (&quot;Working With&quot; a Buyer):</strong> Under NAR MLS rules, an MLS-participating licensee must execute a written buyer representation agreement (specifying services and an objectively ascertainable fee cap) <strong>before touring a property with a buyer</strong>—including both in-person showings and live virtual tours. &quot;Working with&quot; a buyer includes identifying tailored listings, arranging or conducting tours, negotiating terms, or preparing/presenting an offer.</li></ul><ul id="4218ac6a-aab1-80a5-9e86-f14fc487af93" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When a Written Buyer Agreement Is NOT Required:</strong><ul id="4218ac6a-aab1-8014-91e4-d5f42e7d0705" class="bulleted-list" dir="auto"><li style="list-style-type:square">Chatting with an unrepresented visitor at an <strong>open house</strong> or answering general questions about real estate services.</li></ul><ul id="4218ac6a-aab1-8021-bde7-ccfad14d728d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Listing Agent Showing Their Own Listing:</strong> When a listing agent tours their own seller-client&#x27;s property with an unrepresented buyer (such as at an open house or private inquiry), the listing agent is working <strong>for the seller</strong>, not &quot;working with&quot; the buyer—provided the listing agent properly discloses their seller-agency status.</li></ul></li></ul><ul id="4218ac6a-aab1-809c-8a49-ff227e9c3a3f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Agency Exception:</strong> If a listing agent (or firm) also represents the buyer in an authorized <strong>disclosed dual agency</strong> transaction, the licensee <em>is</em> working with the buyer and <strong>must</strong> execute a signed written buyer representation agreement along with written dual-agency disclosure and informed consent from both parties.</li></ul></li></ul><ul id="4218ac6a-aab1-80be-9370-f5e130957f1b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Two Key Dimensions of Buyer Representation Agreements</strong><ul id="4218ac6a-aab1-8097-bd84-f234b58f3b56" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyer representation agreements differ across two primary structural choices:<ol type="1" id="4218ac6a-aab1-801d-9247-c9804d240dd1" class="numbered-list" start="1" dir="auto"><li><strong>Exclusivity (Exclusive vs. Non-Exclusive):</strong> Determines whether the buyer is bound to purchase exclusively through one brokerage/agent during the contract term (guaranteeing compensation if the buyer buys a covered property) or retains the right to work with multiple brokers and find properties independently (where compensation is earned only if that specific broker/agent procures the property).</li></ol><ol type="1" id="4218ac6a-aab1-80b6-b012-fa3ffbbd40b0" class="numbered-list" start="2" dir="auto"><li><strong>Agency Structure (Designated Agency vs. Traditional Buyer Agency):</strong> Because many Tennessee brokerages default to <strong>designated agency</strong> (<code>T.C.A. § 62-13-406</code>), representation can be assigned either to <strong>one specific affiliate broker</strong> appointed by the managing broker (to the exclusion of other licensees in the firm) or to the <strong>entire brokerage firm</strong> as a whole.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-8002-92b7-e3c6dfc82d21" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Tennessee REALTORS® Buyer Representation Forms</strong></li></ul><div id="4218ac6a-aab1-809a-b21c-f31ed48a2f3c" class="column-list" data-notion-column-list="" dir="auto"><div id="4218ac6a-aab1-80a3-84e0-f1012dbec470" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><table id="4218ac6a-aab1-8088-bc13-c3bacf6a7b65" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-804b-b29f-d333d74a5739" dir="ltr"><td id="qJVf" class=""><strong>Form Number</strong></td><td id="jMB@" class=""><strong>Official Form Title</strong></td><td id="F~&gt;k" class=""><strong>Exclusivity</strong></td><td id="Vfca" class=""><strong>Who Represents the Buyer?</strong></td><td id="&gt;Eo]" class=""><strong>Commission / Compensation Protection</strong></td></tr><tr id="4218ac6a-aab1-8002-952b-cf6064c9814e" dir="ltr"><td id="qJVf" class=""><strong>RF141</strong></td><td id="jMB@" class=""><em>Exclusive Buyer Representation Agreement (Designated Agency)</em></td><td id="F~&gt;k" class=""><strong>Exclusive</strong></td><td id="Vfca" class=""><strong>One specific affiliate broker</strong> appointed as the buyer&#x27;s Designated Agent (excluding all other licensees in the firm).</td><td id="&gt;Eo]" class=""><strong>Protected:</strong> Compensation is owed to the brokerage if the buyer purchases a covered property during the term—even if located through another licensee or directly from a seller.</td></tr><tr id="4218ac6a-aab1-8005-9912-e86c76b4d1d0" dir="ltr"><td id="qJVf" class=""><strong>RF142</strong></td><td id="jMB@" class=""><em>Exclusive Buyer Representation Agreement (Buyer Agency)</em></td><td id="F~&gt;k" class=""><strong>Exclusive</strong></td><td id="Vfca" class=""><strong>The entire brokerage firm</strong> (the principal broker and all affiliated licensees owe buyer-agency duties).</td><td id="&gt;Eo]" class=""><strong>Protected:</strong> Compensation is owed to the brokerage if the buyer purchases a covered property during the term, regardless of who locates the property.</td></tr><tr id="4218ac6a-aab1-802d-91ce-c5c20f1f698a" dir="ltr"><td id="qJVf" class=""><strong>RF143</strong></td><td id="jMB@" class=""><em>Non-Exclusive Buyer Representation Agreement (Designated Agency)</em></td><td id="F~&gt;k" class=""><strong>Non-Exclusive</strong></td><td id="Vfca" class=""><strong>One specific affiliate broker</strong> appointed as the buyer&#x27;s Designated Agent.</td><td id="&gt;Eo]" class=""><strong>Not Guaranteed:</strong> The buyer may work with other brokers or locate a property independently; compensation is earned <strong>only</strong> if the appointed Designated Agent introduces/procures the purchased property.</td></tr><tr id="4218ac6a-aab1-8082-9d86-ee87c3f02040" dir="ltr"><td id="qJVf" class=""><strong>RF144</strong></td><td id="jMB@" class=""><em>Non-Exclusive Buyer Representation Agreement (Buyer Agency)</em></td><td id="F~&gt;k" class=""><strong>Non-Exclusive</strong></td><td id="Vfca" class=""><strong>The brokerage firm</strong> (for properties shown or introduced by the brokerage).</td><td id="&gt;Eo]" class=""><strong>Not Guaranteed:</strong> The buyer may work with other brokers or buy independently; compensation is earned <strong>only</strong> if the brokerage introduces/procures the purchased property.</td></tr></tbody></table></div><div id="4218ac6a-aab1-809c-a643-c32e629d3431" style="width:31.250000000000007%" class="column" data-notion-column-ratio="0.31250000000000006" dir="auto"><figure id="4218ac6a-aab1-805e-bf74-c3cbfac05ef4" class="image" data-notion-image="Chapter%205%20-%20Buyer%20Representation%20Agreements/image.png" dir="ltr"><a href="Chapter%205%20-%20Buyer%20Representation%20Agreements/image.png"><img style="width:288px" src="Chapter%205%20-%20Buyer%20Representation%20Agreements/image.png"/></a></figure><figure id="4218ac6a-aab1-80b0-b031-eb4b914df374" class="image" data-notion-image="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%201.png" dir="ltr"><a href="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%201.png"><img style="width:240px" src="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%201.png"/></a></figure><figure id="4218ac6a-aab1-80bd-9ed4-fe3c2bedb64a" class="image" data-notion-image="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%202.png" dir="ltr"><a href="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%202.png"><img style="width:240px" src="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%202.png"/></a></figure><figure id="4218ac6a-aab1-8002-a012-c6141ea5d3c6" class="image" data-notion-image="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%203.png" dir="ltr"><a href="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%203.png"><img style="width:291.21875px" src="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%203.png"/></a></figure></div></div><ul id="4218ac6a-aab1-809a-a0a3-f223c49677e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Practical &amp; Exam Takeaways on Tennessee Buyer Rep Forms</strong><ul id="4218ac6a-aab1-8079-ab1c-d936046f0e1b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Odd vs. Even Numbering Pattern:</strong> Forms ending in an <strong>odd number</strong> (<strong>RF141</strong>, <strong>RF143</strong>) establish <strong>Designated Agency</strong> with a single named affiliate broker, whereas forms ending in an <strong>even number</strong> (<strong>RF142</strong>, <strong>RF144</strong>) establish firm-wide <strong>Buyer Agency</strong>.</li></ul><ul id="4218ac6a-aab1-80ee-8f55-cc7eafbc9e8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Same-Agent In-House Fallback on RF141/RF143:</strong> Under Tennessee designated agency agreements, if the appointed Designated Agent for the buyer also represents the seller of a property the buyer wants to buy, the licensee cannot act as a designated agent for both sides and must immediately notify both parties and default to <strong>Facilitator</strong> status (confirmed in writing prior to contract execution) unless another arrangement is agreed upon.</li></ul><ul id="4218ac6a-aab1-8008-82f7-f2112c573ab5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carry-Over (Protection) Clause:</strong> Exclusive buyer representation agreements (<strong>RF141</strong> and <strong>RF142</strong>) typically include a post-expiration <strong>carry-over period</strong> protecting the broker&#x27;s fee if the buyer purchases a property introduced by the broker during the agreement term—unless the buyer has subsequently signed a valid buyer representation agreement with another licensed broker.<figure id="4218ac6a-aab1-80d8-892d-e220b2a19c42" class="image" data-notion-image="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%204.png" dir="ltr"><a href="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%204.png"><img style="width:576px" src="Chapter%205%20-%20Buyer%20Representation%20Agreements/image%204.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8095-bf2c-d3e3a76b696c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview &amp; Contract Nature (Form RF141)</strong><ul id="4218ac6a-aab1-8059-a32c-cea398352865" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contract Classification:</strong> Buyer representation agreements in Tennessee are <strong>written, bilateral employment contracts</strong> (<code>T.C.A. § 62-13-401</code>) establishing mutual promises between the buyer and the brokerage.</li></ul><ul id="4218ac6a-aab1-80dd-8049-e4acb33a835b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Non-Promulgated Status:</strong> Tennessee does not promulgate state-mandated contract forms; <strong>Form RF141 (</strong><em><strong>Exclusive Buyer Representation Agreement — Designated Agency</strong></em><strong>)</strong> is provided by <strong>Tennessee REALTORS®</strong> exclusively for its members.</li></ul><ul id="4218ac6a-aab1-8030-a151-cf9542a50722" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Designated Agency Default:</strong> Many Tennessee brokerages operate by default under <strong>designated agency</strong> (<code>T.C.A. § 62-13-406</code>), where the managing/principal broker appoints one specific affiliate broker to represent the buyer exclusively, isolating confidential information from the rest of the firm.</li></ul><ul id="4218ac6a-aab1-8010-aaf7-d4a1afc83a57" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Essential Contract Requirements:</strong> Every buyer representation agreement must specify:<ul id="4218ac6a-aab1-8093-828f-e9c9e4ac0584" class="bulleted-list" dir="auto"><li style="list-style-type:square">Defined start and stop dates</li></ul><ul id="4218ac6a-aab1-8095-896c-ea5df78ee99e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Compensation structure and payment terms</li></ul><ul id="4218ac6a-aab1-80e6-9278-f318f4d7ae14" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mutual promises/obligations of the parties</li></ul><ul id="4218ac6a-aab1-80b5-8b59-cca4002bb15e" class="bulleted-list" dir="auto"><li style="list-style-type:square">The agent&#x27;s exact degree of authority</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8006-a232-d4742422ca91" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sections 1–2: Parties, Purpose, Term &amp; Desired Property</strong><ul id="4218ac6a-aab1-808e-9eda-e4fef3de76ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 1 (Parties, Purpose &amp; Term):</strong> Identifies the <strong>buyer(s)</strong>, the <strong>sponsoring brokerage/firm</strong>, the <strong>employment purpose</strong>, and the exact <strong>commencement and expiration dates</strong> of the agreement.</li></ul><ul id="4218ac6a-aab1-8053-85ff-f52b380e730a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Section 2 (Property Description):</strong> Defines the general characteristics and criteria of the property the buyer seeks to acquire (property type, general location, size, or price range) rather than a single street address.</li></ul></li></ul><ul id="4218ac6a-aab1-801c-893b-d82696d30e67" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sections 3–4: Exclusivity, Compensation, Carry-Over Clause &amp; Agency Duties</strong><ul id="4218ac6a-aab1-8092-9d35-c348c01227b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer&#x27;s Exclusivity Commitments (Section 3):</strong><ul id="4218ac6a-aab1-8076-9cf4-e014ec2dbf66" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agrees <strong>not</strong> to enter into a buyer representation agreement with any other broker during the contract term.</li></ul><ul id="4218ac6a-aab1-80f7-9edb-cbdb358b720e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agrees to cooperate with the appointed designated agent and work through them when viewing or inquiring about properties.</li></ul><ul id="4218ac6a-aab1-80fd-a8c4-d92137f6a572" class="bulleted-list" dir="auto"><li style="list-style-type:square">Acknowledges that the brokerage earns its agreed compensation if the buyer purchases a qualifying property during the term, <strong>regardless of how the buyer located the property</strong> (including FSBOs or properties found online).</li></ul><ul id="4218ac6a-aab1-80a0-b8e1-f4ba2925cf14" class="bulleted-list" dir="auto"><li style="list-style-type:square">Establishes when and how the compensation is earned and payable (typically at closing or upon buyer default on an accepted purchase contract).</li></ul></li></ul><ul id="4218ac6a-aab1-809d-87ae-e5bdb2eab8a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compensation Rules &amp; Payer of Last Resort:</strong><ul id="4218ac6a-aab1-806d-a4d5-e2642a509c03" class="bulleted-list" dir="auto"><li style="list-style-type:square">Commission/fee rates are <strong>100% negotiable</strong> and never fixed by law.</li></ul><ul id="4218ac6a-aab1-80d6-8b84-d21ffc32aa78" class="bulleted-list" dir="auto"><li style="list-style-type:square">Compensation is commonly funded from <strong>seller proceeds</strong> (via an off-MLS cooperative offer or negotiated into the purchase offer), but the <strong>buyer is the payer of last resort</strong> responsible for any shortfall if the seller pays nothing or pays less than the agreed fee.</li></ul></li></ul><ul id="4218ac6a-aab1-8030-96bd-ff336adc812e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Carry-Over (Protection) Clause:</strong><ul id="4218ac6a-aab1-80da-8fa0-c3edc927d059" class="bulleted-list" dir="auto"><li style="list-style-type:square">Protects the agent/brokerage for a <strong>negotiable post-expiration period</strong> if the buyer purchases a property introduced or shown by the agent during the agreement term (unless the buyer subsequently signs a valid representation agreement with another licensed broker).</li></ul></li></ul><ul id="4218ac6a-aab1-8018-8ac6-cd4877955d51" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agency Definitions &amp; Statutory Duties (Section 4):</strong><ul id="4218ac6a-aab1-80ed-9b34-fdd25fd11cb6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Defines key representation terms (<code>T.C.A. § 62-13-402</code>).</li></ul><ul id="4218ac6a-aab1-806f-82a8-c83b16f7568c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lists the <strong>baseline statutory duties owed to all parties</strong> (<code>T.C.A. § 62-13-403</code>: reasonable skill/care, disclosure of known adverse facts, honesty/good faith, pre-agency confidentiality, accounting, and no undisclosed self-dealing).</li></ul><ul id="4218ac6a-aab1-8065-ad9a-e99b45da8fa0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lists the <strong>additional fiduciary/statutory duties owed exclusively to clients</strong> (<code>T.C.A. § 62-13-404</code>: obedience to lawful instructions, loyalty, scheduling showings, promptly presenting offers/counteroffers, negotiating assistance, and guiding post-contract closing steps).</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-801e-84b0-daecd0695625" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sections 4–8: Buyer Obligations, Authorizations, Confidentiality, Earnest Money &amp; Limitations</strong><ul id="4218ac6a-aab1-8017-8ce4-d66a9a62002b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer Communications &amp; Direct Contact Rules:</strong><ul id="4218ac6a-aab1-808b-9296-f993af616e98" class="bulleted-list" dir="auto"><li style="list-style-type:square">The buyer must <strong>not contact listing agents directly</strong> and must immediately inform any seller&#x27;s agent (such as at an open house) that they are <strong>already represented</strong>.</li></ul><ul id="4218ac6a-aab1-803c-a86d-d46d6322cf18" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reaffirms that the buyer&#x27;s brokerage is owed compensation for any covered property purchase during the term.</li></ul></li></ul><ul id="4218ac6a-aab1-80da-8d32-ee7f557f5339" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer&#x27;s Authorizations:</strong><ul id="4218ac6a-aab1-804f-8d6f-c5248b244470" class="bulleted-list" dir="auto"><li style="list-style-type:square">Appoints the named affiliate broker as the buyer&#x27;s <strong>Designated Agent</strong> (<code>T.C.A. § 62-13-406</code>).</li></ul><ul id="4218ac6a-aab1-8013-bf79-cb05f3592f10" class="bulleted-list" dir="auto"><li style="list-style-type:square">Authorizes the managing/principal broker to assign a <strong>subsequent designated agent</strong> if the original agent becomes unavailable.</li></ul><ul id="4218ac6a-aab1-8079-b5ce-dfa70beff93a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Authorizes an automatic default to <strong>neutral Facilitator (transaction broker) status</strong> if the buyer&#x27;s designated agent also represents the seller of a property the buyer wishes to buy—with the option to <strong>resume designated agency</strong> if the buyer decides not to pursue that property.</li></ul></li></ul><ul id="4218ac6a-aab1-8047-af3c-c566c1b06200" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Confidentiality:</strong> Establishes strict confidentiality of the buyer&#x27;s personal, financial, and motivational information unless the buyer gives explicit written authorization to share specific details (such as pre-approval strength during negotiations).</li></ul><ul id="4218ac6a-aab1-807e-869b-ec8229991836" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Earnest Money / Trust Money:</strong> Authorizes the brokerage to accept, deposit, and hold earnest money/trust funds in an escrow/trust account to be applied toward the purchase price at closing (<code>T.C.A. § 62-13-321</code>).</li></ul><ul id="4218ac6a-aab1-80e7-851e-c369b50d2040" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Limitations of Representation:</strong><ul id="4218ac6a-aab1-805a-97da-e2db06f2563f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Confirms that the brokerage and the designated agent may show the <strong>same properties to other prospective buyers</strong> without breaching loyalty.</li></ul><ul id="4218ac6a-aab1-8061-9b3f-f3c212b5a2e1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Clarifies that the licensee is not expected to possess expertise outside real estate brokerage (such as engineering, surveying, law, tax, or environmental testing).</li></ul></li></ul><ul id="4218ac6a-aab1-8000-ab36-d6e343e8fbf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Expert Assistance:</strong> Counsels the buyer to hire qualified <strong>outside professionals</strong> (home inspectors, surveyors, attorneys, lenders, contractors) and clarifies that providing a list of vendor referrals does <strong>not</strong> constitute a warranty or guarantee of their work.</li></ul></li></ul><ul id="4218ac6a-aab1-802d-ba7d-ddf1d6e5528a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Sections 9–12 &amp; Execution: Legal Boilerplate, Special Stipulations &amp; Signatures</strong><table id="4218ac6a-aab1-8024-82db-c83417f6ec76" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8071-83c3-eadd2c0e6de3" dir="ltr"><td id="[vY{" class=""><strong>Contract Section / Provision</strong></td><td id="nYGP" class=""><strong>Key Legal &amp; Practical Rules</strong></td></tr><tr id="4218ac6a-aab1-80be-a949-db184d80dfb4" dir="ltr"><td id="[vY{" class=""><strong>Other Provisions (Integration &amp; Boilerplate)</strong></td><td id="nYGP" class="">• <strong>Entire Agreement:</strong> This written contract constitutes the complete agreement between the parties.<br/><br/>• <strong>Modification &amp; Assignment:</strong> Cannot be modified or assigned to another party without <strong>written consent</strong>.<br/><br/>• <strong>Governing Law &amp; Local Time:</strong> Governed by Tennessee law; deadlines use the <strong>local time zone of the brokerage firm&#x27;s office</strong>.<br/><br/>• <strong>Severability:</strong> If one clause is ruled invalid, the remainder of the contract stays fully enforceable.<br/><br/>• <strong>Fair Housing Compliance:</strong> The brokerage and agent strictly abide by all federal and state fair housing laws.</td></tr><tr id="4218ac6a-aab1-8084-800f-ecc28b83ea8d" dir="ltr"><td id="[vY{" class=""><strong>Legal Documents Notice (All-Caps Warning)</strong></td><td id="nYGP" class="">• Reminds the buyer in all-capital letters that the form is a <strong>legally binding contract</strong>.<br/><br/>• Advises the buyer to consult an <strong>attorney</strong> with any legal questions and states clearly that the real estate licensee is <strong>not qualified to give legal advice</strong>.</td></tr><tr id="4218ac6a-aab1-80e1-8ca2-f05d3e70edfc" dir="ltr"><td id="[vY{" class=""><strong>Exhibits, Addenda &amp; Special Stipulations</strong></td><td id="nYGP" class="">• Attached exhibits and addenda become part of the binding agreement.<br/><br/>• <strong>Handwritten or typed Special Stipulations override conflicting pre-printed contract language.</strong></td></tr><tr id="4218ac6a-aab1-8041-8e3b-f383f33c1d83" dir="ltr"><td id="[vY{" class=""><strong>Execution &amp; Signatures</strong></td><td id="nYGP" class="">• Requires dated signatures of the <strong>buyer(s)</strong> and the authorized <strong>brokerage representative</strong> (plus delivery of a signed copy to the buyer).</td></tr></tbody></table></li></ul><p id="4218ac6a-aab1-8038-a4c1-dcfadefd1a1b" class="" dir="auto">
+</p></div><div id="4218ac6a-aab1-80ec-8bfb-fd3b4733aec8" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><ul id="4218ac6a-aab1-801c-adc2-efa2558465fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Concepts &amp; Principles</strong><ul id="4218ac6a-aab1-80b9-8cb7-feb72fc82a21" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here are the concepts and principles you&#x27;ll want to master from this chapter:</li></ul></li></ul><ul id="4218ac6a-aab1-80f6-adc9-e7fcdac24113" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exclusive Buyer Representation Agreements</strong><ul id="4218ac6a-aab1-807d-9475-ddebb100589f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here&#x27;s a VERY high-level review of the <em><strong>RF141 - Exclusive Buyer Representation Agreement (Designated Agency)</strong></em>:</li></ul><ul id="4218ac6a-aab1-80ad-89d8-f01ee4bf7232" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The purpose of this contract is to create an exclusive buyer representation agreement between the buyer and one, specific affiliate broker who will be operating as a designated agent.</li></ul><ul id="4218ac6a-aab1-8001-8a5e-e0d8daa11c62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee does not have promulgated contracts, including buyer representation agreements. As long as you meet the state requirements for these contracts, you can use whatever version of the form you wish.</li></ul><ul id="4218ac6a-aab1-8009-a0a4-d778757efebf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>RF141</strong></em> is available to all members of the Tennessee Realtors association.</li></ul><ul id="4218ac6a-aab1-8047-a751-fbf8331b3b62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyer representation agreements are employment contracts that are written, bilateral agreements.</li></ul><ul id="4218ac6a-aab1-80c9-9cca-e3d0108a789d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The designated agent gets paid, regardless of how the buyer found the property.</li></ul></li></ul><p id="4218ac6a-aab1-8018-abec-de05496b668e" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Single Agency</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8091-b4ad-e4b3321e4340" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Single Agency</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4218ac6a-aab1-8070-bbce-d8d4fb9d8617" class="column-list" data-notion-column-list="" dir="auto"><div id="4218ac6a-aab1-805f-8772-dcb87afe4b3b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4218ac6a-aab1-8054-a0da-ee17a7845220" class="" dir="auto"><strong>Common Law vs. Statutory Agency in Tennessee</strong></p><ul id="4218ac6a-aab1-8066-8bba-d57bd6371225" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Law of Agency:</strong> The traditional body of law developed over time through custom and judicial case law rather than written statutes.</li></ul><ul id="4218ac6a-aab1-80f4-a5ce-de17bb302146" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Statutory Agency:</strong> While influenced by common law principles, Tennessee&#x27;s statutory agency framework (codified under <strong>T.C.A. § 62-13-401 et seq.</strong>) explicitly <strong>supersedes and replaces</strong> common law agency duties whenever a conflict arises. Furthermore, an agency relationship in Tennessee <strong>cannot be created accidentally or implied</strong> by a licensee&#x27;s words or actions—it requires a specific <strong>written bilateral agency agreement</strong>.</li></ul><ul id="4218ac6a-aab1-8042-a27b-ee61cf5d535a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Transaction Role Players</strong><table id="4218ac6a-aab1-80cf-acfa-d9e78a0b93bd" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-800d-a4f7-d0d2632de823" dir="ltr"><td id="a`]o" class=""><strong>Role Player</strong></td><td id="^}FL" class=""><strong>Definition &amp; Relationship to the Licensee</strong></td><td id="avtE" class=""><strong>Level of Duties Owed</strong></td></tr><tr id="4218ac6a-aab1-80dc-8a13-ee271633cbaf" dir="ltr"><td id="a`]o" class=""><strong>Agent</strong></td><td id="^}FL" class="">An individual authorized to act on behalf of another person. In Tennessee real estate, both principal brokers and their affiliated brokers act as agents when retained under a written agency agreement.</td><td id="avtE" class="">Owes statutory and fiduciary-level duties to their client, and baseline statutory duties to all consumers/parties.</td></tr><tr id="4218ac6a-aab1-80b1-b1c6-ff0cda710b07" dir="ltr"><td id="a`]o" class=""><strong>Fiduciary</strong></td><td id="^}FL" class="">A person placed in a position of the highest trust and confidence when acting for another, legally obligated to put the principal&#x27;s interests ahead of everyone else&#x27;s—including the fiduciary&#x27;s own.</td><td id="avtE" class="">Held to the highest legal standard of loyalty, care, and fidelity.</td></tr><tr id="4218ac6a-aab1-80d6-bcc2-c1beddf82056" dir="ltr"><td id="a`]o" class=""><strong>Client (Principal)</strong></td><td id="^}FL" class="">The party (buyer, seller, landlord, or tenant) who grants the agent written authority to represent and act on their behalf. <strong>An agent works FOR a client.</strong></td><td id="avtE" class="">Receives full <strong>OLDCAR</strong> fiduciary/client duties in addition to all baseline consumer duties.</td></tr><tr id="4218ac6a-aab1-805b-a51a-e9a3d1ce4d2d" dir="ltr"><td id="a`]o" class=""><strong>Customer</strong></td><td id="^}FL" class="">A principal on the other side of a real estate transaction with whom the licensee does <strong>not</strong> have an agency relationship. <strong>An agent works WITH a customer.</strong></td><td id="avtE" class="">Receives baseline statutory duties (honesty, fair dealing, disclosure of adverse material facts, and safeguarding pre-agency confidential info), <strong>not</strong> full fiduciary advocacy.</td></tr><tr id="4218ac6a-aab1-80ab-ba5d-f76a9db4e004" dir="ltr"><td id="a`]o" class=""><strong>Third Parties</strong></td><td id="^}FL" class=""><strong>Any</strong> participant in a real estate transaction who is not the licensee&#x27;s client—encompassing customers as well as ancillary professionals such as <strong>lenders, appraisers, home inspectors, and title/escrow officers</strong>.</td><td id="avtE" class="">Owed honesty, fair dealing, and disclosure of adverse material facts—never fiduciary advocacy.</td></tr></tbody></table><figure id="4218ac6a-aab1-807f-930e-d11621c31fd5" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image.png"><img style="width:480px" src="Chapter%202%20-%20Single%20Agency/image.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-80af-9ee4-e5707c5f006f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client Duties (&quot;OLDCAR&quot;) vs. Customer &amp; Third-Party Duties</strong><ul id="4218ac6a-aab1-801e-8df3-db84a8f9fa14" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Golden Rule of Agency Duties:</strong> Any duty owed to a customer or third party is <strong>also</strong> owed to a client, but the full set of fiduciary duties owed to a client is <strong>not</strong> owed to customers or third parties.</li></ul><ul id="4218ac6a-aab1-80ac-a3ae-d9d7bb6558c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Six Classic Fiduciary Duties (</strong><code><strong>OLDCAR</strong></code><strong>):</strong><ol type="1" id="4218ac6a-aab1-80d7-b162-ffd354ce4045" class="numbered-list" start="1" dir="auto"><li><strong>Obedience:</strong> Obeying all <strong>lawful</strong> instructions of the client that fall within the scope of the agency agreement (a licensee must refuse any instruction to violate fair housing or disclosure laws).</li></ol><ol type="1" id="4218ac6a-aab1-80c1-a75f-e8f0417dc546" class="numbered-list" start="2" dir="auto"><li><strong>Loyalty:</strong> Placing the client&#x27;s best interests above all others—including the agent&#x27;s own financial or personal interests—and avoiding undisclosed conflicts of interest or self-dealing.</li></ol><ol type="1" id="4218ac6a-aab1-801e-b8e0-d6327eabcb8a" class="numbered-list" start="3" dir="auto"><li><strong>Disclosure:</strong> Disclosing to the client all known facts and information that could affect the client&#x27;s decisions or negotiating position, and promptly presenting <strong>all</strong> offers and counteroffers. <em>(Note: Adverse material facts about a property must be disclosed to </em><em><strong>both</strong></em><em> clients and customers.)</em></li></ol><ol type="1" id="4218ac6a-aab1-804a-a9e1-ee97c48b4626" class="numbered-list" start="4" dir="auto"><li><strong>Confidentiality:</strong> Safeguarding the client&#x27;s personal, financial, and motivational information (such as willingness to pay more or accept less) during and after the agency relationship, unless disclosure is required by law or authorized by the client.</li></ol><ol type="1" id="4218ac6a-aab1-80ae-89ff-fe5cdc7d15f6" class="numbered-list" start="5" dir="auto"><li><strong>Accounting:</strong> Properly safeguarding, tracking, and timely accounting for all earnest money deposits, trust funds, documents, and property entrusted to the agent.</li></ol><ol type="1" id="4218ac6a-aab1-802a-b4d0-f3f7de1ae525" class="numbered-list" start="6" dir="auto"><li><strong>Reasonable Care (and Diligence):</strong> Exercising competent professional skill, knowledge, and diligence throughout the transaction while staying within the scope of real estate licensure.</li></ol><figure id="4218ac6a-aab1-8098-a1fa-f2bc450ec0b0" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%201.png"><img style="width:384px" src="Chapter%202%20-%20Single%20Agency/image%201.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8099-ac0b-dfde12e8c05a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Principal Broker&#x27;s Role &amp; Responsibilities</strong><ul id="4218ac6a-aab1-8068-9002-f50aba1f2477" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supervision &amp; Accountability:</strong> Under the Tennessee Real Estate Broker License Act (<strong>T.C.A. § 62-13-312</strong> and TREC Rule <strong>1260-02-.01</strong>), the <strong>principal broker</strong> is responsible for supervising all real estate activities of the brokerage, including the actions, advertising, and transaction compliance of every licensee affiliated with the firm. To fulfill this duty, a principal broker must be engaged primarily in the real estate business and accessible during normal daytime working hours.</li></ul><ul id="4218ac6a-aab1-80aa-bcdd-ed761bc94839" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contractual Level of Agency Agreements:</strong> All listing agreements, buyer representation agreements, and property management contracts belong to the <strong>principal broker</strong> (the firm), not to the individual affiliate broker. Even when an affiliate broker originates the client lead and manages the day-to-day relationship, the legal agency contract is executed between the client and the principal broker.</li></ul><ul id="4218ac6a-aab1-8015-b46f-ee248cc0ca68" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Business Need for Affiliate Brokers:</strong> Because a principal broker cannot personally service an unlimited volume of clients alone, brokerages rely on teams of affiliate brokers to prospect, service clients, and execute transactions on the principal broker&#x27;s behalf.</li></ul></li></ul><ul id="4218ac6a-aab1-8069-9029-cd4cfefc8dda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Affiliate Broker&#x27;s Role &amp; Statutory Rules (</strong><code><strong>T.C.A. § 62-13-310</strong></code><strong>)</strong><ul id="4218ac6a-aab1-805c-8e40-d3e5456620be" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agent of the Principal Broker:</strong> An <strong>affiliate broker</strong> is licensed to act on behalf of a single sponsoring principal broker. Every interaction an affiliate broker has with clients, customers, or third parties in a transaction is legally performed on behalf of their sponsoring principal broker.</li></ul><ul id="4218ac6a-aab1-802e-910d-fb4ca1ec5fcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Size &amp; Affiliation Limits:</strong> A brokerage may sponsor any number of affiliate brokers, but an individual affiliate broker may be affiliated with <strong>only one principal broker</strong> at a time.</li></ul><ul id="4218ac6a-aab1-8004-8fd6-c7e1aa099c9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Operational Rules Under Tennessee Law:</strong><ul id="4218ac6a-aab1-80b4-b00a-ced3b603ac3f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Commission Compensation:</strong> An affiliate broker may accept commissions or valuable consideration <strong>only</strong> from their sponsoring principal broker—never directly from a buyer, seller, or cooperating firm (<code>T.C.A. § 62-13-312(b)(11)</code>).</li></ul><ul id="4218ac6a-aab1-8008-8227-fd90ac35ec29" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Signage &amp; Advertising:</strong> Under <strong>T.C.A. § 62-13-310(b)</strong>, an affiliate broker may not post yard signs or advertisements without displaying the <strong>firm&#x27;s licensed name in letters the same size or larger</strong> than those spelling out the affiliate broker&#x27;s name.</li></ul><ul id="4218ac6a-aab1-804d-ae88-fe8a427bcf07" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Leaving a Firm / Listing Ownership:</strong> If an affiliate broker terminates affiliation with a firm, the principal broker must promptly sign and date the release form, and the departing affiliate broker <strong>may not take or use any property listings</strong> secured through that firm without the principal broker&#x27;s consent.</li></ul><ul id="4218ac6a-aab1-8044-bfc3-f6d97b897407" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>License Display &amp; Record Retention:</strong> The affiliate broker&#x27;s license must be prominently displayed at the principal broker&#x27;s principal place of business, and all transaction records must be preserved by the firm for <strong>at least 3 years</strong> following the consummation of the transaction (<code>T.C.A. § 62-13-312(b)(6)</code>).</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8038-bdeb-dc61bdaca010" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Summary Comparison: Principal Broker vs. Affiliate Broker</strong><table id="4218ac6a-aab1-80f5-8b55-eaa372bcb0a4" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8018-bfa6-e0a33eefcc6f" dir="ltr"><td id="@c=Z" class=""><strong>Feature</strong></td><td id="K`_B" class=""><strong>Principal Broker</strong></td><td id="KgAR" class=""><strong>Affiliate Broker</strong></td></tr><tr id="4218ac6a-aab1-8076-abac-df5ea77ec092" dir="ltr"><td id="@c=Z" class=""><strong>Legal Authority</strong></td><td id="K`_B" class="">Holds ultimate supervisory authority and license responsibility for the brokerage firm.</td><td id="KgAR" class="">Sponsored by a principal broker to perform real estate brokerage activities on the broker&#x27;s behalf.</td></tr><tr id="4218ac6a-aab1-80de-b334-e7d19e3c291c" dir="ltr"><td id="@c=Z" class=""><strong>Agency Contracts</strong></td><td id="K`_B" class=""><strong>Party to the agency contract</strong> with the buyer, seller, landlord, or tenant.</td><td id="KgAR" class="">Services the client relationship on behalf of the principal broker; cannot enter into independent brokerage contracts.</td></tr><tr id="4218ac6a-aab1-8080-8a6a-d25080915207" dir="ltr"><td id="@c=Z" class=""><strong>Compensation</strong></td><td id="K`_B" class="">Receives brokerage commissions from clients/closings and disburses splits to affiliate brokers.</td><td id="KgAR" class="">Must be paid <strong>exclusively</strong> by their sponsoring principal broker.</td></tr><tr id="4218ac6a-aab1-80c3-8da7-c70a575096bc" dir="ltr"><td id="@c=Z" class=""><strong>Firm Limits</strong></td><td id="K`_B" class="">May supervise multiple affiliate brokers (and may serve as principal broker for up to <strong>two firms</strong> if both operate at the exact same physical address under <code>T.C.A. § 62-13-309(g)</code>).</td><td id="KgAR" class="">May be affiliated with <strong>only one</strong> principal broker at any given time.</td></tr></tbody></table></li></ul><ul id="4218ac6a-aab1-8002-9aa9-e4e9492d1d6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Classifications of Agency (By Scope of Authority)</strong><ul id="4218ac6a-aab1-80e9-a24c-e8834a58bbd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agency relationships are categorized into three levels based on the breadth of authority the principal grants to the agent and whether the agent has legal power to contractually bind the principal:<table id="4218ac6a-aab1-80fa-a8a1-c00a22814bc6" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-806f-9220-c7b97386ed24" dir="ltr"><td id="qC_d" class=""><strong>Classification</strong></td><td id="EI&lt;c" class=""><strong>Scope of Authority</strong></td><td id="Bo~^" class=""><strong>Power to Bind Principal?</strong></td><td id="qoe&gt;" class=""><strong>Duration &amp; Nature</strong></td><td id="a\rt" class=""><strong>Common Real Estate Examples</strong></td></tr><tr id="4218ac6a-aab1-80c9-99e2-ca415297ce88" dir="ltr"><td id="qC_d" class=""><strong>Special Agency</strong></td><td id="EI&lt;c" class=""><strong>Most limited</strong>; restricted to performing a single specific act or transaction.</td><td id="Bo~^" class=""><strong>No.</strong> Special agents cannot sign contracts or make binding decisions on the principal&#x27;s behalf.</td><td id="qoe&gt;" class="">Temporary; terminates once the specific transaction closes or expires.</td><td id="a\rt" class="">• A <strong>listing agent</strong> hired to market and sell a client&#x27;s home.<br/><br/>• A <strong>buyer&#x27;s agent</strong> retained to locate and negotiate a home purchase.</td></tr><tr id="4218ac6a-aab1-80bf-baaf-e4a460c206b2" dir="ltr"><td id="qC_d" class=""><strong>General Agency</strong></td><td id="EI&lt;c" class=""><strong>Broader, ongoing authority</strong> within a designated business, trade, or area of responsibility.</td><td id="Bo~^" class=""><strong>Yes</strong> <em>(within the scope of the assigned business or management duties)</em>.</td><td id="qoe&gt;" class="">Ongoing and continuous rather than limited to one transaction.</td><td id="a\rt" class="">• The relationship between a <strong>principal broker and an affiliate broker</strong>.<br/><br/>• A <strong>property manager</strong> authorized to collect rent, sign leases, and order repairs.</td></tr><tr id="4218ac6a-aab1-80f8-973e-f62e420f3fd3" dir="ltr"><td id="qC_d" class=""><strong>Universal Agency</strong></td><td id="EI&lt;c" class=""><strong>Broadest / nearly unlimited authority</strong> to act on the principal&#x27;s behalf across virtually all legal, financial, and personal matters.</td><td id="Bo~^" class=""><strong>Yes</strong> <em>(across nearly all matters that can be legally delegated)</em>.</td><td id="qoe&gt;" class="">Comprehensive; rarely used in standard real estate brokerage.</td><td id="a\rt" class="">• An <strong>attorney-in-fact</strong> acting under a broad <strong>general Power of Attorney (POA)</strong> (such as a trusted family member managing all affairs for an incapacitated or retiring investor).</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-80ab-99b8-ce5647f0cfef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Takeaways for Real Estate Practice</strong><ul id="4218ac6a-aab1-80d2-b7af-fd5c35dcc64f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standard Brokerage Default:</strong> Nearly all residential and commercial sales representation agreements create a <strong>special agency</strong> relationship—meaning the broker and affiliate broker can market, advise, and negotiate, but only the buyer or seller can accept an offer or sign a binding purchase contract.</li></ul><ul id="4218ac6a-aab1-80b2-a985-cae44f5bde49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Dual Role of the Affiliate Broker:</strong> In a typical sales transaction, an affiliate broker simultaneously operates as a <strong>general agent</strong> of their sponsoring principal broker (carrying out ongoing brokerage business on the firm&#x27;s behalf) while acting as a <strong>special agent</strong> to the brokerage&#x27;s buyer or seller client.<figure id="4218ac6a-aab1-8077-afa6-e654ccf3ccf2" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%202.png"><img style="width:480px" src="Chapter%202%20-%20Single%20Agency/image%202.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8024-a18f-f5a22cf40239" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single Agency Overview &amp; Mechanics</strong><ul id="4218ac6a-aab1-80f4-b0d6-cb4240197fa7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Single agency is an exclusive agency arrangement in which one brokerage (and its agent) represents <strong>only one party</strong> in a real estate transaction.</li></ul><ul id="4218ac6a-aab1-809b-b020-c22c8a5fe9f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm-Wide Loyalty:</strong> Under traditional single agency, both the <strong>principal broker and every affiliate broker</strong> in the brokerage are exclusively bound to advocate for and represent the best interests of that single client—reducing conflicts of interest and maximizing client trust.</li></ul><ul id="4218ac6a-aab1-80f5-ab72-d084694d3cd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Brokerage Policy Compliance:</strong> Because each real estate firm establishes its own agency business model, licensees must follow their sponsoring brokerage&#x27;s specific policies and guidelines when practicing single agency.</li></ul></li></ul><ul id="4218ac6a-aab1-80f3-a8e9-ecc0a9da466e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Two Sides of a Real Estate Transaction</strong><ul id="4218ac6a-aab1-80b8-9934-cc05f27b5810" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every real estate sale or lease involves two opposing sides, giving a single agent the choice of representing one of two client pairs:<table id="4218ac6a-aab1-8083-a519-d3dec9c46071" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-807f-a110-de35fdf4f870" dir="ltr"><td id="A:V[" class=""><strong>Transaction Side</strong></td><td id="lS?L" class=""><strong>Eligible Single-Agency Clients</strong></td><td id="qi~p" class=""><strong>Shared Client Objective</strong></td><td id=":?Fn" class=""><strong>Governing Written Agreement</strong></td></tr><tr id="4218ac6a-aab1-80a1-a486-d0513e2a1af7" dir="ltr"><td id="A:V[" class=""><strong>Sale / Lease Side</strong></td><td id="lS?L" class="">• <strong>Seller</strong><br/><br/>• <strong>Landlord</strong></td><td id="qi~p" class="">Transferring ownership or possession of a property to another party to generate sale proceeds or rental income.</td><td id=":?Fn" class=""><strong>Listing Agreement</strong> (Exclusive Right-to-Sell / Exclusive Agency / Leasing Listing Agreement)</td></tr><tr id="4218ac6a-aab1-801c-be64-f78699ee4f08" dir="ltr"><td id="A:V[" class=""><strong>Purchase / Rent Side</strong></td><td id="lS?L" class="">• <strong>Buyer</strong><br/><br/>• <strong>Tenant</strong></td><td id="qi~p" class="">Acquiring ownership or occupancy of a property for personal, residential, or business use.</td><td id=":?Fn" class=""><strong>Buyer Representation Agreement</strong> or <strong>Tenant Representation Agreement</strong></td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-80e1-81a9-f684459c0064" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Types of Single Agents &amp; Tennessee Written Agreement Rules</strong><ul id="4218ac6a-aab1-80b9-a9bb-dc7a86bf66ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Single-Agent Roles:</strong> Depending on which party retains the brokerage, a single agent serves as a <strong>seller&#x27;s agent</strong>, <strong>landlord&#x27;s agent</strong>, <strong>buyer&#x27;s agent</strong>, or <strong>tenant&#x27;s agent</strong>.</li></ul><ul id="4218ac6a-aab1-80c5-9f9e-ffe507cc991b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Statutory Requirement (</strong><code><strong>T.C.A. § 62-13-401</strong></code><strong>):</strong> Under Tennessee law, an agency relationship <strong>cannot be implied or created accidentally</strong> by a licensee&#x27;s actions or statements—it is established <strong>only</strong> through a specific <strong>written bilateral agency agreement</strong> (such as a written listing agreement or written buyer representation agreement). Without a written agency agreement, a Tennessee licensee operates by default as a <strong>facilitator</strong> (transaction broker) rather than an advocate for either party.</li></ul></li></ul><ul id="4218ac6a-aab1-80ff-9c5b-e4fec64e28c3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller&#x27;s Agent (Listing Agent) &amp; Seller Agency</strong><ul id="4218ac6a-aab1-80e0-801d-d95da855a817" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> A seller&#x27;s agent (commonly called a <strong>listing agent</strong>) is a single agent who represents exclusively the seller&#x27;s best interests in a real estate sale.</li></ul><ul id="4218ac6a-aab1-80ed-bdd6-c1645c7bbef8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Legal Relationships:</strong><ul id="4218ac6a-aab1-80ff-a361-efd325b10394" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Client / Principal:</strong> The <strong>seller</strong> is the principal/client of the listing brokerage.</li></ul><ul id="4218ac6a-aab1-8027-9fb4-d7d435fad0e3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Fiduciary &amp; Statutory Duties:</strong> The seller&#x27;s agent owes full fiduciary duties (<strong>OLDCAR</strong>: Obedience, Loyalty, Disclosure, Confidentiality, Accounting, and Reasonable Care) and Tennessee statutory client duties exclusively to the <strong>seller</strong>.</li></ul><ul id="4218ac6a-aab1-802b-9c2e-e2b06335dd0d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Working FOR vs. WITH:</strong> The listing agent works <strong>for</strong> the seller (client) and works <strong>with</strong> prospective buyers (customers/third parties), eliminating ambiguity over who receives fiduciary advocacy.</li></ul></li></ul><ul id="4218ac6a-aab1-801b-b88e-dc8ada48930b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Governing Contract:</strong> The seller agency relationship is formalized in a written <strong>listing agreement</strong> (executed at the principal broker level), which specifies the agent&#x27;s authority, marketing responsibilities, compensation, and duties owed to each party.</li></ul></li></ul><ul id="4218ac6a-aab1-8056-a543-f07dc9f4b042" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Application: Diego and Marlo</strong><ul id="4218ac6a-aab1-8074-baeb-de2f6d719daa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Situation:</strong> Homeowner Diego wants to sell his condo of 19 years to buy a house with a yard for a tomato garden. He hires Marlo under a single-agency <strong>listing agreement</strong> to market the condo, conduct showings, and advocate solely for his interests.</li></ul><ul id="4218ac6a-aab1-800c-8970-fc9fc6dbf331" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Agency Duties &amp; Protections:</strong><ul id="4218ac6a-aab1-8017-94d2-f9f8d8d642ee" class="bulleted-list" dir="auto"><li style="list-style-type:square">Once the written single-agency listing agreement is signed, Marlo owes Diego full client/fiduciary loyalty, confidentiality, and advocacy, while owing no fiduciary advocacy to prospective buyers (only baseline consumer duties such as honesty, fair dealing, and disclosure of adverse material facts).</li></ul></li></ul><ul id="4218ac6a-aab1-809d-a307-c911990d4dcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Disclosure &amp; Written Consent Steps:</strong><ol type="1" id="4218ac6a-aab1-8005-b0ff-c3cb584c3e67" class="numbered-list" start="1" dir="auto"><li><strong>Agency Disclosure at First Substantive Contact:</strong> Marlo must clearly disclose the agency relationship and available representation options before substantive confidential or transactional discussions take place.</li></ol><ol type="1" id="4218ac6a-aab1-8028-8313-f42799314a6c" class="numbered-list" start="2" dir="auto"><li><strong>Written Informed Consent Before Transactional Activity:</strong> Marlo must secure Diego&#x27;s signed, written informed consent and execute the written bilateral agency agreement prior to marketing the property or conducting transactional activity—legally protecting <strong>Diego, Marlo, and Marlo&#x27;s sponsoring principal broker</strong>.=</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-80d6-b187-e57e816d22cc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Responsibilities of a Seller&#x27;s Agent (Listing Agent)</strong><ul id="4218ac6a-aab1-8020-9bef-f6b78ff8290d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once fiduciary and statutory agency duties are established through a written listing agreement, a seller&#x27;s agent fulfills four primary responsibilities to represent the seller&#x27;s best interests:<ol type="1" id="4218ac6a-aab1-803c-abc1-f1ddb23ef4ac" class="numbered-list" start="1" dir="auto"><li><strong>Locating a Suitable Buyer:</strong> Leveraging targeted marketing, MLS exposure, signage, and professional networking to attract qualified, ready, willing, and able buyers.</li></ol><ol type="1" id="4218ac6a-aab1-8026-94c0-e811326cc6a3" class="numbered-list" start="2" dir="auto"><li><strong>Negotiating Offers:</strong> Advising the seller on offer terms, contingencies, and counteroffers to secure the highest price and most favorable terms based on property condition, seller goals, and current market dynamics.</li></ol><ol type="1" id="4218ac6a-aab1-80ee-81cb-fcb7d6b509c7" class="numbered-list" start="3" dir="auto"><li><strong>Disclosure of Property Value:</strong> Providing an objective opinion of market value—typically via a <strong>Comparative Market Analysis (CMA)</strong> comparing recently sold, pending, and active nearby properties (&quot;comparables&quot;) to the seller&#x27;s home (&quot;subject property&quot;)—so the seller can set an accurate, competitive listing price.</li></ol><ol type="1" id="4218ac6a-aab1-8060-a02d-fe220dfd2bc4" class="numbered-list" start="4" dir="auto"><li><strong>Preparing for Closing:</strong> Guiding the seller through inspections, title clearance, disclosures, and settlement documentation to ensure a smooth, compliant closing.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-800c-b77d-d7064097f8e9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evolution of Buyer Agency: Historical Context vs. Modern Practice</strong><ul id="4218ac6a-aab1-80ae-b7c5-da6268464bd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-1980s Default (Subagency Era):</strong> Historically, buyers had no dedicated agency representation. Both the listing agent and the agent driving the buyer around to tour homes legally represented the <strong>seller</strong> (as subagents of the listing broker). Buyers frequently assumed the agent showing them homes was advocating for them, creating widespread confusion and undisclosed conflicts of interest until agency reforms in the early 1980s established dedicated buyer representation.</li></ul><ul id="4218ac6a-aab1-80c6-bf13-c00b759add6b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modern Buyer&#x27;s Agent (Single Agency for the Buyer):</strong><ul id="4218ac6a-aab1-8099-a08b-f2976b361432" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Exclusive Loyalty to the Buyer:</strong> A buyer&#x27;s agent represents <strong>only the buyer&#x27;s interests</strong> in the transaction and owes <strong>no fiduciary advocacy</strong> to the seller.</li></ul><ul id="4218ac6a-aab1-805d-9bac-c050e59ec110" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Governing Contract:</strong> Formalized through a written <strong>buyer-broker representation agreement</strong> (executed at the principal broker level), which specifies that the agent works <strong>for</strong> the buyer (client) and <strong>with</strong> the seller (customer/third party).</li></ul><ul id="4218ac6a-aab1-8036-b5fc-d45fa91485bb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Without a Written Agreement:</strong> If a buyer works with an agent without executing a written buyer representation agreement, the buyer is treated as an unrepresented <strong>customer</strong> (or receives default facilitator/transaction-broker services in Tennessee) rather than a fiduciary client.</li></ul></li></ul><ul id="4218ac6a-aab1-80c9-a0e7-ca9a6e9cd42d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Industry Terminology Note (&quot;Buyer&#x27;s Agent&quot; vs. &quot;Selling Agent&quot;):</strong><ul id="4218ac6a-aab1-804e-80ee-d6280d311e1b" class="bulleted-list" dir="auto"><li style="list-style-type:square">In parts of the real estate industry and on licensing exams, a buyer&#x27;s agent is sometimes called the <strong>&quot;selling agent&quot;</strong> because they bring the buyer who makes the sale happen—distinct from the <strong>&quot;listing agent&quot;</strong> who holds the listing contract with the seller. To avoid confusing clients, using <strong>&quot;buyer&#x27;s agent&quot;</strong> is preferred in everyday practice while recognizing <strong>&quot;selling agent&quot;</strong> on exams and MLS forms.<table id="4218ac6a-aab1-80d8-87cb-c7b831555911" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-80cb-9b8f-ddabb1ea7a1d" dir="ltr"><td id="\IX?" class=""><strong>Term</strong></td><td id="GqX?" class=""><strong>Party Represented</strong></td><td id="xRWQ" class=""><strong>Governing Contract</strong></td><td id="W?Sv" class=""><strong>Role in Transaction</strong></td></tr><tr id="4218ac6a-aab1-803b-bb6a-c9befa5a729c" dir="ltr"><td id="\IX?" class=""><strong>Listing Agent (Seller&#x27;s Agent)</strong></td><td id="GqX?" class="">Seller (Client)</td><td id="xRWQ" class="">Written Listing Agreement</td><td id="W?Sv" class="">Markets the property, advises the seller on value via a CMA, and negotiates on the seller&#x27;s behalf.</td></tr><tr id="4218ac6a-aab1-80ee-8d58-c34976804242" dir="ltr"><td id="\IX?" class=""><strong>Buyer&#x27;s Agent (&quot;Selling Agent&quot;)</strong></td><td id="GqX?" class="">Buyer (Client)</td><td id="xRWQ" class="">Written Buyer-Broker Agreement</td><td id="W?Sv" class="">Locates suitable properties, advises the buyer on offer strategy, and advocates exclusively for the buyer.</td></tr></tbody></table><figure id="4218ac6a-aab1-8072-9c22-fa7850c059bb" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%203.png"><img style="width:720px" src="Chapter%202%20-%20Single%20Agency/image%203.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8068-b63a-fdd6c4e9a73a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Responsibilities of a Buyer&#x27;s Agent</strong><ul id="4218ac6a-aab1-80b4-ab97-de408be69700" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once an agency relationship is established via a written <strong>buyer representation agreement</strong> (also called a <strong>buyer-broker agreement</strong>), the buyer&#x27;s agent owes exclusive client duties (<code>T.C.A. § 62-13-404</code>) and fulfills six core responsibilities:<ol type="1" id="4218ac6a-aab1-8040-a76c-e11e1c814c71" class="numbered-list" start="1" dir="auto"><li><strong>Locating a Suitable Property &amp; Providing Valuation Data:</strong> Identifying homes that match the buyer&#x27;s budget, location, and property criteria, and providing market value data (such as a Comparative Market Analysis) so the buyer can make an informed, competitive offer.</li></ol><ol type="1" id="4218ac6a-aab1-8036-95e8-e55b04d52d26" class="numbered-list" start="2" dir="auto"><li><strong>Explaining Due Diligence:</strong> Educating the buyer on their duty to investigate the property thoroughly before closing—specifically advising them to obtain professional home inspections, review disclosures, and verify property conditions.</li></ol><ol type="1" id="4218ac6a-aab1-80c5-b72d-c72cf78e016c" class="numbered-list" start="3" dir="auto"><li><strong>Negotiating Offers:</strong> Advocating for the buyer&#x27;s best price and terms while negotiating against skilled listing agents—while <strong>never making guarantees</strong> about the final purchase price, since the seller&#x27;s response cannot be predicted.</li></ol><ol type="1" id="4218ac6a-aab1-8073-9d72-f257489279a2" class="numbered-list" start="4" dir="auto"><li><strong>Protecting &amp; Limiting Financial Disclosures:</strong> Disclosing only that the buyer has the <strong>financial ability to obtain the financing needed</strong> to complete the purchase (e.g., via a lender pre-approval letter) while safeguarding confidential details—such as the buyer&#x27;s maximum budget or urgency—that would weaken the buyer&#x27;s negotiating leverage.</li></ol><ol type="1" id="4218ac6a-aab1-804c-8c33-c8d9a2cd7889" class="numbered-list" start="5" dir="auto"><li><strong>Preparing for Closing:</strong> Guiding the buyer through post-contract milestones (inspections, appraisal, loan commitment, title review, and final walkthrough) and ensuring all required closing documents and deadlines are met.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-8025-b08f-f0447a90eae2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single Agency Specializations: Leasing Representation</strong><ul id="4218ac6a-aab1-8059-b4bc-ea1f561e4555" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees practicing single agency may also specialize in residential or commercial leasing by representing either the property owner or the prospective renter:<table id="4218ac6a-aab1-8012-b234-cae8a01e970c" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-800a-971c-c5d93ee9412d" dir="ltr"><td id="=dDX" class=""><strong>Single-Agency Role</strong></td><td id=":bU[" class=""><strong>Client / Principal</strong></td><td id="~JtB" class=""><strong>Governing Contract</strong></td><td id="Pklr" class=""><strong>Scope &amp; Core Focus</strong></td></tr><tr id="4218ac6a-aab1-806f-b776-e122c033b9c1" dir="ltr"><td id="=dDX" class=""><strong>Landlord&#x27;s Agent</strong></td><td id=":bU[" class=""><strong>Landlord</strong></td><td id="~JtB" class="">Written <strong>Listing Agreement</strong> (Leasing)</td><td id="Pklr" class="">Works <strong>for</strong> the landlord and <strong>with</strong> prospective tenants; owes full fiduciary/client duties exclusively to the landlord to market and lease the property (and may also serve in ongoing property management).</td></tr><tr id="4218ac6a-aab1-8008-a9c2-dd05751d4949" dir="ltr"><td id="=dDX" class=""><strong>Tenant&#x27;s Agent</strong> <em>(Tenant Representative)</em></td><td id=":bU[" class=""><strong>Tenant</strong></td><td id="~JtB" class="">Written <strong>Tenant-Broker Agreement</strong></td><td id="Pklr" class="">Works <strong>for</strong> the tenant and <strong>with</strong> landlords; owes full fiduciary/client duties exclusively to the tenant and requires specialized knowledge of <strong>lease agreements, commercial/residential lease clauses, and tenant rights</strong>.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-8014-9f74-fa2464af1717" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Summary Recap: The Four Forms of Single Agency</strong><ul id="4218ac6a-aab1-80c4-96d7-ff6522c4cc9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller&#x27;s Agent (Listing Agent):</strong> Owes fiduciary/client duties <strong>only to the seller</strong>.</li></ul><ul id="4218ac6a-aab1-80f8-9beb-eb8421ed7459" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer&#x27;s Agent:</strong> Owes fiduciary/client duties <strong>only to the buyer</strong>.</li></ul><ul id="4218ac6a-aab1-80e5-b981-d7495e35be96" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Landlord&#x27;s Agent:</strong> Owes fiduciary/client duties <strong>only to the landlord</strong>.</li></ul><ul id="4218ac6a-aab1-800b-8b50-ca8956e0b235" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tenant&#x27;s Agent:</strong> Owes fiduciary/client duties <strong>only to the tenant</strong>.</li></ul><ul id="4218ac6a-aab1-8096-9c4d-f73fd01c4063" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Clients Choose Single Agency:</strong> Single agency provides undivided loyalty and uncompromised advocacy for one party only, requiring the licensee to uphold their statutory and fiduciary obligations without conflict of interest. <em>(Note: In Tennessee, MLS-participating buyer&#x27;s agents must also execute a written buyer representation agreement specifying compensation terms before touring a home in person or via live virtual tour.)</em><figure id="4218ac6a-aab1-8030-ae7d-cddd0da8b0d8" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%204.png"><img style="width:528px" src="Chapter%202%20-%20Single%20Agency/image%204.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8051-80c7-deb92e82a13f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subagency Definition &amp; Two Types of Subagents</strong><ul id="4218ac6a-aab1-8084-874e-c707528f7594" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Subagency occurs when a primary agent (a principal broker) enlists other licensees to assist in accomplishing the client&#x27;s objective. In its simplest terms, a <strong>subagent is an agent of an agent</strong>.<figure id="4218ac6a-aab1-8018-8305-ce3400b9754e" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%205.png"><img style="width:480px" src="Chapter%202%20-%20Single%20Agency/image%205.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-808a-9832-d30898a2567a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Categories of Subagents:</strong><ol type="1" id="4218ac6a-aab1-80d9-b8e5-ecd87e90be64" class="numbered-list" start="1" dir="auto"><li><strong>In-House Sponsored Affiliate Brokers:</strong> Affiliate brokers sponsored by the listing or buyer&#x27;s principal broker who work under that broker on behalf of the firm&#x27;s clients.</li></ol><ol type="1" id="4218ac6a-aab1-8006-a87b-ed0f2eceb7a0" class="numbered-list" start="2" dir="auto"><li><strong>Unaffiliated Cooperating Brokers:</strong> Brokers or licensees from a separate, outside brokerage firm who assist the listing principal broker in selling the seller&#x27;s property on the seller&#x27;s behalf. <em>(While still legal in Tennessee, outside cooperating subagency has become rare due to the widespread adoption of buyer representation agreements and MLS rules.)</em></li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-80a3-9d4b-f8b667e444a3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Duties &amp; Single-Agency Structure of Subagency</strong><ul id="4218ac6a-aab1-8029-b1df-f6551429f854" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Same Duties Owed to the Principal:</strong> Regardless of whether a subagent works inside the listing firm or at an outside cooperating brokerage, the subagent owes the <strong>exact same fiduciary and statutory client duties</strong> (<code>T.C.A. § 62-13-404</code>) to the principal (e.g., the seller) that the primary principal broker owes.</li></ul><ul id="4218ac6a-aab1-806c-babb-fe0ded1cf687" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Works FOR the Principal, WITH the Customer:</strong> Even when an outside cooperating subagent drives a buyer around to tour properties, that subagent legally works <strong>for the seller (principal)</strong> and <strong>with the buyer (customer)</strong>—never advocating for the buyer against the seller&#x27;s interests.</li></ul><ul id="4218ac6a-aab1-80cb-a434-d247df7f7304" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Subagency Remains Single Agency:</strong> Adding a second licensee from an unaffiliated brokerage as a subagent does <strong>not</strong> create dual agency. Because every participating licensee represents the <strong>exact same single party</strong> (the seller), the transaction remains a <strong>single-agency</strong> arrangement.</li></ul></li></ul><ul id="4218ac6a-aab1-80ad-a908-fcb8f89f18b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Summary Comparison: Subagency Participants</strong><table id="4218ac6a-aab1-8087-a835-fe766f7c1efc" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8037-ae25-ce3f46d7567e" dir="ltr"><td id="kU^d" class=""><strong>Subagent Type</strong></td><td id="Zz&lt;p" class=""><strong>Firm Affiliation</strong></td><td id="?nWo" class=""><strong>Party Represented (Client)</strong></td><td id="CJzX" class=""><strong>Relationship to Other Party (Buyer)</strong></td></tr><tr id="4218ac6a-aab1-808f-9ce7-f3313d246b34" dir="ltr"><td id="kU^d" class=""><strong>Sponsored Affiliate Broker</strong></td><td id="Zz&lt;p" class="">Same firm as the principal broker</td><td id="?nWo" class="">Principal broker&#x27;s client (e.g., Seller)</td><td id="CJzX" class="">Works <strong>with</strong> the buyer as a customer (owes baseline duties under <code>T.C.A. § 62-13-403</code>).</td></tr><tr id="4218ac6a-aab1-803a-99f9-fd3604ce6912" dir="ltr"><td id="kU^d" class=""><strong>Unaffiliated Cooperating Subagent</strong></td><td id="Zz&lt;p" class="">Separate cooperating brokerage</td><td id="?nWo" class="">Listing principal broker&#x27;s client (Seller)</td><td id="CJzX" class="">Works <strong>with</strong> the buyer as a customer; owes full loyalty and confidentiality to the <strong>seller</strong>.</td></tr></tbody></table></li></ul><ul id="4218ac6a-aab1-8024-96f5-c9e1de9809d6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Cooperating Brokerage (Co-Brokerage) Overview</strong><ul id="4218ac6a-aab1-8089-81fa-d5659702288b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Cooperating brokerage—commonly called <strong>co-brokerage</strong>—occurs when two separate, unaffiliated brokerage firms collaborate to complete a real estate transaction for a specific property (most commonly when an outside brokerage brings a buyer to a listing broker&#x27;s property).</li></ul><ul id="4218ac6a-aab1-8044-a7ef-fd574853a392" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mutually Exclusive Roles (&quot;Buyer&#x27;s Agent OR Subagent&quot;):</strong> Simply bringing a buyer to a listing does <strong>not</strong> automatically make a cooperating broker a buyer&#x27;s agent. Depending on the agreements in place, an unaffiliated cooperating broker operates in one of two distinct legal capacities:<table id="4218ac6a-aab1-80d9-97ab-d50927ba9bfd" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-801a-8a59-cfc4e99bbbc9" dir="ltr"><td id="nBNs" class=""><strong>Cooperating Broker Role</strong></td><td id="JINX" class=""><strong>Party Represented (Client)</strong></td><td id="&gt;qn=" class=""><strong>Relationship to the Buyer</strong></td><td id="Q]r{" class=""><strong>Fiduciary &amp; Statutory Duties</strong></td></tr><tr id="4218ac6a-aab1-80a2-9255-c60d8ff5190e" dir="ltr"><td id="nBNs" class=""><strong>Buyer&#x27;s Agent</strong> <em>(Most common today)</em></td><td id="JINX" class=""><strong>Buyer</strong> (via a written buyer representation agreement)</td><td id="&gt;qn=" class="">Works <strong>FOR</strong> the buyer as a fiduciary client</td><td id="Q]r{" class="">Owes full loyalty, confidentiality, and advocacy to the <strong>buyer</strong>; works <strong>with</strong> the seller/listing agent as a third party.</td></tr><tr id="4218ac6a-aab1-80f6-af29-f6babd49f185" dir="ltr"><td id="nBNs" class=""><strong>Subagent of the Listing Broker</strong></td><td id="JINX" class=""><strong>Seller</strong> (via a subagency agreement with the listing broker)</td><td id="&gt;qn=" class="">Works <strong>WITH</strong> the buyer as an unrepresented <strong>customer</strong></td><td id="Q]r{" class="">Owes full fiduciary/client duties to the <strong>seller</strong> (<code>T.C.A. § 62-13-404</code>); the buyer has <strong>no agency representation</strong> in the transaction.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-809d-8156-cb5ffbcce103" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: Casa Brokerage &amp; Haus Brokerage</strong><ul id="4218ac6a-aab1-809b-ba3d-c936e3722fc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Participants:</strong><ul id="4218ac6a-aab1-806a-b283-f62242775ebb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Breck (Casa Brokerage):</strong> Listing agent representing <strong>Seller Simone</strong>.</li></ul><ul id="4218ac6a-aab1-8067-9987-ed6a495dd021" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Dillon (Haus Brokerage):</strong> Cooperating broker working with <strong>Buyer Janine</strong> as a <strong>customer</strong> (no buyer representation agreement).</li></ul></li></ul><ul id="4218ac6a-aab1-8057-bb42-ccd9b66d98d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transaction Mechanics &amp; Legal Risk:</strong><ul id="4218ac6a-aab1-8045-b108-d7616f6ad1b4" class="bulleted-list" dir="auto"><li style="list-style-type:square">When Dillon enters into a subagency agreement with Breck to bring Janine to Simone&#x27;s property, Dillon becomes a <strong>subagent of the listing broker</strong> and legally owes fiduciary duties to <strong>Seller Simone</strong>—not to Buyer Janine.</li></ul><ul id="4218ac6a-aab1-80f7-afd6-ef374712f923" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Critical Disclosure Requirement:</strong> Buyer Janine must be clearly informed early on that Dillon represents the <strong>seller</strong> and that she is <strong>unrepresented</strong> in the transaction, ensuring she does not mistakenly share confidential negotiating information (such as her maximum offer price) with Dillon.<figure id="4218ac6a-aab1-80b6-b13e-f2fd248b9b9c" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/1.gif" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/1.gif"><img style="width:432px" src="Chapter%202%20-%20Single%20Agency/1.gif"/></a></figure></li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-800b-9b7e-fa3ac42ca799" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller&#x27;s Authorization &amp; Mandatory Role Disclosure</strong><ul id="4218ac6a-aab1-80c3-b7b7-c7ffab8976e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller Controls Cooperation Terms:</strong> During the listing process, the <strong>seller</strong> decides which forms of broker cooperation (buyer agency, subagency, or facilitator cooperation) they authorize, and the listing broker communicates those terms through the MLS listing. <em>(Note: Under current MLS and Tennessee rules, offers of cooperative compensation are negotiated off-MLS rather than published in MLS fields, and buyer agents must execute a written buyer representation agreement before touring a home.)</em></li></ul><ul id="4218ac6a-aab1-80a9-a7ab-d83eb5d40f0b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immediate Two-Way Disclosure:</strong> As soon as a cooperating broker responds to a listing, they must immediately disclose their exact agency status—whether acting as a <strong>buyer&#x27;s agent</strong>, <strong>subagent</strong>, or <strong>facilitator</strong>—to <strong>both the listing agent and the prospective buyer</strong> (<code>T.C.A. § 62-13-405</code>).</li></ul></li></ul><ul id="4218ac6a-aab1-80ee-bd5c-fdc0d79399eb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Multiple Listing Service (MLS) Overview &amp; Regulation</strong><ul id="4218ac6a-aab1-8096-9887-eda89acaba0f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> An MLS is a centralized, broker-operated online database that compiles available real estate listings within a geographic market, functioning as a cooperative clearinghouse connecting listing brokerages with cooperating buyer brokerages.</li></ul><ul id="4218ac6a-aab1-8081-aebc-d900c7c6a970" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accuracy &amp; Accountability:</strong> The MLS is strictly regulated by local REALTOR® associations and MLS rules—each participating broker is held legally and ethically accountable for ensuring listing data is accurate, up-to-date, and faithfully reflects the seller client&#x27;s written instructions and authorizations.<figure id="4218ac6a-aab1-8017-b10c-e0eb1633d6c6" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%206.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%206.png"><img style="width:480px" src="Chapter%202%20-%20Single%20Agency/image%206.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-80d6-8620-e623cf9d451e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Core Functions of the MLS</strong><ol type="1" id="4218ac6a-aab1-80f6-a910-f579ff41a2de" class="numbered-list" start="1" dir="auto"><li><strong>Clear Communication:</strong> Eliminates conflicting sales or duplicate buyer claims by establishing a single, verified record of active, pending, and closed listings and communicating seller instructions clearly to cooperating brokers.</li></ol><ol type="1" id="4218ac6a-aab1-802f-a402-f75b0c7b53a3" class="numbered-list" start="2" dir="auto"><li><strong>Agent Protection:</strong> Protects licensees from investing time and marketing resources into listings where another agent has already secured an exclusive contract or accepted offer, and establishes binding inter-brokerage cooperation and arbitration rules.</li></ol><ol type="1" id="4218ac6a-aab1-80ec-83c6-db2560b46ddb" class="numbered-list" start="3" dir="auto"><li><strong>Agency Relationship Specification:</strong> Specifies which forms of cooperating agency relationships the seller has authorized—such as <strong>buyer agency</strong>, <strong>subagency</strong>, or <strong>facilitator/transaction brokerage</strong>—before a cooperating broker shows the property.</li></ol></li></ul><ul id="4218ac6a-aab1-8079-99e2-d30d688e4db4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Scenario Analysis: The MLS and the BBQ Pit</strong><ul id="4218ac6a-aab1-8060-bc06-c0adeda9263c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transaction Participants:</strong><ul id="4218ac6a-aab1-8061-b4be-e70133e32f24" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broker Jana:</strong> Listing agent representing <strong>Seller Anne</strong>.</li></ul><ul id="4218ac6a-aab1-8035-aa2b-f63a590a700f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Remi:</strong> Buyer&#x27;s agent representing <strong>Buyer Omar</strong> (who wants to buy Anne&#x27;s house featuring a backyard BBQ pit).</li></ul></li></ul><ul id="4218ac6a-aab1-803e-953c-d24d2b46fd32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Step-by-Step Transaction Workflow:</strong><ol type="1" id="4218ac6a-aab1-80aa-8293-c380320a096a" class="numbered-list" start="1" dir="auto"><li><strong>MLS Verification:</strong> Remi locates Anne&#x27;s listing on the MLS and checks the cooperation terms, confirming that Seller Anne authorizes cooperating brokers to bring a buyer either as a <strong>buyer&#x27;s agent</strong> or as a <strong>subagent</strong>.</li></ol><ol type="1" id="4218ac6a-aab1-80da-b331-fd54a7990661" class="numbered-list" start="2" dir="auto"><li><strong>Upfront Agency Disclosure:</strong> Because Remi has already entered into a written buyer representation agreement with Omar, Remi immediately discloses his status as <strong>Omar&#x27;s buyer&#x27;s agent</strong> to Listing Broker Jana when scheduling the showing (<code>T.C.A. § 62-13-405</code>).</li></ol><ol type="1" id="4218ac6a-aab1-8022-a984-f59ad34fe6bd" class="numbered-list" start="3" dir="auto"><li><strong>Fiduciary Advocacy &amp; Cooperative Compensation:</strong> Remi advocates exclusively for Omar&#x27;s best interests while helping Anne secure a qualified buyer. With <strong>Seller Anne&#x27;s prior written approval</strong>, Jana compensates Remi with a negotiated share of the commission paid by Anne.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-8006-bd6d-f2b69fee47bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Current Industry Compliance Note (NAR Practice Changes in Effect Through 2026)</strong><ul id="4218ac6a-aab1-8025-896d-cefaf06f87a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Off-MLS Compensation Offers:</strong> Under the NAR practice changes (affirmed by the U.S. Court of Appeals for the Eighth Circuit in <strong>August 2026</strong>), offers of cooperative compensation to buyer brokers can <strong>no longer be published inside MLS listing fields</strong>. Instead, if a seller approves offering cooperative compensation in writing, that offer is communicated <strong>off-MLS</strong> (such as via direct broker-to-broker communication, flyers, or brokerage websites) or requested by the buyer directly in the purchase offer.</li></ul><ul id="4218ac6a-aab1-80ea-b392-df6c32a6024c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Buyer Agreement Before Touring:</strong> MLS-participating buyer&#x27;s agents must execute a written buyer representation agreement specifying an objectively ascertainable fee cap <strong>before</strong> touring a home with a buyer, and may not receive total compensation from any source exceeding the amount agreed to with the buyer.</li></ul></li></ul><ul id="4218ac6a-aab1-80f1-bc47-e8ac93a6db27" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Historical Shift Away from Mandatory Subagency</strong><ul id="4218ac6a-aab1-80a1-9e08-c104fa4c6d8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1980s &quot;Unilateral Offer of Subagency&quot;:</strong> Prior to the widespread adoption of buyer agency, standard MLS listing agreements included a <strong>&quot;unilateral offer of subagency&quot;</strong> that required any cooperating broker bringing a buyer to operate as a subagent of the seller—meaning buyers had no dedicated representation in the transaction.</li></ul><ul id="4218ac6a-aab1-8053-845e-f5a14055ce7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Modern Optional Status:</strong> Today, outside cooperating subagency is strictly optional rather than mandatory. Several states have abolished or restricted cooperating subagency entirely to eliminate consumer confusion over who represents whom, while in <strong>Tennessee</strong> subagency remains legal under <code>T.C.A. § 62-13-401 et seq.</code> but is rarely offered or practiced.</li></ul></li></ul><ul id="4218ac6a-aab1-8003-8e39-d1c3c07fbbaf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mandatory Disclosure &amp; Vicarious Liability Risks of Subagency</strong><table id="4218ac6a-aab1-8001-92d7-ce9bdba232f1" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8085-a942-ceaf15c7d442" dir="ltr"><td id="yd:^" class=""><strong>Risk Factor</strong></td><td id="VFuW" class=""><strong>Practical &amp; Legal Impact</strong></td><td id="qbs@" class=""><strong>Compliance &amp; Brokerage Safeguard</strong></td></tr><tr id="4218ac6a-aab1-8086-9db3-ceac88973ed0" dir="ltr"><td id="yd:^" class=""><strong>Unrepresented Buyer Confusion</strong></td><td id="VFuW" class="">When an outside cooperating broker accepts an offer of subagency, that broker owes fiduciary/client loyalty to the <strong>seller</strong>—leaving the <strong>buyer completely unrepresented</strong> in the transaction.</td><td id="qbs@" class="">The cooperating broker must <strong>immediately disclose</strong> to both the buyer and the listing agent that they act as the seller&#x27;s subagent and that the buyer has no agency representation (<code>T.C.A. § 62-13-405</code>).</td></tr><tr id="4218ac6a-aab1-80f2-8f13-c289b35cf993" dir="ltr"><td id="yd:^" class=""><strong>Principal Broker Vicarious Liability</strong></td><td id="VFuW" class="">Under traditional agency law, a principal (seller) and listing principal broker can be held <strong>vicariously liable</strong> for the misrepresentations, errors, or misconduct of a subagent—even when that subagent works at an unaffiliated firm outside the listing broker&#x27;s direct supervision.</td><td id="qbs@" class="">Many principal brokers prohibit their listings from offering outside subagency and prohibit their agents from accepting subagency roles, relying instead on <strong>buyer agency</strong> or <strong>facilitator (transaction broker)</strong> cooperation.</td></tr></tbody></table></li></ul><ul id="4218ac6a-aab1-8058-a508-edcf513b6647" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dual Agency Defined &amp; Legal Status in Tennessee</strong><ul id="4218ac6a-aab1-80ea-b07b-ca68fda0c564" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Dual agency is an agency relationship in which <strong>the same brokerage (and/or the same licensee) represents both the buyer and the seller</strong> (or both the landlord and the tenant) in the same in-house real estate transaction—making it the structural opposite of single agency.<figure id="4218ac6a-aab1-80a9-8b12-ec7ad7f9be8d" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%207.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%207.png"><img style="width:432px" src="Chapter%202%20-%20Single%20Agency/image%207.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-809d-b25d-d400c51f1fe2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Status in Tennessee (</strong><code><strong>T.C.A. § 62-13-401 et seq.</strong></code><strong>):</strong><ul id="4218ac6a-aab1-8032-9614-cb4ab94323a1" class="bulleted-list" dir="auto"><li style="list-style-type:square">While dual agency is prohibited in several states, <strong>disclosed dual agency is legal in Tennessee</strong> provided it is <strong>fully disclosed to both parties</strong> and <strong>both parties give their informed written consent</strong>.</li></ul><ul id="4218ac6a-aab1-8017-8f5e-ed9f1a7a7a9c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Despite being legal, many Tennessee brokerages prohibit dual agency by company policy—or rely instead on <strong>designated agency</strong> (<code>T.C.A. § 62-13-406</code>)—and disclosed dual agency is rarely practiced in the state because of its inherent representation limits and heightened liability exposure.</li></ul><figure id="4218ac6a-aab1-801d-a23b-f890d4bf5e2c" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%208.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%208.png"><img style="width:432px" src="Chapter%202%20-%20Single%20Agency/image%208.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-80cc-999c-fb01577cf480" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Limitations on Fiduciary &amp; Statutory Duties</strong><ul id="4218ac6a-aab1-807c-9edd-d1a0cf49cd09" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a brokerage represents both sides of the same transaction, the licensee <strong>cannot</strong> provide the full fiduciary advocacy available in single agency:<ul id="4218ac6a-aab1-80eb-8b17-fd48b9678f4c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Disclosure (Not Full Disclosure):</strong> The dual agent must still disclose all known <strong>adverse material facts</strong> about the property (<code>T.C.A. § 62-13-403</code>), but <strong>cannot</strong> disclose confidential negotiating information from either client—such as the seller&#x27;s lowest acceptable price or urgency to sell, or the buyer&#x27;s highest offer price or willingness to waive contingencies.</li></ul><ul id="4218ac6a-aab1-80c9-a8ce-d823212879e6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Loyalty (Not Undivided Loyalty):</strong> Under <strong>T.C.A. § 62-13-404(2)</strong>, a licensee&#x27;s duty of loyalty to one client is expressly limited where advocating for that client would violate the licensee&#x27;s duties to the other client in a dual agency. There can be neutral fairness, but <strong>not undivided loyalty</strong>.</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-80c5-9097-f03a7589243b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Inherent Conflicts of Interest Between Buyer and Seller</strong><ul id="4218ac6a-aab1-8046-a891-c40781488746" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although both parties share the overarching goal of transferring ownership of the property, their core negotiating objectives directly conflict:<table id="4218ac6a-aab1-80cc-b699-db83e7d179fd" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8021-ba5a-c8427ac950b6" dir="ltr"><td id="?[Ek" class=""><strong>Transaction Element</strong></td><td id="NB}t" class=""><strong>Seller&#x27;s Objective</strong></td><td id="]\S\" class=""><strong>Buyer&#x27;s Objective</strong></td><td id="pyok" class=""><strong>Dual Agent&#x27;s Conflict</strong></td></tr><tr id="4218ac6a-aab1-800b-9a79-e5d9400dbcc5" dir="ltr"><td id="?[Ek" class=""><strong>Purchase Price</strong></td><td id="NB}t" class="">Obtain the <strong>highest possible price</strong></td><td id="]\S\" class="">Pay the <strong>lowest possible price</strong></td><td id="pyok" class="">Cannot advise the buyer to offer less or advise the seller to hold out for more.</td></tr><tr id="4218ac6a-aab1-80f0-bd0a-e402842d7386" dir="ltr"><td id="?[Ek" class=""><strong>Contract Contingencies</strong></td><td id="NB}t" class="">Minimize or eliminate contingencies (as-is, fast close)</td><td id="]\S\" class="">Include protective contingencies (inspection, appraisal, financing)</td><td id="pyok" class="">Cannot advocate for terms that advantage one client at the other&#x27;s expense.</td></tr><tr id="4218ac6a-aab1-8070-87c0-ca4ce180fec2" dir="ltr"><td id="?[Ek" class=""><strong>Negotiating Strategy</strong></td><td id="NB}t" class="">Conceal willingness to accept a lower price or concessions</td><td id="]\S\" class="">Conceal willingness to pay more or accept stricter terms</td><td id="pyok" class="">Must remain strictly neutral on price, terms, and strategy for both sides.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-8037-9dd0-d8746d10d28a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><ul id="4218ac6a-aab1-80c0-a516-d4eaf7a6df03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Dual Agency Arises in Single-Agency Transactions</strong><ul id="4218ac6a-aab1-80db-b60c-f97c5e29a2ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even when clients initially sign single-agency agreements, an in-house conflict arises whenever both sides of a transaction become represented by the same brokerage:<ol type="1" id="4218ac6a-aab1-808f-88dd-e22055d5e26f" class="numbered-list" start="1" dir="auto"><li>A buyer under a single-agency buyer representation agreement wants to make an offer on a property <strong>listed by the same brokerage</strong>.</li></ol><ol type="1" id="4218ac6a-aab1-8097-8e3a-c9058f0820bf" class="numbered-list" start="2" dir="auto"><li>A seller under a single-agency listing agreement receives an offer from a buyer <strong>represented by the same brokerage</strong>.</li></ol></li></ul><ul id="4218ac6a-aab1-80ae-8612-e26f2c3f8096" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Mandatory Options When an In-House Match Occurs:</strong><ol type="1" id="4218ac6a-aab1-80d5-b747-cd06b6d3275e" class="numbered-list" start="1" dir="auto"><li><strong>Consent to Disclosed Dual Agency:</strong> Both buyer and seller receive full written disclosure of the limitations and give informed written consent.</li></ol><ol type="1" id="4218ac6a-aab1-80e6-ba5f-e93eeaf2fad3" class="numbered-list" start="2" dir="auto"><li><strong>Release One Party:</strong> Release either the buyer or the seller from their agency agreement with the brokerage (or refer them to an outside firm) so the brokerage represents only one side.</li></ol><ol type="1" id="4218ac6a-aab1-8068-8bb0-f3ff9c6afce6" class="numbered-list" start="3" dir="auto"><li><strong>Use Designated Agency:</strong> Appoint separate designated agents within the brokerage to represent each party individually (<code>T.C.A. § 62-13-406</code>).</li></ol></li></ul><ul id="4218ac6a-aab1-80d6-8276-fc3851374e17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Danger of Undisclosed Dual Agency:</strong> Failing to take one of these three actions immediately when a second party from the same brokerage enters the transaction creates <strong>undisclosed (accidental) dual agency</strong>, which is strictly illegal in every state and exposes the licensee and principal broker to TREC disciplinary action, license suspension, or license revocation.</li></ul></li></ul><ul id="4218ac6a-aab1-80bf-830a-f13de9775241" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Designated Agency (</strong><code><strong>T.C.A. § 62-13-406</strong></code><strong>)</strong><ul id="4218ac6a-aab1-80e2-afdd-dfbc0406d405" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How Designated Agency Works:</strong> In a Tennessee brokerage that practices designated agency (by specific appointment or written company policy), the <strong>principal/managing broker</strong> assigns one affiliate broker to represent the seller and a different affiliate broker to represent the buyer in the same in-house transaction.</li></ul><ul id="4218ac6a-aab1-8090-b54c-f17502e40410" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Full Fiduciary &amp; Statutory Duties Preserved:</strong> Unlike dual agency, each designated agent acts as a <strong>single agent</strong> for their respective client—delivering undivided loyalty, full disclosure, and confidential advocacy to their appointed principal without any obligation to the other side.</li></ul><ul id="4218ac6a-aab1-8094-86df-e6daa057f401" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Confidentiality Firewall (&quot;No Imputation of Knowledge&quot;):</strong> Under <strong>T.C.A. § 62-13-406(c)</strong>, there is <strong>no imputation of knowledge or information</strong> among or between the clients, the managing broker, and the designated agents. Each designated agent operates like an independent one-person brokerage, keeping client confidential information strictly isolated from other licensees and even from the managing broker.</li></ul><ul id="4218ac6a-aab1-80b5-b4be-f0651ba0f4a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal Broker Protection &amp; Ongoing Supervision:</strong> Because the managing broker is walled off from confidential client information and does not represent either side individually, <strong>T.C.A. § 62-13-406(a)</strong> expressly provides that the managing broker is <strong>not considered a dual agent</strong>. However, the managing broker still retains contractual rights to the listing and remains statutorily responsible for supervising both designated agents (<code>T.C.A. § 62-13-406(b)</code>).</li></ul></li></ul><ul id="4218ac6a-aab1-8006-b016-dc0cb35f8671" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dual Agency vs. Designated Agency in In-House Transactions</strong><table id="4218ac6a-aab1-80e1-8a40-dec6b6271659" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-80b8-9895-c6202d666026" dir="ltr"><td id="S|;[" class=""><strong>Feature</strong></td><td id="iL}P" class=""><strong>Disclosed Dual Agency</strong></td><td id="ak&gt;T" class=""><strong>Designated Agency (T.C.A. § 62-13-406)</strong></td></tr><tr id="4218ac6a-aab1-80ee-b4e0-dfe864fa2ab5" dir="ltr"><td id="S|;[" class=""><strong>Who Represents the Parties?</strong></td><td id="iL}P" class="">The brokerage (and often the same individual licensee) represents <strong>both</strong> buyer and seller.</td><td id="ak&gt;T" class=""><strong>Two separate affiliate brokers</strong> in the same firm are appointed—one exclusively for the buyer and one exclusively for the seller.</td></tr><tr id="4218ac6a-aab1-80cc-b39a-f173fb9a5c6d" dir="ltr"><td id="S|;[" class=""><strong>Undivided Loyalty &amp; Full Advocacy?</strong></td><td id="iL}P" class=""><strong>No.</strong> Loyalty and disclosure are legally limited; the agent must remain neutral on price and terms.</td><td id="ak&gt;T" class=""><strong>Yes.</strong> Each designated agent provides full single-agency advocacy and undivided loyalty to their own client.</td></tr><tr id="4218ac6a-aab1-80de-a236-d27f41bf09cc" dir="ltr"><td id="S|;[" class=""><strong>Principal Broker&#x27;s Legal Status</strong></td><td id="iL}P" class="">Acts as a <strong>dual agent</strong> with limited representation duties to both sides.</td><td id="ak&gt;T" class=""><strong>Not a dual agent</strong> (<code>T.C.A. § 62-13-406(a)</code>), though still responsible for supervising both licensees (<code>T.C.A. § 62-13-406(b)</code>).</td></tr><tr id="4218ac6a-aab1-8062-8404-db1272dc17d3" dir="ltr"><td id="S|;[" class=""><strong>Confidentiality Firewall</strong></td><td id="iL}P" class="">Neither party&#x27;s confidential negotiating info can be used to benefit the other.</td><td id="ak&gt;T" class="">Statutory bar against <strong>imputation of knowledge</strong> (<code>T.C.A. § 62-13-406(c)</code>) isolates each client&#x27;s confidential info within their designated agent.</td></tr><tr id="4218ac6a-aab1-8072-ab86-d9938c3ed4e6" dir="ltr"><td id="S|;[" class=""><strong>When Used in Tennessee</strong></td><td id="iL}P" class="">Rare; typically arises only in very small brokerages where a solo principal broker represents both sides directly.</td><td id="ak&gt;T" class="">Preferred standard practice for in-house transactions across Tennessee brokerages.</td></tr></tbody></table><figure id="4218ac6a-aab1-801c-9e23-f00387492a2e" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%209.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%209.png"><img style="width:576px" src="Chapter%202%20-%20Single%20Agency/image%209.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-80f8-93a9-cc7ab5b9d8f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Cooperating Brokers &amp; Buyer&#x27;s Agents Are Compensated</strong><ul id="4218ac6a-aab1-8058-bbb0-fe1135e463b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Buyer Representation Agreement:</strong> When a cooperating broker represents a buyer, the written <strong>buyer-broker representation agreement</strong> specifies the exact compensation rate or fee and how it will be funded:<ol type="1" id="4218ac6a-aab1-80ca-a546-f299a0e875c2" class="numbered-list" start="1" dir="auto"><li><strong>First, from the Seller:</strong> Checking whether the seller is offering to pay cooperating broker compensation (communicated off-MLS or requested directly within the buyer&#x27;s purchase offer).</li></ol><ol type="1" id="4218ac6a-aab1-805d-b86f-c780947595ee" class="numbered-list" start="2" dir="auto"><li><strong>Second, from the Buyer (Shortfall Responsibility):</strong> If the seller declines to pay or offers less than the fee agreed upon in the buyer representation agreement, the <strong>buyer</strong> is contractually responsible for paying the remaining monetary shortfall at closing. <em>(Under current MLS rules, a buyer&#x27;s agent also cannot collect more total compensation from any source than the amount capped in the written buyer agreement.)</em></li></ol></li></ul><ul id="4218ac6a-aab1-8034-89d1-fbdeead570e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Cooperating Brokers as Subagents:</strong> Even when an outside cooperating broker acts as a <strong>subagent</strong> of the seller rather than a buyer&#x27;s agent, they are still entitled to be compensated for procuring a buyer—provided the compensation terms are confirmed <strong>in writing</strong> before investing time and effort into the transaction.</li></ul><ul id="4218ac6a-aab1-8070-ba3b-e9a3ba1a4d8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Compensation Does Not Create Agency:</strong><ul id="4218ac6a-aab1-80f4-92f5-d008d5c7a0dc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Who pays the commission does <strong>not</strong> determine who the agent represents (<code>T.C.A. § 62-13-401</code> / <code>§ 62-13-402</code>). A broker may be compensated by their client, by the other party (such as a seller paying a buyer&#x27;s agent out of sale proceeds), or by a combination of both.</li></ul><ul id="4218ac6a-aab1-801c-bc74-ce153f7576cc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Regardless of the funding source, a licensee&#x27;s statutory and fiduciary duty of <strong>loyalty</strong> belongs exclusively to the party with whom they have a written agency relationship.</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8050-8485-ff3c288bb6ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Facilitator (Transaction Brokerage) in Tennessee (</strong><code><strong>T.C.A. § 62-13-401</strong></code><strong> &amp; </strong><code><strong>§ 62-13-402</strong></code><strong>)</strong><ul id="4218ac6a-aab1-806f-98ab-c333bfc316c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Representation Statuses Recognized in Tennessee:</strong><ol type="1" id="4218ac6a-aab1-80c5-a169-c61db667e90e" class="numbered-list" start="1" dir="auto"><li><strong>Single agency</strong> (seller, buyer, landlord, or tenant representation)</li></ol><ol type="1" id="4218ac6a-aab1-805f-9b3c-fe3ee2b07ecd" class="numbered-list" start="2" dir="auto"><li><strong>Designated agency</strong></li></ol><ol type="1" id="4218ac6a-aab1-8015-a738-d9744ad02a08" class="numbered-list" start="3" dir="auto"><li><strong>Dual agency</strong></li></ol><ol type="1" id="4218ac6a-aab1-80d2-acc8-f9be061ab581" class="numbered-list" start="4" dir="auto"><li><strong>Subagency</strong></li></ol><ol type="1" id="4218ac6a-aab1-8027-a8bf-c3374cc9bd25" class="numbered-list" start="5" dir="auto"><li><strong>Facilitator (transaction brokerage / non-agency)</strong></li></ol></li></ul><ul id="4218ac6a-aab1-806e-955e-ee47f62526de" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Facilitator by Default:</strong> Under Tennessee statutory law, an agency relationship cannot be created without a specific <strong>written bilateral agency agreement</strong>. Consequently, until a written agency contract is signed, <strong>facilitator (transaction brokerage)</strong> is the <strong>default status</strong> in Tennessee.</li></ul><ul id="4218ac6a-aab1-807b-88be-cc78ae419785" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Role &amp; Duties of a Facilitator:</strong> A facilitator represents <strong>neither</strong> the buyer nor the seller. Instead, the licensee assists one or both parties in completing the transaction neutrally—handling logistics and paperwork without advocating for either side or owing full client fiduciary duties (<code>T.C.A. § 62-13-403</code> baseline duties still apply).</li></ul><ul id="4218ac6a-aab1-80b5-8730-e5a2af36b686" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Facilitator by Express Agreement:</strong> When buyers and sellers have already negotiated terms between themselves (such as in a For Sale By Owner deal) and simply want a licensee to prepare contracts and coordinate closing without agency advocacy, all parties should sign a <strong>written facilitator agreement</strong> confirming the licensee&#x27;s non-agency role after full explanation and informed consent.</li></ul></li></ul><ul id="4218ac6a-aab1-807b-8a48-f34d291e59a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Principal Broker Policy as Final Authority</strong><ul id="4218ac6a-aab1-8063-84f3-f8c0b25ff3fe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even though Tennessee law permits all five relationship models, <strong>each principal broker sets the official agency policies for their brokerage firm</strong>.</li></ul><ul id="4218ac6a-aab1-8041-8676-d9a9d9920b42" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A principal broker may restrict the entire firm from practicing certain relationships (such as dual agency or subagency) or may assign a new affiliate broker to practice only specific representation types based on the licensee&#x27;s experience level, competence, and the client&#x27;s needs.</li></ul><figure id="4218ac6a-aab1-804f-a30b-f18bf0bc9930" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%2010.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%2010.png"><img style="width:528px" src="Chapter%202%20-%20Single%20Agency/image%2010.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-8060-b02e-ce7ebc699692" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single Agency vs. Other Agency Forms</strong><figure id="4218ac6a-aab1-8096-b221-f4f527c557fc" class="image" data-notion-image="Chapter%202%20-%20Single%20Agency/image%2011.png" dir="ltr"><a href="Chapter%202%20-%20Single%20Agency/image%2011.png"><img style="width:384px" src="Chapter%202%20-%20Single%20Agency/image%2011.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-8058-9d60-ea4f1ba7d1e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><p id="4218ac6a-aab1-8004-a980-c1493d7722ef" class="" dir="auto">
+</p></div><div id="4218ac6a-aab1-80c8-a6f7-f3133b28455f" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4218ac6a-aab1-8094-a257-e04189a06a26" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4218ac6a-aab1-8098-a85e-c5893f18863a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single Agency</strong><ul id="4218ac6a-aab1-8082-964d-df9ac20bc595" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Single agency is an exclusive agency arrangement in which one agent represents one party in a real estate transaction, whether they be sellers, buyers, landlords, or tenants.</li></ul><figure id="4218ac6a-aab1-80d3-9a7d-c61699349276" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SingleAgencyFlowChart.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SingleAgencyFlowChart.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/SingleAgencyFlowChart.jpg"/></a></figure></li></ul><ul id="4218ac6a-aab1-8089-b4ba-dd835a85da28" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Subagency</strong><ul id="4218ac6a-aab1-80ee-ae29-d16dc81f5aab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Here are some major points to remember:<ul id="4218ac6a-aab1-806b-8d4d-f1392ed937f3" class="bulleted-list" dir="auto"><li style="list-style-type:square">A subagent is an agent of an agent.</li></ul><ul id="4218ac6a-aab1-807d-a4f9-da552b5d340a" class="bulleted-list" dir="auto"><li style="list-style-type:square">A subagent can be either an unaffiliated cooperating broker or an affiliate broker sponsored by a principal broker.</li></ul><ul id="4218ac6a-aab1-803d-a3aa-d2f813cbe79b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Subagency offers are typically communicated to cooperating brokers via the MLS.</li></ul><ul id="4218ac6a-aab1-802b-acb0-ee2ab4b25cef" class="bulleted-list" dir="auto"><li style="list-style-type:square">A subagent owes all the same fiduciary duties to the principal that the principal&#x27;s broker does.</li></ul><ul id="4218ac6a-aab1-80ea-b2c4-d2f187d5cc25" class="bulleted-list" dir="auto"><li style="list-style-type:square">A buyer brought to a real estate transaction by a seller&#x27;s subagent has no one looking out for their interests.</li></ul></li></ul></li></ul><ul id="4218ac6a-aab1-8038-9245-f900c6c43110" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Dual Agency</strong><ul id="4218ac6a-aab1-803b-8a4a-ebdff5381dc2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Dual agency is an agency relationship wherein both <strong>the buyer and the seller are represented by the same broker</strong> in an in-house real estate transaction.<figure id="4218ac6a-aab1-80c7-be0c-c0a8ea05ccfc" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_SingleVDualAgency_19082.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_SingleVDualAgency_19082.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_SingleVDualAgency_19082.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-8088-ae17-e688b798dda2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What to Look Out for</strong><ul id="4218ac6a-aab1-80ca-aead-c015af9e1c62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">To guard against dual agency, the single agent needs to watch out for the introduction of a second party to the transaction who is represented by the same brokerage.</li></ul></li></ul><ul id="4218ac6a-aab1-802b-8e05-cc6d4f359b75" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Designated Agency</strong><ul id="4218ac6a-aab1-8014-a51f-cb2ee91f38d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Although both dual agency and designated agency occur in an in-house transaction, <strong>only designated agency offers a full set of fiduciary duties</strong>, including undivided loyalty and full disclosure, to the client.<ul id="4218ac6a-aab1-8004-bcb3-f38b29377da3" class="bulleted-list" dir="auto"><li style="list-style-type:square">This is accomplished when the principal broker appoints one affiliate broker to each principal in the in-house transaction to serve as their designated agent.</li></ul></li></ul><ul id="4218ac6a-aab1-80b8-9b2c-c15c9e3f7712" class="bulleted-list" dir="auto"><li style="list-style-type:circle">No one else in the brokerage knows what is shared between the designated agent and their principal — not the firm&#x27;s other affiliated brokers and not even the principal broker.</li></ul><ul id="4218ac6a-aab1-806b-8636-f59835e9273d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The designated agents, for all intents and purposes, operate as single agents for their respective principals, giving the clients the best representation possible.<figure id="4218ac6a-aab1-80a9-aa54-de47e5225728" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DualVDesignatedAgency_19006.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DualVDesignatedAgency_19006.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_DualVDesignatedAgency_19006.png"/></a></figure></li></ul></li></ul><ul id="4218ac6a-aab1-808a-8b46-c48e72879d1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Facilitator</strong><ul id="4218ac6a-aab1-802f-bfd9-e5e84fe838cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Transaction brokerage, carried out by a licensee acting as a facilitator, is a non-agency relationship.<strong> It is the default relationship in Tennessee until there is a written agency agreement indicating otherwise.</strong></li></ul><ul id="4218ac6a-aab1-80f6-a814-eb677fe29a70" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the parties desire their transaction to be handled by a neutral facilitator, it should still be put in writing.</li></ul></li></ul><ul id="4218ac6a-aab1-80a4-8268-de853d9ef03e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Agency Types: Comparison and Contrast</strong><figure id="4218ac6a-aab1-800a-b753-e1687b831398" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FormsofAgency_19009.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FormsofAgency_19009.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FormsofAgency_19009.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-8054-9de4-ca7d0b014f9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Compensation</strong><ul id="4218ac6a-aab1-8031-915e-d0cd1eb0184c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Important points to remember:<ul id="4218ac6a-aab1-8046-9957-f2ebfe43a01e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Compensation does NOT equal agency representation.</li></ul><ul id="4218ac6a-aab1-8037-b79f-de75e6f57eb0" class="bulleted-list" dir="auto"><li style="list-style-type:square">It is more common that an agent working for or with a buyer would receive compensation from the seller (via the proceeds on the property sale) than from the buyer directly.</li></ul><ul id="4218ac6a-aab1-800a-a24c-cec0d9f0d6da" class="bulleted-list" dir="auto"><li style="list-style-type:square">Licensees should make sure they know what compensation terms are BEFORE putting in hours of work on a transaction.</li></ul></li></ul></li></ul><p id="4218ac6a-aab1-803a-8bb0-f44f6cd9a96e" class="" dir="auto">
+</p></div></div><p id="41e8ac6a-aab1-80d2-99bc-c49205db10b3" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

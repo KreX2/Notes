@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Brokerages - Specialization, Vicarious Liability, and Imputed Knowledge</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80f2-8a37-eb15289c42c6" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Brokerages - Specialization, Vicarious Liability, and Imputed Knowledge</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4218ac6a-aab1-80a1-ab44-ede95f76c9c3" class="column-list" data-notion-column-list="" dir="auto"><div id="4218ac6a-aab1-805f-985e-f10b16875bf8" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4218ac6a-aab1-80cf-bc14-f3f26ff40165" class="" dir="auto"><strong>Brokerage Structure &amp; Personnel in Tennessee</strong></p><ul id="4218ac6a-aab1-8024-aaa7-f5faefc5a460" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Defined:</strong> A for-profit business entity formed specifically to broker real estate transactions—including the sale, purchase, lease, exchange, or management of real property—between <strong>sellers and buyers</strong> or <strong>landlords and tenants</strong>.</li></ul><ul id="4218ac6a-aab1-8038-a86e-f7c01bf8a14e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Members of a Tennessee Brokerage (</strong><code><strong>T.C.A. § 62-13-309</strong></code><strong> / </strong><code><strong>§ 62-13-310</strong></code><strong>):</strong><ul id="4218ac6a-aab1-8028-ae87-dba13263bf4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal Broker:</strong> The designated license holder responsible for supervising all real estate brokerage activities, compliance, trust accounts, and affiliated licensees within the firm.</li></ul><ul id="4218ac6a-aab1-8030-bc3a-c85800b6f16a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Affiliate Brokers:</strong> Licensed agents sponsored by the principal broker to conduct brokerage activities on the firm&#x27;s behalf; a brokerage may sponsor any number of affiliate brokers.</li></ul><ul id="4218ac6a-aab1-805b-9aa2-e06e06c21889" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Unlicensed Assistants:</strong> Administrative staff who support the principal broker and licensees with clerical, marketing, or office tasks without performing activities that require a real estate license.</li></ul></li></ul><ul id="4218ac6a-aab1-80e1-85a7-ca38c6c49015" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Client vs. Customer Relationships &amp; Permitted Agency Models</strong><ul id="4218ac6a-aab1-80a8-9116-d41bf98c7f0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Working FOR vs. Working WITH:</strong><ul id="4218ac6a-aab1-8040-a6f5-f2cef9108382" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Agency Relationship (Client / Principal):</strong> When a brokerage <strong>represents or works for</strong> a principal under a written bilateral agency agreement (<code>T.C.A. § 62-13-401</code>), that principal is a <strong>client</strong> owed statutory and fiduciary duties (<code>T.C.A. § 62-13-404</code>).</li></ul><ul id="4218ac6a-aab1-801b-96b8-e3679258e9b2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Non-Agency Relationship (Customer):</strong> When a brokerage <strong>works with</strong> a party without representing them, that party is a <strong>customer</strong> owed baseline consumer duties (<code>T.C.A. § 62-13-403</code>) rather than fiduciary advocacy.</li></ul></li></ul><ul id="4218ac6a-aab1-804e-a3aa-eb3a7117e7d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Representation Models Permitted in Tennessee (</strong><code><strong>T.C.A. § 62-13-401 et seq.</strong></code><strong>):</strong><ol type="1" id="4218ac6a-aab1-80fa-aacb-d2640d5c92aa" class="numbered-list" start="1" dir="auto"><li><strong>Single agency</strong> (representing only one side of a transaction)</li></ol><ol type="1" id="4218ac6a-aab1-8066-8e51-fe898b6710cc" class="numbered-list" start="2" dir="auto"><li><strong>Subagency</strong> (acting as an agent of a primary listing broker)</li></ol><ol type="1" id="4218ac6a-aab1-8076-8237-fc9a26ced5e6" class="numbered-list" start="3" dir="auto"><li><strong>Dual agency</strong> (representing both sides in the same in-house transaction with written informed consent)</li></ol><ol type="1" id="4218ac6a-aab1-80f5-ab4c-f96799e53058" class="numbered-list" start="4" dir="auto"><li><strong>Designated agency</strong> (appointing separate licensees in the same firm to represent opposing sides exclusively)</li></ol><ol type="1" id="4218ac6a-aab1-8036-ade4-e448acc7ebe2" class="numbered-list" start="5" dir="auto"><li><strong>Facilitator / Transaction brokerage</strong> (non-agency assistance to one or both parties without advocating for either side)</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-803e-a63e-eb50d780b870" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Benefits of Brokerage Specialization</strong><ul id="4218ac6a-aab1-8077-bed7-ca0ba75139c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even though Tennessee law permits multiple forms of agency, a principal broker may choose to specialize by restricting the firm&#x27;s services to specific representation models or client types to achieve three business advantages:<ol type="1" id="4218ac6a-aab1-80de-a26a-e261a8854534" class="numbered-list" start="1" dir="auto"><li><strong>Differentiate Through Marketing:</strong> Stand out from full-service competitors with a focused brand message tailored to a specific niche or exclusive representation promise.</li></ol><ol type="1" id="4218ac6a-aab1-80ba-8433-ceb45c8b6eca" class="numbered-list" start="2" dir="auto"><li><strong>Leverage Team Talent:</strong> Capitalize on the specialized expertise, background, and strengths of the firm&#x27;s affiliated licensees.</li></ol><ol type="1" id="4218ac6a-aab1-80b1-bb53-cda268ac2cdb" class="numbered-list" start="3" dir="auto"><li><strong>Mitigate Risk:</strong> Reduce liability exposure by allowing newer or less experienced licensees to build mastery within a narrower, more predictable set of transactions and client types.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-801f-85bb-ee4c27ecee4b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Single-Agency Brokerage Specialization Models</strong><ul id="4218ac6a-aab1-8093-9675-eb1bc3a63102" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A brokerage operating exclusively under <strong>single agency</strong> avoids dual agency entirely by never representing both sides of the same transaction, and can niche its business model across three tiers:<table id="4218ac6a-aab1-809a-a0ca-c731b4f6f8b3" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-80a6-add5-e4bea29c638a" dir="ltr"><td id=":sQd" class=""><strong>Specialization Model</strong></td><td id="&lt;LCu" class=""><strong>Brokerage Example</strong></td><td id="tr}t" class=""><strong>Eligible Clients</strong></td><td id="^^=q" class=""><strong>Key Value Proposition &amp; Conflict-Avoidance Strategy</strong></td></tr><tr id="4218ac6a-aab1-8092-8198-d5c4a0550121" dir="ltr"><td id=":sQd" class=""><strong>Full-Spectrum Single Agency</strong> <em>(Never both sides of the same deal)</em></td><td id="&lt;LCu" class=""><strong>Chloe&#x27;s Brokerage</strong></td><td id="tr}t" class="">Sellers, landlords, buyers, and tenants</td><td id="^^=q" class="">Offers complete residential/leasing representation while guaranteeing <strong>exclusive loyalty</strong> and zero in-house dual-agency conflicts.</td></tr><tr id="4218ac6a-aab1-8044-9ca1-fbeaab146733" dir="ltr"><td id=":sQd" class=""><strong>Sales-Only Single Agency</strong> <em>(No leases or property management)</em></td><td id="&lt;LCu" class=""><strong>Joey&#x27;s Brokerage</strong></td><td id="tr}t" class="">Sellers and buyers only <em>(never both in the same transaction)</em></td><td id="^^=q" class="">Focuses 100% on property sales contracts without the operational distractions of rentals or property management, while preserving single-agency loyalty.</td></tr><tr id="4218ac6a-aab1-805a-b839-f1665dd23077" dir="ltr"><td id=":sQd" class=""><strong>Seller-Only Single Agency</strong> <em>(Listing niche)</em></td><td id="&lt;LCu" class=""><strong>Candi&#x27;s Brokerage</strong></td><td id="tr}t" class="">Sellers only</td><td id="^^=q" class="">Capitalizes on listing-focused expertise (<em>&quot;listers last&quot;</em>) and completely eliminates any possibility of representing both sides of a sale.</td></tr><tr id="4218ac6a-aab1-804e-8cbe-dfa11d4cf0fa" dir="ltr"><td id=":sQd" class=""><strong>Buyer-Only Single Agency</strong> <em>(Exclusive buyer brokerage)</em></td><td id="&lt;LCu" class=""><strong>Randy&#x27;s Brokerage</strong></td><td id="tr}t" class="">Buyers only</td><td id="^^=q" class="">Builds deep emotional trust and brand differentiation around historical buyer advocacy, eliminating all seller-side conflicts of interest.</td></tr></tbody></table></li></ul></li></ul><ul id="4218ac6a-aab1-8069-bbe8-eea9f211cc4b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>In-House Representation Options in a Single Agency+ Brokerage</strong><ul id="4218ac6a-aab1-80e0-85fa-e50ffbe14753" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Brokerages that operate primarily under single agency while accommodating in-house transactions (where both parties work with the same firm) can structure representation in Tennessee through three models (<code>T.C.A. § 62-13-401 et seq.</code>):<ol type="1" id="4218ac6a-aab1-8008-98c6-c687b735cfc9" class="numbered-list" start="1" dir="auto"><li><strong>Dual Agency:</strong> Both parties are represented by the same principal broker (and potentially the same licensee), resulting in legally limited duties—specifically restricted <strong>loyalty</strong> and <strong>disclosure</strong>—because the dual agent cannot favor either party or disclose confidential negotiating terms.</li></ol><ol type="1" id="4218ac6a-aab1-80e6-a2e7-da4e49098da4" class="numbered-list" start="2" dir="auto"><li><strong>Designated Agency (</strong><code><strong>T.C.A. § 62-13-406</strong></code><strong>):</strong> Both parties have agency agreements with the same principal broker, but the managing/principal broker appoints <strong>separate affiliate brokers</strong> to represent each party individually. Designated agents do <strong>not</strong> share confidential client information with anyone else in the brokerage—including the principal broker—allowing full fiduciary and statutory client duties to be performed for each side.</li></ol><ol type="1" id="4218ac6a-aab1-80e6-8fe6-e668d42f2161" class="numbered-list" start="3" dir="auto"><li><strong>Non-Agency / Facilitator (Transaction Brokerage):</strong> Absent any agency representation, a facilitator works neutrally <strong>with</strong> both parties to complete the transaction, providing baseline consumer services (<code>T.C.A. § 62-13-403</code>) rather than fiduciary advocacy.</li></ol></li></ul></li></ul><ul id="4218ac6a-aab1-8040-82bc-e16e95de3903" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Specialization Models Beyond Single Agency</strong><table id="4218ac6a-aab1-809b-936e-dbc908b2d117" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-80e7-bd3b-ccde8425208a" dir="ltr"><td id="t=i~" class=""><strong>Brokerage Model</strong></td><td id="n&lt;Yd" class=""><strong>Representation Options Practiced</strong></td><td id="lIPH" class=""><strong>Client Types Served</strong></td><td id="TOmV" class=""><strong>Strategic Positioning &amp; Pitch</strong></td></tr><tr id="4218ac6a-aab1-809c-a440-e117e458676d" dir="ltr"><td id="t=i~" class=""><strong>Full-Service Generalist</strong> <em>(Darnell&#x27;s Brokerage)</em></td><td id="n&lt;Yd" class="">Single agency, dual agency, designated agency, and non-agency (facilitator)</td><td id="lIPH" class="">Sellers, buyers, landlords, and tenants</td><td id="TOmV" class=""><strong>&quot;We can help anyone&quot;</strong>: Positions the firm as a one-stop shop for any transaction type, matching clients with individual agents who specialize in their specific need.</td></tr><tr id="4218ac6a-aab1-80d6-8e61-cc7a21e77417" dir="ltr"><td id="t=i~" class=""><strong>Flexible Without Compromise</strong> <em>(Adelina&#x27;s Brokerage)</em></td><td id="n&lt;Yd" class="">Single agency, designated agency, and non-agency (facilitator) — <strong>prohibits dual agency</strong></td><td id="lIPH" class="">Sellers, buyers, landlords, and tenants</td><td id="TOmV" class=""><strong>&quot;Flexibility without sacrificing advocacy&quot;</strong>: Accommodates in-house transactions through designated agency or neutral facilitation while eliminating dual agency&#x27;s loyalty and disclosure compromises.</td></tr></tbody></table></li></ul><ul id="4218ac6a-aab1-80f0-9163-f2afe95ebc99" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability: Principal Broker vs. Principal (Client)</strong><ul id="4218ac6a-aab1-8025-ad0c-df6cc0d5129f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> <strong>Vicarious liability</strong> is a common-law doctrine holding that one party is legally responsible for the acts, omissions, or misrepresentations of another person acting with authority on their behalf.</li></ul><ul id="4218ac6a-aab1-8037-88bf-cf53cb03028e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. The Principal Broker&#x27;s Vicarious Liability:</strong><ul id="4218ac6a-aab1-80b9-9a98-e1b4aa455d5f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Broad, Ongoing Exposure:</strong> Because affiliate brokers act as <strong>general agents</strong> of their sponsoring principal broker with ongoing authority to conduct brokerage business and fulfill fiduciary duties, the principal broker carries continuous vicarious liability for the actions of all sponsored affiliate brokers (as well as unlicensed assistants) (<code>T.C.A. § 62-13-312</code>, <code>§ 62-13-406(b)</code>, <code>§ 62-13-407</code>).</li></ul><ul id="4218ac6a-aab1-8033-bd40-fb4ef8d36bb6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Risk Mitigation:</strong> Principal brokers mitigate this exposure through comprehensive written company policy manuals, ongoing training, and active supervision.</li></ul></li></ul><ul id="4218ac6a-aab1-805b-95c2-ed0a073a34d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. The Principal&#x27;s (Client&#x27;s) Vicarious Liability:</strong><ul id="4218ac6a-aab1-8058-89bb-ccea951bdfdf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Narrower Exposure:</strong> Because a buyer or seller client grants the brokerage only <strong>special agency</strong> authority limited to a single specific transaction, the principal&#x27;s vicarious liability is proportionally narrower.</li></ul><ul id="4218ac6a-aab1-8046-8bc6-dbcdb113796c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Statutory Limit (</strong><code><strong>T.C.A. § 62-13-407</strong></code><strong>):</strong> Under Tennessee statute, a client or party is <strong>not</strong> liable for damages caused by a licensee&#x27;s misrepresentations unless the client directly authorized the statement/action or knew about the misrepresentation and failed to correct it.</li></ul></li></ul><ul id="4218ac6a-aab1-80e5-8727-cd3da6f1e1eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Foundation of Trust:</strong> Appointing an agent or sponsoring an affiliate broker requires placing legal trust in that party to act ethically, competently, and within their scope of authority to minimize liability exposure for everyone involved.</li></ul><figure id="4218ac6a-aab1-80cc-80f6-fe23bd95e57c" class="image" data-notion-image="Chapter%203%20-%20Brokerages%20-%20Specialization,%20Vicarious/image.png" dir="ltr"><a href="Chapter%203%20-%20Brokerages%20-%20Specialization,%20Vicarious/image.png"><img style="width:480px" src="Chapter%203%20-%20Brokerages%20-%20Specialization,%20Vicarious/image.png"/></a></figure></li></ul><ul id="4218ac6a-aab1-8039-b4d5-d626039d44d2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability with Cooperating Brokers (Subagency Risk)</strong><ul id="4218ac6a-aab1-8037-bb6b-f8345bbe47b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How Cooperating Subagency Creates Vicarious Liability:</strong> When a listing principal broker enters into a <strong>subagency agreement</strong> with an unaffiliated cooperating broker, the listing principal broker authorizes that outside licensee to act on their behalf—and therefore assumes <strong>vicarious liability</strong> for the cooperating subagent&#x27;s actions within the scope of the transaction.</li></ul><ul id="4218ac6a-aab1-8029-a363-ed59c8123abc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scenario Application (Newbie Realty &amp; Cusco Realty):</strong><ul id="4218ac6a-aab1-805f-a262-d9d128e08c53" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Leanna (Principal Broker, Newbie Realty)</strong> lists <strong>Audrey&#x27;s</strong> bungalow on the MLS and authorizes cooperating brokers to act as <strong>subagents</strong>.</li></ul><ul id="4218ac6a-aab1-8027-b6f9-e65def5cbe99" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sarah (Cooperating Broker, Cusco Realty)</strong> accepts the subagency role to bring a buyer to Audrey&#x27;s property.</li></ul><ul id="4218ac6a-aab1-8026-812c-c9c57720da49" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal Consequence:</strong> Even though Leanna does not employ, sponsor, or directly supervise Sarah, Leanna authorized Sarah to act as her subagent—making Leanna vicariously liable for any misrepresentations, errors, or misconduct Sarah commits while representing Audrey&#x27;s interests.</li></ul></li></ul><ul id="4218ac6a-aab1-80b4-b0ea-de3f858be292" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Many Principal Brokers Prohibit Subagency:</strong> While a principal broker already carries continuous vicarious liability for their own sponsored affiliate brokers, assuming vicarious liability for an outside cooperating broker over whom they have zero supervisory control poses an unacceptable legal risk—leading most principal brokers to decline offering subagency on MLS listings.</li></ul></li></ul><ul id="4218ac6a-aab1-8086-a890-f9a87071a98e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Types of Legal Knowledge in Real Estate</strong><table id="4218ac6a-aab1-80a8-8c94-cb1bba7e59cf" class="simple-table" dir="ltr"><tbody><tr id="4218ac6a-aab1-8067-b890-ef541e5fcff5" dir="ltr"><td id="SxQp" class=""><strong>Type of Knowledge</strong></td><td id="rWyd" class=""><strong>Definition</strong></td><td id="\@?B" class=""><strong>Real Estate Example &amp; Legal Effect</strong></td></tr><tr id="4218ac6a-aab1-80e2-b1f0-f1b40a08993b" dir="ltr"><td id="SxQp" class=""><strong>Actual Knowledge</strong></td><td id="rWyd" class="">Direct, personal awareness of a fact or reality (either you know it or you do not).</td><td id="\@?B" class="">Knowing for certain whether you own a dog (versus not knowing whether you carry a hidden recessive gene for dimples).</td></tr><tr id="4218ac6a-aab1-80b6-9dc3-cdd19b1dadb3" dir="ltr"><td id="SxQp" class=""><strong>Constructive Knowledge</strong></td><td id="rWyd" class="">Knowledge the law deems a person to have because it could be discovered through <strong>reasonable inquiry or inspection</strong>, regardless of whether they actually checked.</td><td id="\@?B" class="">Recorded liens, easements, or deed restrictions filed in <strong>public county land records</strong>—a buyer is legally charged with knowing them even if they never searched the records.</td></tr><tr id="4218ac6a-aab1-808c-9815-c4cc028fed0d" dir="ltr"><td id="SxQp" class=""><strong>Imputed Knowledge</strong></td><td id="rWyd" class="">Knowledge legally attributed to a principal simply because <strong>an agent acting on the principal&#x27;s behalf</strong> possesses that knowledge.</td><td id="\@?B" class="">If a listing agent learns of planned commercial rezoning or construction next door, the <strong>seller</strong> may be legally deemed to have that knowledge for property disclosure obligations even if the agent never told the seller.</td></tr></tbody></table></li></ul><ul id="4218ac6a-aab1-80f2-9ae5-d5d297556664" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Tennessee Designated Agency Eliminates Imputed Knowledge (</strong><code><strong>T.C.A. § 62-13-406</strong></code><strong>)</strong><ul id="4218ac6a-aab1-807b-9261-e37f2589d5fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>One-Person Brokerage Firewall:</strong> In a Tennessee designated agency arrangement, each appointed designated agent operates as an independent one-person brokerage for their assigned client, treating all other licensees in the firm—including the principal/managing broker—as if they represent the opposing party.</li></ul><ul id="4218ac6a-aab1-80b9-afe2-d4d1f0f5430d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Bar on Imputation (</strong><code><strong>T.C.A. § 62-13-406(c)</strong></code><strong>):</strong> Tennessee law explicitly mandates that <strong>there shall be no imputation of knowledge or information among or between clients, the managing broker, and any designated agent or agents</strong> in a designated agency transaction.</li></ul><ul id="4218ac6a-aab1-80ed-aaab-eaf44b770583" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Principal Broker Protection:</strong> Because confidential client knowledge is not imputed from the designated agents to the managing broker, the managing broker is <strong>not</strong> considered a dual agent (<code>T.C.A. § 62-13-406(a)</code>), even though both designated agents are sponsored by that same managing broker.</li></ul></li></ul><ul id="4218ac6a-aab1-80f8-8b22-f843fa4dfb53" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Core Distinction</strong><ul id="4218ac6a-aab1-802b-bc54-f5bb91a4b9dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Vicarious Liability:</strong> Legal responsibility for the <strong>actions</strong> of someone authorized to act on your behalf.</li></ul><ul id="4218ac6a-aab1-800f-96a0-e447dda46dd6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Imputed Knowledge:</strong> Legal assumption of—and responsibility for—the <strong>knowledge</strong> held by someone authorized to act on your behalf.</li></ul></li></ul></div><div id="4218ac6a-aab1-806a-b679-d6162c2f39bd" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4218ac6a-aab1-8002-a450-d654289595c5" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><p id="4218ac6a-aab1-80a1-8214-e341108cefc8" class="" dir="auto">
+</p><ul id="4218ac6a-aab1-808c-aae5-d5116bdcf0f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Brokerage Specialization</strong><ul id="4218ac6a-aab1-80d3-84ab-ed997f48755b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A brokerage can choose to specialize in a number of ways, including by whom they represent and by what kind of agency relationships they offer:</li></ul><ul id="4218ac6a-aab1-8071-a269-e4a5747412ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Represent sellers, landlords, buyers, and tenants (but not both sides of the same transaction)</li></ul><ul id="4218ac6a-aab1-8048-8041-eafcaec511e6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Represent sellers only, landlords only, buyers only, or renters only</li></ul><ul id="4218ac6a-aab1-805b-a385-cdf7fdd1b5a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Represent sellers and landlords only or buyers and renters only</li></ul><ul id="4218ac6a-aab1-808d-95e0-f701aca56d77" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Represent all kinds of clients in single agency or designated agency but not dual agency</li></ul><ul id="4218ac6a-aab1-80a5-bff0-d0dcec4a5e1b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Represent all kinds of clients in all permitted forms of agency</li></ul></li></ul><ul id="4218ac6a-aab1-8096-88e8-d11bb634d399" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Vicarious Liability</strong><ul id="4218ac6a-aab1-8045-b035-c72450f416d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Vicarious liability is a common law concept. It holds that a person is liable for the actions of those acting with authority on their behalf.</li></ul><ul id="4218ac6a-aab1-8089-a578-c9acf9fd0a42" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Through authorization they grant through <strong>general agency</strong>, principal brokers are vicariously liable for their affiliate brokers and any unaffiliated subagents they allow to act on their behalf.</li></ul><ul id="4218ac6a-aab1-8088-9237-c2936bf534a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Through authorization they grant through <strong>special agency</strong>, principals are vicariously liable for the agents (licensees) they allow to act on their behalf.</li></ul></li></ul><ul id="4218ac6a-aab1-8054-81f5-ffae1c2fead5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Imputed Knowledge</strong><ul id="4218ac6a-aab1-80e4-8574-fbdf214c154b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">With imputed knowledge, a person is deemed to have awareness of a fact which they do not themselves have but which a person acting as their agent <em>does</em> have.</li></ul></li></ul><ul id="4218ac6a-aab1-8001-b70d-cfb6aa4fd235" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Designated Agents</strong><ul id="4218ac6a-aab1-807e-8f9d-dd841560aa73" class="bulleted-list" dir="auto"><li style="list-style-type:circle">There is NO legal assumption of imputed knowledge between the principal broker and either of the designated agents.</li></ul></li></ul></div></div><p id="4218ac6a-aab1-80d6-aa0f-c3f91ef2c2cc" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

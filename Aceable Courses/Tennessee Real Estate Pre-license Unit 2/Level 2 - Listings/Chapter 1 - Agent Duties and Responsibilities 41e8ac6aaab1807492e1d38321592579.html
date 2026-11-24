@@ -1,0 +1,801 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Agent Duties and Responsibilities</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8074-92e1-d38321592579" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Agent Duties and Responsibilities</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4228ac6a-aab1-80f1-a128-e4673b562c9c" class="column-list" data-notion-column-list="" dir="auto"><div id="4228ac6a-aab1-807b-a3fe-dbf20903d720" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4228ac6a-aab1-8057-b0a4-ceddcabb34b4" class="" dir="auto"><strong>Fiduciary Duties Owed to a Principal (OLDCAR)</strong></p><ul id="4228ac6a-aab1-8058-8143-f25817267e32" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Under agency law, a licensee owes elevated <strong>fiduciary duties</strong>—the full sum of legal and ethical obligations—exclusively to their <strong>principal (client)</strong>, whereas customers and third parties receive only baseline non-agency duties (<code>T.C.A. § 62-13-403</code>).</li></ul><ul id="4228ac6a-aab1-808a-91f8-f73d20392d23" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>O — Obedience:</strong> Following all lawful instructions of the client promptly and faithfully without exceeding granted authority.</li></ul><ul id="4228ac6a-aab1-8007-9082-eab9a2ab9327" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>L — Loyalty:</strong> Placing the client&#x27;s best interests above everyone else&#x27;s—including the agent&#x27;s own financial self-interest—and avoiding undisclosed conflicts of interest.</li></ul><ul id="4228ac6a-aab1-80eb-8cce-caa74e0fac5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>D — Disclosure:</strong> Promptly revealing all known material facts, offers, conflicts of interest, and market information that could influence the client&#x27;s decisions.</li></ul><ul id="4228ac6a-aab1-8049-b66f-c5900af8370d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>C — Confidentiality:</strong> Safeguarding the client&#x27;s personal, financial, and motivational information (such as urgency to sell or willingness to accept a lower price) during and after the agency relationship, unless authorized in writing or required by law.</li></ul><ul id="4228ac6a-aab1-809f-bdfc-fa934476ad88" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>A — Accounting:</strong> Properly safeguarding, tracking, and reporting all money, earnest money deposits, and documents entrusted to the brokerage (<code>T.C.A. § 62-13-321</code>).</li></ul><ul id="4228ac6a-aab1-80a2-9485-cf92fcd6a5e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>R — Reasonable Care and Skill:</strong> Performing all brokerage duties competently, diligenty, and within the standard of care expected of a licensed real estate professional.</li></ul><ul id="4228ac6a-aab1-80f3-b42e-d7d2c952b749" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Performance Responsibilities of a Listing Agent</strong><ol type="1" id="4228ac6a-aab1-8008-9e76-d7fb3cb39ca7" class="numbered-list" start="1" dir="auto"><li><strong>Find a Buyer:</strong> Procure a ready, willing, and able buyer for the seller&#x27;s property.</li></ol><ol type="1" id="4228ac6a-aab1-8019-b84b-f7d8351cd75f" class="numbered-list" start="2" dir="auto"><li><strong>Evaluate the Property &amp; Buyer Eligibility:</strong> Assist the seller in estimating market value (via a Comparative Market Analysis) and verifying prospective buyers&#x27; financial qualifications and ability to close.</li></ol><ol type="1" id="4228ac6a-aab1-806b-9ecc-f22ea8dd7fae" class="numbered-list" start="3" dir="auto"><li><strong>Market the Property:</strong> Execute an agreed-upon marketing plan (MLS entry, signage, photography, showings, and advertising) in compliance with fair housing and TREC advertising rules.</li></ol><ol type="1" id="4228ac6a-aab1-80a2-ab96-d450338a3e59" class="numbered-list" start="4" dir="auto"><li><strong>Facilitate Communication &amp; Negotiation:</strong> Present all offers and counteroffers promptly and objectively (<code>T.C.A. § 62-13-404(3)</code>), communicate clearly between parties, and negotiate price and terms in the seller&#x27;s best interest.</li></ol><ol type="1" id="4228ac6a-aab1-8013-a95d-c474b23b2860" class="numbered-list" start="5" dir="auto"><li><strong>Guide the Parties Toward Closing:</strong> Track contract deadlines, coordinate inspections, appraisals, title clearance, and disclosures, and assist the seller through settlement.</li></ol></li></ul><ul id="4228ac6a-aab1-804d-b095-d13c9440328d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Shared Brokerage Duties (&quot;My Broker&#x27;s Duties Are My Duties&quot;)</strong><ul id="4228ac6a-aab1-80c9-8221-d2977c778198" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a principal broker enters into an agency agreement with a client, <strong>every affiliate broker sponsored by that principal broker owes the exact same duties to the client</strong> (except where restricted by a Tennessee designated agency firewall under <code>T.C.A. § 62-13-406</code>).</li></ul><ul id="4228ac6a-aab1-8042-b9ee-e3338b4ccc5f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Six Operational Duties Across the Brokerage:</strong><div id="4228ac6a-aab1-803f-b4da-e55253d5abef" class="column-list" data-notion-column-list="" dir="auto"><div id="4228ac6a-aab1-80b2-89a6-c81237cf4677" style="width:62.5%" class="column" data-notion-column-ratio="0.625" dir="auto"><table id="4228ac6a-aab1-80b0-bc82-c38f0be4a919" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-808f-beb6-c5589434bcf6" dir="ltr"><td id="liqJ" class=""><strong>Core Duty</strong></td><td id="fj:M" class=""><strong>Practical Application for Affiliate Brokers</strong></td></tr><tr id="4228ac6a-aab1-80fb-81a6-e540198a9773" dir="ltr"><td id="liqJ" class=""><strong>Fulfilling the Agent-Client Contract</strong></td><td id="fj:M" class="">Ensure all agency agreements are in writing (<code>T.C.A. § 62-13-401</code>) and carry out every contractual promise and obligation.</td></tr><tr id="4228ac6a-aab1-80c9-9f4a-f93a1894de5e" dir="ltr"><td id="liqJ" class=""><strong>Seeking Out the Other Party</strong></td><td id="fj:M" class="">Actively locate buyers for seller-clients and suitable properties for buyer-clients.</td></tr><tr id="4228ac6a-aab1-8085-a3cd-cfa679143613" dir="ltr"><td id="liqJ" class=""><strong>Giving Appropriate Advice</strong></td><td id="fj:M" class="">Never guess or provide inaccurate information—say <em>&quot;I don&#x27;t know&quot;</em> when outside your expertise and refer clients to attorneys, inspectors, or tax professionals for specialized legal or technical advice.</td></tr><tr id="4228ac6a-aab1-8082-accd-d1ca35bcd531" dir="ltr"><td id="liqJ" class=""><strong>Maintaining Confidentiality</strong></td><td id="fj:M" class="">Protect all confidential client information from unauthorized disclosure to third parties or opposing negotiators.</td></tr><tr id="4228ac6a-aab1-8063-ab0a-c0e274196a05" dir="ltr"><td id="liqJ" class=""><strong>Ensuring Legal Compliance</strong></td><td id="fj:M" class="">Perform every brokerage task in strict compliance with Tennessee license law, TREC rules, and federal/state fair housing and consumer protection laws.</td></tr><tr id="4228ac6a-aab1-800d-acf4-fa8138e5ef59" dir="ltr"><td id="liqJ" class=""><strong>Making Required Disclosures</strong></td><td id="fj:M" class="">Deliver all statutory agency, personal-interest, and property condition disclosures accurately and on time—especially critical when listing properties.</td></tr></tbody></table></div><div id="4228ac6a-aab1-8003-a170-e3b7da2f3b8c" style="width:37.5%" class="column" data-notion-column-ratio="0.375" dir="auto"><figure id="4228ac6a-aab1-80be-90c5-e7af2f516666" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image.png"><img style="width:336px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image.png"/></a></figure></div></div></li></ul></li></ul><ul id="4228ac6a-aab1-80f5-80ec-db5a9911aa57" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Six Key Areas of Agent Disclosure</strong><ul id="4228ac6a-aab1-8019-a894-e1a260a344a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Fulfilling a licensee&#x27;s disclosure obligations spans six core categories across a real estate transaction:<ol type="1" id="4228ac6a-aab1-8095-882b-d0b1fd413ca5" class="numbered-list" start="1" dir="auto"><li><strong>Agency disclosure</strong></li></ol><ol type="1" id="4228ac6a-aab1-803d-82fc-fb2f4062a043" class="numbered-list" start="2" dir="auto"><li><strong>Property condition disclosure</strong></li></ol><ol type="1" id="4228ac6a-aab1-80ff-b9d6-ecf7786f00af" class="numbered-list" start="3" dir="auto"><li><strong>Property value disclosure</strong></li></ol><ol type="1" id="4228ac6a-aab1-8085-833b-e5cc1f7ecf4d" class="numbered-list" start="4" dir="auto"><li><strong>Disclosure of all offers</strong></li></ol><ol type="1" id="4228ac6a-aab1-80e8-8abb-f33a99597df3" class="numbered-list" start="5" dir="auto"><li><strong>Disclosure of buyer financial condition</strong></li></ol><ol type="1" id="4228ac6a-aab1-8074-8fdc-d28e7b17f81b" class="numbered-list" start="6" dir="auto"><li><strong>Disclosure of conflicts of interest</strong></li></ol></li></ul></li></ul><ul id="4228ac6a-aab1-8077-9138-fb408399fc81" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>1. Agency Disclosure (</strong><code><strong>T.C.A. § 62-13-401</strong></code><strong> &amp; </strong><code><strong>§ 62-13-405</strong></code><strong>)</strong><ul id="4228ac6a-aab1-80b8-a4e4-f9803ce81c61" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>No Implied Agency:</strong> In Tennessee, an agency relationship cannot be created without a <strong>written bilateral agency agreement</strong>. Delivering an agency disclosure form informs consumers about representation options and existing roles, while a separate written employment contract establishes agency.</li></ul><ul id="4228ac6a-aab1-80e7-9dea-c64f7f080752" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Clients &amp; Customers Must Know:</strong> Who is representing whom, to what extent each party is represented, and immediately in writing whenever an agency status changes during the transaction.</li></ul><ul id="4228ac6a-aab1-80c6-a520-e257bb9b0b82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>First Substantive Contact:</strong> The trigger requiring disclosure—occurring at the first face-to-face meeting (or substantive communication) <strong>prior to</strong> sharing confidential information or discussing/taking action on a specific property.</li></ul><ul id="4228ac6a-aab1-8076-9a83-c9ee8d19831c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Informed Consent &amp; Timing:</strong> Consumers must receive full facts before consenting to a relationship. Disclosure must occur <strong>verbally or in writing</strong> before providing any real estate services, and <strong>must be in writing</strong> before entering a representation agreement or assisting with/presenting a purchase offer.</li></ul></li></ul><ul id="4228ac6a-aab1-80b0-98e2-dd563ae74744" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>2. Property Condition Disclosure (</strong><code><strong>T.C.A. § 66-5-201 et seq.</strong></code><strong>)</strong><ul id="4228ac6a-aab1-8065-a16a-edaaa3126d21" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition &amp; Purpose:</strong> Making known all <strong>material facts</strong>—any significant fact that, if known, would cause a reasonable person to take a different course of action—so buyers can make informed decisions about value and desirability.</li></ul><ul id="4228ac6a-aab1-808e-a497-ca86718a9a03" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Residential Property Disclosure Act (</strong><code><strong>T.C.A. § 66-5-201</strong></code><strong> – </strong><code><strong>§ 66-5-212</strong></code><strong>):</strong><ul id="4228ac6a-aab1-8092-8c24-d2994eb3430f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller&#x27;s Duty:</strong> Sellers of 1-to-4-unit residential properties must disclose all known material defects on the state-mandated <strong>Tennessee Residential Property Condition Disclosure</strong> form (unless legally exempt or waived via disclaimer). <strong>Agents must never fill out the disclosure form for the seller</strong>—they may only clarify what a question asks.</li></ul><ul id="4228ac6a-aab1-8001-960f-fea5e109995b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer&#x27;s Duty:</strong> The disclosure statement is <strong>not a warranty</strong> and does not replace independent due diligence; buyers should still obtain professional home inspections.</li></ul><table id="4228ac6a-aab1-8083-b0be-ea83eb09b0d2" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-801f-8ac4-da81d4cc902c" dir="ltr"><td id="YwtV" class=""><strong>Defect / Fact Category</strong></td><td id="|vYY" class=""><strong>Definition &amp; Examples</strong></td><td id="dqUV" class=""><strong>Disclosure Rule &amp; Licensee Guidance</strong></td></tr><tr id="4228ac6a-aab1-804d-a353-f13afb20baf1" dir="ltr"><td id="YwtV" class=""><strong>Latent Defects</strong></td><td id="|vYY" class="">Hidden structural or physical defects not discoverable by ordinary visual inspection (e.g., concealed foundation cracks, hidden roof leaks).</td><td id="dqUV" class="">Seller and listing agent <strong>must disclose if known</strong>.</td></tr><tr id="4228ac6a-aab1-80e3-b180-c131d299d3f5" dir="ltr"><td id="YwtV" class=""><strong>Patent Defects</strong></td><td id="|vYY" class="">Obvious defects easily discoverable upon ordinary inspection (e.g., broken window, visibly missing shingles).</td><td id="dqUV" class="">Less liability if buyer inspects, but <strong>always safest to disclose</strong> obvious defects in writing.</td></tr><tr id="4228ac6a-aab1-805f-9b24-e1752e9e5b31" dir="ltr"><td id="YwtV" class=""><strong>Environmental Issues</strong></td><td id="|vYY" class="">Internal or external hazards affecting health, safety, or value (e.g., lead-based paint, asbestos, radon, mold, underground storage tanks).</td><td id="dqUV" class=""><strong>Must be disclosed if known.</strong></td></tr><tr id="4228ac6a-aab1-80fc-8361-fbbaa965260e" dir="ltr"><td id="YwtV" class=""><strong>Public Controls &amp; Services</strong></td><td id="|vYY" class=""><strong>Zoning/planning changes</strong> (e.g., adjacent land zoned for a future strip mall) and <strong>municipal utility availability</strong> (water, sewer/septic, electricity, trash).</td><td id="dqUV" class=""><strong>Material facts requiring disclosure.</strong> <em>(Note: Agents should </em><em><strong>not</strong></em><em> give personal opinions on school districts or tax rates—refer clients directly to school district websites or the local tax assessor.)</em></td></tr><tr id="4228ac6a-aab1-8068-a313-c8e4db2e2603" dir="ltr"><td id="YwtV" class=""><strong>Stigmatized Properties</strong></td><td id="|vYY" class="">Psychological or non-physical factors (e.g., prior death, murder, suicide, or suspected paranormal activity on the property; <code>T.C.A. § 66-5-207</code>).</td><td id="dqUV" class=""><strong>Not material facts</strong> under Tennessee law—do <strong>not</strong> require disclosure.</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-801b-8ae8-cd89f38ab860" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>3. Liability &amp; The Three Degrees of Misrepresentation</strong><ul id="4228ac6a-aab1-80c6-bdc8-f35379a105b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller vs. Licensee Standard of Care:</strong><ul id="4228ac6a-aab1-8038-9d4d-fcad3337e332" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Liability:</strong> Held to an <strong>actual knowledge</strong> standard—liable only for known material defects, not conditions they merely &quot;should have known,&quot; and not liable for errors by public agencies or licensed inspectors unless the seller knew the report was inaccurate.</li></ul><ul id="4228ac6a-aab1-800d-b3c4-e63d3aa92cf6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Licensee Liability (</strong><code><strong>T.C.A. § 62-13-403</strong></code><strong>):</strong> Both <strong>listing agents</strong> and <strong>buyer&#x27;s agents</strong> (during property walk-throughs) are held to a higher professional <strong>&quot;should have known&quot; (red-flag) standard</strong> for adverse material facts within the scope of their real estate expertise.</li></ul><table id="4228ac6a-aab1-804f-a3f5-e2232fcd37fa" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80e2-a385-faed491b627d" dir="ltr"><td id="dvbo" class=""><strong>Degree of Misrepresentation</strong></td><td id=";g{r" class=""><strong>Definition</strong></td><td id="E:b]" class=""><strong>Legal &amp; Licensing Consequence</strong></td></tr><tr id="4228ac6a-aab1-80a7-9a44-dfb7ddbffd04" dir="ltr"><td id="dvbo" class=""><strong>Innocent Misrepresentation</strong></td><td id=";g{r" class="">Licensee makes a false statement that they genuinely and reasonably believed to be true.</td><td id="E:b]" class="">May allow contract rescission or civil liability even without fraudulent intent.</td></tr><tr id="4228ac6a-aab1-8075-9cd2-c8dc4c77882f" dir="ltr"><td id="dvbo" class=""><strong>Negligent Misrepresentation</strong></td><td id=";g{r" class="">Licensee makes a false statement (or fails to spot/disclose a red flag) regarding a material fact they <strong>should have known</strong> under reasonable professional care.</td><td id="E:b]" class="">Exposes the licensee and principal broker to civil damages and TREC disciplinary action.</td></tr><tr id="4228ac6a-aab1-80ba-a773-eed8365b2585" dir="ltr"><td id="dvbo" class=""><strong>Intentional Misrepresentation</strong> <em>(including &quot;Silent Fraud&quot;)</em></td><td id=";g{r" class="">Licensee knowingly states a falsehood or <strong>purposefully conceals a known material defect</strong> to induce a buyer to purchase.</td><td id="E:b]" class="">Severe civil fraud liability plus TREC license suspension or revocation.</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-8046-81d6-f4e00ed8ee7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Value as a Material Fact &amp; Tennessee Terminology Rules</strong><ul id="4228ac6a-aab1-801c-8915-f952512e163b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Property Value Matters in Disclosure:</strong> A property&#x27;s market value and pricing dynamics directly impact a client&#x27;s financial decisions, making honest, well-supported pricing guidance a core part of a licensee&#x27;s duty of reasonable care and disclosure (<code>T.C.A. § 62-13-403</code> / <code>§ 62-13-404</code>).</li></ul><ul id="4228ac6a-aab1-80c6-9d92-f3c65c237ea5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee Appraisal Law Terminology Rule (</strong><code><strong>T.C.A. § 62-39-104</strong></code><strong>):</strong> Under Tennessee law, <strong>only a licensed or certified appraiser</strong> may issue a formal &quot;appraisal&quot; or state an official opinion of <strong>&quot;value.&quot;</strong> When preparing a Comparative Market Analysis (CMA) or Broker&#x27;s Price Opinion (BPO), a real estate licensee must use language such as <em>&quot;recommended listing price,&quot;</em> <em>&quot;recommended listing range,&quot;</em> or <em>&quot;recommended purchase price&quot;</em> rather than calling the figure an appraised <em>&quot;value&quot;</em>.</li></ul></li></ul><ul id="4228ac6a-aab1-806f-90bf-ebfafe4c5ee0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Five Economic Characteristics of Land</strong><ul id="4228ac6a-aab1-80b3-b455-c5a78309257f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Alongside physical condition and local market supply/demand, land valuation is driven by five fundamental economic characteristics:<table id="4228ac6a-aab1-80b4-900f-ff72a537c992" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-8085-8d60-d9ec17990533" dir="ltr"><td id="=zjm" class=""><strong>Economic Characteristic</strong></td><td id="Tonu" class=""><strong>Definition</strong></td><td id="Y^{f" class=""><strong>Real-World Example &amp; Valuation Impact</strong></td></tr><tr id="4228ac6a-aab1-80fd-8304-eeb827517bba" dir="ltr"><td id="=zjm" class=""><strong>Scarcity</strong></td><td id="Tonu" class="">Land is finite and becomes substantially more valuable when supply is limited relative to high demand.</td><td id="Y^{f" class="">Moving from a small rural town to <strong>New York City</strong>—land prices are dramatically higher because desirable urban land is in short supply and intense demand.</td></tr><tr id="4228ac6a-aab1-80b5-8970-fc4c05045468" dir="ltr"><td id="=zjm" class=""><strong>Situs</strong> <em>(Area Preference)</em></td><td id="Tonu" class="">The desirability of a specific location driven by economic, social, or geographic preferences (<em>&quot;location, location, location&quot;</em>).</td><td id="Y^{f" class="">A buyer relocating from a rural area to a major city for stronger job opportunities and amenities is acting on <strong>situs</strong>.</td></tr><tr id="4228ac6a-aab1-80c7-b36e-f1c10e9a42ab" dir="ltr"><td id="=zjm" class=""><strong>Modification</strong> <em>(Improvements)</em></td><td id="Tonu" class="">Human-made changes on or near land—such as infrastructure, parks, or buildings—directly alter the land&#x27;s value.</td><td id="Y^{f" class="">When a city builds a new neighborhood park, surrounding homes increase in value due to nearby public <strong>modification</strong>.</td></tr><tr id="4228ac6a-aab1-80bc-a65a-c44918e7c7e0" dir="ltr"><td id="=zjm" class=""><strong>Fixity</strong> <em>(Permanence of Investment)</em></td><td id="Tonu" class="">Land and improvements exist in a fixed geographic spot and cannot be moved to another market, making real estate investments long-term and sensitive to local conditions.</td><td id="Y^{f" class="">Buying land with a pond means the owner cannot load the land or pond into a moving truck—its value remains permanently tied to that exact site.</td></tr><tr id="4228ac6a-aab1-80e7-8c8d-e47740016d34" dir="ltr"><td id="=zjm" class=""><strong>Illiquidity</strong></td><td id="Tonu" class="">The relative difficulty and time required to convert real estate into cash without sacrificing market value.</td><td id="Y^{f" class="">A property worth <code>$250,000</code> on the open market may take weeks or months to sell at full price; forcing a sale within <strong>24 hours</strong> requires a steep price discount (loss of value).</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-801f-ac19-fa5b8e071af9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Economic Characteristics: Let&#x27;s Recap</strong><ul id="4228ac6a-aab1-8039-b643-f0e89b3078b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What It Means for You - </strong>As an agent, you <strong>have a duty to help your respective clients arrive at an accurate estimate of a property&#x27;s value</strong>. This allows the seller to set an appropriate purchase price, and it allows the buyer to decide whether or not to pursue the purchase.</li></ul><figure id="4228ac6a-aab1-807f-8eaf-ea770ec1171a" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%201.png"><img style="width:480px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%201.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-800f-8f2a-ec240bd621c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Duty to Promptly Present All Offers (</strong><code><strong>T.C.A. § 62-13-404(3)</strong></code><strong>)</strong><ul id="4228ac6a-aab1-80fd-bc93-d72636ca2caa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Obligation:</strong> A licensee representing a client must promptly disclose and present <strong>all offers and counteroffers</strong>—whether low, contingent, or seemingly unfavorable—as soon as reasonably possible, even after an existing purchase contract is already pending (unless instructed otherwise in writing).</li></ul><ul id="4228ac6a-aab1-8000-b82f-ff70ce567501" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Only Exception:</strong> A licensee may withhold or reject an offer without presenting it <strong>only</strong> when the client has given <strong>explicit prior instructions</strong> (ideally documented in writing—for example, instructing the agent not to present offers below a specific minimum net price). Agents must never encourage a client to impose such a restriction, but must obey it if the client insists.</li></ul></li></ul><ul id="4228ac6a-aab1-80c1-bc1b-e5cc8ae281e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Nature of an Offer &amp; Three Stages from Offer to Contract</strong><ul id="4228ac6a-aab1-80f4-9d6d-d988fddc3092" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Constitutes an Offer:</strong> Any written proposition (handwritten terms, a formal memo, or a filled-out purchase contract template) submitted by an <strong>offeror</strong> to an <strong>offeree</strong> proposing price, terms, and timelines. Because Tennessee does not promulgate a state-mandated purchase contract, brokerages typically use <strong>Tennessee REALTORS®</strong> forms (such as Form <strong>RF401</strong>) or firm-approved templates.</li></ul><ul id="4228ac6a-aab1-80e6-bd2b-fb25a43aa925" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Stages of Contract Formation:</strong><ol type="1" id="4228ac6a-aab1-80a7-9ff6-e1337b6a146d" class="numbered-list" start="1" dir="auto"><li><strong>Offer:</strong> The offeror proposes specific contract terms to the offeree (which may lead to counteroffers and negotiation).</li></ol><ol type="1" id="4228ac6a-aab1-801e-aa52-f66bbfcd449a" class="numbered-list" start="2" dir="auto"><li><strong>Offer and Acceptance (Mutual Assent):</strong> The offeree communicates unconditional acceptance back to the offeror, transforming the offer into a binding contract.</li></ol><ol type="1" id="4228ac6a-aab1-8007-a83d-daed6ab4e3c0" class="numbered-list" start="3" dir="auto"><li><strong>Performance:</strong> Both parties fulfill their contractual promises through closing.</li></ol></li></ul></li></ul><ul id="4228ac6a-aab1-808e-a132-fedd33c17e64" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Presenting Offers &amp; The Seller&#x27;s Four Possible Responses</strong><ul id="4228ac6a-aab1-8092-ac2c-db403acebc8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Presentation Methods:</strong> The buyer&#x27;s agent presents the offer to the listing agent either <strong>in person</strong> or <strong>electronically</strong> (the predominant method today). Under <strong>NAR Standard of Practice 1-7</strong>, a buyer&#x27;s agent may request written affirmation that the offer was submitted to the seller (or that the seller waived presentation).</li></ul><ul id="4228ac6a-aab1-80c2-80df-d5e5536cf90f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seller&#x27;s Decision Authority:</strong> Only the <strong>seller</strong> decides how to respond—an agent may never choose on the client&#x27;s behalf or sign/initial any document for the client without a valid Power of Attorney.<table id="4228ac6a-aab1-8084-bc09-dc13afa730d8" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-8047-9c93-c2f7d1163222" dir="ltr"><td id="&lt;@tq" class=""><strong>Seller&#x27;s Response</strong></td><td id="C?~^" class=""><strong>Legal &amp; Contractual Effect</strong></td></tr><tr id="4228ac6a-aab1-807d-ae96-d8fce6827b02" dir="ltr"><td id="&lt;@tq" class=""><strong>Total Acceptance</strong></td><td id="C?~^" class="">Unconditional agreement to every term (<strong>Mirror Image Rule</strong>); once delivered to the offeror, forms a binding contract.</td></tr><tr id="4228ac6a-aab1-801e-8792-c3ce82424f78" dir="ltr"><td id="&lt;@tq" class=""><strong>Counteroffer</strong></td><td id="C?~^" class="">Rejects the original offer and substitutes a new offer from the seller (reversing the roles of offeror and offeree).</td></tr><tr id="4228ac6a-aab1-80de-a9f5-f3a71ea5311d" dir="ltr"><td id="&lt;@tq" class=""><strong>Rejection</strong></td><td id="C?~^" class="">Outright refusal of the offer, terminating it immediately.</td></tr><tr id="4228ac6a-aab1-80db-832a-d3fcee76964f" dir="ltr"><td id="&lt;@tq" class=""><strong>No Response</strong></td><td id="C?~^" class="">Allows the offer to lapse naturally once its stated acceptance deadline expires.</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-806f-a6da-dfef7be1f450" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Communication of Acceptance, Equitable Title &amp; Revocation</strong><ul id="4228ac6a-aab1-801f-b764-f21409954b77" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mirror Image Rule &amp; Delivery:</strong> Valid acceptance must be <strong>unconditional and unambiguous</strong>, changing zero terms of the offer. A contract is formed only upon <strong>delivery</strong>—when notice of the offeree&#x27;s signed acceptance is actually communicated back to the offeror.</li></ul><ul id="4228ac6a-aab1-80c9-924a-e3cdf42f885a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Equitable Title &amp; Specific Performance:</strong> Upon delivery of acceptance, the buyer acquires <strong>equitable title</strong> (a legally recognized ownership interest prior to receiving legal title via deed at closing), giving either party the legal right to sue for <strong>specific performance</strong> to enforce the contract.</li></ul><ul id="4228ac6a-aab1-80b2-acec-d4c28b8164f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Ways an Offer Terminates:</strong> Acceptance (which creates a contract), counteroffer, rejection, expiration of the stated deadline, revocation, death or mental incapacity of either party prior to acceptance, destruction of the property, or improper/conditional acceptance.</li></ul><ul id="4228ac6a-aab1-80d4-b0ba-d08e510bfe28" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Revocation Rule:</strong> An offeror may <strong>revoke (withdraw) an offer at any time prior to the communication/delivery of acceptance</strong>—even if the offer&#x27;s stated expiration deadline has not yet arrived. Once acceptance has been communicated to the offeror, the right to revoke is extinguished.</li></ul></li></ul><ul id="4228ac6a-aab1-806e-b2d8-d419546b06c4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: How an Offer Becomes a Contract</strong><figure id="4228ac6a-aab1-802f-9792-db5675a6ae8c" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%202.png"><img style="width:480px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%202.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-802d-b683-e758d27c76ba" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Evaluating Offers Beyond Purchase Price</strong><ul id="4228ac6a-aab1-802b-93b9-d84fece2f58a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While the client alone decides whether to accept, reject, counter, or ignore an offer, the licensee equips the client to compare offers holistically across five key non-price factors:<ul id="4228ac6a-aab1-8010-8f70-cd78fa829faa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing date flexibility:</strong> Alignment with the seller&#x27;s preferred move-out or purchase timeline.</li></ul><ul id="4228ac6a-aab1-80d1-86e0-c345a5b5e06c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer financial strength:</strong> Cash funds, pre-approval quality, down payment size, and lender reliability.</li></ul><ul id="4228ac6a-aab1-8014-b7b7-e7da85506f8f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Earnest money amount:</strong> Size of the good-faith deposit demonstrating buyer commitment.</li></ul><ul id="4228ac6a-aab1-808b-b05c-f4b1a76918ab" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing cost concessions:</strong> Whether the buyer is paying their own closing costs or requesting seller-paid credits.</li></ul><ul id="4228ac6a-aab1-8058-b469-d84db4b715db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Contingencies:</strong> Financing, appraisal, home inspection, or home-sale contingencies that could delay or derail closing.</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-8053-b80e-d58b8fe41443" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Counteroffers (</strong><code><strong>Tennessee REALTORS® Form RF651</strong></code><strong>)</strong><ul id="4228ac6a-aab1-80a9-bda6-c81be7d56888" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Nature of a Counteroffer:</strong> A counteroffer modifies terms of a prior offer and operates legally as a <strong>rejection of the original offer</strong> (terminating the original offer permanently) combined with a <strong>new offer</strong> submitted back to the other party. In Tennessee, <strong>Form RF651 (</strong><em><strong>Counter Offer</strong></em><strong>)</strong> is the standard form used to submit written counteroffers.</li></ul><ul id="4228ac6a-aab1-8018-948b-d39277a6a394" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Writing &amp; Confirmation Rule:</strong> To be enforceable under the Statute of Frauds, a counteroffer <strong>must be in writing</strong>. When communicating verbal feedback between agents or clients, always state <em>&quot;subject to written confirmation&quot;</em>—no party is bound until both sides sign the written instrument.</li></ul><ul id="4228ac6a-aab1-80ef-bb09-e842bc275049" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>While a Counteroffer Is Pending:</strong><ul id="4228ac6a-aab1-8088-99cc-d642243959bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Either party may revoke/withdraw their offer or counteroffer at any time <strong>before</strong> the other party signs and delivers acceptance.</li></ul><ul id="4228ac6a-aab1-8066-a9b4-f13a1788a125" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a seller has an active counteroffer out to Buyer A and receives a stronger offer from Buyer B, the seller <strong>must withdraw the counteroffer to Buyer A in writing before</strong> accepting Buyer B&#x27;s offer.</li></ul><ul id="4228ac6a-aab1-8082-8f04-efafb13bd31a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agents must warn buyers that while a counteroffer is pending, the property remains on the market and the seller may sell it to someone else.</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-80e1-9174-d3898ad5c8ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Managing Multiple Offer Situations</strong><ul id="4228ac6a-aab1-80de-b64e-c5988e8960a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-Listing Strategy &amp; Seller Direction:</strong> Discuss multiple-offer handling with the seller before listing. With the seller&#x27;s direction (preferably in writing), the listing agent may:<ol type="1" id="4228ac6a-aab1-8010-87e1-d9b93ce57fce" class="numbered-list" start="1" dir="auto"><li>Disclose multiple offers to <strong>none</strong> of the buyer&#x27;s agents.</li></ol><ol type="1" id="4228ac6a-aab1-8075-8e21-e8c9b31a1ea9" class="numbered-list" start="2" dir="auto"><li>Disclose multiple offers to <strong>all</strong> buyer&#x27;s agents (often inviting <em>&quot;highest and best&quot;</em> offers by a set deadline).</li></ol><ol type="1" id="4228ac6a-aab1-8050-8d06-e543a0add582" class="numbered-list" start="3" dir="auto"><li>Disclose multiple offers to <strong>select</strong> buyers only.</li></ol></li></ul><ul id="4228ac6a-aab1-80e4-965b-e607f08adfa0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Disclosure Rules, Confidentiality &amp; Honesty (</strong><code><strong>NAR Standard of Practice 1-15</strong></code><strong>):</strong><ul id="4228ac6a-aab1-80f0-92e2-e25f550374b3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Never disclose multiple offers without seller permission</strong> (preferably in writing), and never reveal specific price/terms of competing offers to give another buyer an unfair advantage. <em>(Note: Purchase offers are not automatically confidential; a buyer wanting strict secrecy must execute a confidentiality agreement prior to submitting the offer.)</em></li></ul><ul id="4228ac6a-aab1-801e-a701-f43e054d61c8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Never lie if asked:</strong> Under <strong>NAR Standard of Practice 1-15</strong> and statutory duties of honesty, if a buyer&#x27;s agent directly asks whether other offers exist and there are other offers, the listing agent <strong>must answer truthfully (&quot;yes&quot;)</strong> unless the seller has expressly instructed the agent not to answer—and where disclosure is authorized, must also disclose, if asked, whether offers were obtained by the listing licensee, another licensee in the listing firm, or a cooperating broker.</li></ul></li></ul><ul id="4228ac6a-aab1-80f5-919e-cf603e79153f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Avoid Issuing Multiple Counteroffers Simultaneously:</strong> Never send signed counteroffers to more than one buyer at the same time; if two buyers both sign and deliver acceptance, the seller becomes legally bound to two separate contracts on the same property.</li></ul><ul id="4228ac6a-aab1-8038-9c1f-c1af7d52125e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Encourage Market Exposure:</strong> Advise sellers against rushing to accept an offer on day one; keeping the listing active for roughly a week allows full market exposure to attract competing offers.</li></ul></li></ul><ul id="4228ac6a-aab1-80b8-b83e-c3b341c2178e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Ongoing Listing Agent Execution Best Practices</strong><ul id="4228ac6a-aab1-80b5-a4d3-c473a0459a8f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prompt, Objective Presentation:</strong> Present all offers and counteroffers objectively and as quickly as possible (<code>T.C.A. § 62-13-404(3)</code> / <code>SOP 1-6</code>).</li></ul><ul id="4228ac6a-aab1-8089-9b60-c24b61fc48a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Act Promptly on Client Decisions:</strong> Execute the seller&#x27;s chosen response (accept, counter, reject, or wait) without delay.</li></ul><ul id="4228ac6a-aab1-80f2-930e-e150ffd78484" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stop Marketing Upon Acceptance:</strong> Once an offer is officially accepted and delivered, cease advertising and showing the property <strong>unless</strong> the seller instructs you in writing to continue marketing for backup offers.</li></ul><ul id="4228ac6a-aab1-8077-a373-f817105df67c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prepare a Seller Net Sheet for Every Offer:</strong> Provide a line-item <strong>net sheet</strong> with each offer and counteroffer so the seller can compare exact estimated net proceeds after mortgage payoffs, commissions, taxes, and closing costs.</li></ul></li></ul><ul id="4228ac6a-aab1-8019-a27a-f3fa3fb87b0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Multiple Offers (Listing Agent)</strong><figure id="4228ac6a-aab1-801a-99cc-dc9997cf90cd" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%203.png"><img style="width:480px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%203.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-804e-896b-f175095d92fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Pre-Offer Preparation &amp; Pricing Guidance for Buyers</strong><ul id="4228ac6a-aab1-8026-96b1-f5b0af0a417d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Build Rapport at Open Houses &amp; With Listing Agents:</strong> Express genuine enthusiasm at open houses without interrogating the listing agent on the spot, and remain prompt, polite, and professional in all communications so the listing agent is willing to share helpful context (such as the seller&#x27;s preferred closing timeline). However, always respect confidentiality—never pressure a listing agent to disclose competing offer prices or terms.</li></ul><ul id="4228ac6a-aab1-802c-bc58-d3ee5c6d2e37" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Recommend Reputable Lenders (Never Mandate):</strong> Buyers have the legal right to select their own lender, so agents can only <strong>recommend</strong>—never require—specific lenders. Recommending respected local lenders known for closing reliably on time strengthens the buyer&#x27;s credibility with sellers.</li></ul><ul id="4228ac6a-aab1-8078-bbbc-f4f4022525ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Guide Offer Pricing to the &quot;No-Regret&quot; Sweet Spot:</strong> Help the buyer evaluate comparable sales to find a balanced offer price—high enough to compete without overpaying out of emotional &quot;bidding-war&quot; pressure, yet strong enough to avoid losing a great home over a small margin. Even if a client insists on submitting an offer you believe is too low, you must obey their lawful instruction and write/submit it as directed (<code>T.C.A. § 62-13-404(1)</code>).</li></ul><ul id="4228ac6a-aab1-80e4-a48f-f23e36451e6b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prepare a Buyer Net Cost Sheet:</strong> Provide a detailed <strong>buyer net cost sheet</strong> estimating down payment, loan fees, prepaids, inspections, and closing costs so the buyer knows their exact out-of-pocket cash needed before committing.</li></ul></li></ul><ul id="4228ac6a-aab1-808e-ad6a-ffae4e303e2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Competitive Offer Strategies in Multiple-Offer Markets</strong><table id="4228ac6a-aab1-80fa-88ce-d33506312298" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-800b-8c2a-c950ef509825" dir="ltr"><td id="fdZT" class=""><strong>Strategy / Lever</strong></td><td id="W~hl" class=""><strong>How It Strengthens the Buyer&#x27;s Offer</strong></td><td id="WOcD" class=""><strong>Key Caveats &amp; Legal Rules</strong></td></tr><tr id="4228ac6a-aab1-8054-91ca-e446457dc6d0" dir="ltr"><td id="fdZT" class=""><strong>Limit Contingencies</strong></td><td id="W~hl" class="">Waiving or shortening non-essential contingencies reduces friction and uncertainty for the seller.</td><td id="WOcD" class="">Never advise waiving critical protections (such as home inspection, appraisal, or financing) unless the buyer fully understands and accepts the financial risk.</td></tr><tr id="4228ac6a-aab1-804d-a72d-f5ff02a1a8a4" dir="ltr"><td id="fdZT" class=""><strong>Increase Down Payment &amp; Limit Concessions</strong></td><td id="W~hl" class="">A larger down payment signals stronger loan viability; refraining from asking for seller-paid closing costs maximizes the seller&#x27;s net proceeds.</td><td id="WOcD" class="">Verify that the buyer retains sufficient cash reserves after closing.</td></tr><tr id="4228ac6a-aab1-8063-be52-f96bc1202fc9" dir="ltr"><td id="fdZT" class=""><strong>Tailor Closing &amp; Possession to Seller&#x27;s Situation</strong></td><td id="W~hl" class="">• <strong>Owner-occupied home:</strong> Offer a <strong>post-closing lease-back (occupancy agreement)</strong> so the seller has time to move.<br/><br/>• <strong>Vacant or staged home:</strong> Offer a <strong>quick closing</strong> so the seller stops paying carrying costs immediately.</td><td id="WOcD" class="">Ensure any post-closing occupancy is documented in a formal written temporary occupancy/lease agreement.</td></tr><tr id="4228ac6a-aab1-8033-abef-ff3f6bbfaa63" dir="ltr"><td id="fdZT" class=""><strong>Increase Earnest Money</strong></td><td id="W~hl" class="">Offering a larger earnest money deposit signals serious commitment and financial strength.</td><td id="WOcD" class="">Remind the buyer that earnest money is at risk if they default after contingency deadlines expire.</td></tr><tr id="4228ac6a-aab1-80d4-a6bf-c12601c75a92" dir="ltr"><td id="fdZT" class=""><strong>Escalation Clause (Escalator)</strong></td><td id="W~hl" class="">States a base offer price and automatically increases the buyer&#x27;s bid by a specified increment (up to a stated maximum cap) only if the seller receives a higher competing offer.</td><td id="WOcD" class="">Requires proof of a bona fide competing offer to trigger; may reveal the buyer&#x27;s maximum ceiling price to the seller if the seller counters at the cap.</td></tr></tbody></table></li></ul><ul id="4228ac6a-aab1-8045-a634-ed1fc3aaa79d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer Submission, Withdrawal, Loss &amp; Simultaneous Offers</strong><ul id="4228ac6a-aab1-8022-8578-c0f9ce20a931" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Complete, Prompt Submission:</strong> Double-check all contract blanks, attach the buyer&#x27;s <strong>loan pre-approval letter</strong> (or proof of funds for cash), deliver the package promptly, and ensure the buyer is ready to deposit earnest money immediately upon binding acceptance.</li></ul><ul id="4228ac6a-aab1-80f7-b3ea-dc195bcc55df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Withdrawing an Offer in Writing:</strong> A buyer may revoke/withdraw an offer <strong>at any time and for any reason prior to the seller&#x27;s communicated acceptance</strong>—even before the stated offer expiration deadline—provided the withdrawal is delivered <strong>in writing</strong>.</li></ul><ul id="4228ac6a-aab1-80a3-b2fc-cc43a055c869" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Handling a Lost Bidding War:</strong> Deliver bad news personally <strong>by phone rather than email</strong>, validate the buyer&#x27;s disappointment with empathy, and refocus them constructively on upcoming inventory.</li></ul><ul id="4228ac6a-aab1-8052-aed1-fb7d93159b91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Submitting Offers on Multiple Properties Simultaneously:</strong> While legal in competitive markets, submitting offers on two or more properties at once carries high financial risk—if more than one seller accepts and delivers before the buyer withdraws the other offers in writing, the buyer can become legally bound to purchase multiple homes or forfeit earnest money.</li></ul></li></ul><ul id="4228ac6a-aab1-80dc-9cfa-fc5950313450" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review: Multiple Offers (Buyer&#x27;s Agent)</strong><figure id="4228ac6a-aab1-807b-ad22-c581f398976c" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%204.png"><img style="width:336px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%204.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-8064-a4cc-eba1dc6df8e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure of Financial Condition &amp; Client Motivation (</strong><code><strong>T.C.A. § 62-13-403</strong></code><strong> &amp; </strong><code><strong>§ 62-13-404</strong></code><strong>)</strong><ul id="4228ac6a-aab1-8046-bb51-c27987916c49" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Confidentiality vs. Strategic Leverage:</strong> A client&#x27;s exact financial profile, cash reserves, and underlying motivation directly affect negotiating leverage, so licensees must strictly safeguard their own client&#x27;s confidential financial details (<code>T.C.A. § 62-13-403(4)</code> / <code>§ 62-13-404(2)</code>) while legitimately using non-confidential facts learned about the opposing party to advance their client&#x27;s interests.<table id="4228ac6a-aab1-805e-b601-cfd1b4d356e2" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80fb-9155-fae04e338988" dir="ltr"><td id="tyfz" class=""><strong>Party &amp; Financial/Motivational Profile</strong></td><td id="\PUK" class=""><strong>Impact on Negotiations &amp; Disclosure Rule</strong></td></tr><tr id="4228ac6a-aab1-809a-bb76-ee92146adaf0" dir="ltr"><td id="tyfz" class=""><strong>Buyer With Ample Cash / Strong Finances</strong></td><td id="\PUK" class="">Knowing a buyer can easily pay more weakens the buyer&#x27;s leverage to negotiate a lower price—keep excess funds confidential unless authorized.</td></tr><tr id="4228ac6a-aab1-80f6-a21a-cacd58efa396" dir="ltr"><td id="tyfz" class=""><strong>Buyer With Weak Financial Profile</strong></td><td id="\PUK" class="">Makes an offer appear less competitive or riskier to a seller compared to stronger competing bids.</td></tr><tr id="4228ac6a-aab1-8088-b2ae-fbeaf8fcc2d6" dir="ltr"><td id="tyfz" class=""><strong>Seller Relocating for an Out-of-State Job</strong></td><td id="\PUK" class="">Signals urgency and time pressure, making it harder for the seller to hold firm on price if disclosed without authorization.</td></tr><tr id="4228ac6a-aab1-801a-aafa-df0a5351dd69" dir="ltr"><td id="tyfz" class=""><strong>Seller Facing Mounting Debt</strong></td><td id="\PUK" class="">Reveals financial distress and erodes the seller&#x27;s bargaining power in price negotiations.</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-80b4-802d-c659157ee476" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Essential Exception (Proof of Financing Ability):</strong> While a buyer&#x27;s agent must protect sensitive personal financial details (such as maximum budget or net worth), it is both appropriate and standard practice—with the buyer&#x27;s authorization—to disclose that the buyer <strong>has the financial ability to obtain the financing needed to complete the purchase</strong> (such as delivering a lender pre-approval letter or proof of funds for the offer amount) so the seller views the offer as credible and viable.</li></ul><ul id="4228ac6a-aab1-80da-a5ec-db0cd5c60c01" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure of Conflicts of Interest (</strong><code><strong>T.C.A. § 62-13-312(b)(18)</strong></code><strong> &amp; </strong><code><strong>§ 62-13-403(7)</strong></code><strong>)</strong><ul id="4228ac6a-aab1-80e1-beae-f26d31291617" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Immediate Disclosure Requirement:</strong> A conflict of interest arises whenever a licensee holds a personal, familial, or financial stake in a property or transaction beyond standard brokerage representation. Under Tennessee law and NAR Code of Ethics Articles 4 and 5, conflicts must be disclosed <strong>in writing immediately</strong>—and require <strong>timely written consent of all parties</strong> before proceeding (<code>T.C.A. § 62-13-403(7)(A)</code>, typically documented on Tennessee REALTORS® Form <strong>RF305</strong>).</li></ul><ul id="4228ac6a-aab1-8011-b5a0-e7bd41e3678e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Common Categories of Licensee Conflicts:</strong><ol type="1" id="4228ac6a-aab1-80dd-a6dd-de63f17e864c" class="numbered-list" start="1" dir="auto"><li><strong>Ownership or Future Interest:</strong> Any current ownership interest—or desired future ownership/option interest—in the subject property (<code>T.C.A. § 62-13-312(b)(18)</code>).</li></ol><ol type="1" id="4228ac6a-aab1-8073-bedb-c6478274638c" class="numbered-list" start="2" dir="auto"><li><strong>Referral Fees or Rebates:</strong> Receiving any referral fee, rebate, or compensation from recommending another service provider, vendor, or entity (<code>T.C.A. § 62-13-403(7)(B)</code>).</li></ol><ol type="1" id="4228ac6a-aab1-80e8-9366-f793ce761f87" class="numbered-list" start="3" dir="auto"><li><strong>Relationships With a Principal:</strong> Any personal, familial, or business relationship with either party to the transaction—including <strong>immediate family members</strong>, <strong>close friends</strong>, or <strong>organizations/business entities</strong> in which the licensee has an interest.</li></ol><ol type="1" id="4228ac6a-aab1-80d4-ba05-f250824c31af" class="numbered-list" start="4" dir="auto"><li><strong>Change in Agency Status:</strong> Transitioning roles mid-transaction—such as moving from single agency to <strong>disclosed dual agency</strong> or <strong>facilitator</strong> status (<code>T.C.A. § 62-13-405</code>).</li></ol><ol type="1" id="4228ac6a-aab1-8042-a5bf-ccb7e1cf261d" class="numbered-list" start="5" dir="auto"><li><strong>Any Other Interfering Material Fact:</strong> Any personal circumstance or obligation that could impair the licensee&#x27;s ability to fulfill statutory duties to all parties.</li></ol></li></ul></li></ul><ul id="4228ac6a-aab1-8088-979f-e1f773a2098d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure of Multiple Sources of Income / Compensation</strong><ul id="4228ac6a-aab1-805c-bd19-fa10d83db955" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Transparency Regardless of Agency Status:</strong> Whenever a licensee will receive compensation, fees, or valuable consideration from <strong>more than one source</strong> in a transaction (such as collecting compensation from both the seller and the buyer, or receiving an ancillary fee/bonus), that arrangement <strong>must be disclosed to all parties</strong> (<code>T.C.A. § 62-13-312(b)(11)</code>).</li></ul><ul id="4228ac6a-aab1-80e6-a1bb-c8e760946a18" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Disclosure Is Essential:</strong> Even though who pays compensation does <strong>not</strong> establish or alter an agency relationship, undisclosed multi-source payments create immediate suspicion and ethical/legal liability if discovered later. Full upfront disclosure ensures every party knows exactly who is paying the licensee and what duties are being performed.</li></ul></li></ul><ul id="4228ac6a-aab1-8007-a92d-d3208e062784" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure Recap</strong><ul id="4228ac6a-aab1-808e-a28e-d2223fc4bb7d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Note that as far as timing goes, <strong>the need to disclose can occur multiple times over the course of a single transaction</strong>.</li></ul><figure id="4228ac6a-aab1-80c5-b8e7-c7bcf695ac5a" class="image" data-notion-image="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%205.png" dir="ltr"><a href="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%205.png"><img style="width:336px" src="Chapter%201%20-%20Agent%20Duties%20and%20Responsibilities/image%205.png"/></a></figure></li></ul><p id="4228ac6a-aab1-80d0-ba4e-c02615f0cc1c" class="" dir="auto">
+</p><p id="4228ac6a-aab1-801e-9b9d-f4604e2bfca6" class="" dir="auto">
+</p></div><div id="4228ac6a-aab1-8028-beb5-dba532eee87d" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4228ac6a-aab1-80b3-8755-f9d161a1f78e" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4228ac6a-aab1-8044-815a-e78d9c084a30" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Required Disclosures</strong><ul id="4228ac6a-aab1-80dd-966d-e16d7a09aca7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Agents of a brokerage are required to make <em>full</em> disclosures to their clients. Areas of disclosure include:<ul id="4228ac6a-aab1-8037-8b8f-eb61e77488e2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Agency</li></ul><ul id="4228ac6a-aab1-8046-a6bc-c1e5b0579324" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property condition</li></ul><ul id="4228ac6a-aab1-8025-8a7c-ea1016f91950" class="bulleted-list" dir="auto"><li style="list-style-type:square">Property value</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-803a-ad12-cdad6c16a0f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Licensee Responsibilities in Property Condition Disclosure</strong><ul id="4228ac6a-aab1-808f-b70e-d4ea0864c2b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Licensees involved in a real estate transaction have an obligation to:<ul id="4228ac6a-aab1-8016-97ce-f46a2452cd94" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose material facts they &quot;should have known&quot; given their expertise and experience</li></ul><ul id="4228ac6a-aab1-8065-874f-f5bcbee1a71e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Disclose material facts made known to them by reasonable care or due diligence during their own inspection of the property</li></ul></li></ul><ul id="4228ac6a-aab1-8037-9bf9-c5a40e79497a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A licensee can be found liable if they:<ul id="4228ac6a-aab1-808e-9523-f390893df38c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Knowingly make a false representation of a material fact</li></ul><ul id="4228ac6a-aab1-808e-a203-fc2ac811e734" class="bulleted-list" dir="auto"><li style="list-style-type:square">Omit known material facts</li></ul><ul id="4228ac6a-aab1-807a-946d-d9407262480e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Conceal or aid the seller in concealing a material fact</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-801b-acca-d5dea70b1836" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Property Value: Economic Characteristics of Real Estate</strong><figure id="4228ac6a-aab1-80ce-9103-e2b3b33fe8bf" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/EconomicCharacteristicsOfLand.jpg"/></a></figure></li></ul><ul id="4228ac6a-aab1-8037-81f5-c94e1447809c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How an Offer Becomes a Contract - </strong>An offer becomes a contract after the offer is accepted AND that acceptance is communicated to the offeror. An offer can be withdrawn at any time prior to the proper communication of the offer&#x27;s acceptance.<figure id="4228ac6a-aab1-80c4-8a53-dc57b48805e6" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/CORE_OffertoContract_8927.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/CORE_OffertoContract_8927.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/CORE_OffertoContract_8927.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-806d-b892-e71d255a136b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Counteroffers</strong><ul id="4228ac6a-aab1-8050-8ad8-d8827f9cc5fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Counteroffers are legally considered a rejection of the original offer. When a counteroffer is made, the original offer is terminated and the new offer takes its place. In Tennessee, there is a standard form to use when submitting a counteroffer: <em><strong>Counter Offer RF651</strong></em>.</li></ul><ul id="4228ac6a-aab1-8070-93cf-f6e71240347e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If the offeree wants to change <em>any </em>of the terms of the offer, a counteroffer is necessary.</li></ul></li></ul><ul id="4228ac6a-aab1-80bf-83eb-e76769fc70b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Multiple Offers</strong><ul id="4228ac6a-aab1-8045-9b56-edc0fea277fc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Multiple offer situations occur when more than one party submits an offer on a single property. If you&#x27;re the listing agent, make a plan with your seller regarding how you&#x27;ll handle multiple offers. Provide your seller with <strong>a net sheet for each offer</strong> and help them make educated decisions about how to respond.</li></ul><ul id="4228ac6a-aab1-80ad-8f80-dddd2ac6d51f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If you&#x27;re a buyer&#x27;s agent in a seller&#x27;s market, help your clients understand how to make their offers as compelling as possible. This could mean limiting contingencies, paying for closing costs, or being flexible with dates.</li></ul></li></ul><p id="4228ac6a-aab1-8007-9b93-e1f42fe481ac" class="" dir="auto">
+</p></div></div><p id="4228ac6a-aab1-805e-94bb-c7fcd353a289" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

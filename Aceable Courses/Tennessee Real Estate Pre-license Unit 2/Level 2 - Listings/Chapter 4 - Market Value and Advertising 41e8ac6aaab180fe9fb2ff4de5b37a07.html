@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Market Value and Advertising</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80fe-9fb2-ff4de5b37a07" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Market Value and Advertising</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4228ac6a-aab1-80f9-952a-ee634cb4edea" class="column-list" data-notion-column-list="" dir="auto"><div id="4228ac6a-aab1-80e4-a83b-e0b4e7487e4b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4228ac6a-aab1-80d0-8dfa-e37d5474f649" class="" dir="auto"><strong>Client-Supplied Data (AVMs / Zestimates) vs. Professional Pricing Guidance</strong></p><ul id="4228ac6a-aab1-80ba-a766-dae990bf05f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Handling Homeowner Online Estimates:</strong> Automated Valuation Models (AVMs) like Zillow&#x27;s Zestimate® rely on broad public-record algorithms and often miss interior condition, upgrades, micro-location, or off-market nuances. Rather than dismissing a client&#x27;s research, validate their initiative and walk them through verified local comparable sales via a <strong>Comparative Market Analysis (CMA)</strong> to establish a realistic listing price.</li></ul><ul id="4228ac6a-aab1-8072-baba-cce52c612e3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparative Market Analysis (CMA) vs. Formal Appraisal (</strong><code><strong>T.C.A. § 62-39-104</strong></code><strong>)</strong><ul id="4228ac6a-aab1-800d-8e52-c553e8caf31e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Distinctions:</strong><ul id="4228ac6a-aab1-80b9-b017-f1a8627c1eb8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Licensing Requirement:</strong> Only a licensed or certified appraiser may perform an <strong>appraisal</strong> (<code>T.C.A. § 62-39-103</code>); a real estate licensee prepares a <strong>CMA</strong> (or Broker&#x27;s Price Opinion) strictly to recommend a listing or purchase price (<code>T.C.A. § 62-39-104(a)</code>).</li></ul><ul id="4228ac6a-aab1-80d4-91a2-e6bc2ac3db5d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Tennessee Terminology Rule (</strong><code><strong>T.C.A. § 62-39-104(a)</strong></code><strong>):</strong> When delivering a CMA, a Tennessee real estate licensee <strong>must never refer to it as an &quot;appraisal&quot; or state an opinion of &quot;value&quot;</strong>—use phrasing such as <em>&quot;recommended listing price&quot;</em> or <em>&quot;recommended purchase price.&quot;</em></li></ul><ul id="4228ac6a-aab1-8098-aa55-c11cc1472f7e" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Cost, Depth &amp; Reliability:</strong> Appraisals are formal, USPAP-compliant reports performed for a fee; CMAs are narrower, typically provided at no extra charge to brokerage clients, and less formal than an appraisal.</li></ul></li></ul><ul id="4228ac6a-aab1-80a6-ac2a-d9e9f97561fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Shared Valuation Principles:</strong> Both CMAs and appraisals rely on the <strong>Sales Comparison Approach</strong>, grounded in the economic principles of <strong>substitution</strong> (a buyer will pay no more for a property than the cost of acquiring an equally desirable substitute) and <strong>contribution</strong> (the value of a feature is measured by what it adds to overall market price, not its construction cost).</li></ul></li></ul><ul id="4228ac6a-aab1-80c9-901c-f68edca8db77" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraisal Regulation &amp; Tennessee Appraiser License Classifications</strong><ul id="4228ac6a-aab1-8046-aa1e-e085e9da4082" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Federal &amp; State Oversight:</strong> The <strong>Financial Institutions Reform, Recovery, and Enforcement Act (FIRREA)</strong> established federal oversight of real estate appraisals and recognized <strong>The Appraisal Foundation</strong> (which sets USPAP standards and Appraiser Qualifications Board criteria). In Tennessee, appraisers are regulated by the <strong>Tennessee Real Estate Appraiser Commission (TREAC)</strong> within the Department of Commerce and Insurance.</li></ul><ul id="4228ac6a-aab1-80e0-a6bd-c8733a9aca16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Appraiser Classifications (plus MAI Designation):</strong> <em>(Note: While study modules often reference legacy AQB benchmarks, current TREAC and 2026 AQB qualification rules reflect updated education/experience hours as shown alongside course figures below.)</em></li></ul></li></ul><table id="4228ac6a-aab1-80f0-af14-d1ba6541ab63" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-807f-aa80-f5f122d64698" dir="ltr"><td id="gWrZ" class=""><strong>Credential / Designation</strong></td><td id="yPwS" class=""><strong>Scope of Appraisal Practice</strong></td><td id="Jy:}" class=""><strong>Qualifying Education, Experience &amp; Degree Requirements</strong></td></tr><tr id="4228ac6a-aab1-8090-8d86-e669634de62d" dir="ltr"><td id="gWrZ" class=""><strong>Registered Trainee</strong></td><td id="yPwS" class="">May assist with appraisals <strong>only under the direct supervision</strong> of a certified appraiser; cannot sign reports independently.</td><td id="Jy:}" class=""><strong>Tennessee/2026 AQB:</strong> <code>87</code> qualifying hours (<code>83</code> core + <code>4</code>-hr supervisory/trainee course, including <code>8</code>-hr Valuation Bias &amp; Fair Housing); no prior experience or college degree required.</td></tr><tr id="4228ac6a-aab1-8084-aaaf-de06fcd57f4c" dir="ltr"><td id="gWrZ" class=""><strong>State Licensed Appraiser</strong> <em>(Real Estate Appraiser)</em></td><td id="yPwS" class="">• Non-complex 1–4 family residential properties with transaction value <strong>below </strong><code><strong>$1,000,000</strong></code><br/><br/>• Complex/atypical 1–4 family residential properties with transaction value <strong>below </strong><code><strong>$250,000</strong></code><br/><br/>• Agricultural properties <strong>below </strong><code><strong>$1,000,000</strong></code></td><td id="Jy:}" class=""><strong>Course Benchmark:</strong> <code>150</code> appraisal hours + <code>30</code> college credit hours + <code>2,000</code> experience hours.<br/><br/><strong>Current TN / 2026 AQB:</strong> <code>158</code> qualifying hours + <code>1,000</code> experience hours over at least <code>6</code> months (no college degree required).</td></tr><tr id="4228ac6a-aab1-80b0-b140-fd9aa8a6e9d0" dir="ltr"><td id="gWrZ" class=""><strong>State Certified Residential Appraiser</strong></td><td id="yPwS" class="">• <strong>Any 1–4 family residential property</strong> regardless of transaction value or complexity<br/><br/>• Non-residential/other properties <strong>below </strong><code><strong>$250,000</strong></code><br/><br/>• Agricultural properties <strong>below </strong><code><strong>$1,000,000</strong></code></td><td id="Jy:}" class=""><strong>Course Benchmark:</strong> Bachelor&#x27;s degree + <code>200</code> appraisal hours + <code>2,500</code> experience hours.<br/><br/><strong>Current TN / 2026 AQB:</strong> <code>200</code> qualifying hours + <code>1,500</code> experience hours over at least <code>12</code> months + bachelor&#x27;s degree (or qualifying associate/college-credit/5-year licensed path).</td></tr><tr id="4228ac6a-aab1-8073-b7c6-ded7cbe74225" dir="ltr"><td id="gWrZ" class=""><strong>State Certified General Appraiser</strong></td><td id="yPwS" class="">• <strong>All types of real property</strong> (residential, commercial, industrial, agricultural, vacant land) with <strong>no value limit</strong></td><td id="Jy:}" class=""><strong>Course Benchmark:</strong> Bachelor&#x27;s degree + <code>300</code> appraisal hours + <code>3,000</code> experience hours.<br/><br/><strong>Current TN / 2026 AQB:</strong> Bachelor&#x27;s degree or higher + <code>300</code> qualifying hours + <code>3,000</code> experience hours over at least <code>18</code> months (including <code>1,500</code> non-residential hours).</td></tr><tr id="4228ac6a-aab1-8080-9b32-c5130348acc9" dir="ltr"><td id="gWrZ" class=""><strong>MAI Designation</strong> <em>(Member Appraisal Institute)</em></td><td id="yPwS" class="">Prestigious private professional designation conferred by the <strong>Appraisal Institute</strong> (not a state license).</td><td id="Jy:}" class="">Requires holding a <strong>Certified General</strong> credential (or equivalent), a <strong>bachelor&#x27;s degree or higher</strong>, rigorous specialized coursework, a comprehensive exam, demonstrated appraisal knowledge, specialized experience, and strict ethical compliance.</td></tr></tbody></table><ul id="4228ac6a-aab1-809d-af3e-e9ecc032e2c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Appraisal Process</strong><figure id="4228ac6a-aab1-808e-a8a1-ffd9635b527a" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image.png"><img style="width:288px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-808b-853f-d3852385fc3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The 8-Step Appraisal Process</strong><ul id="4228ac6a-aab1-80a3-8ecc-e63fa8985b0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Appraisers follow a systematic eight-step sequence to develop a credible, USPAP-compliant opinion of value:</li></ul><table id="4228ac6a-aab1-807b-a085-d374db0186d6" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80e3-8769-dc769be4c33d" dir="ltr"><td id="qR`w" class=""><strong>Step</strong></td><td id="\{wN" class=""><strong>Stage Name</strong></td><td id="rZCu" class=""><strong>Key Actions &amp; Analytical Rules</strong></td></tr><tr id="4228ac6a-aab1-8009-bd9b-c34cbcffbd9c" dir="ltr"><td id="qR`w" class=""><strong>Step 1</strong></td><td id="\{wN" class=""><strong>State the Objective</strong></td><td id="rZCu" class="">Define the appraisal problem: identify the client/intended users, intended use, type of value (e.g., market value), effective date of value, subject property location, and any unique assignment conditions.</td></tr><tr id="4228ac6a-aab1-8047-9ac6-f458827449c4" dir="ltr"><td id="qR`w" class=""><strong>Step 2</strong></td><td id="\{wN" class=""><strong>List Necessary Data and Sources</strong></td><td id="rZCu" class="">Determine which valuation approach(es) apply and plan data collection across two categories:<br/><br/>• <strong>General Data:</strong> Regional, city, and neighborhood economic, social, governmental, and environmental trends.<br/><br/>• <strong>Specific Data:</strong> Physical details, title/tax records, income/expenses, and comparable sales tied directly to the subject property.</td></tr><tr id="4228ac6a-aab1-80d6-8376-c8fc0f2b51ee" dir="ltr"><td id="qR`w" class=""><strong>Step 3</strong></td><td id="\{wN" class=""><strong>Gather, Record, and Verify Data</strong></td><td id="rZCu" class="">Collect and cross-verify market and physical property measurements/features for both the subject property and all comparable properties (crucial for accurate adjustments in the Sales Comparison Approach).</td></tr><tr id="4228ac6a-aab1-800f-8ba7-feff69c50b9a" dir="ltr"><td id="qR`w" class=""><strong>Step 4</strong></td><td id="\{wN" class=""><strong>Determine Highest and Best Use</strong></td><td id="rZCu" class="">Identify the single most profitable, plausible use of the site (as though vacant and as improved) that meets <strong>four sequential tests</strong>: (1) <strong>Legally permissible</strong> (zoning, building codes, deed restrictions), (2) <strong>Physically possible</strong> (lot size, shape, topography, utilities), (3) <strong>Financially feasible</strong> (generates positive net return), and (4) <strong>Maximally productive</strong> (produces the highest residual land value/yield).</td></tr><tr id="4228ac6a-aab1-809e-928c-ff2cf940ded8" dir="ltr"><td id="qR`w" class=""><strong>Step 5</strong></td><td id="\{wN" class=""><strong>Estimate the Land Value</strong></td><td id="rZCu" class="">Value the underlying land parcel separately from any improvements by comparing similar vacant land sales and adjusting for site differences.</td></tr><tr id="4228ac6a-aab1-802e-8c7f-ded508dd5cea" dir="ltr"><td id="qR`w" class=""><strong>Step 6</strong></td><td id="\{wN" class=""><strong>Estimate Value With Applicable Approaches</strong></td><td id="rZCu" class="">Apply one or more of the three traditional valuation approaches—<strong>Sales Comparison Approach</strong>, <strong>Cost Approach</strong>, and <strong>Income Capitalization Approach</strong>—depending on the property type and available data.</td></tr><tr id="4228ac6a-aab1-80d3-b3ba-d430930cae1d" dir="ltr"><td id="qR`w" class=""><strong>Step 7</strong></td><td id="\{wN" class=""><strong>Reconcile the Final Value Estimate</strong></td><td id="rZCu" class="">Weigh the reliability, data quality, and relevance of each applied approach (<strong>reconciliation / correlation</strong>) to arrive at a single final value conclusion—never by taking a simple mathematical average.</td></tr><tr id="4228ac6a-aab1-803b-b15e-f05e401aed7b" dir="ltr"><td id="qR`w" class=""><strong>Step 8</strong></td><td id="\{wN" class=""><strong>Write and Present the Value Report</strong></td><td id="rZCu" class="">Prepare and deliver the final written report in strict compliance with the <strong>Uniform Standards of Professional Appraisal Practice (USPAP)</strong>.</td></tr></tbody></table></li></ul><ul id="4228ac6a-aab1-80eb-a2e7-ff6d33c197ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraisal Report Formats &amp; The Redesigned URAR (</strong><code><strong>UAD 3.6</strong></code><strong>)</strong><ul id="4228ac6a-aab1-80fc-8e4b-d6eb4f20e7d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>USPAP Reporting Options:</strong> Under USPAP Standards Rule 2-2, written appraisal reports are categorized as either an <strong>Appraisal Report</strong> (which summarizes the data and reasoning used—delivered either as a detailed <strong>narrative report</strong> for complex/atypical commercial properties or a standardized form report for residential lending) or a <strong>Restricted Appraisal Report</strong> (a concise report providing minimal data intended strictly for the named client alone).</li></ul><ul id="4228ac6a-aab1-80cc-ac20-d0e465f82431" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Uniform Residential Appraisal Report (URAR) &amp; 2026 UAD 3.6 Transition:</strong><ul id="4228ac6a-aab1-8016-99e3-ea5117061fd8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Developed jointly by <strong>Fannie Mae and Freddie Mac</strong>, the <strong>URAR</strong> is the standard residential mortgage appraisal report.</li></ul><ul id="4228ac6a-aab1-80a3-9b38-d3f51e172392" class="bulleted-list" dir="auto"><li style="list-style-type:square">Beginning <strong>November 2, 2026</strong>, Fannie Mae and Freddie Mac mandated the redesigned, dynamic <strong>URAR under Uniform Appraisal Dataset (UAD) 3.6</strong> for all new conventional appraisal submissions to the Uniform Collateral Data Portal (UCDP), replacing legacy static forms (such as Form 1004, 1073, 1025, and 2055) with a single data-driven format tailored dynamically to the property type (with a temporary GSE lender exception window running through May 19, 2027).</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-80dd-a4de-c4b239c5b9a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Purpose of a Comparative Market Analysis (CMA)</strong><ul id="4228ac6a-aab1-800b-89c8-ff5515580c69" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Primary Valuation Benchmark:</strong> When estimating a recommended market price without a formal appraisal, the single most reliable indicator is what <strong>willing buyers have recently paid for comparable properties</strong> in the same neighborhood or market area over recent months.</li></ul><ul id="4228ac6a-aab1-807c-b4ea-f3aae7d00f5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CMA ≠ Appraisal (</strong><code><strong>T.C.A. § 62-39-104</strong></code><strong>):</strong> Under Tennessee appraisal law, a real estate licensee prepares a CMA strictly to recommend a <strong>listing price</strong> or <strong>purchase price</strong> in the ordinary course of brokerage business—it must never be called an <em>&quot;appraisal&quot;</em> or presented as a formal opinion of <em>&quot;value&quot;</em>.</li></ul></li></ul><ul id="4228ac6a-aab1-804f-9ea9-dd3d64fec524" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>NAR Code of Ethics: Standard of Practice 11-1</strong><ul id="4228ac6a-aab1-808f-825c-e91ed4edd4b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When It Applies:</strong> Standard of Practice 11-1 governs REALTORS® whenever they prepare opinions of real property value or price (such as a CMA or Broker&#x27;s Price Opinion) <strong>other than</strong> in pursuit of a listing or to assist a potential purchaser in formulating a purchase offer (for example, when preparing a valuation for a lender, probate estate, divorce, or tax review).</li></ul><ul id="4228ac6a-aab1-802a-a29e-d969095c312f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Nine Mandatory Elements Required Under Standard of Practice 11-1:</strong></li></ul></li></ul><table id="4228ac6a-aab1-807c-ab99-f341f9fa1ef5" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-8077-9e23-c921ff6a4499" dir="ltr"><td id="@xIO" class=""><strong>Required Element</strong></td><td id="b&gt;V\" class=""><strong>What Must Be Included in the Report</strong></td></tr><tr id="4228ac6a-aab1-80ec-be13-d535b949ce25" dir="ltr"><td id="@xIO" class=""><strong>1. Subject Property Identification</strong></td><td id="b&gt;V\" class="">Clear street address and/or legal identification of the property being analyzed.</td></tr><tr id="4228ac6a-aab1-80b4-bfaa-e14c8ece23d9" dir="ltr"><td id="@xIO" class=""><strong>2. Date Prepared</strong></td><td id="b&gt;V\" class="">The exact date on which the CMA/price opinion is completed.</td></tr><tr id="4228ac6a-aab1-80bd-a0b3-d1334d3872fb" dir="ltr"><td id="@xIO" class=""><strong>3. Defined Value or Price</strong></td><td id="b&gt;V\" class="">Clear statement of the specific price or value figure (or range) being estimated.</td></tr><tr id="4228ac6a-aab1-80f6-89a1-d9af70758aea" dir="ltr"><td id="@xIO" class=""><strong>4. Limiting Conditions</strong></td><td id="b&gt;V\" class="">Explicit statements of the report&#x27;s <strong>purpose(s)</strong> and <strong>intended user(s)</strong>, along with any assumptions or scope limitations.</td></tr><tr id="4228ac6a-aab1-805e-be5a-e080a15b6fbf" dir="ltr"><td id="@xIO" class=""><strong>5. Interior Physical Inspection Disclosure</strong></td><td id="b&gt;V\" class="">Explicit disclosure of <strong>whether and when</strong> a physical inspection of the property&#x27;s interior was conducted.</td></tr><tr id="4228ac6a-aab1-8053-8f55-c02425e77266" dir="ltr"><td id="@xIO" class=""><strong>6. Conflicts of Interest</strong></td><td id="b&gt;V\" class="">Disclosure of any personal, financial, or familial conflicts of interest held by the preparer.</td></tr><tr id="4228ac6a-aab1-8010-8d77-d1a6bd9b76dc" dir="ltr"><td id="@xIO" class=""><strong>7. Present or Contemplated Interest</strong></td><td id="b&gt;V\" class="">Disclosure of any current or anticipated business interest, including the <strong>possibility of representing the seller/landlord or buyers/tenants</strong> in a future transaction.</td></tr><tr id="4228ac6a-aab1-8078-b15d-f0615eb1654f" dir="ltr"><td id="@xIO" class=""><strong>8. Basis for the Opinion</strong></td><td id="b&gt;V\" class="">Summary of the methodology and <strong>applicable market data</strong> (such as comparable closed sales, pending sales, and active listings) supporting the conclusion.</td></tr><tr id="4228ac6a-aab1-80cb-96ea-e379149e08d3" dir="ltr"><td id="@xIO" class=""><strong>9. Non-Appraisal Disclaimer</strong></td><td id="b&gt;V\" class="">If the opinion is not a licensed/certified appraisal, an explicit written statement that <strong>the report is not an appraisal</strong>.</td></tr></tbody></table><ul id="4228ac6a-aab1-8003-b6bc-dbcab06ebf0f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Appraisals vs. CMAs</strong><figure id="4228ac6a-aab1-801c-be68-e2db5440d8b1" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%201.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%201.png"><img style="width:384px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%201.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-801f-85fe-fba7663e49c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Steps to Creating a CMA</strong><figure id="4228ac6a-aab1-804a-9f41-f7d25e47d85a" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%202.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%202.png"><img style="width:384px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%202.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-8019-b38c-f2c870830d6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Selecting Comparable Properties (&quot;Comps&quot;)</strong><ul id="4228ac6a-aab1-804b-853e-f9c24b6efe85" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why Comps Matter:</strong> Comps serve as objective neighborhood proof supporting your recommended listing or purchase price, helping clients make informed decisions and protecting the licensee against claims of negligence.</li></ul><ul id="4228ac6a-aab1-804c-a6bc-c2635d5c6e17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Characteristics of an Ideal Comp:</strong><ul id="4228ac6a-aab1-80b9-99df-d4e74452b0dd" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Physical similarity:</strong> Comparable bedroom count, bathroom count, square footage, style, and yard/lot size.</li></ul><ul id="4228ac6a-aab1-801b-ac1c-ea0e20c3a2ca" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Age &amp; condition:</strong> Built around the same era and in similar physical condition.</li></ul><ul id="4228ac6a-aab1-8053-83bc-edbae9f14a7d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Proximity:</strong> Within <strong>one-quarter mile</strong> of the subject property, ideally inside the same subdivision or neighborhood.</li></ul><ul id="4228ac6a-aab1-805e-973c-f38b6486a6a1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recency:</strong> Sold and closed within the <strong>last 6 months</strong>.</li></ul><ul id="4228ac6a-aab1-804d-8935-f308c047ebfb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Arm&#x27;s-length transaction:</strong> Sold on the open market between unrelated parties for true market value (ideally verified by an appraisal rather than distressed or family transfers).</li></ul></li></ul><ul id="4228ac6a-aab1-80ab-8cd2-dc469a9cbb4f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Active &amp; Pending Listings vs. Closed Sales:</strong><ul id="4228ac6a-aab1-80c8-8a45-e48921ab4e12" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Never treat active listings as true comps:</strong> Asking price reflects seller aspirations rather than market value, and stale active listings often signal overpricing. Use active listings only to illustrate current competition.</li></ul><ul id="4228ac6a-aab1-80a0-aa38-e8fc50bb71fa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Pending (under-contract) sales:</strong> Useful as secondary context for market direction if you confirm the contract price with the participating agent, though riskier than closed sales because the deal has not yet cleared appraisal and closing.</li></ul></li></ul><ul id="4228ac6a-aab1-808a-8756-e90a1e59ba59" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How to Verify Actual Sale Prices:</strong><ol type="1" id="4228ac6a-aab1-80e8-a671-faf000de0234" class="numbered-list" start="1" dir="auto"><li><strong>County Deed / Register of Deeds Search:</strong> In Tennessee, the recorded deed states under oath the actual consideration (or fair market value) used to calculate the <code>$0.37</code> per <code>$100</code> realty transfer tax.</li></ol><ol type="1" id="4228ac6a-aab1-80c1-99d5-f63380403160" class="numbered-list" start="2" dir="auto"><li><strong>MLS Sold Records:</strong> Check verified closed sale data in the Multiple Listing Service.</li></ol><ol type="1" id="4228ac6a-aab1-8094-ac9e-f5ee82a14b09" class="numbered-list" start="3" dir="auto"><li><strong>Direct Broker Verification:</strong> Reach out to the listing or cooperating broker when records are incomplete.</li></ol></li></ul></li></ul><ul id="4228ac6a-aab1-8039-a048-c7953cbc0a1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Making Adjustments to Comparables</strong><ul id="4228ac6a-aab1-807e-b44e-c298f21ecace" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Golden Rule of Adjustments (&quot;Adjust the Comp, Never the Subject&quot;):</strong> Always adjust the <strong>comparable property&#x27;s sale price</strong> to match the subject property—never adjust the subject property:<ul id="4228ac6a-aab1-802d-ac7f-d4d2314db767" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the <strong>comp is superior</strong> to the subject property (e.g., comp has 4 bedrooms and subject has 3), <strong>subtract</strong> the contributory value of that extra feature from the comp&#x27;s sale price (<code>CBS</code> — <em>Comp Better, Subtract</em>).</li></ul><ul id="4228ac6a-aab1-805d-89b0-da6dcc0503de" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the <strong>comp is inferior</strong> to the subject property (e.g., comp lacks a pool that the subject has), <strong>add</strong> the contributory value of that missing feature to the comp&#x27;s sale price (<code>CIA</code> — <em>Comp Inferior, Add</em>).</li></ul></li></ul><ul id="4228ac6a-aab1-8080-9a25-e3d09fe7c822" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fewer Adjustments = Better Comp:</strong> Comps requiring minimal adjustments provide the most reliable price indication; heavy adjustments indicate poor comparability.</li></ul></li></ul><ul id="4228ac6a-aab1-80b5-866a-db804a1e9d99" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Methods for Determining Feature Adjustment Values (Ranked by Reliability)</strong><table id="4228ac6a-aab1-80bc-9663-c4a85e017195" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80a0-b605-f73e1e469741" dir="ltr"><td id="c::X" class=""><strong>Rank</strong></td><td id="CFaR" class=""><strong>Valuation Method</strong></td><td id="uGVk" class=""><strong>How It Works</strong></td><td id="=vh\" class=""><strong>Example</strong></td></tr><tr id="4228ac6a-aab1-806b-9acd-ce9a76d44f6a" dir="ltr"><td id="c::X" class=""><strong>1 (Most Reliable)</strong></td><td id="CFaR" class=""><strong>Direct Comparison (Paired Sales Analysis)</strong></td><td id="uGVk" class="">Compare two nearly identical recent sales in the same neighborhood that differ by <strong>only one feature</strong>; the difference in sale price isolates that feature&#x27;s contributory value.</td><td id="=vh\" class="">Property 1 (<code>3 bed / 2 bath / 5 yrs old / no pool</code>) sold for <code>$245,000</code>; Property 2 (<code>3 bed / 2 bath / 5 yrs old / with pool</code>) sold for <code>$265,000</code> -&gt; Pool value = <code>$265,000 - $245,000 = $20,000</code>.</td></tr><tr id="4228ac6a-aab1-80ea-9a44-faa37cfe238e" dir="ltr"><td id="c::X" class=""><strong>2</strong></td><td id="CFaR" class=""><strong>General Market Data</strong></td><td id="uGVk" class="">Use broader brokerage valuation tables, MLS price-per-square-foot benchmarks, or reliable local market studies when exact paired sales are unavailable.</td><td id="=vh\" class="">Applying local brokerage data showing a half-bath typically adds <code>$5,000</code> or living area adjusts at <code>$50</code> per sq ft.</td></tr><tr id="4228ac6a-aab1-8097-a472-ebc055474bcc" dir="ltr"><td id="c::X" class=""><strong>3 (Least Reliable)</strong></td><td id="CFaR" class=""><strong>Professional Experience (&quot;Gut&quot; / Broker Insight)</strong></td><td id="uGVk" class="">Rely on your own neighborhood track record or your sponsoring broker&#x27;s local market intuition when hard data is sparse.</td><td id="=vh\" class="">Consulting your principal broker on how local buyers discount backing up to a busy road.</td></tr></tbody></table></li></ul><ul id="4228ac6a-aab1-809c-81a9-dfe8051f7d0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Software vs. Foundational Understanding:</strong> While modern brokerage CMA software automates comp pulls and adjustment grids, understanding the underlying paired-sales and adjustment logic enables you to explain and defend your recommended price range clearly to clients.</li></ul><ul id="4228ac6a-aab1-8089-aa64-f825cf26d7e3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adjustment Math</strong><figure id="4228ac6a-aab1-803f-a30e-cb1377aea0a4" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%203.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%203.png"><img style="width:576px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%203.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-80bd-bf87-da65da8cdc16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Add or Subtract?</strong><ul id="4228ac6a-aab1-8042-b739-ee75319329f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">It can be a little bit unintuitive, so remember: If the comp has a feature the subject property doesn&#x27;t have, you <em>subtract</em> that value. If the comp doesn&#x27;t have a feature the subject property has, you <em>add </em>value.</li></ul><figure id="4228ac6a-aab1-8083-a664-dd89d04e01e8" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%204.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%204.png"><img style="width:384px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%204.png"/></a></figure><ul id="4228ac6a-aab1-806d-971c-e2f592a19c65" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Subject Property</strong><figure id="4228ac6a-aab1-80b4-be88-e281dcf7ac39" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%205.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%205.png"><img style="width:528px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%205.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-80a9-9918-e0cb1b3445d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Comps</strong><figure id="4228ac6a-aab1-8014-ad99-d0d81d43dfd8" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%206.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%206.png"><img style="width:528px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%206.png"/></a></figure><ul id="4228ac6a-aab1-804e-b526-f8b5a2c6caf1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Price List</strong><ul id="4228ac6a-aab1-807d-bbb1-dd4c08641088" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bedroom: $7,000</strong></li></ul><ul id="4228ac6a-aab1-8016-a4c7-df5f1d567645" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Bath: $4,000</strong></li></ul><ul id="4228ac6a-aab1-80a4-8597-c92a4bc99a9a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Half bath: $2,000</strong></li></ul><ul id="4228ac6a-aab1-8029-bbcc-faeb5f525abb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Price per square foot: $110</strong></li></ul><ul id="4228ac6a-aab1-809f-9348-edb3dce4e7fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Year in age: $500</strong></li></ul><ul id="4228ac6a-aab1-805b-94fb-d80e4adb11cf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quarter acre of lot size: $3,000</strong></li></ul></li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-8079-9d75-c448786e2b73" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Making the Adjustments</strong><ul id="4228ac6a-aab1-806b-99bd-e13ada50dcd8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When making the adjustments, simply go into the spreadsheet and add or subtract the correct amount based on our price list. Once all the adjustments on a comp have been made, add the adjustment amounts up to get a total adjustment amount.</li></ul><ul id="4228ac6a-aab1-8087-be8e-d5d0bfab39a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">That amount might be positive or it might be negative, depending on whether the comp has slightly fewer features or slightly more features than the subject property. Finally, add or subtract the total to the sale price.</li></ul><figure id="4228ac6a-aab1-80dd-a9a7-ccc8a7a8fe9a" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%207.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%207.png"><img style="width:576px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%207.png"/></a></figure><ul id="4228ac6a-aab1-801e-9bbf-eeee4035d290" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Square Footage Adjustment Math Pattern</strong><ul id="4228ac6a-aab1-804b-b374-f38d226b9142" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Core Formula:</strong> <code>Adjustment = (Subject Sq. Ft. - Comp Sq. Ft.) x Price per Sq. Ft.</code></li></ul><ul id="4228ac6a-aab1-8032-9279-de8e839097df" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sign Logic Check (</strong><code><strong>CBS</strong></code><strong> / </strong><code><strong>CIA</strong></code><strong>):</strong><ul id="4228ac6a-aab1-803b-8cf9-dd826c550aab" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When the <strong>comp is larger</strong> than the subject property (<code>Comp &gt; Subject</code>), subtracting <code>Subject - Comp</code> produces a <strong>negative adjustment</strong> (<code>$2,750</code>), reducing the comp&#x27;s sale price to match the smaller subject property.</li></ul><ul id="4228ac6a-aab1-80a5-b1ce-e99753cd04de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">When the <strong>comp is smaller</strong> than the subject property (<code>Comp &lt; Subject</code>), subtracting <code>Subject - Comp</code> produces a <strong>positive adjustment</strong>, increasing the comp&#x27;s sale price to match the larger subject property.</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-80c4-9734-fee82b026130" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Worked Example Breakdown</strong><ul id="4228ac6a-aab1-807c-8c9d-fb8f18df8cac" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 1 — Calculate Square Footage Difference:</strong> <code>1,975 sq. ft. (Subject) - 2,000 sq. ft. (Comp) = -25 sq. ft.</code></li></ul><ul id="4228ac6a-aab1-8006-95e1-e8bc26b3ebb0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 2 — Multiply by Market Rate per Sq. Ft.:</strong> <code>25 sq. ft. x $110 = -$2,750</code></li></ul><ul id="4228ac6a-aab1-8024-8d63-d6f7fa7b9dd0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Step 3 — Apply to Comparable&#x27;s Sale Price:</strong> Subtract <code>$2,750</code> from the comparable property&#x27;s closed sale price (alongside all other net feature adjustments) to determine its adjusted sale price.</li></ul></li></ul><ul id="4228ac6a-aab1-80db-8eed-d7ca1afb5ca4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Adjusting Comp #2</strong><figure id="4228ac6a-aab1-80f4-af78-eb428a810305" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%208.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%208.png"><img style="width:528px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%208.png"/></a></figure><ul id="4228ac6a-aab1-80f0-9e5f-e243651a9019" class="bulleted-list" dir="auto"><li style="list-style-type:square">You should have taken $7,000 off the purchase price for the extra bedroom, and $13,750 (125 sq. ft. x $110) for the extra square footage.</li></ul><ul id="4228ac6a-aab1-801c-9390-c4e676dca711" class="bulleted-list" dir="auto"><li style="list-style-type:square">Notice that despite a $25,000 difference in the purchase price of the first two comps, their adjusted values are very similar. That&#x27;s why we do adjustments! Everything is working according to plan, Lorenzo.</li></ul></li></ul><ul id="4228ac6a-aab1-80a6-857b-f47868681d95" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Final Adjustments</strong><figure id="4228ac6a-aab1-8003-ac1a-ca9488347738" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%209.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%209.png"><img style="width:528px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%209.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-80d3-bf80-fc5fa992f6f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">$3,000 (<em>6 years x $500</em>) for the difference in age<ul id="4228ac6a-aab1-8012-b984-f1f969617d47" class="bulleted-list" dir="auto"><li style="list-style-type:square">$17,050 (<em>155 sq. ft. x $110</em>) for the difference in square footage</li></ul><ul id="4228ac6a-aab1-802e-8fd3-c30e7fe5cedb" class="bulleted-list" dir="auto"><li style="list-style-type:square">$2,000 for the missing half bath</li></ul></li></ul><ul id="4228ac6a-aab1-8045-b067-c3ae3a48ed31" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Adjusted Prices</strong><ul id="4228ac6a-aab1-8070-9be3-e3dc318ab8f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">After completing these adjustments, we&#x27;re left with three adjusted prices for our comps: $242,250, $244,250, and $246,050. That should lead us to believe the market value of the subject property is somewhere in the $242,000 to $246,000 range.</li></ul></li></ul><ul id="4228ac6a-aab1-8062-96eb-cbbdd37de3d2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>So What Is the Right Asking Price?</strong><ul id="4228ac6a-aab1-80c6-9f54-dc579e3b2dbe" class="bulleted-list" dir="auto"><li style="list-style-type:square">Asking price doesn&#x27;t <em>necessarily</em> align exactly with market value. Sometimes an agent will urge a homeowner to deliberately under-price something to start a bidding war, for example.</li></ul><ul id="4228ac6a-aab1-808c-bec7-e0f20b6b520b" class="bulleted-list" dir="auto"><li style="list-style-type:square">The most important thing to remember is that your job is to present this information to the homeowner along with your recommendations. Where you go from there is entirely up to them.</li></ul></li></ul></li></ul><ul id="4228ac6a-aab1-8087-a700-ff3cd45938f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Establishing a Recommended Listing Price Range</strong><ul id="4228ac6a-aab1-8059-b68d-f9b6d9a22feb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Framing the Range:</strong> Set the suggested listing price range starting <strong>at or just below the lowest adjusted comp price</strong> and ending <strong>at or just above the highest adjusted comp price</strong>.</li></ul><ul id="4228ac6a-aab1-8039-a19a-c106010f7cd4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Weighting Reliability:</strong> Lean most heavily on the comparables that required the <strong>fewest adjustments</strong>, as minimal adjustments reflect the closest true similarity to the subject property.</li></ul><figure id="4228ac6a-aab1-8068-8182-fc00c5b33d24" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2010.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2010.png"><img style="width:384px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2010.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-8083-a535-e3df58b0966f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Market Conditions &amp; The Four-Phase Real Estate Cycle</strong><ul id="4228ac6a-aab1-8017-8b14-d298b70e590c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supply &amp; Demand Fundamentals:</strong> Rising demand shrinks inventory and drives prices up; falling demand expands inventory and pushes prices down.</li></ul><ul id="4228ac6a-aab1-80fc-9c07-c1de363c48a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Phases of the Real Estate Cycle:</strong><ol type="1" id="4228ac6a-aab1-801b-b6f0-dc93e823250f" class="numbered-list" start="1" dir="auto"><li><strong>Recovery:</strong> Declining vacancy, flat/slow rent and price growth, minimal new construction.</li></ol><ol type="1" id="4228ac6a-aab1-80de-b812-e9933e6f6674" class="numbered-list" start="2" dir="auto"><li><strong>Expansion:</strong> Falling vacancy, rising prices and rents, accelerating construction as demand outpaces supply (<strong>Seller&#x27;s Market</strong>).</li></ol><ol type="1" id="4228ac6a-aab1-80ed-8b52-d0eae478e27f" class="numbered-list" start="3" dir="auto"><li><strong>Hypersupply:</strong> New construction floods the market past demand, vacancy starts rising, and price growth slows.</li></ol><ol type="1" id="4228ac6a-aab1-80e9-ad4e-d40f7225aec8" class="numbered-list" start="4" dir="auto"><li><strong>Recession:</strong> High inventory and vacancy, falling prices and rents, and halted construction (<strong>Buyer&#x27;s Market</strong>).<table id="4228ac6a-aab1-802b-93e3-fad11ba2643d" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80f8-8a57-d1b09df2979c" dir="ltr"><td id="GN]x" class=""><strong>Market Type</strong></td><td id="Ie`{" class=""><strong>Inventory &amp; Demand Dynamic</strong></td><td id="EVjQ" class=""><strong>Recommended Pricing Strategy</strong></td></tr><tr id="4228ac6a-aab1-80ed-817a-e4acc4d0236b" dir="ltr"><td id="GN]x" class=""><strong>Buyer&#x27;s Market</strong></td><td id="Ie`{" class="">High supply, low demand; buyers hold negotiating leverage.</td><td id="EVjQ" class="">Price competitively—often just below the top end of the adjusted range—with the expectation that the final accepted contract price will likely come in below list price.</td></tr><tr id="4228ac6a-aab1-804b-b055-f5145071a3d3" dir="ltr"><td id="GN]x" class=""><strong>Neutral Market</strong></td><td id="Ie`{" class="">Balanced supply and demand; steady, predictable appreciation.</td><td id="EVjQ" class="">Start near the top end of the adjusted range and adjust for documented monthly market appreciation (e.g., if median prices rise <code>1%</code> per month and the latest comp closed <code>3</code> months ago, adjust upward by <code>3%</code>).</td></tr><tr id="4228ac6a-aab1-8058-8a48-c9f60fa03a60" dir="ltr"><td id="GN]x" class=""><strong>Seller&#x27;s Market</strong></td><td id="Ie`{" class="">Low inventory, intense buyer competition, and rapidly rising prices.</td><td id="EVjQ" class="">Sellers can often list <code><strong>10%</strong></code><strong> to </strong><code><strong>12%</strong></code><strong> above</strong> the last comparable closed sale and still attract strong buyer demand.</td></tr></tbody></table></li></ol></li></ul></li></ul><ul id="4228ac6a-aab1-806e-af63-e2655672a75b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strategic Pricing Psychology: Benefits of Accurate Pricing vs. Hazards of Overpricing</strong><ul id="4228ac6a-aab1-8079-abd2-da6143686986" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Critical First Two Weeks:</strong> A listing receives peak buyer and agent attention during its <strong>first 14 days</strong> on the market. Once that &quot;new listing&quot; novelty window passes, subsequent price reductions cannot recapture initial momentum.</li></ul><ul id="4228ac6a-aab1-8062-a7fe-c0916d627168" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Benefits of Pricing Right (or Slightly Below Market):</strong><ul id="4228ac6a-aab1-80e6-9f73-c6c7ccce9866" class="bulleted-list" dir="auto"><li style="list-style-type:square">Generates immediate showing traffic and heightened buyer urgency.</li></ul><ul id="4228ac6a-aab1-807a-9be6-cf0799ee60b4" class="bulleted-list" dir="auto"><li style="list-style-type:square">Frequently triggers <strong>multiple offers</strong>, driving the final contract price up toward—or above—true market value.</li></ul></li></ul><ul id="4228ac6a-aab1-803e-9633-f2fa58d528f1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Hazards of Overpricing:</strong><ul id="4228ac6a-aab1-809f-98a6-f3e995aa13d0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Repels qualified buyers who filter searches within realistic market brackets and instead helps sell properly priced competing homes.</li></ul><ul id="4228ac6a-aab1-804e-bd0b-d3366e76a938" class="bulleted-list" dir="auto"><li style="list-style-type:square">Leads to extended <strong>Days on Market (DOM)</strong> and visible price cuts, causing buyers to assume <em>&quot;something is wrong with the house&quot;</em> and submit lowball offers.</li></ul></li></ul><ul id="4228ac6a-aab1-804d-a41e-ce3cb2100ea1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Managing Seller Attachment &amp; Walking Away:</strong> Sellers naturally overestimate their home&#x27;s value due to emotional attachment. Use objective comp data to help them view the property through a buyer&#x27;s eyes—and if a seller insists on an unrealistic, unsellable listing price, be willing to <strong>walk away from the listing</strong> rather than waste marketing funds and damage your professional reputation.</li></ul></li></ul><ul id="4228ac6a-aab1-8052-b9bd-d083f290ded6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How the Multiple Listing Service (MLS) Works &amp; Limited-Service Listings</strong><ul id="4228ac6a-aab1-8042-bbd4-ca96ae16fb0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Collective Regulated Database:</strong> An MLS is a member-only database connecting listing brokers and buyer brokers across a local market. Members typically submit <strong>exclusive right-to-sell</strong> and <strong>exclusive agency</strong> listings, giving sellers broad market exposure while enabling cooperating brokers to bring buyers and earn agreed compensation.</li></ul><ul id="4228ac6a-aab1-8073-97a2-f534f14b7fed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>NAR Clear Cooperation Policy (</strong><code><strong>Policy Statement 8.0</strong></code><strong>):</strong> Under NAR MLS rules, within <strong>1 business day</strong> of marketing a residential listing to the public (via yard signs, social media, flyers, public websites, or multi-brokerage blasts), the listing broker must submit the property to the MLS for cooperation with other MLS participants—unless the seller signs an <strong>Office Exclusive</strong> certification keeping marketing strictly internal within the listing brokerage. <em>(Note: NAR also permits individual MLSs to offer a seller-directed &quot;Delayed Marketing Exempt Listing&quot; window prior to public IDX/syndication.)</em></li></ul><ul id="4228ac6a-aab1-80a4-8c1b-d821697802f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Flat-Fee / Limited-Service MLS Listings:</strong> Homeowners cannot post directly to an MLS without a licensed broker. Some brokerages offer <strong>flat-fee limited-service listings</strong>—entering the property into the MLS for an upfront fee while the seller handles showings, disclosures, negotiations, and contract administration independently.</li></ul></li></ul><ul id="4228ac6a-aab1-8012-b16a-ff58ce39dec1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Truth-in-Advertising &amp; The CAN-SPAM Act</strong><ul id="4228ac6a-aab1-8054-a7a7-ec32a8a7fe2f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>FTC Truth-in-Advertising Standards (Federal Trade Commission Act):</strong> Every real estate advertisement must be:<ol type="1" id="4228ac6a-aab1-801f-9ade-dac894b5452d" class="numbered-list" start="1" dir="auto"><li><strong>Truthful and non-deceptive</strong> (no false statements or omissions of material facts)</li></ol><ol type="1" id="4228ac6a-aab1-80ec-9c9f-eb94b7553448" class="numbered-list" start="2" dir="auto"><li><strong>Backed up with objective evidence</strong> (substantiated claims)</li></ol><ol type="1" id="4228ac6a-aab1-8073-96de-c4f5e743e7ab" class="numbered-list" start="3" dir="auto"><li><strong>Fair</strong> (accurately representing the property/service without causing consumer injury)</li></ol></li></ul><ul id="4228ac6a-aab1-80fa-b360-d781fc2bf6ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>CAN-SPAM Act (2003) Email Compliance:</strong><table id="4228ac6a-aab1-806e-b5f2-faa0a824c990" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80e1-98ff-ce231a52d539" dir="ltr"><td id="Djtf" class=""><strong>Commercial Email Requirement</strong></td><td id="ujQ&gt;" class=""><strong>Specific Legal Rule</strong></td></tr><tr id="4228ac6a-aab1-8042-a2f3-f13787ce00ba" dir="ltr"><td id="Djtf" class=""><strong>Mandatory Inclusions</strong></td><td id="ujQ&gt;" class="">• Clear <strong>opt-out / unsubscribe</strong> mechanism honored within <strong>10 business days</strong><br/><br/>• Sender&#x27;s <strong>valid physical postal address</strong><br/><br/>• Clear identification that the message is an <strong>advertisement</strong><br/><br/>• Accurate <strong>&quot;From,&quot; &quot;To,&quot; and &quot;Reply-To&quot;</strong> routing and domain identification<br/><br/>• At least one sentence of relevant body content</td></tr><tr id="4228ac6a-aab1-8089-a53e-d37d00c08552" dir="ltr"><td id="Djtf" class=""><strong>Strictly Prohibited Actions</strong></td><td id="ujQ&gt;" class="">• Sending unsolicited commercial messages to wireless devices without prior consent<br/><br/>• Using <strong>deceptive or misleading header information</strong><br/><br/>• Using <strong>misleading subject lines</strong> (e.g., putting <em>&quot;Free Pizza!&quot;</em> in a listing blast subject line when no free pizza is offered)</td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-8040-963a-d5e0fffbbd49" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Advertising Rules (</strong><code><strong>TREC Rule 1260-02-.12</strong></code><strong> &amp; </strong><code><strong>T.C.A. § 62-13-310(b)</strong></code><strong>)</strong><ul id="4228ac6a-aab1-805d-8796-c8b69a4835d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Counts as Advertising vs. Excluded Promotional Items:</strong><table id="4228ac6a-aab1-805f-9271-fe6026c6c01c" class="simple-table" dir="ltr"><tbody><tr id="4228ac6a-aab1-80a6-ba89-f38359dcc73b" dir="ltr"><td id="UK}&lt;" class=""><strong>Covered Under TREC Rule 1260-02-.12</strong></td><td id="&gt;EbV" class=""><strong>Excluded Licensee Promotional Items (Rule 1260-02-.12(1))</strong></td></tr><tr id="4228ac6a-aab1-802f-956b-ed5b98ef1458" dir="ltr"><td id="UK}&lt;" class="">Print, radio, TV, yard signs, flyers, letterheads, email signatures, websites, social media posts, and streaming video/audio recordings</td><td id="&gt;EbV" class="">Hats, pens, notepads, t-shirts, name tags, business cards, and sponsorship of charitable or community events <em>(Note: If a franchise trade name appears on business cards, contracts, or transaction documents, </em><em><code>Rule 1260-02-.12(4)(b)</code></em><em> still requires the licensee&#x27;s name, TREC-registered firm name, and firm telephone number.)</em></td></tr></tbody></table></li></ul></li></ul><ul id="4228ac6a-aab1-809b-b72e-c36d856db65e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Tennessee Print, Signage &amp; Online Rules:</strong><ul id="4228ac6a-aab1-80c7-8720-ee2fc430b6b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Firm Name &amp; Phone Number (</strong><code><strong>Rule 1260-02-.12(3)(b)</strong></code><strong>):</strong> Every advertisement must be under the principal broker&#x27;s direct supervision and conspicuously display the <strong>firm&#x27;s TREC-registered name and telephone number</strong>, with the <strong>firm name in letters the same size or larger</strong> than the individual licensee&#x27;s or team&#x27;s name.</li></ul><ul id="4228ac6a-aab1-804d-b986-f15ae547502f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written Owner &amp; Listing Broker Consent:</strong> Never place a sign on any property without the owner&#x27;s written authorization (<code>Rule 1260-02-.12(3)(d)</code>), and never advertise another licensee&#x27;s listing without written permission from the listing agent or listing broker (<code>Rule 1260-02-.12(3)(e)</code>).</li></ul><ul id="4228ac6a-aab1-80cb-8582-ffc8df08edf9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Website Requirements (</strong><code><strong>Rule 1260-02-.12(5)</strong></code><strong>):</strong><ul id="4228ac6a-aab1-808c-a8e2-d01d40a218a2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Every web page must conspicuously display the <strong>brokerage&#x27;s registered name and telephone number</strong>.</li></ul><ul id="4228ac6a-aab1-80a2-b4e1-f41b3ad62b4d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Any page displaying listings from an outside database (such as an IDX feed) must disclose that <strong>some or all listings may not belong to the brokerage</strong>.</li></ul><ul id="4228ac6a-aab1-8019-ad92-c1e4c63b3497" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>First-Generation Advertising Accuracy:</strong> Licensees must keep their own (&quot;first-generation&quot;) ads accurate and current, but are <strong>not liable</strong> for errors in third-party syndicated or aggregated ads outside their control.</li></ul></li></ul><ul id="4228ac6a-aab1-80d9-b433-ed7387614875" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>&quot;One Click Away&quot; Rule for Social Media (</strong><code><strong>Rule 1260-02-.12(6)</strong></code><strong>):</strong> On space-constrained social media posts, thumbnails, or digital ads where displaying full firm disclosures directly is impractical, the required <strong>firm name and telephone number</strong> may be <strong>one click away</strong>—meaning clicking the link or profile takes the consumer directly to a landing page displaying all required brokerage disclosures.</li></ul><figure id="4228ac6a-aab1-80b5-b987-f5e5a0b658b8" class="image" data-notion-image="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2011.png" dir="ltr"><a href="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2011.png"><img style="width:336px" src="Chapter%204%20-%20Market%20Value%20and%20Advertising/image%2011.png"/></a></figure></li></ul><p id="4228ac6a-aab1-8044-a8cd-f0ce9c7cb506" class="" dir="auto">
+</p></div><div id="4228ac6a-aab1-800d-9b2d-ec080e1ab39f" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4228ac6a-aab1-8072-a231-cd372e40833b" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4228ac6a-aab1-80b4-837b-f7e882aae17d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Adjustment Math</strong><ul id="4228ac6a-aab1-807b-b084-c211aca6f3cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When creating a CMA, you&#x27;ll find comps and adjust them by adding or subtracting the cost of features. This graphic helps you determine when to add or subtract:</li></ul><figure id="4228ac6a-aab1-8070-aa41-fbf09305b092" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/PricingAdjustment.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/PricingAdjustment.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/PricingAdjustment.png"/></a></figure></li></ul><ul id="4228ac6a-aab1-80fc-a69a-e13b304c03fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Supply and Demand</strong><ul id="4228ac6a-aab1-80a1-ac5f-f362272cb1da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Supply</strong> is determined by looking at the number of properties that are available for sale or rent.</li></ul><ul id="4228ac6a-aab1-8010-9510-e53e166bede0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Demand</strong> tells us how many consumers are willing and able to afford property.</li></ul></li></ul><ul id="4228ac6a-aab1-8013-8562-d7fc9a90ae4b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Seller&#x27;s Markets and Buyer&#x27;s Markets</strong><ul id="4228ac6a-aab1-80b8-9668-c3cc428fb264" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A seller’s market is a market condition in which the number of properties for sale does not meet the demand</strong> (number of people looking to buy). The pricing and negotiations of a transaction are typically in favor of the seller.</li></ul><ul id="4228ac6a-aab1-80a0-877a-f14f7cb42b99" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>A buyer&#x27;s market is the condition of having fewer buyers than the supply of homes for sale in an area.</strong> In a buyer’s market, there is relatively low demand for real estate.</li></ul></li></ul><ul id="4228ac6a-aab1-8040-a31d-f8f1092186d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Online Advertising Guidelines</strong><ul id="4228ac6a-aab1-8072-938a-db2e136b9003" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every web page needs to conspicuously show the brokerage&#x27;s <strong>name and telephone number.</strong></li></ul><ul id="4228ac6a-aab1-8091-aa89-d33060d53bcf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every web page that shows property listings from an <strong>outside database</strong> needs to state that the listings may not belong to the brokerage.</li></ul><ul id="4228ac6a-aab1-8023-9fb6-df10e43048c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every ad created by a brokerage needs to be accurate and up-to-date. A licensee is <em>not</em> responsible, though, for the accuracy of syndicated ads or third-party listings.</li></ul><ul id="4228ac6a-aab1-8057-9d72-e4c8692fee7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">These advertising guidelines also apply to social media. Here, though, required info (i.e., the brokerage name and telephone number) can be <strong>one click away</strong> from the ad.</li></ul><p id="4228ac6a-aab1-80d7-9fb2-e9e025a1cf54" class="" dir="auto">
+</p></li></ul></div></div><p id="4228ac6a-aab1-8086-b182-de002a3b5357" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

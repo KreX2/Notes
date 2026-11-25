@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 4 - Conditions and Interpretation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80a9-a583-d9f48b8e5605" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 4 - <strong>Conditions and Interpretation</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4238ac6a-aab1-80e0-bd09-f78a1ae78c5a" class="column-list" data-notion-column-list="" dir="auto"><div id="4238ac6a-aab1-80dd-99ef-f5a53da58f8f" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4238ac6a-aab1-805a-886a-fb15b59941b5" class="" dir="auto"><strong>Contract Conditions: Timing Classifications</strong></p><ul id="4238ac6a-aab1-80aa-9df6-e0eabdbcd138" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What a Contract Condition Is:</strong> An action, deed, or event—excluding the mere passage of a deadline—that acts as a qualifier affecting when a party&#x27;s contractual duty to perform begins, occurs, or ends.</li></ul><ul id="4238ac6a-aab1-809c-8ce1-f3d446daad1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Timing-Based Conditions:</strong><table id="4238ac6a-aab1-80a9-8de8-db7fdb7a70b6" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8069-84aa-e8d93aabf9e1" dir="ltr"><td id="tKWH" class=""><strong>Timing Category</strong></td><td id="us:a" class=""><strong>When the Event Occurs Relative to Duty</strong></td><td id="k\Vc" class=""><strong>Legal Effect &amp; Real Estate Example</strong></td></tr><tr id="4238ac6a-aab1-801b-82d9-f292ee0599e2" dir="ltr"><td id="tKWH" class=""><strong>1. Condition Precedent</strong></td><td id="us:a" class=""><strong>Before</strong> a party&#x27;s duty to perform arises.</td><td id="k\Vc" class="">Must occur or be satisfied before the obligation to close takes effect (e.g., a <strong>financing contingency</strong> requiring the buyer to obtain mortgage loan approval before being obligated to purchase).</td></tr><tr id="4238ac6a-aab1-80e9-9839-ce930f48c28e" dir="ltr"><td id="tKWH" class=""><strong>2. Condition Concurrent</strong></td><td id="us:a" class=""><strong>Simultaneously</strong> with the other party&#x27;s performance.</td><td id="k\Vc" class="">Both parties&#x27; obligations are mutually interdependent and act as conditions precedent to each other (e.g., <strong>closing a real estate sale</strong>, where the seller delivers the signed deed at the exact same moment the buyer tenders purchase funds).</td></tr><tr id="4238ac6a-aab1-8054-9ef8-dfb2537d95e3" dir="ltr"><td id="tKWH" class=""><strong>3. Condition Subsequent</strong></td><td id="us:a" class=""><strong>After</strong> a duty already exists, operating to end or discharge it.</td><td id="k\Vc" class="">Serves as a marker or escape/exit trigger that extinguishes an existing contractual obligation (e.g., <strong>seller bankruptcy</strong> prior to closing relieving the buyer of further obligation, or loss of a required professional license ending a service contract).</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-808d-9154-ea95de80ad48" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Conditions: Creation Classifications &amp; Precise Wording</strong><ul id="4238ac6a-aab1-80f2-a129-e1e60d1b1e8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Ways Conditions Are Created:</strong><ol type="1" id="4238ac6a-aab1-80a0-8e6d-df0baf722c44" class="numbered-list" start="1" dir="auto"><li><strong>Express Condition:</strong> Explicitly written or spoken directly into the contract terms (e.g., a written provision granting the buyer possession immediately upon closing).</li></ol><ol type="1" id="4238ac6a-aab1-8095-b248-cc1bacaae0d2" class="numbered-list" start="2" dir="auto"><li><strong>Implied Condition:</strong> Not explicitly written in the agreement, but presumed by law and custom to be part of the contract based on the parties&#x27; intent and the nature of the transaction (e.g., a team contracting a goalie is impliedly expected to supply team uniforms/equipment, or a seller impliedly agrees to provide reasonable property access for scheduled contract inspections).</li></ol><ol type="1" id="4238ac6a-aab1-8085-ac03-da2b8a240e84" class="numbered-list" start="3" dir="auto"><li><strong>Constructive Condition:</strong> Imposed by a court—even without express or implied agreement by the parties—when literal enforcement would produce an unjust or absurd result (e.g., requiring payment in U.S. dollars rather than cryptocurrency where the contract did not specify currency).</li></ol></li></ul><ul id="4238ac6a-aab1-80ee-8532-e9354b4b218f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Precision of Conditional Language (</strong><code><strong>UPL</strong></code><strong> Reminder):</strong> Words such as <em>&quot;when,&quot;</em> <em>&quot;if,&quot;</em> <em>&quot;provided that,&quot;</em> <em>&quot;except that,&quot;</em> and <em>&quot;unless&quot;</em> carry sharp legal distinctions that courts enforce strictly. Because subtle drafting shifts can alter who bears the burden of proof or forfeiture, licensees must avoid inventing custom conditional phrasing and refer clients to an attorney whenever custom legal wording is needed.</li></ul></li></ul><ul id="4238ac6a-aab1-807b-9843-cc37fc989a4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>How Courts Interpret Contracts</strong><ul id="4238ac6a-aab1-80c0-a71d-c4ceaea4d438" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Seven Core Judicial Interpretation Rules:</strong><ol type="1" id="4238ac6a-aab1-806b-b99b-c2c71da95207" class="numbered-list" start="1" dir="auto"><li><strong>Will Not Repair an Invalid Contract:</strong> Courts interpret existing valid agreements; if a contract lacks an essential element or is void, the court declares that no contract exists rather than rewriting it.</li></ol><ol type="1" id="4238ac6a-aab1-8060-860b-ecaa2a00237a" class="numbered-list" start="2" dir="auto"><li><strong>The Four Corners Rule:</strong> Courts determine the parties&#x27; intent strictly from the written words contained within the <strong>four corners of the contract document itself</strong>, excluding outside verbal statements unless the written text is ambiguous or incomplete.</li></ol><ol type="1" id="4238ac6a-aab1-80b4-87cc-d7596805e947" class="numbered-list" start="3" dir="auto"><li><strong>Practical, Objective Interpretation:</strong> Courts give words their plain, ordinary meaning and read the contract as a unified whole to give practical effect to the parties&#x27; objective intent.</li></ol><ol type="1" id="4238ac6a-aab1-80a3-807a-c296bfb40fb5" class="numbered-list" start="4" dir="auto"><li><strong>Construing Ambiguity Against the Drafter (</strong><code><strong>Contra Proferentem</strong></code><strong>):</strong> Any genuine ambiguity in contract language is interpreted <strong>in favor of the party who did NOT draft or supply</strong> the ambiguous wording.</li></ol><ol type="1" id="4238ac6a-aab1-8041-8cca-f73aef6cdb75" class="numbered-list" start="5" dir="auto"><li><strong>Hierarchy of Contract Language (</strong><code><strong>Handwritten &gt; Typed &gt; Preprinted</strong></code><strong>):</strong> Specific, negotiated additions take priority over standard form text—courts give highest priority to <strong>handwritten</strong> terms, followed by <strong>typewritten</strong> terms, over <strong>preprinted</strong> boilerplate.</li></ol><ol type="1" id="4238ac6a-aab1-8048-ab6d-e3bf779264ad" class="numbered-list" start="6" dir="auto"><li><strong>No Judicial Amendment:</strong> Courts will not unilaterally amend a valid contract to give a party a better deal than they negotiated.</li></ol><ol type="1" id="4238ac6a-aab1-80f5-be84-c8302c458c6f" class="numbered-list" start="7" dir="auto"><li><strong>Imposing Constructive Conditions for Justice:</strong> Courts may imply constructive conditions (and the implied duty of good faith and fair dealing) where necessary to prevent unfair forfeiture or injustice.</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-809d-86d3-dc82f2721316" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Specialized Real Estate Purchase Contracts: Co-op, Condominium &amp; Commercial</strong><ul id="4238ac6a-aab1-80f4-bc13-f89be161922e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Beyond standard single-family residential agreements (<code>Form RF401</code>), specialized property types require distinct ownership transfers, financing rules, and contractual clauses:<table id="4238ac6a-aab1-8022-a8f2-e7fd801daece" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8017-9123-dc653518a22d" dir="ltr"><td id="`vlx" class=""><strong>Contract Type</strong></td><td id="~DH&gt;" class=""><strong>Ownership Interest Conveyed</strong></td><td id="Aidt" class=""><strong>Financing &amp; Governance Mechanics</strong></td><td id=":oGR" class=""><strong>Key Contract-Specific Provisions</strong></td></tr><tr id="4238ac6a-aab1-800b-bcf4-e73a05e688c5" dir="ltr"><td id="`vlx" class=""><strong>1. Co-op Purchase Contract</strong> <em>(Cooperative Apartment)</em></td><td id="~DH&gt;" class=""><strong>Shares of stock</strong> in the cooperative corporation (<strong>personal property</strong>, not real property) paired with a <strong>proprietary lease</strong> to occupy the specific unit—no deed is delivered.</td><td id="Aidt" class="">Financed through a <strong>share loan</strong> governed by the <strong>Uniform Commercial Code (UCC)</strong> rather than a traditional real estate mortgage.</td><td id=":oGR" class="">• <strong>Board Approval Contingency:</strong> Sale is strictly conditioned on approval by the co-op&#x27;s board of directors (typically requiring financial disclosures, personal interviews, and reference checks).<br/><br/>• Transfer of stock certificate and assignment/issuance of the proprietary lease.</td></tr><tr id="4238ac6a-aab1-80e2-be1f-ca31872f8dac" dir="ltr"><td id="`vlx" class=""><strong>2. Condominium Purchase Contract</strong> <em>(Horizontal Property Regime)</em></td><td id="~DH&gt;" class=""><strong>Fee simple title</strong> to the individual unit&#x27;s interior airspace (&quot;walls in&quot;) plus an <strong>undivided fractional interest</strong> in the <strong>common elements</strong> (roof, hallways, grounds, amenities) via deed.</td><td id="Aidt" class="">Standard residential mortgage financing; governed in Tennessee by the <strong>Horizontal Property Act</strong> (<code>T.C.A. § 66-27-101 et seq.</code>) or the <strong>Tennessee Condominium Act of 2008</strong> (<code>T.C.A. § 66-27-201 et seq.</code>).</td><td id=":oGR" class="">• Explicit delineation of <strong>individual unit boundaries</strong>, <strong>general common elements</strong>, and <strong>limited common elements</strong> (e.g., assigned parking spaces, balconies).<br/><br/>• Review of HOA/COA governing documents (Master Deed/Declaration, Bylaws, Rules, budget, reserve study, and special assessments).</td></tr><tr id="4238ac6a-aab1-80c8-98ca-ec5ae950b77f" dir="ltr"><td id="`vlx" class=""><strong>3. Commercial Purchase Contract</strong></td><td id="~DH&gt;" class="">Fee simple or leased-fee title to income-producing or business real estate (office, retail, industrial, multifamily).</td><td id="Aidt" class="">Commercial loans, private equity, or multi-source syndications; carries <strong>fewer statutory consumer protections</strong> than residential sales (<code>caveat emptor</code> applies strongly).</td><td id=":oGR" class="">• <strong>Highly Controlled Escrow:</strong> Complex multi-tranche earnest money and closing escrow accounting.<br/><br/>• <strong>Extensive Due Diligence:</strong> Extended feasibility periods covering <strong>zoning compliance</strong>, <strong>Phase I/II environmental site assessments</strong>, ALTA surveys, and engineering audits.<br/><br/>• <strong>Commercial Tenant Leases:</strong> Review of rent rolls, lease expiration dates, security deposits, tenant estoppel certificates, and any leases in default.</td></tr></tbody></table></li></ul></li></ul><ul id="4238ac6a-aab1-80c7-b619-ed20a99af606" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Electronic Signatures &amp; The Uniform Electronic Transactions Act (</strong><code><strong>UETA</strong></code><strong>)</strong><ul id="4238ac6a-aab1-80bf-b48c-eda28e2fcbf6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What UETA Is:</strong> Created in <strong>1999</strong> by the National Conference of Commissioners on Uniform State Laws and adopted in Tennessee as <code><strong>T.C.A. §§ 47-10-101</strong></code><strong> to </strong><code><strong>47-10-123</strong></code>, UETA establishes uniform legal standards validating electronic records and electronic signatures in business and real estate transactions. <em>(It operates alongside the federal </em><em><strong>ESIGN Act</strong></em><em> of 2000 for interstate commerce.)</em></li></ul><ul id="4238ac6a-aab1-80e2-b768-ea7f938f7967" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Legal Rule (</strong><code><strong>T.C.A. § 47-10-107</strong></code><strong>):</strong> A contract or signature <strong>cannot be denied legal effect or enforceability solely because it is in electronic form</strong>. When parties agree to conduct a transaction electronically (<code>T.C.A. § 47-10-105</code>), an <strong>electronic signature</strong> carries the exact same legal weight and binding authority as a traditional <strong>&quot;wet&quot; ink signature</strong>—including on real estate purchase contracts, listing agreements, and disclosures.</li></ul><ul id="4238ac6a-aab1-80ce-abbf-ed81f45bb72d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Scope &amp; Record Rules:</strong><ul id="4238ac6a-aab1-8024-ba2b-e28b1268a074" class="bulleted-list" dir="auto"><li style="list-style-type:square">Applies only when both parties consent (expressly or by conduct) to transact electronically (<code>T.C.A. § 47-10-105</code>).</li></ul><ul id="4238ac6a-aab1-8039-ba05-e934c6e1f4db" class="bulleted-list" dir="auto"><li style="list-style-type:square">Electronic records retained in an accurate, reproducible format satisfy statutory record-retention rules (<code>T.C.A. § 47-10-112</code>, including TREC&#x27;s <code>3</code>year brokerage record retention requirement).</li></ul><ul id="4238ac6a-aab1-8004-8229-ca95f2276412" class="bulleted-list" dir="auto"><li style="list-style-type:square">Statutory exclusions (<code>T.C.A. § 47-10-103</code>) exclude wills, codicils, testamentary trusts, and most provisions of the Uniform Commercial Code.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-805e-889a-e96363a503af" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Electronic Signatures in Global and National Commerce Act (</strong><code><strong>ESIGN Act</strong></code><strong>, </strong><code><strong>15 U.S.C. §§ 7001–7006</strong></code><strong>)</strong><ul id="4238ac6a-aab1-801a-a173-e261fbd266b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Core Legal Rule:</strong> Signed into federal law on <strong>June 30, 2000</strong>, the ESIGN Act regulates electronic signatures and records in interstate and foreign commerce, establishing that a signature, contract, or record <strong>cannot be denied legal effect, validity, or enforceability solely because it is in electronic form</strong>.</li></ul><ul id="4238ac6a-aab1-8074-8df9-f3bcae8d5128" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ESIGN vs. UETA:</strong><ul id="4238ac6a-aab1-80d1-b477-e27b1ee2ea1f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>ESIGN:</strong> A <strong>federal law</strong> applying nationwide across interstate and international transactions.</li></ul><ul id="4238ac6a-aab1-801e-91ba-dc353c37c77a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>UETA:</strong> A <strong>uniform state law</strong> adopted on a state-by-state basis (enacted in Tennessee at <code>T.C.A. § 47-10-101 et seq.</code>) governing intrastate electronic transactions.</li></ul></li></ul><ul id="4238ac6a-aab1-80a4-b5af-ea44047cf530" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Consumer Consent Requirements:</strong><ol type="1" id="4238ac6a-aab1-8054-91a7-d9ba99b3c8db" class="numbered-list" start="1" dir="auto"><li>Both parties must receive a clear <strong>Consumer Disclosure</strong> outlining their rights regarding electronic records and signatures (including the right to paper copies and how to withdraw consent).</li></ol><ol type="1" id="4238ac6a-aab1-8032-bdc9-ce2a2083ae71" class="numbered-list" start="2" dir="auto"><li>Both parties must affirmatively <strong>consent</strong> to conduct the transaction electronically.</li></ol><ol type="1" id="4238ac6a-aab1-8060-a02c-d38ad6ff11b0" class="numbered-list" start="3" dir="auto"><li>Consent may be given electronically, provided it reasonably demonstrates the consumer can access the electronic records in the format used.</li></ol></li></ul><ul id="4238ac6a-aab1-8061-88f5-f1ae613da239" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Electronic Record-Keeping Standards:</strong><ul id="4238ac6a-aab1-803f-a86b-d56670e07786" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accuracy:</strong> The electronic record must accurately reflect the information set forth in the contract or transaction.</li></ul><ul id="4238ac6a-aab1-803a-be60-d48ed6f149a1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accessibility:</strong> The record must remain accessible to all persons entitled to access it for the period required by law.</li></ul><ul id="4238ac6a-aab1-800d-a250-dec87025aef2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Reproducibility:</strong> The record must be capable of being accurately reproduced for later reference (whether by transmission, printing, or otherwise).</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-80e7-988b-c50dbc1a9221" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Federal Housing Administration (</strong><code><strong>FHA</strong></code><strong>) Electronic Signature Milestones</strong><table id="4238ac6a-aab1-8063-af4d-d8e417410ef4" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-80d1-8278-c3bd67132689" dir="ltr"><td id="J~[&gt;" class=""><strong>Policy Date</strong></td><td id="uno;" class=""><strong>FHA Milestone (HUD Mortgagee Letters)</strong></td><td id="mcVd" class=""><strong>Practical Impact on Real Estate &amp; Lending</strong></td></tr><tr id="4238ac6a-aab1-8095-a2f3-f06013b50dbf" dir="ltr"><td id="J~[&gt;" class=""><strong>April 8, 2010</strong></td><td id="uno;" class="">Authorized electronic signatures on <strong>third-party documents</strong> originated and signed outside the lender&#x27;s control (<code>Mortgagee Letter 2010-14</code>).</td><td id="mcVd" class="">Allowed buyers and sellers to e-sign <strong>purchase contracts, counteroffers, and real estate addenda</strong> on FHA-financed transactions.</td></tr><tr id="4238ac6a-aab1-8025-be38-d10f28abd371" dir="ltr"><td id="J~[&gt;" class=""><strong>January 30, 2014</strong></td><td id="uno;" class="">Expanded electronic signature acceptance to <strong>FHA-insured mortgage origination, servicing, loss mitigation, and HUD REO sales contracts</strong> (<code>Mortgagee Letter 2014-03</code>, with forward mortgage promissory notes permitted starting December 31, 2014).</td><td id="mcVd" class="">Enabled end-to-end digital loan binders and mortgage documentation alongside electronic real estate contracts.</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-80b2-87ca-ef0b6acc2242" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paperless Transactions in Modern Real Estate Practice</strong><ul id="4238ac6a-aab1-8006-b5e5-eb0ad9c0dfa4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Digital Consumer Expectations:</strong> Buyers and sellers increasingly expect mobile-friendly, digital workflows—with NAR research highlighting that <strong>millennials represent the largest share of homebuyers (</strong><code><strong>37%</strong></code><strong> in the 2019 report)</strong>, <code><strong>44%</strong></code><strong> of all buyers begin their home search online</strong>, and <code><strong>80%</strong></code><strong> of millennials find their home on a mobile device</strong>.</li></ul><ul id="4238ac6a-aab1-8071-9167-da2c61300a09" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Operational Advantages for Licensees &amp; Clients:</strong><ul id="4238ac6a-aab1-80f4-8ed7-dd322b97339c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Immediate On-Site Execution:</strong> Using tablets or smartphones during showings allows agents to draft, e-sign, submit, and deliver copies of purchase offers before leaving the property.</li></ul><ul id="4238ac6a-aab1-8062-acb6-ccf99194f017" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seamless Support for Long-Distance &amp; Military Clients:</strong> Eliminates geographic delays for relocating families, out-of-state investors, and active-duty military personnel who cannot sign in person.</li></ul><ul id="4238ac6a-aab1-8033-b9f1-ec64368fd8b4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>&quot;Sight Unseen&quot; Digital Property Folders:</strong> Cloud sharing and storage platforms allow licensees to organize property disclosures, high-resolution photos, video walk-throughs, plat maps, and inspection reports into centralized folders accessible from any internet-connected device.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-80e1-af6b-f3201a7115b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Accommodating Client Preferences &amp; Digital Accessibility</strong><ul id="4238ac6a-aab1-80b3-8a0e-e30f5c01baa2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Assessing Client Access &amp; Comfort Early:</strong> Not every client has reliable access to a computer, smartphone, or high-speed internet—or feels comfortable completing electronic signatures. During your initial consultation, ask how the client prefers to communicate and receive documents, and explain both digital and paper options upfront.</li></ul><ul id="4238ac6a-aab1-80dc-84fb-fdbc5f8ec425" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Remembering Legal Consent Rules (</strong><code><strong>UETA</strong></code><strong> / </strong><code><strong>ESIGN</strong></code><strong>):</strong> Under both Tennessee&#x27;s UETA (<code>T.C.A. § 47-10-105</code>) and the federal ESIGN Act (<code>15 U.S.C. § 7001(c)</code>), electronic transactions require <strong>mutual consent</strong>. A client can never be forced to e-sign; if a client prefers physical paper documents and wet-ink signatures, accommodate their comfort level without friction while keeping your own brokerage records archived digitally.</li></ul></li></ul><ul id="4238ac6a-aab1-8055-9bcb-e05ea5ef4b0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Benefits of Going Paperless</strong><table id="4238ac6a-aab1-8044-ac28-c6a6816b1317" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8098-a0eb-d8a3b0329cc4" dir="ltr"><td id="UNP{" class=""><strong>Benefit Category</strong></td><td id="dMuA" class=""><strong>Operational &amp; Client Impact</strong></td></tr><tr id="4238ac6a-aab1-801e-82e2-d1684ab84249" dir="ltr"><td id="UNP{" class=""><strong>1. Time Savings &amp; Competitive Speed</strong></td><td id="dMuA" class="">• Accelerates obtaining signatures on offers, counteroffers, and time-sensitive contingencies.<br/><br/>• Delivers property disclosures, inspection reports, and forms instantaneously.<br/><br/>• Helps buyers submit offers first in competitive, multiple-offer markets.</td></tr><tr id="4238ac6a-aab1-80e6-8a2c-eba73d3e2c6a" dir="ltr"><td id="UNP{" class=""><strong>2. Direct Cost Reduction</strong></td><td id="dMuA" class="">• Eliminates recurring spending on printers, toner, paper, and equipment maintenance.<br/><br/>• Reduces expenses for physical filing cabinets, folders, and off-site storage.<br/><br/>• Cuts postage, courier fees, and fuel/driving time spent hand-delivering paper packets.</td></tr><tr id="4238ac6a-aab1-8050-8a58-fbfd91c1cf63" dir="ltr"><td id="UNP{" class=""><strong>3. Environmental Sustainability</strong></td><td id="dMuA" class="">• Cuts paper consumption, reducing deforestation, water usage, and printing waste beyond recycling alone.</td></tr><tr id="4238ac6a-aab1-80dd-9522-d83b6b5cd66d" dir="ltr"><td id="UNP{" class=""><strong>4. Physical Workspace Efficiency</strong></td><td id="dMuA" class="">• Eliminates desk clutter and bulky file cabinets while enabling instant search and retrieval of client files from anywhere.</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-80c2-aeba-fd595cb15cda" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overcoming Challenges &amp; Building a Paperless Workflow</strong><ul id="4238ac6a-aab1-806b-a09a-e6c5ae19d4a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Roadblocks to Adoption:</strong><ul id="4238ac6a-aab1-80b1-97c7-f2f0db89a40f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Difficulty finding a single software platform that cleanly replaces existing paper habits</li></ul><ul id="4238ac6a-aab1-803a-b06a-c57f5f6e8161" class="bulleted-list" dir="auto"><li style="list-style-type:square">Resistance to changing established routines</li></ul><ul id="4238ac6a-aab1-804f-811d-f1d09e500361" class="bulleted-list" dir="auto"><li style="list-style-type:square">Upfront subscription and hardware expenses</li></ul></li></ul><ul id="4238ac6a-aab1-80af-b340-f2b416c01ece" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Five Steps for a Smooth Paperless Transition:</strong><ol type="1" id="4238ac6a-aab1-80eb-96f2-e84777d299ca" class="numbered-list" start="1" dir="auto"><li><strong>Map Your Day-to-Day Workflow &amp; Consult Your Broker:</strong> Before purchasing third-party tools, check what transaction management, e-signature, and cloud storage platforms your principal broker already provides (and ensure compliance with TREC&#x27;s <code>3</code>year record retention rule under <code>T.C.A. § 62-13-321</code>).</li></ol><ol type="1" id="4238ac6a-aab1-80a7-82a6-c955e5f5be79" class="numbered-list" start="2" dir="auto"><li><strong>Master Document Digitization:</strong> Learn to scan, convert, merge, and organize clean PDF files on the go.</li></ol><ol type="1" id="4238ac6a-aab1-8056-a814-dcdaa756acb4" class="numbered-list" start="3" dir="auto"><li><strong>Establish a Client Onboarding Plan:</strong> Create standardized digital templates and step-by-step client instructions for e-signing alongside a seamless paper backup workflow.</li></ol><ol type="1" id="4238ac6a-aab1-8038-b984-e60590a9e171" class="numbered-list" start="4" dir="auto"><li><strong>Build a Structured Client &amp; Transaction Database:</strong> Organize active deals, disclosures, and post-closing archives consistently by property address and client name.</li></ol><ol type="1" id="4238ac6a-aab1-8000-8e5b-ce3c355b8069" class="numbered-list" start="5" dir="auto"><li><strong>Maintain Cybersecurity, Updates &amp; Backups:</strong> Protect client financial and personal data by securing wireless connections (avoiding unsecured public Wi-Fi for sensitive transmissions), running regular software/antivirus updates, and maintaining automated encrypted cloud backups.</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-8062-96e3-fa48cd8b833a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why &quot;Intent to Sign&quot; Is Mandatory Under Both </strong><code><strong>ESIGN</strong></code><strong> and </strong><code><strong>UETA</strong></code><ul id="4238ac6a-aab1-8080-8da2-d57bebba611f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Definition of an Electronic Signature (</strong><code><strong>T.C.A. § 47-10-102(8)</strong></code><strong> &amp; </strong><code><strong>15 U.S.C. § 7006(5)</strong></code><strong>):</strong> Both Tennessee&#x27;s Uniform Electronic Transactions Act (UETA) and the federal ESIGN Act define an electronic signature as an electronic sound, symbol, or process attached to or logically associated with a record <strong>and executed or adopted by a person with the intent to sign the record</strong>.</li></ul><ul id="4238ac6a-aab1-8039-9b92-fa65c870679c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect of Missing Intent:</strong> Just like a traditional wet-ink signature, an electronic signature is legally valid only if the signer genuinely <strong>intended to sign and be bound</strong>. Because Kate did not intend to execute a binding purchase offer, the required mutual assent (&quot;meeting of the minds&quot;) and statutory intent to sign were absent, rendering the paperwork <strong>null and void</strong>.</li></ul><ul id="4238ac6a-aab1-800a-8064-ead0b7df6b57" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Core Legal Requirements for Valid E-Signatures (</strong><code><strong>ESIGN</strong></code><strong> &amp; </strong><code><strong>UETA</strong></code><strong>):</strong><ol type="1" id="4238ac6a-aab1-8004-af31-c9fb8b463522" class="numbered-list" start="1" dir="auto"><li><strong>Intent to Sign:</strong> The signer must take a deliberate action demonstrating intent to be legally bound by the document—not an accidental click or misunderstanding.</li></ol><ol type="1" id="4238ac6a-aab1-8011-9b22-c533699e04a4" class="numbered-list" start="2" dir="auto"><li><strong>Consent to Transact Electronically (</strong><code><strong>T.C.A. § 47-10-105</strong></code><strong>):</strong> Both parties must agree to conduct the transaction electronically (with mandatory Consumer Disclosures provided before consent under ESIGN).</li></ol><ol type="1" id="4238ac6a-aab1-80cf-b0b7-e4a9157989bf" class="numbered-list" start="3" dir="auto"><li><strong>Attribution &amp; Association with the Record (</strong><code><strong>T.C.A. § 47-10-109</strong></code><strong>):</strong> The signature must be logically attached to the exact electronic document signed and attributable to the specific signer (supported by audit trails, IP/timestamp logs, and authentication).</li></ol><ol type="1" id="4238ac6a-aab1-8051-9715-e662667b404f" class="numbered-list" start="4" dir="auto"><li><strong>Record Retention &amp; Reproducibility (</strong><code><strong>T.C.A. § 47-10-112</strong></code><strong>):</strong> The signed record must remain accessible and accurately reproducible for all entitled parties.</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-80bc-8118-d2d7f245cd22" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Best Practices to Prevent Accidental or Unintended E-Signatures</strong><ul id="4238ac6a-aab1-8050-9d1b-f7455985a07e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-Signing Client Briefing:</strong> Before sending any electronic document package, review the rules and legal effect of electronic signatures with the client—explaining clearly that clicking through and adopting an e-signature carries the <strong>exact same binding legal force as signing in ink</strong>.</li></ul><ul id="4238ac6a-aab1-8059-926f-e139244e6d88" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Walk Through Documents Prior to Sending:</strong> Review the key business terms, contingencies, and deadlines with the client first (by phone, video, or in person) so they never open an e-signature envelope thinking it is merely a draft, estimate, or informational preview.</li></ul><ul id="4238ac6a-aab1-8070-bd4c-c9c796efaf02" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clearly Label Drafts vs. Executable Contracts:</strong> Never send an unreviewed working draft through an active e-signature signing workflow; send preliminary drafts as standard read-only PDFs clearly marked <em>&quot;DRAFT — FOR REVIEW ONLY&quot;</em> until the client explicitly confirms they are ready to sign and submit.</li></ul></li></ul><ul id="4238ac6a-aab1-8059-b192-c7f0fafe900f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Why &quot;Intent to Sign&quot; Is Mandatory Under Both </strong><code><strong>ESIGN</strong></code><strong> and </strong><code><strong>UETA</strong></code><ul id="4238ac6a-aab1-8040-9ed4-f57d69c9750f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Definition of an Electronic Signature (</strong><code><strong>T.C.A. § 47-10-102(8)</strong></code><strong> &amp; </strong><code><strong>15 U.S.C. § 7006(5)</strong></code><strong>):</strong> Both Tennessee&#x27;s Uniform Electronic Transactions Act (UETA) and the federal ESIGN Act define an electronic signature as an electronic sound, symbol, or process attached to or logically associated with a record <strong>and executed or adopted by a person with the intent to sign the record</strong>.</li></ul><ul id="4238ac6a-aab1-8072-bd5f-f5838555e820" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Effect of Missing Intent:</strong> Just like a traditional wet-ink signature, an electronic signature is legally valid only if the signer genuinely <strong>intended to sign and be bound</strong>. Because Kate did not intend to execute a binding purchase offer, the required mutual assent (&quot;meeting of the minds&quot;) and statutory intent to sign were absent, rendering the paperwork <strong>null and void</strong>.</li></ul><ul id="4238ac6a-aab1-80fe-bf71-ed2ab8bd9f3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Core Legal Requirements for Valid E-Signatures (</strong><code><strong>ESIGN</strong></code><strong> &amp; </strong><code><strong>UETA</strong></code><strong>):</strong><ol type="1" id="4238ac6a-aab1-800a-a6f6-f13878affef2" class="numbered-list" start="1" dir="auto"><li><strong>Intent to Sign:</strong> The signer must take a deliberate action demonstrating intent to be legally bound by the document—not an accidental click or misunderstanding.</li></ol><ol type="1" id="4238ac6a-aab1-8012-a4ee-c5900395fc71" class="numbered-list" start="2" dir="auto"><li><strong>Consent to Transact Electronically (</strong><code><strong>T.C.A. § 47-10-105</strong></code><strong>):</strong> Both parties must agree to conduct the transaction electronically (with mandatory Consumer Disclosures provided before consent under ESIGN).</li></ol><ol type="1" id="4238ac6a-aab1-802f-bacd-c940d38a1b6b" class="numbered-list" start="3" dir="auto"><li><strong>Attribution &amp; Association with the Record (</strong><code><strong>T.C.A. § 47-10-109</strong></code><strong>):</strong> The signature must be logically attached to the exact electronic document signed and attributable to the specific signer (supported by audit trails, IP/timestamp logs, and authentication).</li></ol><ol type="1" id="4238ac6a-aab1-80a0-bead-e4ebf9e9a9ba" class="numbered-list" start="4" dir="auto"><li><strong>Record Retention &amp; Reproducibility (</strong><code><strong>T.C.A. § 47-10-112</strong></code><strong>):</strong> The signed record must remain accessible and accurately reproducible for all entitled parties.</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-8003-bc02-dc1d75140cdd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Best Practices to Prevent Accidental or Unintended E-Signatures</strong><ul id="4238ac6a-aab1-80cd-b4de-ebefb98345cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-Signing Client Briefing:</strong> Before sending any electronic document package, review the rules and legal effect of electronic signatures with the client—explaining clearly that clicking through and adopting an e-signature carries the <strong>exact same binding legal force as signing in ink</strong>.</li></ul><ul id="4238ac6a-aab1-80c2-b86d-ddb342625996" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Walk Through Documents Prior to Sending:</strong> Review the key business terms, contingencies, and deadlines with the client first (by phone, video, or in person) so they never open an e-signature envelope thinking it is merely a draft, estimate, or informational preview.</li></ul><ul id="4238ac6a-aab1-80dc-ae00-c2b66804546c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Clearly Label Drafts vs. Executable Contracts:</strong> Never send an unreviewed working draft through an active e-signature signing workflow; send preliminary drafts as standard read-only PDFs clearly marked <em>&quot;DRAFT — FOR REVIEW ONLY&quot;</em> until the client explicitly confirms they are ready to sign and submit.</li></ul></li></ul></div><div id="4238ac6a-aab1-801f-a1fe-ccf92b7b9ffc" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4238ac6a-aab1-803d-8966-d1c5cd9c25e9" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4238ac6a-aab1-8009-8de3-c3ad7123c8e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condition Precedent</strong><ul id="4238ac6a-aab1-8089-b00e-e26393c7f073" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condition precedent</strong> refers to an action, deed, or event that must come about prior to the duty to perform. A common example of a condition precedent is a financing contingency that is included in the purchase offer on a property. With this contingency, the buyer would not be obligated to go through with the purchase until such time as a loan was obtained.</li></ul></li></ul><ul id="4238ac6a-aab1-8050-b92c-e142f6df9ee9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condition Concurrent</strong><ul id="4238ac6a-aab1-8008-a4b6-f0ad148ece27" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condition concurrent</strong> describes a scenario where one condition must occur simultaneously with another. Each party to the contract has an obligation that acts as a condition precedent for the other. The parties&#x27; obligations are interdependent.</li></ul></li></ul><ul id="4238ac6a-aab1-806a-8eba-f7d9adc98c7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Condition Subsequent</strong><ul id="4238ac6a-aab1-805e-b4c7-d65dfd5b6873" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Condition subsequent</strong> describes an action, deed, or event that brings about an end to something else. In the context of contracts, it serves as a marker, discharging a party&#x27;s legal rights or duties. It can be considered an exit clause or escape clause in a contract.</li></ul></li></ul><ul id="4238ac6a-aab1-805d-8210-f72f403369f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Express Condition</strong><ul id="4238ac6a-aab1-804b-9a59-ed6eefed0177" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An <strong>express condition</strong> is a condition that is explicitly stated<em> </em>in the contract that must occur in order to trigger a duty to perform.</li></ul></li></ul><ul id="4238ac6a-aab1-8009-92ef-eede61708afc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Implied Condition</strong><ul id="4238ac6a-aab1-806a-86cd-c32c1fa262b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A condition not explicitly stated in the contract but presumed by law to be part of the agreement is known as an <strong>implied condition</strong>.</li></ul></li></ul><ul id="4238ac6a-aab1-80b9-ae95-e0f8f3d8d844" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Constructive Condition</strong><ul id="4238ac6a-aab1-80c3-b9f4-f51a13aa6d05" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>constructive condition</strong> is one that is imposed by the courts to further the interests of justice in a contract. Similar to an implied condition, a constructive condition is not explicitly stated in the contract, but, on the other hand, neither is there necessarily an implied agreement to the condition by the parties — which is why the court intervenes.</li></ul></li></ul><ul id="4238ac6a-aab1-8095-8a06-d6318459e7e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>General Court Guidelines Regarding Interpretation</strong><ul id="4238ac6a-aab1-80b2-8f2d-cf8cf9274100" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In general, the courts will:<ul id="4238ac6a-aab1-80a1-ac75-d7f9b5e2699e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Not repair an invalid contract but, rather, will declare that no contract exists</li></ul><ul id="4238ac6a-aab1-8076-80ab-e9191080408e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Take into consideration only that which appears in the written document (this is known as the <strong>four corners rule</strong>)</li></ul><ul id="4238ac6a-aab1-80ef-a789-d691c54cc028" class="bulleted-list" dir="auto"><li style="list-style-type:square">Attempt a practical interpretation, taking into consideration the parties&#x27; intent</li></ul><ul id="4238ac6a-aab1-803a-a954-d2c45b167815" class="bulleted-list" dir="auto"><li style="list-style-type:square">Interpret any ambiguity in favor of the party NOT responsible for the construction of the contract</li></ul><ul id="4238ac6a-aab1-806d-95f2-c60ddb24c310" class="bulleted-list" dir="auto"><li style="list-style-type:square">Give priority to handwritten or typewritten words in a fill-in-the-blanks or preprinted contract</li></ul><ul id="4238ac6a-aab1-80fe-a4a2-d09d40de1997" class="bulleted-list" dir="auto"><li style="list-style-type:square">Not amend or repair an invalid contract</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-8096-9318-e7a31ab99c15" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Impose a constructive condition for justice&#x27;s sake</li></ul><ul id="4238ac6a-aab1-80dd-a376-c8b0da9b7ce0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What Does UETA Do?</strong><ul id="4238ac6a-aab1-8022-98e7-cc559684be7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Uniform Electronic Transactions Act (UETA) says that <strong>electronic signatures are just as legal as handwritten signatures</strong>, and therefore have legally binding status. This applies to signatures on real estate contracts.</li></ul></li></ul><ul id="4238ac6a-aab1-803c-902d-d99641179d32" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What Does ESIGN Do?</strong><ul id="4238ac6a-aab1-8003-8fbe-d2a7ed681e0d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">On June 30, 2000, Congress signed the Electronic Signatures in Global and National Commerce Act (ESIGN) into law.</li></ul><ul id="4238ac6a-aab1-8014-8db3-da885d6b7bdb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Basically, <strong>ESIGN</strong> <strong>makes an electronic signature as valid as an ink signature.</strong></li></ul></li></ul><ul id="4238ac6a-aab1-80e3-9a4d-d21595e81eb9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Consent</strong><ul id="4238ac6a-aab1-8031-be2b-ecbeb0dd5e74" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In order for the electronic signature to hold, a few things have to happen:<ul id="4238ac6a-aab1-80bc-acbf-d058335324e2" class="bulleted-list" dir="auto"><li style="list-style-type:square">Both parties involved in a contract must be given a Consumer Disclosure regarding electronic signatures.</li></ul><ul id="4238ac6a-aab1-8005-9665-c5bd779c9846" class="bulleted-list" dir="auto"><li style="list-style-type:square">Both parties must agree that electronic signatures are acceptable.</li></ul><ul id="4238ac6a-aab1-80e9-90d5-fbe59ffc4080" class="bulleted-list" dir="auto"><li style="list-style-type:square">Consent can be expressed electronically and may be done explicitly.</li></ul></li></ul></li></ul><p id="4238ac6a-aab1-800f-bf62-f8fbecb2e275" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

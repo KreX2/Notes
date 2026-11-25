@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Filling Out the Contract</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80e9-b750-d29fd93acaff" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Filling Out the Contract</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4238ac6a-aab1-8062-9f62-c4f1dbe9d2ee" class="column-list" data-notion-column-list="" dir="auto"><div id="4238ac6a-aab1-800d-8de3-cb8c30e94d92" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4238ac6a-aab1-8080-a224-fedb825c299b" class="" dir="auto"><strong>Completing Contracts vs. Unauthorized Practice of Law (</strong><code><strong>T.C.A. § 62-13-312(b)(19)</strong></code><strong>)</strong></p><ul id="4238ac6a-aab1-8049-b571-c629feed0952" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Color Inside the Lines:</strong> Tennessee real estate licensees are permitted to <strong>fill in factual business blanks</strong> on attorney-drafted, preprinted brokerage or Tennessee REALTORS® forms (<code>Form RF401</code> and related addenda/amendments). Creating an original contract or drafting complex legal clauses crosses into the <strong>unauthorized practice of law</strong>, which is grounds for license discipline, suspension, or revocation.</li></ul><ul id="4238ac6a-aab1-8025-9377-d19db2533013" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Best Practices for Completing Contracts:</strong><ol type="1" id="4238ac6a-aab1-80f4-bec1-d2244df987ba" class="numbered-list" start="1" dir="auto"><li><strong>Never strike through preprinted contract language:</strong> If terms need modification, use an official addendum, amendment, or the Special Stipulations section rather than crossing out preprinted provisions.</li></ol><ol type="1" id="4238ac6a-aab1-8079-a217-ccd93a918335" class="numbered-list" start="2" dir="auto"><li><strong>Fill in every blank (</strong><code><strong>N/A</strong></code><strong>):</strong> Enter <code>&quot;N/A&quot;</code> (not applicable) in any unused field so blank spaces cannot be altered later.</li></ol><ol type="1" id="4238ac6a-aab1-8029-97ce-c923586d36c4" class="numbered-list" start="3" dir="auto"><li><strong>Never charge a separate fee for completing contracts:</strong> Charging a document-preparation fee constitutes practicing law without a license.</li></ol><ol type="1" id="4238ac6a-aab1-8066-9a0e-def98c2a331a" class="numbered-list" start="4" dir="auto"><li><strong>Preserve preprinted legal meanings:</strong> Do not insert unusual stipulations that distort the form&#x27;s legal structure or attempt to address complex legal scenarios the form was not designed to cover.</li></ol><ol type="1" id="4238ac6a-aab1-80a6-bb02-ff1cbc6ec094" class="numbered-list" start="5" dir="auto"><li><strong>Refer legal questions to an attorney:</strong> Always recommend that clients consult a licensed Tennessee real estate attorney whenever they have legal questions, want custom legal language, or are unsure of their legal rights.</li></ol></li></ul><ul id="4238ac6a-aab1-809c-922d-c67d7e41680c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>&quot;Explain, Don&#x27;t Advise&quot;:</strong><ul id="4238ac6a-aab1-80ca-92bb-e67294f72c98" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permitted (Explaining):</strong> Read preprinted contract provisions with clients, clarify factual business terms, and highlight critical deadlines so they understand what they are signing.</li></ul><ul id="4238ac6a-aab1-80af-a79a-f2077f0c1e13" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Prohibited (Advising):</strong> Tell clients what legal choice they <em>should</em> make or interpret how a contract clause will play out legally.</li></ul></li></ul><ul id="4238ac6a-aab1-8089-8725-ebde01596dfe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Components of a Real Estate Purchase Contract (</strong><code><strong>Tennessee REALTORS® Form RF401</strong></code><strong>)</strong><ul id="4238ac6a-aab1-80f2-9473-f535d932e1ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Legal Requirements (Must Be Present for Validity &amp; Enforceability):</strong><ul id="4238ac6a-aab1-80c4-94c4-db3c2faff899" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Full legal names of the parties:</strong> Specifically the <strong>buyer(s)</strong> and <strong>seller(s)</strong> (note that real estate licensees and brokerages are not parties to the purchase contract).</li></ul><ul id="4238ac6a-aab1-80b1-ba41-ea666387b259" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Legal description of the property:</strong> A street address alone is insufficient—the contract must identify the property by its recorded legal description (county, deed book/page or instrument number, and/or lot/subdivision).</li></ul><ul id="4238ac6a-aab1-803a-8b81-ddd7b0a72b08" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Signatures of all bound parties:</strong> Signed and dated by all buyers and sellers in compliance with the Statute of Frauds.</li></ul><ul id="4238ac6a-aab1-8088-9d8d-d5c6c5c1186b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Evidence of intent to convey ownership:</strong> Explicit words of conveyance stating that the seller agrees to sell and the buyer agrees to buy an ownership interest in the real property.</li></ul><ul id="4238ac6a-aab1-8022-a751-c96c83ef8e54" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Terms of the sale &amp; purchase price:</strong> The exact purchase price, method of payment (cash vs. financing), and material conditions of transfer.</li></ul></li></ul><ul id="4238ac6a-aab1-80df-a310-d8acaf78aff5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Standard Operational Sections Typically Included in </strong><code><strong>Form RF401</strong></code><strong>:</strong><ul id="4238ac6a-aab1-806a-9895-da43cd9f81f9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Financing / mortgage details:</strong> Loan type (Conventional, FHA, VA, USDA, or all-cash), loan contingency deadlines, and good-faith application duties.</li></ul><ul id="4238ac6a-aab1-8010-b17e-c5f36a79f89d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Earnest money / trust money deposit:</strong> Deposit amount, holder (escrow/trustee), delivery deadline, and handling/disbursement rules.</li></ul><ul id="4238ac6a-aab1-800b-b790-d742a5e8d04f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Closing date, location &amp; possession:</strong> Target closing date, title/closing agent designation, prorations (taxes, HOA dues, rents), and possession timing.</li></ul><ul id="4238ac6a-aab1-803c-8ef9-f5f23b33088a" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Inclusions &amp; exclusions:</strong> Specific fixtures and built-in items included with the property (e.g., ceiling fans, attached lighting, built-in appliances, window treatments) versus excluded items or leased equipment.</li></ul><ul id="4238ac6a-aab1-80f8-9039-c1b58c906bc8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Inspection &amp; appraisal contingencies:</strong> Inspection timeframe, repair negotiation/resolution procedures, and appraisal value contingency.</li></ul><ul id="4238ac6a-aab1-801d-b363-c682529b8217" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Acceptance procedures, deadlines &amp; disclosures:</strong> Offer expiration deadline (<code>Time is of the Essence</code>), Binding Agreement Date mechanics, mandatory property disclosures (Residential Property Condition Disclosure, Lead-Based Paint), and wire-fraud/agency confirmations.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-8005-95cf-f8e4cf26ff4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase Contract Requirements</strong><figure id="4238ac6a-aab1-80be-881e-cc615372ef36" class="image" data-notion-image="Chapter%203%20-%20Filling%20Out%20the%20Contract/image.png" dir="ltr"><a href="Chapter%203%20-%20Filling%20Out%20the%20Contract/image.png"><img style="width:288px" src="Chapter%203%20-%20Filling%20Out%20the%20Contract/image.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-80b0-a07d-d0b562dc2d04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Special Stipulations (&quot;Special Stips&quot;) &amp; Tennessee Form </strong><code><strong>RF707</strong></code><ul id="4238ac6a-aab1-80ee-b138-fa3e5586dca4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Hierarchy Rule (</strong><code><strong>Handwritten &gt; Typed &gt; Preprinted</strong></code><strong>):</strong> Special stipulations add transaction-specific conditions not already in the form or modify existing preprinted terms. Under contract interpretation rules, <strong>handwritten language overrides typed language, and typed language overrides preprinted contract language</strong>—meaning anything written in Special Stipulations can supersede conflicting preprinted terms in the contract.</li></ul><ul id="4238ac6a-aab1-8040-bb90-d39055484fb9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Best Practices &amp; Risk Management:</strong><ul id="4238ac6a-aab1-80aa-b6d3-fe12f2dfa0da" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Use approved forms first:</strong> Never write a custom stipulation if a preprinted Tennessee REALTORS® form or addendum already covers the contingency or issue.</li></ul><ul id="4238ac6a-aab1-8016-ae50-d9eb723846c3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Use Tennessee REALTORS® </strong><code><strong>Form RF707</strong></code><strong> (</strong><em><strong>Additional Contract Language / Special Stipulations Library</strong></em><strong>):</strong> Copy pre-drafted, attorney-approved clauses from <code>RF707</code> (covering items such as septic/well certifications, radon remediation, buyer/agent investor intent, or survey contingencies) rather than inventing legal language.</li></ul><ul id="4238ac6a-aab1-803c-84ac-f812787730de" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Be specific and unambiguous:</strong> State exact dollar amounts, calendar dates, and responsible parties. Never enter vague placeholders like <code>&quot;TBD&quot;</code>, <code>&quot;actual costs&quot;</code>, or <code>&quot;negotiable&quot;</code>, which can render a provision unenforceable.</li></ul><ul id="4238ac6a-aab1-8073-857c-e174ef1070f0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Refer complex drafting to an attorney:</strong> Consult your principal broker or advise the client to hire a Tennessee real estate attorney whenever custom legal wording is needed so you do not commit the unauthorized practice of law.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-8090-8dc2-efb1dc484a46" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Addenda vs. Amendments in Real Estate Contracts</strong><table id="4238ac6a-aab1-804b-815e-f3472cf8806c" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8093-b017-d011444a7c94" dir="ltr"><td id="ePzB" class=""><strong>Feature</strong></td><td id=":CG&lt;" class=""><strong>Addendum (Plural: Addenda)</strong></td><td id="ErRB" class=""><strong>Amendment</strong></td></tr><tr id="4238ac6a-aab1-8018-9afa-ccad604967d0" dir="ltr"><td id="ePzB" class=""><strong>Core Purpose</strong></td><td id=":CG&lt;" class=""><strong>Adds</strong> supplementary terms, disclosures, or contingencies not present in the base contract.</td><td id="ErRB" class=""><strong>Alters, modifies, or replaces</strong> existing terms in an already binding contract.</td></tr><tr id="4238ac6a-aab1-8025-a68c-f0f256c80319" dir="ltr"><td id="ePzB" class=""><strong>Timing</strong></td><td id=":CG&lt;" class="">Typically attached <strong>when the offer or counteroffer is drafted</strong> (prior to final binding acceptance) and incorporated by reference.</td><td id="ErRB" class="">Executed <strong>after the contract is already signed and binding</strong> (<code>Form RF653</code> or specialized amendment forms).</td></tr><tr id="4238ac6a-aab1-8079-8c62-f1e6a6369ff1" dir="ltr"><td id="ePzB" class=""><strong>Conflict Priority</strong></td><td id=":CG&lt;" class="">Controls over conflicting preprinted provisions in the base purchase agreement.</td><td id="ErRB" class="">Supersedes the specific original contract terms being amended once signed by <strong>all</strong> parties.</td></tr><tr id="4238ac6a-aab1-806d-85d3-ed28f47b7159" dir="ltr"><td id="ePzB" class=""><strong>Drafting &amp; Signatures</strong></td><td id=":CG&lt;" class="">Must be attorney-drafted (or a standard Tennessee REALTORS® form) and signed/referenced by all parties.</td><td id="ErRB" class="">Must be attorney-drafted (or a standard Tennessee REALTORS® form) and signed by <strong>every buyer and seller</strong> to be binding.</td></tr><tr id="4238ac6a-aab1-8015-8e6c-dfb7c1b3238c" dir="ltr"><td id="ePzB" class=""><strong>Common Tennessee Examples</strong></td><td id=":CG&lt;" class="">• Lead-Based Paint Disclosure (<code>Form RF209</code>)<br/><br/>• FHA/VA Loan Addendum (<code>Form RF625</code>)<br/><br/>• Sale of Buyer&#x27;s Property Contingency Addendum</td><td id="ErRB" class="">• General Amendment to Purchase and Sale Agreement (<code>Form RF653</code>)<br/><br/>• Closing Date / Possession Date Amendment (<code>Form RF657</code>)<br/><br/>• Repair / Replacement Amendment (<code>Form RF655</code>) or closing-cost credit changes</td></tr></tbody></table><figure id="4238ac6a-aab1-80c4-bcf0-ec510ba9db05" class="image" data-notion-image="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%201.png"><img style="width:720px" src="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%201.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-80c6-a355-fee5e4e130f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Definition &amp; Legal Effect of Contingencies</strong><ul id="4238ac6a-aab1-808f-bf0f-d3c8878f91b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What a Contingency Is:</strong> A contractual provision making the parties&#x27; obligation to close conditional upon the occurrence or satisfaction of a specified event.</li></ul><ul id="4238ac6a-aab1-804e-91ef-c9caba6a42da" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Status While Active:</strong> Until contingencies are satisfied or waived in writing, the contract remains conditionally <strong>voidable</strong> by the protected party without breach or forfeiture of earnest money—provided they act in good faith and deliver timely written notice before the deadline.</li></ul></li></ul><ul id="4238ac6a-aab1-809e-85a4-f713759fd9fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Common Real Estate Contingencies &amp; Tennessee </strong><code><strong>RF401</strong></code><strong> Rules</strong><figure id="4238ac6a-aab1-80ae-80ba-ec7fe37631ad" class="image" data-notion-image="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%202.png" dir="ltr"><a href="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%202.png"><img style="width:768px" src="Chapter%203%20-%20Filling%20Out%20the%20Contract/image%202.png"/></a></figure><table id="4238ac6a-aab1-808c-ad14-cc0522f2c169" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-803b-a367-d632277719fc" dir="ltr"><td id="`=o`" class=""><strong>Contingency Type</strong></td><td id="x{=l" class=""><strong>Core Purpose &amp; Protection</strong></td><td id="K@ai" class=""><strong>Tennessee REALTORS® Form RF401 Deadlines &amp; Mechanics</strong></td></tr><tr id="4238ac6a-aab1-8040-ac90-e432f674d76c" dir="ltr"><td id="`=o`" class=""><strong>1. Financing (Mortgage) Contingency</strong></td><td id="x{=l" class="">Protects the buyer from being obligated to buy if they cannot secure adequate mortgage financing under customary underwriting criteria.</td><td id="K@ai" class="">• <strong>If Financing Contingency Applies:</strong> Buyer must apply for the loan and pay for the credit report within <code><strong>3</strong></code><strong> days</strong> after the Binding Agreement Date (BAD), and within <code><strong>14</strong></code><strong> days</strong> after BAD warrant via written notification (<code>Form RF656</code>) that they have notified the lender of Intent to Proceed, secured hazard insurance, and have sufficient funds to close.<br/><br/>• <strong>If Financing Contingency Is Waived (e.g., All-Cash):</strong> Buyer must provide proof of available funds to close within <code><strong>5</strong></code><strong> days</strong> after BAD, and cannot use loan denial to cancel or recover earnest money.</td></tr><tr id="4238ac6a-aab1-80cd-8a3f-f63f3b9088a4" dir="ltr"><td id="`=o`" class=""><strong>2. Appraisal Contingency</strong></td><td id="x{=l" class="">Protects the buyer from overpaying if the property appraises below the agreed purchase price.</td><td id="K@ai" class="">• If contingent on appraisal, buyer must order the appraisal and furnish the appraiser&#x27;s name/phone and proof of order within <code><strong>5</strong></code><strong> days</strong> after BAD.<br/><br/>• If the appraisal comes in below purchase price, the buyer must deliver written notice within the contract&#x27;s appraisal deadline to either terminate (and recover earnest money) or waive the contingency; failure to act on time waives the contingency automatically.</td></tr><tr id="4238ac6a-aab1-80b2-98ab-fd09439f2db4" dir="ltr"><td id="`=o`" class=""><strong>3. Sale of Another Property Contingency</strong></td><td id="x{=l" class="">Protects a buyer who must sell and close on their existing home to afford the new purchase, preventing them from owning two homes simultaneously.</td><td id="K@ai" class="">• Added via a separate Tennessee REALTORS® Buyer Contingency Addendum (typically paired with a seller &quot;kick-out&quot; clause allowing the seller to continue marketing and require the buyer to waive the contingency within a set window if another qualified offer arrives).</td></tr><tr id="4238ac6a-aab1-8047-bd2e-c70e9ef7ac85" dir="ltr"><td id="`=o`" class=""><strong>4. Home Inspection Contingency</strong></td><td id="x{=l" class="">Gives the buyer a negotiated period to inspect structural, mechanical, environmental, and wood-destroying insect conditions before committing to proceed.</td><td id="K@ai" class="">• During the <strong>Inspection Period</strong> (calendar days ending at <code>11:59 p.m.</code> local time), the buyer may accept the property as-is, submit a written repair/replacement proposal (<code>Form RF655</code>) entering the <strong>Resolution Period</strong>, or terminate in writing for a full earnest money refund. Never advise a client to waive inspections.</td></tr><tr id="4238ac6a-aab1-8070-8e14-d0508ad156aa" dir="ltr"><td id="`=o`" class=""><strong>5. Attorney Review Contingency</strong></td><td id="x{=l" class="">Makes the contract conditional upon review and approval by one or both parties&#x27; legal counsel within a specified timeframe.</td><td id="K@ai" class="">• Rarely preprinted in standard Tennessee residential forms, so if desired, it must be carefully drafted by an attorney or added via an approved addendum with an exact expiration date.</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-80ec-98dd-f5857e6a45f1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Termination Mechanics &amp; Preventing Contingency Abuse</strong><ul id="4238ac6a-aab1-80ee-86e3-e2caeafc8dcd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strict Communication Rules:</strong> Termination under a contingency is never automatic—the terminating party must deliver formal written notice (such as Tennessee REALTORS® <strong>Notification Form </strong><code><strong>RF656</strong></code> and a <strong>Trust Money Disbursement and Release</strong> form) in strict compliance with the contract&#x27;s notice provisions before the contingency deadline expires.</li></ul><ul id="4238ac6a-aab1-809c-ae4b-eeb190193da2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Safeguards Against Contingency Abuse:</strong> To prevent either party from using a contingency as a bad-faith &quot;free exit,&quot; every contingency clause must:<ol type="1" id="4238ac6a-aab1-8000-a5af-f84fe40119c2" class="numbered-list" start="1" dir="auto"><li><strong>State clear, objective criteria</strong> specifying exactly how the condition is satisfied, waived, or invoked.</li></ol><ol type="1" id="4238ac6a-aab1-80a1-931c-e820ac0bba7e" class="numbered-list" start="2" dir="auto"><li><strong>Include a firm expiration date</strong> (<code>Time is of the Essence</code>) after which the contingency is waived or terminated.</li></ol><ol type="1" id="4238ac6a-aab1-80ba-bf49-c069ccfd8f2f" class="numbered-list" start="3" dir="auto"><li><strong>Explicitly require good-faith diligence and effort</strong> to fulfill the obligation (e.g., applying for a loan within <code>3</code> days and pursuing underwriting in good faith rather than dragging feet to engineer a cancellation).</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-8084-8de4-f4c2b75550bb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract-to-Closing Responsibilities &amp; Risk Management (</strong><code><strong>TREC Rule 1260-02-.08</strong></code><strong> &amp; </strong><code><strong>Form RF401</strong></code><strong>)</strong><ul id="4238ac6a-aab1-80b3-999f-daef6b7f5bc9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. Maintain Open Communication:</strong> <ul id="4238ac6a-aab1-800b-9667-d4660253fcf3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Keep active, documented communication flowing among the buyer, seller, cooperating licensee, lender, and title company or closing attorney so issues surface early rather than at the closing table.</li></ul></li></ul><ul id="4238ac6a-aab1-8023-9f79-c8437e845038" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Distribute Executed Contract Copies Immediately (</strong><code><strong>TREC Rule 1260-02-.08</strong></code><strong>):</strong> <ul id="4238ac6a-aab1-80a3-bb75-d6fa748415c9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Promptly deliver true, fully signed copies of the bound purchase contract (and all addenda/counteroffers) to the <strong>buyer, seller, sponsoring principal brokers, mortgage lender, and title company/closing attorney</strong>.</li></ul></li></ul><ul id="4238ac6a-aab1-802d-b168-c4da8d93f84d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. Track Earnest Money &amp; &quot;Time Is of the Essence&quot; Deadlines:</strong><ul id="4238ac6a-aab1-80ce-ac42-d74b9db77518" class="bulleted-list" dir="auto"><li style="list-style-type:square">Verify that the earnest money/trust money deposit is delivered to the designated Holder by the contract deadline (under <code>RF401</code>, if earnest money is not delivered on time or a check bounces, the Holder notifies both parties and the buyer has <strong>1 day</strong> to cure with immediately available funds before the seller may terminate for default).</li></ul><ul id="4238ac6a-aab1-8029-a164-d5ea668f4db8" class="bulleted-list" dir="auto"><li style="list-style-type:square">Actively calendar and remind clients of every <strong>&quot;Time Is of the Essence&quot;</strong> deadline—especially the <strong>Inspection Period</strong>, <strong>Resolution Period</strong>, <strong>Appraisal deadline</strong>, and <strong>Financing milestones</strong>. If a buyer discovers termites or major defects during inspection but waits until <strong>after</strong> the inspection deadline expires to deliver written termination notice (<code>Form RF656</code>), they lose their contingency exit and risk defaulting and forfeiting their earnest money.</li></ul></li></ul><ul id="4238ac6a-aab1-802c-b9d5-f5560ac5cd79" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4. Monitor Loan Processing, Appraisal &amp; Title Progress:</strong> <ul id="4238ac6a-aab1-8096-a744-f699c81b1847" class="bulleted-list" dir="auto"><li style="list-style-type:square">Follow up regularly with the buyer&#x27;s loan officer to confirm timely loan application (<code>3</code> days under <code>RF401</code>), appraisal ordering (<code>5</code> days under <code>RF401</code>), <code>14</code>day financing/intent-to-proceed verification, underwriting conditions, title commitment clearance, and issuance of the lender&#x27;s <strong>Clear to Close</strong>.</li></ul></li></ul><ul id="4238ac6a-aab1-80b1-8ed0-d84548b585e0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>5. Prepare Clients for Closing &amp; Pre-Review Documents:</strong> <ul id="4238ac6a-aab1-8006-8713-ef25615620bc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Walk clients through what to expect at the closing table (whether conducted by a title company or closing attorney in Tennessee), coordinate the <strong>final walk-through</strong>, remind buyers of <strong>wire-fraud verification protocols</strong> and valid government-issued photo IDs, and ensure they review closing documents <strong>prior to closing day</strong> (including the lender&#x27;s <strong>Closing Disclosure</strong>, which federal TRID rules require the buyer to receive at least <strong>3 business days</strong> before consummation).</li></ul></li></ul><ul id="4238ac6a-aab1-803b-abe3-c9f862e54327" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>6. Provide Updated Estimated Cost &amp; Net Worksheets:</strong> <ul id="4238ac6a-aab1-806f-8b1a-ebf0cfffbbbd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Supply buyers with an updated <strong>Estimated Closing Cost Worksheet</strong> and sellers with an updated <strong>Estimated Seller Net Sheet</strong> ahead of closing so neither party is surprised by prorations, transfer taxes (<code>$0.37</code> per <code>$100</code> in Tennessee, customarily paid by the buyer), loan payoffs, or cash-to-close figures.</li></ul></li></ul><ul id="4238ac6a-aab1-8048-8635-d4c49c2e0284" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>7. Post-Closing Record Retention (</strong><code><strong>T.C.A. § 62-13-321</strong></code><strong> &amp; </strong><code><strong>TREC Rule 1260-02-.40</strong></code><strong>):</strong> <ul id="4238ac6a-aab1-8027-aa08-d31e39714bdf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Ensure all signed contracts, disclosures, amendments, earnest money receipts, and closing statements are submitted to your principal broker to be preserved (physically or electronically) for at least <strong>3 years</strong> following closing.</li></ul></li></ul></li></ul><p id="4238ac6a-aab1-80dd-9c90-f67ee96a7f34" class="" dir="auto">
+</p></div><div id="4238ac6a-aab1-80bc-8a0c-d27c9d2dc7e4" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4238ac6a-aab1-809a-b606-c72c3512b089" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4238ac6a-aab1-80ba-8733-dc402cb2f4d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Best Practices</strong><ul id="4238ac6a-aab1-8016-aa24-ecb93886b9c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">As you get used to filling out contracts, you&#x27;ll get a feel for what&#x27;s okay and what&#x27;s not. It can be tricky, especially when it comes to the special stipulations portion of the contract. But there are some best practices that can help you:<ul id="4238ac6a-aab1-8010-bacf-c3ee37fd9f16" class="bulleted-list" dir="auto"><li style="list-style-type:square">Don&#x27;t strike through any of the preprinted language of a contract. If you need to make changes, use an addendum or the special stipulations portion.</li></ul><ul id="4238ac6a-aab1-80a4-9307-c2d5742385d6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Make sure to fill in every blank, using &quot;N/A&quot; for fields that are not applicable.</li></ul><ul id="4238ac6a-aab1-80ea-a636-d9f1f53d6c5f" class="bulleted-list" dir="auto"><li style="list-style-type:square">You may not charge a fee for completing contracts. That could be considered practicing law.</li></ul><ul id="4238ac6a-aab1-80dc-bc97-f46ff87b4d67" class="bulleted-list" dir="auto"><li style="list-style-type:square">Avoid changing the meaning of preprinted sections or adding unusual information that the form is not designed for.</li></ul><ul id="4238ac6a-aab1-8056-b4aa-fbd8c9d5990e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Encourage clients to have a lawyer review contracts if they have any concerns. If you are unsure of how to fill out a contract, it&#x27;s wise to have your client seek the advice of their attorney.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-80c5-a62e-e382c0ef8f7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase Contract Requirements</strong><figure id="4238ac6a-aab1-8059-b8a6-f6716a395e17" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SalesContract_ElementsChecklist.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SalesContract_ElementsChecklist.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SalesContract_ElementsChecklist.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-80f4-858a-ca2a78331682" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Review of Contingencies</strong><figure id="4238ac6a-aab1-807c-82d7-e18c93098310" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/CORE_ReviewContingencies_8926.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/CORE_ReviewContingencies_8926.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/CORE_ReviewContingencies_8926.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-80c3-b1fe-f5fe39dc215b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong> Addenda vs. Amendments</strong><ul id="4238ac6a-aab1-8088-8c04-daaacea3183a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Addenda and amendments both affect the terms of a contract, but they have important differences:<figure id="4238ac6a-aab1-805c-a4e1-dcad10587d22" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SCREPL_AddendaVSAmendment_9677.png"/></a></figure></li></ul></li></ul><p id="4238ac6a-aab1-806a-adc4-c272b85eb17e" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

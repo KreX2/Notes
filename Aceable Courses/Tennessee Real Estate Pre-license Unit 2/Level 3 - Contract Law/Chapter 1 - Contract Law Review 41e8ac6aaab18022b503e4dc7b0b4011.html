@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Contract Law Review</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8022-b503-e4dc7b0b4011" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - Contract Law Review</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4238ac6a-aab1-80d2-a14c-fe1badb4f027" class="column-list" data-notion-column-list="" dir="auto"><div id="4238ac6a-aab1-800c-a653-d6119b84ce41" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4238ac6a-aab1-80b4-b076-e11221303b8e" class="" dir="auto"><strong>Definition of a Contract &amp; The Five Essential Elements</strong></p><ul id="4238ac6a-aab1-8074-b23b-e77b17264f04" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>What a Contract Is:</strong> A legally enforceable and binding agreement between two or more parties in which a promise to do (or refrain from doing) something is exchanged for valuable consideration.</li></ul><ul id="4238ac6a-aab1-80b1-b9a5-fe2516bf44f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Five Essential Elements of a Valid Contract:</strong><table id="4238ac6a-aab1-8027-897f-e7d8b0b56fa7" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8081-8d3b-e412e519c729" dir="ltr"><td id="v&lt;cg" class=""><strong>Essential Element</strong></td><td id="KLLj" class=""><strong>Core Legal Meaning</strong></td><td id="eern" class=""><strong>Tennessee Real Estate Application &amp; Validity Impact</strong></td></tr><tr id="4238ac6a-aab1-80e7-ba88-e65b62b1ec08" dir="ltr"><td id="v&lt;cg" class=""><strong>1. Offer and Acceptance</strong> <em>(Mutual Assent)</em></td><td id="KLLj" class="">A clear, definite offer by one party and unconditional, communicated acceptance by the other—creating a <strong>&quot;meeting of the minds&quot;</strong> on all material terms.</td><td id="eern" class="">Governed by the <strong>Mirror Image Rule</strong>; if the offeree alters any term, it operates as a counteroffer rather than acceptance.</td></tr><tr id="4238ac6a-aab1-8068-980d-e2c44945e782" dir="ltr"><td id="v&lt;cg" class=""><strong>2. Consideration</strong></td><td id="KLLj" class="">Something of legal value exchanged by each party to support their promises—such as <strong>money, property, services, a promise for a promise, or forbearance</strong> (refraining from exercising a legal right).</td><td id="eern" class="">Without mutual consideration, an agreement is a gratuitous promise and is not legally enforceable. <em>(Note: Earnest money is a good-faith deposit, not the required legal consideration—the mutual promises to buy and sell provide consideration.)</em></td></tr><tr id="4238ac6a-aab1-805c-863c-d5c7c12336bf" dir="ltr"><td id="v&lt;cg" class=""><strong>3. Legally Competent Parties</strong> <em>(Capacity)</em></td><td id="KLLj" class="">Both parties must possess legal capacity to contract:<br/><br/>1. Reached the <strong>age of majority (</strong><code><strong>18</strong></code><strong> in Tennessee)</strong> or had minority disabilities removed by court order.<br/><br/>2. Of <strong>sound mind</strong> (not mentally incompetent or incapacitated by drugs or alcohol).</td><td id="eern" class="">A contract entered into by a minor or intoxicated/temporarily impaired person is generally <strong>voidable</strong> at that party&#x27;s option, whereas a contract signed by someone judicially declared incompetent is <strong>void</strong>.</td></tr><tr id="4238ac6a-aab1-8084-8aa5-e74cc5c7c0b4" dir="ltr"><td id="v&lt;cg" class=""><strong>4. Reality of Consent</strong> <em>(Genuine Assent)</em></td><td id="KLLj" class="">Both parties enter the contract voluntarily and in good faith, free from <strong>fraud, misrepresentation, mutual mistake, duress, or undue influence</strong>.</td><td id="eern" class="">If consent is tainted by fraud, misrepresentation, or duress, the contract becomes <strong>voidable</strong> by the injured party.</td></tr><tr id="4238ac6a-aab1-8007-9c48-c0c933169631" dir="ltr"><td id="v&lt;cg" class=""><strong>5. Lawful Objective</strong> <em>(Legality)</em></td><td id="KLLj" class="">The contract&#x27;s purpose and required actions must comply with all applicable federal, state, and local laws and public policy.</td><td id="eern" class="">Any contract involving an illegal act or objective (such as a net listing in Tennessee or price-fixing) is <strong>void from inception</strong> and unenforceable in court.</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-8072-94cc-fbb6c4598425" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Real Estate Requirement: Tennessee Statute of Frauds (</strong><code><strong>T.C.A. § 29-2-101</strong></code><strong>)</strong><ul id="4238ac6a-aab1-80bb-b307-e1a671c2eb9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Written &amp; Signed Requirement:</strong> In addition to the five essential elements above, <strong>Tennessee&#x27;s Statute of Frauds (</strong><code><strong>T.C.A. § 29-2-101(a)(4)</strong></code><strong>)</strong> requires any contract for the sale of real property—or any lease for a term longer than <strong>1 year</strong>—to be <strong>in writing and signed by the party to be charged</strong> (in practice, signed by all buyers and sellers) to be enforceable in court.</li></ul></li></ul><ul id="4238ac6a-aab1-8037-a77e-e849687ab846" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Essential Elements: Recap</strong><figure id="4238ac6a-aab1-80c5-be45-f1a0fffd0c78" class="image" data-notion-image="Chapter%201%20-%20Contract%20Law%20Review/image.png" dir="ltr"><a href="Chapter%201%20-%20Contract%20Law%20Review/image.png"><img style="width:432px" src="Chapter%201%20-%20Contract%20Law%20Review/image.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-8018-b67d-c3d527329b97" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Contract Legal Status Categories</strong><ul id="4238ac6a-aab1-8004-afe2-fe8778c9cdfd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every contract falls into one of four legal classifications depending on whether it satisfies the five essential elements and statutory enforceability requirements:<table id="4238ac6a-aab1-80f3-8d06-d7038f074cc6" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8003-8bdc-d5e08e918a73" dir="ltr"><td id="b[ze" class=""><strong>Legal Status Category</strong></td><td id="_uj]" class=""><strong>Legal Effect &amp; Enforceability</strong></td><td id="WY[n" class=""><strong>Common Real Estate Examples</strong></td></tr><tr id="4238ac6a-aab1-80c3-9186-c7fb0cf17bf8" dir="ltr"><td id="b[ze" class=""><strong>Valid</strong></td><td id="_uj]" class="">Satisfies all five essential elements (offer/acceptance, consideration, competent parties, reality of consent, lawful objective) and all legal formalities; <strong>binding and fully enforceable</strong> in court by either party.</td><td id="WY[n" class="">A properly signed, written residential purchase-and-sale contract between competent adults with mutual consideration and lawful terms.</td></tr><tr id="4238ac6a-aab1-8073-880a-c5e9d7a373ad" dir="ltr"><td id="b[ze" class=""><strong>Void</strong></td><td id="_uj]" class="">Has <strong>no legal force or effect from inception</strong> (&quot;void ab initio&quot;); imposes zero legal rights or obligations and cannot be ratified or enforced even if both parties want to proceed.</td><td id="WY[n" class="">A contract with an <strong>unlawful objective</strong> (such as a net listing in Tennessee under <code>TREC Rule 1260-02-.07</code>), an agreement to discriminate in violation of Fair Housing law, or a contract signed by someone <strong>judicially declared mentally incompetent</strong>.</td></tr><tr id="4238ac6a-aab1-804b-a239-d7ffe5ea0d3b" dir="ltr"><td id="b[ze" class=""><strong>Voidable</strong></td><td id="_uj]" class="">Appears valid on its face and remains binding <strong>unless and until rescinded</strong> without penalty at the option of the protected or injured party.</td><td id="WY[n" class="">A contract signed by a <strong>minor</strong> (under age <code>18</code> in Tennessee), a party temporarily incapacitated by alcohol/drugs, or a victim of <strong>fraud, misrepresentation, duress, or undue influence</strong>.</td></tr><tr id="4238ac6a-aab1-80db-bfc1-f0f80ca3ba86" dir="ltr"><td id="b[ze" class=""><strong>Unenforceable</strong></td><td id="_uj]" class="">Satisfies the five essential elements of a valid contract and may still be performed voluntarily by willing parties, <strong>but courts will not compel performance</strong> due to a statutory or technical bar.</td><td id="WY[n" class="">An <strong>oral agreement</strong> to buy or sell real estate (barred by the Statute of Frauds) or a valid written contract on which the deadline to sue has expired.</td></tr></tbody></table></li></ul></li></ul><ul id="4238ac6a-aab1-8066-8c14-dea16f22668f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Common Legal Restrictions on Contract Enforcement</strong><ul id="4238ac6a-aab1-8067-97e8-f7e7b3fb534f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Even when an agreement meets all five essential elements of a valid contract, three legal bars can prevent a party from enforcing it in court:<ol type="1" id="4238ac6a-aab1-80c1-ac4d-eabf82daec39" class="numbered-list" start="1" dir="auto"><li><strong>Statute of Frauds (</strong><code><strong>T.C.A. § 29-2-101</strong></code><strong>):</strong> Requires specific contracts to be <strong>in writing and signed by the party to be charged</strong> in order to bring a legal action. In Tennessee, this includes any contract for the <strong>sale of real estate</strong>, any <strong>lease for a term longer than </strong><code><strong>1</strong></code><strong> year</strong>, and any agreement that <strong>cannot be performed within </strong><code><strong>1</strong></code><strong> year</strong> from its making. <em>(An oral real estate sale contract is valid between willing parties if voluntarily completed, but completely unenforceable in court if either party backs out.)</em></li></ol><ol type="1" id="4238ac6a-aab1-80ee-83a5-ed35b3737ca6" class="numbered-list" start="2" dir="auto"><li><strong>Statute of Limitations (</strong><code><strong>T.C.A. § 28-3-109</strong></code><strong>):</strong> Establishes strict statutory deadlines for filing a lawsuit after a breach or claim accrues. Under Tennessee law, actions for breach of a written or oral real estate contract (and actions for rent) must generally be commenced within <code><strong>6</strong></code><strong> years</strong> after the cause of action accrues, or the legal right to sue is permanently barred.</li></ol><ol type="1" id="4238ac6a-aab1-800c-86d4-fc40ac8c695e" class="numbered-list" start="3" dir="auto"><li><strong>Doctrine of Laches:</strong> An equitable <em>&quot;use it or lose it&quot;</em> defense barring a party from obtaining equitable relief (such as specific performance or an injunction) when they unreasonably delay or neglect asserting their legal rights, and that delay unfairly prejudices or alters the position of the opposing party.</li></ol></li></ul></li></ul><div id="4238ac6a-aab1-8099-967a-ec3af89e832e" class="column-list" data-notion-column-list="" dir="auto"><div id="4238ac6a-aab1-8098-8dd6-d199618389b2" style="width:106.25%" class="column" data-notion-column-ratio="1.0625" dir="auto"><ul id="4238ac6a-aab1-8071-a895-d2eb698dedb3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Classifications (Three Core Dimensions)</strong><ul id="4238ac6a-aab1-80df-8c16-d6d2408f07e2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Every contract is categorized across three independent pairs based on how it is formed, who makes a promise, and its stage of completion:<table id="4238ac6a-aab1-800c-9dfc-e090d2185eb4" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-80d8-bb78-ed7c81d739a5" dir="ltr"><td id="HKL:" class=""><strong>Classification Pair</strong></td><td id="w;a;" class=""><strong>Category A</strong></td><td id=":Rst" class=""><strong>Category B</strong></td></tr><tr id="4238ac6a-aab1-808d-9435-f5c4fb2d1fce" dir="ltr"><td id="HKL:" class=""><strong>1. Method of Formation</strong></td><td id="w;a;" class=""><strong>Express Contract:</strong> Terms and intentions are explicitly stated in <strong>spoken or written words</strong> (e.g., a signed residential purchase agreement or written listing contract).</td><td id=":Rst" class=""><strong>Implied Contract:</strong> Created and inferred through the <strong>actions and conduct</strong> of the parties rather than explicit words, carrying the same binding legal force when intent is clear.</td></tr><tr id="4238ac6a-aab1-8041-b776-cca937725178" dir="ltr"><td id="HKL:" class=""><strong>2. Nature of the Promise</strong></td><td id="w;a;" class=""><strong>Bilateral Contract:</strong> <strong>Two parties, two promises</strong>—both parties make reciprocal promises to perform (e.g., seller promises to convey title; buyer promises to pay the purchase price).</td><td id=":Rst" class=""><strong>Unilateral Contract:</strong> <strong>Two parties, one promise</strong>—only the offeror makes a binding promise in exchange for a specific act by the offeree; the offeree is not obligated to act, and <strong>performance is the sole form of acceptance</strong> (e.g., an open listing or a reward offer).</td></tr><tr id="4238ac6a-aab1-807e-8efc-cd16beed8b4b" dir="ltr"><td id="HKL:" class=""><strong>3. Stage of Performance</strong></td><td id="w;a;" class=""><strong>Executory Contract:</strong> A binding agreement where <strong>one or more parties have not yet finished performing</strong> their contractual duties (e.g., a signed purchase contract between binding acceptance and closing).</td><td id=":Rst" class=""><strong>Executed Contract:</strong> A contract in which <strong>all parties have completely fulfilled every promise and obligation</strong> (e.g., at closing after deed delivery and full payment), leaving no remaining unperformed duties.</td></tr></tbody></table></li></ul></li></ul></div><div id="4238ac6a-aab1-80c2-90e3-ec53aef195cc" style="width:68.74999999999999%" class="column" data-notion-column-ratio="0.6874999999999999" dir="auto"><ul id="4238ac6a-aab1-80cf-90fe-e36bd66221ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Legal Status Recap</strong><figure id="4238ac6a-aab1-8082-b6a0-fb08da7fc9aa" class="image" data-notion-image="Chapter%201%20-%20Contract%20Law%20Review/image%201.png" dir="ltr"><a href="Chapter%201%20-%20Contract%20Law%20Review/image%201.png"><img style="width:384px" src="Chapter%201%20-%20Contract%20Law%20Review/image%201.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-805e-806a-f8df095d8d8a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Classification Recap</strong><figure id="4238ac6a-aab1-8003-bfae-fd4739ff764f" class="image" data-notion-image="Chapter%201%20-%20Contract%20Law%20Review/image%202.png" dir="ltr"><a href="Chapter%201%20-%20Contract%20Law%20Review/image%202.png"><img style="width:384px" src="Chapter%201%20-%20Contract%20Law%20Review/image%202.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-8055-a738-ffac65ea5e25" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge of Contracts Recap</strong><figure id="4238ac6a-aab1-80d9-8b5f-fa8cf4e3e63d" class="image" data-notion-image="Chapter%201%20-%20Contract%20Law%20Review/image%203.png" dir="ltr"><a href="Chapter%201%20-%20Contract%20Law%20Review/image%203.png"><img style="width:384px" src="Chapter%201%20-%20Contract%20Law%20Review/image%203.png"/></a></figure><p id="4238ac6a-aab1-808b-a331-cce02227df4f" class="" dir="auto">
+</p></li></ul></div></div><ul id="4238ac6a-aab1-80e3-9849-c970beee244a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge of Contracts by Operation of Law</strong><ul id="4238ac6a-aab1-8052-89ec-f6f58e26f76f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Automatic termination of contractual obligations triggered by legal rules or external events regardless of the parties&#x27; desires or consent:<ul id="4238ac6a-aab1-804c-bf3d-c20899c689e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Full Performance:</strong> Both parties fulfill every contractual promise and receive the agreed consideration.</li></ul><ul id="4238ac6a-aab1-80d1-a55c-faf5d3632a93" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expiration:</strong> The contract&#x27;s stated end date passes without performance or extension, releasing both parties from future duties.</li></ul><ul id="4238ac6a-aab1-805b-893b-c1578be39f36" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Statute of Limitations:</strong> The statutory deadline to file a breach-of-contract lawsuit expires, barring judicial enforcement.</li></ul><ul id="4238ac6a-aab1-8001-93d8-cc6193a4d1fa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Lack of Legal Element / Subsequent Illegality:</strong> A required legal element is missing or a change in law renders performance illegal.</li></ul><ul id="4238ac6a-aab1-80fa-936e-c87c78bb9959" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Destruction of Property (Impossibility):</strong> Physical destruction of the subject property (by fire, flood, earthquake, etc.) prior to closing renders performance legally impossible.</li></ul><ul id="4238ac6a-aab1-803d-8b20-f1ac90331039" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Death or Incapacity:</strong> While ordinary real estate purchase contracts generally survive a party&#x27;s death and bind their estate, <strong>personal services contracts</strong> (such as listing agreements and buyer representation contracts) terminate automatically upon the death or incapacity of either the principal or the broker.</li></ul><ul id="4238ac6a-aab1-8058-b9fd-f7f3897be78d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Bankruptcy:</strong> Filing bankruptcy generally discharges executory personal-service agency contracts (such as a seller&#x27;s listing agreement) because control of the debtor&#x27;s property passes to the bankruptcy court/trustee.</li></ul><ul id="4238ac6a-aab1-801f-8f60-ff10b0821c4d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Material Alteration of the Contract:</strong> One party materially alters the contract&#x27;s terms without authorization, discharging the original contract because it no longer reflects mutual assent.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-80c2-a380-e691fc3d2055" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge of Contracts by Acts of the Parties</strong><ul id="4238ac6a-aab1-8044-9902-ca63043be16a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Definition:</strong> Termination resulting from the intentional action or agreement of one or both contracting parties:<table id="4238ac6a-aab1-807b-9c57-f8e1bb7ef82c" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-80d5-b965-c1e4c5d9888a" dir="ltr"><td id="Jg;A" class=""><strong>Method of Discharge</strong></td><td id="nGpn" class=""><strong>How It Terminates the Contract</strong></td><td id="HvU?" class=""><strong>Key Legal Rule &amp; Real Estate Example</strong></td></tr><tr id="4238ac6a-aab1-8008-83fb-ca002766596f" dir="ltr"><td id="Jg;A" class=""><strong>Merger</strong></td><td id="nGpn" class="">The terms of an earlier contract are absorbed into a subsequent instrument, extinguishing the original contract.</td><td id="HvU?" class="">Under the <strong>Doctrine of Merger</strong>, once a buyer accepts delivery of the <strong>deed</strong> at closing, the purchase-and-sale contract merges into the deed and ceases to exist separately.</td></tr><tr id="4238ac6a-aab1-808e-9b46-ed25e1662072" dir="ltr"><td id="Jg;A" class=""><strong>Mutual Agreement</strong> <em>(Rescission)</em></td><td id="nGpn" class="">Both parties voluntarily agree to cancel the contract and release each other from all remaining duties.</td><td id="HvU?" class="">Must be formalized in writing and supported by mutual consideration (each party&#x27;s surrender of rights under the original contract).</td></tr><tr id="4238ac6a-aab1-80cd-8788-e816c0ab2969" dir="ltr"><td id="Jg;A" class=""><strong>Cooling-Off Period</strong></td><td id="nGpn" class="">A statutory or contractual window allowing a party to rescind a contract for any reason without penalty.</td><td id="HvU?" class="">Applies to specific transactions such as timeshare purchases or certain home-solicitation/rescission-eligible contracts.</td></tr><tr id="4238ac6a-aab1-80c3-8c02-d3c66bd1b564" dir="ltr"><td id="Jg;A" class=""><strong>Novation</strong></td><td id="nGpn" class="">Substitutes a <strong>new contract</strong> (or a new party with full release of the original party) in place of the existing contract, discharging the old agreement completely.</td><td id="HvU?" class="">Unlike assignment, novation <strong>releases the original party</strong> from secondary liability.</td></tr><tr id="4238ac6a-aab1-8005-a958-d5074d093990" dir="ltr"><td id="Jg;A" class=""><strong>Assignment</strong></td><td id="nGpn" class="">An original party transfers their contractual <strong>rights</strong> (and typically delegates duties) to a third-party assignee after proper notice.</td><td id="HvU?" class="">Unless released via novation, the <strong>original assignor remains secondarily liable</strong> if the assignee defaults.</td></tr><tr id="4238ac6a-aab1-8065-9e1a-c95779ffad0b" dir="ltr"><td id="Jg;A" class=""><strong>Accord and Satisfaction</strong></td><td id="nGpn" class="">Both parties agree to accept a <strong>different (often lesser) performance</strong> (<strong>accord</strong>) and complete that substitute performance (<strong>satisfaction</strong>) to discharge the original obligation.</td><td id="HvU?" class="">A seller agrees to accept and retain the buyer&#x27;s <strong>earnest money deposit</strong> as full settlement in lieu of forcing the buyer to complete the purchase.</td></tr><tr id="4238ac6a-aab1-8045-b29c-d570710fb584" dir="ltr"><td id="Jg;A" class=""><strong>Revocation</strong></td><td id="nGpn" class="">Unilateral termination of an agency relationship or withdrawal of an offer by the <strong>principal (client)</strong>.</td><td id="HvU?" class="">A principal always has the <em>power</em> to revoke an agency agreement, but if they lack the legal <em>right</em> (justifiable cause), they may be liable to the broker for damages/earned expenses.</td></tr><tr id="4238ac6a-aab1-8009-bb7c-eb5fac769432" dir="ltr"><td id="Jg;A" class=""><strong>Renunciation</strong> <em>(Abandonment)</em></td><td id="nGpn" class="">Unilateral termination or abandonment of an agency relationship by the <strong>agent/broker</strong>.</td><td id="HvU?" class="">If the agent renounces without justifiable cause, the agent risks liability to the principal for damages resulting from the breach.</td></tr></tbody></table></li></ul></li></ul><ul id="4238ac6a-aab1-80c3-867b-d4cae10a8cbc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Exiting Contracts Through Clauses, Conditions &amp; Contingencies</strong><ul id="4238ac6a-aab1-8085-8830-d115dcc7820d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What a Contingency Is:</strong> A contractual <strong>&quot;subject to&quot; provision</strong> specifying that certain conditions must occur or be satisfied before the contract becomes fully binding or before a party is obligated to close. When properly exercised in writing before the deadline, a contingency lets a party terminate the contract <strong>without penalty</strong> and recover their earnest money.</li></ul><ul id="4238ac6a-aab1-8092-9a6a-d65c2a69cab4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Common Real Estate Contingency Examples:</strong><ul id="4238ac6a-aab1-807a-ae9c-cd02732a2801" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Appraisal Contingency:</strong> Requires the property to appraise at or above the agreed purchase price; if the appraisal comes in lower and the buyer gives timely written notice, the buyer may exit without penalty or renegotiate.</li></ul><ul id="4238ac6a-aab1-8059-878a-f4576dac24e4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mortgage / Financing Contingency:</strong> Specifies the loan type, terms, and deadline by which the buyer must obtain loan approval; if the buyer applies in good faith and receives a timely loan denial, they can terminate and recover earnest money.</li></ul><ul id="4238ac6a-aab1-802f-8020-f79e0a8c815b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Other Standard Tennessee Contingencies (</strong><code><strong>Form RF401</strong></code><strong>):</strong> Home inspection resolution, marketable title, HOA document review, insurability, and sale of the buyer&#x27;s existing property.</li></ul></li></ul><ul id="4238ac6a-aab1-806f-aa02-fb9cd906bab5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Three Essential Elements of a Properly Drafted Contingency Clause:</strong><ol type="1" id="4238ac6a-aab1-806e-94c0-eb3fc3cf3572" class="numbered-list" start="1" dir="auto"><li><strong>How to satisfy (or waive) the contingency</strong> (specific actions, proof, or written notice required).</li></ol><ol type="1" id="4238ac6a-aab1-80e0-b0e7-e0e1fb1ffb3a" class="numbered-list" start="2" dir="auto"><li><strong>Exact performance deadlines</strong> (e.g., <code>&quot;Time is of the Essence&quot;</code> drop-dead dates for loan application, inspection, or written termination notice).</li></ol><ol type="1" id="4238ac6a-aab1-801e-9db9-cc923aec740d" class="numbered-list" start="3" dir="auto"><li><strong>Liable party for associated costs</strong> (specifying who pays for the inspection, appraisal, survey, or title work).</li></ol></li></ul></li></ul><ul id="4238ac6a-aab1-802f-af29-d790484256c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Breach of Contract (Default) &amp; Dispute Resolution</strong><ul id="4238ac6a-aab1-80a5-a542-ec7ecd1f6040" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Constitutes Breach / Default:</strong> When a party fails to perform according to the contract&#x27;s terms and deadlines without legal excuse or an active contingency exit, they are in <strong>breach of contract (default)</strong>. Default terminates the defaulting party&#x27;s contractual rights while preserving their legal obligations to the non-defaulting party.</li></ul><ul id="4238ac6a-aab1-80fd-af06-d7be009f21b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Alternative Dispute Resolution (ADR) Before Litigation:</strong> To avoid the time and expense of court litigation, contracts (including Tennessee REALTORS® <code>Form RF401</code>) commonly require or encourage:<ul id="4238ac6a-aab1-80d9-a953-e3feab0bc00f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Mediation (Non-Binding):</strong> A neutral third-party mediator helps the parties negotiate a voluntary settlement; neither party is bound unless they sign a settlement agreement.</li></ul><ul id="4238ac6a-aab1-809c-84a2-c2d72433da12" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Arbitration (Binding):</strong> A neutral arbitrator (or panel) hears evidence and issues a legally binding decision enforceable in court.</li></ul></li></ul></li></ul><ul id="4238ac6a-aab1-806c-bd0b-f613a5de5e49" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Four Primary Legal Remedies for Breach of Contract</strong><figure id="4238ac6a-aab1-80b8-9819-c0226c66030e" class="image" data-notion-image="Chapter%201%20-%20Contract%20Law%20Review/image%204.png" dir="ltr"><a href="Chapter%201%20-%20Contract%20Law%20Review/image%204.png"><img style="width:384px" src="Chapter%201%20-%20Contract%20Law%20Review/image%204.png"/></a></figure><table id="4238ac6a-aab1-80cc-b3db-e620e55218c6" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-80b3-aec9-e8b981b4c3a9" dir="ltr"><td id="uL|E" class=""><strong>Legal Remedy</strong></td><td id="Q@?H" class=""><strong>Purpose &amp; How It Works</strong></td><td id="@EKr" class=""><strong>Real Estate Application &amp; Key Rules</strong></td></tr><tr id="4238ac6a-aab1-80cb-9789-e81ea3f58693" dir="ltr"><td id="uL|E" class=""><strong>1. Specific Performance</strong></td><td id="Q@?H" class="">An equitable court order <strong>compelling the breaching party to perform</strong> the contract exactly as originally agreed.</td><td id="@EKr" class="">Most commonly sought by a <strong>buyer</strong> when a seller refuses to close, because every parcel of real estate is legally unique; rarely pursued by sellers against defaulting buyers because reselling and seeking monetary damages is usually more practical.</td></tr><tr id="4238ac6a-aab1-80f2-bd56-de09b2b80443" dir="ltr"><td id="uL|E" class=""><strong>2. Rescission</strong></td><td id="Q@?H" class=""><strong>Annuls and unwinds the contract</strong>, restoring both parties as closely as possible to their pre-contract financial positions as though the agreement never existed.</td><td id="@EKr" class="">Often sought when consent was tainted by fraud, misrepresentation, or failure to provide mandatory disclosures; any earnest money or deposits are returned to the buyer.</td></tr><tr id="4238ac6a-aab1-804f-89bd-f2e55ed82eac" dir="ltr"><td id="uL|E" class=""><strong>3. Forfeiture</strong> <em>(Liquidated Damages)</em></td><td id="Q@?H" class="">Terminates the contract while allowing the injured party to <strong>retain pre-agreed liquidated damages</strong> specified in the contract as compensation for the breach.</td><td id="@EKr" class="">In residential sales, if the <strong>buyer defaults</strong>, the seller typically retains the <strong>earnest money deposit</strong> as liquidated damages <em>(Note: under Tennessee REALTORS® </em><em><code>Form RF401</code></em><em>, earnest money forfeited by a defaulting buyer is credited against the seller&#x27;s damages, and the seller may still pursue actual damages or specific performance unless the contract caps recovery at liquidated damages)</em>.</td></tr><tr id="4238ac6a-aab1-80dd-893a-f13e089ee95c" dir="ltr"><td id="uL|E" class=""><strong>4. Suit for Damages</strong></td><td id="Q@?H" class="">A civil lawsuit seeking monetary compensation to restore the wronged party financially, filed within the <strong>Statute of Limitations</strong> (<code>6</code> years in Tennessee under <code>T.C.A. § 28-3-109</code>).</td><td id="@EKr" class="">Breaks down into three categories:<br/><br/>• <strong>Liquidated Damages:</strong> Pre-agreed dollar sum set in the contract (such as earnest money) that must represent a reasonable estimate of anticipated loss rather than a penalty.<br/><br/>• <strong>Compensatory Damages:</strong> Reimbursement for <strong>actual financial losses</strong> directly caused by the breach (e.g., lost price differential on resale, carrying costs, or out-of-pocket inspection/appraisal/loan fees).<br/><br/>• <strong>Punitive Damages:</strong> Awarded rarely—only for egregious, malicious, or fraudulent conduct—to punish the wrongdoer and deter future misconduct (generally unavailable for ordinary contract breach alone).</td></tr></tbody></table></li></ul><ul id="4238ac6a-aab1-80f1-bf08-dabf63b42b5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Avoiding the Unauthorized Practice of Law (UPL) (</strong><code><strong>T.C.A. § 23-3-101</strong></code><strong> &amp; </strong><code><strong>T.C.A. § 62-13-312</strong></code><strong>)</strong><ul id="4238ac6a-aab1-8032-9d95-ce402bbae245" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What Constitutes the Practice of Law:</strong> Under Tennessee law (<code>T.C.A. § 23-3-101</code>), practicing law includes giving legal advice or opinions on legal rights and obligations, drafting original legal instruments (such as deeds, mortgages, leases, or complex contract clauses), and representing clients in legal negotiations or court proceedings.</li></ul><ul id="4238ac6a-aab1-80a7-b9f2-f7e52a81dcdb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Strict Prohibition for Non-Attorney Licensees:</strong> A real estate license does <strong>not</strong> authorize a licensee to practice law unless they also hold an active license to practice law. Engaging in the unauthorized practice of law is both a criminal offense in Tennessee (<code>T.C.A. § 23-3-103</code>) and grounds for disciplinary action—including license suspension or revocation—by the Tennessee Real Estate Commission (<code>T.C.A. § 62-13-312</code>).</li></ul></li></ul><ul id="4238ac6a-aab1-80d1-86bd-ffcfc37dd330" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Permissible Real Estate Practice vs. Unauthorized Practice of Law</strong><table id="4238ac6a-aab1-8037-a378-dcc9b26d7fe0" class="simple-table" dir="ltr"><tbody><tr id="4238ac6a-aab1-8016-9a74-c523fa6c0846" dir="ltr"><td id="=cwa" class=""><strong>Permitted Real Estate Practice (What You CAN Do)</strong></td><td id="vZ:G" class=""><strong>Unauthorized Practice of Law (What You MUST NOT Do)</strong></td></tr><tr id="4238ac6a-aab1-8065-b2b6-c8032bc5487c" dir="ltr"><td id="=cwa" class=""><strong>Complete Standard Preprinted Forms:</strong> Fill in factual business blanks (price, closing date, earnest money, contingencies) on attorney-drafted or Tennessee REALTORS® standard forms per the client&#x27;s instructions.</td><td id="vZ:G" class=""><strong>Draft Original Legal Documents or Complex Clauses:</strong> Write deeds, promissory notes, title opinions, or custom legal stipulations that alter legal rights or liabilities.</td></tr><tr id="4238ac6a-aab1-808d-bcf4-f0cfd874810f" dir="ltr"><td id="=cwa" class=""><strong>Explain Business Terms &amp; Present Options:</strong> Read preprinted contract language aloud, explain the practical business meaning of standard provisions, and lay out the client&#x27;s available contractual options.</td><td id="vZ:G" class=""><strong>Give Legal Opinions or Direct Legal Choices:</strong> Tell a client which legal option they <em>must</em> choose, interpret how a court will rule, or advise whether a party is legally in breach of a contract.</td></tr><tr id="4238ac6a-aab1-8020-8800-c81f3182cbbd" dir="ltr"><td id="=cwa" class=""><strong>Disclose All Known Material Facts:</strong> Communicate verified physical, financial, and property facts affecting the transaction (<code>T.C.A. § 62-13-403(2)</code>).</td><td id="vZ:G" class=""><strong>Predict Legal Outcomes or Advise on Title/Tax Law:</strong> Advise clients on how easements, deed restrictions, probate, divorce, or tax consequences will play out legally.</td></tr><tr id="4238ac6a-aab1-808f-a561-d7ead165ba5e" dir="ltr"><td id="=cwa" class=""><strong>Recommend Legal Counsel (</strong><code><strong>NAR Article 11</strong></code><strong>):</strong> Recommend in writing that the client consult a licensed Tennessee real estate attorney whenever a legal question or dispute arises.</td><td id="vZ:G" class=""><strong>Discourage Seeking an Attorney:</strong> Claim that standard forms &quot;don&#x27;t need a lawyer&quot; or attempt to answer legal questions yourself.</td></tr></tbody></table></li></ul></div><div id="4238ac6a-aab1-8017-9ae7-c59704d7142a" style="width:31.249999999999993%" class="column" data-notion-column-ratio="0.31249999999999994" dir="auto"><p id="4238ac6a-aab1-8099-984a-c48fd6125a60" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4238ac6a-aab1-8087-a734-fb8f3f4ee445" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Five Essential Elements</strong><ul id="4238ac6a-aab1-80db-af86-dee4ffaeb63b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The term <strong>offer and acceptance</strong> is another way to describe the meeting of the minds that has to occur for a valid contract to come about.</li></ul><ul id="4238ac6a-aab1-8089-a9f4-e9571cbadd69" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Valuable consideration is a term used to describe consideration that is deemed sufficient or appropriate for that which is offered in exchange. Good consideration, such as love and affection, is thought of as a gift.</li></ul><ul id="4238ac6a-aab1-809f-915a-d3f9429325b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Having <strong>capacity</strong> (<strong>legally competent parties</strong>) implies two things:<ul id="4238ac6a-aab1-80a4-a9d4-c91549f2d46c" class="bulleted-list" dir="auto"><li style="list-style-type:square">The individual has reached the age of majority or had their disabilities of minority removed by a court.</li></ul><ul id="4238ac6a-aab1-8016-b182-f89267a06869" class="bulleted-list" dir="auto"><li style="list-style-type:square">The individual is not permanently or temporarily mentally incompetent.</li></ul></li></ul><ul id="4238ac6a-aab1-80ac-acb4-c3b2e17e3490" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For there to be reality of consent, the parties must enter the contract:<ul id="4238ac6a-aab1-807f-8d35-d220715a3a23" class="bulleted-list" dir="auto"><li style="list-style-type:square">Of their own free will</li></ul><ul id="4238ac6a-aab1-8074-9567-f6f41afc90ca" class="bulleted-list" dir="auto"><li style="list-style-type:square">With all the information needed to make a sound decision</li></ul><ul id="4238ac6a-aab1-8044-85b4-f6ec989e6f1d" class="bulleted-list" dir="auto"><li style="list-style-type:square">The term<em> </em><strong>lawful objective</strong> speaks to the idea that a contract cannot require any illegal activities or outcomes.</li></ul></li></ul><figure id="4238ac6a-aab1-8035-a47c-d46df996dab1" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SC_EssentialElementsContracts_7744.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SC_EssentialElementsContracts_7744.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SC_EssentialElementsContracts_7744.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-8056-acb9-cace1563d851" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Four Legal Categories of Contracts</strong><ul id="4238ac6a-aab1-8060-bd85-c5fa922d2239" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once a contract has been created, it falls into one of <strong>four legal categories</strong>:<ul id="4238ac6a-aab1-80eb-a9da-cca7f9a56842" class="bulleted-list" dir="auto"><li style="list-style-type:square">Valid</li></ul><ul id="4238ac6a-aab1-8053-8818-caab6110f173" class="bulleted-list" dir="auto"><li style="list-style-type:square">Void</li></ul><ul id="4238ac6a-aab1-806d-aa16-eea598500d61" class="bulleted-list" dir="auto"><li style="list-style-type:square">Voidable</li></ul><ul id="4238ac6a-aab1-80ed-a007-fbf2177c6d13" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unenforceable</li></ul></li></ul><ul id="4238ac6a-aab1-800d-ac0c-d0bb6d6e64ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>valid</strong> and <strong>enforceable</strong> contract meets all the essential, basic requirements of the law and accurately reflects the contracting parties’ intentions.</li></ul><ul id="4238ac6a-aab1-80ea-af16-fa9a2558da6a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">From inception, a <strong>void contract </strong>has <strong>no legal effect</strong> and could not be completed even if the parties wanted to. <strong>Null and void</strong> is a term you&#x27;ll hear with void contracts.</li></ul><ul id="4238ac6a-aab1-805e-a3f6-e453b017e167" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voidable contracts</strong> are potentially valid contracts where <strong>at least one party has the option to rescind or terminate </strong>the contract without penalty. Minors or adults incapacitated by mental illness or the influence of medication or alcohol are the two most common examples of parties that can void contracts.</li></ul><ul id="4238ac6a-aab1-8022-8deb-ea14ea05a115" class="bulleted-list" dir="auto"><li style="list-style-type:circle">When a party performs their obligation to a contract that they could have voided or rescinded, they are said to have <strong>ratified</strong> that contract. In these instances, the other party is bound to the contract.</li></ul><ul id="4238ac6a-aab1-802a-a305-f93774eaf37e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">An <strong>unenforceable contract</strong> is one that has (or had) the potential of being a valid contract, but its enforcement is barred by some attribute of the contract or technicality of law.</li></ul></li></ul><figure id="4238ac6a-aab1-802f-80f9-f90ce49b7677" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractLegalStatus_7747.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractLegalStatus_7747.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractLegalStatus_7747.png"/></a></figure><ul id="4238ac6a-aab1-8054-b088-ce6a4e8c9766" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Restrictions on Contract Enforcement</strong><ul id="4238ac6a-aab1-80bd-933d-c4ae807b0b3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Three common restrictions on the enforcement of valid contracts are:<ul id="4238ac6a-aab1-8029-b680-d1ae0bdb19d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">Statute of frauds</li></ul><ul id="4238ac6a-aab1-8094-bfab-d9d59c264a8c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Statute of limitations</li></ul><ul id="4238ac6a-aab1-8059-b7b7-f8507d340be0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Doctrine of laches</li></ul></li></ul><ul id="4238ac6a-aab1-8088-9980-e004ed17fa8f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>statute of frauds</strong> is a <strong>state-level law</strong> that <strong>requires certain types of contracts to be set out in writing</strong> to be enforceable. This includes most real estate-related contracts, such as agency relationship agreements and contracts involving the conveyance of real property.</li></ul><ul id="4238ac6a-aab1-805f-9895-f54f80a186e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The<strong> statute of limitations </strong>has to do with state and federal laws establishing time limits for bringing certain kinds of legal actions. A legitimate complaint about a performance failure related to a valid contract will not be considered if the statute of limitations has expired.</li></ul><ul id="4238ac6a-aab1-80ea-af0a-da2970fa0047" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Think of the <strong>doctrine of laches</strong> as the “use it or lose it” rule. If you don’t use your right to bring suit, you eventually lose it.</li></ul></li></ul><ul id="4238ac6a-aab1-80e4-9ba3-d9887620d389" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Contract Classifications</strong><ul id="4238ac6a-aab1-8035-8982-c6991bee67eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Valid contracts can be classified in a bunch of different ways:<ul id="4238ac6a-aab1-8081-b451-f5b9f59c1dda" class="bulleted-list" dir="auto"><li style="list-style-type:square">Express or implied</li></ul><ul id="4238ac6a-aab1-80d4-a7ef-cced1d9bcd01" class="bulleted-list" dir="auto"><li style="list-style-type:square">Unilateral or bilateral</li></ul><ul id="4238ac6a-aab1-8054-9131-c0a882247f89" class="bulleted-list" dir="auto"><li style="list-style-type:square">Executory or executed</li></ul></li></ul><ul id="4238ac6a-aab1-8028-a900-cb62e84840a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Express contracts</strong> are oral and written contracts in which the parties explicitly state or <em>express</em> their intentions. <strong>Implied contracts</strong> are <strong>established by the parties’ actions</strong> rather than a written document or an explicit discussion.</li></ul><ul id="4238ac6a-aab1-80a3-8d35-cb0de65a2993" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ALL contracts require two parties, but <strong>in bilateral contracts BOTH parties make promises</strong>. <strong>In a unilateral contract</strong> there are <strong>TWO parties </strong>but <strong>ONE promise</strong>.</li></ul><ul id="4238ac6a-aab1-8029-88a1-e8ae987ebfa0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In general, an <strong>executed contract</strong> is a contract in which all terms have been fulfilled by all parties. An <strong>executory contract</strong>, in contrast to an executed contract, is a contract that has <strong>not yet been fully performed</strong>.</li></ul><figure id="4238ac6a-aab1-805d-b839-e98ecae4e5e6" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractClassifications_7749.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractClassifications_7749.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SC_ContractClassifications_7749.png"/></a></figure></li></ul><ul id="4238ac6a-aab1-80d3-8fdc-c215c9e0f27f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Discharge of Contracts</strong><ul id="4238ac6a-aab1-8007-bc12-edb4e9e470c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The discharge of contracts refers to the termination of a contract. Most contracts are discharged as a result of either the <strong>operation of law </strong>or<strong> the acts of the parties.</strong><figure id="4238ac6a-aab1-8030-988b-f293dbcea696" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_DischargeofContracts_13180.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_DischargeofContracts_13180.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/AZREPL_DischargeofContracts_13180.png"/></a></figure></li></ul></li></ul><ul id="4238ac6a-aab1-80eb-8190-d1c88c97a151" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Legal Remedies for Default</strong><ul id="4238ac6a-aab1-8088-abc6-cc2a7040ac3d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If efforts to resolve the breach are not resolved via mediation, arbitration, or other contractual solutions, legal remedies will often be sought.<figure id="4238ac6a-aab1-8019-ab48-fb3aef9b63a2" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/SC_BreachContractRemedies_7796.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/SC_BreachContractRemedies_7796.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/SC_BreachContractRemedies_7796.png"/></a></figure></li></ul></li></ul><p id="4238ac6a-aab1-804e-b60c-eda7e84e9ee2" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

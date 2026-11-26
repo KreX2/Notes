@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Addenda and Amendments</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8017-8d05-d4239928771b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Addenda and Amendments</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4248ac6a-aab1-8075-a42a-e80059a5bc18" class="column-list" data-notion-column-list="" dir="auto"><div id="4248ac6a-aab1-800f-9a68-c1101e524cc5" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4248ac6a-aab1-8022-9302-d37a95df7d0b" class="" dir="auto"><strong>Purchase and Sale Agreement Timeline Checklist</strong></p><figure id="4248ac6a-aab1-8084-ad4d-c76011459ee0" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image.png"><img style="width:384px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image.png"/></a></figure><ul id="4248ac6a-aab1-806c-98a6-c046a855d6fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Timing of the Transaction Timeline vs. Pre-Offer Disclosures</strong><ul id="4248ac6a-aab1-80b8-b703-d2f6dd04eb4b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Transaction Timeline (</strong><code><strong>Binding Agreement Date</strong></code><strong> Required):</strong> Buyers receive their transaction deadline timeline <strong>after</strong> an offer is accepted and a <strong>Binding Agreement Date (BAD)</strong> is established, because key contract deadlines (<code>3</code>day loan application, <code>5</code>day appraisal order/cash proof, <code>14</code>day financing verification, inspection period) cannot be calculated until the Binding Agreement Date is set.</li></ul><ul id="4248ac6a-aab1-80a0-ac99-cb68645c6c2a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pre-Offer Disclosures (</strong><code><strong>T.C.A. § 66-5-201 et seq.</strong></code><strong>):</strong> Under the <strong>Tennessee Residential Property Disclosure Act</strong> (covering residential properties of <code><strong>1</strong></code><strong> to </strong><code><strong>4</strong></code><strong> dwelling units</strong>), sellers must furnish the required property disclosure or disclaimer form <strong>prior to acceptance of any offer</strong>—and virtually every residential transaction requires some version of a disclosure form.</li></ul></li></ul><ul id="4248ac6a-aab1-8095-b4bb-cb398a3d80d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Residential Property Disclosure Forms (</strong><code><strong>RF201</strong></code><strong>, </strong><code><strong>RF204</strong></code><strong>, </strong><code><strong>RF203</strong></code><strong>, </strong><code><strong>RF205</strong></code><strong>)</strong><table id="4248ac6a-aab1-8079-bef1-c71099ce6282" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-80f1-86f5-fdf223c353a9" dir="ltr"><td id="rDet" class=""><strong>Tennessee Form</strong></td><td id="`Psl" class=""><strong>Statutory Role &amp; When It Applies</strong></td><td id="M~qP" class=""><strong>Key Rules &amp; Buyer/Licensee Protections</strong></td></tr><tr id="4248ac6a-aab1-80b7-8feb-d4e15399799c" dir="ltr"><td id="rDet" class=""><strong>1. Tennessee Residential Property Condition Disclosure (</strong><code><strong>Form RF201</strong></code><strong>)</strong></td><td id="`Psl" class="">The <strong>standard, most commonly used form</strong> (<code>T.C.A. § 66-5-202(1)</code>), allowing the seller to disclose all known material defects and property conditions.</td><td id="M~qP" class="">• <strong>Seller-Only Completion:</strong> Must be completed <strong>solely by the seller</strong>—licensees must <strong>never</strong> fill out or coach answers on <code>RF201</code> (doing so creates direct licensee liability for misrepresentations).<br/><br/>• Already incorporates all five statutory items listed in Contract Paragraph 15 (<code>T.C.A. §§ 66-5-212</code> &amp; <code>66-5-213</code>).</td></tr><tr id="4248ac6a-aab1-8040-8797-eb252aac234a" dir="ltr"><td id="rDet" class=""><strong>2. Tennessee Residential Property Condition Disclaimer Statement (</strong><code><strong>Form RF204</strong></code><strong>)</strong></td><td id="`Psl" class="">Used in lieu of <code>RF201</code> (<code>T.C.A. § 66-5-202(2)</code>) when a seller sells the property <strong>&quot;as-is&quot;</strong>, makes no representations regarding condition, and refuses to make repairs.</td><td id="M~qP" class="">• <strong>Requires Buyer Consent:</strong> The buyer must <strong>agree in writing</strong> to waive the <code>RF201</code> condition disclosure before making an offer; if the buyer refuses, the seller must complete <code>RF201</code> or the deal cannot proceed.<br/><br/>• <strong>Inspection Rights Preserved:</strong> Accepting <code>RF204</code> does <strong>not</strong> waive the buyer&#x27;s right to conduct home inspections during the Inspection Period or terminate the contract based on inspection findings.<br/><br/>• <strong>Must pair with </strong><code><strong>Form RF205</strong></code> to cover mandatory Paragraph 15 disclosures.</td></tr><tr id="4248ac6a-aab1-80c3-b565-fcfb82c45a9f" dir="ltr"><td id="rDet" class=""><strong>3. Tennessee Residential Property Condition Exemption Notification (</strong><code><strong>Form RF203</strong></code><strong>)</strong></td><td id="`Psl" class="">Used to notify the buyer that the seller is <strong>statutorily exempt</strong> under <code>T.C.A. § 66-5-209</code> from providing <code>RF201</code> or <code>RF204</code> (e.g., first sale of a never-occupied new construction home, court-ordered/foreclosure/estate/fiduciary sales, transfers between co-owners or spouses, or public auctions).</td><td id="M~qP" class="">• Although not mandated by statute, best practice is to attach <code>RF203</code> so the transaction file documents clear written notice of the exemption.<br/><br/>• <strong>Must pair with </strong><code><strong>Form RF205</strong></code> (unless specifically exempt from those separate statutes) so mandatory Paragraph 15 disclosures are still delivered.</td></tr><tr id="4248ac6a-aab1-8008-b627-cb6131053bf0" dir="ltr"><td id="rDet" class=""><strong>4. Additional Required Residential Disclosures (</strong><code><strong>Form RF205</strong></code><strong>)</strong></td><td id="`Psl" class="">Captures the <strong>five mandatory statutory disclosures</strong> required under <code>T.C.A. §§ 66-5-212</code> and <code>66-5-213</code> (mirrored in Purchase Contract Paragraph 15) whenever the seller uses <code><strong>RF204</strong></code><strong> (Disclaimer)</strong> or <code><strong>RF203</strong></code><strong> (Exemption)</strong>.</td><td id="M~qP" class="">Covers whether the seller has knowledge of:<br/><br/>1. Exterior <strong>injection wells</strong> or <strong>sinkholes</strong> on the property<br/><br/>2. Results of any <strong>soil test or percolation (&quot;perc&quot;) test</strong><br/><br/>3. Any single-family residence <strong>moved from one foundation to another</strong><br/><br/>4. Issuance of a <strong>subsurface sewage disposal (septic) permit</strong><br/><br/>5. Whether the property is in a <strong>Planned Unit Development (</strong><code><strong>PUD</strong></code><strong>)</strong> (requiring bylaws, restrictive covenants, and master deed to be made available)</td></tr></tbody></table></li></ul><ul id="4248ac6a-aab1-80c7-93bc-fa198c360a62" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lead-Based Paint Disclosure</strong><figure id="4248ac6a-aab1-8017-a74e-f1ac2e654859" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%201.png"><img style="width:384px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%201.png"/></a></figure><ul id="4248ac6a-aab1-805e-8d84-c28548daa60e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Who Gets It - </strong>If the property being sold was built earlier than 1978, the <em><strong>Lead-Based Paint Disclosure</strong></em> is required. That&#x27;s because they stopped making lead-based paint in 1978. Good call, guys!</li></ul><ul id="4248ac6a-aab1-8037-a579-c8839049dd75" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When to Present It - </strong>Here&#x27;s the tricky part. The <em><strong>Lead-Based Paint Disclosure</strong></em> has to be given to potential buyers before they make an offer, typically with the seller&#x27;s disclosure. But, it ALSO has to be attached to the contract using <strong>Paragraph 17. </strong>The disclosure so nice you give it twice.</li></ul></li></ul><ul id="4248ac6a-aab1-8083-bc39-d5ec59558358" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Counteroffer (RF 651)</strong><figure id="4248ac6a-aab1-80ab-ba1f-c9dd31a09975" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%202.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%202.png"><img style="width:336px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%202.png"/></a></figure><ul id="4248ac6a-aab1-80f8-89d3-f55aed48fca3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Tennessee REALTORS® Counter Offer (</strong><code><strong>Form RF651</strong></code><strong>) — Exceptions &amp; Terms</strong><ul id="4248ac6a-aab1-806d-aac2-d09111d1b419" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Header &amp; Identification Fields:</strong> Identifies whether the counteroffer is from <strong>Seller to Buyer</strong> or <strong>Buyer to Seller</strong>, lists the full legal names of all buyers and sellers, references the date of the original Purchase and Sale Agreement (<code>Form RF401</code>), and states the subject property&#x27;s street address.</li></ul><ul id="4248ac6a-aab1-8037-a2b3-cb1a2867b7d9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The &quot;Exceptions&quot; Section &amp; Unchanged Terms Rule:</strong><ul id="4248ac6a-aab1-800c-b947-e4298b1b6e74" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Enter only the specific items the countering party wants to modify from the original offer (e.g., purchase price, earnest money amount, seller-paid closing costs, contingencies, or closing/possession dates).</li></ul><ul id="4248ac6a-aab1-80ad-8d65-d3f7726b9671" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Form RF651</code> explicitly incorporates all unmodified terms and conditions of the original Purchase and Sale Agreement by reference, confirming that <strong>nothing else in the contract changes</strong>.</li></ul></li></ul><ul id="4248ac6a-aab1-806e-85b3-d8c7746fcdda" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Critical Multi-Round Counteroffer Rule (</strong><code><strong>Restatement Requirement</strong></code><strong>):</strong><ul id="4248ac6a-aab1-80b9-af62-c5be11a5c7b5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><code>Form RF651</code> explicitly states that <strong>any terms or conditions proposed in previous counteroffers are excluded unless restated in the current counteroffer</strong>.</li></ul><ul id="4248ac6a-aab1-802c-b461-ce52381089fd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Whenever negotiations go beyond Counter Offer #1 (e.g., Counter Offer #2 or #3), any agreed-upon exceptions from earlier counteroffers that the party still wants included <strong>must be carried forward and restated</strong> in the new <code>RF651</code> form—otherwise they drop out of the contract.</li></ul></li></ul><ul id="4248ac6a-aab1-80b3-a860-cad135d85879" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Expiration Deadline &amp; Revocation Before Acceptance:</strong><ul id="4248ac6a-aab1-8023-ba24-cad3ef4155d5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Includes a <strong>Time Limit of Offer</strong> (<code>drop-dead</code> deadline with exact date, time, and local time zone).</li></ul><ul id="4248ac6a-aab1-806a-8dcf-c55f162da7a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Until notice of acceptance is delivered, the property remains on the market and the counteroffer may be revoked at any time with proper written notice.</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8020-bedc-ebdade56ab8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Response Boxes &amp; Binding the Agreement on </strong><code><strong>Form RF651</strong></code><ul id="4248ac6a-aab1-8085-8f6a-dfd59597fc83" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Three Response Options for the Counterofferee:</strong> Just like the base purchase contract, the receiving party checks one of three boxes, signs, dates, and returns the form before expiration:<ol type="1" id="4248ac6a-aab1-8047-afb0-f6dc75a70831" class="numbered-list" start="1" dir="auto"><li><strong>Accepted:</strong> Unconditionally accepts the counteroffer and all incorporated terms of <code>Form RF401</code>.</li></ol><ol type="1" id="4248ac6a-aab1-8086-8b3d-ec20d9c47e66" class="numbered-list" start="2" dir="auto"><li><strong>Rejected:</strong> Terminates the counteroffer outright without proposing new terms.</li></ol><ol type="1" id="4248ac6a-aab1-8089-8322-c8312dc45718" class="numbered-list" start="3" dir="auto"><li><strong>Countered:</strong> Rejects the current counteroffer and initiates a new numbered <code>Form RF651</code> (reversing offeror/offeree roles and restating all desired prior exceptions).</li></ol></li></ul><ul id="4248ac6a-aab1-80b4-95f2-cf82f7b5105f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Recording the Binding Agreement Date (</strong><code><strong>Acknowledgment of Receipt</strong></code><strong>):</strong><ul id="4248ac6a-aab1-8060-bf20-d3ba5bb9e7af" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Once the receiving party signs <strong>Accepted</strong> and communicates/delivers that signed acceptance back to the party who made the final counteroffer (or their agent), the <strong>receiving agent/offeror completes the Acknowledgment of Receipt</strong> section on <code>Form RF651</code> with the exact date and time of receipt.</li></ul><ul id="4248ac6a-aab1-80f5-9905-c014f3018db5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">That recorded date becomes the <strong>Binding Agreement Date (BAD)</strong>, making the <strong>next calendar day Day 1</strong> for every contract performance timeline (<code>3</code>day loan application, <code>5</code>day appraisal order/cash proof, <code>14</code>day financing verification, and inspection period).</li></ul></li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8066-8ac2-c386c76b52b8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Notification Form (RF 656)</strong><figure id="4248ac6a-aab1-80d4-b283-df5bbdf7b78b" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%203.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%203.png"><img style="width:384px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%203.png"/></a></figure></li></ul><ul id="4248ac6a-aab1-8021-a9e3-f06d91959283" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee REALTORS® Notification Form (</strong><code><strong>Form RF656</strong></code><strong>) — Buyer-to-Seller Notices</strong><ul id="4248ac6a-aab1-8095-97c2-f6484a7193ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Financing &amp; Proof of Funds Notices:</strong><ul id="4248ac6a-aab1-8044-87f4-cb055ec6a4f6" class="bulleted-list" dir="auto"><li style="list-style-type:square">Confirming timely loan application and payment for the credit report (with a blank to identify the <strong>lender&#x27;s name</strong>)</li></ul><ul id="4248ac6a-aab1-803e-ac2b-f7dfc811131c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Submitting <strong>proof of funds to close</strong> when the financing contingency was waived</li></ul><ul id="4248ac6a-aab1-8036-b92e-fcbcaad28028" class="bulleted-list" dir="auto"><li style="list-style-type:square">Providing the <strong>name of a new lender</strong> if switching lenders</li></ul><ul id="4248ac6a-aab1-805b-9952-f62122e96b6e" class="bulleted-list" dir="auto"><li style="list-style-type:square">Confirming receipt of an adequate <strong>Loan Estimate</strong>, <strong>hazard insurance</strong> coverage, and sufficient <strong>funds to close</strong></li></ul><ul id="4248ac6a-aab1-800c-ab63-d7155ab8cb86" class="bulleted-list" dir="auto"><li style="list-style-type:square">Notifying the seller of <strong>loan denial</strong>, terminating the contract, and requesting release/return of earnest money</li></ul></li></ul><ul id="4248ac6a-aab1-802c-a887-fbc48dcb9b91" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Appraisal Notices:</strong><ul id="4248ac6a-aab1-8036-b618-feefa6832da0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Identifying the <strong>appraiser&#x27;s name</strong> (and confirming the appraisal was ordered)</li></ul><ul id="4248ac6a-aab1-808a-a622-fbe3b4f2419a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reporting a <strong>low appraisal</strong> and electing one of three contractual responses:<ol type="1" id="4248ac6a-aab1-8056-95f9-ec974f162448" class="numbered-list" start="1" dir="auto"><li><strong>Terminate immediately</strong> (with earnest money return)</li></ol><ol type="1" id="4248ac6a-aab1-805c-a466-fd9234a039c6" class="numbered-list" start="2" dir="auto"><li><strong>Hold / consider options</strong> within the remaining appraisal response window</li></ol><ol type="1" id="4248ac6a-aab1-8099-9438-c3587069fc7b" class="numbered-list" start="3" dir="auto"><li><strong>Proceed with the purchase</strong> by waiving the appraisal contingency</li></ol></li></ul></li></ul><ul id="4248ac6a-aab1-8024-b6cd-c098daa8e662" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inspection &amp; Title Notices:</strong><ul id="4248ac6a-aab1-80fc-aef2-fc6a5054603d" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Terminating after home inspection:</strong> Must state the specific issues discovered by the inspector (though the buyer is <strong>not required to attach the inspection report</strong>) and request return of earnest money</li></ul><ul id="4248ac6a-aab1-8051-b3eb-f838677d65e0" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Accepting the property &quot;as-is&quot;</strong> after inspection or <strong>waiving the inspection contingency</strong></li></ul><ul id="4248ac6a-aab1-801e-b47d-e5ef18c2a3a1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Reporting a <strong>title issue</strong> discovered during title examination—or terminating the contract and demanding earnest money back if the seller fails to cure a title defect</li></ul></li></ul><ul id="4248ac6a-aab1-8044-94b6-f5c8a32f72bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contingency &amp; Offer Actions:</strong><ul id="4248ac6a-aab1-8059-aba4-e330e045087c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Confirming the buyer has <strong>listed their current home for sale</strong> under a Right of First Refusal / Sale of Buyer&#x27;s Property addendum</li></ul><ul id="4248ac6a-aab1-8019-8acc-f80c937892bf" class="bulleted-list" dir="auto"><li style="list-style-type:square">Formally <strong>withdrawing an unaccepted offer or counteroffer</strong></li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8031-ba6d-cf72761b1479" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee REALTORS® Notification Form (</strong><code><strong>Form RF656</strong></code><strong>) — Seller-to-Buyer Notices &amp; Cure Demands</strong><table id="4248ac6a-aab1-80d8-89e5-c0da41ac2be4" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-809c-882f-f64f07169931" dir="ltr"><td id="Ne|n" class=""><strong>Category</strong></td><td id="?mRI" class=""><strong>Seller Notification / Demand Action</strong></td><td id="x{@_" class=""><strong>Cure Window &amp; Termination Trigger</strong></td></tr><tr id="4248ac6a-aab1-808e-9658-eae9edb879ac" dir="ltr"><td id="Ne|n" class=""><strong>1. Loan Application &amp; Lender Notice</strong></td><td id="?mRI" class="">Demand the lender&#x27;s name and confirmation that the buyer applied for the loan and paid for the credit report.</td><td id="x{@_" class=""><code><strong>2</strong></code><strong> days</strong> to provide proof; if buyer fails, seller may terminate for default.</td></tr><tr id="4248ac6a-aab1-80a3-ba5a-d71e460e2d86" dir="ltr"><td id="Ne|n" class=""><strong>2. Proof of Funds (Cash / No Financing Contingency)</strong></td><td id="?mRI" class="">Demand proof of liquid funds sufficient to close.</td><td id="x{@_" class=""><code><strong>2</strong></code><strong> days</strong> to provide proof; if buyer fails, seller may terminate for default.</td></tr><tr id="4248ac6a-aab1-8023-8864-e4f8ebc43860" dir="ltr"><td id="Ne|n" class=""><strong>3. Appraisal Order Proof</strong></td><td id="?mRI" class="">Demand verification that the buyer has ordered the appraisal.</td><td id="x{@_" class=""><code><strong>2</strong></code><strong> days</strong> to provide proof; if buyer fails, seller may terminate for default.</td></tr><tr id="4248ac6a-aab1-80a4-b962-d94d8c5f84c4" dir="ltr"><td id="Ne|n" class=""><strong>4. Loan Estimate, Funds &amp; Hazard Insurance</strong></td><td id="?mRI" class="">Demand confirmation of adequate Loan Estimate, funds to close, and hazard insurance coverage.</td><td id="x{@_" class=""><code><strong>2</strong></code><strong> days</strong> to provide proof; if buyer fails, seller may terminate for default.</td></tr><tr id="4248ac6a-aab1-803b-b495-efdcff1b1fa3" dir="ltr"><td id="Ne|n" class=""><strong>5. Documentation of Denial or Low Appraisal</strong></td><td id="?mRI" class="">Demand supporting lender documentation proving an actual <strong>loan denial</strong> or a <strong>low appraisal</strong> valuation.</td><td id="x{@_" class="">Verifies good-faith contingency exit before releasing earnest money.</td></tr><tr id="4248ac6a-aab1-80ef-9aab-f67158185198" dir="ltr"><td id="Ne|n" class=""><strong>6. Missed Earnest Money Deadline</strong></td><td id="?mRI" class="">Notify buyer that earnest money was not timely delivered (or check bounced).</td><td id="x{@_" class=""><code><strong>1</strong></code><strong> day</strong> to cure with immediately available funds; if buyer fails, seller may terminate for default.</td></tr><tr id="4248ac6a-aab1-803c-ac6e-e03ebda59f0e" dir="ltr"><td id="Ne|n" class=""><strong>7. Right of First Refusal Listing Proof</strong></td><td id="?mRI" class="">Demand proof that the buyer has listed their existing property for sale under a Right of First Refusal addendum.</td><td id="x{@_" class=""><code><strong>1</strong></code><strong> day</strong> to provide proof; if buyer fails, seller may terminate.</td></tr><tr id="4248ac6a-aab1-806a-88e6-c9513ac49123" dir="ltr"><td id="Ne|n" class=""><strong>8. New Construction Notices</strong></td><td id="?mRI" class="">Notify the buyer either that construction is <strong>substantially complete and ready for inspection</strong> or that completion is <strong>delayed</strong>.</td><td id="x{@_" class="">Applies strictly to new-construction transactions.</td></tr><tr id="4248ac6a-aab1-80ae-a909-c750c72edbe6" dir="ltr"><td id="Ne|n" class=""><strong>9. Offer / Counteroffer Withdrawal</strong></td><td id="?mRI" class="">Formally withdraw all pending unaccepted offers or counteroffers.</td><td id="x{@_" class="">Effective immediately upon delivery prior to communicated acceptance.</td></tr></tbody></table></li></ul><ul id="4248ac6a-aab1-8028-ba84-ce34ea6172e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Overview: </strong><code><strong>Form RF654</strong></code><strong> vs. </strong><code><strong>Form RF655</strong></code><strong> in Tennessee Real Estate Transactions</strong><ul id="4248ac6a-aab1-802e-b307-de81ea93a992" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Both Tennessee REALTORS® forms govern repair negotiations during the <strong>Inspection Period</strong> and <strong>Resolution Period</strong> of the Purchase and Sale Agreement (<code>Form RF401</code>).</li></ul><ul id="4248ac6a-aab1-808e-b4bb-ecd407e3a3dd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">While <code>RF654</code> initiates the buyer&#x27;s repair request without altering the contract, <code>RF655</code> formally amends the binding agreement once both parties agree on specific repairs.<table id="4248ac6a-aab1-80a0-b3de-ca4c31425403" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-80e7-990a-cfa7304f4cce" dir="ltr"><td id="Yjuw" class=""><strong>Feature</strong></td><td id=":NKk" class=""><strong>Repair/Replacement Proposal (Form RF654)</strong></td><td id="[bGu" class=""><strong>Repair/Replacement Amendment (Form RF655)</strong></td></tr><tr id="4248ac6a-aab1-80f1-a17a-fb7904b68032" dir="ltr"><td id="Yjuw" class=""><strong>Primary Purpose</strong></td><td id=":NKk" class=""><strong>Opens repair negotiations</strong> by formally listing the items the buyer wants repaired or replaced.</td><td id="[bGu" class=""><strong>Legally modifies the purchase contract</strong> to incorporate the exact repairs/replacements both parties agreed upon.</td></tr><tr id="4248ac6a-aab1-8049-887e-d7fba2b3beba" dir="ltr"><td id="Yjuw" class=""><strong>Contractual Status</strong></td><td id=":NKk" class=""><strong>Never becomes part of the binding contract</strong>—it is strictly a negotiation proposal.</td><td id="[bGu" class=""><strong>Becomes a binding part of the contract</strong> once signed by all buyers and sellers and attached to <code>Form RF401</code>.</td></tr><tr id="4248ac6a-aab1-80c8-9b59-d0e8ab404411" dir="ltr"><td id="Yjuw" class=""><strong>Timing &amp; Trigger</strong></td><td id=":NKk" class="">Delivered <strong>during the Inspection Period</strong>; delivery immediately <strong>ends the Inspection Period and starts the Resolution Period</strong> (even if days remain on the Inspection Period).</td><td id="[bGu" class="">Executed <strong>during the Resolution Period</strong> once negotiations conclude in a mutual agreement.</td></tr><tr id="4248ac6a-aab1-80d4-aaea-f516078f8af0" dir="ltr"><td id="Yjuw" class=""><strong>Signatures Required</strong></td><td id=":NKk" class=""><strong>One set of signatures</strong> (signed by the <strong>buyer(s)</strong> submitting the proposal).</td><td id="[bGu" class=""><strong>Two sets of signatures</strong> (signed by <strong>both buyer(s) and seller(s)</strong>).</td></tr></tbody></table></li></ul></li></ul><ul id="4248ac6a-aab1-80a6-a5a8-eab6d64c59d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Repair/Replacement Proposal (</strong><code><strong>Form RF654</strong></code><strong>) — Rules &amp; Negotiation Strategy</strong><ul id="4248ac6a-aab1-808a-8087-f685ee993e48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Buyer&#x27;s Three Inspection Options (</strong><code><strong>Paragraph 7D</strong></code><strong>):</strong> After reviewing inspection reports during the Inspection Period, the buyer may:<ol type="1" id="4248ac6a-aab1-8052-a558-c6641d459424" class="numbered-list" start="1" dir="auto"><li><strong>Terminate the contract</strong> using Notification Form <code>RF656</code> (stating the reasons for termination) and recover earnest money;</li></ol><ol type="1" id="4248ac6a-aab1-8047-84a7-c2cc3aee7c75" class="numbered-list" start="2" dir="auto"><li><strong>Accept the property &quot;as-is&quot;</strong> using Notification Form <code>RF656</code>; or</li></ol><ol type="1" id="4248ac6a-aab1-801a-8c65-d399e4b53c55" class="numbered-list" start="3" dir="auto"><li><strong>Submit </strong><code><strong>Form RF654</strong></code> requesting specific repairs or replacements, which immediately ends the Inspection Period and begins the Resolution Period.<figure id="4248ac6a-aab1-8037-848e-e88c9905e089" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%204.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%204.png"><img style="width:480px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%204.png"/></a></figure></li></ol></li></ul><ul id="4248ac6a-aab1-8047-a9c1-e4064536e667" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Form Contents &amp; Deadlines:</strong><ul id="4248ac6a-aab1-801b-aa87-fd327d539602" class="bulleted-list" dir="auto"><li style="list-style-type:square">Records the <strong>Binding Agreement Date</strong>, <strong>property address</strong>, itemized list of requested repairs/replacements, and the <strong>number of days prior to closing</strong> by which repairs must be completed (aligning with <code>Paragraph 8</code> of <code>Form RF401</code>).</li></ul></li></ul><ul id="4248ac6a-aab1-807c-b083-d1f0c80a300b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Inspection Report Confidentiality &amp; Strategy:</strong><ul id="4248ac6a-aab1-80df-8949-ec50f0f9f44e" class="bulleted-list" dir="auto"><li style="list-style-type:square">The seller may agree to <strong>all, some, or none</strong> of the items on <code>RF654</code>.</li></ul><ul id="4248ac6a-aab1-80e9-9496-e0278c0824bc" class="bulleted-list" dir="auto"><li style="list-style-type:square">Do <strong>not</strong> attach or send the entire home inspection report unless required—only provide targeted excerpts or evidence verifying the specific broken/defective items requested if the seller asks for proof.</li></ul><ul id="4248ac6a-aab1-8093-b248-c00321cb46a7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Tailor the negotiation approach to the seller&#x27;s profile from the initial offer (e.g., presenting a focused list of critical must-haves vs. leaving room to compromise).</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8098-ac84-e6ade0f94c08" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Repair/Replacement Amendment (</strong><code><strong>Form RF655</strong></code><strong>) — Finalizing the Agreement</strong><ul id="4248ac6a-aab1-802f-84dd-de5997f1c275" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Resolution Period Mechanics:</strong> During the contract&#x27;s negotiated <strong>Resolution Period</strong>, the buyer and seller negotiate which repairs the seller will perform.<ul id="4248ac6a-aab1-80ec-a3c3-cf054d742f20" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the parties <strong>cannot reach an agreement</strong> before the Resolution Period expires, they must either sign a written amendment extending the Resolution Period or allow the contract to terminate (with earnest money returned to the buyer).</li></ul></li></ul><ul id="4248ac6a-aab1-8067-b0e9-e7b00864b7de" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executing </strong><code><strong>Form RF655</strong></code><strong>:</strong><ul id="4248ac6a-aab1-804b-9e91-c659dd154a74" class="bulleted-list" dir="auto"><li style="list-style-type:square">Mirrors the layout of <code>Form RF654</code>, itemizing the agreed-upon repairs/replacements and completion deadline prior to closing, but requires <strong>both buyer and seller signatures</strong>.</li></ul><ul id="4248ac6a-aab1-80ee-9dc9-eccf308d63cb" class="bulleted-list" dir="auto"><li style="list-style-type:square">Once fully executed and delivered before the Resolution Period ends, <code>RF655</code> attaches to and amends the Purchase and Sale Agreement, obligating the seller to complete the listed repairs by the contract&#x27;s <strong>Repair Completion Deadline</strong> (<code>Paragraph 8</code>, one of the four strict <strong>drop-dead dates</strong>).<figure id="4248ac6a-aab1-80c8-89be-f5702f1473cf" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%205.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%205.png"><img style="width:384px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%205.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8089-9617-f0b4ff18c2c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer Authorization to Make Repairs (</strong><code><strong>Form RF658</strong></code><strong>) — Purpose &amp; Use Case</strong><ul id="4248ac6a-aab1-800d-8711-c51e5e452718" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When It Is Used:</strong> Executed when a buyer wants to enter the seller&#x27;s property and perform repairs or improvements <strong>prior to closing</strong>—most commonly when the seller grants a price reduction or closing-cost credit in lieu of completing repairs themselves, and the buyer wants the work finished before moving in.</li></ul><ul id="4248ac6a-aab1-80fb-a9f3-dad63879155a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Contractual Status:</strong> Once signed by both buyer(s) and seller(s), <code>Form RF658</code> is attached to and becomes part of the Purchase and Sale Agreement (<code>Form RF401</code>).</li></ul></li></ul><ul id="4248ac6a-aab1-80e5-9d50-c67af6ac6d2e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Mutual Protections &amp; Key Terms on </strong><code><strong>Form RF658</strong></code><table id="4248ac6a-aab1-8039-ac1d-dd2c3cf8bd6b" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-80bb-976e-ebc71d2e9d92" dir="ltr"><td id="}qhZ" class=""><strong>Party Protected</strong></td><td id="{KS=" class=""><strong>Contractual Safeguards Under Form RF658</strong></td></tr><tr id="4248ac6a-aab1-80f5-ad92-ed51bf2b4436" dir="ltr"><td id="}qhZ" class=""><strong>Seller Protections</strong></td><td id="{KS=" class="">• <strong>All Contingencies Must Be Satisfied First:</strong> Work cannot begin until <strong>all contract contingencies</strong> (such as financing, appraisal, and inspection contingencies) have been fulfilled or waived—preventing a buyer from tearing up the property and then walking away.<br/><br/>• <strong>Protection Against Unfinished Work &amp; Mechanic&#x27;s Liens:</strong> Shields the seller if the buyer begins repairs, fails to close, or leaves unpaid contractor bills that could trigger a <strong>mechanic&#x27;s lien</strong> against the seller&#x27;s title.<br/><br/>• <strong>Consideration / Fee for Risk (</strong><code><strong>&quot;Sweetener&quot;</strong></code><strong>):</strong> Includes a field for the <strong>dollar amount</strong> the buyer pays the seller for the privilege and risk of performing work on the property before closing.</td></tr><tr id="4248ac6a-aab1-800d-ab4c-e9f5305d70c6" dir="ltr"><td id="}qhZ" class=""><strong>Buyer Protections</strong></td><td id="{KS=" class="">• <strong>Reimbursement If Seller Defaults / Cannot Close:</strong> If the buyer invests money in authorized repairs and the <strong>seller is unable to close</strong> or defaults on the contract, the seller is obligated to <strong>reimburse/refund the buyer</strong> for the actual amounts spent on the authorized work.</td></tr></tbody></table></li></ul><ul id="4248ac6a-aab1-80ba-afcc-cb835008b3de" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Required Fields to Complete on </strong><code><strong>Form RF658</strong></code><ul id="4248ac6a-aab1-8090-bbee-cadca4588b94" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Property &amp; Contract Identification:</strong> Reference to the underlying Purchase and Sale Agreement (<code>Form RF401</code>) and property address.</li></ul><ul id="4248ac6a-aab1-80b0-8391-e652cb35ca10" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Scope of Authorized Repairs:</strong> Specific description of the exact repairs or work the buyer is permitted to perform (the buyer may not perform unauthorized alterations beyond this list).</li></ul><ul id="4248ac6a-aab1-806e-a996-ca5296344580" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Consideration / Fee Amount:</strong> The agreed dollar amount paid to the seller for granting pre-closing repair access.</li></ul><ul id="4248ac6a-aab1-8076-942a-d4bd0c0cf547" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Signatures &amp; Dates:</strong> Executed by <strong>all buyers and all sellers</strong> and attached to the binding purchase contract.<figure id="4248ac6a-aab1-80c8-843a-e41ff01289ce" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%206.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%206.png"><img style="width:432px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%206.png"/></a></figure></li></ul></li></ul><ul id="4248ac6a-aab1-8086-b638-dfea2dab6841" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Final Inspection (</strong><code><strong>Form RF660</strong></code><strong>) — Purpose &amp; Timing</strong><ul id="4248ac6a-aab1-8009-a870-e8bc256873a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When It Is Used:</strong> Completed during the final walkthrough (pursuant to <strong>Paragraph 8</strong> of the Purchase and Sale Agreement <code>Form RF401</code>) on or after the contract&#x27;s <strong>Repair Completion Deadline</strong> and prior to closing.</li></ul><ul id="4248ac6a-aab1-802e-8371-d0759f5d0b83" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose:</strong> Documents the results of the buyer&#x27;s final walkthrough and notifies the seller whether the property is ready to close or requires corrective action before closing.</li></ul></li></ul><ul id="4248ac6a-aab1-8005-868d-fb4645c8ba11" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Three Options on </strong><code><strong>Form RF660</strong></code><ol type="1" id="4248ac6a-aab1-80b7-85cf-ebc8fab3b653" class="numbered-list" start="1" dir="auto"><li><strong>Waive the Final Inspection:</strong> The buyer elects to waive the final walkthrough and accept the property in its current condition.</li></ol><ol type="1" id="4248ac6a-aab1-804b-9a35-cec936c5343a" class="numbered-list" start="2" dir="auto"><li><strong>Approve the Property Condition:</strong> The buyer completed the final inspection and confirms that all agreed repairs are satisfactory and the property is in acceptable condition to close.</li></ol><ol type="1" id="4248ac6a-aab1-8028-b55c-f9ff16d0980c" class="numbered-list" start="3" dir="auto"><li><strong>Identify Remaining Required Items:</strong> The buyer completed the final inspection and lists specific unfinished repairs or new damage that must be addressed before closing.</li></ol></li></ul><ul id="4248ac6a-aab1-80b8-9397-dd5972cbb3e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Strict Rules on What Can Be Listed on </strong><code><strong>Form RF660</strong></code><ul id="4248ac6a-aab1-8091-b7a7-c6d88db95bff" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The final walkthrough is <strong>not a second home inspection</strong>—the buyer cannot use <code>Form RF660</code> to demand new cosmetic fixes or raise pre-existing issues they missed earlier. Only <strong>two categories</strong> of items may be listed:<ul id="4248ac6a-aab1-807f-b878-d02053f3d7b5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1. Unfinished or Improperly Completed Contract Repairs:</strong> Items the seller formally agreed to repair or replace during the Resolution Period via an executed <strong>Repair/Replacement Amendment (</strong><code><strong>Form RF655</strong></code><strong>)</strong> or Special Stipulation.</li></ul><ul id="4248ac6a-aab1-80a6-afce-d0156e82afbf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>2. Post-Contract Damage or Breakdowns:</strong> Systems, fixtures, or property conditions that were in working order/full repair on the <strong>Binding Agreement Date</strong> (when the contract was signed) but broke, malfunctioned, or suffered damage prior to closing.</li></ul><figure id="4248ac6a-aab1-8088-9af1-e85896050f50" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%207.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%207.png"><img style="width:432px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%207.png"/></a></figure></li></ul></li></ul><ul id="4248ac6a-aab1-80f2-96ae-eda53b50c516" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Closing Date / Possession Date Amendment (</strong><code><strong>Form RF657</strong></code><strong>) — Purpose &amp; Execution</strong><ul id="4248ac6a-aab1-802d-962b-c3afc939bf10" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Why It Is Essential:</strong> Under the Tennessee REALTORS® Purchase and Sale Agreement (<code>Form RF401</code>), both the <strong>Closing Date</strong> (<code>Paragraph 4</code>) and the <strong>Possession Date</strong> (<code>Paragraph 4A</code>) are strict <strong>&quot;drop-dead&quot; dates</strong> that never roll over automatically, even if they fall on a weekend or holiday. Because neither party can unilaterally extend them, any schedule shift (such as underwriting delays, repair delays, or a seller&#x27;s new-home construction delay) requires mutual written consent via <code><strong>Form RF657</strong></code>.</li></ul><ul id="4248ac6a-aab1-804f-8201-da63eecccaa8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How to Complete </strong><code><strong>Form RF657</strong></code><strong>:</strong><ol type="1" id="4248ac6a-aab1-8087-affc-f3c6daf3de31" class="numbered-list" start="1" dir="auto"><li>Reference the underlying Purchase and Sale Agreement (<code>Form RF401</code>) and property address.</li></ol><ol type="1" id="4248ac6a-aab1-805c-b1f1-fd4d8f026805" class="numbered-list" start="2" dir="auto"><li>Check the applicable box for <strong>Closing Date</strong>, <strong>Possession Date</strong>, or <strong>both</strong>.</li></ol><ol type="1" id="4248ac6a-aab1-8058-95d9-fc940f8059bc" class="numbered-list" start="3" dir="auto"><li>Enter the <strong>new agreed calendar date(s)</strong> (double-checking the calendar so the new date does not inadvertently land on a weekend or bank holiday).</li></ol><ol type="1" id="4248ac6a-aab1-80b8-bd60-f979437e5be1" class="numbered-list" start="4" dir="auto"><li>Obtain <strong>signatures and dates from all buyers and all sellers</strong> prior to the original expiration date so the contract remains active and unbroken.</li></ol></li></ul></li></ul><ul id="4248ac6a-aab1-80f8-b0dc-e5cd09668e31" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Temporary Occupancy Agreement (</strong><code><strong>Form RF626</strong></code><strong> / </strong><code><strong>RF627</strong></code><strong>) — Managing Non-Concurrent Possession</strong><ul id="4248ac6a-aab1-80a1-b226-d58fddc86b9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When It Is Required:</strong> Whenever the <strong>Possession Date</strong> is moved to a date <strong>different from the Closing Date</strong>—most commonly when the seller remains in the home after closing (&quot;rent-back&quot; / post-closing occupancy, <code>Form RF626</code>), or when a buyer moves in prior to closing (pre-closing occupancy, <code>Form RF627</code>).</li></ul><ul id="4248ac6a-aab1-80da-a2a7-f8d0e79af4ae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>How It Protects Both Parties:</strong><ul id="4248ac6a-aab1-806c-9922-fd4b3c908dc9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Functions as a short-term occupancy/lease agreement governing the period between closing and surrender of keys, since the <strong>buyer is already the legal owner</strong> once the deed closes and funds disburse.</li></ul><ul id="4248ac6a-aab1-804b-9d3e-ce85131f1ece" class="bulleted-list" dir="auto"><li style="list-style-type:square">Explicitly establishes the <strong>daily occupancy fee/rent</strong>, <strong>security/damage deposit</strong>, <strong>utility transfer responsibilities</strong>, <strong>hazard/renter&#x27;s insurance obligations</strong>, <strong>property maintenance duties</strong>, and <strong>holdover penalties</strong> if the seller fails to vacate on the agreed possession date.<figure id="4248ac6a-aab1-80cd-bb0a-c928f60a1cfd" class="image" data-notion-image="Chapter%202%20-%20Addenda%20and%20Amendments/image%208.png" dir="ltr"><a href="Chapter%202%20-%20Addenda%20and%20Amendments/image%208.png"><img style="width:384px" src="Chapter%202%20-%20Addenda%20and%20Amendments/image%208.png"/></a></figure></li></ul></li></ul></li></ul><p id="4248ac6a-aab1-80e6-8aed-c52e71b6fbea" class="" dir="auto">
+</p><p id="4248ac6a-aab1-807f-a61d-d66cd67f5c22" class="" dir="auto">
+</p></div><div id="4248ac6a-aab1-80c5-b344-ccdfb81f6ff0" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4248ac6a-aab1-80d7-b1a9-e67ca97882f4" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4248ac6a-aab1-807e-a534-d80bbf80bddb" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purchase and Sale Agreement Timeline Checklist</strong><ul id="4248ac6a-aab1-804f-b85e-f25a1f88894b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This handy form helps you and the buyer keep track of all those deadlines we talked about in the contract walkthrough. Buyers should get this timeline after they have had an offer accepted and there is a binding agreement date. Without a binding agreement date, you won&#x27;t be able to fill out some of the dates in the timeline.</li></ul></li></ul><ul id="4248ac6a-aab1-8043-b886-f03d5738ce5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disclosure Forms</strong><ul id="4248ac6a-aab1-80f3-9810-ce1e5bf88f74" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Tennessee has a few different disclosure forms that are used in different situations. The most important thing to remember is that <strong>every property should have some version of a disclosure form.</strong></li></ul></li></ul><ul id="4248ac6a-aab1-8080-9520-ecf992de529b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Residential Property Condition Disclosure Form (RF 201)</strong><ul id="4248ac6a-aab1-801a-a5b7-e20ccc430f49" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Tennessee Residential Property Condition Disclosure Form</strong></em>, also known as <em><strong>RF 201</strong></em>, is the most commonly used disclosure form. This gives the seller the chance to disclose known defects about the property. This form MUST BE filled out by the seller.</li></ul></li></ul><ul id="4248ac6a-aab1-80d8-8104-f526923e0910" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Residential Property Disclaimer Form (RF 204)</strong><ul id="4248ac6a-aab1-804e-a1d8-d585ebd18d10" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Tennessee Residential Property Disclaimer Form (RF 204) </strong></em>is used when a seller wants to sell their property as-is. It doesn&#x27;t make any disclosures, and indicates that the seller is not open to making any repairs. This form is used in lieu of the disclosure form.</li></ul></li></ul><ul id="4248ac6a-aab1-8051-968d-dc8199dc850e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Residential Property Exemption Notification (RF 203)</strong><ul id="4248ac6a-aab1-8028-a3be-c82827089661" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This form is used to notify a buyer that a property is exempt from needing to provide a disclaimer form.</li></ul></li></ul><ul id="4248ac6a-aab1-80af-9c79-dc3559fb753d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Additional Required Residential Disclosures (RF 205)</strong><ul id="4248ac6a-aab1-801a-85aa-d7fe4f8fa029" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Form <em><strong>RF 205 </strong></em>is for sellers using the disclaimer form (<em><strong>RF 204</strong></em>) or the exemption notification (<em><strong>RF 203</strong></em>). Those sellers still need to disclose all of the items listed in <strong>Paragraph 15</strong>. This form allows them to do that.</li></ul></li></ul><ul id="4248ac6a-aab1-80fe-9a4f-f2642e4c65dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Lead-Based Paint Disclosure</strong><ul id="4248ac6a-aab1-803b-80e2-dfea47528c5d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Lead-Based Paint Disclosure</strong></em> is required for houses built before 1978. It has to be given to potential buyers before they make an offer and it has to be attached to the contract.</li></ul></li></ul><ul id="4248ac6a-aab1-8015-aa47-d19b31bf2797" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Notification Form (RF 656)</strong><ul id="4248ac6a-aab1-80a7-bef8-f61739c493f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">We talked a lot about the <em><strong>Notification Form (RF 656)</strong></em> during the purchase contract walkthrough. This form can serve all kinds of notification-based purposes for both buyer and seller.</li></ul></li></ul><ul id="4248ac6a-aab1-8042-b771-ead4f87ed01a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Repair/Replacement Proposal (RF 654) and Repair/Replacement Amendment (RF 655)</strong><ul id="4248ac6a-aab1-807a-af99-ff5479fda405" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Repair/Replacement Proposal (RF 654) </strong></em>and the <em><strong>Repair/Replacement Amendment (RF 655)</strong></em> are used during the inspection and resolution period. The proposal is how the buyer formally requests repairs based on the inspection report. The amendment is the form used to alter the contract based on what repairs the buyer and seller agree on during the replacement period.</li></ul></li></ul><ul id="4248ac6a-aab1-80d0-a196-f255f77f3c7a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Authorized to Make Repairs (RF 658)</strong><ul id="4248ac6a-aab1-8010-9a3f-d0ea47278d09" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This form is designed to be used when a buyer wants to go in and make repairs before closing.</li></ul></li></ul><ul id="4248ac6a-aab1-8063-bc4d-c05066252838" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Buyer&#x27;s Final Inspection (RF 660)</strong><ul id="4248ac6a-aab1-80aa-97a9-e2d692b6b322" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Buyer&#x27;s Final Inspection form (RF 660)</strong></em> is used to let the seller know what the buyer found on their final inspection.</li></ul></li></ul><ul id="4248ac6a-aab1-80ff-b7fd-db05d42550f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Closing Date/Possession Date Amendment (RF 657)</strong><ul id="4248ac6a-aab1-805a-952a-c7c37fc55353" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <em><strong>Closing Date/Possession Date Amendment (RF 657)</strong></em> is attached to the contract to change the closing or possession date.</li></ul><p id="4248ac6a-aab1-80f6-b2b9-dca6824fd67d" class="" dir="auto">
+</p></li></ul></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

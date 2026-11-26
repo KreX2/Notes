@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - Purchase and Sale Agreement Walkthrough</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8000-903b-e67c6cd3ce0b" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>Purchase and Sale Agreement Walkthrough</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4248ac6a-aab1-803b-8347-de3996f66bc2" class="column-list" data-notion-column-list="" dir="auto"><div id="4248ac6a-aab1-80f6-a21e-cf65beffb045" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4248ac6a-aab1-8009-8662-c92b752aea10" class="" dir="auto"><strong>Meet RF401, the Purchase and Sale Agreement</strong></p><figure id="4248ac6a-aab1-8089-900a-f8a6f8503ff6" class="image" data-notion-image="Chapter%201%20-%20Purchase%20and%20Sale%20Agreement%20Walkthroug/image.png" dir="ltr"><a href="Chapter%201%20-%20Purchase%20and%20Sale%20Agreement%20Walkthroug/image.png"><img style="width:336px" src="Chapter%201%20-%20Purchase%20and%20Sale%20Agreement%20Walkthroug/image.png"/></a></figure><ul id="4248ac6a-aab1-80f0-a639-d5a53fbbc991" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>TN Purchase Contract (</strong><code><strong>Form RF401</strong></code><strong>) Paragraph 1: Parties, Legal Description, Fixtures, Leased Items &amp; Fuel</strong><ul id="4248ac6a-aab1-8016-8bcc-f17f7db894c7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Parties &amp; Legal Description:</strong><ul id="4248ac6a-aab1-8032-ba35-d5308e8a4631" class="bulleted-list" dir="auto"><li style="list-style-type:square">List the <strong>full legal names</strong> of all buyers and all sellers. If a married couple buys or sells jointly owned property, <strong>both spouses must sign</strong>—one spouse alone cannot compel conveyance of jointly owned real estate.</li></ul><ul id="4248ac6a-aab1-8072-bf33-d548625dc242" class="bulleted-list" dir="auto"><li style="list-style-type:square">Enter a complete <strong>legal description</strong> (county, deed book/page or instrument number, and/or subdivision/lot)—a street address alone is insufficient.</li></ul></li></ul><ul id="4248ac6a-aab1-8098-86fa-dd5119527f0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 1A, 1B &amp; 1C (What Stays vs. What Goes):</strong><ul id="4248ac6a-aab1-800a-84d0-db3e5609da5f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1A (Included Fixtures &amp; Items):</strong> Automatically conveys attached light fixtures/bulbs and ceiling fans, permanently attached plate glass mirrors, HVAC/plumbing equipment, doors/storm doors/windows, window treatments and hardware, wall-to-wall carpet, range, built-in kitchen appliances, bathroom fixtures/mirrors, gas logs/fireplace doors/attached screens, security system components/controls, garage door openers/remotes, swimming pool/equipment, awnings, permanently installed outdoor grills, landscaping/outdoor lighting, mailboxes, attached basketball goals/backboards, TV mounting brackets <em>(excluding flat-screen TVs)</em>, antennae/satellite dishes <em>(excluding components)</em>, central vacuum systems/attachments, and all keys, fobs, and access/master codes.</li></ul><ul id="4248ac6a-aab1-80e3-8445-dd98df2cdddf" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1B (Additional Items Included):</strong> Write in any non-attached personal property or extra items the seller agrees to leave (e.g., refrigerator, washer/dryer).</li></ul><ul id="4248ac6a-aab1-80a2-ac2a-d7085b342fa9" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>1C (Excluded Items):</strong> Explicitly list any Paragraph 1A item the seller intends to take.</li></ul></li></ul><ul id="4248ac6a-aab1-80c3-bfbd-da83704849f5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 1D (Leased Items):</strong> Buyer agrees to assume existing leases on leased equipment (e.g., security systems, propane tanks) unless transferred leases are prohibited—in which case the seller must pay them off before closing—or the buyer checks the exclusion box and lists unwanted leased items.</li></ul><ul id="4248ac6a-aab1-804c-8413-f05a0a0e5cd0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 1E (Fuel):</strong> Remaining heating fuel (such as oil or propane in a tank) is charged to the buyer and credited to the seller at closing based on current market prices.</li></ul></li></ul><ul id="4248ac6a-aab1-8064-98d5-e4bcf9e1c5a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraph 2: Financing, Appraisal &amp; Closing Cost Allocations</strong><ul id="4248ac6a-aab1-807a-a1c7-cec3de7790fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2A (Financing Contingency Applies):</strong><ul id="4248ac6a-aab1-80e5-8cf2-d9dea2942877" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Within </strong><code><strong>3</strong></code><strong> days after Binding Agreement Date (BAD):</strong> Buyer must apply for the loan, pay for the credit report, and notify the seller via <strong>Notification Form </strong><code><strong>RF656</strong></code>.</li></ul><ul id="4248ac6a-aab1-804e-8892-ca38a5b02618" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Within </strong><code><strong>14</strong></code><strong> days after BAD:</strong> Buyer must receive a Loan Estimate confirming sufficient loan funds, order the appraisal, pay the appraisal fee, and notify the seller via <code>RF656</code>.</li></ul></li></ul><ul id="4248ac6a-aab1-80e6-ab5e-f3e8a37d4af8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2B (Financing Contingency Waived / All-Cash):</strong> Buyer must deliver proof of sufficient available funds to close within <code><strong>5</strong></code><strong> days after BAD</strong>.</li></ul><ul id="4248ac6a-aab1-805b-b23e-dd6b4ca0f996" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Failure to Notify Cure Rule:</strong> If the buyer misses a required notification deadline, the seller&#x27;s agent may issue a formal request via <code>RF656</code>, giving the buyer <code><strong>2</strong></code><strong> days</strong> to deliver the required proof before falling into default and allowing the seller to terminate.</li></ul><ul id="4248ac6a-aab1-80fc-969f-ee75afd4bc24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2C (Appraisal Contingency):</strong> Allows the buyer to terminate and recover earnest money if the property fails to appraise at or above the purchase price (may still be retained even when financing is waived).</li></ul><ul id="4248ac6a-aab1-808e-b9ad-dfded6ef6b82" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2D (Closing Costs, Title &amp; FIRPTA):</strong> Reminds foreign sellers of <strong>FIRPTA</strong> tax withholding requirements and divides standard closing expenses (all negotiable via <strong>Line 145</strong>, with title insurance split on <strong>Line 141</strong>—customarily seller pays owner&#x27;s policy and buyer pays lender&#x27;s policy):</li></ul><table id="4248ac6a-aab1-807f-ae20-d922432da7fc" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-80d8-a6f7-d0607630f8db" dir="ltr"><td id="I__]" class=""><strong>Seller Expenses (Default)</strong></td><td id="r\Cu" class=""><strong>Buyer Expenses (Default)</strong></td></tr><tr id="4248ac6a-aab1-80be-86cb-e438a5157ebd" dir="ltr"><td id="I__]" class="">• Existing loan/lien payoffs, penalties, release prep &amp; recording fees<br/><br/>• Accrued/outstanding HOA/COA dues &amp; payoff/estoppel letter fees<br/><br/>• Seller&#x27;s closing/document prep/attorney fees<br/><br/>• Deed preparation fee &amp; notary fee on deed<br/><br/>• Wire/courier fees for lien payoffs</td><td id="r\Cu" class="">• Tennessee transfer tax (<code>$0.37</code> per <code>$100</code>) &amp; deed/deed of trust recording fees<br/><br/>• Buyer&#x27;s closing/document prep/attorney fees &amp; loan document prep<br/><br/>• Loan inspection/survey, credit report &amp; appraisal re-inspection fees<br/><br/>• Mortgage, hazard &amp; flood insurance premiums + tax/insurance escrow reserves<br/><br/>• Prepaid interest, Insured Closing Protection Letter &amp; Paragraph 4F HOA transfer fees</td></tr></tbody></table></li></ul><ul id="4248ac6a-aab1-8003-a541-d5b4621240bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraphs 3 &amp; 4: Earnest Money, Closing Date, Possession &amp; Prorations</strong><ul id="4248ac6a-aab1-80f2-a73d-c82fcdfbb72c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 3 (Earnest / Trust Money):</strong> Held in escrow by the designated Holder until closing (credited to buyer), buyer default (forfeited to seller), or seller default (returned to buyer). <strong>Line 153</strong> sets the negotiated delivery deadline; if the buyer misses it, the Holder notifies all parties and the buyer has <code><strong>1</strong></code><strong> day</strong> to deliver immediately available funds before default.</li></ul><ul id="4248ac6a-aab1-80d1-bcd8-e04e7bda533e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 4 (Closing Date &amp; the Four &quot;Drop-Dead&quot; Dates):</strong> The Closing Date is one of four <strong>&quot;drop-dead&quot; dates</strong> in <code>Form RF401</code> that <strong>do not roll to the next business day</strong> when falling on a weekend or holiday—alongside:<ol type="1" id="4248ac6a-aab1-8096-8e13-f23395ee77c9" class="numbered-list" start="1" dir="auto"><li><strong>Offer Expiration Date</strong></li></ol><ol type="1" id="4248ac6a-aab1-80d2-940a-f3efa0fe40a8" class="numbered-list" start="2" dir="auto"><li><strong>Closing Date</strong></li></ol><ol type="1" id="4248ac6a-aab1-80a1-a452-f2f1827b1f99" class="numbered-list" start="3" dir="auto"><li><strong>Possession Date</strong></li></ol><ol type="1" id="4248ac6a-aab1-80ee-aad4-dc0c044374dc" class="numbered-list" start="4" dir="auto"><li><strong>Completion of Repairs Deadline</strong></li></ol></li></ul><ul id="4248ac6a-aab1-80ce-acc4-d377629b9620" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4A (Possession):</strong> Date buyer receives keys and occupancy (typically closing day; any pre- or post-closing occupancy requires a <strong>Temporary Occupancy Agreement</strong>).</li></ul><ul id="4248ac6a-aab1-809a-b1fa-fb9730ea3f32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4B (Prorations):</strong> Property taxes, HOA dues, rents, and operating costs are prorated through closing day; seller pays any prior-year taxes or rollback taxes.</li></ul><ul id="4248ac6a-aab1-800c-a6fc-f857b4f7b59c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4C (Greenbelt):</strong> For agricultural/forest parcels of <code><strong>15</strong></code><strong> acres or more</strong>, buyer elects whether to maintain or terminate Greenbelt tax status.</li></ul><ul id="4248ac6a-aab1-8076-a315-cf74ec25c614" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4D (Special Assessments):</strong> Seller pays special assessments levied or approved prior to closing unless negotiated otherwise.</li></ul><ul id="4248ac6a-aab1-809a-b56d-fa649e25e59b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4E (Warranties):</strong> Existing manufacturer warranties, service contracts, or termite bonds may transfer at the buyer&#x27;s expense.</li></ul><ul id="4248ac6a-aab1-804b-b7a5-f1c3a7f2b561" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>4F (HOA Transfer Fees):</strong> Paid by the buyer.</li></ul></li></ul><ul id="4248ac6a-aab1-8024-a63a-e0bbb9ae15fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraphs 5, 6 &amp; 7: Title, Lead-Based Paint &amp; Inspections</strong><ul id="4248ac6a-aab1-804d-9767-fda68e65baf4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 5 (Marketable Title, Deed Names &amp; HOA Liens):</strong><ul id="4248ac6a-aab1-80e8-b81a-c2093d273312" class="bulleted-list" dir="auto"><li style="list-style-type:square">Seller conveys <strong>marketable title</strong> by <strong>General Warranty Deed</strong>. If title/survey defects arise, buyer may accept as-is or require cure.</li></ul><ul id="4248ac6a-aab1-80eb-8c05-e591b2c4d2db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>5B (Names on the Deed):</strong> Record exact legal names of all buyers; refer questions regarding form of title ownership (tenancy by the entirety, joint tenancy, etc.) to an attorney.</li></ul><ul id="4248ac6a-aab1-801a-be0b-f4b43f78618c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>5C (Association Lien Payoff):</strong> Seller must satisfy any HOA/COA lien and deliver proof to the buyer at least <code><strong>7</strong></code><strong> days prior to closing</strong>.</li></ul></li></ul><ul id="4248ac6a-aab1-801d-97c1-c8d84d401fda" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 6 (Lead-Based Paint Disclosure):</strong> If built <strong>before </strong><code><strong>1978</strong></code>, check <em>&quot;does apply&quot;</em> and attach <strong>Lead-Based Paint Disclosure (</strong><code><strong>Form RF209</strong></code><strong>)</strong>; otherwise check <em>&quot;does not apply.&quot;</em></li></ul><ul id="4248ac6a-aab1-804c-b676-d87ee681649b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 7 (Inspections, WDI &amp; Resolution Period):</strong><ul id="4248ac6a-aab1-808a-9a4d-cc2baefc12d8" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Inspection Period (Line 290):</strong> Buyer conducts licensed inspections at buyer&#x27;s expense; seller must keep utilities active and provide access.</li></ul><ul id="4248ac6a-aab1-80a0-b054-f7fcf2cfc309" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>7C (Wood-Destroying Insect / WDI Inspection):</strong> Conducted at buyer&#x27;s expense; report delivered to seller with repair requests or by the end of the Inspection Period, whichever is earlier.</li></ul><ul id="4248ac6a-aab1-80fa-b7f7-e4f3cf608df7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>7D (Buyer&#x27;s Three Inspection Choices &amp; Resolution Period):</strong> Before the Inspection Period expires, the buyer may:<ol type="1" id="4248ac6a-aab1-806c-a51c-f22bcc17e7d2" class="numbered-list" start="1" dir="auto"><li><strong>Terminate</strong> via <code>Notification Form RF656</code> (stating the reason—inspection report need not be attached) for a full earnest money refund;</li></ol><ol type="1" id="4248ac6a-aab1-806e-8d59-ece9def808d6" class="numbered-list" start="2" dir="auto"><li><strong>Accept the property as-is</strong> via <code>RF656</code>; or</li></ol><ol type="1" id="4248ac6a-aab1-8087-b84e-de1b36d27de0" class="numbered-list" start="3" dir="auto"><li><strong>Submit a Repair/Replacement Proposal (</strong><code><strong>Form RF654</strong></code><strong>)</strong>, ending the Inspection Period and starting the negotiated <strong>Resolution Period</strong>. If no written repair agreement is reached before the Resolution Period expires, the parties may extend in writing or the contract terminates with earnest money refunded to the buyer.</li></ol></li></ul><ul id="4248ac6a-aab1-804d-95b7-ea618bb17b11" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>7E (Waiving Inspections):</strong> Waives all physical and WDI inspections and all repair requests—a high-risk election.</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-80f7-b21b-c7654e596e5e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraphs 8–13: Final Walkthrough, Due Diligence, Disclaimers, Brokerage, Default &amp; Home Warranty</strong><ul id="4248ac6a-aab1-806c-ac8b-f0e28157d4c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 8 (Final Inspection &amp; Repair Completion):</strong> Sets the <strong>&quot;drop-dead&quot; deadline</strong> for seller repair completion and establishes the earliest date for the buyer&#x27;s final walkthrough to verify condition and completed repairs.</li></ul><ul id="4248ac6a-aab1-8053-b030-cd1ba25dab42" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 9 (Additional Due Diligence):</strong> Lists specialized buyer concerns—<strong>survey/flood certification, insurability, water supply, waste disposal (septic/sewer), and title exceptions</strong>—which require attaching an appropriate contingency addendum or special stipulation if the buyer wants contingency protection.</li></ul><ul id="4248ac6a-aab1-809a-a0df-fd66f6db066a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 10 (Brokerage &amp; Licensee Disclaimer):</strong> Protects licensees and brokerages from liability by confirming they are not technical experts (inspectors, surveyors, attorneys, tax advisors) and advising parties to hire qualified specialists.</li></ul><ul id="4248ac6a-aab1-80a7-96fb-ee23525a32e3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 11 (Brokerage Compensation):</strong> Specifies commission obligations and confirms that affiliate brokers are compensated solely through their sponsoring principal broker.</li></ul><ul id="4248ac6a-aab1-809e-b4f1-c55e9c86bd02" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 12 (Default &amp; Remedies):</strong><ul id="4248ac6a-aab1-8094-9512-f22a38448470" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Buyer Default:</strong> Seller retains earnest money and may also sue for actual damages or specific performance.</li></ul><ul id="4248ac6a-aab1-80b0-adec-e89d74891ffe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Seller Default:</strong> Buyer recovers earnest money and may sue for actual damages or specific performance.</li></ul></li></ul><ul id="4248ac6a-aab1-8088-8f48-ca357f35e02c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 13 (Home Protection Plan / Home Warranty):</strong> Specifies whether a home warranty will be purchased, the coverage plan/provider, cost cap, and whether buyer or seller pays.</li></ul></li></ul><ul id="4248ac6a-aab1-8030-b81e-e2e3f7cac50b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraph 14: General Provisions, &quot;Time Is of the Essence&quot; &amp; Written Notices</strong><ul id="4248ac6a-aab1-8040-88cd-fe61fd99e13d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Governing Rules:</strong> Establishes Fair Housing compliance, terminology definitions, risk of loss prior to closing, and the requirement that any modification to the contract must be <strong>in writing and signed by all parties</strong>.</li></ul><ul id="4248ac6a-aab1-80b1-91c2-e02570ab122a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Time Is of the Essence (</strong><code><strong>14D</strong></code><strong>) &amp; Counting Days (</strong><code><strong>14E</strong></code><strong>):</strong><ul id="4248ac6a-aab1-80cf-b0a0-ca8e4c3d356c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Makes every contractual deadline strictly enforceable.</li></ul><ul id="4248ac6a-aab1-808c-be85-d89ef090e644" class="bulleted-list" dir="auto"><li style="list-style-type:square">Days are counted as <strong>calendar days ending at </strong><code><strong>11:59 p.m.</strong></code><strong> local time</strong> (determined by the property&#x27;s location), starting on the <strong>commencement date</strong> (the day immediately following the Binding Agreement Date).</li></ul><ul id="4248ac6a-aab1-80b9-aa6f-e933aa237023" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Weekend / Holiday Rollover Rule:</strong> Aside from the <strong>four strict &quot;drop-dead&quot; dates</strong> (<strong>Closing Date</strong>, <strong>Possession Date</strong>, <strong>Repair Completion Deadline</strong>, and <strong>Offer Expiration Date</strong>), any general performance deadline that falls on a <strong>Saturday, Sunday, or federal holiday</strong> automatically rolls forward to the <strong>next business day</strong>.</li></ul></li></ul><ul id="4248ac6a-aab1-80d3-9cc2-e7847bca28d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Notices (</strong><code><strong>14G</strong></code><strong>):</strong><ul id="4248ac6a-aab1-801d-8855-d4f5f8e7ad09" class="bulleted-list" dir="auto"><li style="list-style-type:square">Every contractual notice <strong>must be in writing</strong> to be valid (typically sent via <strong>Notification Form </strong><code><strong>RF656</strong></code> or equivalent written notice).</li></ul><ul id="4248ac6a-aab1-8010-ae6d-f2d0a5a8834b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Permitted Delivery Methods:</strong> Certified mail, email, fax, prepaid overnight delivery service, or in-person delivery.</li></ul><ul id="4248ac6a-aab1-80e4-b761-e388eeefec24" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Effective Date Rule:</strong> Notice is officially effective on the <strong>date and time it is received</strong>—not when it is sent—and delivery to a party&#x27;s licensee/brokerage constitutes legal notice to that party.</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8086-8cf6-e464cbe3df4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraphs 15 &amp; 16: Seller&#x27;s Additional Obligations &amp; Method of Execution</strong><ul id="4248ac6a-aab1-803c-964c-eb53ad0d5ac6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 15 (Seller&#x27;s Additional Statutory Disclosures):</strong> In addition to the standard residential property condition disclosure, Tennessee law requires the seller to disclose <strong>in writing</strong> (with signed buyer acknowledgment) whether any of the following apply:<ol type="1" id="4248ac6a-aab1-80bd-90fa-de52dc0b5e66" class="numbered-list" start="1" dir="auto"><li>Presence of any <strong>exterior injection wells</strong> or <strong>sinkholes</strong> on the property (<code>T.C.A. § 66-5-212</code>)</li></ol><ol type="1" id="4248ac6a-aab1-80fd-a5fd-c9e5599e2ac6" class="numbered-list" start="2" dir="auto"><li>Results of any <strong>soil test or percolation (&quot;perc&quot;) test</strong> performed on the property (<code>T.C.A. § 66-5-212</code>)</li></ol><ol type="1" id="4248ac6a-aab1-8040-9e7e-ee6bd51090c4" class="numbered-list" start="3" dir="auto"><li>Whether a single-family residence on the property has <strong>ever been moved from one foundation to another</strong> (<code>T.C.A. § 66-5-212</code>)</li></ol><ol type="1" id="4248ac6a-aab1-803a-89cf-e569f8dd430a" class="numbered-list" start="4" dir="auto"><li>Whether a <strong>permit for a subsurface sewage disposal system (septic)</strong> was issued (<code>T.C.A. § 66-5-213</code>)</li></ol><ol type="1" id="4248ac6a-aab1-809c-817b-fb8d45883c6c" class="numbered-list" start="5" dir="auto"><li>Whether the property is located in a <strong>Planned Unit Development (</strong><code><strong>PUD</strong></code><strong>)</strong>—and if so, the seller must make copies of the <strong>bylaws, restrictive covenants, and master deed</strong> available to the buyer upon request (<code>T.C.A. § 66-5-213</code>)</li></ol></li></ul><ul id="4248ac6a-aab1-8080-bfba-c8b4f7de2f50" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 16 (Method of Execution):</strong> Confirms that counterparts, email transmissions, and <strong>electronic signatures</strong> carry the exact same binding legal force and validity as original wet-ink paper signatures under UETA and ESIGN.</li></ul></li></ul><ul id="4248ac6a-aab1-80a2-a7cf-f17ebd015e61" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraphs 17, 18 &amp; 19: Exhibits/Addenda, Special Stipulations, Offer Expiration &amp; Binding the Contract</strong><table id="4248ac6a-aab1-804b-ae8e-c8419ecbd1fa" class="simple-table" dir="ltr"><tbody><tr id="4248ac6a-aab1-80a5-ac24-e432349f738c" dir="ltr"><td id="f}S:" class=""><strong>Contract Section</strong></td><td id="@U]G" class=""><strong>Purpose &amp; Key Rules</strong></td><td id="Omrh" class=""><strong>Critical Execution Notes</strong></td></tr><tr id="4248ac6a-aab1-8062-a631-cb68c9315807" dir="ltr"><td id="f}S:" class=""><strong>Paragraph 17: Exhibits and Addenda</strong></td><td id="@U]G" class="">Lists and incorporates all attached preprinted addenda and disclosures (such as <strong>Lead-Based Paint Disclosure </strong><code><strong>Form RF209</strong></code>, FHA/VA Addendum, or Buyer Contingency Addendum).</td><td id="Omrh" class="">Always use an existing Tennessee REALTORS® preprinted form whenever one covers the situation rather than writing custom clauses.</td></tr><tr id="4248ac6a-aab1-8002-ac3f-df67a1bf76cc" dir="ltr"><td id="f}S:" class=""><strong>Paragraph 18: Special Stipulations</strong></td><td id="@U]G" class="">Provides space for transaction-specific terms not covered by preprinted forms.</td><td id="Omrh" class="">Under the contract hierarchy (<strong>Handwritten &gt; Typed &gt; Preprinted</strong>), anything entered here supersedes conflicting printed boilerplate. Pull approved clauses from <strong>Tennessee REALTORS® </strong><code><strong>Form RF707</strong></code><strong> (</strong><em><strong>Special Stipulations Library</strong></em><strong>)</strong> and consult your broker or an attorney to avoid unintended legal conflicts.</td></tr><tr id="4248ac6a-aab1-805a-bca6-c9b7725c61dd" dir="ltr"><td id="f}S:" class=""><strong>Paragraph 19: Time Limit of Offer &amp; Wire Fraud Warning</strong></td><td id="@U]G" class="">Establishes the <strong>Offer Expiration Date and Time</strong> (the final <strong>drop-dead date</strong>, which does <strong>not</strong> roll over on weekends or holidays) and contains the mandatory <strong>Wire Fraud Warning</strong>.</td><td id="Omrh" class="">• Once the offer expiration deadline passes without communicated acceptance, the offer expires automatically.<br/><br/>• Buyers must initial the <strong>Wire Fraud Warning</strong>, acknowledging they should never wire closing or earnest money funds based solely on unverified email instructions.</td></tr><tr id="4248ac6a-aab1-8032-a95c-d67182164efa" dir="ltr"><td id="f}S:" class=""><strong>Signature Boxes &amp; Acknowledgment of Receipt (</strong><code><strong>Lines 506–508</strong></code><strong>)</strong></td><td id="@U]G" class="">• <strong>Buyers</strong> sign and date the initial offer.<br/><br/>• <strong>Sellers</strong> respond in writing by checking <strong>Accept</strong>, <strong>Reject</strong>, or <strong>Counter</strong> (using <strong>Counter Offer </strong><code><strong>Form RF651</strong></code> if countering).<br/><br/>• <strong>Acknowledgment of Receipt:</strong> Completed by the <strong>last party (or agent) to receive communicated written acceptance</strong>.</td><td id="Omrh" class="">• Even when rejecting, sellers should note rejection in writing and return it before expiration (<code>TREC Rule 1260-02-.08</code>).<br/><br/>• The date and time entered in <strong>Acknowledgment of Receipt (</strong><code><strong>Lines 506–508</strong></code><strong>)</strong> becomes the <strong>Binding Agreement Date (BAD)</strong>, and the <strong>next calendar day is Day 1</strong> for every contract deadline.</td></tr></tbody></table></li></ul><p id="4248ac6a-aab1-800b-bf54-fbfd2032498b" class="" dir="auto">
+</p></div><div id="4248ac6a-aab1-8004-a0b3-e02624b81222" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4248ac6a-aab1-804a-8fdf-e73faac25e6c" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4248ac6a-aab1-80cd-be64-f0a6ae2ea6f2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Financing Contingency Dates</strong><ul id="4248ac6a-aab1-80da-8958-c85920ec4a8b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyers who choose to include the financing contingency in the contract have <strong>three days after the binding agreement date</strong> to apply for a loan and pay for a credit report. When they&#x27;ve done that, the buyer&#x27;s agent should use <em><strong>Notification Form RF 656 </strong></em>to communicate that the loan application is in.</li></ul><ul id="4248ac6a-aab1-804d-8e30-fb278569a71e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">They then have <strong>14 days</strong> to get a <em><strong>Loan Estimate</strong></em> form showing a loan large enough to close the deal, order an appraisal, and pay the appraisal fee. When each of these tasks is completed, the buyer&#x27;s agent should inform the seller using that <em><strong>Notification Form.</strong></em></li></ul><ul id="4248ac6a-aab1-8070-8608-d072415f199f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Buyers waiving the financing contingency have <strong>five days after the binding agreement date</strong> to prove they have enough cash to close.</li></ul></li></ul><ul id="4248ac6a-aab1-8000-859c-c4161d76e462" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Closing Date and Drop Dead Dates</strong><ul id="4248ac6a-aab1-8019-8325-e1a45798abd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 4</strong> is where the closing date is recorded. The closing date is one of four &quot;drop dead&quot; dates in the contract. That means that if the date happens to be a weekend or holiday, the closing still happens on the weekend or holiday, not the next business day. It&#x27;s important to double-check a calendar when choosing a closing date. If it does need to be changed after the contract is signed, an amendment signed by both parties is the way to do it.</li></ul><ul id="4248ac6a-aab1-808f-85e0-d9c93b1244e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The other drop dead dates in the contract are:<ul id="4248ac6a-aab1-8017-9aa8-edbb51464715" class="bulleted-list" dir="auto"><li style="list-style-type:square">Offer expiration</li></ul><ul id="4248ac6a-aab1-800a-9212-e0d79ff658b9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Repair deadline</li></ul><ul id="4248ac6a-aab1-8036-83e3-fa0c4b982680" class="bulleted-list" dir="auto"><li style="list-style-type:square">Possession date</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-809b-b309-ce208e3a5abf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Inspections</strong><ul id="4248ac6a-aab1-80b0-9d25-da470f838f20" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 7</strong> is an important one. It deals with the process around inspections. Essentially, the buyer and seller will agree on how many days the inspection period will be. That goes in <strong>Line 290</strong>. The buyer then has the right to conduct whatever inspections they want (done by a licensed inspector) during that time. These are done at the buyer&#x27;s expense. The seller has to make the property available to the inspector(s) during this period, including functioning utility services.</li></ul></li></ul><ul id="4248ac6a-aab1-8040-9380-ded8bbcb55a6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Resolution Period (7D)</strong><ul id="4248ac6a-aab1-806b-a0b6-ec9d3a2febdd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once the buyer gets the inspection reports, they have three choices:<ul id="4248ac6a-aab1-80fe-b34d-e76266c3bfb5" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can cancel the contract using a <em><strong>Notification Form</strong></em> and outlining the reasons they want to cancel. Note that they don&#x27;t have to share the inspection report itself, but they do need to give a reason. If they choose this option, they&#x27;ll get their earnest money back.</li></ul><ul id="4248ac6a-aab1-80cd-887c-f73c2b6207e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can decide to take the property as is. They can use the <em><strong>Notification Form </strong></em>to convey this info.</li></ul><ul id="4248ac6a-aab1-8049-9a79-e67f5c8a1169" class="bulleted-list" dir="auto"><li style="list-style-type:square">They can request repairs using the <em><strong>Repair/Replacement Amendment (RF 655)</strong></em>.</li></ul><ul id="4248ac6a-aab1-8079-9ce2-f6be2781377d" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the buyer is asking for repairs, the inspection period ends and the resolution period begins. The buyer and seller have to come to an agreement during this period about what repairs the seller will do. The length of the resolution period is something the buyer and seller decide together when they create the contract.</li></ul><ul id="4248ac6a-aab1-803c-8f9a-ee53bbbdf2bc" class="bulleted-list" dir="auto"><li style="list-style-type:square">At the end of the resolution period, if they still haven&#x27;t agreed, they can either both agree in writing to extend the resolution period or end the contract with the buyer getting back their earnest money.</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-80e1-b87f-cf81d8487c75" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Waiving the Inspection (7E)</strong><ul id="4248ac6a-aab1-80da-9f5d-ca181d9ce38e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Checking the box in <strong>Paragraph 7E </strong>waives the right to do an inspection.</li></ul></li></ul><ul id="4248ac6a-aab1-8049-a68e-f7f54a25ea29" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraph 12: Default</strong><ul id="4248ac6a-aab1-80bd-8c07-d9519e783ddc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 12</strong> outlines what happens if one of the parties defaults.<ul id="4248ac6a-aab1-80ab-aeb7-c4c81bf3905f" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the <strong>buyer</strong> defaults, the seller keeps the earnest money and can also sue for damages or specific performance.</li></ul><ul id="4248ac6a-aab1-8093-9d38-f94763c3eeab" class="bulleted-list" dir="auto"><li style="list-style-type:square">If the <strong>seller</strong> defaults, the buyer gets their earnest money back and can sue for damages or specific performance.</li></ul></li></ul></li></ul><ul id="4248ac6a-aab1-8008-9b18-de7a073388b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Paragraph 14G: Notices</strong><ul id="4248ac6a-aab1-8069-9723-cdae76f1bc54" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This paragraph explains how notice can be given. Notice is best given using the <em><strong>Notification Form</strong></em>, but it can be delivered by:<ul id="4248ac6a-aab1-800f-9141-e7ef86965a0c" class="bulleted-list" dir="auto"><li style="list-style-type:square">Certified mail</li></ul><ul id="4248ac6a-aab1-80d3-b8b7-e17a6ccfe81b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Email</li></ul><ul id="4248ac6a-aab1-808e-9592-e2a56d2479bd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Fax</li></ul><ul id="4248ac6a-aab1-80d2-a810-f88a0321617f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Prepaid overnight delivery service</li></ul><ul id="4248ac6a-aab1-8084-912c-dacaebe4051e" class="bulleted-list" dir="auto"><li style="list-style-type:square">In person</li></ul></li></ul><ul id="4248ac6a-aab1-8013-9f23-f8a65625737e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In any case, though, the notice MUST be in writing to count. Also, the official date of notice is the day notice is received, not the day it&#x27;s sent.</li></ul></li></ul><ul id="4248ac6a-aab1-8022-9ee0-e1ce3abb506c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Offer Expiration</strong><ul id="4248ac6a-aab1-8088-8c45-f327c8480ceb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Paragraph 19</strong> has the final drop dead date in the contract: the offer expiration. This date is strict and final, even if it falls on a weekend or holiday. Once the offer expires, it&#x27;s no longer valid.</li></ul><ul id="4248ac6a-aab1-80ee-aff0-c003b86cf2cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">This section also states that this contract is binding and includes the wire fraud warning, which requires buyers to initial that they won&#x27;t wire money based on email instructions.</li></ul></li></ul><ul id="4248ac6a-aab1-80f9-9397-c062c9b306ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Signature Boxes</strong><ul id="4248ac6a-aab1-8034-a510-e6806d2e0d09" class="bulleted-list" dir="auto"><li style="list-style-type:circle">All buyers sign and date when they make the offer. The sellers should respond in writing to the offer by checking one of the boxes in their signature box: accept, reject, or counter.</li></ul><ul id="4248ac6a-aab1-80af-be1e-d64b8b91c2ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Remember that if they&#x27;re countering, they do that using <em><strong>Counter Offer Form (RF651).</strong></em></li></ul></li></ul><ul id="4248ac6a-aab1-806b-ab47-e595436384be" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Binding Agreement Date</strong><ul id="4248ac6a-aab1-8075-969e-cad2dae17020" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The last person to receive communication is the one to enter the binding agreement date. That goes in the acknowledgment of receipt section. <strong>That is now the binding agreement date</strong>, and the next day is &quot;day one&quot; for all of the deadlines in the contract.</li></ul></li></ul></div></div><p id="4248ac6a-aab1-8097-9c0d-fa7a9a48fe4c" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

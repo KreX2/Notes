@@ -1,0 +1,799 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 2 - Fair Lending Acts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80c0-b36a-f04cfe7bc66f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 2 - <strong>Fair Lending Acts</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4258ac6a-aab1-80ca-b276-e8f1236ad444" class="column-list" data-notion-column-list="" dir="auto"><div id="4258ac6a-aab1-80fe-a96b-c21b8431d492" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4258ac6a-aab1-807e-852a-eeeeae8c542d" class="" dir="auto"><strong>Fair Lending Under the Fair Housing Act of </strong><code><strong>1968</strong></code><strong> (</strong><code><strong>42 U.S.C. § 3605</strong></code><strong>)</strong></p><ul id="4258ac6a-aab1-802f-ad22-f4bb979ff1ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Prohibition:</strong> In addition to sales and rentals, the Fair Housing Act prohibits any person or entity whose business includes engaging in residential real estate-related transactions from discriminating in <strong>making, purchasing, insuring, or servicing loans</strong>, or providing other financial assistance, based on any of the <strong>seven protected classes</strong> (<strong>race, color, religion, national origin, sex, familial status, and disability</strong>—plus <strong>creed</strong> under Tennessee law).</li></ul><ul id="4258ac6a-aab1-80ce-89f3-d9ae9ee8eadf" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Examples of Unlawful Mortgage Lending Discrimination:</strong><ul id="4258ac6a-aab1-8012-9e99-da0b50d0d32b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Refusing to originate or approve mortgage loans for Black applicants</li></ul><ul id="4258ac6a-aab1-808f-ac1d-d751e32f3861" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Requiring women—but not similarly situated men—to provide a co-signer</li></ul><ul id="4258ac6a-aab1-80cb-93fd-f4169e9ba98e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Charging Hispanic borrowers higher interest rates, points, or origination fees than similarly qualified white applicants</li></ul></li></ul><ul id="4258ac6a-aab1-80e9-b5b3-c1d0e18ca44e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Where &amp; When Lending Discrimination Can Occur</strong><ul id="4258ac6a-aab1-80a3-9b4f-e1e79a1ef802" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lending discrimination is illegal across <strong>both home purchase loans and refinancing transactions</strong>, and can arise at <strong>any stage</strong> of the lending lifecycle:<ol type="1" id="4258ac6a-aab1-80cf-b81a-c3b1feeaa2b4" class="numbered-list" start="1" dir="auto"><li><strong>Marketing of Mortgage Loan Products:</strong> Targeting subprime or predatory loan products toward minority neighborhoods while marketing prime rates exclusively elsewhere.</li></ol><ol type="1" id="4258ac6a-aab1-803a-a48e-ed15700ad2af" class="numbered-list" start="2" dir="auto"><li><strong>Mortgage Loan Origination &amp; Underwriting:</strong> Applying stricter credit, income, or down-payment standards to protected-class applicants.</li></ol><ol type="1" id="4258ac6a-aab1-80de-9bea-f56c1347d46f" class="numbered-list" start="3" dir="auto"><li><strong>Loan Terms &amp; Conditions:</strong> Imposing less favorable interest rates, points, adjustable-rate structures, or fees.</li></ol><ol type="1" id="4258ac6a-aab1-8053-a1be-fe59d49e2b5f" class="numbered-list" start="4" dir="auto"><li><strong>Home Appraisal &amp; Valuation:</strong> Undervaluing homes in minority neighborhoods or factoring neighborhood demographics into appraised value.</li></ol><ol type="1" id="4258ac6a-aab1-801b-925c-f0f354257d46" class="numbered-list" start="5" dir="auto"><li><strong>Loan Servicing &amp; Loss Mitigation:</strong> Offering inferior loan modification, forbearance, or foreclosure-prevention options based on protected status.</li></ol></li></ul></li></ul><ul id="4258ac6a-aab1-80a1-bf1b-f01b866f399b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Warning Signs (Red Flags) of Predatory or Discriminatory Lending</strong><ul id="4258ac6a-aab1-8076-b766-e2f6fece9102" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lending discrimination disproportionately affects racial/ethnic minorities and women. Key red flags licensees and borrowers should watch for include:<ul id="4258ac6a-aab1-80fd-885d-e5fc1e6224ce" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unnecessary or padded closing costs</strong> not charged to similarly qualified borrowers</li></ul><ul id="4258ac6a-aab1-80a8-8932-c5ceac95e889" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Inflated mortgage broker or lender origination fees</strong></li></ul><ul id="4258ac6a-aab1-80b1-b314-cd54362d62f2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Unnecessary or duplicative recording fees</strong></li></ul><ul id="4258ac6a-aab1-8005-932a-c0fc778936e4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Excessive or punitive prepayment penalties</strong> that trap borrowers in high-cost loans</li></ul><ul id="4258ac6a-aab1-8016-8f23-d8016cc93d6c" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Bait-and-switch loan terms:</strong> Changing interest rates, loan programs, or fee structures at the closing table without the borrower&#x27;s prior knowledge and consent</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-80d3-a92b-f36809fbb332" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Advising Clients<figure id="4258ac6a-aab1-806b-b0c4-d241fd44a9dc" class="image" data-notion-image="Chapter%202%20-%20Fair%20Lending%20Acts/image.png" dir="ltr"><a href="Chapter%202%20-%20Fair%20Lending%20Acts/image.png"><img style="width:480px" src="Chapter%202%20-%20Fair%20Lending%20Acts/image.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-8005-8dba-eaf610aade0b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Equal Credit Opportunity Act (</strong><code><strong>ECOA</strong></code><strong>, </strong><code><strong>15 U.S.C. § 1691 et seq.</strong></code><strong>, </strong><code><strong>1974</strong></code><strong>)</strong><ul id="4258ac6a-aab1-809d-ba6e-c5e080b8a038" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose &amp; Prohibited Actions:</strong> Prohibits creditors from discriminating against any applicant in any credit transaction by making it illegal to:<ul id="4258ac6a-aab1-8035-bb4e-fcee1e580f32" class="bulleted-list" dir="auto"><li style="list-style-type:square">Refuse credit to an applicant who qualifies for it</li></ul><ul id="4258ac6a-aab1-8049-9233-dc4066e2ce73" class="bulleted-list" dir="auto"><li style="list-style-type:square">Discourage anyone from applying for credit</li></ul><ul id="4258ac6a-aab1-80cf-8f31-e3bac7c6c2c7" class="bulleted-list" dir="auto"><li style="list-style-type:square">Offer credit on less favorable terms (e.g., higher interest rates or fees) than terms offered to someone with similar financial qualifications</li></ul><ul id="4258ac6a-aab1-80f9-9c78-d81bf9d818e5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Close an existing account based on protected status</li></ul></li></ul><ul id="4258ac6a-aab1-8053-8582-f59ae26ffb3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Protected Classes Under </strong><code><strong>ECOA</strong></code><strong>:</strong><ol type="1" id="4258ac6a-aab1-8074-bf44-f60c635d93fb" class="numbered-list" start="1" dir="auto"><li><strong>Race or color</strong></li></ol><ol type="1" id="4258ac6a-aab1-8058-a04e-e894f2207e76" class="numbered-list" start="2" dir="auto"><li><strong>Religion</strong></li></ol><ol type="1" id="4258ac6a-aab1-80dc-bdf7-d4cfb913cd7e" class="numbered-list" start="3" dir="auto"><li><strong>National origin</strong></li></ol><ol type="1" id="4258ac6a-aab1-804e-925a-fb1c15d00fd2" class="numbered-list" start="4" dir="auto"><li><strong>Sex</strong> <em>(explicitly includes sexual orientation and gender identity since </em><em><code>2021</code></em><em>)</em></li></ol><ol type="1" id="4258ac6a-aab1-8059-8492-e7361abe9a7c" class="numbered-list" start="5" dir="auto"><li><strong>Marital status</strong></li></ol><ol type="1" id="4258ac6a-aab1-80d5-81da-c18610af6085" class="numbered-list" start="6" dir="auto"><li><strong>Age</strong> <em>(provided the applicant has legal capacity to contract—i.e., at least </em><em><code>18</code></em><em> years old; there is </em><em><strong>no maximum age limit</strong></em><em>, so an </em><em><code>80</code></em><em>year-old applicant cannot be denied a </em><em><code>30</code></em><em>year mortgage solely because of age)</em></li></ol><ol type="1" id="4258ac6a-aab1-802a-96ba-d765ba5911f4" class="numbered-list" start="7" dir="auto"><li><strong>Receipt of income from any public assistance program</strong> (e.g., Social Security, disability, SNAP, housing vouchers)</li></ol><ol type="1" id="4258ac6a-aab1-80a5-82a4-f1f22166db81" class="numbered-list" start="8" dir="auto"><li><strong>Good-faith exercise of rights under the Consumer Credit Protection Act</strong></li></ol></li></ul><ul id="4258ac6a-aab1-80af-a2c4-f3ffef60d230" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Regulation B (</strong><code><strong>12 C.F.R. Part 1002</strong></code><strong>) — Notification &amp; Credit Reporting Rules:</strong><ul id="4258ac6a-aab1-80a6-b246-c37fc2241610" class="bulleted-list" dir="auto"><li style="list-style-type:square">Creditors must notify applicants of their credit decision within <code><strong>30</strong></code><strong> days</strong> of receiving a completed application.</li></ul><ul id="4258ac6a-aab1-8021-bfed-ec1857bce28a" class="bulleted-list" dir="auto"><li style="list-style-type:square">If denied or offered adverse terms, the creditor must issue an <strong>Adverse Action Notice</strong> stating the specific reasons for the rejection.</li></ul><ul id="4258ac6a-aab1-8025-b440-f0b9cb4dce55" class="bulleted-list" dir="auto"><li style="list-style-type:square">Credit history on joint accounts for married couples must be <strong>reported separately in the individual name of each spouse</strong>.</li></ul></li></ul><ul id="4258ac6a-aab1-804f-8ca9-e1c79458cf9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Permissible vs. Impermissible Lender Questions Under </strong><code><strong>ECOA</strong></code><strong>:</strong><table id="4258ac6a-aab1-8074-9536-dabdd28210c2" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-807c-93b9-ccbba52394c4" dir="ltr"><td id="EwVU" class=""><strong>Lenders MAY Ask</strong></td><td id="iKX`" class=""><strong>Lenders MAY NOT Ask</strong></td></tr><tr id="4258ac6a-aab1-800a-9faa-e952a82a7e0f" dir="ltr"><td id="EwVU" class="">• Whether the applicant is <strong>married, unmarried, or separated</strong> <em>(using only those three exact terms)</em><br/><br/>• Whether the applicant is obligated to <strong>pay</strong> alimony, child support, or separate maintenance<br/><br/>• Information about a spouse <strong>if the spouse will be a co-applicant/party to the contract</strong> (or in a community property state / relying on spouse&#x27;s income)</td><td id="iKX`" class="">• Whether the applicant is <strong>divorced or widowed</strong><br/><br/>• Whether the applicant <strong>receives</strong> alimony, child support, or separate maintenance—unless the applicant voluntarily chooses to rely on that income to qualify<br/><br/>• Questions about <strong>birth control, family planning, or childbearing/child-rearing intentions</strong><br/><br/>• Questions about a non-applicant spouse not involved in the loan</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8054-a222-d5e6f76d5a4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Real Estate Settlement Procedures Act (</strong><code><strong>RESPA</strong></code><strong>, </strong><code><strong>12 U.S.C. § 2601 et seq.</strong></code><strong>, </strong><code><strong>1974</strong></code><strong>)</strong><ul id="4258ac6a-aab1-801a-b116-eb8c5d1da6b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Scope:</strong> Enacted in <code><strong>1974</strong></code> to regulate closing and settlement practices on <strong>federally related mortgage loans</strong> (most <code>1–4</code> family residential mortgages) and protect consumers from abusive or discriminatory closing charges.</li></ul><ul id="4258ac6a-aab1-808b-be06-fb25eb12b127" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loan Estimate (</strong><code><strong>LE</strong></code><strong>) Fair Housing Protection (</strong><code><strong>TRID</strong></code><strong> Rule):</strong><ul id="4258ac6a-aab1-8051-9bcf-c9d1a1e09a6f" class="bulleted-list" dir="auto"><li style="list-style-type:square">Lenders must deliver a standardized <strong>Loan Estimate</strong> (which replaced the former Good Faith Estimate / GFE) within <code><strong>3</strong></code><strong> business days</strong> of receiving a completed loan application.</li></ul><ul id="4258ac6a-aab1-803c-a1c6-daf07791583d" class="bulleted-list" dir="auto"><li style="list-style-type:square">By standardizing estimated interest rates, monthly payments, and total closing/settlement costs across lenders, the Loan Estimate empowers borrowers—especially members of protected classes—to comparison-shop across multiple lenders and detect padded or discriminatory fees early.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8021-a964-dfed787075f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Home Mortgage Disclosure Act (</strong><code><strong>HMDA</strong></code><strong>, </strong><code><strong>12 U.S.C. § 2801 et seq.</strong></code><strong>, </strong><code><strong>1975</strong></code><strong>)</strong><ul id="4258ac6a-aab1-806d-85c3-e485814ffe9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Purpose &amp; Anti-Redlining Enforcement:</strong> Enacted in <code><strong>1975</strong></code>, HMDA requires covered mortgage lenders dealing with federally guaranteed or insured loans to collect, report, and publicly disclose geographic and demographic lending data—enabling federal regulators and HUD to detect <strong>redlining</strong> and discriminatory lending patterns across neighborhoods.</li></ul><ul id="4258ac6a-aab1-808a-b514-f896050473df" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Mandatory Demographic Collection (</strong><code><strong>HMDA</strong></code><strong> vs. </strong><code><strong>ECOA</strong></code><strong>):</strong><ul id="4258ac6a-aab1-8027-ad0d-e91b0bb101fe" class="bulleted-list" dir="auto"><li style="list-style-type:square">To monitor lending patterns, HMDA <strong>requires</strong> lenders to request and record each applicant&#x27;s <strong>race, ethnicity, sex/gender, and age</strong> (plus loan type, loan amount, pricing/terms, approval/denial status, and census tract).</li></ul><ul id="4258ac6a-aab1-8021-a2bd-f38b7b034f07" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Distinction:</strong> Asking for race, ethnicity, sex, and age on the demographic monitoring section of a mortgage application is <strong>legally required under HMDA</strong> for federal fair-lending oversight, <strong>not</strong> a violation of ECOA—provided the lender never uses that information to make credit decisions or discriminate.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8064-9d30-dcd2e9ac8f96" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Application Summary: Lender Scenarios</strong><ul id="4258ac6a-aab1-8061-9fd9-cc5fe833a858" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Asking About Child Support Received:</strong> <strong>Illegal</strong> under <code>ECOA</code> unless the applicant voluntarily indicates she wants child support income counted toward loan qualification (while asking about child support <em>obligations paid</em> is legal because it affects debt-to-income ratio).</li></ul><ul id="4258ac6a-aab1-802f-9c5d-f51976c345af" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Checking a Co-Applicant Husband&#x27;s Credit:</strong> <strong>Legal</strong> under <code>ECOA</code> because the husband is a party to the loan application—and once closed, the lender must report payment history separately under <strong>each spouse&#x27;s individual name</strong>.</li></ul></li></ul><ul id="4258ac6a-aab1-80c3-abce-f3e10238e560" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Community Reinvestment Act (</strong><code><strong>CRA</strong></code><strong>, </strong><code><strong>12 U.S.C. § 2901 et seq.</strong></code><strong>, </strong><code><strong>1977</strong></code><strong>)</strong><ul id="4258ac6a-aab1-8016-bfcb-fd9405404bbb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Purpose &amp; Anti-Redlining Mandate:</strong> Enacted in <code><strong>1977</strong></code> to combat <strong>redlining</strong> and reduce discriminatory credit practices against low- and moderate-income (<code>LMI</code>) neighborhoods by requiring federally insured depository institutions (banks and savings associations) to help meet the credit needs of the <strong>entire local communities</strong> in which they are chartered—not just affluent areas.</li></ul><ul id="4258ac6a-aab1-80b2-a729-f5d8232ba8bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Obligations on Banks &amp; Lenders:</strong><ul id="4258ac6a-aab1-8009-ad12-e1cffe330a60" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Equitable Access to Credit:</strong> Banks have a continuing, affirmative obligation to serve the convenience and credit needs of all segments of their local assessment areas, including low- and moderate-income borrowers and neighborhoods, consistent with safe and sound banking operations.</li></ul><ul id="4258ac6a-aab1-808a-a7d5-e2945c2c00db" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Periodic Evaluation &amp; Community Development:</strong> Federal regulators periodically evaluate each bank&#x27;s lending record, investments, and participation in <strong>local community development projects</strong> (such as affordable housing initiatives, neighborhood revitalization, and small-business lending), factoring the bank&#x27;s CRA rating into applications for mergers, acquisitions, or new branches.</li></ul></li></ul><ul id="4258ac6a-aab1-80eb-a2ac-e3dac01603fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Counteracting Neighborhood Disinvestment &amp; &quot;Filtering Down&quot;:</strong><ul id="4258ac6a-aab1-8016-9906-c0aee9c84e6b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>What &quot;Filtering Down&quot; Is:</strong> A housing market cycle in which higher-income households move out of older homes into newly built, higher-priced homes elsewhere, leaving their vacated properties to pass down sequentially to households in lower income brackets.</li></ul><ul id="4258ac6a-aab1-80da-a330-ce6e33e500fb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>The Disinvestment Problem:</strong> When new construction slows or wealthier residents exit older neighborhoods, those &quot;filtered-down&quot; neighborhoods often suffer from declining capital investment and restricted mortgage access.</li></ul><ul id="4258ac6a-aab1-802d-ace1-d270495a7d98" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>How the CRA Intervenes:</strong> By requiring lenders to regularly reassess local credit needs and extend mortgage credit to qualified low- and moderate-income buyers in older or transitioning neighborhoods, the CRA injects capital back into filtered-down areas and helps prevent neighborhood blight and disinvestment.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8018-960a-e294b6abe8ab" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Omnibus Consolidated Appropriations Act of </strong><code><strong>1997</strong></code><strong> (Lender Self-Testing Privilege)</strong><ul id="4258ac6a-aab1-8070-bc86-ec41783f021f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Voluntary Fair-Lending Self-Testing:</strong> Enacted as part of the <code><strong>1997</strong></code><strong> Omnibus Appropriations Act</strong> (amending <code>ECOA</code> and the <code>Fair Housing Act</code>), this provision expressly authorized mortgage lenders to conduct confidential <strong>self-tests</strong>—such as mystery shopping or internal underwriting audits—to evaluate whether their lending practices comply with federal fair lending laws.</li></ul><ul id="4258ac6a-aab1-8085-beaa-fd3a949eba6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Legal Safe Harbor for Remediation:</strong><ul id="4258ac6a-aab1-80b9-8241-f5c2bd3e818a" class="bulleted-list" dir="auto"><li style="list-style-type:square">If a lender identifies potential discriminatory practices through a privileged self-test and takes <strong>appropriate corrective action</strong> to remedy the issues, the results of that self-test are protected from disclosure or use against the lender in federal lawsuits or regulatory enforcement actions.</li></ul><ul id="4258ac6a-aab1-8079-921a-e72896c733ef" class="bulleted-list" dir="auto"><li style="list-style-type:square">This safe-harbor rule encourages lenders to proactively audit their own practices, uncover hidden bias early, and implement more equitable lending standards without fear of self-incrimination.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8036-8ee1-e0d8e527bfea" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Quick Comparison: Federal Fair Lending Laws (</strong><code><strong>1968–1997</strong></code><strong>)</strong><table id="4258ac6a-aab1-8036-b06c-ef7ba0a28fa9" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-804a-8f3d-ca2cd1b83341" dir="ltr"><td id="W~fU" class=""><strong>Federal Law</strong></td><td id="J{LN" class=""><strong>Year</strong></td><td id="aJoQ" class=""><strong>Primary Fair Lending Mechanism</strong></td></tr><tr id="4258ac6a-aab1-802b-a67e-d2e5cb531343" dir="ltr"><td id="W~fU" class=""><strong>Fair Housing Act (</strong><code><strong>Title VIII</strong></code><strong>)</strong></td><td id="J{LN" class=""><strong>1968</strong></td><td id="aJoQ" class="">Prohibits discrimination in residential mortgage lending, appraisals, and loan servicing based on protected classes.</td></tr><tr id="4258ac6a-aab1-8051-ba9f-d949634c6980" dir="ltr"><td id="W~fU" class=""><strong>Equal Credit Opportunity Act (</strong><code><strong>ECOA</strong></code><strong>)</strong></td><td id="J{LN" class=""><strong>1974</strong></td><td id="aJoQ" class="">Prohibits credit discrimination across all consumer/mortgage loans, adds <strong>marital status, age, and public assistance income</strong>, and mandates <code>30</code>-day decisions + Adverse Action Notices.</td></tr><tr id="4258ac6a-aab1-8013-b332-ee8bb1683782" dir="ltr"><td id="W~fU" class=""><strong>Real Estate Settlement Procedures Act (</strong><code><strong>RESPA</strong></code><strong>)</strong></td><td id="J{LN" class=""><strong>1974</strong></td><td id="aJoQ" class="">Requires standardized <code><strong>3</strong></code><strong>-day Loan Estimates</strong> so borrowers can compare closing costs and spot predatory or discriminatory fees.</td></tr><tr id="4258ac6a-aab1-807e-b330-e13cd4cc2744" dir="ltr"><td id="W~fU" class=""><strong>Home Mortgage Disclosure Act (</strong><code><strong>HMDA</strong></code><strong>)</strong></td><td id="J{LN" class=""><strong>1975</strong></td><td id="aJoQ" class="">Requires lenders to collect and report <strong>race, ethnicity, sex, age, and geographic census-tract data</strong> to expose redlining patterns.</td></tr><tr id="4258ac6a-aab1-8004-9589-ef1c7eb7d378" dir="ltr"><td id="W~fU" class=""><strong>Community Reinvestment Act (</strong><code><strong>CRA</strong></code><strong>)</strong></td><td id="J{LN" class=""><strong>1977</strong></td><td id="aJoQ" class="">Requires federally insured banks to serve the credit and community development needs of <strong>low- and moderate-income neighborhoods</strong>.</td></tr><tr id="4258ac6a-aab1-8012-a80e-c21b9c8b75be" dir="ltr"><td id="W~fU" class=""><strong>Omnibus Appropriations Act (Self-Testing)</strong></td><td id="J{LN" class=""><strong>1997</strong></td><td id="aJoQ" class="">Grants lenders a <strong>legal safe harbor</strong> to conduct internal fair-lending self-tests and fix problems without triggering federal lawsuits.</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-80e0-8de2-d4b2b1c3af63" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Lending Acts: A Summary</strong><figure id="4258ac6a-aab1-80de-adfd-f21cb8520e46" class="image" data-notion-image="Chapter%202%20-%20Fair%20Lending%20Acts/image%201.png" dir="ltr"><a href="Chapter%202%20-%20Fair%20Lending%20Acts/image%201.png"><img style="width:432px" src="Chapter%202%20-%20Fair%20Lending%20Acts/image%201.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80c4-9d89-e6a5dd725526" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>United States v. Countrywide Financial Corporation</strong></em><strong> (</strong><code><strong>2011</strong></code><strong>) — Record Fair Lending Settlement</strong><ul id="4258ac6a-aab1-8095-a162-c4d537a0757e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Landmark Penalty:</strong> Resulted in the largest residential fair lending settlement in U.S. Department of Justice history at the time—<code><strong>$335 million</strong></code> in direct compensation for affected borrowers.</li></ul><ul id="4258ac6a-aab1-80cf-a4aa-decc078f0832" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Pattern or Practice of Discrimination (</strong><code><strong>2004–2008</strong></code><strong>):</strong> The DOJ established that Countrywide and its subsidiaries systematically discriminated against <strong>more than </strong><code><strong>200,000</strong></code><strong> qualified Black and Hispanic/Latino borrowers</strong> under both the <strong>Fair Housing Act (</strong><code><strong>FHA</strong></code><strong>)</strong> and the <strong>Equal Credit Opportunity Act (</strong><code><strong>ECOA</strong></code><strong>)</strong> by:<ul id="4258ac6a-aab1-801b-af5a-fa851e8c9fc1" class="bulleted-list" dir="auto"><li style="list-style-type:square">Charging Black and Hispanic borrowers <strong>higher interest rates, fees, and loan costs</strong> than similarly qualified white borrowers.</li></ul><ul id="4258ac6a-aab1-80d4-b6c3-fe38a6f8f9d6" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Steering</strong> qualified minority applicants into high-cost <strong>subprime loans</strong> even when they met underwriting standards for prime loans—and when similarly qualified white applicants received prime loans.</li></ul></li></ul><ul id="4258ac6a-aab1-803e-98d9-d2fb78494a7a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Marital Status Violation Under </strong><code><strong>ECOA</strong></code><strong>:</strong> Countrywide also violated <code>ECOA</code>&#x27;s prohibition against <strong>marital status discrimination</strong> by encouraging non-applicant spouses of borrowers to execute documents signing away their legal ownership rights and interests in jointly held property to the applicant spouse—exposing the non-applicant spouse to severe financial loss and legal uncertainty.</li></ul></li></ul><ul id="4258ac6a-aab1-805f-af73-c94eb021a5e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>Bank of America Corp. v. City of Miami</strong></em><strong> (</strong><code><strong>2017</strong></code><strong>) — Municipal Standing Under the Fair Housing Act</strong><ul id="4258ac6a-aab1-8039-a58a-cfc8e9831fe6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Facts &amp; Allegations:</strong> The City of Miami sued <strong>Bank of America</strong> and <strong>Wells Fargo</strong> under the <strong>Fair Housing Act (</strong><code><strong>FHA</strong></code><strong>)</strong>, presenting statistical data showing the banks disproportionately targeted Black and Hispanic borrowers for predatory, high-interest, high-fee mortgages—and subsequently refused to refinance or modify those loans, triggering widespread foreclosures and vacant properties in minority neighborhoods.</li></ul><ul id="4258ac6a-aab1-8015-9ab5-e00605fd980f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Legal Question (</strong><code><strong>&quot;Aggrieved Person&quot;</strong></code><strong> Standing):</strong> The banks argued that only individual borrowers—not a municipality—qualified as an <strong>&quot;aggrieved person&quot;</strong> authorized to sue under the Fair Housing Act (<code>42 U.S.C. § 3602(i)</code>).</li></ul><ul id="4258ac6a-aab1-80f1-b455-f45e69206a16" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>U.S. Supreme Court Holding (</strong><code><strong>5–3</strong></code><strong> Decision):</strong><ul id="4258ac6a-aab1-801d-a45d-e758d514ecf2" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Supreme Court held that a <strong>city qualifies as an </strong><code><strong>&quot;aggrieved person&quot;</strong></code> under the Fair Housing Act because its claimed financial injuries—reduced property-tax revenues and increased municipal spending on police, fire, and blight remediation caused by concentrated foreclosures—fall within the <strong>zone of interests</strong> protected by the FHA.</li></ul><ul id="4258ac6a-aab1-8027-8076-c5454319e035" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Court also clarified that to recover damages, a municipality must demonstrate <strong>proximate cause</strong> (a direct relation between the alleged discriminatory lending conduct and the city&#x27;s claimed financial harm), remanding the case for lower courts to apply that standard.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-80a2-a880-ed69ae91d71e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Side-by-Side Comparison of Landmark Fair Lending Cases</strong><table id="4258ac6a-aab1-80c0-8874-fc2cfa445041" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-807b-a018-da326a075c06" dir="ltr"><td id="^&gt;Rx" class=""><strong>Case Name &amp; Year</strong></td><td id="ZZOi" class=""><strong>Federal Statutes Enforced</strong></td><td id="MyP]" class=""><strong>Core Violation &amp; Legal Takeaway</strong></td></tr><tr id="4258ac6a-aab1-807e-8bb9-c4838fe87f5c" dir="ltr"><td id="^&gt;Rx" class=""><em><strong>United States v. Countrywide Financial Corp.</strong></em><strong> (</strong><code><strong>2011</strong></code><strong>)</strong></td><td id="ZZOi" class=""><strong>Fair Housing Act (</strong><code><strong>FHA</strong></code><strong>)</strong> &amp; <strong>Equal Credit Opportunity Act (</strong><code><strong>ECOA</strong></code><strong>)</strong></td><td id="MyP]" class="">• <code><strong>$335 million</strong></code> settlement covering <code><strong>200,000+</strong></code> Black and Hispanic borrowers (<code>2004–2008</code>).<br/><br/>• Established that discriminatory pricing, subprime steering, and pressuring non-applicant spouses to relinquish property rights violate federal fair lending laws.</td></tr><tr id="4258ac6a-aab1-8014-9192-f761673d25cb" dir="ltr"><td id="^&gt;Rx" class=""><em><strong>Bank of America Corp. v. City of Miami</strong></em><strong> (</strong><code><strong>2017</strong></code><strong>)</strong></td><td id="ZZOi" class=""><strong>Fair Housing Act (</strong><code><strong>FHA</strong></code><strong>)</strong></td><td id="MyP]" class="">• Confirmed that <strong>cities and local governments have legal standing</strong> as <code>&quot;aggrieved persons&quot;</code> to sue lenders under the FHA when discriminatory/predatory lending causes neighborhood foreclosures, tax-base erosion, and municipal blight.</td></tr></tbody></table></li></ul><p id="4258ac6a-aab1-8010-b9fb-f50d1899c8b7" class="" dir="auto">
+</p></div><div id="4258ac6a-aab1-808f-900e-c5a694eb3dcc" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4258ac6a-aab1-8016-86f0-c37d43b0c4e6" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><figure id="4258ac6a-aab1-807d-a756-ef1ad60d013e" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/FairLendingActs.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/FairLendingActs.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/FairLendingActs.jpg"/></a></figure><p id="4258ac6a-aab1-807a-9903-f337b8cbc8a3" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

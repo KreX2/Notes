@@ -1,0 +1,798 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 3 - Fair Housing Enforcement</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8009-853b-d21977f02ac7" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 3 - <strong>Fair Housing Enforcement</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4258ac6a-aab1-808b-be56-d99db4fbc964" class="column-list" data-notion-column-list="" dir="auto"><div id="4258ac6a-aab1-809b-a9d9-e836391317d3" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4258ac6a-aab1-80ef-955e-d9af12589b5d" class="" dir="auto"><strong>Enforcement Authority &amp; Filing Deadlines (</strong><code><strong>HUD / FHEO</strong></code><strong> vs. Private Civil Lawsuits)</strong></p><ul id="4258ac6a-aab1-8050-b06a-ebd5b7e87621" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Administering Agency:</strong> The <strong>U.S. Department of Housing and Urban Development (</strong><code><strong>HUD</strong></code><strong>)</strong>, specifically through its <strong>Office of Fair Housing and Equal Opportunity (</strong><code><strong>FHEO</strong></code><strong>)</strong>, administers and enforces the federal Fair Housing Act (<code>42 U.S.C. § 3601 et seq.</code>).</li></ul><ul id="4258ac6a-aab1-8084-8f25-ddecd0baa226" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Concurrent Jurisdiction &amp; Multiple Venues:</strong> Because state and local fair housing laws operate alongside federal law, a single discriminatory act can expose a real estate licensee to <strong>simultaneous legal or regulatory actions</strong> across multiple venues (federal HUD/DOJ, state fair housing agencies, private civil courts, and state real estate licensing commissions like <code>TREC</code>).</li></ul><ul id="4258ac6a-aab1-8017-8475-efc02dba2a6a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Filing Deadlines (</strong><code><strong>Statutes of Limitations</strong></code><strong>):</strong><ul id="4258ac6a-aab1-80c1-91bd-d0a06e0b88ac" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>HUD Administrative Complaint (</strong><code><strong>42 U.S.C. § 3610</strong></code><strong>):</strong> Must be filed within <code><strong>1</strong></code><strong> year</strong> (<code>365</code> days) after the alleged discriminatory housing practice occurred or terminated.</li></ul><ul id="4258ac6a-aab1-80f6-aa06-c7e7bb4e0c71" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Private Civil Lawsuit in Federal or State Court (</strong><code><strong>42 U.S.C. § 3613</strong></code><strong>):</strong> Must be filed within <code><strong>2</strong></code><strong> years</strong> after the most recent instance of discrimination (the <code>2</code>year clock is paused/tolled while a HUD administrative complaint is pending).</li></ul></li></ul><ul id="4258ac6a-aab1-8061-87fa-e751119b3dd8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Step-by-Step HUD Complaint, Investigation &amp; Adjudication Process</strong><ol type="1" id="4258ac6a-aab1-8061-8000-dcadcf58b7d8" class="numbered-list" start="1" dir="auto"><li><strong>Intake &amp; Submission:</strong> The complainant submits names, addresses, dates, and a description of the alleged violation via HUD&#x27;s Housing Discrimination Complaint Form, letter, phone, or online portal.<ul id="4258ac6a-aab1-8091-a043-cc529b6089dd" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Substantially Equivalent Agency Referral (</strong><code><strong>FHAP</strong></code><strong>):</strong> If the state or local fair housing agency enforces laws certified by HUD as <strong>&quot;substantively equivalent&quot;</strong> to the federal Fair Housing Act, HUD refers the complaint to that state/local agency and notifies the complainant.</li></ul></li></ol><ol type="1" id="4258ac6a-aab1-80f5-b45b-f7f25b213994" class="numbered-list" start="2" dir="auto"><li><strong>Notice &amp; Respondent&#x27;s Answer (</strong><code><strong>10</strong></code><strong>Day Windows):</strong><ul id="4258ac6a-aab1-80dd-8326-f45b683ea5cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Within <code><strong>10</strong></code><strong> days</strong> of receiving a signed complaint, HUD sends written notice and a copy of the complaint to the respondent (and an acknowledgment to the complainant).</li></ul><ul id="4258ac6a-aab1-80d9-a167-d8a32c75eb50" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Within <code><strong>10</strong></code><strong> days</strong> of receiving HUD&#x27;s notice, the respondent must submit a written <strong>Answer</strong> to the complaint.</li></ul></li></ol><ol type="1" id="4258ac6a-aab1-8055-b9bb-ceba6cf9682c" class="numbered-list" start="3" dir="auto"><li><strong>Investigation (</strong><code><strong>100</strong></code><strong>Day Target) &amp; Conciliation:</strong><ul id="4258ac6a-aab1-8041-9a2f-e081dafadbbf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">HUD investigates the allegations (aiming to complete the investigation within <code><strong>100</strong></code><strong> days</strong> unless impracticable, in which case HUD notifies the parties in writing).</li></ul><ul id="4258ac6a-aab1-800a-a8c8-dd682103bb16" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Conciliation (</strong><code><strong>Voluntary Compliance</strong></code><strong>):</strong> At <strong>any stage</strong> of the investigation, HUD attempts to resolve the dispute through informal negotiations. A binding <strong>Conciliation Agreement</strong> requires acceptance by both parties and approval by the HUD Secretary, providing individual relief to the complainant and safeguarding the public interest. Once signed, HUD closes its investigation—but if the respondent breaches the agreement, HUD refers the breach to the <strong>U.S. Department of Justice (</strong><code><strong>DOJ</strong></code><strong>)</strong> for federal court enforcement.</li></ul></li></ol><ol type="1" id="4258ac6a-aab1-8060-81d8-f625c285f7d5" class="numbered-list" start="4" dir="auto"><li><strong>Determination of Reasonable Cause &amp; Charge of Discrimination:</strong><ul id="4258ac6a-aab1-8040-a234-d3b276180eeb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If no conciliation agreement is reached, HUD determines whether <strong>reasonable cause</strong> exists to believe discrimination occurred.</li></ul><ul id="4258ac6a-aab1-80b9-885b-e6a6b9dda785" class="bulleted-list" dir="auto"><li style="list-style-type:disc">If reasonable cause is found, HUD issues a <strong>Determination of Reasonable Cause</strong> and a <strong>Charge of Discrimination</strong>.</li></ul></li></ol><ol type="1" id="4258ac6a-aab1-80ee-950a-d04921b16805" class="numbered-list" start="5" dir="auto"><li><strong>Forum Election (</strong><code><strong>20</strong></code><strong>Day Window):</strong><ul id="4258ac6a-aab1-80a4-b15e-c550f5522262" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Within <code><strong>20</strong></code><strong> days</strong> after receiving notice of the Charge, <strong>either the complainant or the respondent</strong> may elect to have the case decided in <strong>Federal District Court</strong> rather than before a HUD Administrative Law Judge (<code>ALJ</code>).</li></ul></li></ol></li></ul><ul id="4258ac6a-aab1-8085-b19b-c79e11e48630" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Comparison of Resolution Forums: Federal District Court vs. HUD ALJ Hearing</strong><table id="4258ac6a-aab1-80dc-bc8c-f8d9e049cf2a" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80cb-99fb-e33758bf6384" dir="ltr"><td id=":^TE" class=""><strong>Feature</strong></td><td id="hhO\" class=""><strong>Option 1: Civil Trial in Federal District Court</strong></td><td id="N_Lb" class=""><strong>Option 2: HUD Administrative Law Judge (ALJ) Hearing</strong></td></tr><tr id="4258ac6a-aab1-8017-a400-dd3a6eb4690b" dir="ltr"><td id=":^TE" class=""><strong>How It Is Triggered</strong></td><td id="hhO\" class="">Either party elects federal court within <code><strong>20</strong></code><strong> days</strong> of the Charge of Discrimination (HUD requests the <strong>U.S. Department of Justice</strong> to file suit on the complainant&#x27;s behalf at no cost), <strong>OR</strong> the complainant files a direct private lawsuit within <code><strong>2</strong></code><strong> years</strong>.</td><td id="N_Lb" class="">Neither party elects Federal District Court within the <code>20</code>-day window; HUD attorneys prosecute the case before an ALJ at no cost to the complainant.</td></tr><tr id="4258ac6a-aab1-801d-ac1b-fc5b25f20d15" dir="ltr"><td id=":^TE" class=""><strong>Damages &amp; Relief Available</strong></td><td id="hhO\" class="">• <strong>Actual damages</strong> (out-of-pocket expenses and emotional distress)<br/><br/>• <strong>Injunctive relief</strong> (court orders barring discrimination)<br/><br/>• <strong>Equitable relief</strong> (ordering housing made available)<br/><br/>• <strong>Reasonable attorney&#x27;s fees</strong><br/><br/>• <strong>Punitive damages</strong> <em>(available in court, NOT in an ALJ hearing)</em></td><td id="N_Lb" class="">• <strong>Actual damages</strong> (out-of-pocket expenses and emotional distress)<br/><br/>• <strong>Injunctive and/or equitable relief</strong><br/><br/>• <strong>Reasonable attorney&#x27;s fees</strong><br/><br/>• <strong>Civil monetary penalties</strong> paid to the U.S. government to vindicate the public interest <em>(no punitive damages)</em></td></tr><tr id="4258ac6a-aab1-80f5-977b-d128631a0f4a" dir="ltr"><td id=":^TE" class=""><strong>Maximum Civil Penalties (</strong><code><strong>ALJ</strong></code><strong> Tiered Schedule)</strong></td><td id="hhO\" class="">Not applicable to private suits <em>(DOJ pattern-or-practice court actions carry separate statutory civil penalties up to </em><em><code>$131,308</code></em><em> for a first violation and </em><em><code>$262,614</code></em><em> for subsequent violations as of 2025–2026)</em>.</td><td id="N_Lb" class=""><em>(Adjusted periodically for inflation; in </em><em><code>2022</code></em><em> course materials: </em><em><code>$23,011</code></em><em> / </em><em><code>$57,527</code></em><em> / </em><em><code>$115,054</code></em><em>; under current </em><em><code>2025–2026</code></em><em> HUD rules at </em><em><code>24 C.F.R. § 180.671</code></em><em>:)</em><br/><br/>• <strong>First offense:</strong> Up to <code><strong>$26,262</strong></code><br/><br/>• <strong>Second violation within </strong><code><strong>5</strong></code><strong> years:</strong> Up to <code><strong>$65,653</strong></code><br/><br/>• <strong>Two or more violations within </strong><code><strong>7</strong></code><strong> years:</strong> Up to <code><strong>$131,308</strong></code></td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-803a-9382-d2eda18cf511" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Private Civil Lawsuits &amp; When That Right Ends</strong><ul id="4258ac6a-aab1-80b5-a4aa-e1d88d57de45" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Independent Right to Sue (</strong><code><strong>2</strong></code><strong>Year Window):</strong> An aggrieved person does <strong>not</strong> have to file a HUD complaint first before filing a private civil lawsuit in federal or state court.</li></ul><ul id="4258ac6a-aab1-8089-88fc-e3ba527eebb2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Filing While a HUD Case Is Pending:</strong> A complainant who filed with HUD may still file a private lawsuit if HUD declines to investigate or while the investigation is still ongoing—<strong>provided that</strong>:<ul id="4258ac6a-aab1-809e-bc2d-fca0eae91533" class="bulleted-list" dir="auto"><li style="list-style-type:square">No <strong>Conciliation Agreement</strong> has been signed by the parties, <strong>AND</strong></li></ul><ul id="4258ac6a-aab1-8081-93ec-e6fde5d02084" class="bulleted-list" dir="auto"><li style="list-style-type:square">A <strong>HUD Administrative Law Judge (</strong><code><strong>ALJ</strong></code><strong>) hearing</strong> has not yet begun on the record.</li></ul></li></ul><ul id="4258ac6a-aab1-80f5-b933-fc1d413bc5db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Once either a <strong>Conciliation Agreement</strong> is executed or an <strong>ALJ hearing</strong> commences, the complainant is legally barred from filing a separate private civil lawsuit over that complaint.</li></ul></li></ul><ul id="4258ac6a-aab1-800a-8ae9-e7d95d263c8d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Filing a Complaint: Summary</strong><figure id="4258ac6a-aab1-807f-88a4-d0aa00111476" class="image" data-notion-image="Chapter%203%20-%20Fair%20Housing%20Enforcement/image.png" dir="ltr"><a href="Chapter%203%20-%20Fair%20Housing%20Enforcement/image.png"><img style="width:384px" src="Chapter%203%20-%20Fair%20Housing%20Enforcement/image.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-8007-86f7-c4e5f47871c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Prompt Judicial Action for Urgent Fair Housing Complaints (</strong><code><strong>42 U.S.C. § 3610(e)</strong></code><strong>)</strong><ul id="4258ac6a-aab1-800c-9f92-c1b1851310a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>When Immediate Action Is Triggered:</strong> Under the Fair Housing Act (<code>42 U.S.C. § 3610(e)</code> and <code>24 C.F.R. § 103.500</code>), if the HUD Secretary concludes at any time after a complaint is filed that prompt judicial action is necessary to carry out the purposes of the Act, HUD authorizes the <strong>U.S. Attorney General (</strong><code><strong>DOJ</strong></code><strong>)</strong> to immediately file a civil action for temporary or preliminary relief while HUD&#x27;s full investigation proceeds. Emergency intervention applies when two core conditions are met:<ol type="1" id="4258ac6a-aab1-80d6-a1de-d51a8340f49d" class="numbered-list" start="1" dir="auto"><li><strong>Irreparable Harm:</strong> Serious, immediate injury (such as imminent homelessness or permanent loss of a unique housing opportunity) will likely occur without swift court intervention.</li></ol><ol type="1" id="4258ac6a-aab1-80d2-95a8-c55db472a72f" class="numbered-list" start="2" dir="auto"><li><strong>Substantial, Compelling Evidence:</strong> Strong preliminary evidence indicates a clear violation of federal fair housing laws.</li></ol></li></ul><ul id="4258ac6a-aab1-801b-9344-d5d95ffd8ed0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Application to the Landlord Scenario:</strong> When an approved tenant who has already given notice on her prior apartment has her lease abruptly revoked upon meeting the landlord because she appears to be of Middle Eastern descent (discrimination based on <strong>national origin / race / color</strong>), waiting months for a standard investigation would leave her without a home—justifying immediate referral to the Attorney General for emergency injunctive relief.</li></ul></li></ul><ul id="4258ac6a-aab1-80b7-b9c0-de0f5c7699a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Injunctions: Temporary (Preliminary) vs. Permanent Relief</strong><ul id="4258ac6a-aab1-8065-8ea9-f7d435732cee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>What an Injunction Is:</strong> A court order compelling an individual or entity either to <strong>refrain from doing</strong> a discriminatory act (<code>prohibitory injunction</code>) or to <strong>perform an affirmative action</strong> (<code>mandatory injunction</code>), such as honoring a lease or serving protected-class clients. Obtaining an injunction does <strong>not</strong> shield the respondent from ongoing HUD investigation, damages, or civil penalties.<table id="4258ac6a-aab1-80d2-bb9d-def60761661b" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80b7-a6c0-d07d7ac7bb6e" dir="ltr"><td id="dlHn" class=""><strong>Type of Injunction</strong></td><td id="jbBB" class=""><strong>Duration &amp; Purpose</strong></td><td id="GSKE" class=""><strong>Practical Effect on a Housing Provider</strong></td></tr><tr id="4258ac6a-aab1-800a-8351-ca9102dfa0d7" dir="ltr"><td id="dlHn" class=""><strong>Temporary (</strong><code><strong>Preliminary</strong></code><strong>) Injunction / TRO</strong></td><td id="jbBB" class="">Short-term order issued <strong>pending the final outcome</strong> of HUD&#x27;s investigation or court trial.</td><td id="GSKE" class="">Freezes the status quo—for example, prohibiting a landlord or seller from renting or selling the disputed unit to anyone else (or requiring them to let the tenant move in) until a final determination is reached.</td></tr><tr id="4258ac6a-aab1-800b-9e20-f0e2f3915676" dir="ltr"><td id="dlHn" class=""><strong>Permanent Injunction</strong></td><td id="jbBB" class="">Issued as part of a <strong>final judgment</strong> after discrimination is proven; lasts <strong>indefinitely or for a court-specified period</strong>.</td><td id="GSKE" class="">Permanently bars future discriminatory practices and imposes ongoing compliance obligations (such as mandatory fair housing training, recordkeeping, and non-discriminatory marketing).</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8087-8621-d92bc16766f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>HUD&#x27;s Fair Housing Accessibility Guidelines (</strong><code><strong>1991</strong></code><strong>) &amp; Statutory Design Rules (</strong><code><strong>42 U.S.C. § 3604(f)(3)(C)</strong></code><strong>)</strong><ul id="4258ac6a-aab1-802d-a929-d16f57a7a437" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Mandate vs. Technical Safe Harbor (</strong><code><strong>56 FR 9472</strong></code><strong>):</strong><ul id="4258ac6a-aab1-807d-a418-ecda5c724193" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under <code>42 U.S.C. § 3604(f)(3)(C)</code>, <strong>covered multifamily dwellings</strong> designed and constructed for first occupancy after <strong>March 13, 1991</strong> (<code>4</code> or more units in buildings with an elevator, and all ground-floor units in non-elevator buildings with <code>4</code> or more units) are <strong>legally required</strong> to include core accessible design features.</li></ul><ul id="4258ac6a-aab1-80cb-8967-faf2b8970162" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>HUD&#x27;s </strong><code><strong>1991</strong></code><strong> Fair Housing Accessibility Guidelines</strong> provide voluntary technical specifications (a &quot;safe harbor&quot;) showing builders and landlords how to satisfy the statute. Following the Guidelines is not the sole mandatory method of compliance (builders may use other recognized accessibility standards such as <code>ANSI A117.1</code>), but strict compliance provides strong legal protection and safe-harbor proof of non-discrimination in the event of a complaint or lawsuit.</li></ul></li></ul><ul id="4258ac6a-aab1-8068-8036-ce1a7ffb1ed2" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Core Accessible Design Standards Covered by the Statute &amp; Guidelines (</strong><code><strong>42 U.S.C. § 3604(f)(3)(C)</strong></code><strong>):</strong><ul id="4258ac6a-aab1-8069-9083-fa79e64f4ee5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Public and common-use areas</strong> (lobbies, mailrooms, laundry rooms, pools, parking, and walkways) must be readily accessible to and usable by persons with disabilities.</li></ul><ul id="4258ac6a-aab1-8083-a81d-c7a29e18a281" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>All doors</strong> into and within covered dwelling units must be sufficiently wide (<code>32</code>inch minimum clear opening) to allow passage by a person using a wheelchair.</li></ul><ul id="4258ac6a-aab1-80cb-bd94-efea03974040" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>All covered dwelling interiors</strong> must incorporate four adaptive-design features:<ol type="1" id="4258ac6a-aab1-803c-9c24-d5f06e3ab246" class="numbered-list" start="1" dir="auto"><li>An <strong>accessible route</strong> into and throughout the dwelling unit</li></ol><ol type="1" id="4258ac6a-aab1-801c-816c-f644da215c58" class="numbered-list" start="2" dir="auto"><li><strong>Light switches, electrical outlets, thermostats, and environmental controls</strong> placed in accessible reach ranges</li></ol><ol type="1" id="4258ac6a-aab1-80cf-80b3-f4158ee401b8" class="numbered-list" start="3" dir="auto"><li><strong>Reinforcements in bathroom walls</strong> to allow later installation of grab bars around toilets and tubs/showers</li></ol><ol type="1" id="4258ac6a-aab1-807d-b4b0-f3f82b41f587" class="numbered-list" start="4" dir="auto"><li><strong>Usable kitchens and bathrooms</strong> with sufficient clear floor space so an individual in a wheelchair can maneuver safely</li></ol></li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8062-9a4e-cee135b6b6ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Poster</strong><ul id="4258ac6a-aab1-8002-896b-df8028ef99bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>This poster is required by HUD. It is a declaration from the broker that the personnel of the company will give equal treatment to all who enter the office.</strong> <figure id="4258ac6a-aab1-8091-902d-cb6d2d846422" class="image" data-notion-image="Chapter%203%20-%20Fair%20Housing%20Enforcement/image%201.png" dir="ltr"><a href="Chapter%203%20-%20Fair%20Housing%20Enforcement/image%201.png"><img style="width:336px" src="Chapter%203%20-%20Fair%20Housing%20Enforcement/image%201.png"/></a></figure></li></ul></li></ul><ul id="4258ac6a-aab1-805c-a37a-e4e864b82797" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Occupancy Standards &amp; Familial Status (</strong><code><strong>Quality Housing and Work Responsibility Act of 1998</strong></code><strong> &amp; </strong><code><strong>Keating Memo</strong></code><strong>)</strong><ul id="4258ac6a-aab1-802a-93d9-ea3bde8ae8db" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory &amp; Regulatory Framework:</strong> Under the <strong>Quality Housing and Work Responsibility Act of </strong><code><strong>1998</strong></code><strong> (</strong><code><strong>QHWRA</strong></code><strong>)</strong>, Congress directed HUD to publish clear enforcement standards governing occupancy limits. In <code>1998–1999</code>, HUD formally adopted the <code><strong>1991</strong></code><strong> Keating Memo</strong> (written by former HUD General Counsel Frank Keating) as its official policy.</li></ul><ul id="4258ac6a-aab1-802b-9efc-ef8674269120" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The </strong><code><strong>&quot;Two Occupants Per Bedroom&quot;</strong></code><strong> Guideline—Not a Rigid Rule:</strong><ul id="4258ac6a-aab1-803a-8914-e72b28fb83a9" class="bulleted-list" dir="auto"><li style="list-style-type:square">As a general baseline, an occupancy standard of <strong>two persons per bedroom</strong> is presumptively reasonable under the Fair Housing Act.</li></ul><ul id="4258ac6a-aab1-8096-b43a-fff73cbc4596" class="bulleted-list" dir="auto"><li style="list-style-type:square">However, HUD <strong>never</strong> evaluates familial status discrimination solely by counting people per bedroom. Investigators must evaluate <strong>contextual and physical factors</strong>, including:<ol type="1" id="4258ac6a-aab1-802e-90a4-e880cfdcf693" class="numbered-list" start="1" dir="auto"><li><strong>Size and configuration</strong> of the bedrooms and overall dwelling (e.g., whether there is a large living area, den, or study)</li></ol><ol type="1" id="4258ac6a-aab1-8001-ab0a-e10b7fb4f287" class="numbered-list" start="2" dir="auto"><li><strong>Age of the children</strong> (e.g., an infant sharing a bedroom with parents)</li></ol><ol type="1" id="4258ac6a-aab1-80ea-81e5-f6f344e4d608" class="numbered-list" start="3" dir="auto"><li><strong>Physical capacity of building systems</strong> (such as septic tank, sewer, or water system limits)</li></ol><ol type="1" id="4258ac6a-aab1-805d-866f-ea5b0efe0425" class="numbered-list" start="4" dir="auto"><li><strong>Discriminatory statements or selective enforcement</strong> (such as applying strict occupancy caps only to families with children or restricting common areas)</li></ol></li></ul></li></ul><ul id="4258ac6a-aab1-8085-a52f-ca83b2b84f06" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Keating Memo Comparison Example (</strong><code><strong>Family of 5</strong></code><strong> in a </strong><code><strong>2-Bedroom</strong></code><strong> Home):</strong><ul id="4258ac6a-aab1-8092-a788-c0a40e2848dc" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Situation 1 (Spacious </strong><code><strong>2-Bedroom</strong></code><strong> Apartment):</strong> A family of five applies to rent a two-bedroom apartment with oversized bedrooms and large living areas. Denying them under a strict two-person-per-bedroom rule <strong>likely violates the Fair Housing Act</strong> (familial status discrimination).</li></ul><ul id="4258ac6a-aab1-80a4-b7ee-c76a678cbf4b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Situation 2 (Small </strong><code><strong>2-Bedroom</strong></code><strong> Mobile Home):</strong> A family of five applies to rent a lot for a compact two-bedroom mobile home with tight living quarters. Denying them based on legitimate space constraints is <strong>reasonable and lawful</strong>.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8020-94ec-d0c53749544f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>HUD Public Housing, Subsidized Housing &amp; Equal Access Protections</strong><ul id="4258ac6a-aab1-80dc-af19-d7a41fb3e470" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Housing vs. Subsidized Housing:</strong><table id="4258ac6a-aab1-80b7-916f-c4f53399940f" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80f8-b883-dd8b9702774c" dir="ltr"><td id="RoYK" class=""><strong>Housing Type</strong></td><td id="uKHL" class=""><strong>Ownership &amp; Management Structure</strong></td><td id="D?In" class=""><strong>How Affordability Is Delivered</strong></td></tr><tr id="4258ac6a-aab1-800c-8ec9-df11553b32ef" dir="ltr"><td id="RoYK" class=""><strong>Public Housing</strong></td><td id="uKHL" class="">Owned directly by a local <strong>Public Housing Authority (</strong><code><strong>PHA</strong></code><strong>)</strong>, which serves as the landlord (though a private management firm may help operate it under PHA control).</td><td id="D?In" class="">HUD provides federal operating and capital aid to local housing authorities so roughly <code>1.2 million</code> eligible low-income families, older adults, and individuals with disabilities can rent at income-based affordable rates.</td></tr><tr id="4258ac6a-aab1-80c6-9762-d746d45373f5" dir="ltr"><td id="RoYK" class=""><strong>Subsidized Housing</strong></td><td id="uKHL" class="">Owned and operated by <strong>private landlords, for-profit entities, or nonprofit corporations</strong>.</td><td id="D?In" class="">Private owners receive federal HUD subsidies (such as Section 8 project-based contracts or vouchers) in exchange for offering reduced rents to qualified low- and moderate-income tenants.</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8032-bab4-d1b465b286a2" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>HUD&#x27;s Equal Access Rule (</strong><code><strong>2012</strong></code><strong> &amp; </strong><code><strong>2016</strong></code><strong> Updates):</strong><ul id="4258ac6a-aab1-8002-89c2-e6f29fa96f95" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Prohibits owners/operators of <strong>HUD-assisted or HUD-insured housing</strong> and <strong>FHA-approved lenders</strong> from discriminating based on <strong>sexual orientation, gender identity, or marital status</strong>. <em>(Note: Federal rulemaking in 2025–2026 proposed revisions to the 2016 rule, while federal courts and HUD Fair Housing Act enforcement continue to treat sexual orientation and gender identity discrimination as prohibited sex discrimination.)</em></li></ul><ul id="4258ac6a-aab1-808e-a97f-c6f1133748ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Key Regulatory Definitions (</strong><code><strong>2016</strong></code><strong>):</strong><ul id="4258ac6a-aab1-8044-9bda-d990a693cbd1" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Sexual Orientation:</strong> One&#x27;s emotional, romantic, or physical attraction to the same and/or opposite sex.</li></ul><ul id="4258ac6a-aab1-80ca-9dee-cdb05ef76895" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Gender Identity:</strong> Covers <strong>both actual and perceived</strong> gender identity—mirroring disability law, where discrimination based on a <em>perceived</em> protected trait is just as illegal as discrimination based on an actual trait.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-804b-9ccb-dd39f7a45836" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Department of Justice (</strong><code><strong>DOJ</strong></code><strong>) Enforcement: Pattern or Practice &amp; </strong><code><strong>ADA</strong></code><strong> Violations</strong><ul id="4258ac6a-aab1-80ae-9099-c2b8b96ea597" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fair Housing Act </strong><code><strong>&quot;Pattern or Practice&quot;</strong></code><strong> Lawsuits (</strong><code><strong>42 U.S.C. § 3614</strong></code><strong>):</strong><ul id="4258ac6a-aab1-8065-b612-e07d0535c1f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">The <strong>U.S. Attorney General</strong> may file a civil lawsuit directly in Federal District Court whenever there is reasonable cause to believe a person or entity is engaged in a <strong>pattern or practice</strong> of housing discrimination (regular, systemic practice rather than an isolated incident) <strong>OR</strong> has denied rights to a group raising an issue of <strong>general public importance</strong>.</li></ul><ul id="4258ac6a-aab1-80cd-9c8d-ed49e22d00e5" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Statute of Limitations:</strong> To recover civil penalties in a DOJ pattern-or-practice suit, the Attorney General must file within <code><strong>18</strong></code><strong> months</strong> after the discriminatory practice occurred or terminated.</li></ul><ul id="4258ac6a-aab1-80aa-bd26-c2d3cb3cb494" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Statutory Civil Penalties (</strong><code><strong>DOJ</strong></code><strong> Pattern-or-Practice Cases):</strong> Base statutory maximums in <code>42 U.S.C. § 3614(d)(1)(C)</code> are <code><strong>$75,000</strong></code> for a first violation and <code><strong>$150,000</strong></code> for any subsequent violation <em>(adjusted for inflation under </em><em><code>28 C.F.R. § 85.5</code></em><em> to </em><em><code><strong>$131,308</strong></code></em><em> for a first violation and </em><em><code><strong>$262,614</strong></code></em><em> for subsequent violations through </em><em><code>2026</code></em><em>)</em>.</li></ul></li></ul><ul id="4258ac6a-aab1-8064-a9cf-c56bd3f0311d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Americans with Disabilities Act (</strong><code><strong>ADA</strong></code><strong>) Enforcement (</strong><code><strong>Title II</strong></code><strong> &amp; </strong><code><strong>Title III</strong></code><strong>):</strong><ul id="4258ac6a-aab1-80eb-b05e-d121eb7c0dc2" class="bulleted-list" dir="auto"><li style="list-style-type:square">The Department of Justice enforces ADA accessibility and non-discrimination rules across public entities and places of public accommodation (including real estate brokerage offices and apartment leasing offices).</li></ul><ul id="4258ac6a-aab1-8056-b42f-e8448f1b8061" class="bulleted-list" dir="auto"><li style="list-style-type:square">Base statutory civil penalties under the ADA are <code><strong>$55,000</strong></code> for a first violation and <code><strong>$110,000</strong></code> for any subsequent violation <em>(likewise subject to periodic federal inflation adjustments)</em>.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8062-b5e9-cf82f2a31154" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Human Rights Commission (</strong><code><strong>THRC</strong></code><strong>) Enforcement &amp; Penalties (</strong><code><strong>T.C.A. § 4-21-301 et seq.</strong></code><strong>)</strong><ul id="4258ac6a-aab1-80c3-b74d-e966edb33b07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Filing Deadline &amp; Dual-Filing Coordination:</strong><ul id="4258ac6a-aab1-8020-be39-c7b72689cc39" class="bulleted-list" dir="auto"><li style="list-style-type:square">Complaints under the <strong>Tennessee Human Rights Act (</strong><code><strong>THRA</strong></code><strong>)</strong> must be filed with the <strong>Tennessee Human Rights Commission (</strong><code><strong>THRC</strong></code><strong>)</strong> within <code><strong>180</strong></code><strong> days</strong> of the alleged discriminatory housing act—compared to <code><strong>1</strong></code><strong> year (</strong><code><strong>365</strong></code><strong> days)</strong> for filing with federal <strong>HUD</strong>.</li></ul><ul id="4258ac6a-aab1-8029-8a14-ec923aa0861a" class="bulleted-list" dir="auto"><li style="list-style-type:square">Because THRC is a HUD-certified <strong>substantially equivalent</strong> fair housing agency, THRC and HUD maintain work-sharing agreements so complaints are coordinated without duplicate investigations.</li></ul></li></ul><ul id="4258ac6a-aab1-8018-b286-f2854e437018" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Statutory Civil Penalties Under the </strong><code><strong>THRA</strong></code><strong> (</strong><code><strong>T.C.A. § 4-21-306</strong></code><strong>):</strong><ul id="4258ac6a-aab1-80f8-95ae-f9ef7f9d8eb4" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>First offense:</strong> Up to <code><strong>$10,000</strong></code></li></ul><ul id="4258ac6a-aab1-806c-9899-c32e9b51a052" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Second offense</strong> <em>(within </em><em><code>5</code></em><em> years)</em>: Up to <code><strong>$25,000</strong></code></li></ul><ul id="4258ac6a-aab1-80c7-a58d-efc2308ba7ad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Further violations</strong> <em>(two or more within </em><em><code>7</code></em><em> years)</em>: Up to <code><strong>$50,000</strong></code> <em>(in addition to actual damages, injunctive relief, and reasonable attorney&#x27;s fees)</em></li></ul></li></ul></li></ul></div><div id="4258ac6a-aab1-808b-85ef-ca066ca3d511" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4258ac6a-aab1-80ce-a058-f9362f0a4564" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4258ac6a-aab1-8027-a9cd-eeb214c9b374" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Filing a Fair Housing Complaint Through HUD</strong><ul id="4258ac6a-aab1-80f4-a8aa-e0668935f01e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The <strong>Department of Housing and Urban Development </strong>(HUD) enforces the federal Fair Housing Act.</li></ul><ul id="4258ac6a-aab1-806a-a1df-f82f25375e44" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HUD requires that a fair housing complaint is filed within <strong>one year </strong>of the violation.</li></ul><ul id="4258ac6a-aab1-8072-be7e-ef58b01c85ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A person can also choose to file a civil suit. In that case, the individual has <strong>two years</strong> from the violation to file a private lawsuit.</li></ul><ul id="4258ac6a-aab1-80b1-a478-f57faed1eaf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Depending on state and local laws, there may be other venues in addition to HUD where fair housing cases can be filed. In some cases, multiple venues may have jurisdiction over one case.</li></ul><ul id="4258ac6a-aab1-800e-b057-cd6192d6b043" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>In other words, a real estate license holder may be subject to more than one legal action for a single act of alleged discrimination.</strong></li></ul></li></ul><figure id="4258ac6a-aab1-80d8-833c-ec8217c463e9" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/CAREPLLAW_FilingAFairHousingComplaint_544.png"/></a></figure><p id="4258ac6a-aab1-8096-a767-faea62a0384e" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

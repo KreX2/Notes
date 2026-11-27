@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 5 - Antitrust Violations</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-80ec-a30f-dbc8c1497b07" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 5 - <strong>Antitrust Violations</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4258ac6a-aab1-803a-91ec-e36232136e6f" class="column-list" data-notion-column-list="" dir="auto"><div id="4258ac6a-aab1-8078-9cb2-eda1e8fda62b" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4258ac6a-aab1-80d8-aee2-fbd82a14ebc8" class="" dir="auto"><strong>Core Antitrust Principles in Real Estate</strong></p><ul id="4258ac6a-aab1-8061-8854-d9b637e9a5ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Purpose of Antitrust Laws:</strong> Federal and state antitrust statutes (primarily the <strong>Sherman Antitrust Act</strong>, <strong>Clayton Act</strong>, and <strong>Federal Trade Commission Act</strong>) promote open market competition and protect consumers by outlawing monopolies, restraints of trade, and unfair trade practices.</li></ul><ul id="4258ac6a-aab1-8019-8732-fa7041a0e11f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Collusion:</strong> Most real estate antitrust violations stem from <strong>collusion</strong>—an unlawful explicit or implied agreement between competing brokerages or licensees to restrict competition, manipulate prices, or disadvantage rivals. Even casual remarks, social-media posts, or trade-association conversations suggesting shared commission or territory policies can serve as evidence of an illegal conspiracy.</li></ul><ul id="4258ac6a-aab1-8011-b675-c7b243eec138" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Six Major Antitrust Violations in Real Estate</strong><table id="4258ac6a-aab1-8074-95b8-c4472a445792" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-805c-a1c1-ee49fa45c219" dir="ltr"><td id="bmNX" class=""><strong>Antitrust Violation</strong></td><td id="QGY]" class=""><strong>Legal Definition &amp; Core Mechanism</strong></td><td id="Cb:O" class=""><strong>Real Estate Example</strong></td></tr><tr id="4258ac6a-aab1-80d7-8475-c17a47c6105a" dir="ltr"><td id="bmNX" class=""><strong>1. Price Fixing</strong></td><td id="QGY]" class="">Competing brokers or firms jointly agree to set, raise, maintain, or stabilize commission rates, fees, minimum prices, or discount limits. <em>(Always illegal on its face—there is no </em><em><code>&quot;standard&quot;</code></em><em> or </em><em><code>&quot;going&quot;</code></em><em> commission rate in real estate.)</em></td><td id="Cb:O" class="">Brokers from three competing firms meet and agree to charge a minimum <code>6%</code> listing commission or refuse to offer flat-fee/discounted rates.</td></tr><tr id="4258ac6a-aab1-807a-8f1a-def889dfa45f" dir="ltr"><td id="bmNX" class=""><strong>2. Group Boycott</strong></td><td id="QGY]" class="">Two or more competitors conspire to <strong>refuse to do business</strong> with another competitor, vendor, or business model in order to force them to change their practices or drive them out of the market.</td><td id="Cb:O" class="">Two brokers dislike an advertising firm&#x27;s rates (or a discount brokerage&#x27;s commission model) and recruit other local brokers to stop doing business with that firm.</td></tr><tr id="4258ac6a-aab1-80c1-93ac-caef48e25c9f" dir="ltr"><td id="bmNX" class=""><strong>3. Market or Customer Allocation</strong></td><td id="QGY]" class="">Competing brokerages agree to divide territories, neighborhoods, property types, or client groups among themselves so they do not compete head-to-head.</td><td id="Cb:O" class="">Broker Bella (north side of town) and Broker Bart (south side of town) agree that Bella will handle all north-side clients and Bart will handle all south-side clients.</td></tr><tr id="4258ac6a-aab1-8027-bd3d-f25f3a0c789e" dir="ltr"><td id="bmNX" class=""><strong>4. Tie-In Agreement (</strong><code><strong>Tying Arrangement</strong></code><strong>)</strong></td><td id="QGY]" class="">Conditioning the sale or discount of one desired product/service (the <strong>tying product</strong>) on the buyer or client also purchasing a second, separate product/service (the <strong>tied product</strong>).</td><td id="Cb:O" class="">A broker tells a client they will only receive a discounted commission rate (or be allowed to buy a lot) if they also hire a specific title company, lender, or builder.</td></tr><tr id="4258ac6a-aab1-804a-b86f-c3a022e5b113" dir="ltr"><td id="bmNX" class=""><strong>5. Setting Listing Lengths</strong></td><td id="QGY]" class="">Competing brokers or an MLS/association attempt to restrict or standardize the duration that listings may remain active on the market in order to manipulate pricing or competition.</td><td id="Cb:O" class="">Broker Bert tries to prohibit active listings older than <code>2</code> months because lower-priced, older listings from Broker Larry&#x27;s firm are attracting buyers away from higher-commission homes.</td></tr><tr id="4258ac6a-aab1-80de-bb89-c8904d6064aa" dir="ltr"><td id="bmNX" class=""><strong>6. Bid Rigging</strong></td><td id="QGY]" class="">Competitors conspire in advance to coordinate bids, suppress prices, or pre-select the winning bidder at a public or private auction.</td><td id="Cb:O" class="">Several real estate professionals attending a foreclosure auction coordinate who will bid and cap their bids so the winning price stays artificially low.</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-80fc-8908-ceb47643b7b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Compliance Rules for Real Estate Licensees</strong><ul id="4258ac6a-aab1-80bc-a923-d08924b32aa0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Independent Commission Decisions Only:</strong> Each brokerage must establish its own commission rates and fee structures independently; never tell a client that commission rates are <code>&quot;set by law&quot;</code>, <code>&quot;standard in the area&quot;</code>, or <code>&quot;non-negotiable across all firms&quot;</code>.</li></ul><ul id="4258ac6a-aab1-8059-9782-daedc8f1140d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Walk Away From Collusive Conversations:</strong> If competitors begin discussing commission splits, fee minimums, boycotting a discount firm, or dividing farm territories at a meeting or networking event, immediately object, leave the conversation, and document your exit.</li></ul><ul id="4258ac6a-aab1-80e8-a1c1-d311a4a009f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Severe Penalties:</strong> Violations of the Sherman Act carry felony criminal penalties (hefty corporate and individual fines plus prison sentences), alongside civil <strong>treble damages</strong> (<code>3 * actual damages</code>) plus attorney&#x27;s fees for injured consumers under the Clayton Act and license revocation by state real estate commissions.</li></ul></li></ul><ul id="4258ac6a-aab1-80b2-9e5b-fd9beba6cb90" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Antitrust Violations: A Visual</strong><ul id="4258ac6a-aab1-80df-a3a5-e2319df71b92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">If you overhear a conversation that you suspect may be an antitrust violation, talk to your principal broker. They can help you figure out next steps (such as if and how to report the possible violation).</li></ul><figure id="4258ac6a-aab1-8091-a501-e5882cfe7764" class="image" data-notion-image="Chapter%205%20-%20Antitrust%20Violations/image.png" dir="ltr"><a href="Chapter%205%20-%20Antitrust%20Violations/image.png"><img style="width:480px" src="Chapter%205%20-%20Antitrust%20Violations/image.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80e1-a940-e3dc38e8e747" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Core Federal Antitrust Statutes &amp; Enforcement (</strong><code><strong>Sherman</strong></code><strong>, </strong><code><strong>FTC</strong></code><strong>, and </strong><code><strong>Clayton</strong></code><strong> Acts)</strong><ul id="4258ac6a-aab1-807c-bf4a-c4a030f609fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Sherman Antitrust Act (</strong><code><strong>1890</strong></code><strong>):</strong> The foundational federal antitrust statute prohibiting monopolies and unreasonable restraints of trade or commerce across state lines.</li></ul><ul id="4258ac6a-aab1-806e-9fd5-d816e585ab8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Two Supporting </strong><code><strong>1914</strong></code><strong> Laws:</strong><ul id="4258ac6a-aab1-8077-9aa1-c4b9a3033dba" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Federal Trade Commission (</strong><code><strong>FTC</strong></code><strong>) Act (</strong><code><strong>1914</strong></code><strong>):</strong> Created the <strong>FTC</strong> to police unfair methods of competition and protect consumers.</li></ul><ul id="4258ac6a-aab1-8027-8d0d-dc7a339ec405" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Clayton Act (</strong><code><strong>1914</strong></code><strong>):</strong> Targets anti-competitive mergers, predatory or discriminatory pricing, and tying arrangements, while authorizing private civil suits (including treble damages).</li></ul></li></ul><ul id="4258ac6a-aab1-8092-a60a-fe8dffbbef24" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcement &amp; Penalties:</strong><ul id="4258ac6a-aab1-806a-808a-f6dade1392a9" class="bulleted-list" dir="auto"><li style="list-style-type:square">Enforced criminally and civilly by the <strong>U.S. Department of Justice (</strong><code><strong>DOJ</strong></code><strong>) Antitrust Division</strong> (alongside FTC civil enforcement and private lawsuits).</li></ul><ul id="4258ac6a-aab1-8066-9939-f2cd461ee2b2" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Individuals</strong> face criminal fines and federal prison sentences; <strong>corporations</strong> face heavy fines; and real estate licensees face license suspension or revocation from their state real estate commission.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-808d-bc2f-fa7e80b4a4c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Judicial Standards for Evaluating Restraints on Trade</strong><ul id="4258ac6a-aab1-8081-8409-efaf79fa4d6f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Because every business contract technically excludes third parties, courts only prohibit <strong>unreasonable</strong> restraints on trade using three legal standards:</li></ul><table id="4258ac6a-aab1-808b-bb14-e252f206e44f" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-809a-97d3-e944075cb13a" dir="ltr"><td id="S}Qe" class=""><strong>Judicial Standard</strong></td><td id="=U:Y" class=""><strong>How It Works</strong></td><td id="mqB&gt;" class=""><strong>Application in Real Estate</strong></td></tr><tr id="4258ac6a-aab1-80c7-b237-ea56f18ff165" dir="ltr"><td id="S}Qe" class=""><strong>1. The </strong><em><strong>Per Se</strong></em><strong> Rule</strong></td><td id="=U:Y" class="">Acts deemed <strong>inherently illegal on their face</strong>—the plaintiff only needs to prove the conduct occurred, without needing to prove economic harm or lack of justification.</td><td id="mqB&gt;" class="">Applies to horizontal <strong>price fixing, group boycotts, market/customer allocation, and bid rigging</strong>.</td></tr><tr id="4258ac6a-aab1-80d8-9564-db1afde2c0c2" dir="ltr"><td id="S}Qe" class=""><strong>2. The Rule of Reason</strong></td><td id="=U:Y" class="">A full economic balancing test examining: (1) intent/purpose of the practice, (2) defendant&#x27;s market share/competitive position before and after, (3) market structure and competition, (4) barriers to entry, and (5) objective pro-competitive justifications.</td><td id="mqB&gt;" class="">Used when a practice is not <em>per se</em> unlawful (such as certain vertical agreements or MLS operational rules).</td></tr><tr id="4258ac6a-aab1-800a-8c99-e4141d24696d" dir="ltr"><td id="S}Qe" class=""><strong>3. The Quick Look</strong></td><td id="=U:Y" class="">An abbreviated middle-ground analysis where anti-competitive harm is obvious enough that the plaintiff only needs to show a clear market injury without a full Rule of Reason trial.</td><td id="mqB&gt;" class="">Used when conduct is not a classic <em>per se</em> offense, yet restricts price or output with no obvious pro-competitive justification.</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-8048-8d73-f26519bea67b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Landmark Real Estate Antitrust Cases</strong><ul id="4258ac6a-aab1-802a-9b53-dc1eb76225f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>1. </strong><em><strong>Moehrl v. NAR</strong></em><strong> (</strong><code><strong>2019</strong></code><strong> — MLS Commission Rules &amp; Settlement):</strong><ul id="4258ac6a-aab1-8053-a6c5-ddb5444fe6dd" class="bulleted-list" dir="auto"><li style="list-style-type:square">Home sellers brought a nationwide class-action suit against NAR and major national brokerages (<code>Realogy/Anywhere</code>, <code>HomeServices of America</code>, <code>RE/MAX</code>, <code>Keller Williams</code>), challenging NAR&#x27;s <strong>Participation Rule</strong> requiring listing brokers to make a blanket, unilateral offer of buyer-broker compensation on the MLS—plus rules restricting buyer-commission visibility, allowing buyer agents to claim their services were <code>&quot;free&quot;</code>, enabling commission-based listing filtering, and restricting lockbox access.</li></ul><ul id="4258ac6a-aab1-80f3-989e-e0ad917f21de" class="bulleted-list" dir="auto"><li style="list-style-type:square">In <strong>March </strong><code><strong>2024</strong></code> (effective <strong>August </strong><code><strong>2024</strong></code>), NAR agreed to a <code><strong>$418 million</strong></code> settlement (without admitting wrongdoing) requiring two major industry rule changes:<ol type="1" id="4258ac6a-aab1-80c6-ac41-f3ec5734832f" class="numbered-list" start="1" dir="auto"><li><strong>Removing offers of buyer-broker compensation from the MLS</strong>; and</li></ol><ol type="1" id="4258ac6a-aab1-8031-b7b6-cdc13a86ee74" class="numbered-list" start="2" dir="auto"><li><strong>Requiring MLS participants to enter into a written buyer representation agreement</strong> with a buyer before touring a home.</li></ol></li></ul></li></ul><ul id="4258ac6a-aab1-808c-bbb4-cbccc7f9017f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>2. Southern Mississippi Foreclosure Auction Bid Rigging (</strong><code><strong>2019</strong></code><strong>):</strong><ul id="4258ac6a-aab1-8081-b0a8-f69b108c1f03" class="bulleted-list" dir="auto"><li style="list-style-type:square">Nine real estate investors were convicted of conspiring between <code>2009</code> and <code>2017</code> to select a <code>&quot;designated winner&quot;</code> prior to foreclosure auctions and paying competitors <code>$100</code>–<code>$300</code> not to bid.</li></ul><ul id="4258ac6a-aab1-80f4-95f7-cc7ee5b99839" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Key Rule:</strong> <strong>&quot;Ignorance is not a defense&quot;</strong>—even though the payoffs happened openly and an attorney allegedly claimed it was lawful, each offender received <code><strong>4</strong></code><strong> months in federal prison</strong>, fines of <code><strong>$20,000</strong></code><strong>–</strong><code><strong>$48,000</strong></code>, and victim restitution.</li></ul></li></ul><ul id="4258ac6a-aab1-80ea-91ad-d8f3a41c5fde" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>3. </strong><em><strong>United States v. Kentucky Real Estate Commission</strong></em><strong> (</strong><code><strong>2005</strong></code><strong> — Rebate Ban):</strong><ul id="4258ac6a-aab1-80bf-ad14-dbc77bf5b8f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">The DOJ sued the Kentucky Real Estate Commission over regulations barring brokers from offering consumers cash rebates, commission discounts, moving/inspection vouchers, or charitable donations.</li></ul><ul id="4258ac6a-aab1-80aa-bc6f-e5ff572d991d" class="bulleted-list" dir="auto"><li style="list-style-type:square">The DOJ established that banning rebates suppressed price competition, restricted consumer choices, and created barriers to entry for discount brokerages—resulting in a consent decree barring enforcement of the rebate ban.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-80f7-8eb2-ed2b77f874ad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Deep Dive: Price Fixing &amp; Bid Rigging Subtypes and Red Flags</strong><ul id="4258ac6a-aab1-80bc-9a1e-cd260e44c619" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Price Fixing Nuances:</strong> Competitors do <strong>not</strong> have to charge identical prices or involve every firm in the market to violate the law. Illegal price fixing includes agreeing to fix discounts, hold prices firm, eliminate discounts, use a standard pricing formula, maintain fixed price differentials, follow a minimum fee schedule, fix credit terms, or refrain from advertising prices.<ul id="4258ac6a-aab1-8091-92f2-c604651d8b68" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Warning Signs:</strong> Sudden shift from varied rates to identical rates across competitors, simultaneous elimination of discounts, or higher local rates than distant rates.</li></ul></li></ul><ul id="4258ac6a-aab1-807c-bee5-d0baf4828e12" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Four Common Bid-Rigging Schemes:</strong><ol type="1" id="4258ac6a-aab1-808e-81f9-dc61456555fc" class="numbered-list" start="1" dir="auto"><li><strong>Bid Suppression:</strong> Competitors agree not to bid (or withdraw a bid) so the designated winner wins.</li></ol><ol type="1" id="4258ac6a-aab1-8076-9af1-effda96b45d2" class="numbered-list" start="2" dir="auto"><li><strong>Complementary (</strong><code><strong>&quot;Cover&quot;</strong></code><strong> or </strong><code><strong>&quot;Courtesy&quot;</strong></code><strong>) Bidding:</strong> Competitors submit intentionally high or unacceptable bids to create the illusion of genuine competition.</li></ol><ol type="1" id="4258ac6a-aab1-805b-80f5-fcca70fd2cba" class="numbered-list" start="3" dir="auto"><li><strong>Bid Rotation:</strong> Conspirators submit bids but take turns being the winning bidder.</li></ol><ol type="1" id="4258ac6a-aab1-806f-8fc9-fcd6844db7c3" class="numbered-list" start="4" dir="auto"><li><strong>Subcontracting:</strong> Competitors agree not to bid (or to lose) in exchange for lucrative subcontracts or supply deals from the winning bidder.</li></ol><ul id="4258ac6a-aab1-804d-95b8-e5b567d06b02" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Warning Signs:</strong> The same firm repeatedly wins, predictable winner rotation, unusually high bids, unusually few bidders, prices dropping sharply whenever a new/outside bidder enters, or losing bidders receiving subcontracts from the winner.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-807d-a8a6-f21e6a49c919" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Practical Communication Guide &amp; Scenario Takeaways</strong><table id="4258ac6a-aab1-8004-867e-dbae938d266c" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-8065-97b8-c266698fb496" dir="ltr"><td id="ZQ`X" class=""><strong>Situation</strong></td><td id="GbU`" class=""><strong>What NOT to Say (Antitrust Red Flag)</strong></td><td id="VjYe" class=""><strong>What TO Say (Compliant Alternative)</strong></td></tr><tr id="4258ac6a-aab1-80cd-9db9-c0fffa967c6d" dir="ltr"><td id="ZQ`X" class=""><strong>Discussing Commission Rates</strong></td><td id="GbU`" class=""><code>&quot;This is the standard rate every brokerage charges&quot;</code> or <code>&quot;My commission rate is pre-printed on the form&quot;</code></td><td id="VjYe" class=""><code>&quot;My brokerage&#x27;s policy is a 6% commission rate, though all commissions are negotiable—let&#x27;s review the services included.&quot;</code></td></tr><tr id="4258ac6a-aab1-80ce-b079-d548813e223c" dir="ltr"><td id="ZQ`X" class=""><strong>Discussing Listing Duration</strong></td><td id="GbU`" class=""><code>&quot;The MLS won&#x27;t accept a listing shorter than 120 days&quot;</code></td><td id="VjYe" class=""><code>&quot;There is no MLS or legal minimum for listing length, though I recommend [X] days to properly market your home.&quot;</code></td></tr><tr id="4258ac6a-aab1-8085-8787-f066d759acc5" dir="ltr"><td id="ZQ`X" class=""><strong>Discussing Title / Vendors</strong></td><td id="GbU`" class=""><code>&quot;You have to use our title company unless you want to find another broker&quot;</code></td><td id="VjYe" class=""><code>&quot;Do you have a preferred title company? If not, I can provide several options for you to choose from.&quot;</code></td></tr><tr id="4258ac6a-aab1-80e0-9366-d47828c2f544" dir="ltr"><td id="ZQ`X" class=""><strong>Talking to Competitors</strong></td><td id="GbU`" class=""><code>&quot;Let&#x27;s stop returning calls to discount brokers&quot;</code> or <code>&quot;Stick to your side of town&quot;</code></td><td id="VjYe" class="">Refuse to discuss commissions, competitors, or territories; end the conversation immediately.</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-801a-894a-f33dee9f2c15" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Three Scenario Takeaways:</strong><ol type="1" id="4258ac6a-aab1-806b-81e7-eca609880a0d" class="numbered-list" start="1" dir="auto"><li><strong>Casual Lunch Against a Discount Broker (</strong><code><strong>Ali &amp; Leslie</strong></code><strong>):</strong> Even an informal agreement over lunch between two competing principal brokers to stop returning a discount broker&#x27;s calls constitutes an unlawful <strong>group boycott</strong>.</li></ol><ol type="1" id="4258ac6a-aab1-803d-af93-fd2c3eb7a959" class="numbered-list" start="2" dir="auto"><li><strong>Mandatory </strong><code><strong>&quot;List-Back&quot;</strong></code><strong> Agreement (</strong><code><strong>Shruthi &amp; Colin</strong></code><strong>):</strong> Requiring a builder to list the finished house back with the developer/agent as a mandatory condition of buying the lot is an illegal <strong>tie-in agreement</strong> (lawful only if mutually and voluntarily negotiated without compulsion).</li></ol><ol type="1" id="4258ac6a-aab1-80d5-927c-e304f19943e4" class="numbered-list" start="3" dir="auto"><li><strong>Assigning Specialties Within One Firm (</strong><code><strong>Maggie &amp; Donald at Yellow Bird Realty</strong></code><strong>):</strong> A principal broker assigning different market segments or territories to licensees <strong>within the same brokerage</strong> is completely <strong>legal</strong>—antitrust laws only prohibit agreements between <strong>separate competing firms</strong>.</li></ol></li></ul><p id="4258ac6a-aab1-8037-b796-e4355585f0c3" class="" dir="auto">
+</p></div><div id="4258ac6a-aab1-80e9-8e96-faa6d3296e67" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4258ac6a-aab1-80e9-a612-dfadda7204df" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4258ac6a-aab1-8028-90e7-e5738a3ff9ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Antitrust Behaviors</strong><figure id="4258ac6a-aab1-80dd-999e-dd35c6e78761" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNWARE_HowToAvoidAntitrustViolations_19881_19884.jpg" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNWARE_HowToAvoidAntitrustViolations_19881_19884.jpg"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNWARE_HowToAvoidAntitrustViolations_19881_19884.jpg"/></a></figure></li></ul><ul id="4258ac6a-aab1-8003-a6fc-d26c93ef8d32" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Types of Price Fixing</strong><ul id="4258ac6a-aab1-80fd-a360-c879c90859a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Establishing or adhering to price discounts</li></ul><ul id="4258ac6a-aab1-8096-963e-d90a5eddd684" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Holding prices firm</li></ul><ul id="4258ac6a-aab1-8014-b5e4-f2348d03c782" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Eliminating or reducing discounts</li></ul><ul id="4258ac6a-aab1-80e6-882b-c9f967b563cc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Adopting a standard formula for computing prices</li></ul><ul id="4258ac6a-aab1-8013-b229-fe403a1f4579" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Maintaining certain price differentials between different types, sizes, or quantities of products</li></ul><ul id="4258ac6a-aab1-8021-8fd2-e0b46322379c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Adhering to a minimum price or fee schedule</li></ul><ul id="4258ac6a-aab1-8031-a43a-f2f1ee3bc8a8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Fixing credit terms</li></ul><ul id="4258ac6a-aab1-8031-86c2-c2da94422ed4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Not advertising prices</li></ul></li></ul><ul id="4258ac6a-aab1-80ce-8ca3-fa0597111155" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Common Types of Bid Rigging</strong><ul id="4258ac6a-aab1-806b-a7ed-d9929ee5ea11" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Bid suppression</strong></li></ul><ul id="4258ac6a-aab1-802f-b0cd-e02aa51a2f2d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Complementary bidding</li></ul><ul id="4258ac6a-aab1-80c3-84c2-d92eab923d3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Bid rotation</li></ul><ul id="4258ac6a-aab1-8020-9dd8-ffffbc805555" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Subcontracting</li></ul></li></ul><ul id="4258ac6a-aab1-80b4-9bdf-f3fb28c14589" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Violations of the Sherman Act</strong><ul id="4258ac6a-aab1-8001-8e8d-d88d5b6c883c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Violations of the Sherman Act may be considered felonies. Possible punishments for license holders include:</li></ul><ul id="4258ac6a-aab1-8021-8448-df444558b295" class="bulleted-list" dir="auto"><li style="list-style-type:circle">A <strong>fine</strong> of up to $350,000</li></ul><ul id="4258ac6a-aab1-80b6-8895-fde8c99cf9b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Imprisonment</strong> of up to three years</li></ul><ul id="4258ac6a-aab1-80d3-b2cd-eb831f63dedc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Loss of license</strong></li></ul><p id="4258ac6a-aab1-802e-b13c-cf27f2255ef5" class="" dir="auto">
+</p></li></ul></div></div><p id="4258ac6a-aab1-800c-bf05-fb471319fe48" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

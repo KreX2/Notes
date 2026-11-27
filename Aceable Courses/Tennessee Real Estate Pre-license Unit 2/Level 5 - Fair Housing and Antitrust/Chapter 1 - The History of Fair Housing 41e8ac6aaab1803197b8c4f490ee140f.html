@@ -1,0 +1,800 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Chapter 1 - The History of Fair Housing</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="41e8ac6a-aab1-8031-97b8-c4f490ee140f" class="page sans"><header><h1 class="page-title" dir="auto">Chapter 1 - <strong>The History of Fair Housing</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="4258ac6a-aab1-804d-84ae-f34885e7e717" class="column-list" data-notion-column-list="" dir="auto"><div id="4258ac6a-aab1-80f8-9488-f9af94d9b91f" style="width:68.75%" class="column" data-notion-column-ratio="0.6875" dir="auto"><p id="4258ac6a-aab1-807b-ac34-eaff7d0ab6f4" class="" dir="auto"><strong>Early Federal Civil Rights Acts &amp; Fair Housing Milestones</strong></p><ul id="4258ac6a-aab1-80dd-ba4b-f0bd8bac0313" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Prior to the comprehensive Fair Housing Act of 1968, federal measures gradually established protections against housing discrimination, initially focusing on race and federally funded properties:<table id="4258ac6a-aab1-8020-a8a6-d508db48ff8b" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80ec-a85b-dc997fb4ac7c" dir="ltr"><td id="BNcu" class=""><strong>Legislation / Landmark Ruling</strong></td><td id="kgx=" class=""><strong>Year</strong></td><td id="j{~U" class=""><strong>Protected Classes Covered</strong></td><td id="BWI&gt;" class=""><strong>Scope &amp; Practical Impact</strong></td></tr><tr id="4258ac6a-aab1-8003-a141-fac112b8f578" dir="ltr"><td id="BNcu" class=""><strong>1. Civil Rights Act of 1866</strong> (<code>42 U.S.C. § 1982</code>)</td><td id="kgx=" class=""><strong>1866</strong> <em>(enforced 1968)</em></td><td id="j{~U" class=""><strong>Race and color</strong></td><td id="BWI&gt;" class="">• The original federal fair housing statute, granting all citizens the same right to inherit, purchase, lease, sell, hold, and convey real and personal property.<br/><br/>• Largely unenforced for over a century until the U.S. Supreme Court ruling in <em><strong>Jones v. Alfred H. Mayer Co.</strong></em><strong> (</strong><code><strong>1968</strong></code><strong>)</strong>, which held that <strong>all racial discrimination in housing—public or private—is strictly illegal with zero exceptions</strong> (even where Fair Housing Act exemptions would otherwise apply).</td></tr><tr id="4258ac6a-aab1-8026-89d0-f6278f3bcfbb" dir="ltr"><td id="BNcu" class=""><strong>2. Executive Order </strong><code><strong>11063</strong></code></td><td id="kgx=" class=""><strong>1962</strong></td><td id="j{~U" class=""><strong>Race, color, creed (religion), and national origin</strong></td><td id="BWI&gt;" class="">• Prohibited discrimination in the sale, leasing, or occupancy of residential property <strong>owned, operated, or funded by the federal government</strong> (including properties financed with <strong>FHA</strong> or <strong>VA</strong> loans).<br/><br/>• Limited overall impact because relatively few transactions involved federal funding at the time.</td></tr><tr id="4258ac6a-aab1-80aa-9a58-e67a85ac0f26" dir="ltr"><td id="BNcu" class=""><strong>3. Title VI of the Civil Rights Act of 1964</strong></td><td id="kgx=" class=""><strong>1964</strong></td><td id="j{~U" class=""><strong>Race, color, and national origin</strong> <em>(within Title VI federally assisted programs)</em></td><td id="BWI&gt;" class="">• Prohibited discrimination under any program or activity receiving <strong>federal financial assistance</strong>, including federally assisted public housing programs.<br/><br/>• Like Executive Order <code>11063</code>, it did not reach purely private housing transactions without federal funding.</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-80db-a087-e62a8a8c7380" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Fair Housing Act (</strong><code><strong>Title VIII of the Civil Rights Act of 1968</strong></code><strong>)</strong><ul id="4258ac6a-aab1-807c-8005-ec990eafb99b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enactment &amp; Purpose:</strong> Passed in <strong>April 1968</strong> following the assassination of Dr. Martin Luther King Jr. (and strengthened by the <strong>Housing and Community Development Act of 1974</strong> and the <strong>Fair Housing Amendments Act of 1988</strong>). Its core purpose is to establish a unitary, open housing market by making it unlawful to refuse to sell, rent, finance, insure, or negotiate with any person—or to impose discriminatory terms—because of membership in a <strong>protected class</strong>.</li></ul><ul id="4258ac6a-aab1-8078-8712-d7bd3f1c3a48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>The Seven Federal Protected Classes (</strong><code><strong>FRESH CORN</strong></code><strong>):</strong><ol type="1" id="4258ac6a-aab1-80db-b586-ca5d9e0c7bf6" class="numbered-list" start="1" dir="auto"><li><strong>Race:</strong> A person&#x27;s racial heritage (U.S. Census categories include White, Black or African American, American Indian or Alaska Native, Asian, Native Hawaiian or other Pacific Islander, or another racial identity).</li></ol><ol type="1" id="4258ac6a-aab1-8029-b703-d51018441bab" class="numbered-list" start="2" dir="auto"><li><strong>Color:</strong> Pigmentation, complexion, skin shade, or tone—distinct from race (discrimination can occur between individuals of the same race based on skin shade).</li></ol><ol type="1" id="4258ac6a-aab1-800d-a72a-f2df5d7e512b" class="numbered-list" start="3" dir="auto"><li><strong>Religion:</strong> A system of religious beliefs, practices, or non-belief (e.g., Christianity, Judaism, Islam, Buddhism, Hinduism, atheism).</li></ol><ol type="1" id="4258ac6a-aab1-8031-aa09-dd8ba05b5c7f" class="numbered-list" start="4" dir="auto"><li><strong>National Origin:</strong> Country of birth, ancestry, ethnicity, cultural heritage, or primary language.</li></ol><ol type="1" id="4258ac6a-aab1-808a-92a2-f3f635d5a9fc" class="numbered-list" start="5" dir="auto"><li><strong>Sex</strong> <em>(added in </em><em><code>1974</code></em><em>)</em>: Biological sex, gender stereotyping, sexual harassment in housing, <strong>sexual orientation</strong>, and <strong>gender identity</strong> (recognized under federal Fair Housing Act enforcement alongside state and local LGBTQIA+ ordinances).</li></ol><ol type="1" id="4258ac6a-aab1-80a8-93b9-d949e5f89da7" class="numbered-list" start="6" dir="auto"><li><strong>Familial Status</strong> <em>(added in </em><em><code>1988</code></em><em>)</em>: Households with <strong>one or more individuals under age </strong><code><strong>18</strong></code> living with a parent, legal custodian, or designee, as well as <strong>pregnant women</strong> and persons in the process of securing legal custody (adoption or foster care). <em>(Note: Qualified housing for older persons—</em><em><code>55+</code></em><em> or </em><em><code>62+</code></em><em> communities meeting federal criteria—carries a statutory exemption from familial status rules.)</em></li></ol><ol type="1" id="4258ac6a-aab1-80bb-b46a-f399381f6fec" class="numbered-list" start="7" dir="auto"><li><strong>Disability / Handicap</strong> <em>(added in </em><em><code>1988</code></em><em>)</em>: A physical or mental impairment that substantially limits one or more major life activities, a record of such impairment, or being regarded as having such an impairment (including blindness, deafness, mobility impairments, cognitive/mental illness, HIV/AIDS, cancer, and recovering alcoholism—though <strong>current illegal use of or addiction to a controlled substance is excluded</strong>).</li></ol><figure id="4258ac6a-aab1-80c3-9dc5-e88d545ac769" class="image" data-notion-image="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image.png" dir="ltr"><a href="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image.png"><img style="width:432px" src="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image.png"/></a></figure></li></ul></li></ul><ul id="4258ac6a-aab1-805c-ac1f-ff6349cc8695" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Act Prohibitions: In Brief</strong><ul id="4258ac6a-aab1-80a4-85ac-cbb587e1d3f0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Note 1:</strong> It doesn&#x27;t matter if someone intends to discriminate or not. It&#x27;s the <strong>action, not the motivation</strong>, that matters.</li></ul><ul id="4258ac6a-aab1-80ea-9cc5-dda7994286ab" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Note 2: </strong>These prohibitions are only prohibitions if the agent (or whoever) discriminates <strong>BECAUSE of the protected category</strong>. If a landlord refuses to rent a property to a man because of his bad credit history, and NOT because of his mental illness, then that is acceptable.</li></ul><figure id="4258ac6a-aab1-80c6-ae2e-d4df804df51e" class="image" data-notion-image="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%201.png" dir="ltr"><a href="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%201.png"><img style="width:480px" src="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%201.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-8075-9e6c-d8dde1e7a92f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Groups Not Protected Under the Fair Housing Act (Lawful Grounds to Turn Down Prospects)</strong><ul id="4258ac6a-aab1-80b7-ba30-f56b32bb1767" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Real estate licensees and housing providers have the legal right to decline prospects based on objective, non-discriminatory business and legal qualifications—applied consistently to everyone:<ol type="1" id="4258ac6a-aab1-80b2-85bc-ccc1ab6c0e51" class="numbered-list" start="1" dir="auto"><li><strong>Minors (Under Age </strong><code><strong>18</strong></code><strong>):</strong> Individuals who lack legal capacity to enter into a binding real estate contract or lease (though families with children under <code>18</code> are protected under <strong>familial status</strong>).</li></ol><ol type="1" id="4258ac6a-aab1-808b-83ff-fdd4a0d87dc2" class="numbered-list" start="2" dir="auto"><li><strong>Financial Inability / Poor Credit:</strong> Applicants with insufficient income, poor credit scores, inability to qualify for a mortgage loan, or inability to pay rent/purchase funds.</li></ol></li></ul><ul id="4258ac6a-aab1-80b5-9b2d-febb45e835ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Criminal History Nuance (</strong><code><strong>HUD Guidance</strong></code><strong> &amp; Disparate Impact):</strong><ul id="4258ac6a-aab1-809b-8d28-c796b54e7aa5" class="bulleted-list" dir="auto"><li style="list-style-type:square">Having a criminal record is <strong>not</strong> a standalone protected class under the Fair Housing Act.</li></ul><ul id="4258ac6a-aab1-80d5-863c-e1c841c3cc27" class="bulleted-list" dir="auto"><li style="list-style-type:square">However, because Black and Hispanic individuals are disproportionately represented in the criminal justice system, <strong>HUD guidance (</strong><code><strong>2016</strong></code><strong>)</strong> warns that blanket bans or overly broad criminal-history screening policies can create an unlawful <strong>disparate impact</strong> on race or national origin.</li></ul><ul id="4258ac6a-aab1-8053-ae29-ee19b40fb453" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>Best Practice for Housing Providers:</strong> Never use arrest records (without conviction) as a basis for denial; evaluate <strong>convictions only</strong> on a case-by-case basis, considering the <strong>nature and severity</strong> of the offense, <strong>time elapsed</strong> since conviction, and direct relevance to resident safety or property protection.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8085-b387-d4785969f42d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Act Prohibitions (</strong><code><strong>42 U.S.C. §§ 3604–3617</strong></code><strong>) — Specific Violations &amp; Examples</strong><table id="4258ac6a-aab1-80bf-b58a-f501919f5790" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80fc-9cf8-cc3e99c61710" dir="ltr"><td id="?KX{" class=""><strong>Prohibited Practice</strong></td><td id="[ZF=" class=""><strong>Core Legal Rule &amp; Real-World Example</strong></td></tr><tr id="4258ac6a-aab1-805f-a2f0-c69cc34eb4b0" dir="ltr"><td id="?KX{" class=""><strong>1. Refusing to Rent or Sell Housing</strong></td><td id="[ZF=" class="">Outright refusal to work with, sell to, or rent to a prospect because of a protected class (e.g., refusing to represent or show homes to a Black woman because of her race).</td></tr><tr id="4258ac6a-aab1-809e-8052-d229677f16ae" dir="ltr"><td id="?KX{" class=""><strong>2. Making Housing Otherwise Unavailable</strong></td><td id="[ZF=" class="">Selectively restricting access to certain buildings, floors, or units (e.g., showing women units in Complex B while refusing to show them available units in Complex A).</td></tr><tr id="4258ac6a-aab1-80ea-9102-d98a47175748" dir="ltr"><td id="?KX{" class=""><strong>3. Refusing to Negotiate for Housing</strong></td><td id="[ZF=" class="">Cutting off or refusing to conduct negotiations once a prospect&#x27;s protected status is learned (e.g., stopping negotiations after discovering a buyer is Jewish).</td></tr><tr id="4258ac6a-aab1-80ad-ac6f-d2a14aa88e7b" dir="ltr"><td id="?KX{" class=""><strong>4. Refusing to Rent or Sell After a Bona Fide Offer</strong></td><td id="[ZF=" class="">Failing to transmit or rejecting a genuine, good-faith offer because of the offeror&#x27;s protected class (e.g., withholding a Black buyer&#x27;s bona fide offer from the seller).</td></tr><tr id="4258ac6a-aab1-8039-8008-c17c2405239d" dir="ltr"><td id="?KX{" class=""><strong>5. Providing Unequal Services or Facilities</strong></td><td id="[ZF=" class="">Delivering inferior service, responsiveness, or access to amenities to members of a protected class—licensees must provide the <strong>same standard of service</strong> to every prospect.</td></tr><tr id="4258ac6a-aab1-8035-9466-da9ddee81f63" dir="ltr"><td id="?KX{" class=""><strong>6. Setting Unequal Terms, Conditions, or Privileges</strong></td><td id="[ZF=" class="">Charging higher rent, higher security deposits, or stricter lease rules to a protected group (e.g., charging families with children higher deposits than childless tenants).</td></tr><tr id="4258ac6a-aab1-80bc-ba9b-c0a73153ef5f" dir="ltr"><td id="?KX{" class=""><strong>7. Misrepresenting Property Availability or Sales Terms</strong></td><td id="[ZF=" class="">Falsely claiming a property or neighborhood has no available homes to keep a protected class out (e.g., telling an unmarried couple with children that Neighborhood 1 is sold out when homes are available).</td></tr><tr id="4258ac6a-aab1-806d-85c8-ecf1c46895d0" dir="ltr"><td id="?KX{" class=""><strong>8. Denying or Restricting Access to an MLS or Brokerage Organization</strong></td><td id="[ZF=" class="">Blocking a licensed colleague from accessing the Multiple Listing Service or professional real estate associations due to race, religion, national origin, or another protected class.</td></tr><tr id="4258ac6a-aab1-8091-9bec-ef8affb3a7e1" dir="ltr"><td id="?KX{" class=""><strong>9. Discriminating in Brokering or Appraising</strong></td><td id="[ZF=" class="">Altering valuation methods, fees, or financing terms based on protected status (e.g., overcharging a buyer with a cognitive impairment for an appraisal).</td></tr><tr id="4258ac6a-aab1-805e-b0bf-e8a38b66997f" dir="ltr"><td id="?KX{" class=""><strong>10. Steering</strong></td><td id="[ZF=" class="">Channeling buyers or renters toward or away from particular neighborhoods, schools, or building sections based on protected characteristics (e.g., showing Asian buyers only historically Asian neighborhoods).</td></tr><tr id="4258ac6a-aab1-80c9-9e46-ef44c0964f7b" dir="ltr"><td id="?KX{" class=""><strong>11. Blockbusting (</strong><code><strong>Panic Peddling</strong></code><strong>)</strong></td><td id="[ZF=" class="">Inducing homeowners to sell at discounted prices by claiming that the entry of a protected class will lower property values, increase crime, or hurt schools—then reselling at a markup.</td></tr><tr id="4258ac6a-aab1-8040-876e-d51e0e9f7c6e" dir="ltr"><td id="?KX{" class=""><strong>12. Redlining</strong></td><td id="[ZF=" class="">Lenders or insurers refusing to issue mortgages/policies—or imposing harsher terms—within specific geographic areas based on the racial or ethnic makeup of the neighborhood.</td></tr><tr id="4258ac6a-aab1-80d2-9b39-f7ac0c3b7804" dir="ltr"><td id="?KX{" class=""><strong>13. Discriminatory Advertising</strong></td><td id="[ZF=" class="">Publishing any notice, statement, or ad indicating a preference, limitation, or discrimination based on a protected class (e.g., <code>&quot;White tenants only&quot;</code>). <em>(Exception: Qualified </em><em><code><strong>55+</strong></code></em><em><strong> or </strong></em><em><code><strong>62+</strong></code></em><em><strong> Housing for Older Persons</strong></em><em> communities may lawfully advertise </em><em><code>&quot;no children&quot;</code></em><em>.)</em></td></tr><tr id="4258ac6a-aab1-8015-9cdc-fc95dba1bc27" dir="ltr"><td id="?KX{" class=""><strong>14. Coercion, Intimidation, Threats, or Interference (</strong><code><strong>§ 3617</strong></code><strong>)</strong></td><td id="[ZF=" class="">Retaliating against, threatening, or interfering with anyone exercising their fair housing rights—or any licensee/person assisting others in exercising those rights (e.g., threatening to blacklist a tenant who objects to floor steering).</td></tr></tbody></table></li></ul><ul id="4258ac6a-aab1-80ce-818e-cbbca4176618" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Disability Protections: Reasonable Modifications, Reasonable Accommodations &amp; Accessible Design</strong><ul id="4258ac6a-aab1-8078-b26e-dbae845f678e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reasonable Modifications (Physical Changes):</strong> Structural or physical alterations to a dwelling or common area needed by a person with a disability to have full enjoyment of the premises (e.g., installing a wheelchair ramp, grab bars, or widening doorways). In private housing, the tenant generally pays for the modification (and may be required to restore interior changes at lease end if reasonable), though in federally assisted housing the provider generally bears the cost.</li></ul><ul id="4258ac6a-aab1-809b-ad05-d7e1b248cea8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Reasonable Accommodations (Rule / Policy Exceptions):</strong> Exceptions or adjustments to rules, policies, practices, or services necessary to afford a person with a disability equal opportunity to use and enjoy housing (e.g., waiving a <code>&quot;no-pets&quot;</code> policy or pet deposit for a <strong>service animal or emotional support/assistance animal</strong>, or assigning a reserved accessible parking space near the entrance).</li></ul><ul id="4258ac6a-aab1-80d2-83f6-dc712da924d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Accessible Design and Construction (</strong><code><strong>Multifamily Buildings</strong></code><strong>):</strong> Covered multifamily buildings built for first occupancy after <strong>March 13, 1991</strong> (with <code>4</code> or more units) must meet federal Fair Housing Act accessibility design standards—including accessible public/common areas, doors wide enough for wheelchairs, accessible routes into and through units, reinforced bathroom walls for grab bars, and usable kitchens/bathrooms.</li></ul></li></ul><ul id="4258ac6a-aab1-8049-b776-c660d69a775d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Act: The Four Exemptions</strong><ul id="4258ac6a-aab1-80de-a870-daeb00582142" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Always Remember</strong><ul id="4258ac6a-aab1-8057-93c6-ff96cf0f4187" class="bulleted-list" dir="auto"><li style="list-style-type:square">For the real estate license holder, there are no exemptions.</li></ul><ul id="4258ac6a-aab1-807a-bcc5-d00e3813e85b" class="bulleted-list" dir="auto"><li style="list-style-type:square">Under the Civil Rights Act of 1866, <strong>one can NEVER discriminate in housing on the basis of race</strong>.<figure id="4258ac6a-aab1-80a8-9cd1-c3cd4376c037" class="image" data-notion-image="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%202.png" dir="ltr"><a href="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%202.png"><img style="width:336px" src="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%202.png"/></a></figure></li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-805f-8758-d55bb851f205" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Post-1968 Federal Fair Housing &amp; Civil Rights Legislation</strong><ul id="4258ac6a-aab1-8077-83df-c2df9ab14249" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Following the passage of the Fair Housing Act of 1968, Congress and the executive branch expanded enforcement authority, funding rules, and protected classes across housing and public programs:<table id="4258ac6a-aab1-8056-b36f-ca88d60cd744" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-8031-9018-f1fe9d1194f6" dir="ltr"><td id="KmGI" class=""><strong>Law / Executive Order</strong></td><td id="u@SB" class=""><strong>Year</strong></td><td id="tDaq" class=""><strong>Core Provisions &amp; Scope</strong></td></tr><tr id="4258ac6a-aab1-800f-b149-c1c89aae3a88" dir="ltr"><td id="KmGI" class=""><strong>1. Housing and Community Development Act (</strong><code><strong>Section 109 of Title I</strong></code><strong>)</strong></td><td id="u@SB" class=""><strong>1974</strong></td><td id="tDaq" class="">• Created <strong>Community Development Block Grant (</strong><code><strong>CDBG</strong></code><strong>)</strong> programs, distributing formula-based HUD grants to states, cities, and counties to support decent housing and living environments for low-to-moderate income residents.<br/><br/>• <strong>Section 109</strong> prohibits excluding anyone from CDBG-funded programs or activities on the basis of <strong>race, color, national origin, or sex</strong> (and this same 1974 Act also added <strong>sex</strong> as a protected class under the Fair Housing Act).</td></tr><tr id="4258ac6a-aab1-802b-b710-ff2042152ba7" dir="ltr"><td id="KmGI" class=""><strong>2. Executive Order </strong><code><strong>12259</strong></code></td><td id="u@SB" class=""><strong>1980</strong></td><td id="tDaq" class="">• Established leadership and coordination of fair housing across federal programs.<br/><br/>• Designated the <strong>Secretary of HUD</strong> as the primary federal official responsible for administering and enforcing the Fair Housing Act, while amending parts of Executive Order <code>11063</code>.</td></tr><tr id="4258ac6a-aab1-80c5-9782-ceadba594fe2" dir="ltr"><td id="KmGI" class=""><strong>3. Federal Fair Housing Amendments Act</strong></td><td id="u@SB" class=""><strong>1988</strong></td><td id="tDaq" class="">• Added <strong>disability</strong> and <strong>familial status</strong> to the Fair Housing Act&#x27;s protected classes.<br/><br/>• Explicitly protected the right of individuals with disabilities to live together in <strong>group homes</strong>, making it unlawful for local zoning or housing rules to exclude group homes from residential neighborhoods.</td></tr><tr id="4258ac6a-aab1-8077-889d-e85fa3dd5d3e" dir="ltr"><td id="KmGI" class=""><strong>4. Americans with Disabilities Act (</strong><code><strong>Title II of the ADA</strong></code><strong>)</strong></td><td id="u@SB" class=""><strong>1990</strong></td><td id="tDaq" class="">• Prohibits disability discrimination and sets accessibility standards across <strong>state and local government entities</strong>, services, programs, activities (including public housing authorities), and <strong>public transportation systems</strong>.</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8037-9f9a-f56fba219bb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Master Timeline of Federal Fair Housing Laws (</strong><code><strong>1866–1990</strong></code><strong>)</strong><ul id="4258ac6a-aab1-80b5-8dbf-f376f6dea36b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Civil Rights Act of </strong><code><strong>1866</strong></code><strong> (</strong><code><strong>42 U.S.C. § 1982</strong></code><strong>):</strong> Prohibited housing discrimination based on <strong>race or color</strong> with zero exceptions (enforced privately via <em><strong>Jones v. Mayer</strong></em><strong>, </strong><code><strong>1968</strong></code>).</li></ul><ul id="4258ac6a-aab1-80f5-9f03-e6a2a8545130" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executive Order </strong><code><strong>11063</strong></code><strong> (</strong><code><strong>1962</strong></code><strong>):</strong> Prohibited discrimination based on race, color, creed, or national origin in <strong>federally owned or federally funded housing</strong> (including FHA and VA loans).</li></ul><ul id="4258ac6a-aab1-80ac-8beb-c2fa3395f508" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Civil Rights Act of </strong><code><strong>1964</strong></code><strong> (</strong><code><strong>Title VI</strong></code><strong>):</strong> Prohibited discrimination in <strong>federally assisted programs</strong>, including public housing.</li></ul><ul id="4258ac6a-aab1-8024-9bb7-c4c38de60be1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fair Housing Act (</strong><code><strong>Title VIII of the Civil Rights Act of 1968</strong></code><strong>):</strong> Prohibited discrimination in private and public real estate sales, rentals, lending, and brokerage based on protected classes.</li></ul><ul id="4258ac6a-aab1-8089-957b-ed8818538fb3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Housing and Community Development Act (</strong><code><strong>Section 109</strong></code><strong>, </strong><code><strong>1974</strong></code><strong>):</strong> Created <strong>CDBG</strong> grants and barred discrimination in CDBG-funded programs (and added <strong>sex</strong> to the Fair Housing Act).</li></ul><ul id="4258ac6a-aab1-807c-b7fc-f5bb4c50d143" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Executive Order </strong><code><strong>12259</strong></code><strong> (</strong><code><strong>1980</strong></code><strong>):</strong> Centralized federal fair housing coordination under the <strong>Secretary of HUD</strong>.</li></ul><ul id="4258ac6a-aab1-8030-8168-f28a972c4f6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Fair Housing Amendments Act (</strong><code><strong>1988</strong></code><strong>):</strong> Added <strong>disability</strong> and <strong>familial status</strong> and protected residential <strong>group homes</strong>.</li></ul><ul id="4258ac6a-aab1-808f-ac4d-e31564124826" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Americans with Disabilities Act (</strong><code><strong>Title II</strong></code><strong>, </strong><code><strong>1990</strong></code><strong>):</strong> Barred disability discrimination in <strong>state/local government services and public transit</strong>.</li></ul></li></ul><ul id="4258ac6a-aab1-8078-8b6e-db347d219d4e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Tennessee Human Rights Act (</strong><code><strong>T.C.A. § 4-21-101 et seq.</strong></code><strong>) vs. Federal Fair Housing Act</strong><ul id="4258ac6a-aab1-8070-aeec-f0d705d7b6ec" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Enforcement &amp; Scope:</strong> Enforced by the <strong>Tennessee Human Rights Commission (</strong><code><strong>THRC</strong></code><strong>)</strong>, prohibiting discrimination in <strong>employment, public accommodations, and housing</strong>. Whenever federal, state, and local laws overlap, <strong>the stricter, more protective standard governs</strong>.</li></ul><ul id="4258ac6a-aab1-8077-9ca0-e2768cf9c7aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Additional State Protected Class (</strong><code><strong>Creed</strong></code><strong>):</strong> Alongside all seven federal protected classes (<strong>race, color, religion, national origin, sex, familial status, and disability</strong>), Tennessee explicitly protects <strong>creed</strong>—encompassing any system of moral or ethical beliefs and associated practices, even outside an organized religion. <em>(Individual Tennessee cities and counties may also enforce additional local protected classes.)</em></li></ul><ul id="4258ac6a-aab1-80e4-8873-e6a4d78a53a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Stricter Tennessee Exemptions (</strong><code><strong>More Restrictive Than Federal Law</strong></code><strong>):</strong><table id="4258ac6a-aab1-803b-9611-f788f65aeec9" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-80bd-be60-ef4372d91a76" dir="ltr"><td id="l:i@" class=""><strong>Exemption Area</strong></td><td id="==I\" class=""><strong>Federal Fair Housing Act Standard</strong></td><td id="ASbp" class=""><strong>Tennessee Human Rights Act (THRA) Standard</strong></td><td id="pg]d" class=""><strong>Key Takeaway</strong></td></tr><tr id="4258ac6a-aab1-808a-b1d2-d002fc10bbd0" dir="ltr"><td id="l:i@" class=""><strong>Owner-Occupied Multi-Unit (</strong><code><strong>&quot;Mrs. Murphy&quot;</strong></code><strong> Exemption)</strong></td><td id="==I\" class="">Exempts rentals in owner-occupied buildings with <strong>up to </strong><code><strong>4</strong></code><strong> units</strong> (<code>1–4</code> family dwellings) when no broker/agent is used and no discriminatory ads are published.</td><td id="ASbp" class="">Exempts rentals in owner-occupied buildings housing <strong>no more than </strong><code><strong>2</strong></code><strong> families</strong> living independently (<code>&quot;Two or less in Tennessee&quot;</code>).</td><td id="pg]d" class="">Tennessee cuts the owner-occupied exemption from <code>4</code> units down to <code><strong>2</strong></code><strong> units</strong> (and never excuses racial discrimination under the <code>1866</code> Act or licensed brokerage activity).</td></tr><tr id="4258ac6a-aab1-8063-b74a-c5365e11b153" dir="ltr"><td id="l:i@" class=""><strong>Housing for Older Persons (</strong><code><strong>55+</strong></code><strong> Exemption)</strong></td><td id="==I\" class="">Exempts <code>55+</code> communities from familial status rules if at least <code><strong>80%</strong></code> of occupied units have at least one resident aged <code>55</code> or older.</td><td id="ASbp" class="">Requires the community to be intended for and at least <code><strong>90%</strong></code><strong> occupied</strong> by at least one person aged <code><strong>55</strong></code><strong> or older</strong> per unit.</td><td id="pg]d" class="">Tennessee raises the <code>55+</code> occupancy threshold from <code>80%</code> to <code><strong>90%</strong></code>.</td></tr><tr id="4258ac6a-aab1-8012-9b8d-e273824f563f" dir="ltr"><td id="l:i@" class=""><strong>Single-Sex Dormitories</strong></td><td id="==I\" class="">Applied through administrative/judicial interpretation rather than an explicit statutory carve-out.</td><td id="ASbp" class=""><strong>Explicitly exempts</strong> single-sex dormitory rental properties (including those operated by colleges and universities).</td><td id="pg]d" class="">Expressly codified in Tennessee&#x27;s housing statute.</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8013-9a56-d3e039f55ced" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Compare: Fair Housing Act &amp; Human Rights Act</strong><figure id="4258ac6a-aab1-8095-b55b-c5bab4d5fcc3" class="image" data-notion-image="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%203.png" dir="ltr"><a href="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%203.png"><img style="width:432px" src="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%203.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80f4-80eb-d61df2e0a97f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Landmark U.S. Supreme Court Cases Shaping Fair Housing (</strong><code><strong>1896–1968</strong></code><strong>)</strong><ul id="4258ac6a-aab1-801e-a6d1-dad680ed4b3e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Alongside federal civil rights statutes, five foundational U.S. Supreme Court decisions defined—and ultimately dismantled—legal segregation and racial discrimination in American housing:<table id="4258ac6a-aab1-807e-8e60-c853c968ec4f" class="simple-table" dir="ltr"><tbody><tr id="4258ac6a-aab1-8095-9ca1-c5dc626a3eaa" dir="ltr"><td id="GeSA" class=""><strong>Supreme Court Case</strong></td><td id="&lt;RSe" class=""><strong>Year</strong></td><td id="q}w&gt;" class=""><strong>Core Facts &amp; Issue</strong></td><td id="]vIU" class=""><strong>Holding &amp; Impact on Fair Housing</strong></td></tr><tr id="4258ac6a-aab1-806f-824f-e5a160948a2e" dir="ltr"><td id="GeSA" class=""><strong>1. </strong><em><strong>Plessy v. Ferguson</strong></em></td><td id="&lt;RSe" class=""><strong>1896</strong></td><td id="q}w&gt;" class="">Homer Plessy, a Black passenger, sat in a white-only Louisiana railcar and challenged the state&#x27;s racial segregation statute after Judge John H. Ferguson upheld his arrest.</td><td id="]vIU" class="">• Upheld racial segregation (<code>7–1</code> vote) under the <strong>&quot;separate but equal&quot;</strong> doctrine.<br/><br/>• Sanctioned widespread state and local segregation across public accommodations, schools, and residential neighborhoods for nearly six decades.</td></tr><tr id="4258ac6a-aab1-80c5-bc57-ffa6ed53f017" dir="ltr"><td id="GeSA" class=""><strong>2. </strong><em><strong>Buchanan v. Warley</strong></em></td><td id="&lt;RSe" class=""><strong>1917</strong></td><td id="q}w&gt;" class="">Louisville, Kentucky enacted a municipal zoning ordinance barring Black residents from moving onto blocks where white residents were the majority. White seller Charles Buchanan sued Black buyer William Warley for specific performance when Warley cited the ordinance to back out of purchasing Buchanan&#x27;s home.</td><td id="]vIU" class="">• Struck down <strong>racially based municipal zoning</strong> as unconstitutional under the 14th Amendment because it unlawfully interfered with property owners&#x27; rights to sell and acquire property.</td></tr><tr id="4258ac6a-aab1-805b-a6ca-ff366450fca3" dir="ltr"><td id="GeSA" class=""><strong>3. </strong><em><strong>Shelley v. Kraemer</strong></em></td><td id="&lt;RSe" class=""><strong>1948</strong></td><td id="q}w&gt;" class="">White St. Louis homeowners (the Kraemers) sued to enforce a private subdivision <strong>racially restrictive covenant</strong> to evict a Black family (the Shelleys) who had purchased a home in the neighborhood.</td><td id="]vIU" class="">• Ruled that while private individuals could voluntarily enter into private agreements, <strong>judicial (court) enforcement of racially restrictive covenants is unconstitutional state action</strong> violating the 14th Amendment&#x27;s Equal Protection Clause—rendering racial covenants legally unenforceable.</td></tr><tr id="4258ac6a-aab1-806f-a7ef-db1d7b0d8a47" dir="ltr"><td id="GeSA" class=""><strong>4. </strong><em><strong>Brown v. Board of Education</strong></em></td><td id="&lt;RSe" class=""><strong>1954</strong></td><td id="q}w&gt;" class="">Oliver Brown and NAACP attorneys challenged segregated public schools in Topeka, Kansas as inherently unequal and unconstitutional.</td><td id="]vIU" class="">• Unanimously (<code>9–0</code>) held that racial segregation in public education violates the 14th Amendment&#x27;s Equal Protection Clause, <strong>overturning </strong><em><strong>Plessy v. Ferguson</strong></em><strong>&#x27;s &quot;separate but equal&quot; doctrine</strong> and establishing the constitutional precedent used to dismantle segregation across public housing and facilities.</td></tr><tr id="4258ac6a-aab1-8094-923f-e9ff673e3880" dir="ltr"><td id="GeSA" class=""><strong>5. </strong><em><strong>Jones v. Alfred H. Mayer Co.</strong></em></td><td id="&lt;RSe" class=""><strong>1968</strong></td><td id="q}w&gt;" class="">Joseph Lee Jones, a Black buyer, sued a private St. Louis County real estate developer (<code>Alfred H. Mayer Co.</code>) for refusing to sell him a home solely because of his race.</td><td id="]vIU" class="">• Held that <strong>13th Amendment</strong> authority and the <strong>Civil Rights Act of </strong><code><strong>1866</strong></code><strong> (</strong><code><strong>42 U.S.C. § 1982</strong></code><strong>)</strong> prohibit <strong>all racial discrimination in the sale or rental of property—public or private—with zero exceptions</strong>, finally giving the <code>1866</code> Act full private enforcement power.</td></tr></tbody></table></li></ul></li></ul><ul id="4258ac6a-aab1-8042-82b2-c50d4d18e8da" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Key Exam Takeaways: How These Rulings Fit Together</strong><ul id="4258ac6a-aab1-80e3-88c9-f00b0cb45f0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>Public Zoning vs. Private Covenants vs. Private Sales:</strong><ul id="4258ac6a-aab1-80df-b25e-c4a8e353f455" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>Buchanan v. Warley</strong></em><strong> (</strong><code><strong>1917</strong></code><strong>):</strong> Ended <strong>government racial zoning</strong> ordinances.</li></ul><ul id="4258ac6a-aab1-800e-b817-e82e8f02465f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>Shelley v. Kraemer</strong></em><strong> (</strong><code><strong>1948</strong></code><strong>):</strong> Ended <strong>court enforcement of private racial deed covenants</strong>.</li></ul><ul id="4258ac6a-aab1-8051-aa31-f8260ee91b66" class="bulleted-list" dir="auto"><li style="list-style-type:square"><em><strong>Jones v. Mayer</strong></em><strong> (</strong><code><strong>1968</strong></code><strong>):</strong> Ended <strong>purely private racial discrimination</strong> in any real estate sale or rental—meaning <strong>no statutory exemption</strong> (not even owner-occupied <code>&quot;Mrs. Murphy&quot;</code> or FSBO exemptions under the <code>1968</code> Fair Housing Act) ever permits discrimination based on <strong>race or color</strong>.</li></ul></li></ul></li></ul><ul id="4258ac6a-aab1-8033-b029-f04e72c09519" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Court Cases: Review</strong><figure id="4258ac6a-aab1-804c-b4f2-fbc59db43cc5" class="image" data-notion-image="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%204.png" dir="ltr"><a href="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%204.png"><img style="width:384px" src="Chapter%201%20-%20The%20History%20of%20Fair%20Housing/image%204.png"/></a></figure></li></ul><p id="4258ac6a-aab1-805c-a9ee-ffeddfc0e81f" class="" dir="auto">
+</p></div><div id="4258ac6a-aab1-80a5-a92c-c170846f16c3" style="width:31.25%" class="column" data-notion-column-ratio="0.3125" dir="auto"><p id="4258ac6a-aab1-8012-a2a1-fd974f7cfb1f" class="" dir="auto"><strong>Key Concepts &amp; Principles</strong></p><ul id="4258ac6a-aab1-8073-8607-f42b648b8710" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Fair Housing Act: Protected Classes</strong><figure id="4258ac6a-aab1-80ec-8222-f7af18cb2535" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TXREPLLAV_ProtectedClassesMnemonic_10683.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TXREPLLAV_ProtectedClassesMnemonic_10683.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TXREPLLAV_ProtectedClassesMnemonic_10683.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80f1-85d9-e75cdde85cd5" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Fair Housing Act: Prohibitions</strong><figure id="4258ac6a-aab1-8086-a3d5-e8e6ecc31020" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/FairHousingProhibitions_Inline.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/FairHousingProhibitions_Inline.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/FairHousingProhibitions_Inline.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80e0-80dc-f3763cf936a9" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>The Fair Housing Act: Exemptions</strong><figure id="4258ac6a-aab1-8031-991a-e05c7ef409a4" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/PA_FairHousingExemptionsInfographic.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/PA_FairHousingExemptionsInfographic.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/PA_FairHousingExemptionsInfographic.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-80f5-9d44-e0005f1bc34f" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Fair Housing Act &amp; Human Rights Act</strong><figure id="4258ac6a-aab1-8045-a5b8-d9b07c4a9f2b" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FairHousingActAndHumanRightsAct_Infotable_20395.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FairHousingActAndHumanRightsAct_Infotable_20395.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/TNREPL_FairHousingActAndHumanRightsAct_Infotable_20395.png"/></a></figure></li></ul><ul id="4258ac6a-aab1-8028-b7ce-d2d35b4eafad" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>Supreme Court Cases</strong><figure id="4258ac6a-aab1-80f0-8e66-f236534b669d" class="image" data-notion-image="https://d1u7daj727sadp.cloudfront.net/images/PA_ReviewofCourtCases.png" dir="ltr"><a href="https://d1u7daj727sadp.cloudfront.net/images/PA_ReviewofCourtCases.png"><img src="https://d1u7daj727sadp.cloudfront.net/images/PA_ReviewofCourtCases.png"/></a></figure></li></ul><p id="4258ac6a-aab1-8087-bc18-f23c459e7619" class="" dir="auto">
+</p></div></div><p id="4258ac6a-aab1-8061-aafc-cb7eed5a4f37" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
